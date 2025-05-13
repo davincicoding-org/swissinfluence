@@ -1,0 +1,9 @@
+.simple-form > .MuiCardContent-root,
+.tabbed-form > .MuiTabs-root,
+.tabbed-form > .MuiCardContent-root {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+}
+.tabbed-form > .MuiTabs-root> .MuiTabs-scroller {
+    overflow-x: unset!important;
+}

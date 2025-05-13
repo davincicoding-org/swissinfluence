@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "@mantine/core/styles.css";
+@import "@mantine/carousel/styles.css";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (hover: hover) {
+  html {
+    scroll-snap-type: y mandatory;
+  }
+}
