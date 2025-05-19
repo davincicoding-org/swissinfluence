@@ -11,8 +11,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
 
   return {
-    title: t("forum.meta.title"),
-    description: t("forum.meta.description"),
+    title: t("convention.meta.title"),
+    description: t("convention.meta.description"),
     metadataBase: new URL(env.BASE_URL),
   };
 }

@@ -1,13 +1,8 @@
 import { z } from "zod";
 import { LocaleEnum, TextTranslatorSchema } from "./i18n/config";
 import { MediaFetcherSchema } from "./media/config";
-import { MessagesFetcherSchema } from "./messages/config";
 // FIXME
 import { db, bucket } from "@/database/firebase";
-import {
-  type MessagesContent,
-  MessagesDocumentSchema,
-} from "./messages/schema";
 import { type MediaContent, MediaDocumentSchema } from "./media/schema";
 import {
   type ConstantsContent,
@@ -27,7 +22,6 @@ const TempFileUploader = z
   );
 
 const ConfigSchema = z.object({
-  fetchMessages: MessagesFetcherSchema,
   fetchMedia: MediaFetcherSchema,
   fetchConstants: ConstantsFetcherSchema,
   uploadTempFile: TempFileUploader,
@@ -39,20 +33,6 @@ const ConfigSchema = z.object({
 export type Config = z.infer<typeof ConfigSchema>;
 
 export let currentConfig: Config = {
-  fetchMessages: () =>
-    db
-      .collection("messages")
-      .get()
-      .then(({ docs }) =>
-        docs.reduce<MessagesContent>(
-          (acc, doc) => ({
-            ...acc,
-            [doc.id]: MessagesDocumentSchema.parse(doc.data()).messages,
-          }),
-          {},
-        ),
-      ),
-
   fetchMedia: () =>
     db
       .collection("media")

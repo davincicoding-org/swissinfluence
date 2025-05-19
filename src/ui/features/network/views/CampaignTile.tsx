@@ -6,7 +6,6 @@ import { useLocale } from "next-intl";
 
 import { ExpandableCard } from "@/ui/components/ExpandableCard";
 import { RichText } from "@/ui/components/RichText";
-import { type SupportedLocale } from "@/i18n/config";
 
 import { type ICampaign } from "../data";
 
@@ -21,7 +20,7 @@ export function CampaignTile({
   past,
   className,
 }: ICampaignTileProps) {
-  const locale = useLocale() as SupportedLocale;
+  const locale = useLocale();
 
   return (
     <ExpandableCard

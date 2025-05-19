@@ -20,7 +20,6 @@ import { cn } from "@/ui/utils";
 
 import { type IEventDocument } from "@/cms/resources/event/schema";
 import { RichText } from "@/ui/components/RichText";
-import { type SupportedLocale } from "@/i18n/config";
 
 export interface IEventTileProps {
   data: IEventDocument;
@@ -31,7 +30,7 @@ export function EventTile({
   data: { title, image, description, date, logo, ticketSale },
   className,
 }: IEventTileProps) {
-  const locale = useLocale() as SupportedLocale;
+  const locale = useLocale();
   const [isExpanded, expansion] = useDisclosure(false);
 
   const formattedDate = useMemo(() => {

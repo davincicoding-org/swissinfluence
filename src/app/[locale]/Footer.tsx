@@ -45,15 +45,15 @@ export function Footer<R extends string>({
     <footer
       className={cn("relative z-10 bg-white/80 backdrop-blur", className)}
     >
-      <div className="container snap-center pt-12 pb-32">
+      <div className="container snap-center pb-32 pt-12">
         <Newsletter formURL={newsletterURL} />
       </div>
 
       <div
         className={cn(
           "bg-neutral-700 text-neutral-400",
-          "grid snap-end grid-cols-[1fr_auto] gap-6 px-4 pt-8 pb-12",
-          "md:grid-cols-[120px_auto_1fr] md:gap-y-[120px] md:px-8 md:pt-20 md:pb-16",
+          "grid snap-end grid-cols-[1fr_auto] gap-6 px-4 pb-12 pt-8",
+          "md:grid-cols-[120px_auto_1fr] md:gap-y-[120px] md:px-8 md:pb-16 md:pt-20",
           "md:px-16 md:pb-16 lg:grid-cols-[220px_auto_1fr]",
           "xl:grid-cols-[300px_auto_1fr]",
         )}
@@ -168,7 +168,7 @@ export function Footer<R extends string>({
               href={constants.tiktok}
               target="_blank"
               rel="noopener"
-              className="hover:text-mocha-500 transition-colors"
+              className="transition-colors hover:text-mocha-500"
             >
               <IconBrandTiktok size={40} strokeWidth={1} />
             </a>
@@ -176,7 +176,7 @@ export function Footer<R extends string>({
               href={constants.instagram}
               target="_blank"
               rel="noopener"
-              className="hover:text-mocha-500 transition-colors"
+              className="transition-colors hover:text-mocha-500"
             >
               <IconBrandInstagram size={40} strokeWidth={1} />
             </a>
@@ -184,7 +184,7 @@ export function Footer<R extends string>({
               href={constants.linkedin}
               target="_blank"
               rel="noopener"
-              className="hover:text-mocha-500 transition-colors"
+              className="transition-colors hover:text-mocha-500"
             >
               <IconBrandLinkedin size={40} strokeWidth={1} />
             </a>
@@ -200,8 +200,8 @@ export function Footer<R extends string>({
                     `/${option}`,
                   ) as Route<R>
                 }
-                className={cn("block px-2.5 py-2 leading-none uppercase", {
-                  "bg-mocha-500 pointer-events-none rounded": locale === option,
+                className={cn("block px-2.5 py-2 uppercase leading-none", {
+                  "pointer-events-none rounded bg-mocha-500": locale === option,
                 })}
               >
                 {option}
@@ -229,7 +229,7 @@ export function Footer<R extends string>({
               rel="noopener"
               className="underline-offset-4 hover:underline"
             >
-              {t("contact")}
+              {t("sub.contact")}
             </a>
 
             <Link

@@ -1,7 +1,14 @@
 "use client";
 import { type PropsWithChildren } from "react";
-
+import { MESSAGES_SCHEMA, Locale } from "@/i18n/config";
+import { MessagesEditor } from "@davincicoding/cms";
+import { Route } from "react-router-dom";
 import { Button } from "@mui/material";
+import { revalidateCache } from "@/server/actions";
+import {
+  fetchCachedMessages,
+  saveMessages,
+} from "@/server/messages";
 import {
   IconAdjustmentsHorizontal,
   IconBuilding,
@@ -25,6 +32,9 @@ import {
   Menu,
   Resource,
   TitlePortal,
+  CustomRoutes,
+  Title,
+  useNotify,
 } from "react-admin";
 import {
   FirebaseAuthProvider,
@@ -33,7 +43,6 @@ import {
 
 import { ConstantsCreate, ConstantsEdit, ConstantsList } from "./lib/constants";
 import { MediaCreate, MediaEdit, MediaList } from "./lib/media";
-import { MessagesCreate, MessagesEdit, MessagesList } from "./lib/messages";
 
 import { env } from "@/env";
 
@@ -95,20 +104,34 @@ const dataProvider = FirebaseDataProvider(config, {
 const authProvider = FirebaseAuthProvider(config, { logging: false });
 
 export function AdminApp() {
+  const notify = useNotify();
   return (
     <Admin
       authProvider={authProvider}
       dataProvider={dataProvider}
       layout={CustomLayout}
     >
-      <Resource
-        name="messages"
-        list={MessagesList}
-        create={MessagesCreate}
-        edit={MessagesEdit}
-        icon={IconLanguage}
-        recordRepresentation="id"
-      />
+      <CustomRoutes>
+        <Route
+          path="/translations"
+          element={
+            <>
+              <Title title="Translations" />
+              <MessagesEditor
+                schema={MESSAGES_SCHEMA}
+                locales={Locale.options}
+                fetchMessages={fetchCachedMessages}
+                saveMessages={saveMessages}
+                tabs
+                onSaved={() => {
+                  notify("Translations saved", { type: "success" });
+                  void revalidateCache("messages");
+                }}
+              />
+            </>
+          }
+        />
+      </CustomRoutes>
 
       <Resource
         name="media"
@@ -283,7 +306,11 @@ export function CustomMenu() {
   return (
     <Menu>
       {/*<Menu.DashboardItem />*/}
-      <Menu.ResourceItem name="messages" />
+      <Menu.Item
+        to="/translations"
+        primaryText="Translations"
+        leftIcon={<IconLanguage />}
+      />
       <Menu.ResourceItem name="media" />
       <Menu.ResourceItem name="constants" />
       <MenuDivider />

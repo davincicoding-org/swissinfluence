@@ -29,8 +29,8 @@ export function NetworkPage<R extends string>({
       <PageHero
         className="snap-start"
         image={heroImage}
-        title={t("title")}
-        headline={t("headline")}
+        title={t("hero.title")}
+        headline={t("hero.headline")}
       />
       <main className="relative z-20 snap-start snap-always bg-white/80 py-32 backdrop-blur lg:pb-64">
         <section className="container grid auto-rows-auto gap-8 md:grid-cols-2 lg:gap-12">

@@ -16,19 +16,19 @@ export function AcademyPage({ heroImage }: IAcademyPageProps) {
     <>
       <PageHero
         image={heroImage}
-        title={t("title")}
-        headline={t("headline")}
+        title={t("hero.title")}
+        headline={t("hero.headline")}
         className="snap-start"
         CTA={
           <Button
-            className="shrink-0 tracking-wider uppercase"
+            className="shrink-0 uppercase tracking-wider"
             size="lg"
             component="a"
             href="https://www.swisscreatoracademy.com/"
             target="_blank"
             color="mocha"
           >
-            {t("CTA")}
+            {t("hero.CTA")}
           </Button>
         }
       />

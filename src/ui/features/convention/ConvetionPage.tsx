@@ -19,27 +19,27 @@ export function ConventionPage({
   partners,
   heroImage,
 }: IConventionPageProps) {
-  const t = useTranslations("forum");
+  const t = useTranslations("convention");
 
   return (
     <>
       <PageHero
         image={heroImage}
-        title={t("title")}
-        headline={t("headline")}
+        title={t("hero.title")}
+        headline={t("hero.headline")}
         className="mb-0 snap-start"
         footer={
           partners.length ? <ConventionPartners partners={partners} /> : null
         }
       />
-      <main className="relative z-20 bg-white/80 pt-24 pb-32 backdrop-blur">
+      <main className="relative z-20 bg-white/80 pb-32 pt-24 backdrop-blur">
         {event ? (
           <ConventionEvent className="snap-start snap-always" event={event} />
         ) : null}
 
         <section
           id="nomination"
-          className="container flex h-dvh snap-start snap-always flex-col pt-24 pb-32 sm:pt-40"
+          className="container flex h-dvh snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
         >
           <Paper
             radius="lg"

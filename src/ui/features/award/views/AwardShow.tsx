@@ -11,7 +11,6 @@ import { cn } from "@/ui/utils";
 
 import { RichText } from "@/ui/components/RichText";
 
-import { type SupportedLocale } from "@/i18n/config";
 import { type IAwardShow } from "../data";
 
 export interface IAwardShowProps {
@@ -21,8 +20,8 @@ export interface IAwardShowProps {
 }
 
 export function AwardShow({ show, className, id }: IAwardShowProps) {
-  const locale = useLocale() as SupportedLocale;
-  const t = useTranslations("award.Show");
+  const locale = useLocale();
+  const t = useTranslations("award.show");
 
   const [activeSection, setActiveSection] = useState(0);
 
@@ -40,7 +39,7 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
           radius="md"
           className="grid flex-1 overflow-clip bg-neutral-200 md:flex md:items-center"
         >
-          <div className="bg-mocha-500 flex h-full shrink-0 items-center justify-center max-md:h-16 md:aspect-square md:p-3">
+          <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
             <IconCalendar
               className="shrink-0 stroke-white"
               size={48}
@@ -51,8 +50,8 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
             <h3
               className={cn(
-                "font-light tracking-wider uppercase",
-                show.date ? "text-2xl text-nowrap" : "text-balance",
+                "font-light uppercase tracking-wider",
+                show.date ? "text-nowrap text-2xl" : "text-balance",
               )}
             >
               {show.date
@@ -69,7 +68,7 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
           href={show.location.mapsURL}
           target="_blank"
         >
-          <div className="bg-mocha-500 flex h-full shrink-0 items-center justify-center max-md:h-16 md:aspect-square md:p-3">
+          <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
             <IconMapPin
               className="shrink-0 stroke-white"
               size={48}
@@ -77,7 +76,7 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
             />
           </div>
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
-            <h3 className="text-xl font-light tracking-wider uppercase">
+            <h3 className="text-xl font-light uppercase tracking-wider">
               {show.location.name}
             </h3>
             <p className="uppercase max-md:text-sm">{show.location.city}</p>
@@ -94,9 +93,9 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
           }
           target="_blank"
           className={cn(
-            "col-span-2 flex flex-1 items-center justify-center overflow-clip p-3 text-2xl tracking-wider text-white uppercase",
+            "col-span-2 flex flex-1 items-center justify-center overflow-clip p-3 text-2xl uppercase tracking-wider text-white",
             {
-              "bg-mocha-500 hover:bg-mocha-300 cursor-pointer transition-all active:scale-95":
+              "cursor-pointer bg-mocha-500 transition-all hover:bg-mocha-300 active:scale-95":
                 show.ticketSale.url && show.ticketSale.open,
               "bg-neutral-500": show.ticketSale.url && !show.ticketSale.open,
               "bg-neutral-500 text-base": !show.ticketSale.url,
@@ -123,7 +122,7 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
               className="border-b-2 last:border-none"
             >
               <Accordion.Control className="active:bg-transparent">
-                <h4 className="text-mocha-500 mb-1 text-lg leading-none">
+                <h4 className="mb-1 text-lg leading-none text-mocha-500">
                   {slot.start && slot.end
                     ? `${slot.start} - ${slot.end}`
                     : null}
@@ -134,7 +133,7 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
                     ? t("slot-until", { time: slot.end })
                     : null}
                 </h4>
-                <h4 className="text-xl leading-none font-medium text-nowrap">
+                <h4 className="text-nowrap text-xl font-medium leading-none">
                   {slot.title[locale]}
                 </h4>
               </Accordion.Control>
@@ -166,7 +165,7 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
               )}
               onMouseEnter={() => setActiveSection(index)}
             >
-              <h4 className="text-mocha-500 mb-1 text-lg leading-none">
+              <h4 className="mb-1 text-lg leading-none text-mocha-500">
                 {slot.start && slot.end ? `${slot.start} - ${slot.end}` : null}
                 {slot.start && !slot.end
                   ? t("slot-from", { time: slot.start })
@@ -175,7 +174,7 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
                   ? t("slot-until", { time: slot.end })
                   : null}
               </h4>
-              <h4 className="text-xl leading-none font-medium text-nowrap">
+              <h4 className="text-nowrap text-xl font-medium leading-none">
                 {slot.title[locale]}
               </h4>
             </div>

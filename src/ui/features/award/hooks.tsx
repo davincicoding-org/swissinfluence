@@ -8,7 +8,7 @@ import type { ICurrentAward } from "./data";
 import { AwardCountdown } from "./views/AwardCountdown";
 
 export const useHeaderContent = (data: ICurrentAward | undefined) => {
-  const t = useTranslations("award.award");
+  const t = useTranslations("award.hero");
 
   return useMemo<{
     headline: string | ReactElement | undefined;
@@ -22,7 +22,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
     // ANNOUNCED
     if (!data.nomination)
       return {
-        headline: t("ANNOUNCED.headline"),
+        headline: t("announced.headline"),
       };
 
     const canNominate = dayjs(data.nomination.deadline).isAfter();
@@ -30,7 +30,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
     // NOMINATION
     if (canNominate)
       return {
-        headline: t("NOMINATION.headline"),
+        headline: t("nomination.headline"),
         cta: (
           <Button
             size="lg"
@@ -41,7 +41,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
             target="_self"
             className="uppercase tracking-widest"
           >
-            {t("NOMINATION.CTA")}
+            {t("nomination.CTA")}
           </Button>
         ),
       };
@@ -49,7 +49,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
     // NOMINATION_ENDED
     if (!data.nominees || !data.voting)
       return {
-        headline: t("NOMINATION_ENDED.headline"),
+        headline: t("nomination-ended.headline"),
         cta: (
           <Button
             size="lg"
@@ -60,7 +60,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
             target="_self"
             className="uppercase tracking-widest"
           >
-            {t("NOMINATION_ENDED.CTA")}
+            {t("nomination-ended.CTA")}
           </Button>
         ),
       };
@@ -70,7 +70,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
     // VOTING
     if (canVote)
       return {
-        headline: t("VOTING.headline"),
+        headline: t("voting.headline"),
         cta: (
           <Button
             size="lg"
@@ -81,7 +81,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
             target="_self"
             className="uppercase tracking-widest"
           >
-            {t("VOTING.CTA")}
+            {t("voting.CTA")}
           </Button>
         ),
       };
@@ -89,7 +89,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
     // VOTING_ENDED
     if (!data.show?.date)
       return {
-        headline: t("VOTING_ENDED.headline"),
+        headline: t("voting-ended.headline"),
       };
 
     const hasShowStarted = dayjs(data.show.date).isBefore();
@@ -108,7 +108,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
             target="_self"
             className="uppercase tracking-widest"
           >
-            {t("PRE_SHOW.CTA")}
+            {t("pre-show.CTA")}
           </Button>
         ),
       };
@@ -121,19 +121,19 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
     // DURING_SHOW
     if (!hasShowEnded)
       return {
-        headline: t("DURING_SHOW.headline"),
+        headline: t("during-show.headline"),
       };
 
     // POST_SHOW
     if (!data.ranked)
       return {
-        headline: t("POST_SHOW.headline"),
+        headline: t("post-show.headline"),
       };
 
     // AWARDED
     if (!data.impressions)
       return {
-        headline: t("AWARDED.headline"),
+        headline: t("awarded.headline"),
         cta: (
           <Button
             size="lg"
@@ -144,14 +144,14 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
             href="#hall-of-fame"
             className="uppercase tracking-widest"
           >
-            {t("AWARDED.CTA")}
+            {t("awarded.CTA")}
           </Button>
         ),
       };
 
     // FINISHED
     return {
-      headline: t("FINISHED.headline"),
+      headline: t("finished.headline"),
       cta: (
         <Button
           size="lg"
@@ -162,7 +162,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
           target="_self"
           className="uppercase tracking-widest"
         >
-          {t("FINISHED.CTA")}
+          {t("finished.CTA")}
         </Button>
       ),
     };

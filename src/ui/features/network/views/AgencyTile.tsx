@@ -3,8 +3,6 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { cn } from "@/ui/utils";
 
-import { type SupportedLocale } from "@/i18n/config";
-
 import { type IAgency } from "../data";
 
 export interface IAgencyTileProps {
@@ -43,7 +41,7 @@ export function AgencyTile({
         </a>
 
         <h3 className="mb-3 text-3xl">{name}</h3>
-        <p className="mb-5 text-lg">{about[locale as SupportedLocale]}</p>
+        <p className="mb-5 text-lg">{about[locale]}</p>
 
         <Button
           component="a"

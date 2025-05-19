@@ -11,7 +11,6 @@ import { cn } from "@/ui/utils";
 
 import { Socials } from "@/ui/components/Socials";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
-import { type SupportedLocale } from "@/i18n/config";
 
 import { type IAwardRanking } from "../data";
 
@@ -32,7 +31,7 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
       >
         <Paper
           withBorder
-          className="bg-mocha-50 overflow-clip p-2"
+          className="overflow-clip bg-mocha-50 p-2"
           shadow="xs"
           radius="lg"
         >
@@ -66,7 +65,7 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
           <Tabs.Panel
             key={year}
             value={year.toString()}
-            className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-x-6 gap-y-8 pt-10 pb-6"
+            className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-x-6 gap-y-8 pb-6 pt-10"
           >
             {categories.map(({ category, ranking }) => (
               <div key={category.id} className="relative">
@@ -74,9 +73,9 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
                   <Badge
                     size="xl"
                     radius="md"
-                    className="text-medium bg-mocha-700 text-xl font-normal tracking-widest text-wrap"
+                    className="text-medium text-wrap bg-mocha-700 text-xl font-normal tracking-widest"
                   >
-                    {category.name[locale as SupportedLocale]}
+                    {category.name[locale]}
                   </Badge>
                 </Center>
 
@@ -119,14 +118,14 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
 
                           <div
                             className={cn(
-                              "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pr-3 pb-4 text-white",
+                              "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
                             )}
                           >
                             <div className="flex w-full min-w-0 items-end justify-between gap-2">
                               <div className="min-w-0">
                                 <p
                                   className={cn(
-                                    "text-mocha-300 px-4 leading-relaxed font-medium tracking-wider text-pretty uppercase",
+                                    "text-pretty px-4 font-medium uppercase leading-relaxed tracking-wider text-mocha-300",
                                   )}
                                 >
                                   {index === 0

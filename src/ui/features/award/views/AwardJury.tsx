@@ -7,7 +7,6 @@ import { useLocale } from "next-intl";
 
 import { PersonaCard } from "@/ui/components/PersonaCard";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
-import { type SupportedLocale } from "@/i18n/config";
 
 import { type IJuryMember } from "../data";
 
@@ -16,7 +15,7 @@ export interface IAwardJuryProps {
 }
 
 export function AwardJury({ members }: IAwardJuryProps) {
-  const locale = useLocale() as SupportedLocale;
+  const locale = useLocale();
 
   const handleMemberClick = (member: IJuryMember) => {
     if (member.socials.length === 1) {
@@ -36,7 +35,7 @@ export function AwardJury({ members }: IAwardJuryProps) {
             onClick={() => handleMemberClick(member)}
             tabIndex={0}
           >
-            <div className="bg-mocha-50 flex cursor-pointer items-center space-x-4 rounded-xl border p-4 shadow backdrop-blur-sm">
+            <div className="flex cursor-pointer items-center space-x-4 rounded-xl border bg-mocha-50 p-4 shadow backdrop-blur-sm">
               <Image
                 src={member.image.src}
                 width={member.image.width}

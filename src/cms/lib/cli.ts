@@ -1,7 +1,6 @@
 #!/usr/bin/env tsx
 
 import { program } from "commander";
-import { pullMessages } from "./messages/pullMessages";
 import { pullConstants } from "./constants/pullConstants";
 import { pullMedia } from "./media/pullMedia";
 
@@ -19,9 +18,6 @@ program
     switch (type) {
       case "constants":
         await pullConstants(options.baseUrl);
-        return;
-      case "messages":
-        await pullMessages(options.baseUrl);
         return;
       case "media":
         await pullMedia(options.baseUrl);

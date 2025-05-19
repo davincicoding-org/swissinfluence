@@ -78,29 +78,29 @@ export default async function LocaleLayout({
                   href: `/${locale}/award`,
                 },
                 {
-                  label: t("main.network"),
+                  label: t("main.network.page"),
                   href: `/${locale}/network`,
                   children: [
                     {
-                      label: t("main.network-influencers"),
+                      label: t("main.network.influencers"),
                       href: `/${locale}/network/influencers`,
                     },
                     {
-                      label: t("main.network-campaigns"),
+                      label: t("main.network.campaigns"),
                       href: `/${locale}/network/campaigns`,
                     },
                     {
-                      label: t("main.network-events"),
+                      label: t("main.network.events"),
                       href: `/${locale}/network/events`,
                     },
                     {
-                      label: t("main.network-agencies"),
+                      label: t("main.network.agencies"),
                       href: `/${locale}/network/agencies`,
                     },
                   ],
                 },
                 {
-                  label: t("main.forum"),
+                  label: t("main.convention"),
                   href: `/${locale}/convention`,
                 },
                 {

@@ -20,7 +20,6 @@ import Marquee from "react-fast-marquee";
 import { cn } from "@/ui/utils";
 
 import { PersonaCard } from "@/ui/components/PersonaCard";
-import { type SupportedLocale } from "@/i18n/config";
 
 import { type IAwardNominees } from "../data";
 
@@ -104,12 +103,12 @@ function CategoryCard({ category, nominees }: IAwardNominees) {
         {/*</div>*/}
 
         {/* Category Title and Sponsor */}
-        <div className="absolute right-0 bottom-0 left-0 grid p-4 text-left md:gap-1 md:p-6">
+        <div className="absolute bottom-0 left-0 right-0 grid p-4 text-left md:gap-1 md:p-6">
           <motion.h3
             layout
             className="text-5xl font-semibold text-white md:text-6xl"
           >
-            {category.name[locale as SupportedLocale]}
+            {category.name[locale]}
           </motion.h3>
           {category.sponsor && (
             <motion.p layout className="text-sm text-gray-200 md:text-lg">
@@ -161,7 +160,7 @@ function CategoryCard({ category, nominees }: IAwardNominees) {
           color="default"
           variant="light"
           size="lg"
-          className="absolute top-2 right-2 z-30 text-white transition-colors hover:text-gray-300 md:hidden"
+          className="absolute right-2 top-2 z-30 text-white transition-colors hover:text-gray-300 md:hidden"
         >
           <IconX size={20} />
         </ActionIcon>

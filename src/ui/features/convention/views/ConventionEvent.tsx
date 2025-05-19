@@ -10,7 +10,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { cn } from "@/ui/utils";
 
 import { RichText } from "@/ui/components/RichText";
-import { type SupportedLocale } from "@/i18n/config";
 
 import { type IConventionEvent } from "../data";
 
@@ -25,9 +24,9 @@ export function ConventionEvent({
   className,
   id,
 }: IConventionEventProps) {
-  const locale = useLocale() as SupportedLocale;
+  const locale = useLocale();
   // FIXME: use correct translations
-  const t = useTranslations("award.Show");
+  const t = useTranslations("award.show");
 
   const [activeSection, setActiveSection] = useState(0);
 
@@ -46,7 +45,7 @@ export function ConventionEvent({
           radius="md"
           className="grid flex-1 overflow-clip bg-neutral-200 md:flex md:items-center"
         >
-          <div className="bg-mocha-500 flex h-full shrink-0 items-center justify-center max-md:h-16 md:aspect-square md:p-3">
+          <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
             <IconCalendar
               className="shrink-0 stroke-white"
               size={48}
@@ -57,8 +56,8 @@ export function ConventionEvent({
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
             <h3
               className={cn(
-                "font-light tracking-wider uppercase",
-                event.date ? "text-2xl text-nowrap" : "text-balance",
+                "font-light uppercase tracking-wider",
+                event.date ? "text-nowrap text-2xl" : "text-balance",
               )}
             >
               {dayjs(new Date(event.date)).format("DD. MMM")}
@@ -73,7 +72,7 @@ export function ConventionEvent({
           href={event.location.mapsURL}
           target="_blank"
         >
-          <div className="bg-mocha-500 flex h-full shrink-0 items-center justify-center max-md:h-16 md:aspect-square md:p-3">
+          <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
             <IconMapPin
               className="shrink-0 stroke-white"
               size={48}
@@ -81,7 +80,7 @@ export function ConventionEvent({
             />
           </div>
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
-            <h3 className="text-xl font-light tracking-wider uppercase">
+            <h3 className="text-xl font-light uppercase tracking-wider">
               {event.location.name}
             </h3>
             <p className="uppercase max-md:text-sm">{event.location.city}</p>
@@ -98,9 +97,9 @@ export function ConventionEvent({
           }
           target="_blank"
           className={cn(
-            "col-span-2 flex flex-1 items-center justify-center overflow-clip p-3 text-2xl tracking-wider text-white uppercase",
+            "col-span-2 flex flex-1 items-center justify-center overflow-clip p-3 text-2xl uppercase tracking-wider text-white",
             {
-              "bg-mocha-500 hover:bg-mocha-300 cursor-pointer transition-all active:scale-95":
+              "cursor-pointer bg-mocha-500 transition-all hover:bg-mocha-300 active:scale-95":
                 event.ticketSale.url && event.ticketSale.open,
               "bg-neutral-500": event.ticketSale.url && !event.ticketSale.open,
               "bg-neutral-500 text-base": !event.ticketSale.url,
@@ -132,14 +131,14 @@ export function ConventionEvent({
                 >
                   <Accordion.Control className="active:bg-transparent">
                     <div className="mb-1 flex items-center gap-2">
-                      <h4 className="text-mocha-500 text-lg leading-none">
+                      <h4 className="text-lg leading-none text-mocha-500">
                         {slot.start} - {slot.end}
                       </h4>
                       <span className="leading-none text-neutral-500">
                         {slot.room}
                       </span>
                     </div>
-                    <h4 className="text-xl leading-none font-medium text-nowrap">
+                    <h4 className="text-nowrap text-xl font-medium leading-none">
                       {slot.title[locale]}
                     </h4>
                   </Accordion.Control>
@@ -172,7 +171,7 @@ export function ConventionEvent({
                   onMouseEnter={() => setActiveSection(index)}
                 >
                   <div className="mb-1 flex items-center justify-between gap-2">
-                    <h4 className="text-mocha-500 text-lg leading-none">
+                    <h4 className="text-lg leading-none text-mocha-500">
                       {slot.start} - {slot.end}
                     </h4>
                     <span className="text-sm text-neutral-500">
@@ -180,7 +179,7 @@ export function ConventionEvent({
                     </span>
                   </div>
 
-                  <h4 className="text-xl leading-none font-medium text-nowrap">
+                  <h4 className="text-nowrap text-xl font-medium leading-none">
                     {slot.title[locale]}
                   </h4>
                 </div>

@@ -38,7 +38,7 @@ export function AwardPage({
     <>
       <PageHero
         image={heroImage}
-        title={t("award.title", { year: currentAward?.year ?? "" })}
+        title={t("hero.default.title", { year: currentAward?.year ?? "" })}
         headline={headline}
         className="snap-start"
         CTA={
@@ -47,9 +47,9 @@ export function AwardPage({
               size="lg"
               color="mocha"
               radius="md"
-              className="tracking-wider uppercase"
+              className="uppercase tracking-wider"
             >
-              {t("award.CTA")}
+              {t("hero.default.CTA")}
             </Button>
           )
         }
@@ -86,7 +86,7 @@ export function AwardPage({
             {currentAward.nomination ? (
               <section
                 id="nomination"
-                className="container flex min-h-screen snap-start snap-always flex-col pt-24 pb-32 sm:pt-40"
+                className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
               >
                 <AwardNomination
                   deadline={currentAward.nomination.deadline}
@@ -98,7 +98,7 @@ export function AwardPage({
             {currentAward.newcomerScout ? (
               <section
                 id="newcomer-scout"
-                className="container flex min-h-screen snap-start snap-always flex-col pt-24 pb-32 sm:pt-40"
+                className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
               >
                 <NewcomerScout
                   image={newcomerScoutImage}
@@ -112,7 +112,7 @@ export function AwardPage({
             {currentAward.voting ? (
               <section
                 id="voting"
-                className="container flex min-h-screen snap-start snap-always flex-col pt-24 pb-32 sm:pt-40"
+                className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
               >
                 <AwardVoting deadline={currentAward.voting.deadline} />
               </section>
@@ -121,9 +121,9 @@ export function AwardPage({
             {currentAward.nominees && currentAward.nominees.length > 0 ? (
               <section
                 id="nominees"
-                className="container flex min-h-screen snap-start snap-always flex-col pt-32 pb-64"
+                className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
               >
-                <h3 className="mb-8 text-4xl font-extralight tracking-wider uppercase sm:text-5xl md:text-6xl">
+                <h3 className="mb-8 text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
                   Nominees
                 </h3>
                 <AwardNominees categories={currentAward.nominees} />
@@ -133,9 +133,9 @@ export function AwardPage({
             {campaigns.length > 0 ? (
               <section
                 id="campaigns"
-                className="container flex min-h-screen snap-start snap-always flex-col pt-32 pb-64"
+                className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
               >
-                <h3 className="mb-8 text-center text-4xl font-extralight tracking-wider uppercase sm:text-5xl md:text-6xl">
+                <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
                   {t("creator-challenges.title")}
                 </h3>
                 <CreatorChallenges campaigns={campaigns} />
@@ -144,7 +144,7 @@ export function AwardPage({
 
             <section
               id="jury"
-              className="container flex min-h-screen snap-start snap-always flex-col pt-32 pb-64"
+              className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
             >
               <h3 className="mb-12 text-center text-4xl font-extralight tracking-wider sm:text-5xl md:text-6xl">
                 Meet our Jury
@@ -156,7 +156,7 @@ export function AwardPage({
 
         {!currentAward?.impressions && pastAward ? (
           <section className="container flex min-h-screen snap-start snap-always flex-col py-32">
-            <h3 className="mb-8 text-center text-4xl font-extralight tracking-wider uppercase sm:text-5xl md:text-6xl">
+            <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
               This was {pastAward.year}
             </h3>
             <AwardImpressions
@@ -169,9 +169,9 @@ export function AwardPage({
 
         <section
           id="hall-of-fame"
-          className="container flex min-h-screen snap-start snap-always flex-col pt-16 pb-32 sm:pt-32 sm:pb-64"
+          className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-16 sm:pb-64 sm:pt-32"
         >
-          <h3 className="mb-8 text-center text-4xl font-extralight tracking-wider uppercase sm:text-5xl md:text-6xl">
+          <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
             Hall of Fame
           </h3>
           <HallOfFame awards={hallOfFame} />

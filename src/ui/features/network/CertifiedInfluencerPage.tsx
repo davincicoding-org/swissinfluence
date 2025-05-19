@@ -8,7 +8,6 @@ import { cn } from "@/ui/utils";
 import { getCantonLabel } from "@/cms/resources/certified-influencer/cantons";
 import { PageHero } from "@/ui/components/PageHero";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
-import { type SupportedLocale } from "@/i18n/config";
 
 import { type ICertifiedInfluencer } from "./data";
 
@@ -29,7 +28,7 @@ export function CertifiedInfluencerPage({
     categories,
   },
 }: ICertifiedInfluencerPageProps) {
-  const locale = useLocale() as SupportedLocale;
+  const locale = useLocale();
   const age = derivative(() => {
     const today = dayjs();
     const birthDate = dayjs(birthdate);
@@ -61,7 +60,7 @@ export function CertifiedInfluencerPage({
           </Flex>
         }
       />
-      <main className="relative z-20 snap-start snap-always bg-white/80 pt-12 pb-32 backdrop-blur">
+      <main className="relative z-20 snap-start snap-always bg-white/80 pb-32 pt-12 backdrop-blur">
         <section className="container">
           <Stack className="mx-auto max-w-xl" gap="lg">
             <Paper
@@ -81,7 +80,7 @@ export function CertifiedInfluencerPage({
                 className="grid flex-1 border bg-neutral-200 p-3"
               >
                 <span className="text-4xl leading-none">{age}</span>
-                <span className="text-lg leading-none text-nowrap uppercase">
+                <span className="text-nowrap text-lg uppercase leading-none">
                   Years old
                 </span>
               </Paper>
@@ -91,7 +90,7 @@ export function CertifiedInfluencerPage({
                 radius="md"
                 className="grid flex-1 border bg-neutral-200 p-3"
               >
-                <span className="text-lg leading-none text-nowrap uppercase">
+                <span className="text-nowrap text-lg uppercase leading-none">
                   Based in
                 </span>
                 <span className="text-4xl leading-none">
@@ -104,12 +103,12 @@ export function CertifiedInfluencerPage({
                 radius="md"
                 className="flex-1 border bg-neutral-200 p-3"
               >
-                <span className="text-lg leading-none text-nowrap uppercase">
+                <span className="text-nowrap text-lg uppercase leading-none">
                   Speaks
                 </span>
                 <Flex
                   gap="xs"
-                  className={cn("text-4xl leading-none uppercase", {
+                  className={cn("text-4xl uppercase leading-none", {
                     "text-3xl": languages.length === 3,
                     "text-2xl": languages.length > 3,
                   })}
@@ -128,7 +127,7 @@ export function CertifiedInfluencerPage({
                 p="md"
                 className="flex-1 bg-neutral-200"
               >
-                <span className="mb-2 text-lg leading-tight uppercase">
+                <span className="mb-2 text-lg uppercase leading-tight">
                   Cooperation Interests
                 </span>
                 <ul>
@@ -147,7 +146,7 @@ export function CertifiedInfluencerPage({
                 p="md"
                 className="flex-1 bg-neutral-200"
               >
-                <span className="mb-2 text-lg leading-tight uppercase">
+                <span className="mb-2 text-lg uppercase leading-tight">
                   Other Interests
                 </span>
                 <ul>

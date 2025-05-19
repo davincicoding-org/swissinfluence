@@ -1,16 +1,12 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, getLocale } from "next-intl/server";
 
 import { getConstants, getMedia } from "@/cms/lib/server";
 
 import { NetworkPage as View } from "@/ui/features/network";
-import { type SupportedLocale } from "@/i18n/config";
 
-export default async function NetworkPage({
-  params: { locale },
-}: {
-  params: { locale: SupportedLocale };
-}) {
+export default async function NetworkPage() {
   const t = await getTranslations("network");
+  const locale = await getLocale();
   const constants = await getConstants();
   const media = await getMedia();
 

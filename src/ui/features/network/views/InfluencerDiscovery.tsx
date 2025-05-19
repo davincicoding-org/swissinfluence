@@ -16,7 +16,6 @@ import { useLocale } from "next-intl";
 import { cn } from "@/ui/utils";
 
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
-import type { SupportedLocale } from "@/i18n/config";
 
 import { type ICertifiedInfluencersByCategory } from "../data";
 
@@ -39,7 +38,7 @@ export function InfluencerDiscovery({
     () =>
       pool.map<ComboboxItem>(({ category: { id, name } }) => ({
         value: id,
-        label: name[locale as SupportedLocale],
+        label: name[locale],
       })),
     [pool, locale],
   );
@@ -73,7 +72,7 @@ export function InfluencerDiscovery({
                   color={value === selectedCategoryID ? "mocha" : "gray"}
                   variant={value === selectedCategoryID ? "filled" : "subtle"}
                   className={cn(
-                    "scroll-mx-3 tracking-widest uppercase transition-colors",
+                    "scroll-mx-3 uppercase tracking-widest transition-colors",
                     {
                       "pointer-events-none": value === selectedCategoryID,
                     },
@@ -130,7 +129,7 @@ export function InfluencerDiscovery({
 
                       <div
                         className={cn(
-                          "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pr-3 pb-4 text-white",
+                          "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
                         )}
                       >
                         <TextOverflowReveal

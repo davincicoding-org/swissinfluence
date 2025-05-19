@@ -20,7 +20,7 @@ export function NewcomerScout({
   image,
   className,
 }: IAwardNominationProps) {
-  const t = useTranslations("award.NewcomerScout");
+  const t = useTranslations("award.newcomer-scout");
 
   return (
     <Paper
@@ -53,7 +53,7 @@ export function NewcomerScout({
             {t("CTA")}
           </Button>
 
-          <p className="text-center text-lg font-semibold tracking-wider uppercase">
+          <p className="text-center text-lg font-semibold uppercase tracking-wider">
             <TimeLeft deadline={deadline} />
           </p>
         </Paper>
@@ -71,12 +71,12 @@ export function NewcomerScout({
         }}
       >
         <div className="grid">
-          <h3 className="px-4 py-6 pb-0 text-2xl font-light tracking-wider uppercase lg:px-8">
+          <h3 className="px-4 py-6 pb-0 text-2xl font-light uppercase tracking-wider lg:px-8">
             {t("title")}
           </h3>
 
           <RichText
-            className="prose-lg max-w-full min-w-0 shrink px-4 py-6 leading-snug text-pretty lg:px-8"
+            className="prose-lg min-w-0 max-w-full shrink text-pretty px-4 py-6 leading-snug lg:px-8"
             content={String(t.raw("description") ?? "")}
           />
           <div className="m-4 mt-0 grid gap-2 lg:hidden">
@@ -91,7 +91,7 @@ export function NewcomerScout({
             >
               {t("CTA")}
             </Button>
-            <p className="mt-2 text-center font-medium tracking-wider uppercase">
+            <p className="mt-2 text-center font-medium uppercase tracking-wider">
               <TimeLeft deadline={deadline} />
             </p>
           </div>

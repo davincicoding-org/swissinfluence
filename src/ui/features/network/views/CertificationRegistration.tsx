@@ -30,7 +30,7 @@ export function CertificationRegistration({
   className,
   application,
 }: ICertificationRegistrationProps) {
-  const t = useTranslations("network.influencers.registration-popup");
+  const t = useTranslations("network.influencers.certification");
   const [isExpanded, expansion] = useDisclosure(false);
 
   return (
@@ -54,8 +54,8 @@ export function CertificationRegistration({
           blurDataURL={image.blurDataURL}
           className="aspect-video w-full"
         />
-        <div className="absolute right-0 bottom-0 left-0 bg-black/50 p-4 text-white before:absolute before:inset-x-0 before:-top-24 before:h-24 before:bg-gradient-to-t before:from-black/50 before:to-transparent">
-          <h3 className="mb-1.5 text-xl leading-tight font-medium text-balance uppercase sm:text-2xl">
+        <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 text-white before:absolute before:inset-x-0 before:-top-24 before:h-24 before:bg-gradient-to-t before:from-black/50 before:to-transparent">
+          <h3 className="mb-1.5 text-balance text-xl font-medium uppercase leading-tight sm:text-2xl">
             {title}
           </h3>
           <p>{headline}</p>

@@ -32,38 +32,40 @@ export function CertifiedInfluencersPage({
   return (
     <>
       <PageHero image={heroImage} title={t("title")} className="snap-start" />
-      <main className="relative z-20 bg-white/80 pt-12 pb-32 backdrop-blur">
+      <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
         <section className="container flex min-h-screen snap-start snap-always flex-col py-32">
-          <h3 className="mb-12 text-center text-2xl font-extralight tracking-wider text-balance uppercase sm:text-3xl md:text-4xl">
-            {t("certification-title")}
+          <h3 className="mb-12 text-balance text-center text-2xl font-extralight uppercase tracking-wider sm:text-3xl md:text-4xl">
+            {t("certification.title")}
           </h3>
 
           <div className="grid gap-8 lg:grid-cols-2">
             <CertificationRegistration
               image={influencerImage}
-              title={t("influencer-registration.title")}
-              headline={t("influencer-registration.headline")}
-              description={String(t.raw("influencer-registration.description"))}
+              title={t("certification.influencer.title")}
+              headline={t("certification.influencer.headline")}
+              description={String(
+                t.raw("certification.influencer.description"),
+              )}
               application={{
                 url: influencerForm,
-                label: t("influencer-registration.applicationCTA"),
+                label: t("certification.influencer.applicationCTA"),
               }}
             />
             <CertificationRegistration
               image={agencyImage}
-              title={t("agency-registration.title")}
-              headline={t("agency-registration.headline")}
-              description={String(t.raw("agency-registration.description"))}
+              title={t("certification.agency.title")}
+              headline={t("certification.agency.headline")}
+              description={String(t.raw("certification.agency.description"))}
               application={{
                 url: agencyForm,
-                label: t("agency-registration.applicationCTA"),
+                label: t("certification.agency.applicationCTA"),
               }}
             />
           </div>
         </section>
 
-        <section className="container min-h-screen snap-start snap-always pt-32 pb-64">
-          <h3 className="mb-12 text-center text-2xl font-extralight tracking-wider text-balance uppercase sm:text-3xl md:text-4xl">
+        <section className="container min-h-screen snap-start snap-always pb-64 pt-32">
+          <h3 className="mb-12 text-balance text-center text-2xl font-extralight uppercase tracking-wider sm:text-3xl md:text-4xl">
             {t("discovery.title")}
           </h3>
 
