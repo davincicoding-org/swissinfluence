@@ -20,8 +20,8 @@ import { ImageInput } from "@/cms/lib/components";
 import { Locale } from "@/i18n/config";
 
 import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../utils/guards";
-import { useDocumentChoices } from "../../utils/hooks";
+import { createGuard, editGuard } from "../../lib/utils/guards";
+import { useDocumentChoices } from "../../lib/utils/hooks";
 import { type ICategoryDocument } from "../category/schema";
 import { type IInfluencerDocument } from "../influencer/schema";
 

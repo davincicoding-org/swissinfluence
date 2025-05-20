@@ -25,10 +25,10 @@ import { routing } from "@/i18n/routing";
 import { Fieldset } from "../../components/layout";
 import { CustomRichTextInput } from "../../components/text";
 import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../utils/guards";
+import { createGuard, editGuard } from "../../lib/utils/guards";
 
 import { CampaignDocumentSchema, type ICampaignDocument } from "./schema";
-import { useDocumentChoices } from "../../utils/hooks";
+import { useDocumentChoices } from "../../lib/utils/hooks";
 import type { IBrandDocument } from "../brand/schema";
 
 /* List */
@@ -192,10 +192,8 @@ export function CampaignsEdit() {
     ({ name }) => name,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- ignore
   const location = useFieldValue<ICampaignDocument>({ source: "location" });
   const [withLocation, setWithLocation] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- ignore
   const date = useFieldValue<ICampaignDocument>({ source: "date" });
   const [withDate, setWithDate] = useState(false);
 

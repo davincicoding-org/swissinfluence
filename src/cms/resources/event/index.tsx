@@ -20,7 +20,7 @@ import { routing } from "@/i18n/routing";
 import { Fieldset } from "../../components/layout";
 import { CustomRichTextInput } from "../../components/text";
 import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../utils/guards";
+import { createGuard, editGuard } from "../../lib/utils/guards";
 
 import { EventDocumentSchema } from "./schema";
 

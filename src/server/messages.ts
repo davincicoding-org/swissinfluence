@@ -4,7 +4,7 @@ import type {
   MessagesFetcher,
   MessagesSaver,
   MessagesTree,
-} from "@davincicoding/cms";
+} from "@davincicoding/cms/messages";
 
 import { cachedRequest } from "./cache";
 

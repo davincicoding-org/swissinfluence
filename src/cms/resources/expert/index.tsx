@@ -20,7 +20,7 @@ import { routing } from "@/i18n/routing";
 
 import { SocialsInput } from "../../components/socials";
 import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../utils/guards";
+import { createGuard, editGuard } from "../../lib/utils/guards";
 
 import { ExpertDocumentSchema } from "./schema";
 

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { MessagesSchema } from "@davincicoding/cms";
+import type { MessagesSchema } from "@davincicoding/cms/messages";
 
 export const Locale = z.enum(["en", "de", "fr", "it"]);
 export type SupportedLocale = z.infer<typeof Locale>;

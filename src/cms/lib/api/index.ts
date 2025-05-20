@@ -3,15 +3,11 @@ import { unstable_cache } from "next/cache";
 import { getMedia } from "./handlers/media";
 import { currentConfig } from "../config";
 import { revalidateCMS } from "./handlers/revalidate";
-import { getConstants } from "./handlers/constants";
 import { handleOptimizeImage } from "./handlers/optimize-image";
 
-const { fetchMedia, fetchConstants } = currentConfig;
+const { fetchMedia } = currentConfig;
 
 const fetchCachedMedia = unstable_cache(fetchMedia, [], {
-  tags: ["cms", "media"],
-});
-const fetchCachedConstants = unstable_cache(fetchConstants, [], {
   tags: ["cms", "media"],
 });
 
@@ -41,20 +37,6 @@ export const APIHandler = (req: NextRequest) => {
 
     return getMedia({
       fetchMedia: bypassCache ? fetchMedia : fetchCachedMedia,
-    });
-  }
-
-  if (pathname.startsWith("constants")) {
-    if (req.method !== "GET")
-      return NextResponse.json(
-        { error: "Only GET requests are allowed" },
-        { status: 405 },
-      );
-
-    const bypassCache = req.headers.get("x-no-cache") === "true";
-
-    return getConstants({
-      fetchConstants: bypassCache ? fetchConstants : fetchCachedConstants,
     });
   }
 

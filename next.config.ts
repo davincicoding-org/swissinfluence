@@ -26,9 +26,12 @@ const config: NextConfig = {
     ],
   },
   experimental: {
+    optimizePackageImports: ["@mantine/core", "@mantine/hooks", "motion"],
     serverActions: {
       bodySizeLimit: "5mb",
     },
+    // Enable watching the node_modules directory for the local CMS library
+    externalDir: true,
   },
 };
 

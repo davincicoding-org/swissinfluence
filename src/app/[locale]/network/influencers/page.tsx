@@ -1,13 +1,13 @@
-import { getConstants, getMedia } from "@/cms/lib/server";
+import { getMedia } from "@/cms/lib/server";
 
 import {
   CertifiedInfluencersPage as View,
   getCertifiedInfluencers,
 } from "@/ui/features/network";
-
+import { fetchGlobal } from "@/server/actions";
 export default async function InfluencersPage() {
   const media = await getMedia();
-  const constants = await getConstants();
+  const forms = await fetchGlobal("forms");
   const pool = await getCertifiedInfluencers();
 
   return (
@@ -16,8 +16,8 @@ export default async function InfluencersPage() {
       influencerImage={media.network.images["influencer-certification"]}
       agencyImage={media.network.images["agency-certification"]}
       pool={pool}
-      influencerForm={constants.forms["influencer-application"]}
-      agencyForm={constants.forms["agency-application"]}
+      influencerForm={forms.influencerApplication}
+      agencyForm={forms.agencyApplication}
     />
   );
 }

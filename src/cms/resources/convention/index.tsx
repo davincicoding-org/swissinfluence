@@ -7,7 +7,7 @@ import {
   TabbedForm,
 } from "react-admin";
 
-import { createGuard, editGuard } from "../../utils/guards";
+import { createGuard, editGuard } from "../../lib/utils/guards";
 
 import { EventSection } from "./event";
 import { PartnersInput } from "./partners";

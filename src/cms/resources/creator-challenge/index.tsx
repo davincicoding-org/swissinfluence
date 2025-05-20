@@ -25,8 +25,8 @@ import { routing } from "@/i18n/routing";
 import { Fieldset } from "../../components/layout";
 import { CustomRichTextInput } from "../../components/text";
 import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../utils/guards";
-import { useDocumentChoices } from "../../utils/hooks";
+import { createGuard, editGuard } from "../../lib/utils/guards";
+import { useDocumentChoices } from "../../lib/utils/hooks";
 import { type IBrandDocument } from "../brand/schema";
 
 import {
@@ -198,12 +198,10 @@ export function CreatorChallengesEdit() {
     ({ name }) => name,
   );
 
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- ignore
   const location = useFieldValue<ICreatorChallengeDocument>({
     source: "location",
   });
   const [withLocation, setWithLocation] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment -- ignore
   const date = useFieldValue<ICreatorChallengeDocument>({ source: "date" });
   const [withDate, setWithDate] = useState(false);
 

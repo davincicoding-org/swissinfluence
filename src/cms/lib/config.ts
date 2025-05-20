@@ -4,11 +4,7 @@ import { MediaFetcherSchema } from "./media/config";
 // FIXME
 import { db, bucket } from "@/database/firebase";
 import { type MediaContent, MediaDocumentSchema } from "./media/schema";
-import {
-  type ConstantsContent,
-  ConstantsDocumentSchema,
-} from "./constants/schema";
-import { ConstantsFetcherSchema } from "./constants/config";
+
 const TempFileUploader = z
   .function()
   .args(z.instanceof(File))
@@ -23,7 +19,6 @@ const TempFileUploader = z
 
 const ConfigSchema = z.object({
   fetchMedia: MediaFetcherSchema,
-  fetchConstants: ConstantsFetcherSchema,
   uploadTempFile: TempFileUploader,
   locales: z.array(LocaleEnum).nonempty(),
   defaultLocale: LocaleEnum,
@@ -42,19 +37,6 @@ export let currentConfig: Config = {
           (acc, doc) => ({
             ...acc,
             [doc.id]: MediaDocumentSchema.parse(doc.data()).media,
-          }),
-          {},
-        ),
-      ),
-  fetchConstants: () =>
-    db
-      .collection("constants")
-      .get()
-      .then(({ docs }) =>
-        docs.reduce<ConstantsContent>(
-          (acc, doc) => ({
-            ...acc,
-            [doc.id]: ConstantsDocumentSchema.parse(doc.data()).constants,
           }),
           {},
         ),

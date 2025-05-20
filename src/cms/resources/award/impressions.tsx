@@ -3,7 +3,7 @@ import { required, TextInput } from "react-admin";
 
 import { useController } from "react-hook-form";
 
-import { ImageGalleryInput } from "@/cms/lib/components";
+import { ImageGalleryInput } from "@davincicoding/cms/media";
 
 import type { IAwardDocument } from "./schema";
 

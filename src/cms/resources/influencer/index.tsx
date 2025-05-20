@@ -16,7 +16,7 @@ import {
 import { ImageInput } from "@/cms/lib/components";
 
 import { SocialsInput } from "../../components/socials";
-import { createGuard, editGuard } from "../../utils/guards";
+import { createGuard, editGuard } from "../../lib/utils/guards";
 
 import { InfluencerDocumentSchema } from "./schema";
 

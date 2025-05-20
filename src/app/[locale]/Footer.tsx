@@ -2,11 +2,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import {
-  IconBrandInstagram,
-  IconBrandLinkedin,
-  IconBrandTiktok,
-} from "@tabler/icons-react";
 import type { Route } from "next";
 import { useTranslations } from "next-intl";
 
@@ -15,16 +10,11 @@ import { cn } from "@/ui/utils";
 import { type SupportedLocale } from "@/i18n/config";
 
 import { Newsletter } from "./Newsletter";
-
+import { type GlobalData } from "@/cms/globals";
+import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 export interface IFooterProps {
-  constants: {
-    contact: string;
-    tiktok: string;
-    companyName: string;
-    linkedin: string;
-    companyAddress: string;
-    instagram: string;
-  };
+  company: GlobalData<"company">;
+  contactURL: string;
   newsletterURL: string;
   locales: ReadonlyArray<string>;
   locale: SupportedLocale;
@@ -32,9 +22,10 @@ export interface IFooterProps {
 }
 
 export function Footer<R extends string>({
-  constants,
   locale,
   locales,
+  company,
+  contactURL,
   newsletterURL,
   className,
 }: IFooterProps) {
@@ -164,30 +155,21 @@ export function Footer<R extends string>({
 
         <div className="flex flex-col gap-3 justify-self-end max-md:items-center md:order-3">
           <div className={cn("flex gap-2 self-end")}>
-            <a
-              href={constants.tiktok}
-              target="_blank"
-              rel="noopener"
-              className="transition-colors hover:text-mocha-500"
-            >
-              <IconBrandTiktok size={40} strokeWidth={1} />
-            </a>
-            <a
-              href={constants.instagram}
-              target="_blank"
-              rel="noopener"
-              className="transition-colors hover:text-mocha-500"
-            >
-              <IconBrandInstagram size={40} strokeWidth={1} />
-            </a>
-            <a
-              href={constants.linkedin}
-              target="_blank"
-              rel="noopener"
-              className="transition-colors hover:text-mocha-500"
-            >
-              <IconBrandLinkedin size={40} strokeWidth={1} />
-            </a>
+            {company.socials.map((social) => (
+              <a
+                key={social.platform}
+                href={social.url}
+                target="_blank"
+                rel="noopener"
+                className="transition-colors hover:text-mocha-500"
+              >
+                <SocialMediaPlatformIcon
+                  platform={social.platform}
+                  size={40}
+                  strokeWidth={1}
+                />
+              </a>
+            ))}
           </div>
 
           <div className="flex gap-1 rounded border border-neutral-500 bg-white/20 text-white max-md:hidden">
@@ -212,19 +194,19 @@ export function Footer<R extends string>({
 
         <div
           className={cn(
-            "col-span-2 grid grid-cols-[3fr,2fr] gap-10",
+            "col-span-2 grid grid-cols-[3fr_2fr] gap-10",
             "md:order-2 md:col-span-1 md:w-full md:max-w-[1224px]",
             "lg:gap-20",
             "xl:gap-44",
           )}
         >
           <div className="whitespace-pre-wrap">
-            <p className="mb-1 leading-tight">{constants.companyName}</p>
-            <p>{constants.companyAddress}</p>
+            <p className="mb-1 leading-tight">{company.name}</p>
+            <p>{company.address}</p>
           </div>
           <div className={cn("grid justify-items-start gap-y-1")}>
             <a
-              href={constants.contact}
+              href={contactURL}
               target="_blank"
               rel="noopener"
               className="underline-offset-4 hover:underline"
@@ -269,7 +251,7 @@ export function Footer<R extends string>({
           )}
         >
           <span>
-            © {new Date().getFullYear()} - {constants.companyName}
+            © {new Date().getFullYear()} - {company.name}
           </span>
           <span>
             Website by{" "}

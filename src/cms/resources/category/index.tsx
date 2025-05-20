@@ -15,7 +15,7 @@ import { ImageInput } from "@/cms/lib/components";
 
 import { routing } from "@/i18n/routing";
 
-import { createGuard, editGuard } from "../../utils/guards";
+import { createGuard, editGuard } from "../../lib/utils/guards";
 
 import { CategoryDocumentSchema } from "./schema";
 

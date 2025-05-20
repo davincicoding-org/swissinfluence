@@ -12,7 +12,10 @@ import {
 import { useWatch } from "react-hook-form";
 
 import { AddButton } from "../../components/array";
-import { type IDocumentChoice, useDocumentChoices } from "../../utils/hooks";
+import {
+  type IDocumentChoice,
+  useDocumentChoices,
+} from "../../lib/utils/hooks";
 import { type IBrandDocument } from "../brand/schema";
 import type { ICategoryDocument } from "../category/schema";
 

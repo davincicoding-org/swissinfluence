@@ -12,7 +12,7 @@ import {
 } from "react-admin";
 
 import { Fieldset } from "../../components/layout";
-import { createGuard, editGuard } from "../../utils/guards";
+import { createGuard, editGuard } from "../../lib/utils/guards";
 
 import { CategoriesInput } from "./categories";
 import { CommunitySection } from "./community";

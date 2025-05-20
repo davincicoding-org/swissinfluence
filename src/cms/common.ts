@@ -37,6 +37,7 @@ export const SocialMediaPlatformSchema = z.enum([
   "SPOTIFY",
   "TWITCH",
   "WEBSITE",
+  "WHATSAPP",
 ]);
 export type SocialMediaPlatform = z.infer<typeof SocialMediaPlatformSchema>;
 

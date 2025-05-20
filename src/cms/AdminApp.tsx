@@ -1,16 +1,19 @@
 "use client";
+
 import { type PropsWithChildren } from "react";
 import { MESSAGES_SCHEMA, Locale } from "@/i18n/config";
-import { MessagesEditor } from "@davincicoding/cms";
+import { CMSProvider } from "@davincicoding/cms/config";
+import { MessagesEditor } from "@davincicoding/cms/messages";
+import {
+  GlobalsCreate,
+  GlobalsEdit,
+  GlobalsList,
+} from "@davincicoding/cms/globals";
 import { Route } from "react-router-dom";
 import { Button } from "@mui/material";
 import { revalidateCache } from "@/server/actions";
+import { fetchCachedMessages, saveMessages } from "@/server/messages";
 import {
-  fetchCachedMessages,
-  saveMessages,
-} from "@/server/messages";
-import {
-  IconAdjustmentsHorizontal,
   IconBuilding,
   IconCircleLetterB,
   IconFolder,
@@ -24,6 +27,7 @@ import {
   IconUser,
   IconUsersGroup,
   IconUserStar,
+  IconWorld,
 } from "@tabler/icons-react";
 import {
   Admin,
@@ -35,13 +39,14 @@ import {
   CustomRoutes,
   Title,
   useNotify,
+  withLifecycleCallbacks,
 } from "react-admin";
 import {
   FirebaseAuthProvider,
   FirebaseDataProvider,
 } from "react-admin-firebase";
+import Image from "next/image";
 
-import { ConstantsCreate, ConstantsEdit, ConstantsList } from "./lib/constants";
 import { MediaCreate, MediaEdit, MediaList } from "./lib/media";
 
 import { env } from "@/env";
@@ -87,6 +92,7 @@ import {
   InfluencersEdit,
   InfluencersList,
 } from "./resources/influencer";
+import { GLOBALS } from "./globals";
 
 const config = {
   projectId: env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -97,157 +103,176 @@ const config = {
   appId: env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-const dataProvider = FirebaseDataProvider(config, {
-  logging: false,
-});
+const dataProvider = withLifecycleCallbacks(
+  FirebaseDataProvider(config, {
+    logging: false,
+  }),
+  [
+    {
+      resource: "globals",
+      afterUpdate: async (result) => {
+        void revalidateCache("globals");
+        return result;
+      },
+    },
+  ],
+);
 
 const authProvider = FirebaseAuthProvider(config, { logging: false });
 
 export function AdminApp() {
   const notify = useNotify();
+
   return (
-    <Admin
-      authProvider={authProvider}
-      dataProvider={dataProvider}
-      layout={CustomLayout}
+    <CMSProvider
+      config={{
+        globals: GLOBALS,
+        images: {},
+      }}
     >
-      <CustomRoutes>
-        <Route
-          path="/translations"
-          element={
-            <>
-              <Title title="Translations" />
-              <MessagesEditor
-                schema={MESSAGES_SCHEMA}
-                locales={Locale.options}
-                fetchMessages={fetchCachedMessages}
-                saveMessages={saveMessages}
-                tabs
-                onSaved={() => {
-                  notify("Translations saved", { type: "success" });
-                  void revalidateCache("messages");
-                }}
-              />
-            </>
-          }
+      <Admin
+        authProvider={authProvider}
+        dataProvider={dataProvider}
+        layout={CustomLayout}
+      >
+        <CustomRoutes>
+          <Route
+            path="/translations"
+            element={
+              <>
+                <Title title="Translations" />
+                <MessagesEditor
+                  schema={MESSAGES_SCHEMA}
+                  locales={Locale.options}
+                  fetchMessages={fetchCachedMessages}
+                  saveMessages={saveMessages}
+                  tabs
+                  onSaved={() => {
+                    notify("Translations saved", { type: "success" });
+                    void revalidateCache("messages");
+                  }}
+                />
+              </>
+            }
+          />
+        </CustomRoutes>
+
+        <Resource
+          name="media"
+          list={MediaList}
+          create={MediaCreate}
+          edit={MediaEdit}
+          icon={IconPhotoVideo}
+          recordRepresentation="id"
         />
-      </CustomRoutes>
+        <Resource
+          name="globals"
+          list={GlobalsList}
+          create={GlobalsCreate}
+          edit={GlobalsEdit}
+          icon={IconWorld}
+          recordRepresentation="id"
+        />
 
-      <Resource
-        name="media"
-        list={MediaList}
-        create={MediaCreate}
-        edit={MediaEdit}
-        icon={IconPhotoVideo}
-        recordRepresentation="id"
-      />
-      <Resource
-        name="constants"
-        list={ConstantsList}
-        create={ConstantsCreate}
-        edit={ConstantsEdit}
-        icon={IconAdjustmentsHorizontal}
-        recordRepresentation="id"
-      />
+        <Resource
+          name="awards"
+          list={AwardsList}
+          edit={AwardsEdit}
+          create={AwardsCreate}
+          icon={IconTrophy}
+          recordRepresentation={({ year }: IAwardDocument) => year.toString()}
+        />
 
-      <Resource
-        name="awards"
-        list={AwardsList}
-        edit={AwardsEdit}
-        create={AwardsCreate}
-        icon={IconTrophy}
-        recordRepresentation={({ year }: IAwardDocument) => year.toString()}
-      />
+        <Resource
+          name="creator-challenges"
+          options={{ label: "Creator Challenges" }}
+          list={CreatorChallengesList}
+          edit={CreatorChallengesEdit}
+          create={CreatorChallengesCreate}
+          recordRepresentation="title.en"
+          icon={IconSwords}
+        />
 
-      <Resource
-        name="creator-challenges"
-        options={{ label: "Creator Challenges" }}
-        list={CreatorChallengesList}
-        edit={CreatorChallengesEdit}
-        create={CreatorChallengesCreate}
-        recordRepresentation="title.en"
-        icon={IconSwords}
-      />
+        <Resource
+          name="categories"
+          list={CategoriesList}
+          edit={CategoriesEdit}
+          create={CategoriesCreate}
+          recordRepresentation="label.en"
+          icon={IconFolder}
+        />
 
-      <Resource
-        name="categories"
-        list={CategoriesList}
-        edit={CategoriesEdit}
-        create={CategoriesCreate}
-        recordRepresentation="label.en"
-        icon={IconFolder}
-      />
+        <Resource
+          name="influencers"
+          list={InfluencersList}
+          edit={InfluencersEdit}
+          create={InfluencersCreate}
+          recordRepresentation="name"
+          icon={IconStar}
+        />
 
-      <Resource
-        name="influencers"
-        list={InfluencersList}
-        edit={InfluencersEdit}
-        create={InfluencersCreate}
-        recordRepresentation="name"
-        icon={IconStar}
-      />
+        <Resource
+          name="experts"
+          list={ExpertsList}
+          edit={ExpertsEdit}
+          create={ExpertsCreate}
+          recordRepresentation="name"
+          icon={IconUser}
+        />
 
-      <Resource
-        name="experts"
-        list={ExpertsList}
-        edit={ExpertsEdit}
-        create={ExpertsCreate}
-        recordRepresentation="name"
-        icon={IconUser}
-      />
+        <Resource
+          name="brands"
+          list={BrandsList}
+          edit={BrandsEdit}
+          create={BrandsCreate}
+          recordRepresentation="name"
+          icon={IconCircleLetterB}
+        />
 
-      <Resource
-        name="brands"
-        list={BrandsList}
-        edit={BrandsEdit}
-        create={BrandsCreate}
-        recordRepresentation="name"
-        icon={IconCircleLetterB}
-      />
+        <Resource
+          name="campaigns"
+          list={CampaignsList}
+          edit={CampaignsEdit}
+          create={CampaignsCreate}
+          recordRepresentation="title.en"
+          icon={IconSpeakerphone}
+        />
 
-      <Resource
-        name="campaigns"
-        list={CampaignsList}
-        edit={CampaignsEdit}
-        create={CampaignsCreate}
-        recordRepresentation="title.en"
-        icon={IconSpeakerphone}
-      />
+        <Resource
+          name="events"
+          list={EventsList}
+          edit={EventsEdit}
+          create={EventsCreate}
+          recordRepresentation="title.en"
+          icon={IconTicket}
+        />
 
-      <Resource
-        name="events"
-        list={EventsList}
-        edit={EventsEdit}
-        create={EventsCreate}
-        recordRepresentation="title.en"
-        icon={IconTicket}
-      />
+        <Resource
+          name="certified-influencers"
+          options={{ label: "Certified Influencers" }}
+          list={CertifiedInfluencersList}
+          edit={CertifiedInfluencersEdit}
+          create={CertifiedInfluencersCreate}
+          icon={IconUserStar}
+        />
 
-      <Resource
-        name="certified-influencers"
-        options={{ label: "Certified Influencers" }}
-        list={CertifiedInfluencersList}
-        edit={CertifiedInfluencersEdit}
-        create={CertifiedInfluencersCreate}
-        icon={IconUserStar}
-      />
+        <Resource
+          name="agencies"
+          list={AgenciesList}
+          edit={AgenciesEdit}
+          create={AgenciesCreate}
+          icon={IconBuilding}
+        />
 
-      <Resource
-        name="agencies"
-        list={AgenciesList}
-        edit={AgenciesEdit}
-        create={AgenciesCreate}
-        icon={IconBuilding}
-      />
-
-      <Resource
-        name="conventions"
-        list={ConventionsList}
-        edit={ConventionsEdit}
-        create={ConventionsCreate}
-        icon={IconUsersGroup}
-      />
-    </Admin>
+        <Resource
+          name="conventions"
+          list={ConventionsList}
+          edit={ConventionsEdit}
+          create={ConventionsCreate}
+          icon={IconUsersGroup}
+        />
+      </Admin>
+    </CMSProvider>
   );
 }
 
@@ -311,8 +336,8 @@ export function CustomMenu() {
         primaryText="Translations"
         leftIcon={<IconLanguage />}
       />
+      <Menu.ResourceItem name="globals" />
       <Menu.ResourceItem name="media" />
-      <Menu.ResourceItem name="constants" />
       <MenuDivider />
       <Menu.ResourceItem name="influencers" />
       <Menu.ResourceItem name="experts" />

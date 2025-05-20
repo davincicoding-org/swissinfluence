@@ -15,7 +15,10 @@ import { useWatch } from "react-hook-form";
 
 import { AddButton } from "../../components/array";
 import { Fieldset } from "../../components/layout";
-import { type IDocumentChoice, useDocumentChoices } from "../../utils/hooks";
+import {
+  type IDocumentChoice,
+  useDocumentChoices,
+} from "../../lib/utils/hooks";
 import type { ICategoryDocument } from "../category/schema";
 import type { IInfluencerDocument } from "../influencer/schema";
 

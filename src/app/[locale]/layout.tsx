@@ -14,7 +14,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Montserrat } from "next/font/google";
 
-import { getConstants } from "@/cms/lib/server";
 import { cn } from "@/ui/utils";
 
 import { env } from "@/env";
@@ -26,6 +25,7 @@ import { theme } from "@/theme";
 import { Footer } from "./Footer";
 import { Navigation } from "./Navigation";
 import Scroll from "./Scroll";
+import { fetchGlobals } from "@/server/actions";
 
 const poppins = Montserrat({
   subsets: ["latin"],
@@ -51,9 +51,9 @@ export default async function LocaleLayout({
 }>) {
   const preview = await isPreview();
   const { locale } = await params;
-  const [messages, constants, t] = await Promise.all([
+  const [messages, globals, t] = await Promise.all([
     getMessages(),
-    getConstants(await isPreview()),
+    fetchGlobals(),
     getTranslations("navigation"),
   ]);
 
@@ -131,15 +131,9 @@ export default async function LocaleLayout({
             <Footer
               locale={locale}
               locales={routing.locales}
-              constants={{
-                contact: constants.forms.contact,
-                companyName: constants.company.name,
-                companyAddress: constants.company.address,
-                instagram: constants.company.instagramURL,
-                linkedin: constants.company.linkedInURL,
-                tiktok: constants.company.tiktokURL,
-              }}
-              newsletterURL={constants.forms.newsletter}
+              company={globals.company}
+              contactURL={globals.forms.contact}
+              newsletterURL={globals.forms.newsletter}
             />
             {preview ? (
               <Center pos="fixed" className="inset-x-0 top-8 z-50">

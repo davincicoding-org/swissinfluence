@@ -16,7 +16,7 @@ import { Locale } from "@/i18n/config";
 
 import { Fieldset } from "../../components/layout";
 import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../utils/guards";
+import { createGuard, editGuard } from "../../lib/utils/guards";
 
 import { AgencyDocumentSchema } from "./schema";
 

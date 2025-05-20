@@ -1,7 +1,6 @@
 #!/usr/bin/env tsx
 
 import { program } from "commander";
-import { pullConstants } from "./constants/pullConstants";
 import { pullMedia } from "./media/pullMedia";
 
 program.name("cms").description("CMS CLI tool").version("1.0.0");
@@ -16,9 +15,6 @@ program
   )
   .action(async (type, options: { baseUrl: string }) => {
     switch (type) {
-      case "constants":
-        await pullConstants(options.baseUrl);
-        return;
       case "media":
         await pullMedia(options.baseUrl);
         return;

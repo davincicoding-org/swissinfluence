@@ -12,7 +12,10 @@ import { useController, useWatch } from "react-hook-form";
 import { ImageInput } from "@/cms/lib/components";
 
 import { Fieldset } from "../../components/layout";
-import { type IDocumentChoice, useDocumentChoices } from "../../utils/hooks";
+import {
+  type IDocumentChoice,
+  useDocumentChoices,
+} from "../../lib/utils/hooks";
 import type { ICategoryDocument } from "../category/schema";
 import type { IInfluencerDocument } from "../influencer/schema";
 

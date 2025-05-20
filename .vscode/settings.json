@@ -2,5 +2,10 @@
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#906653",
     "titleBar.activeForeground": "#ffffff"
+  },
+  "eslint.enable": true,
+  "eslint.validate": ["typescript", "typescriptreact"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
   }
 }

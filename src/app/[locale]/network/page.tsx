@@ -1,13 +1,13 @@
 import { getTranslations, getLocale } from "next-intl/server";
 
-import { getConstants, getMedia } from "@/cms/lib/server";
+import { getMedia } from "@/cms/lib/server";
 
 import { NetworkPage as View } from "@/ui/features/network";
-
+import { fetchGlobal } from "@/server/actions";
 export default async function NetworkPage() {
   const t = await getTranslations("network");
   const locale = await getLocale();
-  const constants = await getConstants();
+  const company = await fetchGlobal("company");
   const media = await getMedia();
 
   return (
@@ -38,7 +38,7 @@ export default async function NetworkPage() {
         {
           label: t("page.links.whatsapp"),
           image: media.network.images.whatsapp,
-          href: constants.company.whatsappURL,
+          href: company.whatsapp,
           external: true,
         },
       ]}
