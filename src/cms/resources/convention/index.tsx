@@ -7,12 +7,12 @@ import {
   TabbedForm,
 } from "react-admin";
 
-import { createGuard, editGuard } from "../../lib/utils/guards";
-
+import type { IConventionDocument } from "./schema";
+import { createGuard, editGuard } from "../../guards";
 import { EventSection } from "./event";
 import { PartnersInput } from "./partners";
 import { ScheduleSection } from "./schedule";
-import { ConventionDocumentSchema, type IConventionDocument } from "./schema";
+import { ConventionDocumentSchema } from "./schema";
 
 export function ConventionsList() {
   return (

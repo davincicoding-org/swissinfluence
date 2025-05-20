@@ -1,3 +1,5 @@
+import { ImageInput } from "@davincicoding/cms/image";
+import { TranslatableTextInput } from "@davincicoding/cms/text";
 import {
   AutocompleteArrayInput,
   AutocompleteInput,
@@ -15,16 +17,12 @@ import {
   TranslatableInputs,
 } from "react-admin";
 
-import { ImageInput } from "@/cms/lib/components";
-
 import { Locale } from "@/i18n/config";
 
-import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../lib/utils/guards";
-import { useDocumentChoices } from "../../lib/utils/hooks";
+import { createGuard, editGuard } from "../../guards";
+import { useDocumentChoices } from "../../hooks";
 import { type ICategoryDocument } from "../category/schema";
 import { type IInfluencerDocument } from "../influencer/schema";
-
 import { CANTON_CHOICES } from "./cantons";
 import { LANGUAGE_CHOICES } from "./languages";
 import { CertifiedInfluencerDocumentSchema } from "./schema";

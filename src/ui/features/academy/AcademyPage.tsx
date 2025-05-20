@@ -1,12 +1,11 @@
+import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button } from "@mantine/core";
 import { useTranslations } from "next-intl";
-
-import { type ImageMedia } from "@/cms/lib/fields";
 
 import { PageHero } from "@/ui/components/PageHero";
 
 export interface IAcademyPageProps {
-  heroImage: ImageMedia;
+  heroImage: ImageAsset;
 }
 
 export function AcademyPage({ heroImage }: IAcademyPageProps) {

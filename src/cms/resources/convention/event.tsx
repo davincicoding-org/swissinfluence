@@ -1,7 +1,6 @@
+import { Fieldset } from "@davincicoding/cms/layout";
 import { Box } from "@mui/material";
 import { BooleanInput, DateInput, required, TextInput } from "react-admin";
-
-import { Fieldset } from "../../components/layout";
 
 export function EventSection() {
   return (
@@ -31,7 +30,7 @@ export function EventSection() {
           helperText={false}
         />
         <DateInput source="date" variant="outlined" helperText={false} />
-        <Fieldset legend="Location">
+        <Fieldset label="Location">
           <TextInput
             source="location.name"
             variant="outlined"
@@ -56,7 +55,7 @@ export function EventSection() {
           />
         </Fieldset>
         <Fieldset
-          legend={
+          label={
             <BooleanInput
               label="Ticket Sale"
               source="ticketSale.open"

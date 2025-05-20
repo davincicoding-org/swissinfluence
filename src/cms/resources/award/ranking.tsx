@@ -1,3 +1,5 @@
+import { ImageInput } from "@davincicoding/cms/image";
+import { Fieldset } from "@davincicoding/cms/layout";
 import { Box, Button, Card, Chip } from "@mui/material";
 import { IconConfetti } from "@tabler/icons-react";
 import {
@@ -6,20 +8,13 @@ import {
   SimpleFormIterator,
   useSimpleFormIteratorItem,
 } from "react-admin";
-
 import { useController, useWatch } from "react-hook-form";
 
-import { ImageInput } from "@/cms/lib/components";
-
-import { Fieldset } from "../../components/layout";
-import {
-  type IDocumentChoice,
-  useDocumentChoices,
-} from "../../lib/utils/hooks";
+import type { IDocumentChoice } from "../../hooks";
 import type { ICategoryDocument } from "../category/schema";
 import type { IInfluencerDocument } from "../influencer/schema";
-
 import type { IAwardDocument } from "./schema";
+import { useDocumentChoices } from "../../hooks";
 
 export function RankingSection() {
   const { field, fieldState } = useController<IAwardDocument, "ranking">({
@@ -102,7 +97,7 @@ export function RankingSection() {
         }}
       >
         {resolvedCategories.map(({ category, nominees }) => (
-          <Fieldset key={category.id} legend={category.name}>
+          <Fieldset key={category.id} label={category.name}>
             <AwardCategoryRanking
               categoryID={category.id}
               nominees={nominees}

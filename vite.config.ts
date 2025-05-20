@@ -1,7 +1,7 @@
 import { readJsonSync } from "fs-extra";
 import generatePackageJson from "rollup-plugin-generate-package-json";
 import { defineConfig } from "vite";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 const ENTRY_FILE = "./src/database/triggers.ts";
 const CODEBASE = "default";

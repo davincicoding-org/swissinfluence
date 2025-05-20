@@ -1,7 +1,6 @@
+import type { ImageAsset } from "@davincicoding/cms/image";
 import { Paper, ScrollArea } from "@mantine/core";
 import { useTranslations } from "next-intl";
-
-import { type ImageMedia } from "@/cms/lib/fields";
 
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
@@ -11,7 +10,7 @@ import { ConventionEvent } from "./views/ConventionEvent";
 import { ConventionPartners } from "./views/ConventionPartners";
 
 export interface IConventionPageProps extends IConventionPageData {
-  heroImage: ImageMedia;
+  heroImage: ImageAsset;
 }
 
 export function ConventionPage({

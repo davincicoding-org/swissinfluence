@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import { ImageInput } from "@davincicoding/cms/image";
+import { Fieldset } from "@davincicoding/cms/layout";
+import { RichTextInput, TranslatableTextInput } from "@davincicoding/cms/text";
 import { Button } from "@mui/material";
 import {
   AutocompleteInput,
@@ -18,21 +20,13 @@ import {
   useFieldValue,
 } from "react-admin";
 
-import { ImageInput } from "@/cms/lib/components";
-
 import { routing } from "@/i18n/routing";
 
-import { Fieldset } from "../../components/layout";
-import { CustomRichTextInput } from "../../components/text";
-import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../lib/utils/guards";
-import { useDocumentChoices } from "../../lib/utils/hooks";
+import type { ICreatorChallengeDocument } from "./schema";
+import { createGuard, editGuard } from "../../guards";
+import { useDocumentChoices } from "../../hooks";
 import { type IBrandDocument } from "../brand/schema";
-
-import {
-  CreatorChallengeDocumentSchema,
-  type ICreatorChallengeDocument,
-} from "./schema";
+import { CreatorChallengeDocumentSchema } from "./schema";
 
 /* List */
 
@@ -99,7 +93,7 @@ export function CreatorChallengesCreate() {
               validate={required("Add a organizer")}
             />
             {withDate ? (
-              <Fieldset legend="Date*">
+              <Fieldset label="Date*">
                 <DateTimeInput
                   label="From"
                   source="date.from"
@@ -124,7 +118,7 @@ export function CreatorChallengesCreate() {
               </Button>
             )}
             {withLocation ? (
-              <Fieldset legend="Location*">
+              <Fieldset label="Location*">
                 <TextInput
                   source="location.name"
                   variant="outlined"
@@ -174,8 +168,8 @@ export function CreatorChallengesCreate() {
               validate={required("Add campaign title")}
               helperText={false}
             />
-            <Fieldset legend="Description*" style={{ marginTop: "1rem" }}>
-              <CustomRichTextInput
+            <Fieldset label="Description*" style={{ marginTop: "1rem" }}>
+              <RichTextInput
                 source="description"
                 label={false}
                 variant="outlined"
@@ -236,7 +230,7 @@ export function CreatorChallengesEdit() {
               validate={required("Add a organizer")}
             />
             {date || withDate ? (
-              <Fieldset legend="Date*">
+              <Fieldset label="Date*">
                 <DateTimeInput
                   label="From"
                   source="date.from"
@@ -261,7 +255,7 @@ export function CreatorChallengesEdit() {
               </Button>
             )}
             {location || withLocation ? (
-              <Fieldset legend="Location*">
+              <Fieldset label="Location*">
                 <TextInput
                   source="location.name"
                   variant="outlined"
@@ -311,8 +305,8 @@ export function CreatorChallengesEdit() {
               validate={required("Add campaign title")}
               helperText={false}
             />
-            <Fieldset legend="Description*" style={{ marginTop: "1rem" }}>
-              <CustomRichTextInput
+            <Fieldset label="Description*" style={{ marginTop: "1rem" }}>
+              <RichTextInput
                 source="description"
                 label={false}
                 variant="outlined"

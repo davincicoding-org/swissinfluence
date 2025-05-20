@@ -1,20 +1,19 @@
+import type { ImageAsset } from "@davincicoding/cms/image";
 import { Paper, Space } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import { type ImageMedia } from "@/cms/lib/fields";
-import { cn } from "@/ui/utils";
-
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
+import { cn } from "@/ui/utils";
 
 import { type ICertifiedInfluencersByCategory } from "./data";
 import { CertificationRegistration } from "./views/CertificationRegistration";
 import { InfluencerDiscovery } from "./views/InfluencerDiscovery";
 
 export interface ICertifiedInfluencersPageProps {
-  heroImage: ImageMedia;
-  influencerImage: ImageMedia;
-  agencyImage: ImageMedia;
+  heroImage: ImageAsset;
+  influencerImage: ImageAsset;
+  agencyImage: ImageAsset;
   pool: Array<ICertifiedInfluencersByCategory>;
   influencerForm: string;
   agencyForm: string;

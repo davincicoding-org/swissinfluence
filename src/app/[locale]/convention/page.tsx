@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import { getMedia } from "@/cms/lib/server";
-
 import { env } from "@/env";
+import { fetchMedia } from "@/server/actions";
 import { ConventionPage as View } from "@/ui/features/convention";
 import { getConventionPageData } from "@/ui/features/convention/data";
 
@@ -19,11 +18,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ConventionPage() {
   const data = await getConventionPageData();
-  const media = await getMedia();
+  const media = await fetchMedia();
 
   return (
     <View
-      heroImage={media.forum.images.hero}
+      heroImage={media.convention.hero}
       event={data.event}
       partners={data.partners}
     />

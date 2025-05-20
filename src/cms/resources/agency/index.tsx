@@ -1,3 +1,6 @@
+import { ImageInput } from "@davincicoding/cms/image";
+import { Fieldset } from "@davincicoding/cms/layout";
+import { TranslatableTextInput } from "@davincicoding/cms/text";
 import {
   Create,
   Datagrid,
@@ -10,14 +13,9 @@ import {
   TranslatableInputs,
 } from "react-admin";
 
-import { ImageInput } from "@/cms/lib/components";
-
 import { Locale } from "@/i18n/config";
 
-import { Fieldset } from "../../components/layout";
-import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../lib/utils/guards";
-
+import { createGuard, editGuard } from "../../guards";
 import { AgencyDocumentSchema } from "./schema";
 
 /* List */
@@ -158,7 +156,7 @@ export function AgenciesEdit() {
               variant="outlined"
               helperText={false}
             />
-            <Fieldset legend="About">
+            <Fieldset label="About">
               <TranslatableInputs locales={Locale.options}>
                 <TranslatableTextInput label={false} source="about" multiline />
               </TranslatableInputs>

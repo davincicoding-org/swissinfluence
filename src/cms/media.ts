@@ -1,10 +1,15 @@
-const MEDIA_SCHEMA = {
+import type {
+  MediaLibraryAssets,
+  MediaLibrarySchema,
+} from "@davincicoding/cms/media";
+
+export const MEDIA_LIBRARY = {
   landing: {
     hero: "video",
   },
   award: {
     hero: "image",
-    newcomerScout: "image",
+    "newcomer-scout": "image",
   },
   network: {
     hero: "image",
@@ -17,9 +22,11 @@ const MEDIA_SCHEMA = {
     "agency-certification": "image",
   },
   convention: {
-    hero: "video",
+    hero: "image",
   },
   academy: {
     hero: "image",
   },
-};
+} satisfies MediaLibrarySchema;
+
+export type MediaLibrary = MediaLibraryAssets<typeof MEDIA_LIBRARY>;

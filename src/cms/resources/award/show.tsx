@@ -1,3 +1,5 @@
+import { AddButton, Fieldset } from "@davincicoding/cms/layout";
+import { RichTextInput } from "@davincicoding/cms/text";
 import { Box, Button } from "@mui/material";
 import {
   ArrayInput,
@@ -9,14 +11,9 @@ import {
   TimeInput,
   TranslatableInputs,
 } from "react-admin";
-
 import { useController } from "react-hook-form";
 
 import { routing } from "@/i18n/routing";
-
-import { AddButton } from "../../components/array";
-import { Fieldset } from "../../components/layout";
-import { CustomRichTextInput } from "../../components/text";
 
 import type { IAwardDocument } from "./schema";
 
@@ -68,7 +65,7 @@ export function ShowSection() {
             helperText={false}
           />
 
-          <Fieldset legend="Location">
+          <Fieldset label="Location">
             <TextInput
               source="show.location.name"
               variant="outlined"
@@ -94,7 +91,7 @@ export function ShowSection() {
           </Fieldset>
 
           <Fieldset
-            legend={
+            label={
               <BooleanInput
                 label="Ticket Sale"
                 source="show.ticketSale.open"
@@ -120,7 +117,7 @@ export function ShowSection() {
           </Fieldset>
         </Box>
 
-        <Fieldset legend="Schedule" style={{ flexGrow: 1 }}>
+        <Fieldset label="Schedule" style={{ flexGrow: 1 }}>
           <ArrayInput source="show.schedule" label={false} helperText={false}>
             <SimpleFormIterator
               addButton={<AddButton label="Add Slot" size="small" fullWidth />}
@@ -140,7 +137,7 @@ export function ShowSection() {
                 },
               }}
             >
-              <Fieldset legend="" style={{ marginBottom: "2rem" }}>
+              <Fieldset style={{ marginBottom: "2rem" }}>
                 <TranslatableInputs
                   locales={[...routing.locales]}
                   sx={{
@@ -170,7 +167,7 @@ export function ShowSection() {
                 />
 
                 <TranslatableInputs locales={[...routing.locales]}>
-                  <CustomRichTextInput
+                  <RichTextInput
                     source="description"
                     label={false}
                     variant="outlined"

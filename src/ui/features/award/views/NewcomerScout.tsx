@@ -1,15 +1,14 @@
+import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button, Paper, ScrollArea } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import type { ImageMedia } from "@/cms/lib/fields";
-import { cn } from "@/ui/utils";
-
 import { RichText } from "@/ui/components/RichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
+import { cn } from "@/ui/utils";
 
 export interface IAwardNominationProps {
   deadline: string;
-  image: ImageMedia;
+  image: ImageAsset;
   formURL: string;
   className?: string;
 }

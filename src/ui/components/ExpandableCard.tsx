@@ -1,8 +1,9 @@
 "use client";
 
+import type { ImageMedia } from "@davincicoding/cms/image";
+import type { ReactNode } from "react";
+import { useId } from "react";
 import Image from "next/image";
-import { useId, type ReactNode } from "react";
-
 import {
   ActionIcon,
   Button,
@@ -16,7 +17,6 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconX } from "@tabler/icons-react";
 import { motion } from "motion/react";
 
-import { type ImageMedia } from "@/cms/lib/fields";
 import { cn } from "@/ui/utils";
 
 interface ExpandableCardProps {
@@ -76,7 +76,7 @@ export function ExpandableCard({
             <Text
               component={motion.h3}
               layoutId={`title-${title}-${id}`}
-              className="mb-1 line-clamp-2 text-center text-base leading-tight font-medium"
+              className="mb-1 line-clamp-2 text-center text-base font-medium leading-tight"
             >
               {title}
             </Text>
@@ -130,12 +130,12 @@ export function ExpandableCard({
                 align="flex-end"
                 wrap="nowrap"
                 gap="lg"
-                className="absolute right-0 bottom-0 left-0 bg-gradient-to-t from-black/50 from-50% to-transparent p-4 pt-8"
+                className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 from-50% to-transparent p-4 pt-8"
               >
                 <Text
                   component={motion.h3}
                   layoutId={`title-${title}-${id}`}
-                  className="text-lg leading-tight font-medium text-pretty text-white"
+                  className="text-pretty text-lg font-medium leading-tight text-white"
                 >
                   {title}
                 </Text>

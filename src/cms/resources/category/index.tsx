@@ -1,3 +1,4 @@
+import { ImageInput } from "@davincicoding/cms/image";
 import {
   Create,
   Datagrid,
@@ -11,12 +12,10 @@ import {
   Toolbar,
   TranslatableInputs,
 } from "react-admin";
-import { ImageInput } from "@/cms/lib/components";
 
 import { routing } from "@/i18n/routing";
 
-import { createGuard, editGuard } from "../../lib/utils/guards";
-
+import { createGuard, editGuard } from "../../guards";
 import { CategoryDocumentSchema } from "./schema";
 
 /* List */

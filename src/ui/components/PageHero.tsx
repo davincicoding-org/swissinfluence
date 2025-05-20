@@ -1,13 +1,12 @@
-import Image from "next/image";
+import type { ImageAsset } from "@davincicoding/cms/image";
 import { type ReactNode } from "react";
-
+import Image from "next/image";
 import { Flex, Paper, Stack } from "@mantine/core";
 
-import { type ImageMedia } from "@/cms/lib/fields";
 import { cn } from "@/ui/utils";
 
 export interface IPageHeroProps {
-  image: ImageMedia;
+  image: ImageAsset;
   title: ReactNode;
   headline?: ReactNode;
   footer?: ReactNode;
@@ -52,10 +51,10 @@ export function PageHero({
           className="p-4 max-sm:flex-col sm:items-end sm:p-8"
         >
           <Stack gap="xs" className="min-w-0 flex-1 max-sm:text-center">
-            <h1 className="text-mocha-300 text-5xl font-light tracking-wider text-balance hyphens-auto uppercase sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="hyphens-auto text-balance text-5xl font-light uppercase tracking-wider text-mocha-300 sm:text-5xl md:text-6xl lg:text-7xl">
               {title}
             </h1>
-            <p className="text-xl font-light tracking-widest text-wrap text-white uppercase empty:hidden sm:text-2xl md:text-3xl">
+            <p className="text-wrap text-xl font-light uppercase tracking-widest text-white empty:hidden sm:text-2xl md:text-3xl">
               {headline}
             </p>
           </Stack>

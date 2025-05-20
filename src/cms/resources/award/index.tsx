@@ -1,3 +1,4 @@
+import { Fieldset } from "@davincicoding/cms/layout";
 import { Box, CircularProgress } from "@mui/material";
 import {
   Create,
@@ -11,9 +12,8 @@ import {
   useGetList,
 } from "react-admin";
 
-import { Fieldset } from "../../components/layout";
-import { createGuard, editGuard } from "../../lib/utils/guards";
-
+import type { IAwardDocument } from "./schema";
+import { createGuard, editGuard } from "../../guards";
 import { CategoriesInput } from "./categories";
 import { CommunitySection } from "./community";
 import { ImpressionsSection } from "./impressions";
@@ -21,7 +21,7 @@ import { JuryInput } from "./jury";
 import { NomineesSection } from "./nominees";
 import { PartnersInput } from "./partners";
 import { RankingSection } from "./ranking";
-import { AwardDocumentSchema, type IAwardDocument } from "./schema";
+import { AwardDocumentSchema } from "./schema";
 import { ShowSection } from "./show";
 
 export function AwardsList() {
@@ -69,7 +69,7 @@ export function AwardsCreate() {
             }}
           >
             <Fieldset
-              legend="Categories"
+              label="Categories"
               style={{ minWidth: 200, flexShrink: 0 }}
             >
               <CategoriesInput
@@ -82,13 +82,10 @@ export function AwardsCreate() {
                 )}
               />
             </Fieldset>
-            <Fieldset legend="Jury">
+            <Fieldset label="Jury">
               <JuryInput defaultValue={lastAward?.jury} />
             </Fieldset>
-            <Fieldset
-              legend="Partners"
-              style={{ minWidth: 200, flexShrink: 0 }}
-            >
+            <Fieldset label="Partners" style={{ minWidth: 200, flexShrink: 0 }}>
               <PartnersInput defaultValue={lastAward?.partners} />
             </Fieldset>
           </Box>
@@ -113,20 +110,17 @@ export function AwardsEdit() {
             }}
           >
             <Fieldset
-              legend="Categories"
+              label="Categories"
               style={{ minWidth: 200, flexShrink: 0 }}
             >
               <CategoriesInput />
             </Fieldset>
 
-            <Fieldset legend="Jury">
+            <Fieldset label="Jury">
               <JuryInput />
             </Fieldset>
 
-            <Fieldset
-              legend="Partners"
-              style={{ minWidth: 200, flexShrink: 0 }}
-            >
+            <Fieldset label="Partners" style={{ minWidth: 200, flexShrink: 0 }}>
               <PartnersInput />
             </Fieldset>
           </Box>

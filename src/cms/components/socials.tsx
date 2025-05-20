@@ -1,9 +1,8 @@
+import type { ArrayInputProps } from "react-admin";
 import { useMemo } from "react";
-
-import { InputLabel } from "@mui/material";
+import { AddButton, Fieldset } from "@davincicoding/cms/layout";
 import {
   ArrayInput,
-  type ArrayInputProps,
   required,
   SelectInput,
   SimpleFormIterator,
@@ -12,11 +11,10 @@ import {
 } from "react-admin";
 import { useController } from "react-hook-form";
 
-import { SOCIAL_MEDIA_PLATFORM_OPTIONS, type SocialMedia } from "@/cms/common";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 
-import { AddButton } from "./array";
-import { Fieldset } from "./layout";
+import type { SocialMedia } from "../common";
+import { SOCIAL_MEDIA_PLATFORM_OPTIONS } from "../common";
 
 /* Choices */
 
@@ -52,7 +50,7 @@ export function SocialsInput({ fullWidth, ...inputProps }: ISocialsInputProps) {
   );
 
   return (
-    <Fieldset legend={<InputLabel>Socials</InputLabel>} fullWidth={fullWidth}>
+    <Fieldset label="Socials" fullWidth={fullWidth}>
       <ArrayInput
         helperText={false}
         label={false}

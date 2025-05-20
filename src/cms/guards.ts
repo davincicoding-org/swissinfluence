@@ -1,12 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return -- ignore */
-
-import { z } from "zod";
+import { z } from "zod/v4";
 
 export const createGuard =
   (
     ResourceSchema: z.ZodObject<
       { id: z.ZodString } & Record<string, z.ZodType>
     >,
+    options?: {
+      preserveID?: boolean;
+    },
   ) =>
   (data: unknown) => {
     const resolveObjectSchema = (
@@ -14,7 +15,7 @@ export const createGuard =
     ): z.ZodObject<z.ZodRawShape> =>
       z.object(
         Object.entries(ObjectSchema.shape).reduce((acc, [prop, PropSchema]) => {
-          if (PropSchema.isNullable())
+          if (PropSchema instanceof z.ZodNullable)
             return {
               ...acc,
               [prop]: PropSchema.optional().transform((propData) =>
@@ -54,8 +55,11 @@ export const createGuard =
       );
 
     const ResolvedResourceSchema = resolveObjectSchema(ResourceSchema);
+    if (options?.preserveID) return ResolvedResourceSchema.parse(data);
 
-    return ResolvedResourceSchema.omit({ id: true }).parse(data);
+    return ResolvedResourceSchema.omit({
+      id: true,
+    }).parse(data);
   };
 
 export const editGuard =

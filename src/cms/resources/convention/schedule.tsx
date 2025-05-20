@@ -1,3 +1,5 @@
+import { AddButton, Fieldset } from "@davincicoding/cms/layout";
+import { RichTextInput } from "@davincicoding/cms/text";
 import { Box } from "@mui/material";
 import {
   ArrayInput,
@@ -9,10 +11,6 @@ import {
 } from "react-admin";
 
 import { routing } from "@/i18n/routing";
-
-import { AddButton } from "../../components/array";
-import { Fieldset } from "../../components/layout";
-import { CustomRichTextInput } from "../../components/text";
 
 export function ScheduleSection() {
   return (
@@ -50,7 +48,7 @@ export function ScheduleSection() {
               },
             }}
           >
-            <Fieldset legend="" style={{ marginBottom: "2rem", width: 700 }}>
+            <Fieldset style={{ marginBottom: "2rem", width: 700 }}>
               <Box sx={{ display: "flex", gap: 2, marginBottom: 2 }}>
                 <Box
                   sx={{
@@ -96,7 +94,7 @@ export function ScheduleSection() {
                   validate={required("Add a title")}
                   helperText={false}
                 />
-                <CustomRichTextInput
+                <RichTextInput
                   source="description"
                   label={false}
                   variant="outlined"

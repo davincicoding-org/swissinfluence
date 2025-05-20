@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
-import { getMedia } from "@/cms/lib/server";
-
 import { env } from "@/env";
+import { fetchMedia } from "@/server/actions";
 import { AwardPage as View } from "@/ui/features/award";
 import { getAwardPageData } from "@/ui/features/award/data";
 
@@ -18,13 +17,14 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AwardPage() {
-  const { currentAward, pastAward, hallOfFame, campaigns } = await getAwardPageData();
-  const media = await getMedia();
+  const { currentAward, pastAward, hallOfFame, campaigns } =
+    await getAwardPageData();
+  const media = await fetchMedia();
 
   return (
     <View
-      heroImage={media.award.images.hero}
-      newcomerScoutImage={media.award.images.newcomerScout}
+      heroImage={media.award.hero}
+      newcomerScoutImage={media.award["newcomer-scout"]}
       currentAward={currentAward}
       pastAward={pastAward}
       hallOfFame={hallOfFame}

@@ -1,29 +1,19 @@
+import type { ImageMedia } from "@davincicoding/cms/image";
 import { unstable_cache } from "next/cache";
 
-import { type ImageMedia } from "@/cms/lib/fields";
-import { derivative } from "@/ui/utils";
-
+import type { IBrandDocument } from "@/cms/resources/brand/schema";
+import type { ICategoryDocument } from "@/cms/resources/category/schema";
+import type { ICreatorChallengeDocument } from "@/cms/resources/creator-challenge/schema";
+import type { IInfluencerDocument } from "@/cms/resources/influencer/schema";
 import { type SocialMedia, type Translatable } from "@/cms/common";
 import { AwardDocumentSchema } from "@/cms/resources/award/schema";
-import {
-  BrandDocumentSchema,
-  type IBrandDocument,
-} from "@/cms/resources/brand/schema";
-import {
-  CategoryDocumentSchema,
-  type ICategoryDocument,
-} from "@/cms/resources/category/schema";
-import {
-  CreatorChallengeDocumentSchema,
-  type ICreatorChallengeDocument,
-} from "@/cms/resources/creator-challenge/schema";
+import { BrandDocumentSchema } from "@/cms/resources/brand/schema";
+import { CategoryDocumentSchema } from "@/cms/resources/category/schema";
+import { CreatorChallengeDocumentSchema } from "@/cms/resources/creator-challenge/schema";
 import { ExpertDocumentSchema } from "@/cms/resources/expert/schema";
-import {
-  type IInfluencerDocument,
-  InfluencerDocumentSchema,
-} from "@/cms/resources/influencer/schema";
+import { InfluencerDocumentSchema } from "@/cms/resources/influencer/schema";
 import { db } from "@/database/firebase";
-import { isPreview } from "@/cms/preview";
+import { derivative } from "@/ui/utils";
 
 export interface IAwardPageData {
   pastAward: IPastAward | undefined;
@@ -398,12 +388,9 @@ export const fetchAwardPageData = async (): Promise<IAwardPageData> => {
   return { currentAward, pastAward, hallOfFame, campaigns };
 };
 
-export const getAwardPageData = async () => {
-  if (await isPreview()) return fetchAwardPageData();
-  return unstable_cache(fetchAwardPageData, [], {
-    tags: ["cms"],
-  })();
-};
+export const getAwardPageData = unstable_cache(fetchAwardPageData, [], {
+  tags: ["cms"],
+});
 
 export const fetchCampaigns = async (): Promise<Array<ICreatorChallenge>> => {
   const campaigns = await db

@@ -1,3 +1,4 @@
+import { ImageInput } from "@davincicoding/cms/image";
 import { IconUserSquare } from "@tabler/icons-react";
 import {
   Create,
@@ -13,11 +14,8 @@ import {
   Toolbar,
 } from "react-admin";
 
-import { ImageInput } from "@/cms/lib/components";
-
 import { SocialsInput } from "../../components/socials";
-import { createGuard, editGuard } from "../../lib/utils/guards";
-
+import { createGuard, editGuard } from "../../guards";
 import { InfluencerDocumentSchema } from "./schema";
 
 /* List */

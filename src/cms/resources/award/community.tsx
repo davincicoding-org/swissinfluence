@@ -1,6 +1,5 @@
+import { Fieldset } from "@davincicoding/cms/layout";
 import { Box } from "@mui/material";
-
-import { Fieldset } from "../../components/layout";
 
 import { NewcomerScoutInput } from "./newcomer-scout";
 import { NominationInput } from "./nomination";
@@ -15,13 +14,13 @@ export function CommunitySection() {
         gap: 2,
       }}
     >
-      <Fieldset legend="Nomination">
+      <Fieldset label="Nomination">
         <NominationInput />
       </Fieldset>
-      <Fieldset legend="Newcomer Scout">
+      <Fieldset label="Newcomer Scout">
         <NewcomerScoutInput />
       </Fieldset>
-      <Fieldset legend="Voting">
+      <Fieldset label="Voting">
         <VotingInput />
       </Fieldset>
     </Box>

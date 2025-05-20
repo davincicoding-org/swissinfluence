@@ -1,16 +1,17 @@
 "use client";
+
+import type { ImageAsset } from "@davincicoding/cms/image";
+import type { MotionProps } from "motion/react";
+import { type Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
 
-import { motion, type MotionProps } from "motion/react";
-import { type Route } from "next";
-
-import { type ImageMedia } from "@/cms/lib/fields";
 import { cn } from "@/ui/utils";
 
 export interface ILinkTileProps<R extends string> {
   label: string;
-  image: ImageMedia;
+  image: ImageAsset;
   href: Route<R>;
   className?: string;
   external?: boolean;
@@ -45,8 +46,8 @@ export function LinkTile<R extends string>({
         />
         <div
           className={cn(
-            "group-hover:bg-mocha-500 absolute inset-0 flex items-center justify-center bg-neutral-700/50 px-4 text-center !leading-tight font-semibold tracking-wider text-balance hyphens-auto text-white uppercase duration-500",
-            "text-3xl @sm:text-4xl @lg:text-5xl",
+            "absolute inset-0 flex items-center justify-center hyphens-auto text-balance bg-neutral-700/50 px-4 text-center font-semibold uppercase !leading-tight tracking-wider text-white duration-500 group-hover:bg-mocha-500",
+            "@sm:text-4xl @lg:text-5xl text-3xl",
           )}
         >
           {label}

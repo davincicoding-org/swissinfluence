@@ -1,14 +1,13 @@
 "use client";
 
+import type { ImageMedia } from "@davincicoding/cms/image";
+import type { PaperProps } from "@mantine/core";
 import Image from "next/image";
-
-import { ActionIcon, Flex, Paper, type PaperProps } from "@mantine/core";
+import { ActionIcon, Flex, Paper } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
-import { type ImageMedia } from "@/cms/lib/fields";
-import { cn } from "@/ui/utils";
-
 import { type SocialMedia } from "@/cms/common";
+import { cn } from "@/ui/utils";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
 import { TextOverflowReveal } from "./TextOverflowReveal";
@@ -59,11 +58,11 @@ export function PersonaCard({
 
       <div
         className={cn(
-          "absolute inset-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/80 via-black/20 to-transparent pr-3 pb-4 text-white transition-opacity duration-300 group-hover:opacity-100",
+          "absolute inset-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white transition-opacity duration-300 group-hover:opacity-100",
           (isTouchDevice ?? revealed) ? "opacity-100" : "opacity-0",
         )}
       >
-        <div className="absolute inset-x-0 bottom-0 pr-3 pb-4">
+        <div className="absolute inset-x-0 bottom-0 pb-4 pr-3">
           <TextOverflowReveal
             text={name}
             classNames={{
@@ -82,7 +81,7 @@ export function PersonaCard({
           >
             <p
               className={cn(
-                "px-4 leading-snug font-light text-pretty text-neutral-300 empty:hidden",
+                "text-pretty px-4 font-light leading-snug text-neutral-300 empty:hidden",
                 classNames?.description,
               )}
             >
@@ -98,7 +97,7 @@ export function PersonaCard({
                   variant="subtle"
                   color="white"
                   radius="md"
-                  className="hover:text-mocha-500 transition-colors"
+                  className="transition-colors hover:text-mocha-500"
                 >
                   <SocialMediaPlatformIcon
                     platform={social.platform}

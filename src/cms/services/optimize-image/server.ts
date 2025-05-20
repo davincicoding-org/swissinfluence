@@ -1,12 +1,10 @@
+import type { Metadata } from "sharp";
 import { NextResponse } from "next/server";
+import sharp from "sharp";
+import { z } from "zod/v4";
 
-import sharp, { type Metadata } from "sharp";
-import { z } from "zod";
-
-import {
-  type IImageOptimisationOptions,
-  ImageOptimisationOptionsSchema,
-} from "./types";
+import type { IImageOptimisationOptions } from "./types";
+import { ImageOptimisationOptionsSchema } from "./types";
 import { resolveCompressionOption, resolveResizeOption } from "./utils";
 
 export const processFormData = async (formData: FormData) => {

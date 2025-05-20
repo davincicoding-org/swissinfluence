@@ -1,20 +1,19 @@
+import type { ImageAsset } from "@davincicoding/cms/image";
+import type { VideoAsset } from "@davincicoding/cms/video";
 import { type ReactNode } from "react";
-
 import { useLocale, useTranslations } from "next-intl";
-
-import { type ImageMedia, type VideoMedia } from "@/cms/lib/fields";
 
 import { BackgroundVideo } from "@/ui/components/BackgroundVideo";
 import { FlipWords } from "@/ui/components/FlipWords";
 import { LinkTile } from "@/ui/components/LinkTile";
 
 export interface ILandingPageProps {
-  heroVideo: VideoMedia;
+  heroVideo: VideoAsset;
   images: {
-    award: ImageMedia;
-    network: ImageMedia;
-    academy: ImageMedia;
-    forum: ImageMedia;
+    award: ImageAsset;
+    network: ImageAsset;
+    academy: ImageAsset;
+    convention: ImageAsset;
   };
 }
 
@@ -38,7 +37,7 @@ export function LandingPage({ heroVideo, images }: ILandingPageProps) {
           </div>
         </div>
       </header>
-      <main className="snap-start snap-always pt-16 pb-24 md:pt-32 md:pb-64">
+      <main className="snap-start snap-always pb-24 pt-16 md:pb-64 md:pt-32">
         <section className="container grid gap-8 md:grid-cols-2">
           <LinkTile
             label={t("links.award")}
@@ -62,7 +61,7 @@ export function LandingPage({ heroVideo, images }: ILandingPageProps) {
           />
           <LinkTile
             label={t("links.forum")}
-            image={images.forum}
+            image={images.convention}
             href={`/${locale}/convention`}
             className="aspect-video"
             initial={{ scale: 0.9, opacity: 0.5 }}
@@ -96,7 +95,7 @@ function Flip(chunks: ReactNode) {
 }
 function Static(chunks: ReactNode) {
   return (
-    <span className="block text-4xl font-light text-balance lg:text-5xl">
+    <span className="block text-balance text-4xl font-light lg:text-5xl">
       {chunks}
     </span>
   );

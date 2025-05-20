@@ -1,18 +1,21 @@
 "use client";
 
 import { type PropsWithChildren } from "react";
-import { MESSAGES_SCHEMA, Locale } from "@/i18n/config";
+import Image from "next/image";
 import { CMSProvider } from "@davincicoding/cms/config";
-import { MessagesEditor } from "@davincicoding/cms/messages";
 import {
   GlobalsCreate,
   GlobalsEdit,
   GlobalsList,
 } from "@davincicoding/cms/globals";
-import { Route } from "react-router-dom";
+import { MenuDivider } from "@davincicoding/cms/layout";
+import {
+  MediaLibraryCreate,
+  MediaLibraryEdit,
+  MediaLibraryList,
+} from "@davincicoding/cms/media";
+import { MessagesEditor } from "@davincicoding/cms/messages";
 import { Button } from "@mui/material";
-import { revalidateCache } from "@/server/actions";
-import { fetchCachedMessages, saveMessages } from "@/server/messages";
 import {
   IconBuilding,
   IconCircleLetterB,
@@ -32,12 +35,12 @@ import {
 import {
   Admin,
   AppBar,
+  CustomRoutes,
   Layout,
   Menu,
   Resource,
-  TitlePortal,
-  CustomRoutes,
   Title,
+  TitlePortal,
   useNotify,
   withLifecycleCallbacks,
 } from "react-admin";
@@ -45,13 +48,15 @@ import {
   FirebaseAuthProvider,
   FirebaseDataProvider,
 } from "react-admin-firebase";
-import Image from "next/image";
-
-import { MediaCreate, MediaEdit, MediaList } from "./lib/media";
+import { Route } from "react-router-dom";
 
 import { env } from "@/env";
+import { Locale, MESSAGES_SCHEMA } from "@/i18n/config";
+import { imageOptimizer, revalidateCache } from "@/server/actions";
+import { fetchCachedMessages, saveMessages } from "@/server/messages";
 
-import { MenuDivider } from "./components/menu";
+import { GLOBALS } from "./globals";
+import { MEDIA_LIBRARY } from "./media";
 import {
   AgenciesCreate,
   AgenciesEdit,
@@ -92,7 +97,6 @@ import {
   InfluencersEdit,
   InfluencersList,
 } from "./resources/influencer";
-import { GLOBALS } from "./globals";
 
 const config = {
   projectId: env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
@@ -109,9 +113,9 @@ const dataProvider = withLifecycleCallbacks(
   }),
   [
     {
-      resource: "globals",
+      resource: "media",
       afterUpdate: async (result) => {
-        void revalidateCache("globals");
+        void revalidateCache("media");
         return result;
       },
     },
@@ -127,7 +131,11 @@ export function AdminApp() {
     <CMSProvider
       config={{
         globals: GLOBALS,
-        images: {},
+        images: {
+          Component: Image,
+          optimizer: imageOptimizer,
+        },
+        media: MEDIA_LIBRARY,
       }}
     >
       <Admin
@@ -143,6 +151,7 @@ export function AdminApp() {
                 <Title title="Translations" />
                 <MessagesEditor
                   schema={MESSAGES_SCHEMA}
+                  // @ts-expect-error TODO: fix this
                   locales={Locale.options}
                   fetchMessages={fetchCachedMessages}
                   saveMessages={saveMessages}
@@ -158,10 +167,11 @@ export function AdminApp() {
         </CustomRoutes>
 
         <Resource
-          name="media"
-          list={MediaList}
-          create={MediaCreate}
-          edit={MediaEdit}
+          name="media-library"
+          options={{ label: "Media Library" }}
+          list={MediaLibraryList}
+          create={MediaLibraryCreate}
+          edit={MediaLibraryEdit}
           icon={IconPhotoVideo}
           recordRepresentation="id"
         />
@@ -301,25 +311,8 @@ export function CustomAppBar() {
         size="small"
         variant="outlined"
         type="button"
-        href="/?preview=true"
-        target="_blank"
-      >
-        Preview
-      </Button>
-      <Button
-        size="small"
-        variant="outlined"
-        type="button"
         sx={{ marginLeft: 1 }}
-        onClick={() =>
-          fetch("/api/cms/revalidate", {
-            method: "POST",
-            headers: {
-              // TODO do not expose to client
-              Authorization: `Bearer PXC2dxjBjl/ix2aeP/9lsztsslW1EgNIYR/u3G3i0Mc=`,
-            },
-          })
-        }
+        onClick={() => revalidateCache("cms")}
       >
         Publish
       </Button>
@@ -337,7 +330,7 @@ export function CustomMenu() {
         leftIcon={<IconLanguage />}
       />
       <Menu.ResourceItem name="globals" />
-      <Menu.ResourceItem name="media" />
+      <Menu.ResourceItem name="media-library" />
       <MenuDivider />
       <Menu.ResourceItem name="influencers" />
       <Menu.ResourceItem name="experts" />

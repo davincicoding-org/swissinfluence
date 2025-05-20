@@ -1,9 +1,7 @@
+import { ImageGalleryInput } from "@davincicoding/cms/image";
 import { Box, Button } from "@mui/material";
 import { required, TextInput } from "react-admin";
-
 import { useController } from "react-hook-form";
-
-import { ImageGalleryInput } from "@davincicoding/cms/media";
 
 import type { IAwardDocument } from "./schema";
 

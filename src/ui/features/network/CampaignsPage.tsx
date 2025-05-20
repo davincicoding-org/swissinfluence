@@ -1,7 +1,6 @@
+import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button, Paper, Stack } from "@mantine/core";
 import { useTranslations } from "next-intl";
-
-import { type ImageMedia } from "@/cms/lib/fields";
 
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
@@ -10,7 +9,7 @@ import { type ICampaign } from "./data";
 import { CampaignDiscovery } from "./views/CampaignDiscovery";
 
 export interface ICampaignsPageProps {
-  heroImage: ImageMedia;
+  heroImage: ImageAsset;
   campaigns: Array<ICampaign>;
   campaignForm: string;
 }
@@ -25,7 +24,7 @@ export function CampaignsPage({
   return (
     <>
       <PageHero image={heroImage} title={t("title")} className="snap-start" />
-      <main className="relative z-20 snap-start bg-white/80 pt-12 pb-32 backdrop-blur">
+      <main className="relative z-20 snap-start bg-white/80 pb-32 pt-12 backdrop-blur">
         <Stack component="section" className="container" gap="xl">
           <Paper
             withBorder
@@ -47,7 +46,7 @@ export function CampaignsPage({
             radius="lg"
             className="flex justify-between gap-6 bg-neutral-200 p-8 max-md:flex-col"
           >
-            <h3 className="text-3xl text-balance">{t("request.title")}</h3>
+            <h3 className="text-balance text-3xl">{t("request.title")}</h3>
             <Button
               component="a"
               href={campaignForm}

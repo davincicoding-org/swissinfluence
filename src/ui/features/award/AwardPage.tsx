@@ -1,7 +1,6 @@
+import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button } from "@mantine/core";
 import { useTranslations } from "next-intl";
-
-import { type ImageMedia } from "@/cms/lib/fields";
 
 import { PageHero } from "@/ui/components/PageHero";
 
@@ -19,8 +18,8 @@ import { HallOfFame } from "./views/HallOfFame";
 import { NewcomerScout } from "./views/NewcomerScout";
 
 export interface IAwardPageProps extends IAwardPageData {
-  heroImage: ImageMedia;
-  newcomerScoutImage: ImageMedia;
+  heroImage: ImageAsset;
+  newcomerScoutImage: ImageAsset;
 }
 
 export function AwardPage({

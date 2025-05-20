@@ -1,3 +1,5 @@
+import { ImageInput } from "@davincicoding/cms/image";
+import { TranslatableTextInput } from "@davincicoding/cms/text";
 import { IconUserSquare } from "@tabler/icons-react";
 import {
   Create,
@@ -14,14 +16,10 @@ import {
   TranslatableInputs,
 } from "react-admin";
 
-import { ImageInput } from "@/cms/lib/components";
-
 import { routing } from "@/i18n/routing";
 
 import { SocialsInput } from "../../components/socials";
-import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../lib/utils/guards";
-
+import { createGuard, editGuard } from "../../guards";
 import { ExpertDocumentSchema } from "./schema";
 
 /* List */

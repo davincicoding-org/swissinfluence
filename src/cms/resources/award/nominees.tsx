@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-
+import { AddButton, Fieldset } from "@davincicoding/cms/layout";
 import { Box, IconButton } from "@mui/material";
 import { IconX } from "@tabler/icons-react";
 import {
@@ -10,19 +10,13 @@ import {
   useSimpleFormIteratorItem,
   useWrappedSource,
 } from "react-admin";
-
 import { useWatch } from "react-hook-form";
 
-import { AddButton } from "../../components/array";
-import { Fieldset } from "../../components/layout";
-import {
-  type IDocumentChoice,
-  useDocumentChoices,
-} from "../../lib/utils/hooks";
+import type { IDocumentChoice } from "../../hooks";
 import type { ICategoryDocument } from "../category/schema";
 import type { IInfluencerDocument } from "../influencer/schema";
-
 import type { IAwardDocument } from "./schema";
+import { useDocumentChoices } from "../../hooks";
 
 export function NomineesSection() {
   const categories = useWatch<IAwardDocument, "categories">({
@@ -55,7 +49,7 @@ export function NomineesSection() {
       }}
     >
       {resolvedCategories.map(({ category, nominees }, index) => (
-        <Fieldset key={category.id} legend={category.name}>
+        <Fieldset key={category.id} label={category.name}>
           <CategoryNomineesInput
             source={`categories.${index}.nominees`}
             nominees={nominees}

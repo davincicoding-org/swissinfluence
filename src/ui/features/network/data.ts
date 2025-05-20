@@ -1,35 +1,23 @@
+import type { ImageAsset, ImageMedia } from "@davincicoding/cms/image";
 import { unstable_cache } from "next/cache";
-
 import { groupBy } from "lodash-es";
 
-import { type ImageMedia } from "@/cms/lib/fields";
-
+import type { IBrandDocument } from "@/cms/resources/brand/schema";
+import type { ICampaignDocument } from "@/cms/resources/campaign/schema";
+import type { ICertifiedIInfluencerDocument } from "@/cms/resources/certified-influencer/schema";
+import type { IEventDocument } from "@/cms/resources/event/schema";
 import { type SocialMedia, type Translatable } from "@/cms/common";
 import { AgencyDocumentSchema } from "@/cms/resources/agency/schema";
-import {
-  BrandDocumentSchema,
-  type IBrandDocument,
-} from "@/cms/resources/brand/schema";
-import {
-  CampaignDocumentSchema,
-  type ICampaignDocument,
-} from "@/cms/resources/campaign/schema";
+import { BrandDocumentSchema } from "@/cms/resources/brand/schema";
+import { CampaignDocumentSchema } from "@/cms/resources/campaign/schema";
 import { getCategories } from "@/cms/resources/category/data";
 import { type ICategoryDocument } from "@/cms/resources/category/schema";
 import { type SwissCantonCode } from "@/cms/resources/certified-influencer/cantons";
-import {
-  CertifiedInfluencerDocumentSchema,
-  type ICertifiedIInfluencerDocument,
-} from "@/cms/resources/certified-influencer/schema";
+import { CertifiedInfluencerDocumentSchema } from "@/cms/resources/certified-influencer/schema";
+import { EventDocumentSchema } from "@/cms/resources/event/schema";
 import { InfluencerDocumentSchema } from "@/cms/resources/influencer/schema";
 import { db } from "@/database/firebase";
 import { type SupportedLocale } from "@/i18n/config";
-import { isPreview } from "@/cms/preview";
-
-import {
-  EventDocumentSchema,
-  type IEventDocument,
-} from "@/cms/resources/event/schema";
 
 /* Campaigns */
 
@@ -72,13 +60,9 @@ export const fetchCampaigns = async (): Promise<Array<ICampaign>> => {
   });
 };
 
-export const getCampaigns = async () => {
-  if (await isPreview()) return fetchCampaigns();
-
-  return unstable_cache(fetchCampaigns, [], {
-    tags: ["cms"],
-  })();
-};
+export const getCampaigns = unstable_cache(fetchCampaigns, [], {
+  tags: ["cms"],
+});
 
 /* Certified Influencers */
 
@@ -86,7 +70,7 @@ export interface ICertifiedInfluencer {
   id: string;
   name: string;
   thumbnail: ImageMedia;
-  heroImage: ImageMedia;
+  heroImage: ImageAsset;
   socials: Array<SocialMedia>;
   categories: Array<ICategoryDocument>;
   about: Translatable;
@@ -135,6 +119,7 @@ const resolveCertifiedInfluencer = async ({
   return {
     id,
     name,
+    // @ts-expect-error - poorly typed
     heroImage,
     thumbnail,
     socials,

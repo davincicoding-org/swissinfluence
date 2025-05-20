@@ -1,3 +1,4 @@
+import { ImageInput } from "@davincicoding/cms/image";
 import {
   Create,
   Datagrid,
@@ -11,8 +12,6 @@ import {
   TextInput,
   Toolbar,
 } from "react-admin";
-
-import { ImageInput } from "@/cms/lib/components";
 
 /* List */
 

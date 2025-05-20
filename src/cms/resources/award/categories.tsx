@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-
+import { AddButton } from "@davincicoding/cms/layout";
 import { Box, CircularProgress } from "@mui/material";
 import {
   ArrayInput,
@@ -11,13 +11,9 @@ import {
 } from "react-admin";
 import { useWatch } from "react-hook-form";
 
-import { AddButton } from "../../components/array";
-import {
-  type IDocumentChoice,
-  useDocumentChoices,
-} from "../../lib/utils/hooks";
+import type { IDocumentChoice } from "../../hooks";
 import type { ICategoryDocument } from "../category/schema";
-
+import { useDocumentChoices } from "../../hooks";
 import { type IAwardDocument } from "./schema";
 
 export function CategoriesInput({

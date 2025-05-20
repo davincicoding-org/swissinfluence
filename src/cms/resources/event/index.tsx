@@ -1,3 +1,6 @@
+import { ImageInput } from "@davincicoding/cms/image";
+import { Fieldset } from "@davincicoding/cms/layout";
+import { RichTextInput, TranslatableTextInput } from "@davincicoding/cms/text";
 import {
   BooleanInput,
   Create,
@@ -13,15 +16,9 @@ import {
   TranslatableInputs,
 } from "react-admin";
 
-import { ImageInput } from "@/cms/lib/components";
-
 import { routing } from "@/i18n/routing";
 
-import { Fieldset } from "../../components/layout";
-import { CustomRichTextInput } from "../../components/text";
-import { TranslatableTextInput } from "../../components/translatable";
-import { createGuard, editGuard } from "../../lib/utils/guards";
-
+import { createGuard, editGuard } from "../../guards";
 import { EventDocumentSchema } from "./schema";
 
 /* List */
@@ -98,7 +95,7 @@ export function EventsCreate() {
                   gap: "0.5rem",
                 }}
               >
-                <Fieldset legend="Date*">
+                <Fieldset label="Date*">
                   <DateTimeInput
                     label="From"
                     source="date.from"
@@ -114,7 +111,7 @@ export function EventsCreate() {
                   />
                 </Fieldset>
                 <Fieldset
-                  legend={
+                  label={
                     <BooleanInput
                       label="Ticket Sale"
                       source="ticketSale.open"
@@ -140,7 +137,7 @@ export function EventsCreate() {
                   />
                 </Fieldset>
               </div>
-              <Fieldset legend="Location*">
+              <Fieldset label="Location*">
                 <TextInput
                   source="location.name"
                   variant="outlined"
@@ -173,8 +170,8 @@ export function EventsCreate() {
                 validate={required("Add campaign title")}
                 helperText={false}
               />
-              <Fieldset legend="Description*" style={{ marginTop: "1rem" }}>
-                <CustomRichTextInput
+              <Fieldset label="Description*" style={{ marginTop: "1rem" }}>
+                <RichTextInput
                   source="description"
                   label={false}
                   variant="outlined"
@@ -244,7 +241,7 @@ export function EventsEdit() {
                   gap: "0.5rem",
                 }}
               >
-                <Fieldset legend="Date*">
+                <Fieldset label="Date*">
                   <DateTimeInput
                     label="From"
                     source="date.from"
@@ -260,7 +257,7 @@ export function EventsEdit() {
                   />
                 </Fieldset>
                 <Fieldset
-                  legend={
+                  label={
                     <BooleanInput
                       label="Ticket Sale"
                       source="ticketSale.open"
@@ -286,7 +283,7 @@ export function EventsEdit() {
                   />
                 </Fieldset>
               </div>
-              <Fieldset legend="Location*">
+              <Fieldset label="Location*">
                 <TextInput
                   source="location.name"
                   variant="outlined"
@@ -319,8 +316,8 @@ export function EventsEdit() {
                 validate={required("Add campaign title")}
                 helperText={false}
               />
-              <Fieldset legend="Description*" style={{ marginTop: "1rem" }}>
-                <CustomRichTextInput
+              <Fieldset label="Description*" style={{ marginTop: "1rem" }}>
+                <RichTextInput
                   source="description"
                   label={false}
                   variant="outlined"

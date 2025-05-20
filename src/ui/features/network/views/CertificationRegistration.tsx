@@ -1,19 +1,18 @@
 "use client";
-import Image from "next/image";
 
+import type { ImageAsset } from "@davincicoding/cms/image";
+import Image from "next/image";
 import { Button, FocusTrap, Modal, Paper } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useTranslations } from "next-intl";
 
-import { type ImageMedia } from "@/cms/lib/fields";
-import { cn } from "@/ui/utils";
-
 import { RichText } from "@/ui/components/RichText";
+import { cn } from "@/ui/utils";
 
 export interface ICertificationRegistrationProps {
   title: string;
   headline: string;
-  image: ImageMedia;
+  image: ImageAsset;
   description: string;
   application: {
     label: string;

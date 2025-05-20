@@ -1,13 +1,11 @@
+import type { ImageMedia } from "@davincicoding/cms/image";
 import { unstable_cache } from "next/cache";
-
-import { type ImageMedia } from "@/cms/lib/fields";
 
 import { type SocialMedia, type Translatable } from "@/cms/common";
 import { BrandDocumentSchema } from "@/cms/resources/brand/schema";
 import { ConventionDocumentSchema } from "@/cms/resources/convention/schema";
 import { ExpertDocumentSchema } from "@/cms/resources/expert/schema";
 import { db } from "@/database/firebase";
-import { isPreview } from "@/cms/preview";
 
 export interface IConventionPageData {
   event: IConventionEvent | null;
@@ -120,9 +118,10 @@ export const fetchConventionPageData =
     };
   };
 
-export const getConventionPageData = async () => {
-  if (await isPreview()) return fetchConventionPageData();
-  return unstable_cache(fetchConventionPageData, [], {
+export const getConventionPageData = unstable_cache(
+  fetchConventionPageData,
+  [],
+  {
     tags: ["cms"],
-  })();
-};
+  },
+);

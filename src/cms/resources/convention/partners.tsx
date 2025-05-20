@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-
+import { AddButton } from "@davincicoding/cms/layout";
 import { Box, CircularProgress } from "@mui/material";
 import {
   ArrayInput,
@@ -8,18 +8,13 @@ import {
   SimpleFormIterator,
   useSimpleFormIteratorItem,
 } from "react-admin";
-
 import { useWatch } from "react-hook-form";
 
-import { AddButton } from "../../components/array";
-import {
-  type IDocumentChoice,
-  useDocumentChoices,
-} from "../../lib/utils/hooks";
-import { type IBrandDocument } from "../brand/schema";
+import type { IDocumentChoice } from "../../hooks";
 import type { ICategoryDocument } from "../category/schema";
-
 import type { IConventionDocument } from "./schema";
+import { useDocumentChoices } from "../../hooks";
+import { type IBrandDocument } from "../brand/schema";
 
 export function PartnersInput({
   defaultValue = [],

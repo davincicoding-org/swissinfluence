@@ -1,10 +1,18 @@
 "use server";
 
+import type { ImageOptimizer } from "@davincicoding/cms/image";
+import type { MediaAsset } from "@davincicoding/cms/media";
 import { revalidateTag } from "next/cache";
+import { optimizeImage } from "@davincicoding/cms/server";
 
-import { cachedRequest, type CacheTag } from "./cache";
-import { GLOBALS, type GlobalId, type GlobalData } from "@/cms/globals";
+import type { GlobalData, GlobalId } from "@/cms/globals";
+import type { MediaLibrary } from "@/cms/media";
+import { GLOBALS } from "@/cms/globals";
 import { db } from "@/database/firebase";
+
+import type { CacheTag } from "./cache";
+import { cachedRequest } from "./cache";
+
 export const revalidateCache = async (tag: CacheTag) => revalidateTag(tag);
 
 export const fetchGlobal = cachedRequest(
@@ -33,3 +41,27 @@ export const fetchGlobals = cachedRequest(async (): Promise<{
     },
   );
 }, ["globals"]);
+
+export const fetchMedia = cachedRequest(async () => {
+  const { docs } = await db.collection("media-library").get();
+
+  return docs.reduce<MediaLibrary>((acc, doc) => {
+    const data = doc.data() as Record<string, MediaAsset>;
+
+    const group = Object.entries(data).reduce(
+      (acc, [name, { file }]) => ({
+        ...acc,
+        [name]: file,
+      }),
+      {},
+    );
+
+    return {
+      ...acc,
+      [doc.id]: group,
+    };
+  }, {} as MediaLibrary);
+}, ["media"]);
+
+export const imageOptimizer: ImageOptimizer = async (image, options) =>
+  optimizeImage(image, options);

@@ -1,31 +1,27 @@
 import "./globals.css";
 
+import type { Metadata } from "next";
+import { Montserrat } from "next/font/google";
 import {
-  Badge,
-  Center,
   ColorSchemeScript,
-  MantineProvider,
   mantineHtmlProps,
+  MantineProvider,
 } from "@mantine/core";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
-import { Montserrat } from "next/font/google";
-
-import { cn } from "@/ui/utils";
 
 import { env } from "@/env";
 import { type SupportedLocale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
-import { isPreview } from "@/cms/preview";
+import { fetchGlobals } from "@/server/actions";
 import { theme } from "@/theme";
+import { cn } from "@/ui/utils";
 
 import { Footer } from "./Footer";
 import { Navigation } from "./Navigation";
 import Scroll from "./Scroll";
-import { fetchGlobals } from "@/server/actions";
 
 const poppins = Montserrat({
   subsets: ["latin"],
@@ -49,7 +45,6 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: SupportedLocale }>;
 }>) {
-  const preview = await isPreview();
   const { locale } = await params;
   const [messages, globals, t] = await Promise.all([
     getMessages(),
@@ -135,11 +130,6 @@ export default async function LocaleLayout({
               contactURL={globals.forms.contact}
               newsletterURL={globals.forms.newsletter}
             />
-            {preview ? (
-              <Center pos="fixed" className="inset-x-0 top-8 z-50">
-                <Badge size="xl">Preview</Badge>
-              </Center>
-            ) : null}
           </NextIntlClientProvider>
         </MantineProvider>
         <SpeedInsights />

@@ -1,20 +1,19 @@
-import { getMedia } from "@/cms/lib/server";
-
+import { fetchGlobal, fetchMedia } from "@/server/actions";
 import {
-  CertifiedInfluencersPage as View,
   getCertifiedInfluencers,
+  CertifiedInfluencersPage as View,
 } from "@/ui/features/network";
-import { fetchGlobal } from "@/server/actions";
+
 export default async function InfluencersPage() {
-  const media = await getMedia();
+  const media = await fetchMedia();
   const forms = await fetchGlobal("forms");
   const pool = await getCertifiedInfluencers();
 
   return (
     <View
-      heroImage={media.network.images.influencers}
-      influencerImage={media.network.images["influencer-certification"]}
-      agencyImage={media.network.images["agency-certification"]}
+      heroImage={media.network.influencers}
+      influencerImage={media.network["influencer-certification"]}
+      agencyImage={media.network["agency-certification"]}
       pool={pool}
       influencerForm={forms.influencerApplication}
       agencyForm={forms.agencyApplication}
