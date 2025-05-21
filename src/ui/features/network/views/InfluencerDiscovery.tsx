@@ -1,21 +1,14 @@
 "use client";
+
+import type { ComboboxItem } from "@mantine/core";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useState } from "react";
-
-import {
-  Button,
-  type ComboboxItem,
-  Flex,
-  Paper,
-  ScrollArea,
-  Tabs,
-} from "@mantine/core";
+import { Button, Flex, Paper, ScrollArea, Tabs } from "@mantine/core";
 import { useLocale } from "next-intl";
 
-import { cn } from "@/ui/utils";
-
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
+import { cn } from "@/ui/utils";
 
 import { type ICertifiedInfluencersByCategory } from "../data";
 
@@ -72,7 +65,7 @@ export function InfluencerDiscovery({
                   color={value === selectedCategoryID ? "mocha" : "gray"}
                   variant={value === selectedCategoryID ? "filled" : "subtle"}
                   className={cn(
-                    "scroll-mx-3 uppercase tracking-widest transition-colors",
+                    "shrink-0 scroll-mx-3 uppercase tracking-widest transition-colors",
                     {
                       "pointer-events-none": value === selectedCategoryID,
                     },
