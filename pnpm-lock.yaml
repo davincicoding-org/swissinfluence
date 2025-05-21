@@ -53,6 +53,9 @@ importers:
       deepl-node:
         specifier: ^1.18.0
         version: 1.18.0
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       drizzle-orm:
         specifier: ^0.43.1
         version: 0.43.1(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(postgres@3.4.6)
@@ -87,7 +90,7 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0(next@15.3.2(@babel/core@7.27.1)(@opentelemetry/api@1.9.0)(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(typescript@5.8.3)
       postgres:
-        specifier: ^3.4.5
+        specifier: ^3.4.6
         version: 3.4.6
       react:
         specifier: ^19.0.0
@@ -228,6 +231,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
+      tsx:
+        specifier: ^4.19.4
+        version: 4.19.4
       typescript:
         specifier: ^5.8.2
         version: 5.8.3
@@ -236,7 +242,7 @@ importers:
         version: 8.32.1(eslint@9.27.0(jiti@2.4.2))(typescript@5.8.3)
       vite:
         specifier: ^6.3.5
-        version: 6.3.5(@types/node@20.17.50)(jiti@2.4.2)(lightningcss@1.30.1)(sugarss@4.0.1(postcss@8.5.3))(terser@5.39.2)(yaml@2.8.0)
+        version: 6.3.5(@types/node@20.17.50)(jiti@2.4.2)(lightningcss@1.30.1)(sugarss@4.0.1(postcss@8.5.3))(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0)
 
 packages:
 
@@ -7258,6 +7264,11 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
+  tsx@4.19.4:
+    resolution: {integrity: sha512-gK5GVzDkJK1SI1zwHf32Mqxf2tSJkNx+eYcNly5+nHvWqXUJYUkWBQtKauoESz3ymezAI++ZwT855x5p5eop+Q==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   tty-browserify@0.0.1:
     resolution: {integrity: sha512-C3TaO7K81YvjCgQH9Q1S3R3P3BtN3RIM8n+OvX4il1K1zgE8ZhI0op7kClgkxtutIE8hQrcrHBXvIheqKUUCxw==}
@@ -15647,6 +15658,13 @@ snapshots:
 
   tslib@2.8.1: {}
 
+  tsx@4.19.4:
+    dependencies:
+      esbuild: 0.25.4
+      get-tsconfig: 4.10.1
+    optionalDependencies:
+      fsevents: 2.3.3
+
   tty-browserify@0.0.1: {}
 
   type-check@0.4.0:
@@ -15862,7 +15880,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite@6.3.5(@types/node@20.17.50)(jiti@2.4.2)(lightningcss@1.30.1)(sugarss@4.0.1(postcss@8.5.3))(terser@5.39.2)(yaml@2.8.0):
+  vite@6.3.5(@types/node@20.17.50)(jiti@2.4.2)(lightningcss@1.30.1)(sugarss@4.0.1(postcss@8.5.3))(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0):
     dependencies:
       esbuild: 0.25.4
       fdir: 6.4.4(picomatch@4.0.2)
@@ -15877,6 +15895,7 @@ snapshots:
       lightningcss: 1.30.1
       sugarss: 4.0.1(postcss@8.5.3)
       terser: 5.39.2
+      tsx: 4.19.4
       yaml: 2.8.0
 
   vm-browserify@1.1.2: {}
