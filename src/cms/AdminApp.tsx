@@ -53,7 +53,7 @@ import {
 } from "react-admin";
 import { Route } from "react-router-dom";
 
-import type { categories } from "@/database/schema";
+import type { categories, influencers } from "@/database/schema";
 import { supabaseClient } from "@/database/supabase";
 import { env } from "@/env";
 import { Locale, MESSAGES_SCHEMA } from "@/i18n/config";
@@ -123,6 +123,13 @@ const dataProvider = withLifecycleCallbacks(
       bucket: "images",
       generatePath: (resource, extension) =>
         `categories/${resource.title.en}.${extension}`,
+    }),
+    imageStorageHandler<typeof influencers.$inferSelect>({
+      supabaseClient,
+      resource: "influencers",
+      bucket: "images",
+      generatePath: (resource, extension) =>
+        `influencers/${resource.name}-${Date.now()}.${extension}`,
     }),
   ],
 );
@@ -198,6 +205,24 @@ export function AdminApp() {
           recordRepresentation="id"
         /> */}
 
+        <Resource
+          name="categories"
+          list={CategoriesList}
+          edit={CategoriesEdit}
+          create={CategoriesCreate}
+          recordRepresentation="title.en"
+          icon={IconFolder}
+        />
+
+        <Resource
+          name="influencers"
+          list={InfluencersList}
+          edit={InfluencersEdit}
+          create={InfluencersCreate}
+          recordRepresentation="name"
+          icon={IconStar}
+        />
+
         {/* <Resource
           name="awards"
           list={AwardsList}
@@ -215,24 +240,6 @@ export function AdminApp() {
           create={CreatorChallengesCreate}
           recordRepresentation="title.en"
           icon={IconSwords}
-        /> */}
-
-        <Resource
-          name="categories"
-          list={CategoriesList}
-          edit={CategoriesEdit}
-          create={CategoriesCreate}
-          recordRepresentation="title.en"
-          icon={IconFolder}
-        />
-
-        {/* <Resource
-          name="influencers"
-          list={InfluencersList}
-          edit={InfluencersEdit}
-          create={InfluencersCreate}
-          recordRepresentation="name"
-          icon={IconStar}
         /> */}
 
         {/* <Resource
@@ -304,7 +311,7 @@ function CustomLayout({ children }: PropsWithChildren) {
   return (
     <Layout
       appBar={CustomAppBar}
-      // menu={CustomMenu}
+      menu={CustomMenu}
       sx={{
         "& .RaLayout-appFrame	": {
           width: "100vw",

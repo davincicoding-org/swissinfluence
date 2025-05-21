@@ -1,10 +1,10 @@
-import { ImageInput } from "@davincicoding/cms/image";
+import { ImageField, ImageInput } from "@davincicoding/cms/image";
+import { Box } from "@mui/material";
 import { IconUserSquare } from "@tabler/icons-react";
 import {
   Create,
   Datagrid,
   Edit,
-  ImageField,
   List,
   required,
   SaveButton,
@@ -15,8 +15,6 @@ import {
 } from "react-admin";
 
 import { SocialsInput } from "../../components/socials";
-import { createGuard, editGuard } from "../../guards";
-import { InfluencerDocumentSchema } from "./schema";
 
 /* List */
 
@@ -32,18 +30,13 @@ export function InfluencersList() {
         }}
       >
         <ImageField
-          label="Image"
+          // @ts-expect-error hack
+          label={false}
           source="image.src"
-          sx={{
-            "& .RaImageField-image": {
-              width: 50,
-              height: 50,
-              margin: 0,
-              objectFit: "cover",
-            },
-          }}
+          width={50}
+          height={50}
         />
-        <TextField source="name" />
+        <TextField source="name" label="Influencer" />
       </Datagrid>
     </List>
   );
@@ -53,13 +46,12 @@ export function InfluencersList() {
 
 export function InfluencersCreate() {
   return (
-    <Create redirect="list" transform={createGuard(InfluencerDocumentSchema)}>
+    <Create redirect="list">
       <SimpleForm>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "200px 1fr",
-            gap: "1rem",
+        <Box
+          sx={{
+            display: "flex",
+            gap: 3,
             width: "100%",
           }}
         >
@@ -67,18 +59,22 @@ export function InfluencersCreate() {
             label={false}
             source="image"
             validate={required("Add a photo")}
-            aspectRatio={1 / 1}
+            previewProps={{ width: 200, height: 200 }}
             PlaceholderIcon={IconUserSquare}
             optimization={{
-              compression: "profile-picture",
               resize: {
                 width: 600,
                 height: 600,
               },
             }}
           />
-          <div
-            style={{ display: "grid", alignContent: "start", gap: "0.5rem" }}
+          <Box
+            style={{
+              display: "grid",
+              flex: 1,
+              alignContent: "start",
+              gap: 1,
+            }}
           >
             <TextInput
               label="Name"
@@ -100,8 +96,8 @@ export function InfluencersCreate() {
                 },
               ]}
             />
-          </div>
-        </div>
+          </Box>
+        </Box>
       </SimpleForm>
     </Create>
   );
@@ -111,7 +107,7 @@ export function InfluencersCreate() {
 
 export function InfluencersEdit() {
   return (
-    <Edit redirect="list" transform={editGuard(InfluencerDocumentSchema)}>
+    <Edit redirect="list">
       <SimpleForm
         toolbar={
           <Toolbar>
@@ -131,7 +127,7 @@ export function InfluencersEdit() {
             label={false}
             source="image"
             validate={required("Add a photo")}
-            aspectRatio={1 / 1}
+            previewProps={{ aspectRatio: 1 }}
             PlaceholderIcon={IconUserSquare}
             optimization={{
               compression: "profile-picture",
