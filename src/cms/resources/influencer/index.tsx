@@ -29,13 +29,7 @@ export function InfluencersList() {
           },
         }}
       >
-        <ImageField
-          // @ts-expect-error hack
-          label={false}
-          source="image.src"
-          width={50}
-          height={50}
-        />
+        <ImageField label={false} source="image.src" width={50} height={50} />
         <TextField source="name" label="Influencer" />
       </Datagrid>
     </List>

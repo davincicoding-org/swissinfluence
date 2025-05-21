@@ -223,6 +223,15 @@ export function AdminApp() {
           icon={IconStar}
         />
 
+        <Resource
+          name="experts"
+          list={ExpertsList}
+          edit={ExpertsEdit}
+          create={ExpertsCreate}
+          recordRepresentation="name"
+          icon={IconUser}
+        />
+
         {/* <Resource
           name="awards"
           list={AwardsList}
@@ -240,15 +249,6 @@ export function AdminApp() {
           create={CreatorChallengesCreate}
           recordRepresentation="title.en"
           icon={IconSwords}
-        /> */}
-
-        {/* <Resource
-          name="experts"
-          list={ExpertsList}
-          edit={ExpertsEdit}
-          create={ExpertsCreate}
-          recordRepresentation="name"
-          icon={IconUser}
         /> */}
 
         {/* <Resource

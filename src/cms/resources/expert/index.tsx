@@ -1,26 +1,22 @@
-import { ImageInput } from "@davincicoding/cms/image";
+import { ImageField, ImageInput } from "@davincicoding/cms/image";
 import { TranslatableTextInput } from "@davincicoding/cms/text";
+import { Box } from "@mui/material";
 import { IconUserSquare } from "@tabler/icons-react";
 import {
   Create,
   Datagrid,
   Edit,
-  ImageField,
   List,
   required,
-  SaveButton,
   SimpleForm,
   TextField,
   TextInput,
-  Toolbar,
   TranslatableInputs,
 } from "react-admin";
 
 import { routing } from "@/i18n/routing";
 
 import { SocialsInput } from "../../components/socials";
-import { createGuard, editGuard } from "../../guards";
-import { ExpertDocumentSchema } from "./schema";
 
 /* List */
 
@@ -35,19 +31,8 @@ export function ExpertsList() {
           },
         }}
       >
-        <ImageField
-          label="Image"
-          source="image.src"
-          sx={{
-            "& .RaImageField-image": {
-              width: 50,
-              height: 50,
-              margin: 0,
-              objectFit: "cover",
-            },
-          }}
-        />
-        <TextField source="name" />
+        <ImageField label={false} source="image.src" width={50} height={50} />
+        <TextField source="name" label="Expert" />
       </Datagrid>
     </List>
   );
@@ -57,14 +42,12 @@ export function ExpertsList() {
 
 export function ExpertsCreate() {
   return (
-    <Create redirect="list" transform={createGuard(ExpertDocumentSchema)}>
+    <Create redirect="list">
       <SimpleForm>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(200px, 300px) 1fr",
-            gap: "1rem",
-            marginBottom: "0.5rem",
+        <Box
+          sx={{
+            display: "flex",
+            gap: 3,
             width: "100%",
           }}
         >
@@ -72,23 +55,24 @@ export function ExpertsCreate() {
             label={false}
             source="image"
             validate={required("Add a photo")}
-            aspectRatio={1 / 1}
+            previewProps={{ width: 200, height: 200 }}
             PlaceholderIcon={IconUserSquare}
             optimization={{
-              compression: "profile-picture",
               resize: {
                 square: 600,
               },
             }}
           />
-          <div style={{ display: "grid", alignContent: "start" }}>
+          <Box sx={{ display: "grid", flex: 1, alignContent: "start" }}>
             <TextInput
               source="name"
               variant="outlined"
               validate={required("Add a name")}
               helperText={false}
-              InputProps={{
-                autoComplete: "off",
+              slotProps={{
+                input: {
+                  autoComplete: "off",
+                },
               }}
             />
 
@@ -100,16 +84,18 @@ export function ExpertsCreate() {
                 placeholder="Description *"
                 helperText={false}
                 fullWidth
-                InputProps={{
-                  autoComplete: "off",
+                slotProps={{
+                  input: {
+                    autoComplete: "off",
+                  },
                 }}
                 validate={required("Add a description")}
               />
             </TranslatableInputs>
 
             <SocialsInput source="socials" fullWidth />
-          </div>
-        </div>
+          </Box>
+        </Box>
       </SimpleForm>
     </Create>
   );
@@ -119,20 +105,12 @@ export function ExpertsCreate() {
 
 export function ExpertsEdit() {
   return (
-    <Edit transform={editGuard(ExpertDocumentSchema)}>
-      <SimpleForm
-        toolbar={
-          <Toolbar>
-            <SaveButton />
-          </Toolbar>
-        }
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(200px, 300px) 1fr",
-            gap: "1rem",
-            marginBottom: "0.5rem",
+    <Edit>
+      <SimpleForm>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 3,
             width: "100%",
           }}
         >
@@ -140,23 +118,24 @@ export function ExpertsEdit() {
             label={false}
             source="image"
             validate={required("Add a photo")}
-            aspectRatio={1 / 1}
+            previewProps={{ width: 200, height: 200 }}
             PlaceholderIcon={IconUserSquare}
             optimization={{
-              compression: "profile-picture",
               resize: {
                 square: 600,
               },
             }}
           />
-          <div style={{ display: "grid", alignContent: "start" }}>
+          <Box sx={{ display: "grid", flex: 1, alignContent: "start" }}>
             <TextInput
               source="name"
               variant="outlined"
               validate={required("Add a name")}
               helperText={false}
-              InputProps={{
-                autoComplete: "off",
+              slotProps={{
+                input: {
+                  autoComplete: "off",
+                },
               }}
             />
 
@@ -168,16 +147,18 @@ export function ExpertsEdit() {
                 placeholder="Description *"
                 helperText={false}
                 fullWidth
-                InputProps={{
-                  autoComplete: "off",
+                slotProps={{
+                  input: {
+                    autoComplete: "off",
+                  },
                 }}
                 validate={required("Add a description")}
               />
             </TranslatableInputs>
 
             <SocialsInput source="socials" fullWidth />
-          </div>
-        </div>
+          </Box>
+        </Box>
       </SimpleForm>
     </Edit>
   );
