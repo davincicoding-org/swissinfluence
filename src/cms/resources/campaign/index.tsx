@@ -22,7 +22,7 @@ import {
 
 import { routing } from "@/i18n/routing";
 
-import type { IBrandDocument } from "../brand/schema";
+import type { IBrandDocument } from "../deprecated/brands-schema";
 import type { ICampaignDocument } from "./schema";
 import { createGuard, editGuard } from "../../guards";
 import { useDocumentChoices } from "../../hooks";

@@ -25,7 +25,7 @@ import { routing } from "@/i18n/routing";
 import type { ICreatorChallengeDocument } from "./schema";
 import { createGuard, editGuard } from "../../guards";
 import { useDocumentChoices } from "../../hooks";
-import { type IBrandDocument } from "../brand/schema";
+import { type IBrandDocument } from "../deprecated/brands-schema";
 import { CreatorChallengeDocumentSchema } from "./schema";
 
 /* List */

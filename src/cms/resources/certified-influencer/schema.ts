@@ -2,8 +2,8 @@ import { ImageMediaSchema } from "@davincicoding/cms/image";
 import { z } from "zod/v4";
 
 import { DocumentIDSchema, TranslatableSchema } from "../../common";
-import { CategoryDocumentSchema } from "../category/schema";
-import { InfluencerDocumentSchema } from "../influencer/schema";
+import { CategoryDocumentSchema } from "../category/category-schema";
+import { InfluencerDocumentSchema } from "../deprecated/influencer-schema";
 import { SwissCantonCodeSchema } from "./cantons";
 import { LanguageCodeSchema } from "./languages";
 

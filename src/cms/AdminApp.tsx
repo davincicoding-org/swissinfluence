@@ -22,6 +22,7 @@ import {
   IconCircleLetterB,
   IconFolder,
   IconLanguage,
+  IconMapPin,
   IconPhotoVideo,
   IconSpeakerphone,
   IconStar,
@@ -71,10 +72,10 @@ import {
   AgenciesCreate,
   AgenciesEdit,
   AgenciesList,
-} from "./resources/agency/index";
+} from "./resources/agencies";
 import { AwardsCreate, AwardsEdit, AwardsList } from "./resources/award";
 import { type IAwardDocument } from "./resources/award/schema";
-import { BrandsCreate, BrandsEdit, BrandsList } from "./resources/brand";
+import { BrandsCreate, BrandsEdit, BrandsList } from "./resources/brands";
 import {
   CampaignsCreate,
   CampaignsEdit,
@@ -84,7 +85,7 @@ import {
   CategoriesCreate,
   CategoriesEdit,
   CategoriesList,
-} from "./resources/category";
+} from "./resources/categories";
 import {
   CertifiedInfluencersCreate,
   CertifiedInfluencersEdit,
@@ -101,12 +102,17 @@ import {
   CreatorChallengesList,
 } from "./resources/creator-challenge";
 import { EventsCreate, EventsEdit, EventsList } from "./resources/event";
-import { ExpertsCreate, ExpertsEdit, ExpertsList } from "./resources/expert";
+import { ExpertsCreate, ExpertsEdit, ExpertsList } from "./resources/experts";
 import {
   InfluencersCreate,
   InfluencersEdit,
   InfluencersList,
-} from "./resources/influencer";
+} from "./resources/influencers";
+import {
+  LocationsCreate,
+  LocationsEdit,
+  LocationsList,
+} from "./resources/locations";
 
 const dataProvider = withLifecycleCallbacks(
   supabaseDataProvider({
@@ -261,6 +267,15 @@ export function AdminApp() {
           icon={IconCircleLetterB}
         />
 
+        <Resource
+          name="locations"
+          list={LocationsList}
+          edit={LocationsEdit}
+          create={LocationsCreate}
+          recordRepresentation="name"
+          icon={IconMapPin}
+        />
+
         {/* <Resource
           name="awards"
           list={AwardsList}
@@ -377,6 +392,7 @@ export function CustomMenu() {
       <Menu.ResourceItem name="influencers" />
       <Menu.ResourceItem name="experts" />
       <Menu.ResourceItem name="brands" />
+      <Menu.ResourceItem name="locations" />
       <MenuDivider label="Award" />
       <Menu.ResourceItem name="awards" />
       <Menu.ResourceItem name="creator-challenges" />

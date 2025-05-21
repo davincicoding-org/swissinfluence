@@ -2,20 +2,20 @@ import type { ImageAsset, ImageMedia } from "@davincicoding/cms/image";
 import { unstable_cache } from "next/cache";
 import { groupBy } from "lodash-es";
 
-import type { IBrandDocument } from "@/cms/resources/brand/schema";
 import type { ICampaignDocument } from "@/cms/resources/campaign/schema";
 import type { ICertifiedIInfluencerDocument } from "@/cms/resources/certified-influencer/schema";
+import type { IBrandDocument } from "@/cms/resources/deprecated/brands-schema";
 import type { IEventDocument } from "@/cms/resources/event/schema";
 import { type SocialMedia, type Translatable } from "@/cms/common";
-import { AgencyDocumentSchema } from "@/cms/resources/agency/schema";
-import { BrandDocumentSchema } from "@/cms/resources/brand/schema";
 import { CampaignDocumentSchema } from "@/cms/resources/campaign/schema";
-import { getCategories } from "@/cms/resources/category/data";
-import { type ICategoryDocument } from "@/cms/resources/category/schema";
+import { getCategories } from "@/cms/resources/category/category-data";
+import { type ICategoryDocument } from "@/cms/resources/category/category-schema";
 import { type SwissCantonCode } from "@/cms/resources/certified-influencer/cantons";
 import { CertifiedInfluencerDocumentSchema } from "@/cms/resources/certified-influencer/schema";
+import { AgencyDocumentSchema } from "@/cms/resources/deprecated/agency-schema";
+import { BrandDocumentSchema } from "@/cms/resources/deprecated/brands-schema";
+import { InfluencerDocumentSchema } from "@/cms/resources/deprecated/influencer-schema";
 import { EventDocumentSchema } from "@/cms/resources/event/schema";
-import { InfluencerDocumentSchema } from "@/cms/resources/influencer/schema";
 import { db } from "@/database/firebase";
 import { type SupportedLocale } from "@/i18n/config";
 

@@ -12,7 +12,7 @@ import {
 import { useWatch } from "react-hook-form";
 
 import type { IDocumentChoice } from "../../hooks";
-import type { ICategoryDocument } from "../category/schema";
+import type { ICategoryDocument } from "../category/category-schema";
 import { useDocumentChoices } from "../../hooks";
 import { type IAwardDocument } from "./schema";
 

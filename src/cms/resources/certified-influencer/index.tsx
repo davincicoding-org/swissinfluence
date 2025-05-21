@@ -21,8 +21,8 @@ import { Locale } from "@/i18n/config";
 
 import { createGuard, editGuard } from "../../guards";
 import { useDocumentChoices } from "../../hooks";
-import { type ICategoryDocument } from "../category/schema";
-import { type IInfluencerDocument } from "../influencer/schema";
+import { type ICategoryDocument } from "../category/category-schema";
+import { type IInfluencerDocument } from "../deprecated/influencer-schema";
 import { CANTON_CHOICES } from "./cantons";
 import { LANGUAGE_CHOICES } from "./languages";
 import { CertifiedInfluencerDocumentSchema } from "./schema";

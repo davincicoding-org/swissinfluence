@@ -2,7 +2,7 @@ import { ImageMediaSchema } from "@davincicoding/cms/image";
 import { z } from "zod/v4";
 
 import { DocumentIDSchema, TranslatableSchema } from "../../common";
-import { BrandDocumentSchema } from "../brand/schema";
+import { BrandDocumentSchema } from "../deprecated/brands-schema";
 
 export const CampaignDocumentSchema = z.object({
   id: DocumentIDSchema,
