@@ -35,6 +35,7 @@ import {
 import {
   Admin,
   AppBar,
+  Authenticated,
   CustomRoutes,
   Layout,
   Menu,
@@ -147,7 +148,7 @@ export function AdminApp() {
           <Route
             path="/translations"
             element={
-              <>
+              <Authenticated>
                 <Title title="Translations" />
                 <MessagesEditor
                   schema={MESSAGES_SCHEMA}
@@ -161,7 +162,7 @@ export function AdminApp() {
                     void revalidateCache("messages");
                   }}
                 />
-              </>
+              </Authenticated>
             }
           />
         </CustomRoutes>
