@@ -53,7 +53,12 @@ import {
 } from "react-admin";
 import { Route } from "react-router-dom";
 
-import type { categories, experts, influencers } from "@/database/schema";
+import type {
+  agencies,
+  categories,
+  experts,
+  influencers,
+} from "@/database/schema";
 import { supabaseClient } from "@/database/supabase";
 import { env } from "@/env";
 import { Locale, MESSAGES_SCHEMA } from "@/i18n/config";
@@ -128,15 +133,23 @@ const dataProvider = withLifecycleCallbacks(
       supabaseClient,
       resource: "influencers",
       bucket: "images",
-      generatePath: (resource, extension) =>
+      generatePath: ({ resource, extension }) =>
         `influencers/${resource.name}-${Date.now()}.${extension}`,
     }),
     imageStorageHandler<typeof experts.$inferSelect>({
       supabaseClient,
       resource: "experts",
       bucket: "images",
-      generatePath: (resource, extension) =>
+      generatePath: ({ resource, extension }) =>
         `experts/${resource.name}-${Date.now()}.${extension}`,
+    }),
+    imageStorageHandler<typeof agencies.$inferSelect, "logo" | "image">({
+      supabaseClient,
+      resource: "agencies",
+      bucket: "images",
+      imageKey: ["logo", "image"],
+      generatePath: ({ resource, extension, key }) =>
+        `agencies/${resource.name}-${key}-${Date.now()}.${extension}`,
     }),
   ],
 );
@@ -294,13 +307,13 @@ export function AdminApp() {
           icon={IconUserStar}
         /> */}
 
-        {/* <Resource
+        <Resource
           name="agencies"
           list={AgenciesList}
           edit={AgenciesEdit}
           create={AgenciesCreate}
           icon={IconBuilding}
-        /> */}
+        />
 
         {/* <Resource
           name="conventions"
