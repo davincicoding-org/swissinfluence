@@ -53,7 +53,7 @@ import {
 } from "react-admin";
 import { Route } from "react-router-dom";
 
-import type { categories, influencers } from "@/database/schema";
+import type { categories, experts, influencers } from "@/database/schema";
 import { supabaseClient } from "@/database/supabase";
 import { env } from "@/env";
 import { Locale, MESSAGES_SCHEMA } from "@/i18n/config";
@@ -130,6 +130,13 @@ const dataProvider = withLifecycleCallbacks(
       bucket: "images",
       generatePath: (resource, extension) =>
         `influencers/${resource.name}-${Date.now()}.${extension}`,
+    }),
+    imageStorageHandler<typeof experts.$inferSelect>({
+      supabaseClient,
+      resource: "experts",
+      bucket: "images",
+      generatePath: (resource, extension) =>
+        `experts/${resource.name}-${Date.now()}.${extension}`,
     }),
   ],
 );
@@ -232,6 +239,15 @@ export function AdminApp() {
           icon={IconUser}
         />
 
+        <Resource
+          name="brands"
+          list={BrandsList}
+          edit={BrandsEdit}
+          create={BrandsCreate}
+          recordRepresentation="name"
+          icon={IconCircleLetterB}
+        />
+
         {/* <Resource
           name="awards"
           list={AwardsList}
@@ -249,15 +265,6 @@ export function AdminApp() {
           create={CreatorChallengesCreate}
           recordRepresentation="title.en"
           icon={IconSwords}
-        /> */}
-
-        {/* <Resource
-          name="brands"
-          list={BrandsList}
-          edit={BrandsEdit}
-          create={BrandsCreate}
-          recordRepresentation="name"
-          icon={IconCircleLetterB}
         /> */}
 
         {/* <Resource

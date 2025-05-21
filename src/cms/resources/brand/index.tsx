@@ -1,16 +1,14 @@
-import { ImageInput } from "@davincicoding/cms/image";
+import { ImageField, ImageInput } from "@davincicoding/cms/image";
+import { Box } from "@mui/material";
 import {
   Create,
   Datagrid,
   Edit,
-  ImageField,
   List,
   required,
-  SaveButton,
   SimpleForm,
   TextField,
   TextInput,
-  Toolbar,
 } from "react-admin";
 
 /* List */
@@ -26,19 +24,8 @@ export function BrandsList() {
           },
         }}
       >
-        <ImageField
-          label="Image"
-          source="image.src"
-          sx={{
-            "& .RaImageField-image": {
-              width: 50,
-              height: 50,
-              margin: 0,
-              objectFit: "cover",
-            },
-          }}
-        />
-        <TextField source="name" />
+        <ImageField label={false} source="image.src" width={50} height={50} />
+        <TextField source="name" label="Brand" />
       </Datagrid>
     </List>
   );
@@ -50,12 +37,10 @@ export function BrandsCreate() {
   return (
     <Create redirect="list">
       <SimpleForm>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "200px 1fr",
-            gap: "1.5rem",
-            marginBottom: "0.5rem",
+        <Box
+          sx={{
+            display: "flex",
+            gap: 3,
             width: "100%",
           }}
         >
@@ -63,11 +48,11 @@ export function BrandsCreate() {
             label={false}
             source="image"
             validate={required("Add brand logo")}
+            previewProps={{ width: 200, height: 200 }}
             accept={{
               "image/*": [".jpg", ".png", ".svg"],
             }}
             optimization={{
-              compression: "logo",
               resize: {
                 width: 512,
                 height: 512,
@@ -80,9 +65,7 @@ export function BrandsCreate() {
               },
             }}
           />
-          <div
-            style={{ display: "grid", gap: "0.5rem", alignContent: "start" }}
-          >
+          <Box sx={{ display: "grid", flex: 1, gap: 1, alignContent: "start" }}>
             <TextInput
               label="Name"
               source="name"
@@ -99,8 +82,8 @@ export function BrandsCreate() {
               validate={required("Add a website")}
               helperText={false}
             />
-          </div>
-        </div>
+          </Box>
+        </Box>
       </SimpleForm>
     </Create>
   );
@@ -111,19 +94,11 @@ export function BrandsCreate() {
 export function BrandsEdit() {
   return (
     <Edit>
-      <SimpleForm
-        toolbar={
-          <Toolbar>
-            <SaveButton />
-          </Toolbar>
-        }
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "200px 1fr",
-            gap: "1.5rem",
-            marginBottom: "0.5rem",
+      <SimpleForm>
+        <Box
+          sx={{
+            display: "flex",
+            gap: 3,
             width: "100%",
           }}
         >
@@ -131,8 +106,11 @@ export function BrandsEdit() {
             label={false}
             source="image"
             validate={required("Add brand logo")}
+            previewProps={{ width: 200, height: 200 }}
+            accept={{
+              "image/*": [".jpg", ".png", ".svg"],
+            }}
             optimization={{
-              compression: "logo",
               resize: {
                 width: 512,
                 height: 512,
@@ -145,7 +123,7 @@ export function BrandsEdit() {
               },
             }}
           />
-          <div style={{ display: "grid", gap: "0.5rem" }}>
+          <Box sx={{ display: "grid", flex: 1, gap: 1, alignContent: "start" }}>
             <TextInput
               label="Name"
               source="name"
@@ -162,8 +140,8 @@ export function BrandsEdit() {
               validate={required("Add a website")}
               helperText={false}
             />
-          </div>
-        </div>
+          </Box>
+        </Box>
       </SimpleForm>
     </Edit>
   );
