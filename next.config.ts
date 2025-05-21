@@ -3,15 +3,18 @@
  * for Docker builds.
  */
 import "./src/env.js";
-import createNextIntlPlugin from "next-intl/plugin";
-import { withSentryConfig } from "@sentry/nextjs";
+
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
+import createNextIntlPlugin from "next-intl/plugin";
 
 const config: NextConfig = {
   eslint: {
     dirs: ["src"],
   },
   images: {
+    loader: "custom",
+    loaderFile: "./supabase-image-loader.js",
     dangerouslyAllowSVG: true,
     remotePatterns: [
       {

@@ -3,7 +3,6 @@
 import type { ImageOptimizer } from "@davincicoding/cms/image";
 import type { MediaAsset } from "@davincicoding/cms/media";
 import { revalidateTag } from "next/cache";
-import { optimizeImage } from "@davincicoding/cms/server";
 
 import type { GlobalData, GlobalId } from "@/cms/globals";
 import type { MediaLibrary } from "@/cms/media";
@@ -62,6 +61,3 @@ export const fetchMedia = cachedRequest(async () => {
     };
   }, {} as MediaLibrary);
 }, ["media"]);
-
-export const imageOptimizer: ImageOptimizer = async (image, options) =>
-  optimizeImage(image, options);

@@ -1,22 +1,18 @@
 import { ImageInput } from "@davincicoding/cms/image";
+import { Box } from "@mui/material";
 import {
   Create,
   Datagrid,
   Edit,
   List,
   required,
-  SaveButton,
   SimpleForm,
   TextField,
   TextInput,
-  Toolbar,
   TranslatableInputs,
 } from "react-admin";
 
 import { routing } from "@/i18n/routing";
-
-import { createGuard, editGuard } from "../../guards";
-import { CategoryDocumentSchema } from "./schema";
 
 /* List */
 
@@ -24,7 +20,7 @@ export function CategoriesList() {
   return (
     <List>
       <Datagrid bulkActionButtons={false}>
-        <TextField label="Category" source="name.en" />
+        <TextField label="Category" source="title.en" />
       </Datagrid>
     </List>
   );
@@ -34,39 +30,37 @@ export function CategoriesList() {
 
 export function CategoriesCreate() {
   return (
-    <Create redirect="list" transform={createGuard(CategoryDocumentSchema)}>
+    <Create redirect="list">
       <SimpleForm>
-        <div
-          style={{
+        <Box
+          sx={{
             display: "grid",
             gridTemplateColumns: "auto 1fr",
-            alignItems: "center",
-            gap: "1rem",
+            gap: 3,
             width: "100%",
           }}
         >
           <ImageInput
-            label={false}
             source="image"
-            // validate={required("Add an image")}
-            height={111}
+            previewProps={{ width: 300 }}
+            validate={required("Add an image")}
           />
           <TranslatableInputs
             locales={[...routing.locales]}
             sx={{
-              "&.RaTranslatableInputs-root": { margin: 0 },
+              "&.RaTranslatableInputs-root": { marginTop: "20px" },
             }}
           >
             <TextInput
               label={false}
               placeholder="Category Name *"
-              source="name"
+              source="title"
               variant="outlined"
               validate={required("Add category name")}
               helperText={false}
             />
           </TranslatableInputs>
-        </div>
+        </Box>
       </SimpleForm>
     </Create>
   );
@@ -76,45 +70,37 @@ export function CategoriesCreate() {
 
 export function CategoriesEdit() {
   return (
-    <Edit transform={editGuard(CategoryDocumentSchema)}>
-      <SimpleForm
-        toolbar={
-          <Toolbar>
-            <SaveButton />
-          </Toolbar>
-        }
-      >
-        <div
-          style={{
+    <Edit>
+      <SimpleForm>
+        <Box
+          sx={{
             display: "grid",
             gridTemplateColumns: "auto 1fr",
-            alignItems: "center",
-            gap: "1rem",
+            gap: 3,
             width: "100%",
           }}
         >
           <ImageInput
-            label={false}
             source="image"
-            // validate={required("Add an image")}
-            height={111}
+            previewProps={{ width: 300 }}
+            validate={required("Add an image")}
           />
           <TranslatableInputs
             locales={[...routing.locales]}
             sx={{
-              "&.RaTranslatableInputs-root": { margin: 0 },
+              "&.RaTranslatableInputs-root": { marginTop: "20px" },
             }}
           >
             <TextInput
               label={false}
               placeholder="Category Name *"
-              source="name"
+              source="title"
               variant="outlined"
               validate={required("Add category name")}
               helperText={false}
             />
           </TranslatableInputs>
-        </div>
+        </Box>
       </SimpleForm>
     </Edit>
   );

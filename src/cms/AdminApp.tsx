@@ -15,6 +15,7 @@ import {
   MediaLibraryList,
 } from "@davincicoding/cms/media";
 import { MessagesEditor } from "@davincicoding/cms/messages";
+import { imageStorageHandler } from "@davincicoding/cms/supabase";
 import { Button } from "@mui/material";
 import {
   IconBuilding,
@@ -33,6 +34,11 @@ import {
   IconWorld,
 } from "@tabler/icons-react";
 import {
+  LoginPage,
+  supabaseAuthProvider,
+  supabaseDataProvider,
+} from "ra-supabase";
+import {
   Admin,
   AppBar,
   Authenticated,
@@ -45,15 +51,13 @@ import {
   useNotify,
   withLifecycleCallbacks,
 } from "react-admin";
-import {
-  FirebaseAuthProvider,
-  FirebaseDataProvider,
-} from "react-admin-firebase";
 import { Route } from "react-router-dom";
 
+import type { categories } from "@/database/schema";
+import { supabaseClient } from "@/database/supabase";
 import { env } from "@/env";
 import { Locale, MESSAGES_SCHEMA } from "@/i18n/config";
-import { imageOptimizer, revalidateCache } from "@/server/actions";
+import { revalidateCache } from "@/server/actions";
 import { fetchCachedMessages, saveMessages } from "@/server/messages";
 
 import { GLOBALS } from "./globals";
@@ -99,18 +103,11 @@ import {
   InfluencersList,
 } from "./resources/influencer";
 
-const config = {
-  projectId: env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  apiKey: env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  storageBucket: env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: env.NEXT_PUBLIC_FIREBASE_APP_ID,
-};
-
 const dataProvider = withLifecycleCallbacks(
-  FirebaseDataProvider(config, {
-    logging: false,
+  supabaseDataProvider({
+    instanceUrl: env.NEXT_PUBLIC_SUPABASE_URL,
+    apiKey: env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+    supabaseClient,
   }),
   [
     {
@@ -120,10 +117,17 @@ const dataProvider = withLifecycleCallbacks(
         return result;
       },
     },
+    imageStorageHandler<typeof categories.$inferSelect>({
+      supabaseClient,
+      resource: "categories",
+      bucket: "images",
+      generatePath: (resource, extension) =>
+        `categories/${resource.title.en}.${extension}`,
+    }),
   ],
 );
 
-const authProvider = FirebaseAuthProvider(config, { logging: false });
+const authProvider = supabaseAuthProvider(supabaseClient, {});
 
 export function AdminApp() {
   const notify = useNotify();
@@ -133,8 +137,16 @@ export function AdminApp() {
       config={{
         globals: GLOBALS,
         images: {
-          Component: Image,
-          optimizer: imageOptimizer,
+          Component: ({ src, ...props }) => (
+            <img
+              src={
+                src.includes("localhost")
+                  ? src
+                  : `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/render/image/public/${src}`
+              }
+              {...props}
+            />
+          ),
         },
         media: MEDIA_LIBRARY,
       }}
@@ -143,6 +155,7 @@ export function AdminApp() {
         authProvider={authProvider}
         dataProvider={dataProvider}
         layout={CustomLayout}
+        loginPage={LoginPage}
       >
         <CustomRoutes>
           <Route
@@ -167,7 +180,7 @@ export function AdminApp() {
           />
         </CustomRoutes>
 
-        <Resource
+        {/* <Resource
           name="media-library"
           options={{ label: "Media Library" }}
           list={MediaLibraryList}
@@ -175,26 +188,26 @@ export function AdminApp() {
           edit={MediaLibraryEdit}
           icon={IconPhotoVideo}
           recordRepresentation="id"
-        />
-        <Resource
+        /> */}
+        {/* <Resource
           name="globals"
           list={GlobalsList}
           create={GlobalsCreate}
           edit={GlobalsEdit}
           icon={IconWorld}
           recordRepresentation="id"
-        />
+        /> */}
 
-        <Resource
+        {/* <Resource
           name="awards"
           list={AwardsList}
           edit={AwardsEdit}
           create={AwardsCreate}
           icon={IconTrophy}
           recordRepresentation={({ year }: IAwardDocument) => year.toString()}
-        />
+        /> */}
 
-        <Resource
+        {/* <Resource
           name="creator-challenges"
           options={{ label: "Creator Challenges" }}
           list={CreatorChallengesList}
@@ -202,86 +215,86 @@ export function AdminApp() {
           create={CreatorChallengesCreate}
           recordRepresentation="title.en"
           icon={IconSwords}
-        />
+        /> */}
 
         <Resource
           name="categories"
           list={CategoriesList}
           edit={CategoriesEdit}
           create={CategoriesCreate}
-          recordRepresentation="label.en"
+          recordRepresentation="title.en"
           icon={IconFolder}
         />
 
-        <Resource
+        {/* <Resource
           name="influencers"
           list={InfluencersList}
           edit={InfluencersEdit}
           create={InfluencersCreate}
           recordRepresentation="name"
           icon={IconStar}
-        />
+        /> */}
 
-        <Resource
+        {/* <Resource
           name="experts"
           list={ExpertsList}
           edit={ExpertsEdit}
           create={ExpertsCreate}
           recordRepresentation="name"
           icon={IconUser}
-        />
+        /> */}
 
-        <Resource
+        {/* <Resource
           name="brands"
           list={BrandsList}
           edit={BrandsEdit}
           create={BrandsCreate}
           recordRepresentation="name"
           icon={IconCircleLetterB}
-        />
+        /> */}
 
-        <Resource
+        {/* <Resource
           name="campaigns"
           list={CampaignsList}
           edit={CampaignsEdit}
           create={CampaignsCreate}
           recordRepresentation="title.en"
           icon={IconSpeakerphone}
-        />
+        /> */}
 
-        <Resource
+        {/* <Resource
           name="events"
           list={EventsList}
           edit={EventsEdit}
           create={EventsCreate}
           recordRepresentation="title.en"
           icon={IconTicket}
-        />
+        /> */}
 
-        <Resource
+        {/* <Resource
           name="certified-influencers"
           options={{ label: "Certified Influencers" }}
           list={CertifiedInfluencersList}
           edit={CertifiedInfluencersEdit}
           create={CertifiedInfluencersCreate}
           icon={IconUserStar}
-        />
+        /> */}
 
-        <Resource
+        {/* <Resource
           name="agencies"
           list={AgenciesList}
           edit={AgenciesEdit}
           create={AgenciesCreate}
           icon={IconBuilding}
-        />
+        /> */}
 
-        <Resource
+        {/* <Resource
           name="conventions"
           list={ConventionsList}
           edit={ConventionsEdit}
           create={ConventionsCreate}
           icon={IconUsersGroup}
-        />
+        /> */}
       </Admin>
     </CMSProvider>
   );
@@ -291,7 +304,7 @@ function CustomLayout({ children }: PropsWithChildren) {
   return (
     <Layout
       appBar={CustomAppBar}
-      menu={CustomMenu}
+      // menu={CustomMenu}
       sx={{
         "& .RaLayout-appFrame	": {
           width: "100vw",
@@ -333,12 +346,12 @@ export function CustomMenu() {
       <Menu.ResourceItem name="globals" />
       <Menu.ResourceItem name="media-library" />
       <MenuDivider />
+      <Menu.ResourceItem name="categories" />
       <Menu.ResourceItem name="influencers" />
       <Menu.ResourceItem name="experts" />
       <Menu.ResourceItem name="brands" />
       <MenuDivider label="Award" />
       <Menu.ResourceItem name="awards" />
-      <Menu.ResourceItem name="categories" />
       <Menu.ResourceItem name="creator-challenges" />
       <MenuDivider label="Network" />
       <Menu.ResourceItem name="certified-influencers" />
