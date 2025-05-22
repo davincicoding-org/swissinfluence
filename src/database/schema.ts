@@ -371,6 +371,29 @@ export const creatorChallengeRelations = relations(
   }),
 );
 
+// Network Events
+
+export const networkEvents = pgTable("network_events", (d) => ({
+  id: d.serial().primaryKey(),
+  title: d.jsonb().$type<Translatable>().notNull(),
+  content: d.jsonb().$type<Translatable>().notNull(),
+  image: d.jsonb().$type<ImageAsset>().notNull(),
+  locationId: d
+    .serial()
+    .references(() => locations.id)
+    .notNull(),
+  date_from: d.date(),
+  date_until: d.date(),
+  tickets_url: d.text(),
+}));
+
+export const networkEventRelations = relations(networkEvents, ({ one }) => ({
+  location: one(locations, {
+    fields: [networkEvents.locationId],
+    references: [locations.id],
+  }),
+}));
+
 // MARK: Social Media Campaigns
 
 export const socialMediaCampaigns = pgTable("social_media_campaigns", (d) => ({

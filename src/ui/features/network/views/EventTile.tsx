@@ -1,8 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { useMemo } from "react";
-
+import Image from "next/image";
 import {
   ActionIcon,
   Button,
@@ -16,10 +15,9 @@ import { IconArrowRight, IconX } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
-import { cn } from "@/ui/utils";
-
-import { type IEventDocument } from "@/cms/resources/event/schema";
+import { type IEventDocument } from "@/cms/resources/deprecated/event-schema";
 import { RichText } from "@/ui/components/RichText";
+import { cn } from "@/ui/utils";
 
 export interface IEventTileProps {
   data: IEventDocument;

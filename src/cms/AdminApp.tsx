@@ -60,6 +60,7 @@ import type {
   creatorChallenges,
   experts,
   influencers,
+  networkEvents,
   socialMediaCampaigns,
 } from "@/database/schema";
 import { supabaseClient } from "@/database/supabase";
@@ -98,7 +99,6 @@ import {
   CreatorChallengesEdit,
   CreatorChallengesList,
 } from "./resources/creator_challenges";
-import { EventsCreate, EventsEdit, EventsList } from "./resources/event";
 import { ExpertsCreate, ExpertsEdit, ExpertsList } from "./resources/experts";
 import {
   InfluencersCreate,
@@ -110,6 +110,11 @@ import {
   LocationsEdit,
   LocationsList,
 } from "./resources/locations";
+import {
+  NetworkEventsCreate,
+  NetworkEventsEdit,
+  NetworkEventsList,
+} from "./resources/network_events";
 import {
   SocialMediaCampaignsCreate,
   SocialMediaCampaignsEdit,
@@ -179,6 +184,13 @@ const dataProvider = withLifecycleCallbacks(
       bucket: "images",
       generatePath: ({ resource, extension }) =>
         `social_media_campaigns/${resource.title.en}-${Date.now()}.${extension}`,
+    }),
+    imageStorageHandler<typeof networkEvents.$inferSelect>({
+      supabaseClient,
+      resource: "network_events",
+      bucket: "images",
+      generatePath: ({ resource, extension }) =>
+        `network_events/${resource.title.en}-${Date.now()}.${extension}`,
     }),
   ],
 );
@@ -327,14 +339,15 @@ export function AdminApp() {
           icon={IconSpeakerphone}
         />
 
-        {/* <Resource
-          name="events"
-          list={EventsList}
-          edit={EventsEdit}
-          create={EventsCreate}
+        <Resource
+          name="network_events"
+          options={{ label: "Events" }}
+          list={NetworkEventsList}
+          edit={NetworkEventsEdit}
+          create={NetworkEventsCreate}
           recordRepresentation="title.en"
           icon={IconTicket}
-        /> */}
+        />
 
         <Resource
           name="certified_influencers"
