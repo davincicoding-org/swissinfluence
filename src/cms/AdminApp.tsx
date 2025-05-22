@@ -53,7 +53,7 @@ import {
   useNotify,
   withLifecycleCallbacks,
 } from "react-admin";
-import { Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
 import type {
   agencies,
@@ -242,66 +242,67 @@ export function AdminApp() {
   const notify = useNotify();
 
   return (
-    <CMSProvider
-      config={{
-        globals: GLOBALS,
-        images: {
-          Component: ({ src, style, width, height, alt }) => (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={
-                src.includes("localhost")
-                  ? src
-                  : `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/render/image/public/${src}`
-              }
-              alt={alt}
-              width={width}
-              height={height}
-              style={style}
-            />
-          ),
-        },
-        media: MEDIA_LIBRARY,
-      }}
-    >
-      <Admin
-        authProvider={authProvider}
-        dataProvider={dataProvider}
-        layout={CustomLayout}
-        loginPage={LoginPage}
+    <BrowserRouter basename="/admin">
+      <CMSProvider
+        config={{
+          globals: GLOBALS,
+          images: {
+            Component: ({ src, style, width, height, alt }) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={
+                  src.includes("localhost")
+                    ? src
+                    : `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/render/image/public/${src}`
+                }
+                alt={alt}
+                width={width}
+                height={height}
+                style={style}
+              />
+            ),
+          },
+          media: MEDIA_LIBRARY,
+        }}
       >
-        <CustomRoutes noLayout>
-          <Route
-            path={ForgotPasswordPage.path}
-            element={<ForgotPasswordPage />}
-          />
-          <Route path={SetPasswordPage.path} element={<SetPasswordPage />} />
-        </CustomRoutes>
+        <Admin
+          authProvider={authProvider}
+          dataProvider={dataProvider}
+          layout={CustomLayout}
+          loginPage={LoginPage}
+        >
+          <CustomRoutes noLayout>
+            <Route
+              path={ForgotPasswordPage.path}
+              element={<ForgotPasswordPage />}
+            />
+            <Route path={SetPasswordPage.path} element={<SetPasswordPage />} />
+          </CustomRoutes>
 
-        <CustomRoutes>
-          <Route
-            path="/translations"
-            element={
-              <Authenticated>
-                <Title title="Translations" />
-                <MessagesEditor
-                  schema={MESSAGES_SCHEMA}
-                  // @ts-expect-error TODO: fix this
-                  locales={Locale.options}
-                  fetchMessages={fetchCachedMessages}
-                  saveMessages={saveMessages}
-                  tabs
-                  onSaved={() => {
-                    notify("Translations saved", { type: "success" });
-                    void revalidateCache("messages");
-                  }}
-                />
-              </Authenticated>
-            }
-          />
-        </CustomRoutes>
+          <CustomRoutes>
+            <Route
+              path="/translations"
+              element={
+                <Authenticated>
+                  <Title title="Translations" />
+                  <MessagesEditor
+                    schema={MESSAGES_SCHEMA}
+                    // @ts-expect-error TODO: fix this
+                    locales={Locale.options}
+                    fetchMessages={fetchCachedMessages}
+                    saveMessages={saveMessages}
+                    tabs
+                    onSaved={() => {
+                      notify("Translations saved", { type: "success" });
+                      void revalidateCache("messages");
+                    }}
+                  />
+                </Authenticated>
+              }
+            />
+          </CustomRoutes>
 
-        {/* <Resource
+          {/* <Resource
           name="media-library"
           options={{ label: "Media Library" }}
           list={MediaLibraryList}
@@ -310,7 +311,7 @@ export function AdminApp() {
           icon={IconPhotoVideo}
           recordRepresentation="id"
         /> */}
-        {/* <Resource
+          {/* <Resource
           name="globals"
           list={GlobalsList}
           create={GlobalsCreate}
@@ -319,52 +320,52 @@ export function AdminApp() {
           recordRepresentation="id"
         /> */}
 
-        <Resource
-          name="categories"
-          list={CategoriesList}
-          edit={CategoriesEdit}
-          create={CategoriesCreate}
-          recordRepresentation="title.en"
-          icon={IconFolder}
-        />
+          <Resource
+            name="categories"
+            list={CategoriesList}
+            edit={CategoriesEdit}
+            create={CategoriesCreate}
+            recordRepresentation="title.en"
+            icon={IconFolder}
+          />
 
-        <Resource
-          name="influencers"
-          list={InfluencersList}
-          edit={InfluencersEdit}
-          create={InfluencersCreate}
-          recordRepresentation="name"
-          icon={IconStar}
-        />
+          <Resource
+            name="influencers"
+            list={InfluencersList}
+            edit={InfluencersEdit}
+            create={InfluencersCreate}
+            recordRepresentation="name"
+            icon={IconStar}
+          />
 
-        <Resource
-          name="experts"
-          list={ExpertsList}
-          edit={ExpertsEdit}
-          create={ExpertsCreate}
-          recordRepresentation="name"
-          icon={IconUser}
-        />
+          <Resource
+            name="experts"
+            list={ExpertsList}
+            edit={ExpertsEdit}
+            create={ExpertsCreate}
+            recordRepresentation="name"
+            icon={IconUser}
+          />
 
-        <Resource
-          name="brands"
-          list={BrandsList}
-          edit={BrandsEdit}
-          create={BrandsCreate}
-          recordRepresentation="name"
-          icon={IconCircleLetterB}
-        />
+          <Resource
+            name="brands"
+            list={BrandsList}
+            edit={BrandsEdit}
+            create={BrandsCreate}
+            recordRepresentation="name"
+            icon={IconCircleLetterB}
+          />
 
-        <Resource
-          name="locations"
-          list={LocationsList}
-          edit={LocationsEdit}
-          create={LocationsCreate}
-          recordRepresentation="title"
-          icon={IconMapPin}
-        />
+          <Resource
+            name="locations"
+            list={LocationsList}
+            edit={LocationsEdit}
+            create={LocationsCreate}
+            recordRepresentation="title"
+            icon={IconMapPin}
+          />
 
-        {/* <Resource
+          {/* <Resource
           name="awards"
           list={AwardsList}
           edit={AwardsEdit}
@@ -373,62 +374,63 @@ export function AdminApp() {
           recordRepresentation={({ year }: IAwardDocument) => year.toString()}
         /> */}
 
-        <Resource
-          name="creator_challenges"
-          options={{ label: "Creator Challenges" }}
-          list={CreatorChallengesList}
-          edit={CreatorChallengesEdit}
-          create={CreatorChallengesCreate}
-          recordRepresentation="title.en"
-          icon={IconSwords}
-        />
+          <Resource
+            name="creator_challenges"
+            options={{ label: "Creator Challenges" }}
+            list={CreatorChallengesList}
+            edit={CreatorChallengesEdit}
+            create={CreatorChallengesCreate}
+            recordRepresentation="title.en"
+            icon={IconSwords}
+          />
 
-        <Resource
-          name="social_media_campaigns"
-          options={{ label: "Campaigns" }}
-          list={SocialMediaCampaignsList}
-          edit={SocialMediaCampaignsEdit}
-          create={SocialMediaCampaignsCreate}
-          recordRepresentation="title.en"
-          icon={IconSpeakerphone}
-        />
+          <Resource
+            name="social_media_campaigns"
+            options={{ label: "Campaigns" }}
+            list={SocialMediaCampaignsList}
+            edit={SocialMediaCampaignsEdit}
+            create={SocialMediaCampaignsCreate}
+            recordRepresentation="title.en"
+            icon={IconSpeakerphone}
+          />
 
-        <Resource
-          name="network_events"
-          options={{ label: "Events" }}
-          list={NetworkEventsList}
-          edit={NetworkEventsEdit}
-          create={NetworkEventsCreate}
-          recordRepresentation="title.en"
-          icon={IconTicket}
-        />
+          <Resource
+            name="network_events"
+            options={{ label: "Events" }}
+            list={NetworkEventsList}
+            edit={NetworkEventsEdit}
+            create={NetworkEventsCreate}
+            recordRepresentation="title.en"
+            icon={IconTicket}
+          />
 
-        <Resource
-          name="certified_influencers"
-          options={{ label: "Certified Influencers" }}
-          list={CertifiedInfluencersList}
-          edit={CertifiedInfluencersEdit}
-          create={CertifiedInfluencersCreate}
-          icon={IconUserStar}
-        />
+          <Resource
+            name="certified_influencers"
+            options={{ label: "Certified Influencers" }}
+            list={CertifiedInfluencersList}
+            edit={CertifiedInfluencersEdit}
+            create={CertifiedInfluencersCreate}
+            icon={IconUserStar}
+          />
 
-        <Resource
-          name="agencies"
-          list={AgenciesList}
-          edit={AgenciesEdit}
-          create={AgenciesCreate}
-          icon={IconBuilding}
-        />
+          <Resource
+            name="agencies"
+            list={AgenciesList}
+            edit={AgenciesEdit}
+            create={AgenciesCreate}
+            icon={IconBuilding}
+          />
 
-        <Resource
-          name="conventions"
-          list={ConventionsList}
-          edit={ConventionsEdit}
-          create={ConventionsCreate}
-          icon={IconUsersGroup}
-        />
-      </Admin>
-    </CMSProvider>
+          <Resource
+            name="conventions"
+            list={ConventionsList}
+            edit={ConventionsEdit}
+            create={ConventionsCreate}
+            icon={IconUsersGroup}
+          />
+        </Admin>
+      </CMSProvider>
+    </BrowserRouter>
   );
 }
 
