@@ -1,7 +1,6 @@
 "use client";
 
 import { type PropsWithChildren } from "react";
-import Image from "next/image";
 import { CMSProvider } from "@davincicoding/cms/config";
 import {
   GlobalsCreate,
@@ -57,6 +56,7 @@ import { Route } from "react-router-dom";
 import type {
   agencies,
   categories,
+  creatorChallenges,
   experts,
   influencers,
 } from "@/database/schema";
@@ -100,7 +100,7 @@ import {
   CreatorChallengesCreate,
   CreatorChallengesEdit,
   CreatorChallengesList,
-} from "./resources/creator-challenge";
+} from "./resources/creator_challenges";
 import { EventsCreate, EventsEdit, EventsList } from "./resources/event";
 import { ExpertsCreate, ExpertsEdit, ExpertsList } from "./resources/experts";
 import {
@@ -132,7 +132,7 @@ const dataProvider = withLifecycleCallbacks(
       supabaseClient,
       resource: "categories",
       bucket: "images",
-      generatePath: (resource, extension) =>
+      generatePath: ({ resource, extension }) =>
         `categories/${resource.title.en}.${extension}`,
     }),
     imageStorageHandler<typeof influencers.$inferSelect>({
@@ -156,6 +156,13 @@ const dataProvider = withLifecycleCallbacks(
       imageKey: ["logo", "image"],
       generatePath: ({ resource, extension, key }) =>
         `agencies/${resource.name}-${key}-${Date.now()}.${extension}`,
+    }),
+    imageStorageHandler<typeof creatorChallenges.$inferSelect>({
+      supabaseClient,
+      resource: "creator_challenges",
+      bucket: "images",
+      generatePath: ({ resource, extension }) =>
+        `creator_challenges/${resource.title.en}-${Date.now()}.${extension}`,
     }),
   ],
 );
@@ -285,15 +292,15 @@ export function AdminApp() {
           recordRepresentation={({ year }: IAwardDocument) => year.toString()}
         /> */}
 
-        {/* <Resource
-          name="creator-challenges"
+        <Resource
+          name="creator_challenges"
           options={{ label: "Creator Challenges" }}
           list={CreatorChallengesList}
           edit={CreatorChallengesEdit}
           create={CreatorChallengesCreate}
           recordRepresentation="title.en"
           icon={IconSwords}
-        /> */}
+        />
 
         {/* <Resource
           name="campaigns"
@@ -395,9 +402,9 @@ export function CustomMenu() {
       <Menu.ResourceItem name="locations" />
       <MenuDivider label="Award" />
       <Menu.ResourceItem name="awards" />
-      <Menu.ResourceItem name="creator-challenges" />
+      <Menu.ResourceItem name="creator_challenges" />
       <MenuDivider label="Network" />
-      <Menu.ResourceItem name="certified-influencers" />
+      <Menu.ResourceItem name="certified_influencers" />
       <Menu.ResourceItem name="campaigns" />
       <Menu.ResourceItem name="events" />
       <Menu.ResourceItem name="agencies" />

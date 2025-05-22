@@ -356,7 +356,8 @@ export const creatorChallenges = pgTable("creator_challenges", (d) => ({
     .references(() => brands.id)
     .notNull(),
   locationId: d.serial().references(() => locations.id),
-  date: d.date(),
+  start_date: d.date(),
+  end_date: d.date(),
   registrationUrl: d.text(),
 }));
 
@@ -400,8 +401,8 @@ export const socialMediaCampaignRelations = relations(
 
 export const agencies = pgTable("agencies", (d) => ({
   id: d.serial().primaryKey(),
-  title: d.jsonb().$type<Translatable>().notNull(),
-  content: d.jsonb().$type<Translatable>().notNull(),
+  name: d.text().notNull(),
+  description: d.jsonb().$type<Translatable>().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
   logo: d.jsonb().$type<ImageAsset>().notNull(),
   websiteUrl: d.text().notNull(),
