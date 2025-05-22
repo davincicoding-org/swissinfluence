@@ -110,7 +110,7 @@ export function CertifiedInfluencersCreate() {
           <Box>
             <ReferenceInput
               label="Influencer"
-              source="influencer_id"
+              source="influencer"
               reference="influencers"
             >
               <AutocompleteInput
@@ -204,7 +204,7 @@ export function CertifiedInfluencersEdit() {
           <Box>
             <ReferenceInput
               label="Influencer"
-              source="influencer_id"
+              source="influencer"
               reference="influencers"
             >
               <AutocompleteInput

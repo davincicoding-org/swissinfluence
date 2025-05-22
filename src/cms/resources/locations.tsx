@@ -51,7 +51,7 @@ export function LocationsCreate() {
           helperText={false}
         />
         <TextInput
-          source="maps_url"
+          source="maps"
           type="url"
           variant="outlined"
           label="Google Maps Link"

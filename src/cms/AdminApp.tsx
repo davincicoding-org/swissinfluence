@@ -55,6 +55,7 @@ import { Route } from "react-router-dom";
 
 import type {
   agencies,
+  brands,
   categories,
   certifiedInfluencers,
   creatorChallenges,
@@ -93,7 +94,7 @@ import {
   ConventionsCreate,
   ConventionsEdit,
   ConventionsList,
-} from "./resources/convention";
+} from "./resources/conventions";
 import {
   CreatorChallengesCreate,
   CreatorChallengesEdit,
@@ -141,6 +142,13 @@ const dataProvider = withLifecycleCallbacks(
       bucket: "images",
       generatePath: ({ resource, extension }) =>
         `categories/${resource.title.en}.${extension}`,
+    }),
+    imageStorageHandler<typeof brands.$inferSelect>({
+      supabaseClient,
+      resource: "brands",
+      bucket: "images",
+      generatePath: ({ resource, extension }) =>
+        `brands/${resource.name}.${extension}`,
     }),
     imageStorageHandler<typeof influencers.$inferSelect>({
       supabaseClient,

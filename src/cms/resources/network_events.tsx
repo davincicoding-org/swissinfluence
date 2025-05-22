@@ -28,18 +28,18 @@ export function NetworkEventsList() {
     <List>
       <Datagrid
         sort={{
-          field: "date_from",
+          field: "start",
           order: "DESC",
         }}
         bulkActionButtons={false}
       >
         <TextField source="title.en" label="Title" />
         <ReferenceField
-          source="location_id"
+          source="location"
           reference="locations"
           label="Location"
         />
-        <DateField source="date_from" label="Date" />
+        <DateField source="start" label="Date" />
       </Datagrid>
     </List>
   );
@@ -94,13 +94,13 @@ export function NetworkEventsCreate() {
                 <Fieldset label="Date">
                   <DateTimeInput
                     label="From"
-                    source="date_from"
+                    source="start"
                     variant="outlined"
                     helperText={false}
                   />
                   <DateTimeInput
                     label="Until"
-                    source="date_until"
+                    source="end"
                     variant="outlined"
                     helperText={false}
                   />
@@ -113,7 +113,7 @@ export function NetworkEventsCreate() {
                   helperText={false}
                 />
               </Box>
-              <ReferenceInput source="location_id" reference="locations">
+              <ReferenceInput source="location" reference="locations">
                 <AutocompleteInput
                   variant="outlined"
                   helperText={false}
@@ -195,13 +195,13 @@ export function NetworkEventsEdit() {
                 <Fieldset label="Date">
                   <DateTimeInput
                     label="From"
-                    source="date_from"
+                    source="start"
                     variant="outlined"
                     helperText={false}
                   />
                   <DateTimeInput
                     label="Until"
-                    source="date_until"
+                    source="end"
                     variant="outlined"
                     helperText={false}
                   />
@@ -214,7 +214,7 @@ export function NetworkEventsEdit() {
                   helperText={false}
                 />
               </Box>
-              <ReferenceInput source="location_id" reference="locations">
+              <ReferenceInput source="location" reference="locations">
                 <AutocompleteInput
                   variant="outlined"
                   helperText={false}

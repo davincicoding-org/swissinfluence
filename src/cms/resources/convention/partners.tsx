@@ -11,8 +11,8 @@ import {
 import { useWatch } from "react-hook-form";
 
 import type { IDocumentChoice } from "../../hooks";
-import type { ICategoryDocument } from "../category/category-schema";
-import type { IConventionDocument } from "./schema";
+import type { ICategoryDocument } from "../deprecated/category-schema";
+import type { IConventionDocument } from "../deprecated/conventions-schema";
 import { useDocumentChoices } from "../../hooks";
 import { type IBrandDocument } from "../deprecated/brands-schema";
 

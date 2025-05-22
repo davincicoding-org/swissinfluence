@@ -37,7 +37,7 @@ export function CreatorChallengesList() {
         <ReferenceField reference="brands" source="organizer" />
         <ReferenceField
           reference="locations"
-          source="location_id"
+          source="location"
           label="Location"
         />
         <DateField source="dealine" />
@@ -67,7 +67,7 @@ export function CreatorChallengesCreate() {
               source="image"
               validate={required("Add campaign image")}
             />
-            <ReferenceInput source="organizer_id" reference="brands">
+            <ReferenceInput source="organizer" reference="brands">
               <AutocompleteInput
                 variant="outlined"
                 helperText={false}
@@ -77,23 +77,23 @@ export function CreatorChallengesCreate() {
             <Fieldset label="Date">
               <DateTimeInput
                 label="From"
-                source="start_date"
+                source="start"
                 variant="outlined"
                 helperText={false}
               />
               <DateTimeInput
                 label="Until"
-                source="end_date"
+                source="end"
                 variant="outlined"
                 helperText={false}
               />
             </Fieldset>
-            <ReferenceInput source="location_id" reference="locations">
+            <ReferenceInput source="location" reference="locations">
               <AutocompleteInput variant="outlined" helperText={false} />
             </ReferenceInput>
             <TextInput
               label="Registration Link"
-              source="registration_url"
+              source="registration"
               type="url"
               variant="outlined"
               helperText={false}
@@ -148,7 +148,7 @@ export function CreatorChallengesEdit() {
                 compression: "photography",
               }}
             />
-            <ReferenceInput source="organizer_id" reference="brands">
+            <ReferenceInput source="organizer" reference="brands">
               <AutocompleteInput
                 variant="outlined"
                 helperText={false}
@@ -158,23 +158,23 @@ export function CreatorChallengesEdit() {
             <Fieldset label="Date">
               <DateTimeInput
                 label="From"
-                source="start_date"
+                source="start"
                 variant="outlined"
                 helperText={false}
               />
               <DateTimeInput
                 label="Until"
-                source="end_date"
+                source="end"
                 variant="outlined"
                 helperText={false}
               />
             </Fieldset>
-            <ReferenceInput source="location_id" reference="locations">
+            <ReferenceInput source="location" reference="locations">
               <AutocompleteInput variant="outlined" helperText={false} />
             </ReferenceInput>
             <TextInput
               label="Registration Link"
-              source="registration_url"
+              source="registration"
               type="url"
               variant="outlined"
               helperText={false}
