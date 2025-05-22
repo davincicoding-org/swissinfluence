@@ -34,7 +34,9 @@ import {
   IconWorld,
 } from "@tabler/icons-react";
 import {
+  ForgotPasswordPage,
   LoginPage,
+  SetPasswordPage,
   supabaseAuthProvider,
   supabaseDataProvider,
 } from "ra-supabase";
@@ -268,6 +270,14 @@ export function AdminApp() {
         layout={CustomLayout}
         loginPage={LoginPage}
       >
+        <CustomRoutes noLayout>
+          <Route
+            path={ForgotPasswordPage.path}
+            element={<ForgotPasswordPage />}
+          />
+          <Route path={SetPasswordPage.path} element={<SetPasswordPage />} />
+        </CustomRoutes>
+
         <CustomRoutes>
           <Route
             path="/translations"
@@ -458,32 +468,34 @@ function CustomAppBar() {
 
 function CustomMenu() {
   return (
-    <Menu>
-      {/*<Menu.DashboardItem />*/}
-      <Menu.Item
-        to="/translations"
-        primaryText="Translations"
-        leftIcon={<IconLanguage />}
-      />
-      <Menu.ResourceItem name="globals" />
-      <Menu.ResourceItem name="media-library" />
-      <MenuDivider />
-      <Menu.ResourceItem name="categories" />
-      <Menu.ResourceItem name="influencers" />
-      <Menu.ResourceItem name="experts" />
-      <Menu.ResourceItem name="brands" />
-      <Menu.ResourceItem name="locations" />
-      <MenuDivider label="Award" />
-      <Menu.ResourceItem name="awards" />
-      <Menu.ResourceItem name="creator_challenges" />
-      <MenuDivider label="Network" />
-      <Menu.ResourceItem name="certified_influencers" />
-      <Menu.ResourceItem name="social_media_campaigns" />
-      <Menu.ResourceItem name="events" />
-      <Menu.ResourceItem name="agencies" />
-      <MenuDivider label="Convention" />
-      <Menu.ResourceItem name="conventions" />
-    </Menu>
+    <Authenticated>
+      <Menu>
+        {/*<Menu.DashboardItem />*/}
+        <Menu.Item
+          to="/translations"
+          primaryText="Translations"
+          leftIcon={<IconLanguage />}
+        />
+        <Menu.ResourceItem name="globals" />
+        <Menu.ResourceItem name="media-library" />
+        <MenuDivider />
+        <Menu.ResourceItem name="categories" />
+        <Menu.ResourceItem name="influencers" />
+        <Menu.ResourceItem name="experts" />
+        <Menu.ResourceItem name="brands" />
+        <Menu.ResourceItem name="locations" />
+        <MenuDivider label="Award" />
+        <Menu.ResourceItem name="awards" />
+        <Menu.ResourceItem name="creator_challenges" />
+        <MenuDivider label="Network" />
+        <Menu.ResourceItem name="certified_influencers" />
+        <Menu.ResourceItem name="social_media_campaigns" />
+        <Menu.ResourceItem name="events" />
+        <Menu.ResourceItem name="agencies" />
+        <MenuDivider label="Convention" />
+        <Menu.ResourceItem name="conventions" />
+      </Menu>
+    </Authenticated>
   );
 }
 
