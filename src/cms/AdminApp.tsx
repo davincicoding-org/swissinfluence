@@ -60,6 +60,7 @@ import type {
   creatorChallenges,
   experts,
   influencers,
+  socialMediaCampaigns,
 } from "@/database/schema";
 import { supabaseClient } from "@/database/supabase";
 import { env } from "@/env";
@@ -77,11 +78,6 @@ import {
 import { AwardsCreate, AwardsEdit, AwardsList } from "./resources/award";
 import { type IAwardDocument } from "./resources/award/schema";
 import { BrandsCreate, BrandsEdit, BrandsList } from "./resources/brands";
-import {
-  CampaignsCreate,
-  CampaignsEdit,
-  CampaignsList,
-} from "./resources/campaign";
 import {
   CategoriesCreate,
   CategoriesEdit,
@@ -114,6 +110,11 @@ import {
   LocationsEdit,
   LocationsList,
 } from "./resources/locations";
+import {
+  SocialMediaCampaignsCreate,
+  SocialMediaCampaignsEdit,
+  SocialMediaCampaignsList,
+} from "./resources/social_media_campaigns";
 
 const dataProvider = withLifecycleCallbacks(
   supabaseDataProvider({
@@ -171,6 +172,13 @@ const dataProvider = withLifecycleCallbacks(
       bucket: "images",
       generatePath: ({ resource, extension }) =>
         `certified_influencers/${resource.influencer_id}-${Date.now()}.${extension}`,
+    }),
+    imageStorageHandler<typeof socialMediaCampaigns.$inferSelect>({
+      supabaseClient,
+      resource: "social_media_campaigns",
+      bucket: "images",
+      generatePath: ({ resource, extension }) =>
+        `social_media_campaigns/${resource.title.en}-${Date.now()}.${extension}`,
     }),
   ],
 );
@@ -310,14 +318,14 @@ export function AdminApp() {
           icon={IconSwords}
         />
 
-        {/* <Resource
-          name="campaigns"
-          list={CampaignsList}
-          edit={CampaignsEdit}
-          create={CampaignsCreate}
+        <Resource
+          name="social_media_campaigns"
+          list={SocialMediaCampaignsList}
+          edit={SocialMediaCampaignsEdit}
+          create={SocialMediaCampaignsCreate}
           recordRepresentation="title.en"
           icon={IconSpeakerphone}
-        /> */}
+        />
 
         {/* <Resource
           name="events"
@@ -413,7 +421,7 @@ export function CustomMenu() {
       <Menu.ResourceItem name="creator_challenges" />
       <MenuDivider label="Network" />
       <Menu.ResourceItem name="certified_influencers" />
-      <Menu.ResourceItem name="campaigns" />
+      <Menu.ResourceItem name="social_media_campaigns" />
       <Menu.ResourceItem name="events" />
       <Menu.ResourceItem name="agencies" />
       <MenuDivider label="Convention" />

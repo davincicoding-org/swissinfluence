@@ -2,16 +2,16 @@ import type { ImageAsset, ImageMedia } from "@davincicoding/cms/image";
 import { unstable_cache } from "next/cache";
 import { groupBy } from "lodash-es";
 
-import type { ICampaignDocument } from "@/cms/resources/campaign/schema";
 import type { IBrandDocument } from "@/cms/resources/deprecated/brands-schema";
+import type { ICampaignDocument } from "@/cms/resources/deprecated/campaigns-schema";
 import type { ICertifiedIInfluencerDocument } from "@/cms/resources/deprecated/certified-influencer-schema";
 import type { IEventDocument } from "@/cms/resources/event/schema";
 import { type SocialMedia, type Translatable } from "@/cms/common";
-import { CampaignDocumentSchema } from "@/cms/resources/campaign/schema";
 import { getCategories } from "@/cms/resources/category/category-data";
 import { type ICategoryDocument } from "@/cms/resources/category/category-schema";
 import { AgencyDocumentSchema } from "@/cms/resources/deprecated/agency-schema";
 import { BrandDocumentSchema } from "@/cms/resources/deprecated/brands-schema";
+import { CampaignDocumentSchema } from "@/cms/resources/deprecated/campaigns-schema";
 import { CertifiedInfluencerDocumentSchema } from "@/cms/resources/deprecated/certified-influencer-schema";
 import { InfluencerDocumentSchema } from "@/cms/resources/deprecated/influencer-schema";
 import { EventDocumentSchema } from "@/cms/resources/event/schema";

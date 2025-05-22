@@ -68,9 +68,6 @@ export function CertifiedInfluencersCreate() {
               label={false}
               source="image"
               validate={required("Add an image")}
-              optimization={{
-                compression: "photography",
-              }}
             />
             <ReferenceArrayInput source="categories" reference="categories">
               <AutocompleteArrayInput

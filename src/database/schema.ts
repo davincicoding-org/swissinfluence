@@ -383,7 +383,8 @@ export const socialMediaCampaigns = pgTable("social_media_campaigns", (d) => ({
     .references(() => brands.id)
     .notNull(),
   locationId: d.serial().references(() => locations.id),
-  date: d.date(),
+  date_from: d.date(),
+  date_until: d.date(),
   registrationUrl: d.text(),
 }));
 
