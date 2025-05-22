@@ -7,11 +7,11 @@ import type { ICampaignDocument } from "@/cms/resources/deprecated/campaigns-sch
 import type { ICertifiedIInfluencerDocument } from "@/cms/resources/deprecated/certified-influencer-schema";
 import type { IEventDocument } from "@/cms/resources/deprecated/event-schema";
 import { type SocialMedia, type Translatable } from "@/cms/common";
-import { getCategories } from "@/cms/resources/category/category-data";
-import { type ICategoryDocument } from "@/cms/resources/category/category-schema";
 import { AgencyDocumentSchema } from "@/cms/resources/deprecated/agency-schema";
 import { BrandDocumentSchema } from "@/cms/resources/deprecated/brands-schema";
 import { CampaignDocumentSchema } from "@/cms/resources/deprecated/campaigns-schema";
+import { getCategories } from "@/cms/resources/deprecated/category-data";
+import { type ICategoryDocument } from "@/cms/resources/deprecated/category-schema";
 import { CertifiedInfluencerDocumentSchema } from "@/cms/resources/deprecated/certified-influencer-schema";
 import { EventDocumentSchema } from "@/cms/resources/deprecated/event-schema";
 import { InfluencerDocumentSchema } from "@/cms/resources/deprecated/influencer-schema";

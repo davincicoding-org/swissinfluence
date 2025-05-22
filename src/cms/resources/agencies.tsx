@@ -54,7 +54,14 @@ export function AgenciesCreate() {
               validate={required("Add a image")}
             />
           </Box>
-          <Box sx={{ display: "grid", gap: 3, alignContent: "start" }}>
+          <Box
+            sx={{
+              display: "grid",
+              gap: 3,
+              alignContent: "start",
+              flexShrink: 0,
+            }}
+          >
             <Fieldset>
               <TextInput
                 label="Name"
@@ -81,7 +88,12 @@ export function AgenciesCreate() {
               />
             </Fieldset>
             <TranslatableInputs locales={Locale.options}>
-              <TranslatableTextInput source="about" helperText={false} />
+              <TranslatableTextInput
+                source="description"
+                helperText={false}
+                multiline
+                validate={required("Add a description")}
+              />
             </TranslatableInputs>
           </Box>
         </Box>
@@ -116,7 +128,14 @@ export function AgenciesEdit() {
               validate={required("Add a image")}
             />
           </Box>
-          <Box sx={{ display: "grid", gap: 3, alignContent: "start" }}>
+          <Box
+            sx={{
+              display: "grid",
+              gap: 3,
+              alignContent: "start",
+              flexShrink: 0,
+            }}
+          >
             <Fieldset>
               <TextInput
                 label="Name"
@@ -143,7 +162,12 @@ export function AgenciesEdit() {
               />
             </Fieldset>
             <TranslatableInputs locales={Locale.options}>
-              <TranslatableTextInput source="about" helperText={false} />
+              <TranslatableTextInput
+                source="description"
+                helperText={false}
+                multiline
+                validate={required("Add a description")}
+              />
             </TranslatableInputs>
           </Box>
         </Box>

@@ -3,6 +3,10 @@ import { relations } from "drizzle-orm";
 import { pgEnum, pgTable } from "drizzle-orm/pg-core";
 import { z } from "zod/v4";
 
+import { LanguageCodeSchema } from "@/utils/languages";
+
+import { CantonEnum, LanguageCodeEnum } from "./enums";
+
 // MARK: JSON Schemas
 
 const socialPlatformEnum = z.enum([
@@ -38,6 +42,7 @@ export const locations = pgTable("locations", (d) => ({
 // MARK: Categories
 
 export const categories = pgTable("categories", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
@@ -48,50 +53,59 @@ export const categoryRelations = relations(categories, ({ one }) => ({}));
 // MARK: Influencers
 
 export const influencers = pgTable("influencers", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
   socials: d.jsonb().$type<Social>().array().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
 }));
 
-export const influencerRelations = relations(influencers, ({ one }) => ({}));
+export const influencerCategories = pgTable("influencer_categories", (d) => ({
+  id: d.serial().primaryKey(),
+  influencer: d
+    .integer()
+    .references(() => influencers.id)
+    .notNull(),
+  category: d
+    .integer()
+    .references(() => categories.id)
+    .notNull(),
+}));
+
+export const influencerCategoryRelations = relations(
+  influencerCategories,
+  ({ one }) => ({
+    influencer: one(influencers, {
+      fields: [influencerCategories.influencer],
+      references: [influencers.id],
+    }),
+    category: one(categories, {
+      fields: [influencerCategories.category],
+      references: [categories.id],
+    }),
+  }),
+);
+
+export const influencerRelations = relations(influencers, ({ many }) => ({
+  interests: many(influencerCategories),
+}));
 
 // MARK: Certified Influencers
 
-export const residenceEnum = pgEnum("residence", [
-  "AG",
-  "AR",
-  "AI",
-  "BS",
-  "BL",
-  "BE",
-  "FR",
-  "GE",
-  "GL",
-  "GR",
-  "JU",
-  "LU",
-  "NE",
-  "NW",
-  "OW",
-  "SG",
-  "SH",
-  "SO",
-  "SZ",
-  "TG",
-  "TI",
-  "UR",
-  "VD",
-  "VS",
-  "ZG",
-  "ZH",
-]);
+export const residenceEnum = pgEnum(
+  "residence",
+  CantonEnum.options as [string, ...string[]],
+);
 
-export const languageEnum = pgEnum("language", ["DE", "EN", "FR", "IT", "RM"]);
+export const languageEnum = pgEnum(
+  "language",
+  LanguageCodeEnum.options as [string, ...string[]],
+);
 export const certifiedInfluencers = pgTable("certified_influencers", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   influencer: d
-    .serial()
+    .integer()
     .references(() => influencers.id)
     .notNull()
     .unique(),
@@ -101,8 +115,6 @@ export const certifiedInfluencers = pgTable("certified_influencers", (d) => ({
   languages: languageEnum().array().notNull(),
   bio: d.jsonb().$type<Translatable>().notNull(),
   otherInterests: d.jsonb().$type<Translatable>(),
-
-  // interests -> many to many with categories
 }));
 
 export const certifiedInfluencerRelations = relations(
@@ -118,6 +130,7 @@ export const certifiedInfluencerRelations = relations(
 // MARK: Experts
 
 export const experts = pgTable("experts", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
   description: d.jsonb().$type<Translatable>().notNull(),
@@ -130,9 +143,10 @@ export const expertRelations = relations(experts, ({ one }) => ({}));
 // MARK: Brands
 
 export const brands = pgTable("brands", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   name: d.text().notNull().unique(),
-  url: d.text().notNull(),
+  website: d.text().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
 }));
 
@@ -141,6 +155,7 @@ export const brandRelations = relations(brands, ({ one }) => ({}));
 // MARK: Awards
 
 export const awards = pgTable("awards", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   year: d.smallint().notNull(),
   nominationDeadline: d.date(),
@@ -167,15 +182,15 @@ export const awardRelations = relations(awards, ({ many, one }) => ({
 export const awardCategories = pgTable("award_categories", (d) => ({
   id: d.serial().primaryKey(),
   category: d
-    .serial()
+    .integer()
     .references(() => categories.id)
     .notNull(),
   award: d
-    .serial()
+    .integer()
     .references(() => awards.id)
     .notNull(),
   sponsor: d
-    .serial()
+    .integer()
     .references(() => brands.id)
     .notNull(),
 }));
@@ -201,11 +216,11 @@ export const awardJuryMembers = pgTable("award_jury_members", (d) => ({
   id: d.serial().primaryKey(),
   ordinal: d.smallint().notNull(),
   award: d
-    .serial()
+    .integer()
     .references(() => awards.id)
     .notNull(),
   expert: d
-    .serial()
+    .integer()
     .references(() => experts.id)
     .notNull(),
 }));
@@ -229,15 +244,15 @@ export const awardJuryMemberRelations = relations(
 export const awardNominees = pgTable("award_nominees", (d) => ({
   id: d.serial().primaryKey(),
   award: d
-    .serial()
+    .integer()
     .references(() => awards.id)
     .notNull(),
   category: d
-    .serial()
+    .integer()
     .references(() => categories.id)
     .notNull(),
   influencer: d
-    .serial()
+    .integer()
     .references(() => influencers.id)
     .notNull(),
 }));
@@ -263,11 +278,11 @@ export const awardPartners = pgTable("award_partners", (d) => ({
   id: d.serial().primaryKey(),
   ordinal: d.smallint().notNull(),
   award: d
-    .serial()
+    .integer()
     .references(() => awards.id)
     .notNull(),
   brand: d
-    .serial()
+    .integer()
     .references(() => brands.id)
     .notNull(),
 }));
@@ -289,11 +304,11 @@ export const awardShows = pgTable("award_shows", (d) => ({
   id: d.serial().primaryKey(),
   date: d.date().notNull(),
   award: d
-    .serial()
+    .integer()
     .references(() => awards.id)
     .notNull(),
   location: d
-    .serial()
+    .integer()
     .references(() => locations.id)
     .notNull(),
   tickets: d.text(),
@@ -320,11 +335,11 @@ export const awardCategoryRankings = pgTable(
   (d) => ({
     id: d.serial().primaryKey(),
     award: d
-      .serial()
+      .integer()
       .references(() => awards.id)
       .notNull(),
     category: d
-      .serial()
+      .integer()
       .references(() => categories.id)
       .notNull(),
     winner: d.jsonb().$type<ImageAsset>(),
@@ -348,15 +363,16 @@ export const awardCategoryRankingRelations = relations(
 // MARK: Creator Challenges
 
 export const creatorChallenges = pgTable("creator_challenges", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   content: d.jsonb().$type<Translatable>().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
   organizer: d
-    .serial()
+    .integer()
     .references(() => brands.id)
     .notNull(),
-  location: d.serial().references(() => locations.id),
+  location: d.integer().references(() => locations.id),
   start: d.date(),
   end: d.date(),
   registration: d.text(),
@@ -375,12 +391,13 @@ export const creatorChallengeRelations = relations(
 // Network Events
 
 export const networkEvents = pgTable("network_events", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   content: d.jsonb().$type<Translatable>().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
   location: d
-    .serial()
+    .integer()
     .references(() => locations.id)
     .notNull(),
   start: d.date(),
@@ -398,15 +415,16 @@ export const networkEventRelations = relations(networkEvents, ({ one }) => ({
 // MARK: Social Media Campaigns
 
 export const socialMediaCampaigns = pgTable("social_media_campaigns", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   content: d.jsonb().$type<Translatable>().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
   organizer: d
-    .serial()
+    .integer()
     .references(() => brands.id)
     .notNull(),
-  location: d.serial().references(() => locations.id),
+  location: d.integer().references(() => locations.id),
   start: d.date(),
   end: d.date(),
   registration: d.text(),
@@ -419,12 +437,17 @@ export const socialMediaCampaignRelations = relations(
       fields: [socialMediaCampaigns.organizer],
       references: [brands.id],
     }),
+    location: one(locations, {
+      fields: [socialMediaCampaigns.location],
+      references: [locations.id],
+    }),
   }),
 );
 
 // MARK: Agencies
 
 export const agencies = pgTable("agencies", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
   description: d.jsonb().$type<Translatable>().notNull(),
@@ -440,18 +463,19 @@ export const agencyRelations = relations(agencies, ({ one }) => ({}));
 
 export type ConventionSchedule = {
   title: Translatable;
-  room: string;
+  room: string | null;
   start: Date;
   end: Date;
   description: Translatable;
 }[];
 
 export const conventions = pgTable("conventions", (d) => ({
+  firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   title: d.text().notNull(),
   date: d.date().notNull(),
   location: d
-    .serial()
+    .integer()
     .references(() => locations.id)
     .notNull(),
   tickets: d.text(),
@@ -471,11 +495,11 @@ export const conventionRelations = relations(conventions, ({ many, one }) => ({
 export const conventionPartners = pgTable("convention_partners", (d) => ({
   id: d.serial().primaryKey(),
   convention: d
-    .serial()
+    .integer()
     .references(() => conventions.id)
     .notNull(),
   brand: d
-    .serial()
+    .integer()
     .references(() => brands.id)
     .notNull(),
 }));

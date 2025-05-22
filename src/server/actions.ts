@@ -1,6 +1,5 @@
 "use server";
 
-import type { ImageOptimizer } from "@davincicoding/cms/image";
 import type { MediaAsset } from "@davincicoding/cms/media";
 import { revalidateTag } from "next/cache";
 

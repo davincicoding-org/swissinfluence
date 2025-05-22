@@ -63,7 +63,7 @@ const SwissCantonTranslations: Record<
 export const getCantonLabel = (
   code: SwissCantonCode,
   locale: SupportedLocale,
-) => SwissCantonTranslations[code][locale];
+) => SwissCantonTranslations[code]![locale];
 
 export const CANTON_CHOICES = residenceEnum.enumValues.map((code) => ({
   id: code,

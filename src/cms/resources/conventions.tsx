@@ -59,7 +59,7 @@ export function ConventionsEdit() {
         <TabbedForm.Tab label="Schedule">
           <ScheduleSection />
         </TabbedForm.Tab>
-        <TabbedForm.Tab label="Partners">
+        <TabbedForm.Tab label="Partners" disabled>
           <PartnersInput />
         </TabbedForm.Tab>
       </TabbedForm>
@@ -71,50 +71,37 @@ export function ConventionsEdit() {
 
 export function EventSection() {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        gap: 4,
-        width: "100%",
-        alignItems: "start",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          flexShrink: 1,
-          minWidth: "200px",
-          maxWidth: "400px",
-          gap: 1,
-        }}
-      >
-        <TextInput
-          source="title"
-          variant="outlined"
-          label="Title"
-          validate={required("Add a Title")}
-          helperText={false}
-        />
-        <DateInput source="date" variant="outlined" helperText={false} />
+    <>
+      <TextInput
+        source="title"
+        variant="outlined"
+        label="Title"
+        validate={required("Add a Title")}
+        helperText={false}
+      />
+      <DateInput
+        source="date"
+        variant="outlined"
+        validate={required("Add a Date")}
+        helperText={false}
+      />
 
-        <ReferenceInput source="location" reference="locations">
-          <AutocompleteInput
-            variant="outlined"
-            helperText={false}
-            validate={required("Add a Location")}
-          />
-        </ReferenceInput>
-
-        <TextInput
-          source="tickets"
-          type="url"
+      <ReferenceInput source="location" reference="locations">
+        <AutocompleteInput
           variant="outlined"
-          label="Tickets URL"
           helperText={false}
+          validate={required("Add a Location")}
         />
-      </Box>
-    </Box>
+      </ReferenceInput>
+
+      <TextInput
+        source="tickets"
+        type="url"
+        variant="outlined"
+        label="Tickets URL"
+        helperText={false}
+      />
+    </>
   );
 }
 

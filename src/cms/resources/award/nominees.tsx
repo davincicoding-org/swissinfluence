@@ -13,7 +13,7 @@ import {
 import { useWatch } from "react-hook-form";
 
 import type { IDocumentChoice } from "../../hooks";
-import type { ICategoryDocument } from "../category/category-schema";
+import type { ICategoryDocument } from "../deprecated/category-schema";
 import type { IInfluencerDocument } from "../deprecated/influencer-schema";
 import type { IAwardDocument } from "./schema";
 import { useDocumentChoices } from "../../hooks";

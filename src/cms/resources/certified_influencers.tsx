@@ -26,22 +26,18 @@ import { LANGUAGE_CHOICES } from "@/utils/languages";
 
 /* List */
 
+// TODO make seacrh work and add query
 export function CertifiedInfluencersList() {
   return (
-    <List
-      sort={{
-        field: "name",
-        order: "DESC",
-      }}
-    >
+    <List>
       <Datagrid bulkActionButtons={false}>
         <ReferenceField
           label="Influencer"
           reference="influencers"
-          source="influencerID"
+          source="influencer"
           link={false}
         >
-          <TextField source="name" resource="influencers" />
+          <TextField source="name" />
         </ReferenceField>
       </Datagrid>
     </List>
@@ -68,13 +64,22 @@ export function CertifiedInfluencersCreate() {
               label={false}
               source="image"
               validate={required("Add an image")}
+              optimization={{
+                compression: "photography",
+              }}
             />
-            <ReferenceArrayInput source="categories" reference="categories">
+            {/* FIXME: this is not working */}
+            <ReferenceArrayInput
+              source="influencer"
+              reference="influencer_categories"
+            >
               <AutocompleteArrayInput
+                disabled
+                label="Cooperation Interests"
                 variant="outlined"
-                optionText={({ title }: typeof categories.$inferSelect) =>
-                  title.en
-                }
+                // optionText={({ title }: typeof categories.$inferSelect) =>
+                //   title.en
+                // }
                 helperText={false}
                 validate={[
                   required("Add a category"),
@@ -121,12 +126,13 @@ export function CertifiedInfluencersCreate() {
             </ReferenceInput>
             <TranslatableInputs locales={Locale.options}>
               <TranslatableTextInput
-                source="about"
+                source="bio"
+                helperText={false}
                 multiline
                 validate={required("Describe the influencer")}
               />
               <TranslatableTextInput
-                source="interests"
+                source="other_interests"
                 helperText="Add each interest on a new line"
                 multiline
                 validate={required("Add the influencer's interests")}
@@ -163,13 +169,20 @@ export function CertifiedInfluencersEdit() {
                 compression: "photography",
               }}
             />
-            <ReferenceArrayInput source="categories" reference="categories">
+            {/* FIXME: this is not working */}
+            <ReferenceArrayInput
+              source="influencer"
+              reference="influencer_categories"
+            >
               <AutocompleteArrayInput
+                disabled
+                label="Cooperation Interests"
                 variant="outlined"
-                optionText={({ title }: typeof categories.$inferSelect) =>
-                  title.en
-                }
-                helperText={false}
+                // optionText={({ title }: typeof categories.$inferSelect) =>
+                //   title.en
+                // }
+                // helperText={false}
+                helperText="WORK IN PROGRESS"
                 validate={[
                   required("Add a category"),
                   minLength("Add at least one category"),
@@ -215,12 +228,13 @@ export function CertifiedInfluencersEdit() {
             </ReferenceInput>
             <TranslatableInputs locales={Locale.options}>
               <TranslatableTextInput
-                source="about"
+                source="bio"
+                helperText={false}
                 multiline
                 validate={required("Describe the influencer")}
               />
               <TranslatableTextInput
-                source="interests"
+                source="other_interests"
                 helperText="Add each interest on a new line"
                 multiline
                 validate={required("Add the influencer's interests")}

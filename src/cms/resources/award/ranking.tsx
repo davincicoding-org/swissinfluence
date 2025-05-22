@@ -11,7 +11,7 @@ import {
 import { useController, useWatch } from "react-hook-form";
 
 import type { IDocumentChoice } from "../../hooks";
-import type { ICategoryDocument } from "../category/category-schema";
+import type { ICategoryDocument } from "../deprecated/category-schema";
 import type { IInfluencerDocument } from "../deprecated/influencer-schema";
 import type { IAwardDocument } from "./schema";
 import { useDocumentChoices } from "../../hooks";
@@ -124,7 +124,9 @@ function AwardCategoryRanking({
       <ImageInput
         label={false}
         source={`ranking.${categoryID}.winnerImage`}
-        aspectRatio={1}
+        previewProps={{
+          aspectRatio: 1,
+        }}
         PlaceholderIcon={IconConfetti}
         validate={required("Add a winner Image")}
         optimization={{

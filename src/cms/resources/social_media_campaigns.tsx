@@ -26,17 +26,10 @@ import { routing } from "@/i18n/routing";
 export function SocialMediaCampaignsList() {
   return (
     <List>
-      <Datagrid
-        sort={{
-          field: "deadline",
-          order: "DESC",
-        }}
-        bulkActionButtons={false}
-      >
+      <Datagrid bulkActionButtons={false}>
         <TextField source="title.en" label="Title" />
         <ReferenceField reference="brands" source="organizer" />
         <ReferenceField reference="locations" source="location" />
-        <DateField source="dealine" />
       </Datagrid>
     </List>
   );
@@ -104,13 +97,13 @@ export function SocialMediaCampaignsCreate() {
               validate={required("Add campaign title")}
               helperText={false}
             />
-            <Fieldset label="Description*" style={{ marginTop: "1rem" }}>
+            <Fieldset label="Content*" style={{ marginTop: "1rem" }}>
               <RichTextInput
-                source="description"
+                source="content"
                 label={false}
                 variant="outlined"
                 helperText={false}
-                validate={required("Add a description")}
+                validate={required("Add content")}
               />
             </Fieldset>
           </TranslatableInputs>
@@ -182,13 +175,13 @@ export function SocialMediaCampaignsEdit() {
               validate={required("Add campaign title")}
               helperText={false}
             />
-            <Fieldset label="Description*" style={{ marginTop: "1rem" }}>
+            <Fieldset label="Content*" style={{ marginTop: "1rem" }}>
               <RichTextInput
-                source="description"
+                source="content"
                 label={false}
                 variant="outlined"
                 helperText={false}
-                validate={required("Add a description")}
+                validate={required("Add content")}
               />
             </Fieldset>
           </TranslatableInputs>

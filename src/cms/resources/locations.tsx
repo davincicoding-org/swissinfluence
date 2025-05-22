@@ -1,4 +1,3 @@
-import { ImageField } from "@davincicoding/cms/image";
 import {
   Create,
   Datagrid,
@@ -15,16 +14,9 @@ import {
 export function LocationsList() {
   return (
     <List>
-      <Datagrid
-        bulkActionButtons={false}
-        sx={{
-          [`& .RaDatagrid-headerCell:first-of-type`]: {
-            width: "0.1%",
-          },
-        }}
-      >
-        <ImageField label={false} source="image.src" width={50} height={50} />
-        <TextField source="name" label="Influencer" />
+      <Datagrid bulkActionButtons={false}>
+        <TextField source="title" />
+        <TextField source="city" />
       </Datagrid>
     </List>
   );
@@ -37,16 +29,14 @@ export function LocationsCreate() {
     <Create redirect="list">
       <SimpleForm>
         <TextInput
-          source="name"
+          source="title"
           variant="outlined"
-          label="Name"
-          validate={required("Add a Name")}
+          validate={required("Add a Title")}
           helperText={false}
         />
         <TextInput
           source="city"
           variant="outlined"
-          label="City"
           validate={required("Add a City")}
           helperText={false}
         />
@@ -70,21 +60,19 @@ export function LocationsEdit() {
     <Edit redirect="list">
       <SimpleForm>
         <TextInput
-          source="name"
+          source="title"
           variant="outlined"
-          label="Name"
-          validate={required("Add a Name")}
+          validate={required("Add a Title")}
           helperText={false}
         />
         <TextInput
           source="city"
           variant="outlined"
-          label="City"
           validate={required("Add a City")}
           helperText={false}
         />
         <TextInput
-          source="mapsURL"
+          source="maps"
           type="url"
           variant="outlined"
           label="Google Maps Link"

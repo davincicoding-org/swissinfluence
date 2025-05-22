@@ -7,6 +7,7 @@ import {
   GlobalsEdit,
   GlobalsList,
 } from "@davincicoding/cms/globals";
+import { imageStorageHandler } from "@davincicoding/cms/image";
 import { MenuDivider } from "@davincicoding/cms/layout";
 import {
   MediaLibraryCreate,
@@ -14,7 +15,6 @@ import {
   MediaLibraryList,
 } from "@davincicoding/cms/media";
 import { MessagesEditor } from "@davincicoding/cms/messages";
-import { imageStorageHandler } from "@davincicoding/cms/supabase";
 import { Button } from "@mui/material";
 import {
   IconBuilding,
@@ -122,11 +122,37 @@ import {
   SocialMediaCampaignsList,
 } from "./resources/social_media_campaigns";
 
+const deleteImage = async (path: string) => {
+  const [bucket, ...rest] = path.split("/");
+  await supabaseClient.storage.from(bucket!).remove([rest.join("/")]);
+};
+
+const uploadImage = async (path: string, file: File) => {
+  const { data, error } = await supabaseClient.storage
+    .from("images")
+    .upload(path, file, {
+      upsert: true,
+    });
+  if (error) throw error;
+  return { src: data.fullPath };
+};
+
+const uploadMedia = async (path: string, file: File) => {
+  const { data, error } = await supabaseClient.storage
+    .from("media")
+    .upload(path, file, {
+      upsert: true,
+    });
+  if (error) throw error;
+  return { src: data.fullPath };
+};
+
 const dataProvider = withLifecycleCallbacks(
   supabaseDataProvider({
     instanceUrl: env.NEXT_PUBLIC_SUPABASE_URL,
     apiKey: env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     supabaseClient,
+    defaultListOp: "ilike",
   }),
   [
     {
@@ -137,68 +163,73 @@ const dataProvider = withLifecycleCallbacks(
       },
     },
     imageStorageHandler<typeof categories.$inferSelect>({
-      supabaseClient,
+      uploadImage,
+      deleteImage,
       resource: "categories",
-      bucket: "images",
-      generatePath: ({ resource, extension }) =>
-        `categories/${resource.title.en}.${extension}`,
+      folder: "categories",
+      fileName: ({ resource, timestamp }) =>
+        `${resource.title.en}-${timestamp}`,
     }),
     imageStorageHandler<typeof brands.$inferSelect>({
-      supabaseClient,
+      uploadImage,
+      deleteImage,
       resource: "brands",
-      bucket: "images",
-      generatePath: ({ resource, extension }) =>
-        `brands/${resource.name}.${extension}`,
+      folder: "brands",
+      fileName: ({ resource, timestamp }) => `${resource.name}-${timestamp}`,
     }),
     imageStorageHandler<typeof influencers.$inferSelect>({
-      supabaseClient,
+      uploadImage,
+      deleteImage,
       resource: "influencers",
-      bucket: "images",
-      generatePath: ({ resource, extension }) =>
-        `influencers/${resource.name}-${Date.now()}.${extension}`,
+      folder: "influencers",
+      fileName: ({ resource, timestamp }) => `${resource.name}-${timestamp}`,
     }),
     imageStorageHandler<typeof experts.$inferSelect>({
-      supabaseClient,
+      uploadImage,
+      deleteImage,
       resource: "experts",
-      bucket: "images",
-      generatePath: ({ resource, extension }) =>
-        `experts/${resource.name}-${Date.now()}.${extension}`,
+      folder: "experts",
+      fileName: ({ resource, timestamp }) => `${resource.name}-${timestamp}`,
     }),
     imageStorageHandler<typeof agencies.$inferSelect, "logo" | "image">({
-      supabaseClient,
+      uploadImage,
+      deleteImage,
       resource: "agencies",
-      bucket: "images",
       imageKey: ["logo", "image"],
-      generatePath: ({ resource, extension, key }) =>
-        `agencies/${resource.name}-${key}-${Date.now()}.${extension}`,
+      folder: "agencies",
+      fileName: ({ resource, timestamp }) => `${resource.name}-${timestamp}`,
     }),
     imageStorageHandler<typeof creatorChallenges.$inferSelect>({
-      supabaseClient,
+      uploadImage,
+      deleteImage,
       resource: "creator_challenges",
-      bucket: "images",
-      generatePath: ({ resource, extension }) =>
-        `creator_challenges/${resource.title.en}-${Date.now()}.${extension}`,
+      folder: "creator_challenges",
+      fileName: ({ resource, timestamp }) =>
+        `${resource.title.en}-${timestamp}`,
     }),
     imageStorageHandler<typeof certifiedInfluencers.$inferSelect>({
-      supabaseClient,
+      uploadImage,
+      deleteImage,
       resource: "certified_influencers",
-      bucket: "images",
-      generatePath: ({ resource, extension }) =>
-        `certified_influencers/${resource.influencer_id}-${Date.now()}.${extension}`,
+      folder: "certified_influencers",
+      fileName: ({ resource, timestamp }) =>
+        `${resource.influencer}-${timestamp}`,
     }),
     imageStorageHandler<typeof socialMediaCampaigns.$inferSelect>({
-      supabaseClient,
+      uploadImage,
+      deleteImage,
       resource: "social_media_campaigns",
-      bucket: "images",
-      generatePath: ({ resource, extension }) =>
-        `social_media_campaigns/${resource.title.en}-${Date.now()}.${extension}`,
+      folder: "social_media_campaigns",
+      fileName: ({ resource, timestamp }) =>
+        `${resource.title.en}-${timestamp}`,
     }),
     imageStorageHandler<typeof networkEvents.$inferSelect>({
-      supabaseClient,
+      uploadImage,
+      deleteImage,
       resource: "network_events",
-      bucket: "images",
-      generatePath: ({ resource, extension }) =>
-        `network_events/${resource.title.en}-${Date.now()}.${extension}`,
+      folder: "network_events",
+      fileName: ({ resource, timestamp }) =>
+        `${resource.title.en}-${timestamp}`,
     }),
   ],
 );
@@ -213,14 +244,18 @@ export function AdminApp() {
       config={{
         globals: GLOBALS,
         images: {
-          Component: ({ src, ...props }) => (
+          Component: ({ src, style, width, height, alt }) => (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={
                 src.includes("localhost")
                   ? src
                   : `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/render/image/public/${src}`
               }
-              {...props}
+              alt={alt}
+              width={width}
+              height={height}
+              style={style}
             />
           ),
         },
@@ -315,7 +350,7 @@ export function AdminApp() {
           list={LocationsList}
           edit={LocationsEdit}
           create={LocationsCreate}
-          recordRepresentation="name"
+          recordRepresentation="title"
           icon={IconMapPin}
         />
 
@@ -340,6 +375,7 @@ export function AdminApp() {
 
         <Resource
           name="social_media_campaigns"
+          options={{ label: "Campaigns" }}
           list={SocialMediaCampaignsList}
           edit={SocialMediaCampaignsEdit}
           create={SocialMediaCampaignsCreate}
@@ -374,13 +410,13 @@ export function AdminApp() {
           icon={IconBuilding}
         />
 
-        {/* <Resource
+        <Resource
           name="conventions"
           list={ConventionsList}
           edit={ConventionsEdit}
           create={ConventionsCreate}
           icon={IconUsersGroup}
-        /> */}
+        />
       </Admin>
     </CMSProvider>
   );
@@ -389,7 +425,7 @@ export function AdminApp() {
 function CustomLayout({ children }: PropsWithChildren) {
   return (
     <Layout
-      appBar={CustomAppBar}
+      // appBar={CustomAppBar}
       menu={CustomMenu}
       sx={{
         "& .RaLayout-appFrame	": {
@@ -403,7 +439,7 @@ function CustomLayout({ children }: PropsWithChildren) {
   );
 }
 
-export function CustomAppBar() {
+function CustomAppBar() {
   return (
     <AppBar>
       <TitlePortal />
@@ -420,7 +456,7 @@ export function CustomAppBar() {
   );
 }
 
-export function CustomMenu() {
+function CustomMenu() {
   return (
     <Menu>
       {/*<Menu.DashboardItem />*/}

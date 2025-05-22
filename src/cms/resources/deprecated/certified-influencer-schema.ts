@@ -1,7 +1,8 @@
 import { ImageMediaSchema } from "@davincicoding/cms/image";
 import { z } from "zod/v4";
 
-import { SwissCantonCodeSchema } from "../../../utils/cantons";
+import { CantonEnum } from "@/database/enums";
+
 import { LanguageCodeSchema } from "../../../utils/languages";
 import { DocumentIDSchema, TranslatableSchema } from "../../common";
 import { CategoryDocumentSchema } from "./category-schema";
@@ -12,7 +13,7 @@ export const CertifiedInfluencerDocumentSchema = z.object({
   influencerID: InfluencerDocumentSchema.shape.id,
   image: ImageMediaSchema,
   categories: z.array(CategoryDocumentSchema.shape.id),
-  residence: SwissCantonCodeSchema,
+  residence: CantonEnum,
   about: TranslatableSchema,
   languages: z.array(LanguageCodeSchema),
   birthdate: z.string(),

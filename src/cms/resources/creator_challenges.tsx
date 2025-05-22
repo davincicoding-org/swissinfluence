@@ -71,6 +71,9 @@ export function CreatorChallengesCreate() {
               <AutocompleteInput
                 variant="outlined"
                 helperText={false}
+                filterToQuery={(searchText) => ({
+                  name: `%${searchText}%`,
+                })}
                 validate={required("Add a organizer")}
               />
             </ReferenceInput>
@@ -89,7 +92,15 @@ export function CreatorChallengesCreate() {
               />
             </Fieldset>
             <ReferenceInput source="location" reference="locations">
-              <AutocompleteInput variant="outlined" helperText={false} />
+              <AutocompleteInput
+                source="title"
+                variant="outlined"
+                helperText={false}
+                filterToQuery={(searchText) => ({
+                  title: `%${searchText}%`,
+                  city: `%${searchText}%`,
+                })}
+              />
             </ReferenceInput>
             <TextInput
               label="Registration Link"
@@ -108,9 +119,9 @@ export function CreatorChallengesCreate() {
               validate={required("Add campaign title")}
               helperText={false}
             />
-            <Fieldset label="Description*" style={{ marginTop: "1rem" }}>
+            <Fieldset label="Content*" style={{ marginTop: "1rem" }}>
               <RichTextInput
-                source="description"
+                source="content"
                 label={false}
                 variant="outlined"
                 helperText={false}
@@ -153,6 +164,9 @@ export function CreatorChallengesEdit() {
                 variant="outlined"
                 helperText={false}
                 validate={required("Add a organizer")}
+                filterToQuery={(searchText) => ({
+                  name: `%${searchText}%`,
+                })}
               />
             </ReferenceInput>
             <Fieldset label="Date">
@@ -170,7 +184,13 @@ export function CreatorChallengesEdit() {
               />
             </Fieldset>
             <ReferenceInput source="location" reference="locations">
-              <AutocompleteInput variant="outlined" helperText={false} />
+              <AutocompleteInput
+                variant="outlined"
+                helperText={false}
+                filterToQuery={(searchText) => ({
+                  title: `%${searchText}%`,
+                })}
+              />
             </ReferenceInput>
             <TextInput
               label="Registration Link"
@@ -189,9 +209,9 @@ export function CreatorChallengesEdit() {
               validate={required("Add campaign title")}
               helperText={false}
             />
-            <Fieldset label="Description*" style={{ marginTop: "1rem" }}>
+            <Fieldset label="Content*" style={{ marginTop: "1rem" }}>
               <RichTextInput
-                source="description"
+                source="content"
                 label={false}
                 variant="outlined"
                 helperText={false}

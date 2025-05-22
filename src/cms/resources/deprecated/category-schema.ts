@@ -6,6 +6,6 @@ import { DocumentIDSchema, TranslatableSchema } from "../../common";
 export const CategoryDocumentSchema = z.object({
   id: DocumentIDSchema,
   name: TranslatableSchema,
-  image: ImageMediaSchema.nullable(),
+  image: ImageMediaSchema,
 });
 export type ICategoryDocument = z.infer<typeof CategoryDocumentSchema>;
