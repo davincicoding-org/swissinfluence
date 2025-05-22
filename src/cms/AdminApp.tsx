@@ -56,6 +56,7 @@ import { Route } from "react-router-dom";
 import type {
   agencies,
   categories,
+  certifiedInfluencers,
   creatorChallenges,
   experts,
   influencers,
@@ -90,7 +91,7 @@ import {
   CertifiedInfluencersCreate,
   CertifiedInfluencersEdit,
   CertifiedInfluencersList,
-} from "./resources/certified-influencer/index";
+} from "./resources/certified_influencers";
 import {
   ConventionsCreate,
   ConventionsEdit,
@@ -163,6 +164,13 @@ const dataProvider = withLifecycleCallbacks(
       bucket: "images",
       generatePath: ({ resource, extension }) =>
         `creator_challenges/${resource.title.en}-${Date.now()}.${extension}`,
+    }),
+    imageStorageHandler<typeof certifiedInfluencers.$inferSelect>({
+      supabaseClient,
+      resource: "certified_influencers",
+      bucket: "images",
+      generatePath: ({ resource, extension }) =>
+        `certified_influencers/${resource.influencer_id}-${Date.now()}.${extension}`,
     }),
   ],
 );
@@ -320,14 +328,14 @@ export function AdminApp() {
           icon={IconTicket}
         /> */}
 
-        {/* <Resource
-          name="certified-influencers"
+        <Resource
+          name="certified_influencers"
           options={{ label: "Certified Influencers" }}
           list={CertifiedInfluencersList}
           edit={CertifiedInfluencersEdit}
           create={CertifiedInfluencersCreate}
           icon={IconUserStar}
-        /> */}
+        />
 
         <Resource
           name="agencies"

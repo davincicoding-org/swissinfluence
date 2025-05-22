@@ -1,37 +1,7 @@
-import { z } from "zod/v4";
-
+import { residenceEnum } from "@/database/schema";
 import { type SupportedLocale } from "@/i18n/config";
 
-export const SwissCantonCodeSchema = z.enum([
-  "AG",
-  "AR",
-  "AI",
-  "BL",
-  "BS",
-  "BE",
-  "FR",
-  "GE",
-  "GL",
-  "GR",
-  "JU",
-  "LU",
-  "NE",
-  "NW",
-  "OW",
-  "SH",
-  "SZ",
-  "SO",
-  "SG",
-  "TG",
-  "TI",
-  "UR",
-  "VS",
-  "VD",
-  "ZG",
-  "ZH",
-]);
-
-export type SwissCantonCode = z.infer<typeof SwissCantonCodeSchema>;
+export type SwissCantonCode = (typeof residenceEnum.enumValues)[number];
 
 const SwissCantonTranslations: Record<
   SwissCantonCode,
@@ -95,7 +65,7 @@ export const getCantonLabel = (
   locale: SupportedLocale,
 ) => SwissCantonTranslations[code][locale];
 
-export const CANTON_CHOICES = SwissCantonCodeSchema.options.map((code) => ({
+export const CANTON_CHOICES = residenceEnum.enumValues.map((code) => ({
   id: code,
   name: getCantonLabel(code, "en"),
 }));

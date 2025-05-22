@@ -1,11 +1,11 @@
 import { ImageMediaSchema } from "@davincicoding/cms/image";
 import { z } from "zod/v4";
 
+import { SwissCantonCodeSchema } from "../../../utils/cantons";
+import { LanguageCodeSchema } from "../../../utils/languages";
 import { DocumentIDSchema, TranslatableSchema } from "../../common";
-import { CategoryDocumentSchema } from "../category/category-schema";
-import { InfluencerDocumentSchema } from "../deprecated/influencer-schema";
-import { SwissCantonCodeSchema } from "./cantons";
-import { LanguageCodeSchema } from "./languages";
+import { CategoryDocumentSchema } from "./category-schema";
+import { InfluencerDocumentSchema } from "./influencer-schema";
 
 export const CertifiedInfluencerDocumentSchema = z.object({
   id: DocumentIDSchema,

@@ -1,5 +1,6 @@
 import { ImageInput } from "@davincicoding/cms/image";
 import { TranslatableTextInput } from "@davincicoding/cms/text";
+import { Box } from "@mui/material";
 import {
   AutocompleteArrayInput,
   AutocompleteInput,
@@ -11,21 +12,17 @@ import {
   minLength,
   ReferenceArrayInput,
   ReferenceField,
+  ReferenceInput,
   required,
   SimpleForm,
   TextField,
   TranslatableInputs,
 } from "react-admin";
 
+import type { categories } from "@/database/schema";
 import { Locale } from "@/i18n/config";
-
-import { createGuard, editGuard } from "../../guards";
-import { useDocumentChoices } from "../../hooks";
-import { type ICategoryDocument } from "../category/category-schema";
-import { type IInfluencerDocument } from "../deprecated/influencer-schema";
-import { CANTON_CHOICES } from "./cantons";
-import { LANGUAGE_CHOICES } from "./languages";
-import { CertifiedInfluencerDocumentSchema } from "./schema";
+import { CANTON_CHOICES } from "@/utils/cantons";
+import { LANGUAGE_CHOICES } from "@/utils/languages";
 
 /* List */
 
@@ -42,11 +39,7 @@ export function CertifiedInfluencersList() {
           label="Influencer"
           reference="influencers"
           source="influencerID"
-          sx={{
-            ".RaReferenceField-link": {
-              pointerEvents: "none",
-            },
-          }}
+          link={false}
         >
           <TextField source="name" resource="influencers" />
         </ReferenceField>
@@ -58,26 +51,19 @@ export function CertifiedInfluencersList() {
 /* Create */
 
 export function CertifiedInfluencersCreate() {
-  const { items } = useDocumentChoices<IInfluencerDocument>(
-    "influencers",
-    ({ name }) => name,
-  );
-
   return (
-    <Create
-      redirect="list"
-      transform={createGuard(CertifiedInfluencerDocumentSchema)}
-    >
+    <Create redirect="list">
       <SimpleForm>
-        <div
-          style={{
+        <Box
+          sx={{
             display: "grid",
             gridTemplateColumns: "300px 1fr",
-            gap: "1rem",
+            gap: 3,
+            mb: 1,
             width: "100%",
           }}
         >
-          <div>
+          <Box>
             <ImageInput
               label={false}
               source="image"
@@ -89,7 +75,9 @@ export function CertifiedInfluencersCreate() {
             <ReferenceArrayInput source="categories" reference="categories">
               <AutocompleteArrayInput
                 variant="outlined"
-                optionText={({ name }: ICategoryDocument) => name.en}
+                optionText={({ title }: typeof categories.$inferSelect) =>
+                  title.en
+                }
                 helperText={false}
                 validate={[
                   required("Add a category"),
@@ -121,16 +109,19 @@ export function CertifiedInfluencersCreate() {
               helperText={false}
               validate={required("Add the influencer's residence")}
             />
-          </div>
-          <div>
-            <AutocompleteInput
+          </Box>
+          <Box>
+            <ReferenceInput
               label="Influencer"
-              source="influencerID"
-              variant="outlined"
-              choices={items}
-              helperText={false}
-              validate={required("Pick an influencer")}
-            />
+              source="influencer_id"
+              reference="influencers"
+            >
+              <AutocompleteInput
+                variant="outlined"
+                helperText={false}
+                validate={required("Pick an influencer")}
+              />
+            </ReferenceInput>
             <TranslatableInputs locales={Locale.options}>
               <TranslatableTextInput
                 source="about"
@@ -144,8 +135,8 @@ export function CertifiedInfluencersCreate() {
                 validate={required("Add the influencer's interests")}
               />
             </TranslatableInputs>
-          </div>
-        </div>
+          </Box>
+        </Box>
       </SimpleForm>
     </Create>
   );
@@ -154,23 +145,19 @@ export function CertifiedInfluencersCreate() {
 /* Edit */
 
 export function CertifiedInfluencersEdit() {
-  const { items } = useDocumentChoices<IInfluencerDocument>(
-    "influencers",
-    ({ name }) => name,
-  );
-
   return (
-    <Edit transform={editGuard(CertifiedInfluencerDocumentSchema)}>
+    <Edit>
       <SimpleForm>
-        <div
-          style={{
+        <Box
+          sx={{
             display: "grid",
             gridTemplateColumns: "300px 1fr",
-            gap: "1rem",
+            gap: 3,
+            mb: 1,
             width: "100%",
           }}
         >
-          <div>
+          <Box>
             <ImageInput
               label={false}
               source="image"
@@ -182,7 +169,9 @@ export function CertifiedInfluencersEdit() {
             <ReferenceArrayInput source="categories" reference="categories">
               <AutocompleteArrayInput
                 variant="outlined"
-                optionText={({ name }: ICategoryDocument) => name.en}
+                optionText={({ title }: typeof categories.$inferSelect) =>
+                  title.en
+                }
                 helperText={false}
                 validate={[
                   required("Add a category"),
@@ -214,16 +203,19 @@ export function CertifiedInfluencersEdit() {
               helperText={false}
               validate={required("Add the influencer's residence")}
             />
-          </div>
-          <div>
-            <AutocompleteInput
+          </Box>
+          <Box>
+            <ReferenceInput
               label="Influencer"
-              source="influencerID"
-              variant="outlined"
-              choices={items}
-              helperText={false}
-              validate={required("Pick an influencer")}
-            />
+              source="influencer_id"
+              reference="influencers"
+            >
+              <AutocompleteInput
+                variant="outlined"
+                helperText={false}
+                validate={required("Pick an influencer")}
+              />
+            </ReferenceInput>
             <TranslatableInputs locales={Locale.options}>
               <TranslatableTextInput
                 source="about"
@@ -237,8 +229,8 @@ export function CertifiedInfluencersEdit() {
                 validate={required("Add the influencer's interests")}
               />
             </TranslatableInputs>
-          </div>
-        </div>
+          </Box>
+        </Box>
       </SimpleForm>
     </Edit>
   );

@@ -2,12 +2,10 @@ import { ActionIcon, Flex, Paper, Stack } from "@mantine/core";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
-import { derivative } from "@/ui/utils";
-import { cn } from "@/ui/utils";
-
-import { getCantonLabel } from "@/cms/resources/certified-influencer/cantons";
 import { PageHero } from "@/ui/components/PageHero";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
+import { cn, derivative } from "@/ui/utils";
+import { getCantonLabel } from "@/utils/cantons";
 
 import { type ICertifiedInfluencer } from "./data";
 

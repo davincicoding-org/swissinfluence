@@ -1,6 +1,7 @@
 import iso6391 from "iso-639-1";
 import { z } from "zod/v4";
 
+// TODO get codes from database
 export const LanguageCodeSchema = z.enum(
   iso6391.getAllCodes() as [string, ...string[]],
 );
