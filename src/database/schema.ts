@@ -30,6 +30,14 @@ type Social = z.infer<typeof socialSchema>;
 
 type Translatable = Record<string, string>;
 
+// MARK: CMS
+
+export const globals = pgTable("globals", (d) => ({
+  id: d.serial().primaryKey(),
+  name: d.text().notNull(),
+  data: d.jsonb().notNull(),
+}));
+
 // MARK: Locations
 
 export const locations = pgTable("locations", (d) => ({

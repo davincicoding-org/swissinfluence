@@ -6,7 +6,8 @@ import { revalidateTag } from "next/cache";
 import type { GlobalData, GlobalId } from "@/cms/globals";
 import type { MediaLibrary } from "@/cms/media";
 import { GLOBALS } from "@/cms/globals";
-import { db } from "@/database/firebase";
+import { db } from "@/database";
+import { db as firebase } from "@/database/firebase";
 
 import type { CacheTag } from "./cache";
 import { cachedRequest } from "./cache";
@@ -14,10 +15,12 @@ import { cachedRequest } from "./cache";
 export const revalidateCache = async (tag: CacheTag) => revalidateTag(tag);
 
 export const fetchGlobal = cachedRequest(
-  async <T extends GlobalId>(id: T): Promise<GlobalData<T>> => {
-    const global = await db.collection("globals").doc(id).get();
+  async <T extends GlobalId>(name: T): Promise<GlobalData<T>> => {
+    const global = await db.query.globals.findFirst({
+      where: (t, { eq }) => eq(t.name, name),
+    });
 
-    return GLOBALS[id].parse(global.data());
+    return GLOBALS[name].parse(global?.data);
   },
   ["globals"],
 );
@@ -25,14 +28,14 @@ export const fetchGlobal = cachedRequest(
 export const fetchGlobals = cachedRequest(async (): Promise<{
   [K in GlobalId]: GlobalData<K>;
 }> => {
-  const globals = await db.collection("globals").get();
+  const globals = await db.query.globals.findMany();
 
-  return globals.docs.reduce<{
+  return globals.reduce<{
     [K in GlobalId]: GlobalData<K>;
   }>(
-    (acc, doc) => ({
+    (acc, { name, data }) => ({
       ...acc,
-      [doc.id]: GLOBALS[doc.id as GlobalId].parse(doc.data()),
+      [name]: GLOBALS[name as GlobalId].parse(data),
     }),
     {} as {
       [K in GlobalId]: GlobalData<K>;
@@ -41,7 +44,7 @@ export const fetchGlobals = cachedRequest(async (): Promise<{
 }, ["globals"]);
 
 export const fetchMedia = cachedRequest(async () => {
-  const { docs } = await db.collection("media-library").get();
+  const { docs } = await firebase.collection("media-library").get();
 
   return docs.reduce<MediaLibrary>((acc, doc) => {
     const data = doc.data() as Record<string, MediaAsset>;

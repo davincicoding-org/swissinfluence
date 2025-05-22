@@ -311,14 +311,14 @@ export function AdminApp() {
           icon={IconPhotoVideo}
           recordRepresentation="id"
         /> */}
-          {/* <Resource
-          name="globals"
-          list={GlobalsList}
-          create={GlobalsCreate}
-          edit={GlobalsEdit}
-          icon={IconWorld}
-          recordRepresentation="id"
-        /> */}
+          <Resource
+            name="globals"
+            list={GlobalsList}
+            create={GlobalsCreate}
+            edit={GlobalsEdit}
+            icon={IconWorld}
+            recordRepresentation="name"
+          />
 
           <Resource
             name="categories"
