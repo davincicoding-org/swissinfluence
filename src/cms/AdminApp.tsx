@@ -66,11 +66,11 @@ import type {
   networkEvents,
   socialMediaCampaigns,
 } from "@/database/schema";
-import { supabaseClient } from "@/database/supabase";
 import { env } from "@/env";
 import { Locale, MESSAGES_SCHEMA } from "@/i18n/config";
 import { revalidateCache } from "@/server/actions";
 import { fetchCachedMessages, saveMessages } from "@/server/messages";
+import { supabaseClient } from "@/server/supabase";
 
 import { GLOBALS } from "./globals";
 import { MEDIA_LIBRARY } from "./media";
