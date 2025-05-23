@@ -164,6 +164,12 @@ const dataProvider = withLifecycleCallbacks(
         return result;
       },
     },
+    {
+      resource: "*",
+      afterSave: async () => {
+        void revalidateCache("cms");
+      },
+    },
     imageStorageHandler<typeof categories.$inferSelect>({
       uploadImage,
       deleteImage,

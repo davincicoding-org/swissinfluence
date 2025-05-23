@@ -25,7 +25,4 @@ export const fetchMessages: MessagesFetcher = async (locale: string) => {
   return JSON.parse(content) as MessagesTree;
 };
 
-export const fetchCachedMessages = cachedRequest(fetchMessages, [
-  "cms",
-  "messages",
-]);
+export const fetchCachedMessages = cachedRequest(fetchMessages, ["messages"]);
