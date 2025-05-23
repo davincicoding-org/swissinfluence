@@ -11,8 +11,8 @@ import {
 } from "react-admin";
 import { useWatch } from "react-hook-form";
 
+import type { ICategoryDocument } from "../../deprecated/category-schema";
 import type { IDocumentChoice } from "../../hooks";
-import type { ICategoryDocument } from "../deprecated/category-schema";
 import { useDocumentChoices } from "../../hooks";
 import { type IAwardDocument } from "./schema";
 

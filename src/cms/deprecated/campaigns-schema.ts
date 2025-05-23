@@ -1,10 +1,10 @@
 import { ImageMediaSchema } from "@davincicoding/cms/image";
 import { z } from "zod/v4";
 
-import { DocumentIDSchema, TranslatableSchema } from "../../common";
+import { DocumentIDSchema, TranslatableSchema } from "../common";
 import { BrandDocumentSchema } from "./brands-schema";
 
-export const CreatorChallengeDocumentSchema = z.object({
+export const CampaignDocumentSchema = z.object({
   id: DocumentIDSchema,
   organizer: BrandDocumentSchema.shape.id,
   title: TranslatableSchema,
@@ -26,6 +26,4 @@ export const CreatorChallengeDocumentSchema = z.object({
   registrationURL: z.string().url().nullable(),
 });
 
-export type ICreatorChallengeDocument = z.infer<
-  typeof CreatorChallengeDocumentSchema
->;
+export type ICampaignDocument = z.infer<typeof CampaignDocumentSchema>;

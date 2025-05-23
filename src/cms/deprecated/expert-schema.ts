@@ -5,7 +5,7 @@ import {
   DocumentIDSchema,
   SocialMediaSchema,
   TranslatableSchema,
-} from "../../common";
+} from "../common";
 
 export const ExpertDocumentSchema = z.object({
   id: DocumentIDSchema,

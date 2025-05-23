@@ -3,8 +3,8 @@ import { z } from "zod/v4";
 
 import { CantonEnum } from "@/database/enums";
 
-import { LanguageCodeSchema } from "../../../utils/languages";
-import { DocumentIDSchema, TranslatableSchema } from "../../common";
+import { LanguageCodeSchema } from "../../utils/languages";
+import { DocumentIDSchema, TranslatableSchema } from "../common";
 import { CategoryDocumentSchema } from "./category-schema";
 import { InfluencerDocumentSchema } from "./influencer-schema";
 

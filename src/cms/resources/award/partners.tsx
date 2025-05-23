@@ -11,10 +11,10 @@ import {
 import { useWatch } from "react-hook-form";
 
 import type { IDocumentChoice } from "../../hooks";
-import type { ICategoryDocument } from "../deprecated/category-schema";
+import type { ICategoryDocument } from "../../deprecated/category-schema";
 import type { IAwardDocument } from "./schema";
 import { useDocumentChoices } from "../../hooks";
-import { type IBrandDocument } from "../deprecated/brands-schema";
+import { type IBrandDocument } from "../../deprecated/brands-schema";
 
 export function PartnersInput({
   defaultValue = [],

@@ -16,7 +16,7 @@ import {
 
 import { routing } from "@/i18n/routing";
 
-import { SocialsInput } from "../components/socials";
+import { SocialsInput } from "../common/socials";
 
 /* List */
 

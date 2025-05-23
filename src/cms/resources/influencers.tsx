@@ -14,7 +14,7 @@ import {
   Toolbar,
 } from "react-admin";
 
-import { SocialsInput } from "../components/socials";
+import { SocialsInput } from "../common/socials";
 
 /* List */
 

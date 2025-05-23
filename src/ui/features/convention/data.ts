@@ -2,9 +2,9 @@ import type { ImageMedia } from "@davincicoding/cms/image";
 import { unstable_cache } from "next/cache";
 
 import { type SocialMedia, type Translatable } from "@/cms/common";
-import { BrandDocumentSchema } from "@/cms/resources/deprecated/brands-schema";
-import { ConventionDocumentSchema } from "@/cms/resources/deprecated/conventions-schema";
-import { ExpertDocumentSchema } from "@/cms/resources/deprecated/expert-schema";
+import { BrandDocumentSchema } from "@/cms/deprecated/brands-schema";
+import { ConventionDocumentSchema } from "@/cms/deprecated/conventions-schema";
+import { ExpertDocumentSchema } from "@/cms/deprecated/expert-schema";
 import { db } from "@/database/firebase";
 
 export interface IConventionPageData {

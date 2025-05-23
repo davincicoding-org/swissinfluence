@@ -1,7 +1,7 @@
 import type { ImageAsset } from "@davincicoding/cms/image";
 import { useTranslations } from "next-intl";
 
-import { type IEventDocument } from "@/cms/resources/deprecated/event-schema";
+import { type IEventDocument } from "@/cms/deprecated/event-schema";
 import { PageHero } from "@/ui/components/PageHero";
 
 import { EventTile } from "./views/EventTile";

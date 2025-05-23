@@ -15,7 +15,7 @@ import { IconArrowRight, IconX } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
-import { type IEventDocument } from "@/cms/resources/deprecated/event-schema";
+import { type IEventDocument } from "@/cms/deprecated/event-schema";
 import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 

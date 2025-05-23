@@ -1,6 +1,6 @@
 import { z } from "zod/v4";
 
-import { DocumentIDSchema, TranslatableSchema } from "../../common";
+import { DocumentIDSchema, TranslatableSchema } from "../common";
 import { BrandDocumentSchema } from "./brands-schema";
 import { ExpertDocumentSchema } from "./expert-schema";
 

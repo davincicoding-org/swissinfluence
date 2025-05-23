@@ -2,10 +2,10 @@ import { ImageMediaSchema } from "@davincicoding/cms/image";
 import { z } from "zod/v4";
 
 import { DocumentIDSchema, TranslatableSchema } from "../../common";
-import { BrandDocumentSchema } from "../deprecated/brands-schema";
-import { CategoryDocumentSchema } from "../deprecated/category-schema";
-import { ExpertDocumentSchema } from "../deprecated/expert-schema";
-import { InfluencerDocumentSchema } from "../deprecated/influencer-schema";
+import { BrandDocumentSchema } from "../../deprecated/brands-schema";
+import { CategoryDocumentSchema } from "../../deprecated/category-schema";
+import { ExpertDocumentSchema } from "../../deprecated/expert-schema";
+import { InfluencerDocumentSchema } from "../../deprecated/influencer-schema";
 
 export const AwardCategoryRankingSchema = z.object({
   winnerImage: ImageMediaSchema.nullable(),
