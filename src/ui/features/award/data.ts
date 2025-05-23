@@ -1,18 +1,19 @@
 import type { ImageMedia } from "@davincicoding/cms/image";
 import { unstable_cache } from "next/cache";
 
-import type { IBrandDocument } from "@/cms/deprecated/brands-schema";
-import type { ICategoryDocument } from "@/cms/deprecated/category-schema";
-import type { ICreatorChallengeDocument } from "@/cms/deprecated/creator-challenge-schema";
-import type { IInfluencerDocument } from "@/cms/deprecated/influencer-schema";
-import { type SocialMedia, type Translatable } from "@/cms/common";
-import { BrandDocumentSchema } from "@/cms/deprecated/brands-schema";
-import { CategoryDocumentSchema } from "@/cms/deprecated/category-schema";
-import { CreatorChallengeDocumentSchema } from "@/cms/deprecated/creator-challenge-schema";
-import { ExpertDocumentSchema } from "@/cms/deprecated/expert-schema";
-import { InfluencerDocumentSchema } from "@/cms/deprecated/influencer-schema";
+import type { IBrandDocument } from "@/deprecated/brands-schema";
+import type { ICategoryDocument } from "@/deprecated/category-schema";
+import type { ICreatorChallengeDocument } from "@/deprecated/creator-challenge-schema";
+import type { IInfluencerDocument } from "@/deprecated/influencer-schema";
+import { type SocialMedia } from "@/cms/common/socials";
 import { AwardDocumentSchema } from "@/cms/resources/award/schema";
-import { db } from "@/database/firebase";
+import { BrandDocumentSchema } from "@/deprecated/brands-schema";
+import { CategoryDocumentSchema } from "@/deprecated/category-schema";
+import { type Translatable } from "@/deprecated/common";
+import { CreatorChallengeDocumentSchema } from "@/deprecated/creator-challenge-schema";
+import { ExpertDocumentSchema } from "@/deprecated/expert-schema";
+import { db } from "@/deprecated/firebase";
+import { InfluencerDocumentSchema } from "@/deprecated/influencer-schema";
 import { derivative } from "@/ui/utils";
 
 export interface IAwardPageData {

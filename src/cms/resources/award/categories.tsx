@@ -11,9 +11,9 @@ import {
 } from "react-admin";
 import { useWatch } from "react-hook-form";
 
-import type { ICategoryDocument } from "../../deprecated/category-schema";
-import type { IDocumentChoice } from "../../hooks";
-import { useDocumentChoices } from "../../hooks";
+import type { ICategoryDocument } from "../../../deprecated/category-schema";
+import type { IDocumentChoice } from "../../../deprecated/hooks";
+import { useDocumentChoices } from "../../../deprecated/hooks";
 import { type IAwardDocument } from "./schema";
 
 export function CategoriesInput({

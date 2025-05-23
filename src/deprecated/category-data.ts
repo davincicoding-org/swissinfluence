@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
 
-import { db } from "@/database/firebase";
+import { db } from "@/deprecated/firebase";
 
 import type { ICategoryDocument } from "./category-schema";
 import { CategoryDocumentSchema } from "./category-schema";

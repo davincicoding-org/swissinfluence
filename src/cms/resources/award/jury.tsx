@@ -10,10 +10,10 @@ import {
 } from "react-admin";
 import { useWatch } from "react-hook-form";
 
-import type { IDocumentChoice } from "../../hooks";
-import type { IExpertDocument } from "../../deprecated/expert-schema";
+import type { IExpertDocument } from "../../../deprecated/expert-schema";
+import type { IDocumentChoice } from "../../../deprecated/hooks";
 import type { IAwardDocument } from "./schema";
-import { useDocumentChoices } from "../../hooks";
+import { useDocumentChoices } from "../../../deprecated/hooks";
 
 export function JuryInput({
   defaultValue = [],

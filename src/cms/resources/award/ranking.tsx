@@ -10,11 +10,11 @@ import {
 } from "react-admin";
 import { useController, useWatch } from "react-hook-form";
 
-import type { IDocumentChoice } from "../../hooks";
-import type { ICategoryDocument } from "../../deprecated/category-schema";
-import type { IInfluencerDocument } from "../../deprecated/influencer-schema";
+import type { ICategoryDocument } from "../../../deprecated/category-schema";
+import type { IDocumentChoice } from "../../../deprecated/hooks";
+import type { IInfluencerDocument } from "../../../deprecated/influencer-schema";
 import type { IAwardDocument } from "./schema";
-import { useDocumentChoices } from "../../hooks";
+import { useDocumentChoices } from "../../../deprecated/hooks";
 
 export function RankingSection() {
   const { field, fieldState } = useController<IAwardDocument, "ranking">({

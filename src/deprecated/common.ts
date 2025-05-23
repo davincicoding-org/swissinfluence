@@ -28,26 +28,7 @@ export type VideoData = z.infer<typeof VideoDataSchema>;
 
 /* Social Media */
 
-export const SocialMediaPlatformSchema = z.enum([
-  "INSTAGRAM",
-  "TIKTOK",
-  "LINKEDIN",
-  "YOUTUBE",
-  "APPLE_PODCAST",
-  "SPOTIFY",
-  "TWITCH",
-  "WEBSITE",
-  "WHATSAPP",
-]);
-export type SocialMediaPlatform = z.infer<typeof SocialMediaPlatformSchema>;
 
-export const SOCIAL_MEDIA_PLATFORM_OPTIONS = SocialMediaPlatformSchema.options;
-
-export const SocialMediaSchema = z.object({
-  platform: SocialMediaPlatformSchema,
-  url: z.string().url(),
-});
-export type SocialMedia = z.infer<typeof SocialMediaSchema>;
 
 /* Utils */
 

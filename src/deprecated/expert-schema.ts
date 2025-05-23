@@ -1,11 +1,8 @@
 import { ImageMediaSchema } from "@davincicoding/cms/image";
 import { z } from "zod/v4";
 
-import {
-  DocumentIDSchema,
-  SocialMediaSchema,
-  TranslatableSchema,
-} from "../common";
+import { SocialMediaSchema } from "../cms/common/socials";
+import { DocumentIDSchema, TranslatableSchema } from "./common";
 
 export const ExpertDocumentSchema = z.object({
   id: DocumentIDSchema,

@@ -1,3 +1,4 @@
+import type { IconProps } from "@tabler/icons-react";
 import {
   IconBrandApplePodcast,
   IconBrandInstagram,
@@ -6,11 +7,10 @@ import {
   IconBrandTiktok,
   IconBrandTwitch,
   IconBrandYoutube,
-  type IconProps,
   IconWorld,
 } from "@tabler/icons-react";
 
-import type { SocialMediaPlatform } from "@/cms/common";
+import type { SocialMediaPlatform } from "@/cms/common/socials";
 
 export interface ISocialMediaPlatformIconProps {
   platform: SocialMediaPlatform;

@@ -1,5 +1,6 @@
 import { z } from "zod/v4";
 
+// TODO get rid of this file
 export const CantonEnum = z.enum([
   "AG",
   "AR",

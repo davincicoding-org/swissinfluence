@@ -10,23 +10,23 @@ import {
 } from "react-admin";
 import { useWatch } from "react-hook-form";
 
+import type { IBrandDocument } from "../../../deprecated/brands-schema";
 import type { ICategoryDocument } from "../../../deprecated/category-schema";
+import type { IConventionDocument } from "../../../deprecated/conventions-schema";
 import type { IDocumentChoice } from "../../../deprecated/hooks";
-import type { IAwardDocument } from "./schema";
-import { type IBrandDocument } from "../../../deprecated/brands-schema";
 import { useDocumentChoices } from "../../../deprecated/hooks";
 
 export function PartnersInput({
   defaultValue = [],
 }: {
-  defaultValue?: IAwardDocument["partners"];
+  defaultValue?: IConventionDocument["partners"];
 }) {
   const brandChoices = useDocumentChoices<IBrandDocument>(
     "brands",
     ({ name }) => name,
   );
 
-  const partners = useWatch<IAwardDocument, "partners">({
+  const partners = useWatch<IConventionDocument, "partners">({
     name: "partners",
     defaultValue,
   });
@@ -73,7 +73,7 @@ interface IPartnerInputProps {
 
 function PartnerInput({ allChoices, selection }: IPartnerInputProps) {
   const { index } = useSimpleFormIteratorItem();
-  const value = useWatch<IAwardDocument, `partners.${number}`>({
+  const value = useWatch<IConventionDocument, `partners.${number}`>({
     name: `partners.${index}`,
   });
 

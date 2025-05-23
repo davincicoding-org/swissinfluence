@@ -1,7 +1,7 @@
 import { z } from "zod/v4";
 
-import { DocumentIDSchema, TranslatableSchema } from "../common";
 import { BrandDocumentSchema } from "./brands-schema";
+import { DocumentIDSchema, TranslatableSchema } from "./common";
 import { ExpertDocumentSchema } from "./expert-schema";
 
 export const ConventionDocumentSchema = z.object({

@@ -13,7 +13,7 @@ import {
 } from "react-admin";
 
 import type { IAwardDocument } from "./schema";
-import { createGuard, editGuard } from "../../guards";
+import { createGuard, editGuard } from "../../../deprecated/guards";
 import { CategoriesInput } from "./categories";
 import { CommunitySection } from "./community";
 import { ImpressionsSection } from "./impressions";

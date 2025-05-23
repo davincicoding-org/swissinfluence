@@ -7,7 +7,7 @@ import type { GlobalData, GlobalId } from "@/cms/globals";
 import type { MediaLibrary } from "@/cms/media";
 import { GLOBALS } from "@/cms/globals";
 import { db } from "@/database";
-import { db as firebase } from "@/database/firebase";
+import { db as firebase } from "@/deprecated/firebase";
 
 import type { CacheTag } from "./cache";
 import { cachedRequest } from "./cache";

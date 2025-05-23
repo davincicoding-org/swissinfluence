@@ -1,17 +1,11 @@
 "use client";
-import { useMemo } from "react";
 
-import {
-  ActionIcon,
-  type ActionIconProps,
-  Flex,
-  type FlexProps,
-  HoverCard,
-  type HoverCardProps,
-} from "@mantine/core";
+import type { ActionIconProps, FlexProps, HoverCardProps } from "@mantine/core";
+import { useMemo } from "react";
+import { ActionIcon, Flex, HoverCard } from "@mantine/core";
 import { IconDotsVertical } from "@tabler/icons-react";
 
-import { type SocialMedia } from "@/cms/common";
+import { type SocialMedia } from "@/cms/common/socials";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
 

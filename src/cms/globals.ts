@@ -1,5 +1,6 @@
-import { SocialMediaSchema } from "./common";
 import { z } from "zod/v4";
+
+import { SocialMediaSchema } from "./common/socials";
 
 export const GLOBALS = {
   company: z.object({

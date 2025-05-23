@@ -16,7 +16,7 @@ import { env } from "@/env";
 import { type SupportedLocale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
 import { fetchGlobals } from "@/server/actions";
-import { theme } from "@/theme";
+import { theme } from "@/ui/theme";
 import { cn } from "@/ui/utils";
 
 import { Footer } from "./Footer";

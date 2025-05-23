@@ -6,7 +6,7 @@ import Image from "next/image";
 import { ActionIcon, Flex, Paper } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
-import { type SocialMedia } from "@/cms/common";
+import { type SocialMedia } from "@/cms/common/socials";
 import { cn } from "@/ui/utils";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
