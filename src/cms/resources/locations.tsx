@@ -1,8 +1,11 @@
+import type { AutocompleteInputProps, ReferenceInputProps } from "react-admin";
 import {
+  AutocompleteInput,
   Create,
   Datagrid,
   Edit,
   List,
+  ReferenceInput,
   required,
   SimpleForm,
   TextField,
@@ -81,5 +84,30 @@ export function LocationsEdit() {
         />
       </SimpleForm>
     </Edit>
+  );
+}
+
+export interface LocationReferenceInputProps
+  extends Omit<ReferenceInputProps, "source" | "reference"> {
+  source?: string;
+  autocompleteProps?: AutocompleteInputProps;
+}
+export function LocationReferenceInput({
+  source = "location",
+  autocompleteProps,
+  ...props
+}: LocationReferenceInputProps) {
+  return (
+    <ReferenceInput source={source} reference="locations" {...props}>
+      <AutocompleteInput
+        source="title"
+        variant="outlined"
+        helperText={false}
+        filterToQuery={(searchText) => ({
+          title: `%${searchText}%`,
+        })}
+        {...autocompleteProps}
+      />
+    </ReferenceInput>
   );
 }

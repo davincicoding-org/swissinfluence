@@ -1,14 +1,15 @@
+import { useState } from "react";
 import { AddButton, Fieldset } from "@davincicoding/cms/layout";
 import { RichTextInput } from "@davincicoding/cms/text";
-import { Box } from "@mui/material";
+import { useDebouncedValue } from "@mantine/hooks";
+import { Autocomplete, Box, Card, IconButton, TextField } from "@mui/material";
+import { IconX } from "@tabler/icons-react";
 import {
   ArrayInput,
-  AutocompleteInput,
   Create,
   DateInput,
   Edit,
   List,
-  ReferenceInput,
   required,
   SimpleForm,
   SimpleFormIterator,
@@ -17,14 +18,22 @@ import {
   TextInput,
   TimeInput,
   TranslatableInputs,
+  useCreate,
+  useDelete,
+  useGetList,
+  useGetMany,
+  useGetManyReference,
+  useRecordContext,
 } from "react-admin";
 
+import type {
+  brands,
+  conventionPartners,
+  conventions,
+} from "@/database/schema";
 import { routing } from "@/i18n/routing";
 
-import type { IConventionDocument } from "./deprecated/conventions-schema";
-import { createGuard, editGuard } from "../guards";
-import { PartnersInput } from "./convention/partners";
-import { ConventionDocumentSchema } from "./deprecated/conventions-schema";
+import { LocationReferenceInput } from "./locations";
 
 export function ConventionsList() {
   return (
@@ -34,14 +43,14 @@ export function ConventionsList() {
         order: "DESC",
       }}
     >
-      <SimpleList<IConventionDocument> />
+      <SimpleList />
     </List>
   );
 }
 
 export function ConventionsCreate() {
   return (
-    <Create transform={createGuard(ConventionDocumentSchema)} redirect="list">
+    <Create redirect="list">
       <SimpleForm>
         <EventSection />
       </SimpleForm>
@@ -51,7 +60,7 @@ export function ConventionsCreate() {
 
 export function ConventionsEdit() {
   return (
-    <Edit transform={editGuard(ConventionDocumentSchema)}>
+    <Edit>
       <TabbedForm>
         <TabbedForm.Tab label="Event">
           <EventSection />
@@ -59,8 +68,8 @@ export function ConventionsEdit() {
         <TabbedForm.Tab label="Schedule">
           <ScheduleSection />
         </TabbedForm.Tab>
-        <TabbedForm.Tab label="Partners" disabled>
-          <PartnersInput />
+        <TabbedForm.Tab label="Partners">
+          <PartnersSection />
         </TabbedForm.Tab>
       </TabbedForm>
     </Edit>
@@ -69,7 +78,7 @@ export function ConventionsEdit() {
 
 // MARK: Event
 
-export function EventSection() {
+function EventSection() {
   return (
     <>
       <TextInput
@@ -86,13 +95,11 @@ export function EventSection() {
         helperText={false}
       />
 
-      <ReferenceInput source="location" reference="locations">
-        <AutocompleteInput
-          variant="outlined"
-          helperText={false}
-          validate={required("Add a Location")}
-        />
-      </ReferenceInput>
+      <LocationReferenceInput
+        autocompleteProps={{
+          validate: required("Add a Location"),
+        }}
+      />
 
       <TextInput
         source="tickets"
@@ -107,7 +114,7 @@ export function EventSection() {
 
 // MARK: Schedule
 
-export function ScheduleSection() {
+function ScheduleSection() {
   return (
     <Box
       sx={{
@@ -201,6 +208,127 @@ export function ScheduleSection() {
           </SimpleFormIterator>
         </ArrayInput>
       </Box>
+    </Box>
+  );
+}
+
+// MARK: Partners
+
+export function PartnersSection() {
+  const record = useRecordContext<typeof conventions.$inferSelect>();
+  const partners = useGetManyReference<typeof conventionPartners.$inferSelect>(
+    "convention_partners",
+    {
+      target: "convention",
+      id: record?.id,
+    },
+    {
+      refetchOnWindowFocus: false,
+    },
+  );
+
+  const partnerBrands = useGetMany<typeof brands.$inferSelect>(
+    "brands",
+    {
+      ids: partners.data?.map(({ brand }) => brand),
+    },
+    {
+      enabled: partners.data !== undefined,
+      refetchOnWindowFocus: false,
+    },
+  );
+
+  const [selectedBrand, setSelectedBrand] = useState<
+    typeof brands.$inferSelect | null
+  >(null);
+  const [search, setSearch] = useState("");
+  const [debouncedSearch] = useDebouncedValue(search, 700);
+
+  const searchOptions = useGetList<typeof brands.$inferSelect>(
+    "brands",
+    {
+      pagination: { page: 1, perPage: 5 },
+      filter: {
+        "id@not.in": `(${partnerBrands.data?.map(({ id }) => id).join(",")})`,
+        "name@ilike": `*${debouncedSearch}*`,
+      },
+    },
+    {
+      enabled: partnerBrands.data !== undefined && debouncedSearch.length > 0,
+    },
+  );
+
+  const [createPartner] = useCreate<typeof conventionPartners.$inferSelect>();
+  const [deletePartner] = useDelete<typeof conventionPartners.$inferSelect>();
+
+  const handleAdd = async (brand: typeof brands.$inferSelect) => {
+    if (!record) return;
+    await createPartner("convention_partners", {
+      data: { convention: record.id, brand: brand.id },
+    });
+    setSelectedBrand(null);
+    setSearch("");
+  };
+
+  const handleRemove = async (
+    brandId: (typeof conventionPartners.$inferSelect)["id"],
+  ) => {
+    const partnerId = partners.data?.find(({ brand }) => brand === brandId)?.id;
+    if (!partnerId) return;
+    void deletePartner("convention_partners", {
+      id: partnerId,
+    });
+  };
+
+  return (
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+      {partnerBrands.data?.map((brand) => (
+        <Card
+          key={brand.id}
+          variant="outlined"
+          sx={{
+            padding: 1,
+            pl: 2,
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            justifyContent: "space-between",
+          }}
+        >
+          {brand.name}
+          <IconButton
+            size="small"
+            color="error"
+            onClick={() => handleRemove(brand.id)}
+          >
+            <IconX size={16} />
+          </IconButton>
+        </Card>
+      ))}
+      <Autocomplete
+        value={selectedBrand}
+        options={searchOptions.data ?? []}
+        onChange={(_, value) => {
+          setSelectedBrand(value);
+          if (value === null) return;
+          void handleAdd(value);
+        }}
+        inputValue={search}
+        getOptionLabel={(option) => option.name}
+        onInputChange={(_, newInputValue) => {
+          setSearch(newInputValue);
+        }}
+        renderInput={(params) => (
+          <TextField {...params} placeholder="Add Partner" variant="outlined" />
+        )}
+        noOptionsText={
+          !debouncedSearch
+            ? "Type to search"
+            : searchOptions.isPending
+              ? "Fetchting..."
+              : "No options"
+        }
+      />
     </Box>
   );
 }

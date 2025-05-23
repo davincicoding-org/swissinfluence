@@ -1,10 +1,13 @@
+import type { AutocompleteInputProps, ReferenceInputProps } from "react-admin";
 import { ImageField, ImageInput } from "@davincicoding/cms/image";
 import { Box } from "@mui/material";
 import {
+  AutocompleteInput,
   Create,
   Datagrid,
   Edit,
   List,
+  ReferenceInput,
   required,
   SimpleForm,
   TextField,
@@ -144,5 +147,29 @@ export function BrandsEdit() {
         </Box>
       </SimpleForm>
     </Edit>
+  );
+}
+
+export interface BrandReferenceInputProps
+  extends Omit<ReferenceInputProps, "reference"> {
+  source: string;
+  autocompleteProps?: AutocompleteInputProps;
+}
+export function BrandReferenceInput({
+  autocompleteProps,
+  ...props
+}: BrandReferenceInputProps) {
+  return (
+    <ReferenceInput reference="brands" {...props}>
+      <AutocompleteInput
+        source="name"
+        variant="outlined"
+        helperText={false}
+        filterToQuery={(searchText) => ({
+          name: `%${searchText}%`,
+        })}
+        {...autocompleteProps}
+      />
+    </ReferenceInput>
   );
 }

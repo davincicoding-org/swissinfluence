@@ -1,6 +1,6 @@
 import type { ImageAsset } from "@davincicoding/cms/image";
 import { relations } from "drizzle-orm";
-import { pgEnum, pgTable } from "drizzle-orm/pg-core";
+import { index, pgEnum, pgTable, uniqueIndex } from "drizzle-orm/pg-core";
 import { z } from "zod/v4";
 
 import { LanguageCodeSchema } from "@/utils/languages";
@@ -32,10 +32,27 @@ type Translatable = Record<string, string>;
 
 // MARK: CMS
 
-export const globals = pgTable("globals", (d) => ({
+export const globals = pgTable(
+  "globals",
+  (d) => ({
+    id: d.serial().primaryKey(),
+    name: d.text().notNull(),
+    data: d.jsonb().notNull(),
+  }),
+  (t) => [uniqueIndex("globals_name_unique").on(t.name)],
+);
+
+export const images = pgTable("images", (d) => ({
   id: d.serial().primaryKey(),
-  name: d.text().notNull(),
-  data: d.jsonb().notNull(),
+  src: d.text().notNull(),
+  height: d.smallint().notNull(),
+  width: d.smallint().notNull(),
+  blurDataURL: d.text().notNull(),
+}));
+
+export const videos = pgTable("videos", (d) => ({
+  id: d.serial().primaryKey(),
+  src: d.text().notNull(),
 }));
 
 // MARK: Locations
@@ -500,17 +517,21 @@ export const conventionRelations = relations(conventions, ({ many, one }) => ({
 
 // MARK: Convention Partners
 
-export const conventionPartners = pgTable("convention_partners", (d) => ({
-  id: d.serial().primaryKey(),
-  convention: d
-    .integer()
-    .references(() => conventions.id)
-    .notNull(),
-  brand: d
-    .integer()
-    .references(() => brands.id)
-    .notNull(),
-}));
+export const conventionPartners = pgTable(
+  "convention_partners",
+  (d) => ({
+    id: d.serial().primaryKey(),
+    convention: d
+      .integer()
+      .references(() => conventions.id)
+      .notNull(),
+    brand: d
+      .integer()
+      .references(() => brands.id)
+      .notNull(),
+  }),
+  (t) => [index("idx_convention_partner").on(t.convention)],
+);
 
 export const conventionPartnerRelations = relations(
   conventionPartners,

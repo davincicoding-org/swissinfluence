@@ -21,6 +21,8 @@ import {
 
 import { routing } from "@/i18n/routing";
 
+import { LocationReferenceInput } from "./locations";
+
 /* List */
 
 export function NetworkEventsList() {
@@ -113,13 +115,11 @@ export function NetworkEventsCreate() {
                   helperText={false}
                 />
               </Box>
-              <ReferenceInput source="location" reference="locations">
-                <AutocompleteInput
-                  variant="outlined"
-                  helperText={false}
-                  validate={required("Add a location")}
-                />
-              </ReferenceInput>
+              <LocationReferenceInput
+                autocompleteProps={{
+                  validate: required("Add a Location"),
+                }}
+              />
             </Box>
             <TranslatableInputs locales={[...routing.locales]}>
               <TranslatableTextInput
@@ -214,13 +214,11 @@ export function NetworkEventsEdit() {
                   helperText={false}
                 />
               </Box>
-              <ReferenceInput source="location" reference="locations">
-                <AutocompleteInput
-                  variant="outlined"
-                  helperText={false}
-                  validate={required("Add a location")}
-                />
-              </ReferenceInput>
+              <LocationReferenceInput
+                autocompleteProps={{
+                  validate: required("Add a Location"),
+                }}
+              />
             </Box>
             <TranslatableInputs locales={[...routing.locales]}>
               <TranslatableTextInput

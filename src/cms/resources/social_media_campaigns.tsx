@@ -21,6 +21,9 @@ import {
 
 import { routing } from "@/i18n/routing";
 
+import { BrandReferenceInput } from "./brands";
+import { LocationReferenceInput } from "./locations";
+
 /* List */
 
 export function SocialMediaCampaignsList() {
@@ -56,13 +59,12 @@ export function SocialMediaCampaignsCreate() {
               source="image"
               validate={required("Add campaign image")}
             />
-            <ReferenceInput source="organizer" reference="brands">
-              <AutocompleteInput
-                variant="outlined"
-                helperText={false}
-                validate={required("Add a organizer")}
-              />
-            </ReferenceInput>
+            <BrandReferenceInput
+              source="organizer"
+              autocompleteProps={{
+                validate: required("Add a organizer"),
+              }}
+            />
             <Fieldset label="Date">
               <DateTimeInput
                 label="From"
@@ -77,9 +79,7 @@ export function SocialMediaCampaignsCreate() {
                 helperText={false}
               />
             </Fieldset>
-            <ReferenceInput source="location" reference="locations">
-              <AutocompleteInput variant="outlined" helperText={false} />
-            </ReferenceInput>
+            <LocationReferenceInput />
             <TextInput
               label="Registration Link"
               source="registration"
@@ -134,13 +134,12 @@ export function SocialMediaCampaignsEdit() {
               source="image"
               validate={required("Add campaign image")}
             />
-            <ReferenceInput source="organizer" reference="brands">
-              <AutocompleteInput
-                variant="outlined"
-                helperText={false}
-                validate={required("Add a organizer")}
-              />
-            </ReferenceInput>
+            <BrandReferenceInput
+              source="organizer"
+              autocompleteProps={{
+                validate: required("Add a organizer"),
+              }}
+            />
             <Fieldset label="Date">
               <DateTimeInput
                 label="From"
@@ -155,9 +154,7 @@ export function SocialMediaCampaignsEdit() {
                 helperText={false}
               />
             </Fieldset>
-            <ReferenceInput source="location" reference="locations">
-              <AutocompleteInput variant="outlined" helperText={false} />
-            </ReferenceInput>
+            <LocationReferenceInput />
             <TextInput
               label="Registration Link"
               source="registration"

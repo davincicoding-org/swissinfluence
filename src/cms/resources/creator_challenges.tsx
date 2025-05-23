@@ -21,6 +21,9 @@ import {
 
 import { routing } from "@/i18n/routing";
 
+import { BrandReferenceInput } from "./brands";
+import { LocationReferenceInput } from "./locations";
+
 /* List */
 
 export function CreatorChallengesList() {
@@ -34,7 +37,12 @@ export function CreatorChallengesList() {
         bulkActionButtons={false}
       >
         <TextField source="title.en" label="Title" />
-        <ReferenceField reference="brands" source="organizer" />
+        <BrandReferenceInput
+          source="organizer"
+          autocompleteProps={{
+            validate: required("Add a organizer"),
+          }}
+        />
         <ReferenceField
           reference="locations"
           source="location"
@@ -67,16 +75,12 @@ export function CreatorChallengesCreate() {
               source="image"
               validate={required("Add campaign image")}
             />
-            <ReferenceInput source="organizer" reference="brands">
-              <AutocompleteInput
-                variant="outlined"
-                helperText={false}
-                filterToQuery={(searchText) => ({
-                  name: `%${searchText}%`,
-                })}
-                validate={required("Add a organizer")}
-              />
-            </ReferenceInput>
+            <BrandReferenceInput
+              source="organizer"
+              autocompleteProps={{
+                validate: required("Add a organizer"),
+              }}
+            />
             <Fieldset label="Date">
               <DateTimeInput
                 label="From"
@@ -91,17 +95,7 @@ export function CreatorChallengesCreate() {
                 helperText={false}
               />
             </Fieldset>
-            <ReferenceInput source="location" reference="locations">
-              <AutocompleteInput
-                source="title"
-                variant="outlined"
-                helperText={false}
-                filterToQuery={(searchText) => ({
-                  title: `%${searchText}%`,
-                  city: `%${searchText}%`,
-                })}
-              />
-            </ReferenceInput>
+            <LocationReferenceInput />
             <TextInput
               label="Registration Link"
               source="registration"
@@ -159,16 +153,12 @@ export function CreatorChallengesEdit() {
                 compression: "photography",
               }}
             />
-            <ReferenceInput source="organizer" reference="brands">
-              <AutocompleteInput
-                variant="outlined"
-                helperText={false}
-                validate={required("Add a organizer")}
-                filterToQuery={(searchText) => ({
-                  name: `%${searchText}%`,
-                })}
-              />
-            </ReferenceInput>
+            <BrandReferenceInput
+              source="organizer"
+              autocompleteProps={{
+                validate: required("Add a organizer"),
+              }}
+            />
             <Fieldset label="Date">
               <DateTimeInput
                 label="From"
@@ -183,15 +173,7 @@ export function CreatorChallengesEdit() {
                 helperText={false}
               />
             </Fieldset>
-            <ReferenceInput source="location" reference="locations">
-              <AutocompleteInput
-                variant="outlined"
-                helperText={false}
-                filterToQuery={(searchText) => ({
-                  title: `%${searchText}%`,
-                })}
-              />
-            </ReferenceInput>
+            <LocationReferenceInput />
             <TextInput
               label="Registration Link"
               source="registration"
