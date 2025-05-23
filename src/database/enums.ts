@@ -1,6 +1,26 @@
 import { z } from "zod/v4";
 
 // TODO get rid of this file
+
+export const SocialMediaPlatformSchema = z.enum([
+  "INSTAGRAM",
+  "TIKTOK",
+  "LINKEDIN",
+  "YOUTUBE",
+  "APPLE_PODCAST",
+  "SPOTIFY",
+  "TWITCH",
+  "WEBSITE",
+  "WHATSAPP",
+]);
+export type SocialMediaPlatform = z.infer<typeof SocialMediaPlatformSchema>;
+
+export const SocialMediaSchema = z.object({
+  platform: SocialMediaPlatformSchema,
+  url: z.url(),
+});
+export type SocialMedia = z.infer<typeof SocialMediaSchema>;
+
 export const CantonEnum = z.enum([
   "AG",
   "AR",

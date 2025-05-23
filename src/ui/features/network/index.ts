@@ -10,11 +10,3 @@ export {
 } from "./CertifiedInfluencerPage";
 export { AgenciesPage, type IAgenciesPageProps } from "./AgenciesPage";
 export { EventsPage, type IEventsPageProps } from "./EventsPage";
-
-export {
-  getCampaigns,
-  getAgencies,
-  getEvents,
-  getCertifiedInfluencers,
-  getCertifiedInfluencer,
-} from "./data";

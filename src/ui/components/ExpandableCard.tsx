@@ -1,6 +1,6 @@
 "use client";
 
-import type { ImageMedia } from "@davincicoding/cms/image";
+import type { ImageAsset } from "@davincicoding/cms/image";
 import type { ReactNode } from "react";
 import { useId } from "react";
 import Image from "next/image";
@@ -22,7 +22,7 @@ import { cn } from "@/ui/utils";
 interface ExpandableCardProps {
   title: string;
   description: string;
-  image: ImageMedia;
+  image: ImageAsset;
   logo?: ReactNode;
   content: ReactNode;
   cta?: {

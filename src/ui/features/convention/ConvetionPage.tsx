@@ -2,20 +2,20 @@ import type { ImageAsset } from "@davincicoding/cms/image";
 import { Paper, ScrollArea } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
+import type { Convention } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
 
-import { type IConventionPageData } from "./data";
 import { ConventionEvent } from "./views/ConventionEvent";
 import { ConventionPartners } from "./views/ConventionPartners";
 
-export interface IConventionPageProps extends IConventionPageData {
+export interface IConventionPageProps {
+  convention: Convention | null;
   heroImage: ImageAsset;
 }
 
 export function ConventionPage({
-  event,
-  partners,
+  convention,
   heroImage,
 }: IConventionPageProps) {
   const t = useTranslations("convention");
@@ -28,12 +28,17 @@ export function ConventionPage({
         headline={t("hero.headline")}
         className="mb-0 snap-start"
         footer={
-          partners.length ? <ConventionPartners partners={partners} /> : null
+          convention?.partners.length ? (
+            <ConventionPartners partners={convention.partners} />
+          ) : null
         }
       />
       <main className="relative z-20 bg-white/80 pb-32 pt-24 backdrop-blur">
-        {event ? (
-          <ConventionEvent className="snap-start snap-always" event={event} />
+        {convention ? (
+          <ConventionEvent
+            className="snap-start snap-always"
+            convention={convention}
+          />
         ) : null}
 
         <section

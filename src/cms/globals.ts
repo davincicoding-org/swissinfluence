@@ -1,6 +1,6 @@
 import { z } from "zod/v4";
 
-import { SocialMediaSchema } from "./common/socials";
+import { SocialMediaSchema } from "@/database/enums";
 
 export const GLOBALS = {
   company: z.object({

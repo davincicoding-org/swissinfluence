@@ -1,4 +1,4 @@
-import { fetchMedia } from "@/server/actions";
+import { fetchMedia } from "@/server/media-library";
 import { LandingPage as View } from "@/ui/features/landing";
 
 export default async function LandingPage() {

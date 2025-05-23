@@ -1,7 +1,8 @@
-import {
-  CertifiedInfluencerPage as View,
-  getCertifiedInfluencer,
-} from "@/ui/features/network";
+import { notFound } from "next/navigation";
+
+import type { CertifiedInfluencer } from "@/types";
+import { getCertifiedInfluencer } from "@/server/certified-influencers";
+import { CertifiedInfluencerPage as View } from "@/ui/features/network";
 
 export default async function CertifiedInfluencerPage({
   params,
@@ -12,7 +13,11 @@ export default async function CertifiedInfluencerPage({
 }) {
   const { id } = await params;
 
-  const data = await getCertifiedInfluencer(id);
+  const influencer = await getCertifiedInfluencer(id);
 
-  return <View data={data} />;
+  if (!influencer) {
+    notFound();
+  }
+
+  return <View influencer={influencer} />;
 }

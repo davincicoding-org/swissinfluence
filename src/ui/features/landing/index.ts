@@ -1,1 +1,4 @@
-export { LandingPage, type ILandingPageProps } from "./LandingPage";
+export {
+  LandingPage,
+  type LandingPageProps as ILandingPageProps,
+} from "./LandingPage";

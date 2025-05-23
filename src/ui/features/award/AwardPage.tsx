@@ -2,14 +2,19 @@ import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
+import type {
+  Award,
+  AwardRanking,
+  AwardShowImpressions,
+  CreatorChallenge,
+} from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
 
-import { type IAwardPageData } from "./data";
 import { useHeaderContent } from "./hooks";
+import { AwardCategories } from "./views/AwardCategories";
 import { AwardImpressions } from "./views/AwardImpressions";
 import { AwardJury } from "./views/AwardJury";
 import { AwardNomination } from "./views/AwardNomination";
-import { AwardNominees } from "./views/AwardNominees";
 import { AwardPartners } from "./views/AwardPartners";
 import { AwardShow } from "./views/AwardShow";
 import { AwardVoting } from "./views/AwardVoting";
@@ -17,19 +22,26 @@ import { CreatorChallenges } from "./views/CreatorChallenges";
 import { HallOfFame } from "./views/HallOfFame";
 import { NewcomerScout } from "./views/NewcomerScout";
 
-export interface IAwardPageProps extends IAwardPageData {
+const FEATURE_FLAG_CATEGORIES = false;
+const FEATURE_FLAG_VOTING = false;
+
+export interface AwardPageProps {
   heroImage: ImageAsset;
+  currentAward: Award | null;
+  challenges: Array<CreatorChallenge>;
+  hallOfFame: Array<AwardRanking>;
   newcomerScoutImage: ImageAsset;
+  pastImpressions: AwardShowImpressions | null;
 }
 
 export function AwardPage({
   heroImage,
   newcomerScoutImage,
   currentAward,
-  pastAward,
+  pastImpressions,
   hallOfFame,
-  campaigns,
-}: IAwardPageProps) {
+  challenges,
+}: AwardPageProps) {
   const { headline, cta } = useHeaderContent(currentAward);
   const t = useTranslations("award");
 
@@ -69,67 +81,68 @@ export function AwardPage({
               />
             ) : null}
 
-            {currentAward.impressions ? (
+            {currentAward.show?.impressions && currentAward.show?.video ? (
               <section
                 id="impressions"
                 className="container min-h-screen snap-start snap-always py-16 sm:py-32"
               >
                 <AwardImpressions
-                  afterMovie={currentAward.impressions.afterMovie}
-                  images={currentAward.impressions.images}
+                  video={currentAward.show.video}
+                  images={currentAward.show.impressions}
                   className="my-auto"
                 />
               </section>
             ) : null}
 
-            {currentAward.nomination ? (
+            {currentAward.nominationUrl && currentAward.nominationDeadline ? (
               <section
                 id="nomination"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
               >
                 <AwardNomination
-                  deadline={currentAward.nomination.deadline}
-                  formURL={currentAward.nomination.url}
+                  deadline={currentAward.nominationDeadline}
+                  formURL={currentAward.nominationUrl}
                   className="my-auto"
                 />
               </section>
             ) : null}
-            {currentAward.newcomerScout ? (
+            {currentAward.newcomerScoutUrl &&
+            currentAward.newcomerScoutDeadline ? (
               <section
                 id="newcomer-scout"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
               >
                 <NewcomerScout
                   image={newcomerScoutImage}
-                  deadline={currentAward.newcomerScout.deadline}
-                  formURL={currentAward.newcomerScout.url}
+                  deadline={currentAward.newcomerScoutDeadline}
+                  formURL={currentAward.newcomerScoutUrl}
                   className="my-auto"
                 />
               </section>
             ) : null}
 
-            {currentAward.voting ? (
+            {FEATURE_FLAG_VOTING && currentAward.votingDeadline ? (
               <section
                 id="voting"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
               >
-                <AwardVoting deadline={currentAward.voting.deadline} />
+                <AwardVoting deadline={currentAward.votingDeadline} />
               </section>
             ) : null}
 
-            {currentAward.nominees && currentAward.nominees.length > 0 ? (
+            {FEATURE_FLAG_CATEGORIES && (
               <section
                 id="nominees"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
               >
-                <h3 className="mb-8 text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
+                {/* <h3 className="mb-8 text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
                   Nominees
-                </h3>
-                <AwardNominees categories={currentAward.nominees} />
+                </h3> */}
+                <AwardCategories categories={currentAward.categories} />
               </section>
-            ) : null}
+            )}
 
-            {campaigns.length > 0 ? (
+            {challenges.length > 0 ? (
               <section
                 id="campaigns"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
@@ -137,7 +150,7 @@ export function AwardPage({
                 <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
                   {t("creator-challenges.title")}
                 </h3>
-                <CreatorChallenges campaigns={campaigns} />
+                <CreatorChallenges challenges={challenges} />
               </section>
             ) : null}
 
@@ -153,14 +166,14 @@ export function AwardPage({
           </>
         ) : null}
 
-        {!currentAward?.impressions && pastAward ? (
+        {!currentAward?.show?.impressions && pastImpressions ? (
           <section className="container flex min-h-screen snap-start snap-always flex-col py-32">
             <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
-              This was {pastAward.year}
+              This was {pastImpressions.year}
             </h3>
             <AwardImpressions
-              afterMovie={pastAward.afterMovie}
-              images={pastAward.images}
+              video={pastImpressions.video}
+              images={pastImpressions.impressions}
               className="my-auto"
             />
           </section>

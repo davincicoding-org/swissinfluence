@@ -1,20 +1,20 @@
-import { type ComponentProps, useMemo } from "react";
-
 import type { Meta, StoryObj } from "@storybook/react";
+import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import dayjs from "dayjs";
 
 import { derivative } from "@/ui/utils";
 
 import { AwardPage } from "./AwardPage";
-import { type ICurrentAward } from "./data";
-import {
-  AWARD_JURY,
-  AWARD_NOMINEES,
-  AWARD_PARTNERS,
-  AWARD_SHOW,
-  HALL_OF_FAME,
-  IMPRESSIONS,
-} from "./mock";
+
+// import {
+//   AWARD_JURY,
+//   AWARD_NOMINEES,
+//   AWARD_PARTNERS,
+//   AWARD_SHOW,
+//   HALL_OF_FAME,
+//   IMPRESSIONS,
+// } from "./mock";
 
 const meta = {
   component: AwardPage,
@@ -33,42 +33,46 @@ const meta = {
       width: 5090,
       height: 3393,
     },
-    currentAward: {
-      year: 2024,
-      jury: AWARD_JURY,
-      partners: AWARD_PARTNERS,
-    },
-    pastAward: {
-      year: 2023,
-      afterMovie: "https://www.youtube.com/watch?v=fIR0w5PbUnY",
-      images: IMPRESSIONS,
-    },
-    hallOfFame: HALL_OF_FAME,
-    campaigns: [],
+    currentAward: null,
+    pastImpressions: null,
+    challenges: [],
+    hallOfFame: [],
+    // currentAward: {
+    //   year: 2024,
+    //   jury: AWARD_JURY,
+    //   partners: AWARD_PARTNERS,
+    // },
+    // pastAward: {
+    //   year: 2023,
+    //   afterMovie: "https://www.youtube.com/watch?v=fIR0w5PbUnY",
+    //   images: IMPRESSIONS,
+    // },
+    // hallOfFame: HALL_OF_FAME,
+    // campaigns: [],
   },
-  argTypes: {
-    // foo is the property we want to remove from the UI
-    heroImage: {
-      table: {
-        disable: true,
-      },
-    },
-    currentAward: {
-      table: {
-        disable: true,
-      },
-    },
-    pastAward: {
-      table: {
-        disable: true,
-      },
-    },
-    hallOfFame: {
-      table: {
-        disable: true,
-      },
-    },
-  },
+  // argTypes: {
+  //   // foo is the property we want to remove from the UI
+  //   heroImage: {
+  //     table: {
+  //       disable: true,
+  //     },
+  //   },
+  //   currentAward: {
+  //     table: {
+  //       disable: true,
+  //     },
+  //   },
+  //   pastAward: {
+  //     table: {
+  //       disable: true,
+  //     },
+  //   },
+  //   hallOfFame: {
+  //     table: {
+  //       disable: true,
+  //     },
+  //   },
+  // },
   parameters: {
     layout: "fullscreen",
   },
@@ -118,264 +122,264 @@ export const Showcase: StoryObj<
       control: { type: "boolean" },
     },
   },
-  render: ({
-    currentAward,
-    pastAward,
-    heroImage,
-    newcomerScoutImage,
-    hallOfFame,
-    campaigns,
-    ...controls
-  }) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const controlledCurrentAward = useMemo<ICurrentAward>(
-      () => ({
-        ...currentAward!,
-        nomination: derivative<ICurrentAward["nomination"]>(() => {
-          switch (controls.nomination) {
-            case "none":
-              return undefined;
-            case "open":
-              return {
-                deadline: dayjs().add(7, "days").toISOString(),
-                url: "#",
-              };
-            case "closed":
-              return {
-                deadline: dayjs().subtract(1, "day").toISOString(),
-                url: "#",
-              };
-          }
-        }),
-        nominees: controls.nominees ? AWARD_NOMINEES : undefined,
-        voting: derivative<ICurrentAward["voting"]>(() => {
-          switch (controls.voting) {
-            case "none":
-              return undefined;
-            case "open":
-              return {
-                deadline: dayjs().add(7, "days").toISOString(),
-              };
-            case "closed":
-              return {
-                deadline: dayjs().subtract(1, "day").toISOString(),
-              };
-          }
-        }),
-        show: derivative<ICurrentAward["show"]>(() => {
-          switch (controls.show) {
-            case "none":
-              return undefined;
-            case "upcoming":
-              return {
-                date: dayjs().add(10, "days").toISOString(),
-                ...AWARD_SHOW,
-              };
-            case "live":
-              return {
-                date: dayjs().subtract(10, "minutes").toISOString(),
-                ...AWARD_SHOW,
-              };
-            case "over":
-              return {
-                date: dayjs().subtract(1, "day").toISOString(),
-                ...AWARD_SHOW,
-              };
-          }
-        }),
-        ranked: controls.ranked,
-        impressions: controls.impressions
-          ? {
-              afterMovie: "https://www.youtube.com/watch?v=fIR0w5PbUnY",
-              images: IMPRESSIONS,
-            }
-          : undefined,
-      }),
-      [currentAward, controls],
-    );
+  // render: ({
+  //   // currentAward,
+  //   // pastAward,
+  //   heroImage,
+  //   // newcomerScoutImage,
+  //   // hallOfFame,
+  //   // campaigns,
+  //   // ...controls
+  // }) => {
+  //   // eslint-disable-next-line react-hooks/rules-of-hooks
+  //   // const controlledCurrentAward = useMemo<ICurrentAward>(
+  //   //   () => ({
+  //   //     ...currentAward!,
+  //   //     nomination: derivative<ICurrentAward["nomination"]>(() => {
+  //   //       switch (controls.nomination) {
+  //   //         case "none":
+  //   //           return undefined;
+  //   //         case "open":
+  //   //           return {
+  //   //             deadline: dayjs().add(7, "days").toISOString(),
+  //   //             url: "#",
+  //   //           };
+  //   //         case "closed":
+  //   //           return {
+  //   //             deadline: dayjs().subtract(1, "day").toISOString(),
+  //   //             url: "#",
+  //   //           };
+  //   //       }
+  //   //     }),
+  //   //     nominees: controls.nominees ? AWARD_NOMINEES : undefined,
+  //   //     voting: derivative<ICurrentAward["voting"]>(() => {
+  //   //       switch (controls.voting) {
+  //   //         case "none":
+  //   //           return undefined;
+  //   //         case "open":
+  //   //           return {
+  //   //             deadline: dayjs().add(7, "days").toISOString(),
+  //   //           };
+  //   //         case "closed":
+  //   //           return {
+  //   //             deadline: dayjs().subtract(1, "day").toISOString(),
+  //   //           };
+  //   //       }
+  //   //     }),
+  //   //     show: derivative<ICurrentAward["show"]>(() => {
+  //   //       switch (controls.show) {
+  //   //         case "none":
+  //   //           return undefined;
+  //   //         case "upcoming":
+  //   //           return {
+  //   //             date: dayjs().add(10, "days").toISOString(),
+  //   //             ...AWARD_SHOW,
+  //   //           };
+  //   //         case "live":
+  //   //           return {
+  //   //             date: dayjs().subtract(10, "minutes").toISOString(),
+  //   //             ...AWARD_SHOW,
+  //   //           };
+  //   //         case "over":
+  //   //           return {
+  //   //             date: dayjs().subtract(1, "day").toISOString(),
+  //   //             ...AWARD_SHOW,
+  //   //           };
+  //   //       }
+  //   //     }),
+  //   //     ranked: controls.ranked,
+  //   //     impressions: controls.impressions
+  //   //       ? {
+  //   //           afterMovie: "https://www.youtube.com/watch?v=fIR0w5PbUnY",
+  //   //           images: IMPRESSIONS,
+  //   //         }
+  //   //       : undefined,
+  //   //   }),
+  //   //   [currentAward, controls],
+  //   // );
 
-    return (
-      <AwardPage
-        heroImage={heroImage}
-        newcomerScoutImage={newcomerScoutImage}
-        currentAward={controlledCurrentAward}
-        pastAward={pastAward}
-        hallOfFame={hallOfFame}
-        campaigns={campaigns}
-      />
-    );
-  },
+  //   return (
+  //     <AwardPage
+  //       heroImage={heroImage}
+  //       newcomerScoutImage={newcomerScoutImage}
+  //       currentAward={controlledCurrentAward}
+  //       pastAward={pastAward}
+  //       hallOfFame={hallOfFame}
+  //       campaigns={campaigns}
+  //     />
+  //   );
+  // },
 };
 
-export const Initial: Story = {};
+// export const Initial: Story = {};
 
-export const Nomination: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: dayjs().add(7, "days").toISOString(),
-        url: "#",
-      },
-    },
-  },
-};
+// export const Nomination: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: dayjs().add(7, "days").toISOString(),
+//         url: "#",
+//       },
+//     },
+//   },
+// };
 
-export const NominationEnded: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: new Date("1992-05-27").toISOString(),
-        url: "#",
-      },
-    },
-  },
-};
-export const NomineesPublished: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: new Date("1992-05-27").toISOString(),
-        url: "#",
-      },
-      nominees: AWARD_NOMINEES,
-    },
-  },
-};
+// export const NominationEnded: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//         url: "#",
+//       },
+//     },
+//   },
+// };
+// export const NomineesPublished: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//         url: "#",
+//       },
+//       nominees: AWARD_NOMINEES,
+//     },
+//   },
+// };
 
-export const Voting: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: new Date("1992-05-27").toISOString(),
-        url: "#",
-      },
+// export const Voting: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//         url: "#",
+//       },
 
-      voting: {
-        deadline: dayjs().add(7, "days").toISOString(),
-      },
-      nominees: AWARD_NOMINEES,
-    },
-  },
-};
+//       voting: {
+//         deadline: dayjs().add(7, "days").toISOString(),
+//       },
+//       nominees: AWARD_NOMINEES,
+//     },
+//   },
+// };
 
-export const VotingEnded: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: new Date("1992-05-27").toISOString(),
-        url: "#",
-      },
-      voting: {
-        deadline: new Date("1992-05-27").toISOString(),
-      },
-      nominees: AWARD_NOMINEES,
-    },
-  },
-};
+// export const VotingEnded: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//         url: "#",
+//       },
+//       voting: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//       },
+//       nominees: AWARD_NOMINEES,
+//     },
+//   },
+// };
 
-export const PreShow: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: new Date("1992-05-27").toISOString(),
-        url: "#",
-      },
-      voting: {
-        deadline: new Date("1992-05-27").toISOString(),
-      },
-      nominees: AWARD_NOMINEES,
-      show: {
-        date: dayjs().add(10, "days").toISOString(),
-        ...AWARD_SHOW,
-      },
-    },
-  },
-};
+// export const PreShow: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//         url: "#",
+//       },
+//       voting: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//       },
+//       nominees: AWARD_NOMINEES,
+//       show: {
+//         date: dayjs().add(10, "days").toISOString(),
+//         ...AWARD_SHOW,
+//       },
+//     },
+//   },
+// };
 
-export const DuringShow: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: new Date("1992-05-27").toISOString(),
-        url: "#",
-      },
-      voting: {
-        deadline: new Date("1992-05-27").toISOString(),
-      },
-      nominees: AWARD_NOMINEES,
-      show: {
-        date: dayjs().subtract(10, "minutes").toISOString(),
-        ...AWARD_SHOW,
-      },
-    },
-  },
-};
+// export const DuringShow: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//         url: "#",
+//       },
+//       voting: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//       },
+//       nominees: AWARD_NOMINEES,
+//       show: {
+//         date: dayjs().subtract(10, "minutes").toISOString(),
+//         ...AWARD_SHOW,
+//       },
+//     },
+//   },
+// };
 
-export const PostShow: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: new Date("1992-05-27").toISOString(),
-        url: "#",
-      },
-      voting: {
-        deadline: new Date("1992-05-27").toISOString(),
-      },
-      nominees: AWARD_NOMINEES,
-      show: {
-        date: dayjs().subtract(1, "day").toISOString(),
-        ...AWARD_SHOW,
-      },
-    },
-  },
-};
+// export const PostShow: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//         url: "#",
+//       },
+//       voting: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//       },
+//       nominees: AWARD_NOMINEES,
+//       show: {
+//         date: dayjs().subtract(1, "day").toISOString(),
+//         ...AWARD_SHOW,
+//       },
+//     },
+//   },
+// };
 
-export const WinnersPublished: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: new Date("1992-05-27").toISOString(),
-        url: "#",
-      },
-      voting: {
-        deadline: new Date("1992-05-27").toISOString(),
-      },
-      nominees: AWARD_NOMINEES,
-      ranked: true,
-    },
-  },
-};
+// export const WinnersPublished: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//         url: "#",
+//       },
+//       voting: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//       },
+//       nominees: AWARD_NOMINEES,
+//       ranked: true,
+//     },
+//   },
+// };
 
-export const ImpressionsPublished: Story = {
-  args: {
-    currentAward: {
-      ...meta.args.currentAward,
-      nomination: {
-        deadline: new Date("1992-05-27").toISOString(),
-        url: "#",
-      },
-      voting: {
-        deadline: new Date("1992-05-27").toISOString(),
-      },
-      nominees: AWARD_NOMINEES,
-      show: {
-        date: dayjs().subtract(1, "day").toISOString(),
-        ...AWARD_SHOW,
-      },
-      ranked: true,
-      impressions: {
-        afterMovie: "https://www.youtube.com/watch?v=fIR0w5PbUnY",
-        images: IMPRESSIONS,
-      },
-    },
-  },
-};
+// export const ImpressionsPublished: Story = {
+//   args: {
+//     currentAward: {
+//       ...meta.args.currentAward,
+//       nomination: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//         url: "#",
+//       },
+//       voting: {
+//         deadline: new Date("1992-05-27").toISOString(),
+//       },
+//       nominees: AWARD_NOMINEES,
+//       show: {
+//         date: dayjs().subtract(1, "day").toISOString(),
+//         ...AWARD_SHOW,
+//       },
+//       ranked: true,
+//       impressions: {
+//         afterMovie: "https://www.youtube.com/watch?v=fIR0w5PbUnY",
+//         images: IMPRESSIONS,
+//       },
+//     },
+//   },
+// };

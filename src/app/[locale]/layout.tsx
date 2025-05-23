@@ -15,7 +15,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { env } from "@/env";
 import { type SupportedLocale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
-import { fetchGlobals } from "@/server/actions";
+import { fetchGlobals } from "@/server/globals";
 import { theme } from "@/ui/theme";
 import { cn } from "@/ui/utils";
 

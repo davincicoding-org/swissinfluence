@@ -1,20 +1,18 @@
 "use client";
-import { useState } from "react";
 
+import { useState } from "react";
 import { Accordion, Paper, Space } from "@mantine/core";
 import { IconCalendar, IconMapPin } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { AnimatePresence, motion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 
+import type { AwardShow } from "@/types";
+import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 
-import { RichText } from "@/ui/components/RichText";
-
-import { type IAwardShow } from "../data";
-
 export interface IAwardShowProps {
-  show: IAwardShow;
+  show: AwardShow;
   className?: string;
   id?: string;
 }
@@ -65,7 +63,7 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
           radius="md"
           className="grid flex-1 overflow-clip bg-neutral-200 transition-transform active:scale-95 md:flex md:items-center"
           component="a"
-          href={show.location.mapsURL}
+          href={show.location.maps}
           target="_blank"
         >
           <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
@@ -77,12 +75,26 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
           </div>
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
             <h3 className="text-xl font-light uppercase tracking-wider">
-              {show.location.name}
+              {show.location.title}
             </h3>
             <p className="uppercase max-md:text-sm">{show.location.city}</p>
           </div>
         </Paper>
-        <Paper
+        {show.tickets && (
+          <Paper
+            shadow="sm"
+            radius="md"
+            component="a"
+            href={show.tickets ?? undefined}
+            target="_blank"
+            className={cn(
+              "col-span-2 flex flex-1 cursor-pointer items-center justify-center overflow-clip bg-mocha-500 p-3 text-2xl uppercase tracking-wider text-white transition-all hover:bg-mocha-300 active:scale-95",
+            )}
+          >
+            {t("buy-cta")}
+          </Paper>
+        )}
+        {/* <Paper
           shadow="sm"
           radius="md"
           component="a"
@@ -105,7 +117,7 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
           {show.ticketSale.url && show.ticketSale.open ? t("buy-cta") : null}
           {show.ticketSale.url && !show.ticketSale.open ? t("sold-out") : null}
           {!show.ticketSale.url ? t("sale-not-open") : null}
-        </Paper>
+        </Paper> */}
       </div>
 
       <Space h="lg" />
@@ -124,13 +136,15 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
               <Accordion.Control className="active:bg-transparent">
                 <h4 className="mb-1 text-lg leading-none text-mocha-500">
                   {slot.start && slot.end
-                    ? `${slot.start} - ${slot.end}`
+                    ? `${dayjs(slot.start).format("HH:mm")} - ${dayjs(slot.end).format("HH:mm")}`
                     : null}
                   {slot.start && !slot.end
-                    ? t("slot-from", { time: slot.start })
+                    ? t("slot-from", {
+                        time: dayjs(slot.start).format("HH:mm"),
+                      })
                     : null}
                   {!slot.start && slot.end
-                    ? t("slot-until", { time: slot.end })
+                    ? t("slot-until", { time: dayjs(slot.end).format("HH:mm") })
                     : null}
                 </h4>
                 <h4 className="text-nowrap text-xl font-medium leading-none">
@@ -166,12 +180,18 @@ export function AwardShow({ show, className, id }: IAwardShowProps) {
               onMouseEnter={() => setActiveSection(index)}
             >
               <h4 className="mb-1 text-lg leading-none text-mocha-500">
-                {slot.start && slot.end ? `${slot.start} - ${slot.end}` : null}
+                {slot.start && slot.end
+                  ? `${dayjs(slot.start).format("HH:mm")} - ${dayjs(slot.end).format("HH:mm")}`
+                  : null}
                 {slot.start && !slot.end
-                  ? t("slot-from", { time: slot.start })
+                  ? t("slot-from", {
+                      time: dayjs(slot.start).format("HH:mm"),
+                    })
                   : null}
                 {!slot.start && slot.end
-                  ? t("slot-until", { time: slot.end })
+                  ? t("slot-until", {
+                      time: dayjs(slot.end).format("HH:mm"),
+                    })
                   : null}
               </h4>
               <h4 className="text-nowrap text-xl font-medium leading-none">

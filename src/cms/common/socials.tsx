@@ -10,32 +10,14 @@ import {
   useSimpleFormIteratorItem,
 } from "react-admin";
 import { useController } from "react-hook-form";
-import { z } from "zod/v4";
 
+import type { SocialMedia } from "@/database/enums";
+import { SocialMediaPlatformSchema } from "@/database/enums";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 
 // MARK: Schema
 
-export const SocialMediaPlatformSchema = z.enum([
-  "INSTAGRAM",
-  "TIKTOK",
-  "LINKEDIN",
-  "YOUTUBE",
-  "APPLE_PODCAST",
-  "SPOTIFY",
-  "TWITCH",
-  "WEBSITE",
-  "WHATSAPP",
-]);
-export type SocialMediaPlatform = z.infer<typeof SocialMediaPlatformSchema>;
-
 export const SOCIAL_MEDIA_PLATFORM_OPTIONS = SocialMediaPlatformSchema.options;
-
-export const SocialMediaSchema = z.object({
-  platform: SocialMediaPlatformSchema,
-  url: z.url(),
-});
-export type SocialMedia = z.infer<typeof SocialMediaSchema>;
 
 // MARK: Choices
 

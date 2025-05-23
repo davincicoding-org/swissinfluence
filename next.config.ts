@@ -13,24 +13,23 @@ const config: NextConfig = {
     dirs: ["src"],
   },
   images: {
+    loader: "custom",
+    loaderFile: "./supabase-image-loader.js",
     dangerouslyAllowSVG: true,
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "firebasestorage.googleapis.com",
-        pathname: `/v0/b/${process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}/o/**`,
-      },
-      {
-        protocol: "https",
-        hostname: "storage.googleapis.com",
-      },
-    ],
+    // remotePatterns: [
+    //   {
+    //     protocol: "https",
+    //     hostname: "firebasestorage.googleapis.com",
+    //     pathname: `/v0/b/${process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}/o/**`,
+    //   },
+    //   {
+    //     protocol: "https",
+    //     hostname: "storage.googleapis.com",
+    //   },
+    // ],
   },
   experimental: {
     optimizePackageImports: ["@mantine/core", "@mantine/hooks", "motion"],
-    serverActions: {
-      bodySizeLimit: "5mb",
-    },
     // Enable watching the node_modules directory for the local CMS library
     externalDir: true,
   },

@@ -1,2 +1,1 @@
-export { AwardPage, type IAwardPageProps } from "./AwardPage";
-export { getAwardPageData } from "./data";
+export { AwardPage, type AwardPageProps as IAwardPageProps } from "./AwardPage";

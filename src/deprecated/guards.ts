@@ -1,5 +1,8 @@
 import { z } from "zod/v4";
 
+/**
+ * @deprecated
+ */
 export const createGuard =
   (
     ResourceSchema: z.ZodObject<
@@ -61,6 +64,10 @@ export const createGuard =
       id: true,
     }).parse(data);
   };
+
+/**
+ * @deprecated
+ */
 
 export const editGuard =
   (

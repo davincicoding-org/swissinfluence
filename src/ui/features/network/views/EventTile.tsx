@@ -15,30 +15,38 @@ import { IconArrowRight, IconX } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
-import { type IEventDocument } from "@/deprecated/event-schema";
+import type { NetworkEvent } from "@/types";
 import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 
 export interface IEventTileProps {
-  data: IEventDocument;
+  data: NetworkEvent;
   className?: string;
 }
 
 export function EventTile({
-  data: { title, image, description, date, logo, ticketSale },
+  data: {
+    title,
+    image,
+    content,
+    start: startDate,
+    end: endDate,
+    logo,
+    tickets,
+  },
   className,
 }: IEventTileProps) {
   const locale = useLocale();
   const [isExpanded, expansion] = useDisclosure(false);
 
   const formattedDate = useMemo(() => {
-    const fromDate = dayjs(date.from);
-    const untilDate = dayjs(date.until);
+    const fromDate = dayjs(startDate);
+    const untilDate = dayjs(endDate);
 
     if (fromDate.isSame(untilDate, "day")) return fromDate.format("DD.MM.YYYY");
 
     return `${fromDate.format("DD.MM.YYYY")} - ${untilDate.format("DD.MM.YYYY")}`;
-  }, [date]);
+  }, [startDate, endDate]);
 
   return (
     <>
@@ -61,8 +69,7 @@ export function EventTile({
         <Image
           src={image.src}
           alt="Background"
-          height={image.height}
-          width={image.width}
+          fill
           placeholder={image.blurDataURL ? "blur" : undefined}
           blurDataURL={image.blurDataURL}
           className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
@@ -105,17 +112,25 @@ export function EventTile({
         }}
         xOffset={0}
         yOffset={0}
+        centered
         opened={isExpanded}
         size="lg"
         onClose={expansion.close}
       >
         <Modal.Overlay />
         <Modal.Content
-          radius={0}
+          radius="lg"
           className="bg-cover bg-fixed bg-center"
           classNames={{ inner: "!bg-none" }}
-          style={{ backgroundImage: `url(${image.src})` }}
         >
+          <Image
+            alt="Event Background"
+            src={image.src}
+            fill
+            placeholder={image.blurDataURL ? "blur" : undefined}
+            blurDataURL={image.blurDataURL}
+            className="absolute inset-0 object-cover"
+          />
           <Modal.Header>
             <ActionIcon
               color="white"
@@ -127,7 +142,7 @@ export function EventTile({
               <IconX />
             </ActionIcon>
           </Modal.Header>
-          <Modal.Body className="-mt-16 grid">
+          <Modal.Body className="relative -mt-16 grid">
             <FocusTrap.InitialFocus />
             <div className="flex flex-col bg-black/60 p-6 text-white">
               <Image
@@ -143,7 +158,7 @@ export function EventTile({
               <p className="mt-8 text-3xl">{title[locale]}</p>
 
               <RichText
-                content={description[locale]}
+                content={content[locale]!}
                 className="prose-lg py-6 text-white"
               />
               <Button
@@ -153,8 +168,8 @@ export function EventTile({
                 size="lg"
                 fullWidth
                 className="uppercase"
-                disabled={!ticketSale.open}
-                href={ticketSale.url}
+                disabled={!tickets}
+                href={tickets ?? undefined}
                 target="_blank"
               >
                 Apply Now

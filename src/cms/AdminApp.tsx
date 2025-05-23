@@ -68,8 +68,8 @@ import type {
 } from "@/database/schema";
 import { env } from "@/env";
 import { Locale, MESSAGES_SCHEMA } from "@/i18n/config";
-import { revalidateCache } from "@/server/actions";
 import { fetchMessages, saveMessages } from "@/server/messages";
+import { revalidateCache } from "@/server/revalidate";
 import { supabaseClient } from "@/server/supabase";
 
 import { GLOBALS } from "./globals";

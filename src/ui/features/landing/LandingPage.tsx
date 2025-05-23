@@ -7,7 +7,7 @@ import { BackgroundVideo } from "@/ui/components/BackgroundVideo";
 import { FlipWords } from "@/ui/components/FlipWords";
 import { LinkTile } from "@/ui/components/LinkTile";
 
-export interface ILandingPageProps {
+export interface LandingPageProps {
   heroVideo: VideoAsset;
   images: {
     award: ImageAsset;
@@ -17,7 +17,7 @@ export interface ILandingPageProps {
   };
 }
 
-export function LandingPage({ heroVideo, images }: ILandingPageProps) {
+export function LandingPage({ heroVideo, images }: LandingPageProps) {
   const locale = useLocale();
   const t = useTranslations("landing");
 

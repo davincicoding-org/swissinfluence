@@ -10,55 +10,12 @@ export const DocumentIDSchema = z.string();
 
 // FIXME this is a Partial so I created a workaround
 // export const TranslatableSchema = z.record(Locale, z.string());
+/**
+ * @deprecated
+ */
 export const TranslatableSchema = z.object({
   de: z.string(),
   en: z.string(),
   fr: z.string(),
   it: z.string(),
 });
-
-export type Translatable = z.infer<typeof TranslatableSchema>;
-
-/* Video */
-
-export const VideoDataSchema = z.object({
-  src: z.string(),
-});
-export type VideoData = z.infer<typeof VideoDataSchema>;
-
-/* Social Media */
-
-
-
-/* Utils */
-
-export type NullableSchema<T extends z.ZodTypeAny> =
-  T extends z.ZodObject<infer Shape>
-    ? // @ts-expect-error TODO: fix this
-      z.ZodObject<{ [K in keyof Shape]: NullableSchema<Shape[K]> }>
-    : z.ZodNullable<z.ZodOptional<T>>;
-
-export const Nullable = <T extends z.ZodTypeAny>(
-  Schema: T,
-): NullableSchema<T> => {
-  if (!(Schema instanceof z.ZodObject))
-    // @ts-expect-error poorly typed
-    return (
-      Schema.nullable()
-        .optional()
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- ignore
-        .transform((data) => (data !== undefined ? data : null))
-    );
-
-  const shape = Schema.shape as Record<string, z.ZodType>;
-  // @ts-expect-error poorly typed
-  return z.object(
-    Object.entries(shape).reduce<Record<string, z.ZodType>>(
-      (acc, [prop, PropSchema]) => ({
-        ...acc,
-        [prop]: Nullable(PropSchema),
-      }),
-      {},
-    ),
-  );
-};

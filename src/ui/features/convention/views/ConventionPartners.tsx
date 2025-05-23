@@ -1,14 +1,12 @@
 import Image from "next/image";
-
 import { Flex, Tooltip } from "@mantine/core";
 import Marquee from "react-fast-marquee";
 
+import type { Brand } from "@/types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
 
-import { type IConventionPartner } from "../data";
-
 export interface IConventionPartnersProps {
-  partners: Array<IConventionPartner>;
+  partners: Array<Brand>;
 }
 
 export function ConventionPartners({ partners }: IConventionPartnersProps) {
@@ -16,10 +14,10 @@ export function ConventionPartners({ partners }: IConventionPartnersProps) {
     <FadeContainer gradientWidth={100}>
       <Marquee pauseOnHover autoFill>
         <Flex className="gap-8 py-3 pr-8">
-          {partners.map(({ id, name, image, url }) => (
+          {partners.map(({ id, name, image, website }) => (
             <a
               key={id}
-              href={url}
+              href={website}
               target="_blank"
               rel="noopener"
               className="aspect-video h-16"

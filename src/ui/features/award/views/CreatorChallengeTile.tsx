@@ -1,22 +1,20 @@
 "use client";
 
 import Image from "next/image";
-
 import { useLocale } from "next-intl";
 
+import type { CreatorChallenge } from "@/types";
 import { ExpandableCard } from "@/ui/components/ExpandableCard";
 import { RichText } from "@/ui/components/RichText";
 
-import { type ICreatorChallenge } from "../data";
-
 export interface ICreatorChallengeTileProps {
-  data: ICreatorChallenge;
+  data: CreatorChallenge;
   past?: boolean;
   className?: string;
 }
 
 export function CreatorChallengeTile({
-  data: { title, image, organizer, registrationURL, description },
+  data: { title, image, organizer, registration, content },
   past,
   className,
 }: ICreatorChallengeTileProps) {
@@ -24,7 +22,7 @@ export function CreatorChallengeTile({
 
   return (
     <ExpandableCard
-      title={title[locale]}
+      title={title[locale]!}
       description={organizer.name}
       image={image}
       logo={
@@ -43,16 +41,16 @@ export function CreatorChallengeTile({
       content={
         <div className="flex flex-col gap-4">
           <RichText
-            content={description[locale]}
+            content={content[locale]!}
             className="prose prose-p:m-1 prose-li:m-0"
           />
         </div>
       }
       cta={
-        !past && registrationURL
+        !past && registration
           ? {
               label: "Apply Now",
-              url: registrationURL,
+              url: registration,
             }
           : undefined
       }

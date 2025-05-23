@@ -2,15 +2,15 @@ import type { ImageAsset } from "@davincicoding/cms/image";
 import { Paper, Stack } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
+import type { Agency } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
 
-import { type IAgency } from "./data";
 import { AgencyTile } from "./views/AgencyTile";
 
 export interface IAgenciesPageProps {
   heroImage: ImageAsset;
-  agencies: Array<IAgency>;
+  agencies: Array<Agency>;
 }
 
 export function AgenciesPage({ heroImage, agencies }: IAgenciesPageProps) {

@@ -1,13 +1,12 @@
-import { fetchGlobal, fetchMedia } from "@/server/actions";
-import {
-  getCertifiedInfluencers,
-  CertifiedInfluencersPage as View,
-} from "@/ui/features/network";
+import { getCategoriesWithCertifiedInfluencers } from "@/server/certified-influencers";
+import { fetchGlobal } from "@/server/globals";
+import { fetchMedia } from "@/server/media-library";
+import { CertifiedInfluencersPage as View } from "@/ui/features/network";
 
 export default async function InfluencersPage() {
   const media = await fetchMedia();
   const forms = await fetchGlobal("forms");
-  const pool = await getCertifiedInfluencers();
+  const pool = await getCategoriesWithCertifiedInfluencers();
 
   return (
     <View

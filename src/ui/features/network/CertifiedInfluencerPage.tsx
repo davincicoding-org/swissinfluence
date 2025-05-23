@@ -2,28 +2,27 @@ import { ActionIcon, Flex, Paper, Stack } from "@mantine/core";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
+import type { CertifiedInfluencer } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { cn, derivative } from "@/ui/utils";
 import { getCantonLabel } from "@/utils/cantons";
 
-import { type ICertifiedInfluencer } from "./data";
-
 export interface ICertifiedInfluencerPageProps {
-  data: ICertifiedInfluencer;
+  influencer: CertifiedInfluencer;
 }
 
 export function CertifiedInfluencerPage({
-  data: {
-    heroImage,
+  influencer: {
+    image,
     name,
     socials,
     birthdate,
     residence,
     languages,
-    about,
+    bio,
     interests,
-    categories,
+    otherInterests,
   },
 }: ICertifiedInfluencerPageProps) {
   const locale = useLocale();
@@ -36,7 +35,7 @@ export function CertifiedInfluencerPage({
   return (
     <>
       <PageHero
-        image={heroImage}
+        image={image}
         title={name}
         className="snap-start"
         CTA={
@@ -68,7 +67,7 @@ export function CertifiedInfluencerPage({
               p="md"
               className="bg-neutral-200"
             >
-              <p className="text-xl">{about[locale]}</p>
+              <p className="text-xl">{bio[locale]}</p>
             </Paper>
             <Flex gap="lg" className="min-w-0 flex-wrap">
               <Paper
@@ -129,9 +128,9 @@ export function CertifiedInfluencerPage({
                   Cooperation Interests
                 </span>
                 <ul>
-                  {categories.map((category) => (
+                  {interests.map((category) => (
                     <li key={category.id} className="text-2xl">
-                      {category.name[locale]}
+                      {category.title[locale]}
                     </li>
                   ))}
                 </ul>
@@ -148,9 +147,9 @@ export function CertifiedInfluencerPage({
                   Other Interests
                 </span>
                 <ul>
-                  {interests[locale].map((interest) => (
+                  {otherInterests?.[locale]?.split(/[\n,]+/).map((interest) => (
                     <li key={interest} className="text-2xl">
-                      {interest}
+                      {interest.trim()}
                     </li>
                   ))}
                 </ul>

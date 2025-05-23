@@ -1,44 +1,40 @@
 "use client";
 
 import { useMemo } from "react";
-
 import { Flex, Paper, ScrollArea, Stack, Tabs } from "@mantine/core";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
-import { cn } from "@/ui/utils";
-
+import type { CreatorChallenge } from "@/types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
 import { RichText } from "@/ui/components/RichText";
-
-import { type ICreatorChallenge } from "../data";
+import { cn } from "@/ui/utils";
 
 import { CreatorChallengeTile } from "./CreatorChallengeTile";
 
 export interface ICreatorChallengeProps {
-  campaigns: Array<ICreatorChallenge>;
+  challenges: Array<CreatorChallenge>;
   className?: string;
 }
 
 export function CreatorChallenges({
-  campaigns,
+  challenges: challenges,
   className,
 }: ICreatorChallengeProps) {
   const t = useTranslations("award.creator-challenges");
 
   const { currentCampaigns, pastCampaigns } = useMemo(() => {
-    const { current, past } = campaigns.reduce<{
-      current: Array<ICreatorChallenge>;
-      past: Array<ICreatorChallenge>;
-    }>(
+    const { current, past } = challenges.reduce<
+      Record<"current" | "past", Array<CreatorChallenge>>
+    >(
       (acc, campaign) => {
-        if (!campaign.date)
+        if (!campaign.end)
           return {
             ...acc,
             current: [...acc.current, campaign],
           };
 
-        if (dayjs(campaign.date.until).isAfter())
+        if (dayjs(campaign.end).isAfter())
           return {
             ...acc,
             current: [...acc.current, campaign],
@@ -57,17 +53,17 @@ export function CreatorChallenges({
 
     return {
       currentCampaigns: current.sort((a, b) => {
-        const dateA = a.date?.until ? Date.parse(a.date.until) : Infinity;
-        const dateB = b.date?.until ? Date.parse(b.date.until) : Infinity;
+        const dateA = a.end ? Date.parse(a.end) : Infinity;
+        const dateB = b.end ? Date.parse(b.end) : Infinity;
         return dateA - dateB;
       }),
       pastCampaigns: past.sort((a, b) => {
-        const dateA = a.date?.until ? Date.parse(a.date.until) : Infinity;
-        const dateB = b.date?.until ? Date.parse(b.date.until) : Infinity;
+        const dateA = a.end ? Date.parse(a.end) : Infinity;
+        const dateB = b.end ? Date.parse(b.end) : Infinity;
         return dateA - dateB;
       }),
     };
-  }, [campaigns]);
+  }, [challenges]);
 
   // TODO handle no campaigns
 

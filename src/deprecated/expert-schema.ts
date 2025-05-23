@@ -1,9 +1,13 @@
 import { ImageMediaSchema } from "@davincicoding/cms/image";
 import { z } from "zod/v4";
 
-import { SocialMediaSchema } from "../cms/common/socials";
+import { SocialMediaSchema } from "@/database/enums";
+
 import { DocumentIDSchema, TranslatableSchema } from "./common";
 
+/**
+ * @deprecated
+ */
 export const ExpertDocumentSchema = z.object({
   id: DocumentIDSchema,
   name: z.string(),
@@ -12,4 +16,7 @@ export const ExpertDocumentSchema = z.object({
   socials: z.array(SocialMediaSchema),
 });
 
+/**
+ * @deprecated
+ */
 export type IExpertDocument = z.infer<typeof ExpertDocumentSchema>;

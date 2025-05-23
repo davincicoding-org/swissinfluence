@@ -10,7 +10,7 @@ import {
   IconWorld,
 } from "@tabler/icons-react";
 
-import type { SocialMediaPlatform } from "@/cms/common/socials";
+import type { SocialMediaPlatform } from "@/database/enums";
 
 export interface ISocialMediaPlatformIconProps {
   platform: SocialMediaPlatform;

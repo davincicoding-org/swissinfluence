@@ -1,32 +1,11 @@
 import type { ImageAsset } from "@davincicoding/cms/image";
 import { relations } from "drizzle-orm";
 import { index, pgEnum, pgTable, uniqueIndex } from "drizzle-orm/pg-core";
-import { z } from "zod/v4";
 
-import { LanguageCodeSchema } from "@/utils/languages";
-
+import type { SocialMedia } from "./enums";
 import { CantonEnum, LanguageCodeEnum } from "./enums";
 
 // MARK: JSON Schemas
-
-const socialPlatformEnum = z.enum([
-  "INSTAGRAM",
-  "TIKTOK",
-  "YOUTUBE",
-  "LINKEDIN",
-  "TWITTER",
-  "TWITCH",
-  "WEBSITE",
-  "SPOTIFY",
-  "APPLE_PODCASTS",
-]);
-
-const socialSchema = z.object({
-  platform: socialPlatformEnum,
-  url: z.url(),
-});
-
-type Social = z.infer<typeof socialSchema>;
 
 type Translatable = Record<string, string>;
 
@@ -73,15 +52,13 @@ export const categories = pgTable("categories", (d) => ({
   image: d.jsonb().$type<ImageAsset>().notNull(),
 }));
 
-export const categoryRelations = relations(categories, ({ one }) => ({}));
-
 // MARK: Influencers
 
 export const influencers = pgTable("influencers", (d) => ({
   firebase_id: d.text().notNull(),
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
-  socials: d.jsonb().$type<Social>().array().notNull(),
+  socials: d.jsonb().$type<SocialMedia>().array().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
 }));
 
@@ -159,11 +136,9 @@ export const experts = pgTable("experts", (d) => ({
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
   description: d.jsonb().$type<Translatable>().notNull(),
-  socials: d.jsonb().$type<Social>().array().notNull(),
+  socials: d.jsonb().$type<SocialMedia>().array().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
 }));
-
-export const expertRelations = relations(experts, ({ one }) => ({}));
 
 // MARK: Brands
 
@@ -174,8 +149,6 @@ export const brands = pgTable("brands", (d) => ({
   website: d.text().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
 }));
-
-export const brandRelations = relations(brands, ({ one }) => ({}));
 
 // MARK: Awards
 
@@ -194,61 +167,59 @@ export const awardRelations = relations(awards, ({ many, one }) => ({
   partners: many(awardPartners),
   jury: many(awardJuryMembers),
   categories: many(awardCategories),
-  nominees: many(awardNominees),
   show: one(awardShows, {
     fields: [awards.id],
     references: [awardShows.id],
   }),
-  categoryRankings: many(awardCategoryRankings),
 }));
 
-// MARK: Award Categories
+// MARK: Award Partners
 
-export const awardCategories = pgTable("award_categories", (d) => ({
-  id: d.serial().primaryKey(),
-  category: d
-    .integer()
-    .references(() => categories.id)
-    .notNull(),
-  award: d
-    .integer()
-    .references(() => awards.id)
-    .notNull(),
-  sponsor: d
-    .integer()
-    .references(() => brands.id)
-    .notNull(),
-}));
+export const awardPartners = pgTable(
+  "award_partners",
+  (d) => ({
+    id: d.serial().primaryKey(),
+    award: d
+      .integer()
+      .references(() => awards.id)
+      .notNull(),
+    brand: d
+      .integer()
+      .references(() => brands.id)
+      .notNull(),
+  }),
+  (t) => [index("idx_award_partner_award").on(t.award)],
+);
 
-export const awardCategoryRelations = relations(awardCategories, ({ one }) => ({
+export const awardPartnerRelations = relations(awardPartners, ({ one }) => ({
   award: one(awards, {
-    fields: [awardCategories.award],
+    fields: [awardPartners.award],
     references: [awards.id],
   }),
-  sponsor: one(brands, {
-    fields: [awardCategories.sponsor],
+  brand: one(brands, {
+    fields: [awardPartners.brand],
     references: [brands.id],
-  }),
-  category: one(categories, {
-    fields: [awardCategories.category],
-    references: [categories.id],
   }),
 }));
 
 // MARK: Award Jury Members
 
-export const awardJuryMembers = pgTable("award_jury_members", (d) => ({
-  id: d.serial().primaryKey(),
-  ordinal: d.smallint().notNull(),
-  award: d
-    .integer()
-    .references(() => awards.id)
-    .notNull(),
-  expert: d
-    .integer()
-    .references(() => experts.id)
-    .notNull(),
-}));
+export const awardJuryMembers = pgTable(
+  "award_jury_members",
+  (d) => ({
+    id: d.serial().primaryKey(),
+    // ordinal: d.smallint().notNull(),
+    award: d
+      .integer()
+      .references(() => awards.id)
+      .notNull(),
+    expert: d
+      .integer()
+      .references(() => experts.id)
+      .notNull(),
+  }),
+  (t) => [index("idx_award_jury_member_award").on(t.award)],
+);
 
 export const awardJuryMemberRelations = relations(
   awardJuryMembers,
@@ -264,32 +235,68 @@ export const awardJuryMemberRelations = relations(
   }),
 );
 
+// MARK: Award Categories
+
+export const awardCategories = pgTable(
+  "award_categories",
+  (d) => ({
+    id: d.serial().primaryKey(),
+    category: d
+      .integer()
+      .references(() => categories.id)
+      .notNull(),
+    award: d
+      .integer()
+      .references(() => awards.id)
+      .notNull(),
+    sponsor: d.integer().references(() => brands.id),
+    winner: d.jsonb().$type<ImageAsset>(),
+  }),
+  (t) => [index("idx_award_category_award").on(t.award)],
+);
+
+export const awardCategoryRelations = relations(
+  awardCategories,
+  ({ one, many }) => ({
+    award: one(awards, {
+      fields: [awardCategories.award],
+      references: [awards.id],
+    }),
+    sponsor: one(brands, {
+      fields: [awardCategories.sponsor],
+      references: [brands.id],
+    }),
+    category: one(categories, {
+      fields: [awardCategories.category],
+      references: [categories.id],
+    }),
+    nominees: many(awardNominees),
+  }),
+);
+
 // MARK: Award Nominees
 
-export const awardNominees = pgTable("award_nominees", (d) => ({
-  id: d.serial().primaryKey(),
-  award: d
-    .integer()
-    .references(() => awards.id)
-    .notNull(),
-  category: d
-    .integer()
-    .references(() => categories.id)
-    .notNull(),
-  influencer: d
-    .integer()
-    .references(() => influencers.id)
-    .notNull(),
-}));
+export const awardNominees = pgTable(
+  "award_nominees",
+  (d) => ({
+    id: d.serial().primaryKey(),
+    awardCategory: d
+      .integer()
+      .references(() => awardCategories.id)
+      .notNull(),
+    influencer: d
+      .integer()
+      .references(() => influencers.id)
+      .notNull(),
+    ranking: d.smallint(),
+  }),
+  (t) => [index("idx_award_nominee_category").on(t.awardCategory)],
+);
 
 export const awardNomineeRelations = relations(awardNominees, ({ one }) => ({
-  award: one(awards, {
-    fields: [awardNominees.award],
-    references: [awards.id],
-  }),
-  category: one(categories, {
-    fields: [awardNominees.category],
-    references: [categories.id],
+  awardCategory: one(awardCategories, {
+    fields: [awardNominees.awardCategory],
+    references: [awardCategories.id],
   }),
   influencer: one(influencers, {
     fields: [awardNominees.influencer],
@@ -297,37 +304,18 @@ export const awardNomineeRelations = relations(awardNominees, ({ one }) => ({
   }),
 }));
 
-// MARK: Award Partners
-
-export const awardPartners = pgTable("award_partners", (d) => ({
-  id: d.serial().primaryKey(),
-  ordinal: d.smallint().notNull(),
-  award: d
-    .integer()
-    .references(() => awards.id)
-    .notNull(),
-  brand: d
-    .integer()
-    .references(() => brands.id)
-    .notNull(),
-}));
-
-export const awardPartnerRelations = relations(awardPartners, ({ one }) => ({
-  award: one(awards, {
-    fields: [awardPartners.award],
-    references: [awards.id],
-  }),
-  brand: one(brands, {
-    fields: [awardPartners.brand],
-    references: [brands.id],
-  }),
-}));
-
 // MARK: Award Shows
+
+export type AwardShowSchedule = {
+  title: Translatable;
+  start: Date | null;
+  end: Date | null;
+  description: Translatable;
+}[];
 
 export const awardShows = pgTable("award_shows", (d) => ({
   id: d.serial().primaryKey(),
-  date: d.date().notNull(),
+  date: d.date(),
   award: d
     .integer()
     .references(() => awards.id)
@@ -337,9 +325,9 @@ export const awardShows = pgTable("award_shows", (d) => ({
     .references(() => locations.id)
     .notNull(),
   tickets: d.text(),
+  schedule: d.jsonb().$type<AwardShowSchedule>().default([]).notNull(),
   video: d.text(),
-  // impressions -> one-to-many with images
-  // schedule
+  impressions: d.jsonb().$type<ImageAsset[]>(),
 }));
 
 export const awardShowRelations = relations(awardShows, ({ one }) => ({
@@ -353,38 +341,6 @@ export const awardShowRelations = relations(awardShows, ({ one }) => ({
   }),
 }));
 
-// MARK: Award Category Rankings
-
-export const awardCategoryRankings = pgTable(
-  "award_category_rankings",
-  (d) => ({
-    id: d.serial().primaryKey(),
-    award: d
-      .integer()
-      .references(() => awards.id)
-      .notNull(),
-    category: d
-      .integer()
-      .references(() => categories.id)
-      .notNull(),
-    winner: d.jsonb().$type<ImageAsset>(),
-    // nominees -> many-to-many with influencers
-  }),
-);
-
-export const awardCategoryRankingRelations = relations(
-  awardCategoryRankings,
-  ({ one }) => ({
-    award: one(awards, {
-      fields: [awardCategoryRankings.award],
-      references: [awards.id],
-    }),
-    category: one(categories, {
-      fields: [awardCategoryRankings.category],
-      references: [categories.id],
-    }),
-  }),
-);
 // MARK: Creator Challenges
 
 export const creatorChallenges = pgTable("creator_challenges", (d) => ({
@@ -406,9 +362,13 @@ export const creatorChallenges = pgTable("creator_challenges", (d) => ({
 export const creatorChallengeRelations = relations(
   creatorChallenges,
   ({ one }) => ({
-    organization: one(brands, {
+    organizer: one(brands, {
       fields: [creatorChallenges.organizer],
       references: [brands.id],
+    }),
+    location: one(locations, {
+      fields: [creatorChallenges.location],
+      references: [locations.id],
     }),
   }),
 );
@@ -421,6 +381,7 @@ export const networkEvents = pgTable("network_events", (d) => ({
   title: d.jsonb().$type<Translatable>().notNull(),
   content: d.jsonb().$type<Translatable>().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
+  logo: d.jsonb().$type<ImageAsset>().notNull(),
   location: d
     .integer()
     .references(() => locations.id)
@@ -458,7 +419,7 @@ export const socialMediaCampaigns = pgTable("social_media_campaigns", (d) => ({
 export const socialMediaCampaignRelations = relations(
   socialMediaCampaigns,
   ({ one }) => ({
-    organization: one(brands, {
+    organizer: one(brands, {
       fields: [socialMediaCampaigns.organizer],
       references: [brands.id],
     }),
@@ -482,8 +443,6 @@ export const agencies = pgTable("agencies", (d) => ({
   email: d.text().notNull(),
 }));
 
-export const agencyRelations = relations(agencies, ({ one }) => ({}));
-
 // MARK: Conventions
 
 export type ConventionSchedule = {
@@ -504,7 +463,7 @@ export const conventions = pgTable("conventions", (d) => ({
     .references(() => locations.id)
     .notNull(),
   tickets: d.text(),
-  schedule: d.jsonb().$type<ConventionSchedule>(),
+  schedule: d.jsonb().$type<ConventionSchedule>().default([]).notNull(),
 }));
 
 export const conventionRelations = relations(conventions, ({ many, one }) => ({

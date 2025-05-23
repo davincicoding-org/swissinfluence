@@ -1,6 +1,7 @@
 import { getLocale, getTranslations } from "next-intl/server";
 
-import { fetchGlobal, fetchMedia } from "@/server/actions";
+import { fetchGlobal } from "@/server/globals";
+import { fetchMedia } from "@/server/media-library";
 import { NetworkPage as View } from "@/ui/features/network";
 
 export default async function NetworkPage() {

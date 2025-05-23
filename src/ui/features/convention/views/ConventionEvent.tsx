@@ -1,26 +1,24 @@
 "use client";
-import { useState } from "react";
 
+import { useState } from "react";
 import { Accordion, Paper, ScrollArea, Space } from "@mantine/core";
 import { IconCalendar, IconMapPin } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { AnimatePresence, motion } from "motion/react";
 import { useLocale, useTranslations } from "next-intl";
 
+import type { Convention } from "@/types";
+import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 
-import { RichText } from "@/ui/components/RichText";
-
-import { type IConventionEvent } from "../data";
-
 export interface IConventionEventProps {
-  event: IConventionEvent;
+  convention: Omit<Convention, "partners">;
   className?: string;
   id?: string;
 }
 
 export function ConventionEvent({
-  event,
+  convention,
   className,
   id,
 }: IConventionEventProps) {
@@ -35,7 +33,7 @@ export function ConventionEvent({
       id={id}
       className={cn(
         "container flex max-w-4xl flex-col py-24 sm:py-32",
-        { "min-h-screen": event.schedule.length },
+        { "min-h-screen": convention.schedule.length },
         className,
       )}
     >
@@ -57,10 +55,10 @@ export function ConventionEvent({
             <h3
               className={cn(
                 "font-light uppercase tracking-wider",
-                event.date ? "text-nowrap text-2xl" : "text-balance",
+                convention.date ? "text-nowrap text-2xl" : "text-balance",
               )}
             >
-              {dayjs(new Date(event.date)).format("DD. MMM")}
+              {dayjs(new Date(convention.date)).format("DD. MMM")}
             </h3>
           </div>
         </Paper>
@@ -69,7 +67,7 @@ export function ConventionEvent({
           radius="md"
           className="grid flex-1 overflow-clip bg-neutral-200 transition-transform active:scale-95 md:flex md:items-center"
           component="a"
-          href={event.location.mapsURL}
+          href={convention.location.maps}
           target="_blank"
         >
           <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
@@ -81,40 +79,30 @@ export function ConventionEvent({
           </div>
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
             <h3 className="text-xl font-light uppercase tracking-wider">
-              {event.location.name}
+              {convention.location.title}
             </h3>
-            <p className="uppercase max-md:text-sm">{event.location.city}</p>
+            <p className="uppercase max-md:text-sm">
+              {convention.location.city}
+            </p>
           </div>
         </Paper>
-        <Paper
-          shadow="sm"
-          radius="md"
-          component="a"
-          href={
-            event.ticketSale.url && event.ticketSale.open
-              ? event.ticketSale.url
-              : undefined
-          }
-          target="_blank"
-          className={cn(
-            "col-span-2 flex flex-1 items-center justify-center overflow-clip p-3 text-2xl uppercase tracking-wider text-white",
-            {
-              "cursor-pointer bg-mocha-500 transition-all hover:bg-mocha-300 active:scale-95":
-                event.ticketSale.url && event.ticketSale.open,
-              "bg-neutral-500": event.ticketSale.url && !event.ticketSale.open,
-              "bg-neutral-500 text-base": !event.ticketSale.url,
-            },
-          )}
-        >
-          {event.ticketSale.url && event.ticketSale.open ? t("buy-cta") : null}
-          {event.ticketSale.url && !event.ticketSale.open
-            ? t("sold-out")
-            : null}
-          {!event.ticketSale.url ? t("sale-not-open") : null}
-        </Paper>
+        {convention.tickets && (
+          <Paper
+            shadow="sm"
+            radius="md"
+            component="a"
+            href={convention.tickets ?? undefined}
+            target="_blank"
+            className={cn(
+              "col-span-2 flex flex-1 cursor-pointer items-center justify-center overflow-clip bg-mocha-500 p-3 text-2xl uppercase tracking-wider text-white transition-all hover:bg-mocha-300 active:scale-95",
+            )}
+          >
+            {t("buy-cta")}
+          </Paper>
+        )}
       </div>
 
-      {event.schedule.length > 0 && (
+      {convention.schedule.length > 0 && (
         <>
           <Space h="lg" />
 
@@ -123,7 +111,7 @@ export function ConventionEvent({
             className="mb-auto overflow-clip bg-neutral-200 md:hidden"
           >
             <Accordion>
-              {event.schedule.map((slot, index) => (
+              {convention.schedule.map((slot, index) => (
                 <Accordion.Item
                   key={slot.title.en}
                   value={index.toString()}
@@ -132,7 +120,7 @@ export function ConventionEvent({
                   <Accordion.Control className="active:bg-transparent">
                     <div className="mb-1 flex items-center gap-2">
                       <h4 className="text-lg leading-none text-mocha-500">
-                        {slot.start} - {slot.end}
+                        {`${dayjs(slot.start).format("HH:mm")} - ${dayjs(slot.end).format("HH:mm")}`}
                       </h4>
                       <span className="leading-none text-neutral-500">
                         {slot.room}
@@ -159,7 +147,7 @@ export function ConventionEvent({
             className="mb-auto grid h-80 grid-cols-[2fr,3fr] grid-rows-1 overflow-clip bg-white max-md:hidden"
           >
             <ScrollArea type="never" className="bg-neutral-200 shadow">
-              {event.schedule.map((slot, index) => (
+              {convention.schedule.map((slot, index) => (
                 <div
                   key={slot.title.en}
                   className={cn(
@@ -172,7 +160,7 @@ export function ConventionEvent({
                 >
                   <div className="mb-1 flex items-center justify-between gap-2">
                     <h4 className="text-lg leading-none text-mocha-500">
-                      {slot.start} - {slot.end}
+                      {`${dayjs(slot.start).format("HH:mm")} - ${dayjs(slot.end).format("HH:mm")}`}
                     </h4>
                     <span className="text-sm text-neutral-500">
                       {slot.room}
@@ -200,7 +188,7 @@ export function ConventionEvent({
                   <RichText
                     className="prose-lg prose-li:m-0"
                     content={String(
-                      event.schedule[activeSection]?.description[locale],
+                      convention.schedule[activeSection]?.description[locale],
                     )}
                   />
                 </motion.div>

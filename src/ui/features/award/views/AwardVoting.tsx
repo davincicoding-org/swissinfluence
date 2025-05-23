@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
@@ -26,7 +28,7 @@ export function AwardVoting({ deadline }: IAwardVotingProps) {
         radius="lg"
         className="flex flex-col gap-2 bg-neutral-400 p-6 shadow-sm lg:min-w-96 lg:p-10"
       >
-        <h3 className="text-4xl font-light tracking-wider uppercase sm:text-5xl md:text-6xl">
+        <h3 className="text-4xl font-light uppercase tracking-wider sm:text-5xl md:text-6xl">
           {t("title")}
         </h3>
         <p className="text-xl uppercase md:text-2xl">
@@ -46,7 +48,7 @@ export function AwardVoting({ deadline }: IAwardVotingProps) {
 
       <div className="grid">
         <RichText
-          className="prose-lg max-w-full min-w-0 shrink px-4 py-6 leading-snug lg:px-8"
+          className="prose-lg min-w-0 max-w-full shrink px-4 py-6 leading-snug lg:px-8"
           content={String(t.raw("description"))}
         />
 

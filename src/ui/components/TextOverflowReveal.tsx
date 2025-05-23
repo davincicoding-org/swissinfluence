@@ -1,4 +1,5 @@
 "use client";
+
 import { useElementSize } from "@mantine/hooks";
 import { motion } from "motion/react";
 
@@ -6,7 +7,6 @@ import { cn } from "@/ui/utils";
 
 export interface ITextOverflowRevealProps {
   text: string;
-  padding?: number;
   className?: string;
   classNames?: {
     root?: string;
@@ -22,7 +22,7 @@ export function TextOverflowReveal({
   const { ref: spaceRef, width: spaceWidth } = useElementSize();
   const { ref: nameRef, width: nameWidth } = useElementSize();
 
-  const hasNameOverflow = nameWidth + 12 > spaceWidth;
+  const hasNameOverflow = nameWidth + 0 > spaceWidth;
   const nameOverflow = Math.max(0, nameWidth - spaceWidth);
 
   return (

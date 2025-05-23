@@ -1,31 +1,32 @@
-import { type ReactElement, useMemo } from "react";
-
+import type { ReactElement } from "react";
+import { useMemo } from "react";
 import { Button } from "@mantine/core";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
-import type { ICurrentAward } from "./data";
+import type { Award } from "@/types";
+
 import { AwardCountdown } from "./views/AwardCountdown";
 
-export const useHeaderContent = (data: ICurrentAward | undefined) => {
+export const useHeaderContent = (data: Award | null) => {
   const t = useTranslations("award.hero");
 
   return useMemo<{
     headline: string | ReactElement | undefined;
     cta?: ReactElement;
   }>(() => {
-    if (data === undefined)
+    if (data === null)
       return {
         headline: undefined,
       };
 
     // ANNOUNCED
-    if (!data.nomination)
+    if (!data.nominationDeadline)
       return {
         headline: t("announced.headline"),
       };
 
-    const canNominate = dayjs(data.nomination.deadline).isAfter();
+    const canNominate = dayjs(data.nominationDeadline).isAfter();
 
     // NOMINATION
     if (canNominate)
@@ -47,7 +48,10 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
       };
 
     // NOMINATION_ENDED
-    if (!data.nominees || !data.voting)
+    if (
+      !data.categories.every(({ nominees }) => nominees.length > 0) ||
+      !data.votingDeadline
+    )
       return {
         headline: t("nomination-ended.headline"),
         cta: (
@@ -65,7 +69,7 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
         ),
       };
 
-    const canVote = dayjs(data.voting.deadline).isAfter();
+    const canVote = dayjs(data.votingDeadline).isAfter();
 
     // VOTING
     if (canVote)
@@ -125,13 +129,17 @@ export const useHeaderContent = (data: ICurrentAward | undefined) => {
       };
 
     // POST_SHOW
-    if (!data.ranked)
+    if (
+      !data.categories?.every(({ nominees }) =>
+        nominees.some(({ ranking }) => ranking !== null),
+      )
+    )
       return {
         headline: t("post-show.headline"),
       };
 
     // AWARDED
-    if (!data.impressions)
+    if (!data.show?.impressions)
       return {
         headline: t("awarded.headline"),
         cta: (

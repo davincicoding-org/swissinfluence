@@ -1,18 +1,11 @@
 "use server";
 
-import type { MediaAsset } from "@davincicoding/cms/media";
-import { revalidateTag } from "next/cache";
-
 import type { GlobalData, GlobalId } from "@/cms/globals";
-import type { MediaLibrary } from "@/cms/media";
 import { GLOBALS } from "@/cms/globals";
 import { db } from "@/database";
 import { db as firebase } from "@/deprecated/firebase";
 
-import type { CacheTag } from "./cache";
 import { cachedRequest } from "./cache";
-
-export const revalidateCache = async (tag: CacheTag) => revalidateTag(tag);
 
 export const fetchGlobal = cachedRequest(
   async <T extends GlobalId>(name: T): Promise<GlobalData<T>> => {
@@ -42,24 +35,3 @@ export const fetchGlobals = cachedRequest(async (): Promise<{
     },
   );
 }, ["globals"]);
-
-export const fetchMedia = cachedRequest(async () => {
-  const { docs } = await firebase.collection("media-library").get();
-
-  return docs.reduce<MediaLibrary>((acc, doc) => {
-    const data = doc.data() as Record<string, MediaAsset>;
-
-    const group = Object.entries(data).reduce(
-      (acc, [name, { file }]) => ({
-        ...acc,
-        [name]: file,
-      }),
-      {},
-    );
-
-    return {
-      ...acc,
-      [doc.id]: group,
-    };
-  }, {} as MediaLibrary);
-}, ["media"]);

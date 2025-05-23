@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { ActionIcon, Flex, HoverCard } from "@mantine/core";
 import { IconDotsVertical } from "@tabler/icons-react";
 
-import { type SocialMedia } from "@/cms/common/socials";
+import type { SocialMedia } from "@/database/enums";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
 

@@ -1,21 +1,18 @@
 "use client";
 
 import Image from "next/image";
-
 import { Carousel } from "@mantine/carousel";
 import { Badge, Center, Paper, ScrollArea, Tabs } from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { useLocale } from "next-intl";
 
-import { cn } from "@/ui/utils";
-
+import type { AwardRanking } from "@/types";
 import { Socials } from "@/ui/components/Socials";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
-
-import { type IAwardRanking } from "../data";
+import { cn } from "@/ui/utils";
 
 export interface IHallOfFameProps {
-  awards: Array<IAwardRanking>;
+  awards: Array<AwardRanking>;
 }
 
 export function HallOfFame({ awards }: IHallOfFameProps) {
@@ -67,7 +64,7 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
             value={year.toString()}
             className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-x-6 gap-y-8 pb-6 pt-10"
           >
-            {categories.map(({ category, ranking }) => (
+            {categories.map(({ category, nominees }) => (
               <div key={category.id} className="relative">
                 <Center className="absolute inset-x-0 top-0 z-[5] -translate-y-1/2 px-3">
                   <Badge
@@ -75,7 +72,7 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
                     radius="md"
                     className="text-medium text-wrap bg-mocha-700 text-xl font-normal tracking-widest"
                   >
-                    {category.name[locale]}
+                    {category.title[locale]}
                   </Badge>
                 </Center>
 
@@ -92,9 +89,9 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
                     nextControlIcon={
                       <IconChevronRight className="-mr-1" size={48} />
                     }
-                    draggable={ranking.length > 1}
+                    draggable={nominees.length > 1}
                   >
-                    {ranking.map((influencer, index) => (
+                    {nominees.map(({ influencer }, index) => (
                       <Carousel.Slide key={influencer.id}>
                         <Paper
                           shadow="xs"
@@ -142,6 +139,7 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
                                   }}
                                 />
                               </div>
+                              {/* @ts-expect-error - FIXME */}
                               <Socials items={influencer.socials} />
                             </div>
                           </div>

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { env } from "@/env";
-import { fetchMedia } from "@/server/actions";
+import { getLatestConvention } from "@/server/convention";
+import { fetchMedia } from "@/server/media-library";
 import { ConventionPage as View } from "@/ui/features/convention";
-import { getConventionPageData } from "@/ui/features/convention/data";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
@@ -17,14 +17,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ConventionPage() {
-  const data = await getConventionPageData();
+  const latestConvention = await getLatestConvention();
   const media = await fetchMedia();
 
   return (
-    <View
-      heroImage={media.convention.hero}
-      event={data.event}
-      partners={data.partners}
-    />
+    <View heroImage={media.convention.hero} convention={latestConvention} />
   );
 }

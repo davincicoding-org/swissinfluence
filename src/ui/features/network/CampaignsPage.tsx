@@ -2,15 +2,15 @@ import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button, Paper, Stack } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
+import type { SocialMediaCampaign } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
 
-import { type ICampaign } from "./data";
 import { CampaignDiscovery } from "./views/CampaignDiscovery";
 
 export interface ICampaignsPageProps {
   heroImage: ImageAsset;
-  campaigns: Array<ICampaign>;
+  campaigns: Array<SocialMediaCampaign>;
   campaignForm: string;
 }
 

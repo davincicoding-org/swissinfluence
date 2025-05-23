@@ -7,13 +7,12 @@ import Link from "next/link";
 import { Button, Flex, Paper, ScrollArea, Tabs } from "@mantine/core";
 import { useLocale } from "next-intl";
 
+import type { CategoryWithInfluencers } from "@/types";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
 import { cn } from "@/ui/utils";
 
-import { type ICertifiedInfluencersByCategory } from "../data";
-
 export interface IInfluencerDiscoveryProps {
-  pool: Array<ICertifiedInfluencersByCategory>;
+  pool: Array<CategoryWithInfluencers>;
   className?: string;
 }
 
@@ -24,14 +23,14 @@ export function InfluencerDiscovery({
   const locale = useLocale();
 
   const [selectedCategoryID, setSelectedCategoryID] = useState(
-    pool[0]?.category.id,
+    pool[0]?.category.id.toString(),
   );
 
   const categoryOptions = useMemo(
     () =>
-      pool.map<ComboboxItem>(({ category: { id, name } }) => ({
-        value: id,
-        label: name[locale],
+      pool.map<ComboboxItem>(({ category: { id, title } }) => ({
+        value: id.toString(),
+        label: title[locale]!,
       })),
     [pool, locale],
   );
@@ -87,7 +86,7 @@ export function InfluencerDiscovery({
         </Paper>
 
         {pool.map(({ category, influencers }) => (
-          <Tabs.Panel key={category.id} value={category.id}>
+          <Tabs.Panel key={category.id} value={category.id.toString()}>
             <ScrollArea
               scrollbars="x"
               classNames={{
@@ -109,13 +108,13 @@ export function InfluencerDiscovery({
                       className={cn("relative h-64 w-64 overflow-clip")}
                     >
                       <Image
-                        src={influencer.thumbnail.src}
-                        width={influencer.thumbnail.width}
-                        height={influencer.thumbnail.height}
+                        src={influencer.image.src}
+                        width={influencer.image.width}
+                        height={influencer.image.height}
                         placeholder={
-                          influencer.thumbnail.blurDataURL ? "blur" : undefined
+                          influencer.image.blurDataURL ? "blur" : undefined
                         }
-                        blurDataURL={influencer.thumbnail.blurDataURL}
+                        blurDataURL={influencer.image.blurDataURL}
                         alt={influencer.name}
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />

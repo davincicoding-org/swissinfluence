@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { env } from "@/env";
-import { fetchMedia } from "@/server/actions";
+import { fetchMedia } from "@/server/media-library";
 import { AcademyPage as View } from "@/ui/features/academy";
 
 export async function generateMetadata(): Promise<Metadata> {

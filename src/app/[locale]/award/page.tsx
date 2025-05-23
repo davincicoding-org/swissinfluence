@@ -2,9 +2,14 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { env } from "@/env";
-import { fetchMedia } from "@/server/actions";
+import {
+  getCreatorChallenges,
+  getCurrentAward,
+  getHallOfFame,
+  getPastImpressions,
+} from "@/server/award";
+import { fetchMedia } from "@/server/media-library";
 import { AwardPage as View } from "@/ui/features/award";
-import { getAwardPageData } from "@/ui/features/award/data";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
@@ -17,18 +22,23 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AwardPage() {
-  const { currentAward, pastAward, hallOfFame, campaigns } =
-    await getAwardPageData();
-  const media = await fetchMedia();
+  const [media, currentAward, challenges, pastImpressions, hallOfFame] =
+    await Promise.all([
+      fetchMedia(),
+      getCurrentAward(),
+      getCreatorChallenges(),
+      getPastImpressions(),
+      getHallOfFame(),
+    ]);
 
   return (
     <View
       heroImage={media.award.hero}
       newcomerScoutImage={media.award["newcomer-scout"]}
       currentAward={currentAward}
-      pastAward={pastAward}
+      challenges={challenges}
       hallOfFame={hallOfFame}
-      campaigns={campaigns}
+      pastImpressions={pastImpressions}
     />
   );
 }

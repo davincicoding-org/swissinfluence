@@ -1,12 +1,12 @@
 "use client";
 
-import type { ImageMedia } from "@davincicoding/cms/image";
+import type { ImageAsset } from "@davincicoding/cms/image";
 import type { PaperProps } from "@mantine/core";
 import Image from "next/image";
 import { ActionIcon, Flex, Paper } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
-import { type SocialMedia } from "@/cms/common/socials";
+import type { SocialMedia } from "@/database/enums";
 import { cn } from "@/ui/utils";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
@@ -16,7 +16,7 @@ export interface IPersonaCardProps {
   name: string;
   description?: string;
   revealed?: boolean;
-  image: ImageMedia;
+  image: ImageAsset;
   socials?: Array<SocialMedia>;
   compact?: boolean;
   classNames?: {

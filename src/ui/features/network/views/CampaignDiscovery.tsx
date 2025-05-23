@@ -1,34 +1,31 @@
 "use client";
 
 import { useMemo } from "react";
-
 import { Flex, ScrollArea, Tabs } from "@mantine/core";
 import dayjs from "dayjs";
 
+import type { SocialMediaCampaign } from "@/types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
-
-import { type ICampaign } from "../data";
 
 import { CampaignTile } from "./CampaignTile";
 
 export interface ICampaignDiscoveryProps {
-  campaigns: Array<ICampaign>;
+  campaigns: Array<SocialMediaCampaign>;
 }
 
 export function CampaignDiscovery({ campaigns }: ICampaignDiscoveryProps) {
   const { currentCampaigns, pastCampaigns } = useMemo(() => {
-    const { current, past } = campaigns.reduce<{
-      current: Array<ICampaign>;
-      past: Array<ICampaign>;
-    }>(
+    const { current, past } = campaigns.reduce<
+      Record<"current" | "past", Array<SocialMediaCampaign>>
+    >(
       (acc, campaign) => {
-        if (!campaign.date)
+        if (!campaign.start)
           return {
             ...acc,
             current: [...acc.current, campaign],
           };
 
-        if (dayjs(campaign.date.until).isAfter())
+        if (dayjs(campaign.start).isAfter())
           return {
             ...acc,
             current: [...acc.current, campaign],
@@ -47,13 +44,13 @@ export function CampaignDiscovery({ campaigns }: ICampaignDiscoveryProps) {
 
     return {
       currentCampaigns: current.sort((a, b) => {
-        const dateA = a.date?.until ? Date.parse(a.date.until) : Infinity;
-        const dateB = b.date?.until ? Date.parse(b.date.until) : Infinity;
+        const dateA = a.end ? Date.parse(a.end) : Infinity;
+        const dateB = b.end ? Date.parse(b.end) : Infinity;
         return dateA - dateB;
       }),
       pastCampaigns: past.sort((a, b) => {
-        const dateA = a.date?.until ? Date.parse(a.date.until) : Infinity;
-        const dateB = b.date?.until ? Date.parse(b.date.until) : Infinity;
+        const dateA = a.end ? Date.parse(a.end) : Infinity;
+        const dateB = b.end ? Date.parse(b.end) : Infinity;
         return dateA - dateB;
       }),
     };

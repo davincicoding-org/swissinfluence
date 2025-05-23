@@ -1,12 +1,17 @@
 import { useMemo } from "react";
-
 import { useGetList } from "react-admin";
 
+/**
+ * @deprecated
+ */
 export interface IDocumentChoice {
   id: string;
   name: string;
 }
 
+/**
+ * @deprecated
+ */
 export function useDocumentChoices<T extends { id: string }>(
   resource: string,
   getName: (doc: T) => string,

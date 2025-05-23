@@ -1,21 +1,20 @@
 "use client";
 
+import type { ImageAsset } from "@davincicoding/cms/image";
 import Image from "next/image";
-
 import { Flex, Paper } from "@mantine/core";
 import Marquee from "react-fast-marquee";
 
 import { cn } from "@/ui/utils";
 
-import { type IPastAward } from "../data";
-
-export interface IAwardImpressionsProps
-  extends Pick<IPastAward, "images" | "afterMovie"> {
+export interface IAwardImpressionsProps {
+  video: string;
+  images: Array<ImageAsset>;
   className?: string;
 }
 
 export function AwardImpressions({
-  afterMovie,
+  video,
   images,
   className,
 }: IAwardImpressionsProps) {
@@ -30,9 +29,9 @@ export function AwardImpressions({
       )}
     >
       <a
-        href={afterMovie}
+        href={video}
         target="_blank"
-        className="bg-mocha-500/80 text-mocha-100 hover:bg-mocha-500 relative z-10 flex items-center justify-center p-3 text-center text-2xl !leading-tight font-medium tracking-widest uppercase backdrop-blur transition-colors select-none hover:text-white md:aspect-square md:h-64 md:text-5xl"
+        className="relative z-10 flex select-none items-center justify-center bg-mocha-500/80 p-3 text-center text-2xl font-medium uppercase !leading-tight tracking-widest text-mocha-100 backdrop-blur transition-colors hover:bg-mocha-500 hover:text-white md:aspect-square md:h-64 md:text-5xl"
         rel="noopener"
       >
         After Movie
@@ -42,10 +41,12 @@ export function AwardImpressions({
           {images.map((image, index) => (
             <Image
               alt={`Award impression ${index + 1}`}
-              key={image}
-              src={image}
-              height={300}
-              width={300}
+              key={image.src}
+              src={image.src}
+              height={image.height}
+              width={image.width}
+              blurDataURL={image.blurDataURL}
+              placeholder={image.blurDataURL ? "blur" : undefined}
               className="h-full w-auto shrink-0 snap-center md:snap-end"
             />
           ))}

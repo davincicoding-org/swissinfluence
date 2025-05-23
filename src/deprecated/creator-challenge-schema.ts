@@ -4,6 +4,9 @@ import { z } from "zod/v4";
 import { BrandDocumentSchema } from "./brands-schema";
 import { DocumentIDSchema, TranslatableSchema } from "./common";
 
+/**
+ * @deprecated
+ */
 export const CreatorChallengeDocumentSchema = z.object({
   id: DocumentIDSchema,
   organizer: BrandDocumentSchema.shape.id,
@@ -26,6 +29,9 @@ export const CreatorChallengeDocumentSchema = z.object({
   registrationURL: z.string().url().nullable(),
 });
 
+/**
+ * @deprecated
+ */
 export type ICreatorChallengeDocument = z.infer<
   typeof CreatorChallengeDocumentSchema
 >;
