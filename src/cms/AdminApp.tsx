@@ -69,7 +69,7 @@ import type {
 import { env } from "@/env";
 import { Locale, MESSAGES_SCHEMA } from "@/i18n/config";
 import { revalidateCache } from "@/server/actions";
-import { fetchCachedMessages, saveMessages } from "@/server/messages";
+import { fetchMessages, saveMessages } from "@/server/messages";
 import { supabaseClient } from "@/server/supabase";
 
 import { GLOBALS } from "./globals";
@@ -289,7 +289,7 @@ export function AdminApp() {
                     schema={MESSAGES_SCHEMA}
                     // @ts-expect-error TODO: fix this
                     locales={Locale.options}
-                    fetchMessages={fetchCachedMessages}
+                    fetchMessages={fetchMessages}
                     saveMessages={saveMessages}
                     tabs
                     onSaved={() => {
