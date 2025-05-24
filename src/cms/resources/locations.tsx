@@ -1,16 +1,14 @@
 import type { AutocompleteInputProps, ReferenceInputProps } from "react-admin";
-import {
-  AutocompleteInput,
-  Create,
-  Datagrid,
-  Edit,
-  List,
-  ReferenceInput,
-  required,
-  SimpleForm,
-  TextField,
-  TextInput,
-} from "react-admin";
+import { AutocompleteInput, Create, Datagrid, Edit, List, ReferenceInput, required, SimpleForm, TextField, TextInput } from "react-admin";
+
+
+
+import type { locations } from "@/database/schema";
+
+
+
+import type { ReferenceSelectionProps } from "../lib/references/ReferenceSelection";
+
 
 /* List */
 
@@ -86,28 +84,15 @@ export function LocationsEdit() {
     </Edit>
   );
 }
+// MARK: Reference
 
-export interface LocationReferenceInputProps
-  extends Omit<ReferenceInputProps, "source" | "reference"> {
-  source?: string;
-  autocompleteProps?: AutocompleteInputProps;
-}
-export function LocationReferenceInput({
-  source = "location",
-  autocompleteProps,
-  ...props
-}: LocationReferenceInputProps) {
-  return (
-    <ReferenceInput source={source} reference="locations" {...props}>
-      <AutocompleteInput
-        source="title"
-        variant="outlined"
-        helperText={false}
-        filterToQuery={(searchText) => ({
-          title: `%${searchText}%`,
-        })}
-        {...autocompleteProps}
-      />
-    </ReferenceInput>
-  );
-}
+export const locationReferenceSelectionProps: Pick<
+  ReferenceSelectionProps<typeof locations.$inferSelect>,
+  "reference" | "labelSource" | "filterToQuery"
+> = {
+  reference: "locations",
+  labelSource: "title",
+  filterToQuery: (searchText) => ({
+    "title": `%${searchText}%`,
+  }),
+};

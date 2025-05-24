@@ -1,3 +1,4 @@
+import { ImageGalleryInput } from "@davincicoding/cms/image";
 import { AddButton, Fieldset } from "@davincicoding/cms/layout";
 import { RichTextInput } from "@davincicoding/cms/text";
 import { Box } from "@mui/material";
@@ -7,7 +8,10 @@ import {
   DateInput,
   Edit,
   List,
+  NumberField,
+  ReferenceField,
   required,
+  SelectInput,
   SimpleForm,
   SimpleFormIterator,
   SimpleList,
@@ -15,18 +19,16 @@ import {
   TextInput,
   TimeInput,
   TranslatableInputs,
+  useGetList,
 } from "react-admin";
 
-import type { awardPartners } from "@/database/schema";
+import type { awards, awardShows } from "@/database/schema";
 import { routing } from "@/i18n/routing";
 
-import type { ReferenceFormComponent } from "../lib/references/ReferenceManyInput";
-import { ReferenceManyInput } from "../lib/references/ReferenceManyInput";
 import { ReferenceSelection } from "../lib/references/ReferenceSelection";
-import { brandReferenceSelectionProps } from "./brands";
 import { locationReferenceSelectionProps } from "./locations";
 
-export function ConventionsList() {
+export function AwardShowsList() {
   return (
     <List
       sort={{
@@ -34,22 +36,69 @@ export function ConventionsList() {
         order: "DESC",
       }}
     >
-      <SimpleList />
+      <SimpleList
+        primaryText={
+          <ReferenceField reference="awards" source="award" link={false}>
+            <NumberField source="year" options={{ useGrouping: false }} />
+          </ReferenceField>
+        }
+      />
     </List>
   );
 }
 
-export function ConventionsCreate() {
+export function AwardShowsCreate() {
+  const { data: recentAwardShows = [] } = useGetList<
+    typeof awardShows.$inferSelect
+  >("award_shows", {
+    sort: {
+      field: "date",
+      order: "DESC",
+    },
+  });
+  const { data: recentAwards = [] } = useGetList<typeof awards.$inferSelect>(
+    "awards",
+    {
+      sort: {
+        field: "year",
+        order: "DESC",
+      },
+    },
+  );
+
+  const awardChoices = recentAwards
+    .filter(
+      (award) =>
+        !recentAwardShows.some((awardShow) => awardShow.award === award.id),
+    )
+    .map((award) => ({
+      id: award.id,
+      name: award.year,
+    }));
+
   return (
     <Create redirect="list">
       <SimpleForm>
-        <EventSection />
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <SelectInput
+            source="award"
+            variant="outlined"
+            validate={required("Add an Award")}
+            choices={awardChoices}
+            helperText={false}
+          />
+          <ReferenceSelection
+            {...locationReferenceSelectionProps}
+            source="location"
+            validate={required("Add a Location")}
+          />
+        </Box>
       </SimpleForm>
     </Create>
   );
 }
 
-export function ConventionsEdit() {
+export function AwardShowsEdit() {
   return (
     <Edit>
       <TabbedForm>
@@ -59,8 +108,8 @@ export function ConventionsEdit() {
         <TabbedForm.Tab label="Schedule">
           <ScheduleSection />
         </TabbedForm.Tab>
-        <TabbedForm.Tab label="Partners">
-          <PartnersSection />
+        <TabbedForm.Tab label="Impressions">
+          <ImpressionsSection />
         </TabbedForm.Tab>
       </TabbedForm>
     </Edit>
@@ -72,13 +121,6 @@ export function ConventionsEdit() {
 function EventSection() {
   return (
     <>
-      <TextInput
-        source="title"
-        variant="outlined"
-        label="Title"
-        validate={required("Add a Title")}
-        helperText={false}
-      />
       <DateInput
         source="date"
         variant="outlined"
@@ -166,15 +208,6 @@ function ScheduleSection() {
                     validate={required("Add an end time")}
                     helperText={false}
                   />
-                  <TextInput
-                    sx={{
-                      gridColumn: "span 2",
-                    }}
-                    label="Room"
-                    source="room"
-                    variant="outlined"
-                    helperText={false}
-                  />
                 </Box>
               </Box>
 
@@ -203,26 +236,19 @@ function ScheduleSection() {
   );
 }
 
-// MARK: Partners
+// MARK: Impressions
 
-export function PartnersSection() {
+export function ImpressionsSection() {
   return (
-    <ReferenceManyInput
-      reference="convention_partners"
-      target="convention"
-      render={UniqueBrandSelection}
-    />
+    <>
+      <TextInput
+        source="video"
+        type="url"
+        variant="outlined"
+        label="After Movie"
+        helperText={false}
+      />
+      <ImageGalleryInput source="impressions" />
+    </>
   );
 }
-
-const UniqueBrandSelection: ReferenceFormComponent<
-  typeof awardPartners.$inferSelect
-> = ({ references }) => {
-  return (
-    <ReferenceSelection
-      {...brandReferenceSelectionProps}
-      source="brand"
-      excludedId={references.map((entry) => entry.brand)}
-    />
-  );
-};

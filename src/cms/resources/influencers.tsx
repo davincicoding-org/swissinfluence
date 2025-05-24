@@ -1,19 +1,29 @@
+import type {
+  AutocompleteInputProps,
+  Identifier,
+  RaRecord,
+  ReferenceInputProps,
+  UseReferenceInputControllerParams,
+} from "react-admin";
+import type { Path } from "react-hook-form";
 import { ImageField, ImageInput } from "@davincicoding/cms/image";
-import { Box } from "@mui/material";
 import { IconUserSquare } from "@tabler/icons-react";
 import {
+  AutocompleteInput,
   Create,
   Datagrid,
   Edit,
   List,
+  ReferenceInput,
   required,
-  SaveButton,
   SimpleForm,
   TextField,
   TextInput,
-  Toolbar,
 } from "react-admin";
 
+import type { influencers } from "@/database/schema";
+
+import type { ReferenceSelectionProps } from "../lib/references/ReferenceSelection";
 import { SocialsInput } from "../common/socials";
 
 /* List */
@@ -41,58 +51,7 @@ export function InfluencersList() {
 export function InfluencersCreate() {
   return (
     <Create redirect="list">
-      <SimpleForm>
-        <Box
-          sx={{
-            display: "flex",
-            gap: 3,
-            width: "100%",
-          }}
-        >
-          <ImageInput
-            label={false}
-            source="image"
-            validate={required("Add a photo")}
-            previewProps={{ width: 200, height: 200 }}
-            PlaceholderIcon={IconUserSquare}
-            optimization={{
-              resize: {
-                width: 600,
-                height: 600,
-              },
-            }}
-          />
-          <Box
-            style={{
-              display: "grid",
-              flex: 1,
-              alignContent: "start",
-              gap: 1,
-            }}
-          >
-            <TextInput
-              label="Name"
-              source="name"
-              validate={required("Add a name")}
-              variant="outlined"
-              helperText={false}
-            />
-            <SocialsInput
-              source="socials"
-              defaultValue={[
-                {
-                  platform: "INSTAGRAM",
-                  url: "",
-                },
-                {
-                  platform: "TIKTOK",
-                  url: "",
-                },
-              ]}
-            />
-          </Box>
-        </Box>
-      </SimpleForm>
+      <InfluencerForm />
     </Create>
   );
 }
@@ -102,49 +61,61 @@ export function InfluencersCreate() {
 export function InfluencersEdit() {
   return (
     <Edit redirect="list">
-      <SimpleForm
-        toolbar={
-          <Toolbar>
-            <SaveButton />
-          </Toolbar>
-        }
-      >
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "200px 1fr",
-            gap: "1rem",
-            width: "100%",
-          }}
-        >
-          <ImageInput
-            label={false}
-            source="image"
-            validate={required("Add a photo")}
-            previewProps={{ aspectRatio: 1 }}
-            PlaceholderIcon={IconUserSquare}
-            optimization={{
-              compression: "profile-picture",
-              resize: {
-                width: 600,
-                height: 600,
-              },
-            }}
-          />
-          <div
-            style={{ display: "grid", alignContent: "start", gap: "0.5rem" }}
-          >
-            <TextInput
-              label="Name"
-              source="name"
-              validate={required("Add a name")}
-              variant="outlined"
-              helperText={false}
-            />
-            <SocialsInput source="socials" />
-          </div>
-        </div>
-      </SimpleForm>
+      <InfluencerForm />
     </Edit>
   );
 }
+
+// MARK: Form
+function InfluencerForm() {
+  return (
+    <SimpleForm>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "200px 1fr",
+          gap: "1rem",
+          width: "100%",
+        }}
+      >
+        <ImageInput
+          label={false}
+          source="image"
+          validate={required("Add a photo")}
+          previewProps={{ aspectRatio: 1 }}
+          PlaceholderIcon={IconUserSquare}
+          optimization={{
+            compression: "profile-picture",
+            resize: {
+              width: 600,
+              height: 600,
+            },
+          }}
+        />
+        <div style={{ display: "grid", alignContent: "start", gap: "0.5rem" }}>
+          <TextInput
+            label="Name"
+            source="name"
+            validate={required("Add a name")}
+            variant="outlined"
+            helperText={false}
+          />
+          <SocialsInput source="socials" />
+        </div>
+      </div>
+    </SimpleForm>
+  );
+}
+
+// MARK: Reference
+
+export const influencerReferenceSelectionProps: Pick<
+  ReferenceSelectionProps<typeof influencers.$inferSelect>,
+  "reference" | "labelSource" | "filterToQuery"
+> = {
+  reference: "influencers",
+  labelSource: "name",
+  filterToQuery: (searchText) => ({
+    name: `%${searchText}%`,
+  }),
+};

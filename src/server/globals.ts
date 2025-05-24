@@ -3,7 +3,6 @@
 import type { GlobalData, GlobalId } from "@/cms/globals";
 import { GLOBALS } from "@/cms/globals";
 import { db } from "@/database";
-import { db as firebase } from "@/deprecated/firebase";
 
 import { cachedRequest } from "./cache";
 

@@ -14,6 +14,10 @@ import {
   TextInput,
 } from "react-admin";
 
+import type { brands } from "@/database/schema";
+
+import type { ReferenceSelectionProps } from "../lib/references/ReferenceSelection";
+
 /* List */
 
 export function BrandsList() {
@@ -150,26 +154,15 @@ export function BrandsEdit() {
   );
 }
 
-export interface BrandReferenceInputProps
-  extends Omit<ReferenceInputProps, "reference"> {
-  source: string;
-  autocompleteProps?: AutocompleteInputProps;
-}
-export function BrandReferenceInput({
-  autocompleteProps,
-  ...props
-}: BrandReferenceInputProps) {
-  return (
-    <ReferenceInput reference="brands" {...props}>
-      <AutocompleteInput
-        source="name"
-        variant="outlined"
-        helperText={false}
-        filterToQuery={(searchText) => ({
-          name: `%${searchText}%`,
-        })}
-        {...autocompleteProps}
-      />
-    </ReferenceInput>
-  );
-}
+// MARK: Reference
+
+export const brandReferenceSelectionProps: Pick<
+  ReferenceSelectionProps<typeof brands.$inferSelect>,
+  "reference" | "labelSource" | "filterToQuery"
+> = {
+  reference: "brands",
+  labelSource: "name",
+  filterToQuery: (searchText) => ({
+    "name": `%${searchText}%`,
+  }),
+};

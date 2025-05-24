@@ -3,7 +3,6 @@ import { ImageInput } from "@davincicoding/cms/image";
 import { TranslatableTextInput } from "@davincicoding/cms/text";
 import { useDebouncedValue } from "@mantine/hooks";
 import { Autocomplete, Box, TextField } from "@mui/material";
-import { IconX } from "@tabler/icons-react";
 import {
   AutocompleteArrayInput,
   AutocompleteInput,
@@ -38,7 +37,7 @@ import { LANGUAGE_CHOICES } from "@/utils/languages";
 
 /* List */
 
-// TODO make seacrh work and add query
+// TODO make search work and add query
 export function CertifiedInfluencersList() {
   return (
     <List>
@@ -47,6 +46,7 @@ export function CertifiedInfluencersList() {
           label="Influencer"
           reference="influencers"
           source="influencer"
+          sortBy="influencer(name)"
           link={false}
         >
           <RATextField source="name" />

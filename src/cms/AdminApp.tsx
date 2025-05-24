@@ -26,6 +26,7 @@ import {
   IconSpeakerphone,
   IconStar,
   IconSwords,
+  IconTheater,
   IconTicket,
   IconTrophy,
   IconUser,
@@ -57,6 +58,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 import type {
   agencies,
+  awards,
   brands,
   categories,
   certifiedInfluencers,
@@ -79,8 +81,12 @@ import {
   AgenciesEdit,
   AgenciesList,
 } from "./resources/agencies";
-import { AwardsCreate, AwardsEdit, AwardsList } from "./resources/award";
-import { type IAwardDocument } from "./resources/award/schema";
+import {
+  AwardShowsCreate,
+  AwardShowsEdit,
+  AwardShowsList,
+} from "./resources/award_shows";
+import { AwardsCreate, AwardsEdit, AwardsList } from "./resources/awards";
 import { BrandsCreate, BrandsEdit, BrandsList } from "./resources/brands";
 import {
   CategoriesCreate,
@@ -166,8 +172,9 @@ const dataProvider = withLifecycleCallbacks(
     },
     {
       resource: "*",
-      afterSave: async () => {
+      afterSave: async (params: unknown) => {
         void revalidateCache("cms");
+        return params;
       },
     },
     imageStorageHandler<typeof categories.$inferSelect>({
@@ -309,14 +316,14 @@ export function AdminApp() {
           </CustomRoutes>
 
           {/* <Resource
-          name="media-library"
-          options={{ label: "Media Library" }}
-          list={MediaLibraryList}
-          create={MediaLibraryCreate}
-          edit={MediaLibraryEdit}
-          icon={IconPhotoVideo}
-          recordRepresentation="id"
-        /> */}
+            name="media-library"
+            options={{ label: "Media Library" }}
+            list={MediaLibraryList}
+            create={MediaLibraryCreate}
+            edit={MediaLibraryEdit}
+            icon={IconPhotoVideo}
+            recordRepresentation="id"
+          /> */}
           <Resource
             name="globals"
             list={GlobalsList}
@@ -371,15 +378,24 @@ export function AdminApp() {
             icon={IconMapPin}
           />
 
-          {/* <Resource
-          name="awards"
-          list={AwardsList}
-          edit={AwardsEdit}
-          create={AwardsCreate}
-          icon={IconTrophy}
-          recordRepresentation={({ year }: IAwardDocument) => year.toString()}
-        /> */}
+          <Resource
+            name="awards"
+            list={AwardsList}
+            edit={AwardsEdit}
+            create={AwardsCreate}
+            icon={IconTrophy}
+            recordRepresentation={({ year }: typeof awards.$inferInsert) =>
+              year.toString()
+            }
+          />
 
+          <Resource
+            name="award_shows"
+            list={AwardShowsList}
+            edit={AwardShowsEdit}
+            create={AwardShowsCreate}
+            icon={IconTheater}
+          />
           <Resource
             name="creator_challenges"
             options={{ label: "Creator Challenges" }}
@@ -494,11 +510,12 @@ function CustomMenu() {
         <Menu.ResourceItem name="locations" />
         <MenuDivider label="Award" />
         <Menu.ResourceItem name="awards" />
+        <Menu.ResourceItem name="award_shows" />
         <Menu.ResourceItem name="creator_challenges" />
         <MenuDivider label="Network" />
         <Menu.ResourceItem name="certified_influencers" />
         <Menu.ResourceItem name="social_media_campaigns" />
-        <Menu.ResourceItem name="events" />
+        <Menu.ResourceItem name="network_events" />
         <Menu.ResourceItem name="agencies" />
         <MenuDivider label="Convention" />
         <Menu.ResourceItem name="conventions" />

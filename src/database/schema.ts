@@ -315,15 +315,16 @@ export type AwardShowSchedule = {
 
 export const awardShows = pgTable("award_shows", (d) => ({
   id: d.serial().primaryKey(),
-  date: d.date(),
   award: d
     .integer()
     .references(() => awards.id)
-    .notNull(),
+    .notNull()
+    .unique(),
   location: d
     .integer()
     .references(() => locations.id)
     .notNull(),
+  date: d.date(),
   tickets: d.text(),
   schedule: d.jsonb().$type<AwardShowSchedule>().default([]).notNull(),
   video: d.text(),
