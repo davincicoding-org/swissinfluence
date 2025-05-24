@@ -1,3 +1,4 @@
+import { env } from "process";
 import type { ImageAsset } from "@davincicoding/cms/image";
 import type { VideoAsset } from "@davincicoding/cms/video";
 import { type ReactNode } from "react";
@@ -20,12 +21,13 @@ export interface LandingPageProps {
 export function LandingPage({ heroVideo, images }: LandingPageProps) {
   const locale = useLocale();
   const t = useTranslations("landing");
-
   return (
     <>
       <header className="relative z-20 flex h-svh snap-start flex-col">
         <div className="relative my-auto flex h-full grow overflow-clip">
-          <BackgroundVideo src={heroVideo.src} />
+          <BackgroundVideo
+            src={`${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/${heroVideo.src}`}
+          />
 
           <div className="absolute inset-x-0 bottom-0 flex items-end justify-start bg-gradient-to-b from-transparent via-black/60 to-black/80 p-4 sm:p-8 lg:p-10">
             <p className="text-5xl leading-tight text-white md:text-5xl lg:text-6xl">

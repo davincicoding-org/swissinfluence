@@ -3,7 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import { env } from "@/env";
 import { getLatestConvention } from "@/server/convention";
-import { fetchMedia } from "@/server/media-library";
+import { fetchMediaLibrary } from "@/server/media-library";
 import { ConventionPage as View } from "@/ui/features/convention";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,9 +18,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ConventionPage() {
   const latestConvention = await getLatestConvention();
-  const media = await fetchMedia();
+  const media = await fetchMediaLibrary();
 
   return (
-    <View heroImage={media.convention.hero} convention={latestConvention} />
+    <View heroImage={media.CONVENTION.HERO} convention={latestConvention} />
   );
 }

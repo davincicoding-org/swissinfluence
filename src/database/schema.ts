@@ -1,6 +1,12 @@
 import type { ImageAsset } from "@davincicoding/cms/image";
 import { relations } from "drizzle-orm";
-import { index, pgEnum, pgTable, uniqueIndex } from "drizzle-orm/pg-core";
+import {
+  index,
+  pgEnum,
+  pgTable,
+  unique,
+  uniqueIndex,
+} from "drizzle-orm/pg-core";
 
 import type { SocialMedia } from "./enums";
 import { CantonEnum, LanguageCodeEnum } from "./enums";
@@ -21,18 +27,31 @@ export const globals = pgTable(
   (t) => [uniqueIndex("globals_name_unique").on(t.name)],
 );
 
-export const images = pgTable("images", (d) => ({
-  id: d.serial().primaryKey(),
-  src: d.text().notNull(),
-  height: d.smallint().notNull(),
-  width: d.smallint().notNull(),
-  blurDataURL: d.text().notNull(),
-}));
+export const images = pgTable(
+  "images",
+  (d) => ({
+    id: d.serial().primaryKey(),
+    name: d.text().notNull(),
+    group: d.text(),
+    src: d.text().notNull(),
+    height: d.smallint().notNull(),
+    width: d.smallint().notNull(),
+    blurDataURL: d.text().notNull(),
+    caption: d.jsonb().$type<Translatable>(),
+  }),
+  (t) => [unique("images_name_group_unique").on(t.name, t.group)],
+);
 
-export const videos = pgTable("videos", (d) => ({
-  id: d.serial().primaryKey(),
-  src: d.text().notNull(),
-}));
+export const videos = pgTable(
+  "videos",
+  (d) => ({
+    id: d.serial().primaryKey(),
+    name: d.text().notNull(),
+    group: d.text(),
+    src: d.text().notNull(),
+  }),
+  (t) => [unique("videos_name_group_unique").on(t.name, t.group)],
+);
 
 // MARK: Locations
 

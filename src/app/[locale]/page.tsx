@@ -1,17 +1,16 @@
-import { fetchMedia } from "@/server/media-library";
+import { fetchMediaLibrary } from "@/server/media-library";
 import { LandingPage as View } from "@/ui/features/landing";
 
 export default async function LandingPage() {
-  const media = await fetchMedia();
-
+  const media = await fetchMediaLibrary();
   return (
     <View
-      heroVideo={media.landing.hero}
+      heroVideo={media.LANDING.HERO}
       images={{
-        award: media.award.hero,
-        convention: media.convention.hero,
-        network: media.network.hero,
-        academy: media.academy.hero,
+        award: media.AWARD.HERO,
+        convention: media.CONVENTION.HERO,
+        network: media.NETWORK.HERO,
+        academy: media.ACADEMY.HERO,
       }}
     />
   );

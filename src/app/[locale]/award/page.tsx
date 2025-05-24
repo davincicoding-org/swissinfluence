@@ -8,7 +8,7 @@ import {
   getHallOfFame,
   getPastImpressions,
 } from "@/server/award";
-import { fetchMedia } from "@/server/media-library";
+import { fetchMediaLibrary } from "@/server/media-library";
 import { AwardPage as View } from "@/ui/features/award";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -24,7 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function AwardPage() {
   const [media, currentAward, challenges, pastImpressions, hallOfFame] =
     await Promise.all([
-      fetchMedia(),
+      fetchMediaLibrary(),
       getCurrentAward(),
       getCreatorChallenges(),
       getPastImpressions(),
@@ -33,8 +33,8 @@ export default async function AwardPage() {
 
   return (
     <View
-      heroImage={media.award.hero}
-      newcomerScoutImage={media.award["newcomer-scout"]}
+      heroImage={media.AWARD.HERO}
+      newcomerScoutImage={media.AWARD.NEWCOMER_SCOUT}
       currentAward={currentAward}
       challenges={challenges}
       hallOfFame={hallOfFame}

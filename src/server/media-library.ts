@@ -1,29 +1,34 @@
 "use server";
 
-import type { MediaAsset } from "@davincicoding/cms/media";
-
-import type { MediaLibrary } from "@/cms/media";
-import { db as firebase } from "@/deprecated/firebase";
+import { createMediaLibararyFetcher } from "@/cms/lib/media-library";
+import { MEDIA_LIBRARY } from "@/cms/media-library";
+import { db } from "@/database";
 
 import { cachedRequest } from "./cache";
 
-export const fetchMedia = cachedRequest(async () => {
-  const { docs } = await firebase.collection("media-library").get();
+const mediaLibraryFetcher = createMediaLibararyFetcher({
+  config: MEDIA_LIBRARY,
+  fetchImageAsset: async (group, name) =>
+    db.query.images.findFirst({
+      columns: {
+        id: false,
+        name: false,
+        group: false,
+      },
+      where: (t, { eq, and }) => and(eq(t.name, name), eq(t.group, group)),
+    }),
+  fetchVideoAsset: async (group, name) =>
+    db.query.videos.findFirst({
+      columns: {
+        id: false,
+        name: false,
+        group: false,
+      },
+      where: (t, { eq, and }) => and(eq(t.name, name), eq(t.group, group)),
+    }),
+});
 
-  return docs.reduce<MediaLibrary>((acc, doc) => {
-    const data = doc.data() as Record<string, MediaAsset>;
-
-    const group = Object.entries(data).reduce(
-      (acc, [name, { file }]) => ({
-        ...acc,
-        [name]: file,
-      }),
-      {},
-    );
-
-    return {
-      ...acc,
-      [doc.id]: group,
-    };
-  }, {} as MediaLibrary);
-}, ["media"]);
+export const fetchMediaLibrary = cachedRequest(
+  async () => mediaLibraryFetcher(),
+  ["media-library"],
+);

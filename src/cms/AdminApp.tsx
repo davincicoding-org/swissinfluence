@@ -75,7 +75,7 @@ import { revalidateCache } from "@/server/revalidate";
 import { supabaseClient } from "@/server/supabase";
 
 import { GLOBALS } from "./globals";
-import { MEDIA_LIBRARY } from "./media";
+import { MEDIA_LIBRARY } from "./media-library";
 import {
   AgenciesCreate,
   AgenciesEdit,
@@ -163,13 +163,13 @@ const dataProvider = withLifecycleCallbacks(
     defaultListOp: "ilike",
   }),
   [
-    {
-      resource: "media",
-      afterUpdate: async (result) => {
-        void revalidateCache("media");
-        return result;
-      },
-    },
+    // {
+    //   resource: "media-library",
+    //   afterUpdate: async (result) => {
+    //     void revalidateCache("media-library");
+    //     return result;
+    //   },
+    // },
     {
       resource: "*",
       afterSave: async (params: unknown) => {
