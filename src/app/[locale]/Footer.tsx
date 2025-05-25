@@ -27,7 +27,7 @@ export function Footer({
   return (
     <footer
       className={cn(
-        "flex flex-col gap-6 bg-neutral-700 px-4 pb-6 pt-8 text-neutral-400",
+        "relative z-10 flex flex-col gap-6 bg-neutral-700 px-4 pb-6 pt-8 text-neutral-400",
         className,
       )}
     >
