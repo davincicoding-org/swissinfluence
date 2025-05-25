@@ -173,9 +173,8 @@ export const MESSAGES_SCHEMA = {
     },
   },
   newsletter: {
-    title: "short",
-    CTA: "short",
     description: "long",
+    CTA: "short",
   },
   imprint: {
     title: "short",

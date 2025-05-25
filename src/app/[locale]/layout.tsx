@@ -10,10 +10,9 @@ import {
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 
 import { env } from "@/env";
-import { type SupportedLocale } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
 import { fetchGlobals } from "@/server/globals";
 import { theme } from "@/ui/theme";
@@ -40,12 +39,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function LocaleLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: SupportedLocale }>;
 }>) {
-  const { locale } = await params;
+  const locale = await getLocale();
   const [messages, globals, t] = await Promise.all([
     getMessages(),
     fetchGlobals(),
@@ -66,66 +63,65 @@ export default async function LocaleLayout({
             <Navigation
               locale={locale}
               locales={routing.locales}
-              homeLink={`/${locale}`}
+              homeLink="/"
               mainLinks={[
                 {
                   label: t("main.award"),
-                  href: `/${locale}/award`,
+                  href: `/award`,
                 },
                 {
                   label: t("main.network.page"),
-                  href: `/${locale}/network`,
+                  href: `/network`,
                   children: [
                     {
                       label: t("main.network.influencers"),
-                      href: `/${locale}/network/influencers`,
+                      href: `/network/influencers`,
                     },
                     {
                       label: t("main.network.campaigns"),
-                      href: `/${locale}/network/campaigns`,
+                      href: `/network/campaigns`,
                     },
                     {
                       label: t("main.network.events"),
-                      href: `/${locale}/network/events`,
+                      href: `/network/events`,
                     },
                     {
                       label: t("main.network.agencies"),
-                      href: `/${locale}/network/agencies`,
+                      href: `/network/agencies`,
                     },
                   ],
                 },
                 {
                   label: t("main.convention"),
-                  href: `/${locale}/convention`,
+                  href: `/convention`,
                 },
                 {
                   label: t("main.academy"),
-                  href: `/${locale}/academy`,
+                  href: `/academy`,
                 },
               ]}
               subLinks={[
                 {
                   label: t("sub.imprint"),
-                  href: `/${locale}/imprint`,
+                  href: `/imprint`,
                 },
                 {
                   label: t("sub.privacy"),
-                  href: `/${locale}/privacy`,
+                  href: `/privacy`,
                 },
                 {
                   label: t("sub.nomination-process"),
-                  href: `/${locale}/nomination-process`,
+                  href: `/nomination-process`,
                 },
                 {
                   label: t("sub.sponsoring"),
-                  href: `/${locale}/sponsoring`,
+                  href: `/sponsoring`,
                 },
               ]}
             />
             {children}
             <Footer
-              locale={locale}
-              locales={routing.locales}
+              className="snap-end"
               company={globals.company}
               contactURL={globals.forms.contact}
               newsletterURL={globals.forms.newsletter}
