@@ -170,13 +170,6 @@ const dataProvider = withLifecycleCallbacks(
     //     return result;
     //   },
     // },
-    {
-      resource: "*",
-      afterSave: async (params: unknown) => {
-        void revalidateCache("cms");
-        return params;
-      },
-    },
     imageStorageHandler<typeof categories.$inferSelect>({
       uploadImage,
       deleteImage,
@@ -307,7 +300,6 @@ export function AdminApp() {
                     tabs
                     onSaved={() => {
                       notify("Translations saved", { type: "success" });
-                      void revalidateCache("messages");
                     }}
                   />
                 </Authenticated>
@@ -459,7 +451,7 @@ export function AdminApp() {
 function CustomLayout({ children }: PropsWithChildren) {
   return (
     <Layout
-      // appBar={CustomAppBar}
+      appBar={CustomAppBar}
       menu={CustomMenu}
       sx={{
         "& .RaLayout-appFrame	": {
@@ -474,6 +466,27 @@ function CustomLayout({ children }: PropsWithChildren) {
 }
 
 function CustomAppBar() {
+  const handlePublish = async () => {
+    await revalidateCache("cms");
+    const pathsToPrefetch = [
+      "",
+      "award",
+      "convention",
+      "academy",
+      "network",
+      "network/agencies",
+      "network/events",
+      "network/campaigns",
+      "network/influencers",
+      "imprint",
+      "privacy",
+      "sponsoring",
+      "nomination-process",
+    ];
+    for (const path of pathsToPrefetch) {
+      await fetch(`/en/${path}`);
+    }
+  };
   return (
     <AppBar>
       <TitlePortal />
@@ -482,7 +495,7 @@ function CustomAppBar() {
         variant="outlined"
         type="button"
         sx={{ marginLeft: 1 }}
-        onClick={() => revalidateCache("cms")}
+        onClick={handlePublish}
       >
         Publish
       </Button>
@@ -494,7 +507,6 @@ function CustomMenu() {
   return (
     <Authenticated>
       <Menu>
-        {/*<Menu.DashboardItem />*/}
         <Menu.Item
           to="/translations"
           primaryText="Translations"

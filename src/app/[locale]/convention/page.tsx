@@ -7,7 +7,9 @@ import { fetchMediaLibrary } from "@/server/media-library";
 import { ConventionPage as View } from "@/ui/features/convention";
 
 export async function generateMetadata(): Promise<Metadata> {
+  console.time("ConventionPage:generateMetadata");
   const t = await getTranslations();
+  console.timeEnd("ConventionPage:generateMetadata");
 
   return {
     title: t("convention.meta.title"),
@@ -17,8 +19,10 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ConventionPage() {
-  const latestConvention = await getLatestConvention();
-  const media = await fetchMediaLibrary();
+  const [latestConvention, media] = await Promise.all([
+    getLatestConvention(),
+    fetchMediaLibrary(),
+  ]);
 
   return (
     <View heroImage={media.CONVENTION.HERO} convention={latestConvention} />

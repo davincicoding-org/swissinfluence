@@ -13,7 +13,6 @@ import { AwardPage as View } from "@/ui/features/award";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations();
-
   return {
     title: t("award.meta.title"),
     description: t("award.meta.description"),
