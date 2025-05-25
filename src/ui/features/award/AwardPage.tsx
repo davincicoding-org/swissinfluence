@@ -54,12 +54,7 @@ export function AwardPage({
         className="snap-start"
         CTA={
           cta ?? (
-            <Button
-              size="lg"
-              color="mocha"
-              radius="md"
-              className="uppercase tracking-wider"
-            >
+            <Button size="lg" radius="md" className="uppercase tracking-wider">
               {t("hero.default.CTA")}
             </Button>
           )

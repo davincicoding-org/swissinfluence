@@ -50,7 +50,6 @@ export function NewcomerScout({
         >
           <Button
             radius="md"
-            color="mocha"
             size="lg"
             className="uppercase"
             component="a"
@@ -89,7 +88,6 @@ export function NewcomerScout({
           <div className="m-4 mt-0 grid gap-2 lg:hidden">
             <Button
               radius="md"
-              color="mocha"
               size="md"
               className="uppercase"
               component="a"

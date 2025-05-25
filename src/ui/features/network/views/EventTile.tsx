@@ -162,7 +162,6 @@ export function EventTile({
                 className="prose-lg py-6 text-white"
               />
               <Button
-                color="mocha"
                 component="a"
                 radius="md"
                 size="lg"

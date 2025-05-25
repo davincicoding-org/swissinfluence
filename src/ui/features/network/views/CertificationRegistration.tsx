@@ -83,7 +83,6 @@ export function CertificationRegistration({
           className="uppercase"
           href={application.url}
           target="_blank"
-          color="mocha"
         >
           {application.label}
         </Button>

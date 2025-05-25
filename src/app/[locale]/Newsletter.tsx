@@ -21,17 +21,16 @@ export function Newsletter({ formURL, className }: INewsletterProps) {
       )}
     >
       <Stack gap="xs">
-        <h3 className="text-3xl text-balance uppercase">{t("title")}</h3>
+        <h3 className="text-balance text-3xl uppercase">{t("title")}</h3>
         <p>{t("description")}</p>
       </Stack>
       <Button
         component="a"
         href={formURL}
         target="_blank"
-        color="mocha"
         size="md"
         radius="md"
-        className="my-auto h-auto shrink-0 tracking-wider uppercase"
+        className="my-auto h-auto shrink-0 uppercase tracking-wider"
         classNames={{
           inner: "min-h-11 py-2",
           label: "text-balance text-wrap leading-snug",

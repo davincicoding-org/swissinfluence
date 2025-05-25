@@ -35,7 +35,6 @@ export const useHeaderContent = (data: Award | null) => {
         cta: (
           <Button
             size="lg"
-            color="mocha"
             radius="md"
             component="a"
             href="#nomination"
@@ -57,7 +56,6 @@ export const useHeaderContent = (data: Award | null) => {
         cta: (
           <Button
             size="lg"
-            color="mocha"
             radius="md"
             component="a"
             href="#nominees"
@@ -78,7 +76,6 @@ export const useHeaderContent = (data: Award | null) => {
         cta: (
           <Button
             size="lg"
-            color="mocha"
             radius="md"
             component="a"
             href="#voting"
@@ -105,7 +102,6 @@ export const useHeaderContent = (data: Award | null) => {
         cta: (
           <Button
             size="lg"
-            color="mocha"
             radius="md"
             component="a"
             href="#show"
@@ -145,7 +141,6 @@ export const useHeaderContent = (data: Award | null) => {
         cta: (
           <Button
             size="lg"
-            color="mocha"
             radius="md"
             component="a"
             target="_self"
@@ -163,7 +158,6 @@ export const useHeaderContent = (data: Award | null) => {
       cta: (
         <Button
           size="lg"
-          color="mocha"
           radius="md"
           component="a"
           href="#impressions"

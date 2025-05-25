@@ -102,13 +102,7 @@ export function ExpandableCard({
         <Modal.Overlay />
         <ModalContent layoutId={`card-${title}-${id}`} radius="lg">
           <Modal.Header mb={-60} bg="none" py="xs">
-            <ActionIcon
-              ml="auto"
-              color="mocha"
-              radius="xl"
-              size="lg"
-              onClick={close}
-            >
+            <ActionIcon ml="auto" radius="xl" size="lg" onClick={close}>
               <IconX />
             </ActionIcon>
           </Modal.Header>
@@ -151,7 +145,6 @@ export function ExpandableCard({
                   component="a"
                   href={cta.url}
                   target="_blank"
-                  color="mocha"
                   radius="md"
                   size="md"
                   fullWidth

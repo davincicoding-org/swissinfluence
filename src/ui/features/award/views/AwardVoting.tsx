@@ -37,7 +37,6 @@ export function AwardVoting({ deadline }: IAwardVotingProps) {
 
         <Button
           radius="md"
-          color="mocha"
           size="lg"
           className="-m-6 mt-auto uppercase max-lg:hidden"
           onClick={handleVote}
@@ -54,7 +53,6 @@ export function AwardVoting({ deadline }: IAwardVotingProps) {
 
         <Button
           radius="md"
-          color="mocha"
           size="xl"
           className="m-4 mt-0 uppercase lg:hidden"
           onClick={handleVote}

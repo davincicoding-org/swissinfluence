@@ -44,7 +44,6 @@ export function InfluencerDiscovery({
     >
       <Tabs
         variant="pills"
-        color="mocha"
         radius="md"
         value={selectedCategoryID}
         onChange={(nextCategory) =>

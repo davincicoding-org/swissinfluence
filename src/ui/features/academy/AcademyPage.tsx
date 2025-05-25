@@ -25,7 +25,6 @@ export function AcademyPage({ heroImage }: IAcademyPageProps) {
             component="a"
             href="https://www.swisscreatoracademy.com/"
             target="_blank"
-            color="mocha"
           >
             {t("hero.CTA")}
           </Button>

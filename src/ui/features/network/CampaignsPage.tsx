@@ -51,7 +51,6 @@ export function CampaignsPage({
               component="a"
               href={campaignForm}
               target="_blank"
-              color="mocha"
               size="md"
               radius="md"
               className="my-auto h-auto shrink-0 uppercase"

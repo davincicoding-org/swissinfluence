@@ -82,7 +82,6 @@ export function CreatorChallenges({
       </Paper>
       <Tabs
         variant="pills"
-        color="mocha"
         defaultValue={currentCampaigns.length > 0 ? "current" : "past"}
         radius="md"
         classNames={{

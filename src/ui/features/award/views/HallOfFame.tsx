@@ -22,7 +22,6 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
     <div>
       <Tabs
         variant="pills"
-        color="mocha"
         radius="md"
         defaultValue={awards[0]?.year.toString()}
       >
