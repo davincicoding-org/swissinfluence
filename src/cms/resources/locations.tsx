@@ -1,14 +1,17 @@
-import type { AutocompleteInputProps, ReferenceInputProps } from "react-admin";
-import { AutocompleteInput, Create, Datagrid, Edit, List, ReferenceInput, required, SimpleForm, TextField, TextInput } from "react-admin";
-
-
+import {
+  Create,
+  Datagrid,
+  Edit,
+  List,
+  required,
+  SimpleForm,
+  TextField,
+  TextInput,
+} from "react-admin";
 
 import type { locations } from "@/database/schema";
 
-
-
 import type { ReferenceSelectionProps } from "../lib/references/ReferenceSelection";
-
 
 /* List */
 
@@ -93,6 +96,6 @@ export const locationReferenceSelectionProps: Pick<
   reference: "locations",
   labelSource: "title",
   filterToQuery: (searchText) => ({
-    "title": `%${searchText}%`,
+    title: `%${searchText}%`,
   }),
 };

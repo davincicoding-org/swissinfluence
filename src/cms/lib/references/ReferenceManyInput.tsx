@@ -207,6 +207,7 @@ function ReferenceForm<T extends Record<string, unknown>>({
     });
 
     return subscription.unsubscribe; // clean up on unmount
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [form, values.id]);
 
   return (

@@ -1,6 +1,5 @@
 import { notFound } from "next/navigation";
 
-import type { CertifiedInfluencer } from "@/types";
 import { getCertifiedInfluencer } from "@/server/certified-influencers";
 import { CertifiedInfluencerPage as View } from "@/ui/features/network";
 

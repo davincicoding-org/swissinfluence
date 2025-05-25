@@ -1,13 +1,10 @@
-import type { AutocompleteInputProps, ReferenceInputProps } from "react-admin";
 import { ImageInput } from "@davincicoding/cms/image";
 import { Box } from "@mui/material";
 import {
-  AutocompleteInput,
   Create,
   Datagrid,
   Edit,
   List,
-  ReferenceInput,
   required,
   SimpleForm,
   TextField,

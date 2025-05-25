@@ -287,7 +287,7 @@ function NomineesSection() {
           scrollButtons={false}
           sx={{ borderRight: 1, borderColor: "divider" }}
         >
-          {categories?.map((awardCategory, index) => (
+          {categories?.map((awardCategory) => (
             <Tab
               key={awardCategory.id}
               label={
@@ -384,7 +384,7 @@ function RankingSection() {
           scrollButtons={false}
           sx={{ borderRight: 1, borderColor: "divider" }}
         >
-          {categories?.map((awardCategory, index) => (
+          {categories?.map((awardCategory) => (
             <Tab
               key={awardCategory.id}
               label={

@@ -1,20 +1,10 @@
-import type {
-  AutocompleteInputProps,
-  Identifier,
-  RaRecord,
-  ReferenceInputProps,
-  UseReferenceInputControllerParams,
-} from "react-admin";
-import type { Path } from "react-hook-form";
 import { ImageField, ImageInput } from "@davincicoding/cms/image";
 import { IconUserSquare } from "@tabler/icons-react";
 import {
-  AutocompleteInput,
   Create,
   Datagrid,
   Edit,
   List,
-  ReferenceInput,
   required,
   SimpleForm,
   TextField,

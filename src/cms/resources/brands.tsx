@@ -1,13 +1,10 @@
-import type { AutocompleteInputProps, ReferenceInputProps } from "react-admin";
 import { ImageField, ImageInput } from "@davincicoding/cms/image";
 import { Box } from "@mui/material";
 import {
-  AutocompleteInput,
   Create,
   Datagrid,
   Edit,
   List,
-  ReferenceInput,
   required,
   SimpleForm,
   TextField,
@@ -163,6 +160,6 @@ export const brandReferenceSelectionProps: Pick<
   reference: "brands",
   labelSource: "name",
   filterToQuery: (searchText) => ({
-    "name": `%${searchText}%`,
+    name: `%${searchText}%`,
   }),
 };
