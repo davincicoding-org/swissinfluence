@@ -22,7 +22,6 @@ import { CreatorChallenges } from "./views/CreatorChallenges";
 import { HallOfFame } from "./views/HallOfFame";
 import { NewcomerScout } from "./views/NewcomerScout";
 
-const FEATURE_FLAG_CATEGORIES = false;
 const FEATURE_FLAG_VOTING = false;
 
 export interface AwardPageProps {
@@ -32,6 +31,7 @@ export interface AwardPageProps {
   hallOfFame: Array<AwardRanking>;
   newcomerScoutImage: ImageAsset;
   pastImpressions: AwardShowImpressions | null;
+  showCategories?: boolean;
 }
 
 export function AwardPage({
@@ -41,6 +41,7 @@ export function AwardPage({
   pastImpressions,
   hallOfFame,
   challenges,
+  showCategories,
 }: AwardPageProps) {
   const { headline, cta } = useHeaderContent(currentAward);
   const t = useTranslations("award");
@@ -125,7 +126,7 @@ export function AwardPage({
               </section>
             ) : null}
 
-            {FEATURE_FLAG_CATEGORIES && (
+            {showCategories && (
               <section
                 id="nominees"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
@@ -133,13 +134,22 @@ export function AwardPage({
                 {/* <h3 className="mb-8 text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
                   Nominees
                 </h3> */}
-                <AwardCategories categories={currentAward.categories} />
+                <AwardCategories
+                  skipTarget={challenges.length ? "challenges" : "jury"}
+                  categories={currentAward.categories.map((category) => ({
+                    ...category,
+                    nominees: currentAward.jury.map((juror) => ({
+                      influencer: juror,
+                      ranking: null,
+                    })),
+                  }))}
+                />
               </section>
             )}
 
             {challenges.length > 0 ? (
               <section
-                id="campaigns"
+                id="challenges"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
               >
                 <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">

@@ -3,7 +3,7 @@
 import type { ReactNode } from "react";
 import { Children } from "react";
 import Image from "next/image";
-import { Paper } from "@mantine/core";
+import { Button, Paper } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 // import Autoplay from "embla-carousel-autoplay";
 import { useLocale } from "next-intl";
@@ -15,15 +15,29 @@ import { cn } from "@/ui/utils";
 
 export interface AwardCategoriesProps {
   categories: Array<AwardCategory>;
+  skipTarget: string;
 }
 
-export function AwardCategories({ categories }: AwardCategoriesProps) {
+export function AwardCategories({
+  categories,
+  skipTarget,
+}: AwardCategoriesProps) {
   return (
     <StackedCards
       title={
-        <h3 className="sticky top-1/4 text-4xl font-extralight tracking-wider">
+        <h3 className="text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
           Categories
         </h3>
+      }
+      footer={
+        <Button
+          component="a"
+          href={`#${skipTarget}`}
+          variant="subtle"
+          size="md"
+        >
+          SKIP
+        </Button>
       }
     >
       {categories.map(({ category, nominees, sponsor }) => (
@@ -41,20 +55,23 @@ export function AwardCategories({ categories }: AwardCategoriesProps) {
 function StackedCards({
   title,
   children,
+  footer,
 }: {
   children: Array<ReactNode>;
   title: ReactNode;
+  footer: ReactNode;
 }) {
   return (
     <div className="-mb-[25dvh] grid gap-32 pb-[25dvh]">
-      <div className="sticky top-0 grid h-dvh justify-stretch pt-32">
-        {title}
-      </div>
+      <div className="sticky top-0 grid justify-stretch pt-32">{title}</div>
       {Children.map(children, (child) => (
         <div className="sticky top-0 -mb-[25dvh] grid h-dvh items-center justify-stretch">
           {child}
         </div>
       ))}
+      <div className="sticky bottom-0 -mb-[25dvh] flex items-end justify-center p-8">
+        {footer}
+      </div>
     </div>
   );
 }

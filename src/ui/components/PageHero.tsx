@@ -54,7 +54,7 @@ export function PageHero({
             <h1 className="hyphens-auto text-balance text-5xl font-light uppercase tracking-wider text-mocha-300 sm:text-5xl md:text-6xl lg:text-7xl">
               {title}
             </h1>
-            <p className="text-wrap text-xl font-light uppercase tracking-widest text-white empty:hidden sm:text-2xl md:text-3xl">
+            <p className="text-balance text-xl font-light uppercase tracking-widest text-white empty:hidden sm:text-2xl md:text-3xl">
               {headline}
             </p>
           </Stack>
