@@ -1,4 +1,5 @@
 import type { ImageAsset } from "@davincicoding/cms/image";
+import Image from "next/image";
 import { Button, Paper, ScrollArea } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
@@ -33,12 +34,19 @@ export function NewcomerScout({
     >
       <Paper
         radius="lg"
-        className="flex aspect-square flex-col gap-2 bg-neutral-400 bg-cover shadow-sm lg:order-2"
-        style={{ backgroundImage: `url(${image.src})` }}
+        className="relative flex aspect-square flex-col gap-2 bg-neutral-400 shadow-sm lg:order-2"
       >
+        <Image
+          src={image.src}
+          alt="Newcomer Scout"
+          width={image.width}
+          height={image.height}
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
+
         <Paper
-          radius="lg"
-          className="mt-auto grid gap-2 bg-white/30 p-4 backdrop-blur max-lg:hidden"
+          radius={0}
+          className="relative z-10 mt-auto grid gap-2 bg-white/30 p-4 backdrop-blur max-lg:hidden"
         >
           <Button
             radius="md"
