@@ -33,4 +33,4 @@ export const fetchGlobals = cachedRequest(async (): Promise<{
       [K in GlobalId]: GlobalData<K>;
     },
   );
-}, ["globals"]);
+}, ["cms", "globals"]);

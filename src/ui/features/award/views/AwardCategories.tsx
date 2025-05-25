@@ -85,7 +85,6 @@ function CategoryCard({
   // TODO should autoplay if it is on top of stack
 
   const locale = useLocale();
-  const [isExpanded, { open: expand, close: collapse }] = useDisclosure(true);
   // const [selectedNominee, setSelectedNominee] = useState<number>();
 
   // useEffect(() => {

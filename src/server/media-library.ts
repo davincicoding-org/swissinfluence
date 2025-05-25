@@ -30,5 +30,5 @@ const mediaLibraryFetcher = createMediaLibararyFetcher({
 
 export const fetchMediaLibrary = cachedRequest(
   async () => mediaLibraryFetcher(),
-  ["media-library"],
+  ["cms", "media-library"],
 );
