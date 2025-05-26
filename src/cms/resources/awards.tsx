@@ -80,17 +80,11 @@ export function AwardsEdit() {
         <TabbedForm.Tab label="Community">
           <CommunitySection />
         </TabbedForm.Tab>
-        <TabbedForm.Tab label="Nominees">
+        {/* <TabbedForm.Tab label="Nominees">
           <NomineesSection />
-        </TabbedForm.Tab>
-        <TabbedForm.Tab label="Ranking">
-          <RankingSection />
-        </TabbedForm.Tab>
-        {/* <TabbedForm.Tab label="Show">
-          ShowSection
         </TabbedForm.Tab> */}
-        {/* <TabbedForm.Tab label="Impressions">
-          ImpressionsSection
+        {/* <TabbedForm.Tab label="Ranking">
+          <RankingSection />
         </TabbedForm.Tab> */}
       </TabbedForm>
     </Edit>

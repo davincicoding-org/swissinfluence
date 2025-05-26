@@ -65,7 +65,8 @@ export const locations = pgTable("locations", (d) => ({
 // MARK: Categories
 
 export const categories = pgTable("categories", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
@@ -74,7 +75,8 @@ export const categories = pgTable("categories", (d) => ({
 // MARK: Influencers
 
 export const influencers = pgTable("influencers", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
   socials: d.jsonb().$type<SocialMedia>().array().notNull(),
@@ -123,7 +125,8 @@ export const languageEnum = pgEnum(
   LanguageCodeEnum.options as [string, ...string[]],
 );
 export const certifiedInfluencers = pgTable("certified_influencers", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   influencer: d
     .integer()
@@ -151,7 +154,8 @@ export const certifiedInfluencerRelations = relations(
 // MARK: Experts
 
 export const experts = pgTable("experts", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
   description: d.jsonb().$type<Translatable>().notNull(),
@@ -162,7 +166,8 @@ export const experts = pgTable("experts", (d) => ({
 // MARK: Brands
 
 export const brands = pgTable("brands", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   name: d.text().notNull().unique(),
   website: d.text().notNull(),
@@ -172,7 +177,8 @@ export const brands = pgTable("brands", (d) => ({
 // MARK: Awards
 
 export const awards = pgTable("awards", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   year: d.smallint().notNull(),
   nominationDeadline: d.date(),
@@ -364,7 +370,8 @@ export const awardShowRelations = relations(awardShows, ({ one }) => ({
 // MARK: Creator Challenges
 
 export const creatorChallenges = pgTable("creator_challenges", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   content: d.jsonb().$type<Translatable>().notNull(),
@@ -396,7 +403,8 @@ export const creatorChallengeRelations = relations(
 // Network Events
 
 export const networkEvents = pgTable("network_events", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   content: d.jsonb().$type<Translatable>().notNull(),
@@ -421,7 +429,8 @@ export const networkEventRelations = relations(networkEvents, ({ one }) => ({
 // MARK: Social Media Campaigns
 
 export const socialMediaCampaigns = pgTable("social_media_campaigns", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   content: d.jsonb().$type<Translatable>().notNull(),
@@ -453,7 +462,8 @@ export const socialMediaCampaignRelations = relations(
 // MARK: Agencies
 
 export const agencies = pgTable("agencies", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
   description: d.jsonb().$type<Translatable>().notNull(),
@@ -474,7 +484,8 @@ export type ConventionSchedule = {
 }[];
 
 export const conventions = pgTable("conventions", (d) => ({
-  firebase_id: d.text().notNull(),
+  // TODO remove this soon
+  firebase_id: d.text(),
   id: d.serial().primaryKey(),
   title: d.text().notNull(),
   date: d.date().notNull(),

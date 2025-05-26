@@ -180,8 +180,6 @@ function ScheduleSection() {
 
               <TranslatableInputs locales={[...routing.locales]}>
                 <TextInput
-                  label={false}
-                  placeholder="Title *"
                   source="title"
                   variant="outlined"
                   validate={required("Add a title")}
@@ -189,7 +187,6 @@ function ScheduleSection() {
                 />
                 <RichTextInput
                   source="description"
-                  label={false}
                   variant="outlined"
                   helperText={false}
                   validate={required("Add a description for this slot")}

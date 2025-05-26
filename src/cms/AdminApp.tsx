@@ -16,6 +16,7 @@ import {
 } from "@davincicoding/cms/media";
 import { MessagesEditor } from "@davincicoding/cms/messages";
 import { Button } from "@mui/material";
+import { captureConsoleIntegration } from "@sentry/nextjs";
 import {
   IconBuilding,
   IconCircleLetterB,
@@ -163,6 +164,13 @@ const dataProvider = withLifecycleCallbacks(
     defaultListOp: "ilike",
   }),
   [
+    {
+      resource: "conventions",
+      beforeUpdate: async (params) => {
+        console.log(params);
+        return params;
+      },
+    },
     // {
     //   resource: "media-library",
     //   afterUpdate: async (result) => {
@@ -383,6 +391,7 @@ export function AdminApp() {
 
           <Resource
             name="award_shows"
+            options={{ label: "Award Shows" }}
             list={AwardShowsList}
             edit={AwardShowsEdit}
             create={AwardShowsCreate}
