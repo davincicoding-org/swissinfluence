@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
+import Image from "next/image";
 import {
   ColorSchemeScript,
   mantineHtmlProps,
@@ -64,10 +65,30 @@ export default async function LocaleLayout({
               locale={locale}
               locales={routing.locales}
               homeLink="/"
+              mainLogo={
+                <Image
+                  priority
+                  className="h-9 w-auto translate-y-0.5"
+                  alt="SIA Logo"
+                  src="$/logos/main.svg"
+                  width={89}
+                  height={44}
+                />
+              }
               mainLinks={[
                 {
                   label: t("main.award"),
                   href: `/award`,
+                  logo: (
+                    <Image
+                      priority
+                      className="h-9 w-auto"
+                      alt="Award Logo"
+                      src="$/logos/award.svg"
+                      width={100}
+                      height={44}
+                    />
+                  ),
                 },
                 {
                   label: t("main.network.page"),
@@ -98,6 +119,16 @@ export default async function LocaleLayout({
                 {
                   label: t("main.academy"),
                   href: `/academy`,
+                  logo: (
+                    <Image
+                      priority
+                      className="h-9 w-auto"
+                      alt="Academy Logo"
+                      src="$/logos/academy.svg"
+                      width={445}
+                      height={196}
+                    />
+                  ),
                 },
               ]}
               subLinks={[

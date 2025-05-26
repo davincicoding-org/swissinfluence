@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -25,10 +26,12 @@ import { cn } from "@/ui/utils";
 export interface INavigationProps {
   homeLink: string;
   locale: string;
+  mainLogo: ReactNode;
   locales: ReadonlyArray<string>;
   mainLinks: Array<{
     label: string;
     href: string;
+    logo?: ReactNode;
     children?: Array<{
       label: string;
       href: string;
@@ -43,6 +46,7 @@ export function Navigation({
   homeLink,
   locale,
   locales,
+  mainLogo,
   mainLinks,
   subLinks,
 }: INavigationProps) {
@@ -54,12 +58,18 @@ export function Navigation({
   const [visible, setVisible] = useState(true);
 
   const activeLink = mainLinks
-    .flatMap(({ href, children }) =>
+    .flatMap(({ href, logo, children }) =>
       children?.length
-        ? [href, ...children.map((child) => child.href)]
-        : [href],
+        ? [
+            { href, logo },
+            ...children.map((child) => ({
+              href: child.href,
+              logo,
+            })),
+          ]
+        : [{ href, logo }],
     )
-    .find((href) => pathname.startsWith(href));
+    .find(({ href }) => pathname.startsWith(href));
 
   useMotionValueEvent(scrollY, "change", (current) => {
     if (typeof current === "number") {
@@ -125,38 +135,7 @@ export function Navigation({
                   "pointer-events-none": pathname === homeLink,
                 })}
               >
-                {pathname === homeLink ||
-                activeLink?.endsWith("convention") ||
-                activeLink?.endsWith("network") ? (
-                  <Image
-                    priority
-                    className="h-9 translate-y-0.5"
-                    alt="SIA Logo"
-                    src="$/logos/main.svg"
-                    width={89}
-                    height={44}
-                  />
-                ) : null}
-                {activeLink?.endsWith("academy") ? (
-                  <Image
-                    priority
-                    className="h-9"
-                    alt="Academy Logo"
-                    src="$/logos/academy.svg"
-                    width={445}
-                    height={196}
-                  />
-                ) : null}
-                {activeLink?.endsWith("award") ? (
-                  <Image
-                    priority
-                    className="h-9"
-                    alt="Award Logo"
-                    src="$/logos/award.svg"
-                    width={100}
-                    height={44}
-                  />
-                ) : null}
+                {activeLink?.logo ?? mainLogo}
               </Link>
               <MobileNavigation
                 locale={locale}
@@ -251,7 +230,9 @@ export function Navigation({
   );
 }
 
-interface IMobileNavigationProps extends INavigationProps {
+// MARK: Mobile Navigation
+
+interface IMobileNavigationProps extends Omit<INavigationProps, "mainLogo"> {
   pathname: string;
   triggerClassName: string;
   onLocaleChange: (nextLocale: string | null) => void;
@@ -266,6 +247,7 @@ function MobileNavigation({
   triggerClassName,
   pathname,
   onLocaleChange,
+  ...rest
 }: IMobileNavigationProps) {
   const [opened, { open, close }] = useDisclosure(false);
   return (
@@ -275,6 +257,7 @@ function MobileNavigation({
         variant="transparent"
         className={cn("text-white", triggerClassName)}
         onClick={open}
+        aria-label="Open navigation"
       >
         <IconMenu />
       </ActionIcon>

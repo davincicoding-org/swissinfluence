@@ -1,76 +1,44 @@
 import type { MetadataRoute } from "next";
+import type { Locale } from "next-intl";
+
+import { getPathname } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
+
+const host = "https://swissinfluence.ch";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: "https://swissinfluence.ch/",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 1,
-      alternates: {
-        languages: {
-          en: "https://swissinfluence.ch/de",
-          de: "https://swissinfluence.ch/en",
-          fr: "https://swissinfluence.ch/fr",
-          it: "https://swissinfluence.ch/it",
-        },
-      },
-    },
-    {
-      url: "https://swissinfluence.ch/en/award",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.8,
-      alternates: {
-        languages: {
-          en: "https://swissinfluence.ch/de/award",
-          de: "https://swissinfluence.ch/en/award",
-          fr: "https://swissinfluence.ch/fr/award",
-          it: "https://swissinfluence.ch/it/award",
-        },
-      },
-    },
-    {
-      url: "https://swissinfluence.ch/en/network",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.6,
-      alternates: {
-        languages: {
-          en: "https://swissinfluence.ch/de/network",
-          de: "https://swissinfluence.ch/en/network",
-          fr: "https://swissinfluence.ch/fr/network",
-          it: "https://swissinfluence.ch/it/network",
-        },
-      },
-    },
-    {
-      url: "https://swissinfluence.ch/en/convention",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.4,
-      alternates: {
-        languages: {
-          en: "https://swissinfluence.ch/de/convention",
-          de: "https://swissinfluence.ch/en/convention",
-          fr: "https://swissinfluence.ch/fr/convention",
-          it: "https://swissinfluence.ch/it/convention",
-        },
-      },
-    },
-    {
-      url: "https://swissinfluence.ch/en/academy",
-      lastModified: new Date(),
-      changeFrequency: "yearly",
-      priority: 0.4,
-      alternates: {
-        languages: {
-          en: "https://swissinfluence.ch/de/academy",
-          de: "https://swissinfluence.ch/en/academy",
-          fr: "https://swissinfluence.ch/fr/academy",
-          it: "https://swissinfluence.ch/it/academy",
-        },
-      },
-    },
+    ...getEntries("/", 1),
+    ...getEntries("/award", 0.9),
+    ...getEntries("/convention", 0.9),
+    ...getEntries("/network", 0.9),
+    ...getEntries("/network/influencers", 0.8),
+    ...getEntries("/network/agencies", 0.8),
+    ...getEntries("/network/campaigns", 0.8),
+    ...getEntries("/network/events", 0.8),
+    ...getEntries("/academy", 0.8),
+    ...getEntries("/imprint", 0.3),
+    ...getEntries("/privacy", 0.3),
+    ...getEntries("/nomination-process", 0.5),
+    ...getEntries("/sponsoring", 0.5),
   ];
+}
+
+type Href = Parameters<typeof getPathname>[0]["href"];
+
+function getEntries(href: Href, priority?: number) {
+  return routing.locales.map((locale) => ({
+    url: getUrl(href, locale),
+    priority,
+    alternates: {
+      languages: Object.fromEntries(
+        routing.locales.map((cur) => [cur, getUrl(href, cur)]),
+      ),
+    },
+  }));
+}
+
+function getUrl(href: Href, locale: Locale) {
+  const pathname = getPathname({ locale, href });
+  return host + pathname;
 }
