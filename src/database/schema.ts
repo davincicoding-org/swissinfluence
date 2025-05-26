@@ -350,6 +350,7 @@ export const awardShows = pgTable("award_shows", (d) => ({
     .references(() => locations.id)
     .notNull(),
   date: d.date(),
+  content: d.jsonb().$type<Translatable>(),
   tickets: d.text(),
   schedule: d.jsonb().$type<AwardShowSchedule>().default([]).notNull(),
   video: d.text(),
@@ -400,14 +401,14 @@ export const creatorChallengeRelations = relations(
   }),
 );
 
-// Network Events
+// MARK: Network Events
 
 export const networkEvents = pgTable("network_events", (d) => ({
   // TODO remove this soon
   firebase_id: d.text(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
-  content: d.jsonb().$type<Translatable>().notNull(),
+  description: d.jsonb().$type<Translatable>().notNull(),
   image: d.jsonb().$type<ImageAsset>().notNull(),
   logo: d.jsonb().$type<ImageAsset>().notNull(),
   location: d

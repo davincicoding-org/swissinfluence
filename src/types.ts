@@ -23,7 +23,14 @@ export interface Convention
 export interface NetworkEvent
   extends Pick<
     typeof db.networkEvents.$inferSelect,
-    "id" | "title" | "content" | "image" | "logo" | "start" | "end" | "tickets"
+    | "id"
+    | "title"
+    | "description"
+    | "image"
+    | "logo"
+    | "start"
+    | "end"
+    | "tickets"
   > {
   location: Omit<typeof db.locations.$inferSelect, "id">;
 }

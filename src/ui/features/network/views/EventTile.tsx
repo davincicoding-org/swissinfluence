@@ -2,22 +2,21 @@
 
 import { useMemo } from "react";
 import Image from "next/image";
-import {
-  ActionIcon,
-  Button,
-  Flex,
-  FocusTrap,
-  Modal,
-  Paper,
-} from "@mantine/core";
+import { ActionIcon, Button, Flex, FocusTrap, Modal, Paper } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconArrowRight, IconX } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
+
+
 import type { NetworkEvent } from "@/types";
 import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
+
+
+
+
 
 export interface IEventTileProps {
   data: NetworkEvent;
@@ -28,7 +27,7 @@ export function EventTile({
   data: {
     title,
     image,
-    content,
+    description,
     start: startDate,
     end: endDate,
     logo,
@@ -158,7 +157,7 @@ export function EventTile({
               <p className="mt-8 text-3xl">{title[locale]}</p>
 
               <RichText
-                content={content[locale]!}
+                content={description[locale]!}
                 className="prose-lg py-6 text-white"
               />
               <Button
