@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@davincicoding/cms':
-        specifier: ^0.4.14
-        version: 0.4.14(a1891af76eb882e7f9d82224f7359960)
+        specifier: ^0.4.15
+        version: 0.4.15(a1891af76eb882e7f9d82224f7359960)
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.0.1(react-hook-form@7.56.4(react@19.1.0))
@@ -219,6 +219,9 @@ importers:
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
+      tsx:
+        specifier: ^4.19.4
+        version: 4.19.4
       typescript:
         specifier: ^5.8.2
         version: 5.8.3
@@ -909,8 +912,8 @@ packages:
     resolution: {integrity: sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==}
     engines: {node: '>=6.9.0'}
 
-  '@davincicoding/cms@0.4.14':
-    resolution: {integrity: sha512-kkH9d2eIML0wMojvZn2u6fb14SozdCjpU6GwSBnAfBVpoxXRvHRcuUHWg4Hqbj1lAR3cJ2dloAsGrUAK3mHkCQ==}
+  '@davincicoding/cms@0.4.15':
+    resolution: {integrity: sha512-lbXB3lOxmDPJztKkCP92Zk4bfAWEbW4b/P7omjs03SmIRLrzM9/XScIM4Lk+WYH42dAgvPBZs6uryZW3B+MqVA==}
     peerDependencies:
       '@mui/material': ^7.0.0
       react: ^19.1.0
@@ -8054,7 +8057,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@davincicoding/cms@0.4.14(a1891af76eb882e7f9d82224f7359960)':
+  '@davincicoding/cms@0.4.15(a1891af76eb882e7f9d82224f7359960)':
     dependencies:
       '@mui/material': 7.1.0(@emotion/react@11.14.0(@types/react@19.1.5)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.5)(react@19.1.0))(@types/react@19.1.5)(react@19.1.0))(@types/react@19.1.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@tabler/icons-react': 3.33.0(react@19.1.0)
@@ -14574,7 +14577,6 @@ snapshots:
       get-tsconfig: 4.10.1
     optionalDependencies:
       fsevents: 2.3.3
-    optional: true
 
   tty-browserify@0.0.1: {}
 
