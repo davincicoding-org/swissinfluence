@@ -194,7 +194,7 @@ export const awardRelations = relations(awards, ({ many, one }) => ({
   categories: many(awardCategories),
   show: one(awardShows, {
     fields: [awards.id],
-    references: [awardShows.id],
+    references: [awardShows.award],
   }),
 }));
 

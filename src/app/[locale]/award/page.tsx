@@ -26,7 +26,6 @@ export default async function AwardPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const params = await searchParams;
-  console.log(params);
   const [media, currentAward, challenges, pastImpressions, hallOfFame] =
     await Promise.all([
       fetchMediaLibrary(),
