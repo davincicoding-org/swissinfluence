@@ -247,7 +247,6 @@ function MobileNavigation({
   triggerClassName,
   pathname,
   onLocaleChange,
-  ...rest
 }: IMobileNavigationProps) {
   const [opened, { open, close }] = useDisclosure(false);
   return (

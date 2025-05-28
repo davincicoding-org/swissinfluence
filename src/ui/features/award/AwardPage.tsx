@@ -127,24 +127,12 @@ export function AwardPage({
             ) : null}
 
             {showCategories && (
-              <section
-                id="nominees"
-                className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
-              >
-                {/* <h3 className="mb-8 text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
-                  Nominees
-                </h3> */}
-                <AwardCategories
-                  skipTarget={challenges.length ? "challenges" : "jury"}
-                  categories={currentAward.categories.map((category) => ({
-                    ...category,
-                    nominees: currentAward.jury.map((juror) => ({
-                      influencer: juror,
-                      ranking: null,
-                    })),
-                  }))}
-                />
-              </section>
+              <AwardCategories
+                id="categories"
+                className="snap-start snap-always"
+                skipTarget={challenges.length ? "challenges" : "jury"}
+                categories={currentAward.categories}
+              />
             )}
 
             {challenges.length > 0 ? (
