@@ -9,14 +9,8 @@ import {
 } from "@davincicoding/cms/globals";
 import { imageStorageHandler } from "@davincicoding/cms/image";
 import { MenuDivider } from "@davincicoding/cms/layout";
-import {
-  MediaLibraryCreate,
-  MediaLibraryEdit,
-  MediaLibraryList,
-} from "@davincicoding/cms/media";
 import { MessagesEditor } from "@davincicoding/cms/messages";
 import { Button } from "@mui/material";
-import { captureConsoleIntegration } from "@sentry/nextjs";
 import {
   IconBuilding,
   IconCircleLetterB,
@@ -65,9 +59,11 @@ import type {
   certifiedInfluencers,
   creatorChallenges,
   experts,
+  images,
   influencers,
   networkEvents,
   socialMediaCampaigns,
+  videos,
 } from "@/database/schema";
 import { env } from "@/env";
 import { Locale, MESSAGES_SCHEMA } from "@/i18n/config";
@@ -76,6 +72,7 @@ import { revalidateCache } from "@/server/revalidate";
 import { supabaseClient } from "@/server/supabase";
 
 import { GLOBALS } from "./globals";
+import { MediaLibraryPage } from "./lib/MediaLibraryPage";
 import { MEDIA_LIBRARY } from "./media-library";
 import {
   AgenciesCreate,
@@ -131,7 +128,7 @@ import {
   SocialMediaCampaignsList,
 } from "./resources/social_media_campaigns";
 
-const deleteImage = async (path: string) => {
+const deleteFile = async (path: string) => {
   const [bucket, ...rest] = path.split("/");
   await supabaseClient.storage.from(bucket!).remove([rest.join("/")]);
 };
@@ -180,36 +177,52 @@ const dataProvider = withLifecycleCallbacks(
     // },
     imageStorageHandler<typeof categories.$inferSelect>({
       uploadImage,
-      deleteImage,
+      deleteImage: deleteFile,
       resource: "categories",
       folder: "categories",
       fileName: ({ resource, timestamp }) =>
         `${resource.title.en}-${timestamp}`,
     }),
+    imageStorageHandler<typeof images.$inferSelect>({
+      uploadImage: uploadMedia,
+      deleteImage: deleteFile,
+      resource: "images",
+      folder: "images",
+      fileName: ({ resource, timestamp }) =>
+        [resource.group, resource.name, timestamp].filter(Boolean).join("-"),
+    }),
+    imageStorageHandler<typeof videos.$inferSelect>({
+      uploadImage: uploadMedia,
+      deleteImage: deleteFile,
+      resource: "videos",
+      folder: "videos",
+      fileName: ({ resource, timestamp }) =>
+        [resource.group, resource.name, timestamp].filter(Boolean).join("-"),
+    }),
     imageStorageHandler<typeof brands.$inferSelect>({
       uploadImage,
-      deleteImage,
+      deleteImage: deleteFile,
       resource: "brands",
       folder: "brands",
       fileName: ({ resource, timestamp }) => `${resource.name}-${timestamp}`,
     }),
     imageStorageHandler<typeof influencers.$inferSelect>({
       uploadImage,
-      deleteImage,
+      deleteImage: deleteFile,
       resource: "influencers",
       folder: "influencers",
       fileName: ({ resource, timestamp }) => `${resource.name}-${timestamp}`,
     }),
     imageStorageHandler<typeof experts.$inferSelect>({
       uploadImage,
-      deleteImage,
+      deleteImage: deleteFile,
       resource: "experts",
       folder: "experts",
       fileName: ({ resource, timestamp }) => `${resource.name}-${timestamp}`,
     }),
     imageStorageHandler<typeof agencies.$inferSelect, "logo" | "image">({
       uploadImage,
-      deleteImage,
+      deleteImage: deleteFile,
       resource: "agencies",
       imageKey: ["logo", "image"],
       folder: "agencies",
@@ -217,7 +230,7 @@ const dataProvider = withLifecycleCallbacks(
     }),
     imageStorageHandler<typeof creatorChallenges.$inferSelect>({
       uploadImage,
-      deleteImage,
+      deleteImage: deleteFile,
       resource: "creator_challenges",
       folder: "creator_challenges",
       fileName: ({ resource, timestamp }) =>
@@ -225,7 +238,7 @@ const dataProvider = withLifecycleCallbacks(
     }),
     imageStorageHandler<typeof certifiedInfluencers.$inferSelect>({
       uploadImage,
-      deleteImage,
+      deleteImage: deleteFile,
       resource: "certified_influencers",
       folder: "certified_influencers",
       fileName: ({ resource, timestamp }) =>
@@ -233,7 +246,7 @@ const dataProvider = withLifecycleCallbacks(
     }),
     imageStorageHandler<typeof socialMediaCampaigns.$inferSelect>({
       uploadImage,
-      deleteImage,
+      deleteImage: deleteFile,
       resource: "social_media_campaigns",
       folder: "social_media_campaigns",
       fileName: ({ resource, timestamp }) =>
@@ -241,7 +254,7 @@ const dataProvider = withLifecycleCallbacks(
     }),
     imageStorageHandler<typeof networkEvents.$inferSelect>({
       uploadImage,
-      deleteImage,
+      deleteImage: deleteFile,
       resource: "network_events",
       folder: "network_events",
       fileName: ({ resource, timestamp }) =>
@@ -260,22 +273,11 @@ export function AdminApp() {
       <CMSProvider
         config={{
           globals: GLOBALS,
-          images: {
-            Component: ({ src, style, width, height, alt }) => (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={
-                  src.includes("localhost")
-                    ? src
-                    : `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/render/image/public/${src}`
-                }
-                alt={alt}
-                width={width}
-                height={height}
-                style={style}
-              />
-            ),
-          },
+          resolveSrc: (src) =>
+            src.startsWith("http")
+              ? src
+              : `${env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/${src}`,
+
           media: MEDIA_LIBRARY,
         }}
       >
@@ -306,24 +308,24 @@ export function AdminApp() {
                     fetchMessages={fetchMessages}
                     saveMessages={saveMessages}
                     tabs
-                    onSaved={() => {
-                      notify("Translations saved", { type: "success" });
-                    }}
+                    onSaved={() =>
+                      notify("Translations saved", { type: "success" })
+                    }
                   />
+                </Authenticated>
+              }
+            />
+            <Route
+              path="/media-library"
+              element={
+                <Authenticated>
+                  <Title title="Media Library" />
+                  <MediaLibraryPage config={MEDIA_LIBRARY} />
                 </Authenticated>
               }
             />
           </CustomRoutes>
 
-          {/* <Resource
-            name="media-library"
-            options={{ label: "Media Library" }}
-            list={MediaLibraryList}
-            create={MediaLibraryCreate}
-            edit={MediaLibraryEdit}
-            icon={IconPhotoVideo}
-            recordRepresentation="id"
-          /> */}
           <Resource
             name="globals"
             list={GlobalsList}
@@ -522,7 +524,12 @@ function CustomMenu() {
           leftIcon={<IconLanguage />}
         />
         <Menu.ResourceItem name="globals" />
-        <Menu.ResourceItem name="media-library" />
+
+        <Menu.Item
+          to="/media-library"
+          primaryText="Media Library"
+          leftIcon={<IconPhotoVideo />}
+        />
         <MenuDivider />
         <Menu.ResourceItem name="categories" />
         <Menu.ResourceItem name="influencers" />

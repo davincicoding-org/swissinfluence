@@ -39,7 +39,11 @@ export const images = pgTable(
     blurDataURL: d.text().notNull(),
     caption: d.jsonb().$type<Translatable>(),
   }),
-  (t) => [unique("images_name_group_unique").on(t.name, t.group)],
+  (t) => [
+    index("images_group_idx").on(t.group),
+    index("images_name_idx").on(t.name),
+    unique("images_name_group_unique").on(t.name, t.group),
+  ],
 );
 
 export const videos = pgTable(
@@ -50,7 +54,11 @@ export const videos = pgTable(
     group: d.text(),
     src: d.text().notNull(),
   }),
-  (t) => [unique("videos_name_group_unique").on(t.name, t.group)],
+  (t) => [
+    index("videos_group_idx").on(t.group),
+    index("videos_name_idx").on(t.name),
+    unique("videos_name_group_unique").on(t.name, t.group),
+  ],
 );
 
 // MARK: Locations
