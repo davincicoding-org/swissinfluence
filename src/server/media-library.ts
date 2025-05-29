@@ -1,12 +1,13 @@
 "use server";
 
-import { createMediaLibararyFetcher } from "@/cms/lib/media-library";
+import { createMediaLibraryFetcher } from "@davincicoding/cms/media-library";
+
 import { MEDIA_LIBRARY } from "@/cms/media-library";
 import { db } from "@/database";
 
 import { cachedRequest } from "./cache";
 
-const mediaLibraryFetcher = createMediaLibararyFetcher({
+const mediaLibraryFetcher = createMediaLibraryFetcher({
   config: MEDIA_LIBRARY,
   fetchImageAsset: async (group, name) =>
     db.query.images.findFirst({

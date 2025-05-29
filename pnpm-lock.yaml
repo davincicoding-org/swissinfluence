@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@davincicoding/cms':
-        specifier: ^0.4.16
-        version: 0.4.16(a1891af76eb882e7f9d82224f7359960)
+        specifier: ^0.4.17
+        version: 0.4.17(a1891af76eb882e7f9d82224f7359960)
       '@hookform/resolvers':
         specifier: ^5.0.1
         version: 5.0.1(react-hook-form@7.56.4(react@19.1.0))
@@ -298,6 +298,9 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.4.1
         version: 4.4.1(vite@6.3.5(@types/node@22.15.21)(jiti@2.4.2)(lightningcss@1.30.1)(sugarss@4.0.1(postcss@8.5.3))(terser@5.39.2)(tsx@4.19.4)(yaml@2.8.0))
+      drizzle-orm:
+        specifier: ^0.43.1
+        version: 0.43.1(@opentelemetry/api@1.9.0)(@types/pg@8.6.1)(postgres@3.4.7)
       postcss:
         specifier: ^8.5.3
         version: 8.5.3
@@ -912,8 +915,8 @@ packages:
     resolution: {integrity: sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==}
     engines: {node: '>=6.9.0'}
 
-  '@davincicoding/cms@0.4.16':
-    resolution: {integrity: sha512-lXczHDXZA2H/H4naQ73aUpu5bYIGNFVzAyuTPQf7NVt4NVUTGFJGfxlrK6ysBoJtTj1+mCctWDUNzy5B7ozsIw==}
+  '@davincicoding/cms@0.4.17':
+    resolution: {integrity: sha512-XdbMJWHFXjY8DP4WUp5BFiRbPRLq1tohbWNPykzSSxgp6D6Oy6licT96pqOaR9gGO1PBQJHtCqH3l3mC6Lx2mA==}
     peerDependencies:
       '@mui/material': ^7.0.0
       react: ^19.1.0
@@ -8057,7 +8060,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
-  '@davincicoding/cms@0.4.16(a1891af76eb882e7f9d82224f7359960)':
+  '@davincicoding/cms@0.4.17(a1891af76eb882e7f9d82224f7359960)':
     dependencies:
       '@mui/material': 7.1.0(@emotion/react@11.14.0(@types/react@19.1.5)(react@19.1.0))(@emotion/styled@11.14.0(@emotion/react@11.14.0(@types/react@19.1.5)(react@19.1.0))(@types/react@19.1.5)(react@19.1.0))(@types/react@19.1.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@tabler/icons-react': 3.33.0(react@19.1.0)

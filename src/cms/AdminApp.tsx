@@ -9,6 +9,7 @@ import {
 } from "@davincicoding/cms/globals";
 import { imageStorageHandler } from "@davincicoding/cms/image";
 import { MenuDivider } from "@davincicoding/cms/layout";
+import { MediaLibraryPage } from "@davincicoding/cms/media-library";
 import { MessagesEditor } from "@davincicoding/cms/messages";
 import { Button } from "@mui/material";
 import {
@@ -72,7 +73,6 @@ import { revalidateCache } from "@/server/revalidate";
 import { supabaseClient } from "@/server/supabase";
 
 import { GLOBALS } from "./globals";
-import { MediaLibraryPage } from "./lib/MediaLibraryPage";
 import { MEDIA_LIBRARY } from "./media-library";
 import {
   AgenciesCreate,
