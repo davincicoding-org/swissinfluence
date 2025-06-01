@@ -6,7 +6,7 @@ import { Flex, Paper, Stack } from "@mantine/core";
 import { cn } from "@/ui/utils";
 
 export interface IPageHeroProps {
-  image: ImageAsset;
+  image: Omit<ImageAsset, "id" | "group" | "name">;
   title: ReactNode;
   headline?: ReactNode;
   footer?: ReactNode;

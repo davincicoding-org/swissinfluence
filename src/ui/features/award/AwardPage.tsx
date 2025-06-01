@@ -1,5 +1,6 @@
 import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button } from "@mantine/core";
+import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
 import type {
@@ -25,11 +26,11 @@ import { NewcomerScout } from "./views/NewcomerScout";
 const FEATURE_FLAG_VOTING = false;
 
 export interface AwardPageProps {
-  heroImage: ImageAsset;
+  heroImage: Omit<ImageAsset, "id" | "group" | "name">;
   currentAward: Award | null;
   challenges: Array<CreatorChallenge>;
   hallOfFame: Array<AwardRanking>;
-  newcomerScoutImage: ImageAsset;
+  newcomerScoutImage: Omit<ImageAsset, "id" | "group" | "name">;
   pastImpressions: AwardShowImpressions | null;
   showCategories?: boolean;
 }
@@ -90,7 +91,9 @@ export function AwardPage({
               </section>
             ) : null}
 
-            {currentAward.nominationUrl && currentAward.nominationDeadline ? (
+            {currentAward.nominationUrl &&
+            currentAward.nominationDeadline &&
+            dayjs(currentAward.nominationDeadline).isAfter() ? (
               <section
                 id="nomination"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
@@ -103,7 +106,8 @@ export function AwardPage({
               </section>
             ) : null}
             {currentAward.newcomerScoutUrl &&
-            currentAward.newcomerScoutDeadline ? (
+            currentAward.newcomerScoutDeadline &&
+            dayjs(currentAward.newcomerScoutDeadline).isAfter() ? (
               <section
                 id="newcomer-scout"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
@@ -117,7 +121,9 @@ export function AwardPage({
               </section>
             ) : null}
 
-            {FEATURE_FLAG_VOTING && currentAward.votingDeadline ? (
+            {FEATURE_FLAG_VOTING &&
+            currentAward.votingDeadline &&
+            dayjs(currentAward.votingDeadline).isAfter() ? (
               <section
                 id="voting"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"

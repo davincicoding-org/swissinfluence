@@ -9,7 +9,7 @@ import { cn } from "@/ui/utils";
 
 export interface IAwardNominationProps {
   deadline: string;
-  image: ImageAsset;
+  image: Omit<ImageAsset, "id" | "group" | "name">;
   formURL: string;
   className?: string;
 }
