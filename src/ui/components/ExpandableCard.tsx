@@ -6,6 +6,7 @@ import { useId } from "react";
 import Image from "next/image";
 import {
   ActionIcon,
+  Badge,
   Button,
   FocusTrap,
   Group,
@@ -25,6 +26,7 @@ interface ExpandableCardProps {
   image: ImageAsset;
   logo?: ReactNode;
   content: ReactNode;
+  badge?: ReactNode;
   cta?: {
     label: string;
     url: string;
@@ -37,6 +39,7 @@ const ModalContent = motion(Modal.Content);
 export function ExpandableCard({
   title,
   description,
+  badge,
   image,
   logo,
   content,
@@ -135,6 +138,11 @@ export function ExpandableCard({
                 </Text>
                 {logo}
               </Group>
+              {badge && (
+                <Badge size="lg" className="absolute left-4 top-4">
+                  {badge}
+                </Badge>
+              )}
             </motion.div>
 
             <div className="p-4">{content}</div>

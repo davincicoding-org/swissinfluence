@@ -25,7 +25,7 @@ export function CampaignDiscovery({ campaigns }: ICampaignDiscoveryProps) {
             current: [...acc.current, campaign],
           };
 
-        if (dayjs(campaign.start).isAfter())
+        if (dayjs(campaign.end).isAfter())
           return {
             ...acc,
             current: [...acc.current, campaign],
