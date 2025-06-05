@@ -10,6 +10,9 @@ export const getSocialMediaCampaigns = cachedRequest(async (): Promise<
     columns: {
       organizer: false,
     },
+    orderBy: (socialMediaCampaigns, { desc }) => [
+      desc(socialMediaCampaigns.start),
+    ],
     with: {
       organizer: true,
     },
