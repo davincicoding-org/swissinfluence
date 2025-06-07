@@ -36,11 +36,7 @@ export function CreatorChallengesList() {
         bulkActionButtons={false}
       >
         <TextField source="title.en" label="Title" />
-        <ReferenceSelection
-          {...brandReferenceSelectionProps}
-          source="organizer"
-          validate={required("Add a organizer")}
-        />
+        <ReferenceField source="organizer" reference="brands" />
         <ReferenceField
           reference="locations"
           source="location"
