@@ -2,6 +2,7 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
+import { resendAdapter } from "@payloadcms/email-resend";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { buildConfig } from "payload";
 import { polyglotPlugin } from "payload-polyglot";
@@ -31,12 +32,13 @@ import { routing } from "@/i18n/routing";
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
+// TODO add storage adapter
 // TODO add Media Size
 // TODO add Media Format
-// TODO add storage adapter
 // TODO add Static Pages
 // TODO add SEO
 // TODO add Cache Invalidation
+// TODO configure rich text editor
 
 export default buildConfig({
   admin: {
@@ -72,6 +74,11 @@ export default buildConfig({
     pool: {
       connectionString: env.PAYLOAD_DATABASE_URL,
     },
+  }),
+  email: resendAdapter({
+    defaultFromAddress: "no-reply@davincicoding.ch",
+    defaultFromName: "swissinfluence.ch",
+    apiKey: env.RESEND_API_KEY,
   }),
   sharp,
   plugins: [

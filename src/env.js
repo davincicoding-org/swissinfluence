@@ -9,6 +9,12 @@ export const env = createEnv({
     // TODO Temp fix
     PAYLOAD_DATABASE_URL: z.string(),
     PAYLOAD_SECRET: z.string(),
+    // S3_BUCKET: z.string(),
+    // S3_ACCESS_KEY_ID: z.string(),
+    // S3_SECRET_ACCESS_KEY: z.string(),
+    // S3_REGION: z.string(),
+    // S3_ENDPOINT: z.string(),
+    RESEND_API_KEY: z.string(),
   },
 
   client: {
@@ -31,8 +37,14 @@ export const env = createEnv({
 
       return process.env.__NEXT_PRIVATE_ORIGIN ?? "https://localhost:3000";
     })(),
-    PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
     POSTGRES_URL: process.env.POSTGRES_URL,
+    PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
+    // S3_BUCKET: process.env.S3_BUCKET,
+    // S3_ACCESS_KEY_ID: process.env.S3_ACCESS_KEY_ID,
+    // S3_SECRET_ACCESS_KEY: process.env.S3_SECRET_ACCESS_KEY,
+    // S3_REGION: process.env.S3_REGION,
+    // S3_ENDPOINT: process.env.S3_ENDPOINT,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
     PAYLOAD_DATABASE_URL: process.env.PAYLOAD_DATABASE_URL,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
