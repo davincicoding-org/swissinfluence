@@ -1,6 +1,5 @@
-import { type PropsWithChildren } from "react";
-
 import type { Metadata } from "next";
+import { type PropsWithChildren } from "react";
 import { getTranslations } from "next-intl/server";
 
 import { env } from "@/env";

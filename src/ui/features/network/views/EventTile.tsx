@@ -2,21 +2,22 @@
 
 import { useMemo } from "react";
 import Image from "next/image";
-import { ActionIcon, Button, Flex, FocusTrap, Modal, Paper } from "@mantine/core";
+import {
+  ActionIcon,
+  Button,
+  Flex,
+  FocusTrap,
+  Modal,
+  Paper,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconArrowRight, IconX } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
-
-
 import type { NetworkEvent } from "@/types";
 import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
-
-
-
-
 
 export interface IEventTileProps {
   data: NetworkEvent;

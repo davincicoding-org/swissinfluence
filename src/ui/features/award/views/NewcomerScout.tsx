@@ -70,8 +70,8 @@ export function NewcomerScout({
         classNames={{
           root: cn(
             "relative",
-            "before:bg-gradient-to-b before:from-neutral-200 before:to-transparent before:z-5 before:absolute before:top-0 before:inset-x-0 before:h-6 before:pointer-events-none",
-            "after:bg-gradient-to-t after:from-neutral-200 after:to-transparent after:z-5 after:absolute after:bottom-0 after:inset-x-0 after:h-6 after:pointer-events-none",
+            "before:z-5 before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-6 before:bg-gradient-to-b before:from-neutral-200 before:to-transparent",
+            "after:z-5 after:pointer-events-none after:absolute after:inset-x-0 after:bottom-0 after:h-6 after:bg-gradient-to-t after:from-neutral-200 after:to-transparent",
           ),
           scrollbar: "z-10",
         }}

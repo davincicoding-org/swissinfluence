@@ -133,7 +133,7 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
                                   classNames={{
                                     root: "mb-1",
                                     text: cn(
-                                      "text-xl pl-4 font-medium tracking-widest leading-none text-white",
+                                      "pl-4 text-xl font-medium leading-none tracking-widest text-white",
                                     ),
                                   }}
                                 />

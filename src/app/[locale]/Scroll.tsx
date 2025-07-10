@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function Scroll() {
   // when clicking a link, user will not scroll to the top of the page if the header is sticky.

@@ -2,36 +2,53 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { resendAdapter } from "@payloadcms/email-resend";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import {
+  AlignFeature,
+  BlockquoteFeature,
+  BoldFeature,
+  ChecklistFeature,
+  HeadingFeature,
+  HorizontalRuleFeature,
+  IndentFeature,
+  InlineToolbarFeature,
+  ItalicFeature,
+  lexicalEditor,
+  LinkFeature,
+  OrderedListFeature,
+  ParagraphFeature,
+  UnderlineFeature,
+  UnorderedListFeature,
+} from "@payloadcms/richtext-lexical";
 import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
 import blurhashPlugin from "payload-blurhash-plugin";
 import { polyglotPlugin } from "payload-polyglot";
 import sharp from "sharp";
 
-import { Agencies } from "@/cms/collections/Agencies";
-import { Awards } from "@/cms/collections/Awards";
-import { AwardShows } from "@/cms/collections/AwardShows";
-import { Brands } from "@/cms/collections/Brands";
-import { Categories } from "@/cms/collections/Categories";
-import { CertifiedInfluencers } from "@/cms/collections/CertifiedInfluencers";
-import { Conventions } from "@/cms/collections/Conventions";
-import { CreatorChallenges } from "@/cms/collections/CreatorChallenges";
-import { Experts } from "@/cms/collections/Experts";
-import { Influencers } from "@/cms/collections/Influencers";
-import { Locations } from "@/cms/collections/Locations";
-import { NetworkEvents } from "@/cms/collections/NetworkEvents";
-import { SocialMediaCampaigns } from "@/cms/collections/SocialMediaCampaigns";
-import { Users } from "@/cms/collections/Users";
+import {
+  Agencies,
+  Awards,
+  AwardShows,
+  Brands,
+  Categories,
+  CertifiedInfluencers,
+  Conventions,
+  CreatorChallenges,
+  Experts,
+  Influencers,
+  Locations,
+  Logos,
+  NetworkEvents,
+  Photos,
+  ProfilePictures,
+  SocialMediaCampaigns,
+  Users,
+} from "@/cms/collections";
 import { Company } from "@/cms/globals/Company";
 import { Network } from "@/cms/globals/Network";
 import { env } from "@/env";
 import { MESSAGES_SCHEMA } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
-
-import { Logos } from "./cms/collections/Logos";
-import { Photos } from "./cms/collections/Photos";
-import { ProfilePictures } from "./cms/collections/ProfilePictures";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -39,7 +56,6 @@ const dirname = path.dirname(filename);
 // TODO add Static Pages
 // TODO add SEO
 // TODO add Cache Invalidation
-// TODO configure rich text editor
 
 export default buildConfig({
   routes: {
@@ -76,7 +92,24 @@ export default buildConfig({
     Agencies,
     Conventions,
   ],
-  editor: lexicalEditor(),
+  editor: lexicalEditor({
+    features: [
+      BoldFeature(),
+      ItalicFeature(),
+      UnderlineFeature(),
+      ParagraphFeature(),
+      HeadingFeature(),
+      AlignFeature(),
+      IndentFeature(),
+      UnorderedListFeature(),
+      OrderedListFeature(),
+      ChecklistFeature(),
+      LinkFeature(),
+      BlockquoteFeature(),
+      HorizontalRuleFeature(),
+      InlineToolbarFeature(),
+    ],
+  }),
   secret: env.PAYLOAD_SECRET,
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),

@@ -68,7 +68,7 @@ export function PersonaCard({
             classNames={{
               root: "mb-1",
               text: cn(
-                "text-lg pl-4 font-medium tracking-widest text-white",
+                "pl-4 text-lg font-medium tracking-widest text-white",
                 classNames?.name,
               ),
             }}

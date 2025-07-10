@@ -1,6 +1,6 @@
 "use client";
-import { type PropsWithChildren } from "react";
 
+import { type PropsWithChildren } from "react";
 import { useElementSize } from "@mantine/hooks";
 
 export interface IFadeContainerProps {

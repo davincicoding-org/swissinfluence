@@ -61,7 +61,7 @@ export function ConventionPage({
               transitionDuration={500}
               classNames={{
                 control: cn(
-                  "left-1/2 -translate-x-1/2 translate-y-1 bg-neutral-200 h-10 w-10 flex items-center justify-center rounded-full shadow-sm border-solid border-1 border-neutral-300",
+                  "border-1 left-1/2 flex h-10 w-10 -translate-x-1/2 translate-y-1 items-center justify-center rounded-full border-solid border-neutral-300 bg-neutral-200 shadow-sm",
                 ),
               }}
             >

@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
 
+import { useEffect, useRef, useState } from "react";
 import { LoadingOverlay } from "@mantine/core";
 
 export interface IBackgroundVideoProps {
