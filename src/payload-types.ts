@@ -334,7 +334,9 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
-    media: Media;
+    photos: Photo;
+    logos: Logo;
+    'profile-pictures': ProfilePicture;
     categories: Category;
     influencers: Influencer;
     experts: Expert;
@@ -356,7 +358,9 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
+    photos: PhotosSelect<false> | PhotosSelect<true>;
+    logos: LogosSelect<false> | LogosSelect<true>;
+    'profile-pictures': ProfilePicturesSelect<false> | ProfilePicturesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     influencers: InfluencersSelect<false> | InfluencersSelect<true>;
     experts: ExpertsSelect<false> | ExpertsSelect<true>;
@@ -443,11 +447,13 @@ export interface User {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media".
+ * via the `definition` "photos".
  */
-export interface Media {
+export interface Photo {
   id: number;
   alt?: string | null;
+  prefix?: string | null;
+  blurhash?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -459,6 +465,84 @@ export interface Media {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+    og?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "logos".
+ */
+export interface Logo {
+  id: number;
+  prefix?: string | null;
+  blurhash?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thubmnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "profile-pictures".
+ */
+export interface ProfilePicture {
+  id: number;
+  prefix?: string | null;
+  blurhash?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+  sizes?: {
+    thumbnail?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -466,7 +550,7 @@ export interface Media {
  */
 export interface Category {
   id: number;
-  image: number | Media;
+  image: number | Photo;
   name: string;
   updatedAt: string;
   createdAt: string;
@@ -479,7 +563,7 @@ export interface Influencer {
   id: number;
   name: string;
   socials?: Socials;
-  image: number | Media;
+  image: number | ProfilePicture;
   updatedAt: string;
   createdAt: string;
 }
@@ -492,7 +576,7 @@ export interface Expert {
   name: string;
   description: string;
   socials?: Socials;
-  image: number | Media;
+  image: number | ProfilePicture;
   updatedAt: string;
   createdAt: string;
 }
@@ -502,7 +586,7 @@ export interface Expert {
  */
 export interface Brand {
   id: number;
-  image: number | Media;
+  logo: number | Logo;
   name: string;
   website: string;
   updatedAt: string;
@@ -536,7 +620,7 @@ export interface Award {
     | {
         category: number | Category;
         sponsor?: (number | null) | Brand;
-        winner?: (number | null) | Media;
+        winner?: (number | null) | ProfilePicture;
         nominees?:
           | {
               influencer: number | Influencer;
@@ -573,7 +657,7 @@ export interface AwardShow {
   registrationUrl?: string | null;
   schedule?: Schedule;
   videoUrl?: string | null;
-  images?: (number | Media)[] | null;
+  images?: (number | Photo)[] | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -583,7 +667,7 @@ export interface AwardShow {
  */
 export interface CreatorChallenge {
   id: number;
-  image: number | Media;
+  image: number | Photo;
   organizer: number | Brand;
   location?: (number | null) | Location;
   dateFrom?: string | null;
@@ -614,7 +698,7 @@ export interface CreatorChallenge {
  */
 export interface SocialMediaCampaign {
   id: number;
-  image: number | Media;
+  image: number | Photo;
   organizer: number | Brand;
   location?: (number | null) | Location;
   dateFrom?: string | null;
@@ -645,8 +729,8 @@ export interface SocialMediaCampaign {
  */
 export interface NetworkEvent {
   id: number;
-  logo: number | Media;
-  image: number | Media;
+  logo: number | Logo;
+  image: number | Photo;
   location: number | Location;
   dateFrom?: string | null;
   dateTo?: string | null;
@@ -676,7 +760,7 @@ export interface NetworkEvent {
  */
 export interface CertifiedInfluencer {
   id: number;
-  image: number | Media;
+  image: number | Photo;
   categories: (number | Category)[];
   birthdate: string;
   languages: Language;
@@ -693,8 +777,8 @@ export interface CertifiedInfluencer {
  */
 export interface Agency {
   id: number;
-  logo: number | Media;
-  image: number | Media;
+  logo: number | Logo;
+  image: number | Photo;
   name: string;
   website: string;
   email: string;
@@ -762,8 +846,16 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
-        relationTo: 'media';
-        value: number | Media;
+        relationTo: 'photos';
+        value: number | Photo;
+      } | null)
+    | ({
+        relationTo: 'logos';
+        value: number | Logo;
+      } | null)
+    | ({
+        relationTo: 'profile-pictures';
+        value: number | ProfilePicture;
       } | null)
     | ({
         relationTo: 'categories';
@@ -893,10 +985,12 @@ export interface UsersSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "media_select".
+ * via the `definition` "photos_select".
  */
-export interface MediaSelect<T extends boolean = true> {
+export interface PhotosSelect<T extends boolean = true> {
   alt?: T;
+  prefix?: T;
+  blurhash?: T;
   updatedAt?: T;
   createdAt?: T;
   url?: T;
@@ -908,6 +1002,96 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+        og?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "logos_select".
+ */
+export interface LogosSelect<T extends boolean = true> {
+  prefix?: T;
+  blurhash?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thubmnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "profile-pictures_select".
+ */
+export interface ProfilePicturesSelect<T extends boolean = true> {
+  prefix?: T;
+  blurhash?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
+  sizes?:
+    | T
+    | {
+        thumbnail?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -956,7 +1140,7 @@ export interface ExpertsSelect<T extends boolean = true> {
  * via the `definition` "brands_select".
  */
 export interface BrandsSelect<T extends boolean = true> {
-  image?: T;
+  logo?: T;
   name?: T;
   website?: T;
   updatedAt?: T;

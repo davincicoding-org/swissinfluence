@@ -59,7 +59,7 @@ export const AwardShows: CollectionConfig = {
             {
               name: "images",
               type: "upload",
-              relationTo: "media",
+              relationTo: "photos",
               hasMany: true,
             },
           ],

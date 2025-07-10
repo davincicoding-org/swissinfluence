@@ -27,7 +27,7 @@ export const Influencers: CollectionConfig = {
         {
           name: "image",
           type: "upload",
-          relationTo: "media",
+          relationTo: "profile-pictures",
           required: true,
           admin: {
             width: "320px",

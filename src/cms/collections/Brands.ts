@@ -1,7 +1,5 @@
 import type { CollectionConfig } from "payload";
 
-import { SocialsField } from "../shared/SocialsField";
-
 export const Brands: CollectionConfig = {
   slug: "brands",
   admin: {
@@ -13,9 +11,9 @@ export const Brands: CollectionConfig = {
       type: "row",
       fields: [
         {
-          name: "image",
+          name: "logo",
           type: "upload",
-          relationTo: "media",
+          relationTo: "logos",
           required: true,
           admin: {
             width: "320px",

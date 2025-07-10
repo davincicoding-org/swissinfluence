@@ -24,7 +24,7 @@ export const SocialMediaCampaigns: CollectionConfig = {
             {
               name: "image",
               type: "upload",
-              relationTo: "media",
+              relationTo: "photos",
               required: true,
             },
             {

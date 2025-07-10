@@ -3,6 +3,7 @@ import { type Config } from "drizzle-kit";
 
 import { env } from "@/env";
 
+config({ path: ".env.development.local" });
 config({ path: ".env.local" });
 config({ path: ".env" });
 

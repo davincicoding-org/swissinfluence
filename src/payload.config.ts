@@ -5,6 +5,7 @@ import { resendAdapter } from "@payloadcms/email-resend";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
+import blurhashPlugin from "payload-blurhash-plugin";
 import { polyglotPlugin } from "payload-polyglot";
 import sharp from "sharp";
 
@@ -19,7 +20,6 @@ import { CreatorChallenges } from "@/cms/collections/CreatorChallenges";
 import { Experts } from "@/cms/collections/Experts";
 import { Influencers } from "@/cms/collections/Influencers";
 import { Locations } from "@/cms/collections/Locations";
-import { Media } from "@/cms/collections/Media";
 import { NetworkEvents } from "@/cms/collections/NetworkEvents";
 import { SocialMediaCampaigns } from "@/cms/collections/SocialMediaCampaigns";
 import { Users } from "@/cms/collections/Users";
@@ -29,12 +29,13 @@ import { env } from "@/env";
 import { MESSAGES_SCHEMA } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
 
+import { Logos } from "./cms/collections/Logos";
+import { Photos } from "./cms/collections/Photos";
+import { ProfilePictures } from "./cms/collections/ProfilePictures";
+
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-// TODO add storage adapter
-// TODO add Media Size
-// TODO add Media Format
 // TODO add Static Pages
 // TODO add SEO
 // TODO add Cache Invalidation
@@ -47,10 +48,17 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  upload: {
+    limits: {
+      fileSize: 5_000_000,
+    },
+  },
   globals: [Company, Network],
   collections: [
     Users,
-    Media,
+    Photos,
+    Logos,
+    ProfilePictures,
     Categories,
     Influencers,
     Experts,
@@ -71,6 +79,7 @@ export default buildConfig({
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   db: postgresAdapter({
+    migrationDir: path.resolve(dirname, "cms/migrations"),
     pool: {
       connectionString: env.PAYLOAD_DATABASE_URL,
     },
@@ -98,8 +107,19 @@ export default buildConfig({
     }),
     s3Storage({
       collections: {
-        media: {
-          prefix: "media",
+        photos: {
+          prefix: "photos",
+
+          generateFileURL: async ({ filename, prefix }) =>
+            `${env.SUPABASE_URL}/storage/v1/object/public/${env.S3_BUCKET}/${prefix}/${filename}`,
+        },
+        "profile-pictures": {
+          prefix: "profile-pictures",
+          generateFileURL: async ({ filename, prefix }) =>
+            `${env.SUPABASE_URL}/storage/v1/object/public/${env.S3_BUCKET}/${prefix}/${filename}`,
+        },
+        logos: {
+          prefix: "logos",
           generateFileURL: async ({ filename, prefix }) =>
             `${env.SUPABASE_URL}/storage/v1/object/public/${env.S3_BUCKET}/${prefix}/${filename}`,
         },
@@ -114,6 +134,9 @@ export default buildConfig({
         region: env.S3_REGION,
         endpoint: env.S3_ENDPOINT,
       },
+    }),
+    blurhashPlugin({
+      collections: ["photos", "profile-pictures", "logos"],
     }),
   ],
 });

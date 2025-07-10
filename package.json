@@ -63,6 +63,7 @@
     "next": "^15.3.2",
     "next-intl": "^4.1.0",
     "payload": "^3.46.0",
+    "payload-blurhash-plugin": "^3.1.0",
     "payload-polyglot": "^0.2.3",
     "postgres": "^3.4.6",
     "ra-supabase": "^3.5.0",

@@ -20,7 +20,7 @@ export const CreatorChallenges: CollectionConfig = {
             {
               name: "image",
               type: "upload",
-              relationTo: "media",
+              relationTo: "photos",
               required: true,
             },
             {

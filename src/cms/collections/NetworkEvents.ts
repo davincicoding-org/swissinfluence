@@ -24,13 +24,13 @@ export const NetworkEvents: CollectionConfig = {
             {
               name: "logo",
               type: "upload",
-              relationTo: "media",
+              relationTo: "logos",
               required: true,
             },
             {
               name: "image",
               type: "upload",
-              relationTo: "media",
+              relationTo: "photos",
               required: true,
             },
             {
