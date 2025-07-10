@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Button, Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import { type GlobalData } from "@/cms/globals";
+import { type GlobalData } from "@/react-admin/cms/globals";
 import { Link } from "@/i18n/navigation";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { cn } from "@/ui/utils";

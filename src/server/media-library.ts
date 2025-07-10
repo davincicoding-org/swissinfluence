@@ -2,7 +2,7 @@
 
 import { createMediaLibraryFetcher } from "@davincicoding/cms/media-library";
 
-import { MEDIA_LIBRARY } from "@/cms/media-library";
+import { MEDIA_LIBRARY } from "@/react-admin/cms/media-library";
 import { db } from "@/database";
 
 import { cachedRequest } from "./cache";

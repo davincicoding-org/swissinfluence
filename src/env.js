@@ -6,6 +6,7 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]).optional(),
     BASE_URL: z.string(),
     POSTGRES_URL: z.string(),
+    PAYLOAD_SECRET: z.string(),
   },
 
   client: {
@@ -28,6 +29,7 @@ export const env = createEnv({
 
       return process.env.__NEXT_PRIVATE_ORIGIN ?? "https://localhost:3000";
     })(),
+    PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
     POSTGRES_URL: process.env.POSTGRES_URL,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,

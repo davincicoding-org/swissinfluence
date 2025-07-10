@@ -1,3 +1,4 @@
+import { withPayload } from "@payloadcms/next/withPayload";
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
  * for Docker builds.
@@ -26,7 +27,7 @@ const withNextIntl = createNextIntlPlugin();
 
 // Injected content via Sentry wizard below
 
-export default withSentryConfig(withNextIntl(config), {
+export default withPayload(withSentryConfig(withNextIntl(config), {
   // For all available options, see:
   // https://www.npmjs.com/package/@sentry/webpack-plugin#options
 
@@ -56,4 +57,4 @@ export default withSentryConfig(withNextIntl(config), {
   // https://docs.sentry.io/product/crons/
   // https://vercel.com/docs/cron-jobs
   automaticVercelMonitors: true,
-});
+}));
