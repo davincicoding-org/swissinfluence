@@ -20,12 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function AwardPage({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
-}) {
-  const params = await searchParams;
+export default async function AwardPage() {
   const [media, currentAward, challenges, pastImpressions, hallOfFame] =
     await Promise.all([
       fetchMediaLibrary(),
@@ -43,7 +38,6 @@ export default async function AwardPage({
       challenges={challenges}
       hallOfFame={hallOfFame}
       pastImpressions={pastImpressions}
-      showCategories={"ENABLE_CATEGORIES" in params}
     />
   );
 }

@@ -32,7 +32,6 @@ export interface AwardPageProps {
   hallOfFame: Array<AwardRanking>;
   newcomerScoutImage: Omit<ImageAsset, "id" | "group" | "name">;
   pastImpressions: AwardShowImpressions | null;
-  showCategories?: boolean;
 }
 
 export function AwardPage({
@@ -42,7 +41,6 @@ export function AwardPage({
   pastImpressions,
   hallOfFame,
   challenges,
-  showCategories,
 }: AwardPageProps) {
   const { headline, cta } = useHeaderContent(currentAward);
   const t = useTranslations("award");
@@ -132,7 +130,7 @@ export function AwardPage({
               </section>
             ) : null}
 
-            {showCategories && (
+            {currentAward.categories && currentAward.categories.length > 0 && (
               <AwardCategories
                 id="categories"
                 className="snap-start snap-always"

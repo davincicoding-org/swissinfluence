@@ -104,7 +104,7 @@ function CategoryCard({
         />
         <div
           className={cn(
-            "relative z-10 flex h-64 items-end justify-between gap-6 bg-gradient-to-t from-black/60 from-30% to-black/0 p-4 text-left md:h-96 md:p-6",
+            "relative z-10 flex h-[28rem] items-end justify-between gap-6 bg-gradient-to-t from-black/60 from-30% to-black/0 p-4 text-left md:h-[32rem] md:p-6",
             { "h-32 md:h-48": nominees.length },
           )}
         >
