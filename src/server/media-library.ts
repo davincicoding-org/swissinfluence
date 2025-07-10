@@ -1,9 +1,9 @@
 "use server";
 
-import { createMediaLibraryFetcher } from "@davincicoding/cms/media";
+import { createMediaLibraryFetcher } from "@davincicoding/cms/media-library";
 
 import { db } from "@/database";
-import { MEDIA_LIBRARY } from "@/react-admin/cms/media-library";
+import { MEDIA_LIBRARY } from "@/react-admin/media-library";
 
 import { cachedRequest } from "./cache";
 

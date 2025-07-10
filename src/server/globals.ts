@@ -1,8 +1,8 @@
 "use server";
 
-import type { GlobalData, GlobalId } from "@/react-admin/cms/globals";
+import type { GlobalData, GlobalId } from "@/react-admin/globals";
 import { db } from "@/database";
-import { GLOBALS } from "@/react-admin/cms/globals";
+import { GLOBALS } from "@/react-admin/globals";
 
 import { cachedRequest } from "./cache";
 

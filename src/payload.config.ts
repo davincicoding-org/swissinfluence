@@ -42,6 +42,9 @@ const dirname = path.dirname(filename);
 // TODO configure rich text editor
 
 export default buildConfig({
+  routes: {
+    admin: "/admin-next",
+  },
   admin: {
     user: Users.slug,
     importMap: {
