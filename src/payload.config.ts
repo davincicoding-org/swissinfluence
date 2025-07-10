@@ -1,9 +1,9 @@
-// storage-adapter-import-placeholder
 import path from "path";
 import { fileURLToPath } from "url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { resendAdapter } from "@payloadcms/email-resend";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { s3Storage } from "@payloadcms/storage-s3";
 import { buildConfig } from "payload";
 import { polyglotPlugin } from "payload-polyglot";
 import sharp from "sharp";
@@ -94,6 +94,25 @@ export default buildConfig({
         // hooks: {
         //   afterUpdate: () => revalidateCache("messages"),
         // },
+      },
+    }),
+    s3Storage({
+      collections: {
+        media: {
+          prefix: "media",
+          generateFileURL: async ({ filename, prefix }) =>
+            `${env.SUPABASE_URL}/storage/v1/object/public/${env.S3_BUCKET}/${prefix}/${filename}`,
+        },
+      },
+      bucket: env.S3_BUCKET,
+      config: {
+        forcePathStyle: true,
+        credentials: {
+          accessKeyId: env.S3_ACCESS_KEY_ID,
+          secretAccessKey: env.S3_SECRET_ACCESS_KEY,
+        },
+        region: env.S3_REGION,
+        endpoint: env.S3_ENDPOINT,
       },
     }),
   ],

@@ -1,9 +1,4 @@
-import path from "path";
-import { fileURLToPath } from "url";
 import type { CollectionConfig } from "payload";
-
-const filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(filename);
 
 export const Media: CollectionConfig = {
   slug: "media",
@@ -19,6 +14,16 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     focalPoint: true,
-    staticDir: path.resolve(dirname, "../../../public/media"),
+    formatOptions: {
+      format: "webp",
+      options: {
+        preset: "photo",
+        smartSubsample: true,
+      },
+    },
+    resizeOptions: {
+      width: 2048,
+      withoutEnlargement: true,
+    },
   },
 };

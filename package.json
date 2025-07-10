@@ -38,6 +38,7 @@
     "@payloadcms/next": "^3.46.0",
     "@payloadcms/payload-cloud": "^3.46.0",
     "@payloadcms/richtext-lexical": "^3.46.0",
+    "@payloadcms/storage-s3": "^3.46.0",
     "@sentry/nextjs": "^9.18.0",
     "@streampot/client": "^0.2.0",
     "@supabase/supabase-js": "^2.49.7",
