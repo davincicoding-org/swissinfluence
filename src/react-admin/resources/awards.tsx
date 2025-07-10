@@ -142,12 +142,7 @@ const UniqueAwardCategorySelection: ReferenceFormComponent<
         disableClearable
         validate={required("Select a category")}
       />
-      <ReferenceSelection
-        {...brandReferenceSelectionProps}
-        source="sponsor"
-        disableClearable
-        validate={required("Select a sponsor")}
-      />
+      <ReferenceSelection {...brandReferenceSelectionProps} source="sponsor" />
     </>
   );
 };
