@@ -1,17 +1,42 @@
 // storage-adapter-import-placeholder
+import path from "path";
+import { fileURLToPath } from "url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
-import path from "path";
 import { buildConfig } from "payload";
-import { fileURLToPath } from "url";
+import { polyglotPlugin } from "payload-polyglot";
 import sharp from "sharp";
 
-import { Users } from "./cms/collections/Users";
-import { Media } from "./cms/collections/Media";
-import { env } from "./env";
+import { Agencies } from "@/cms/collections/Agencies";
+import { Awards } from "@/cms/collections/Awards";
+import { AwardShows } from "@/cms/collections/AwardShows";
+import { Brands } from "@/cms/collections/Brands";
+import { Categories } from "@/cms/collections/Categories";
+import { CertifiedInfluencers } from "@/cms/collections/CertifiedInfluencers";
+import { Conventions } from "@/cms/collections/Conventions";
+import { CreatorChallenges } from "@/cms/collections/CreatorChallenges";
+import { Experts } from "@/cms/collections/Experts";
+import { Influencers } from "@/cms/collections/Influencers";
+import { Locations } from "@/cms/collections/Locations";
+import { Media } from "@/cms/collections/Media";
+import { NetworkEvents } from "@/cms/collections/NetworkEvents";
+import { SocialMediaCampaigns } from "@/cms/collections/SocialMediaCampaigns";
+import { Users } from "@/cms/collections/Users";
+import { Company } from "@/cms/globals/Company";
+import { Network } from "@/cms/globals/Network";
+import { env } from "@/env";
+import { MESSAGES_SCHEMA } from "@/i18n/config";
+import { routing } from "@/i18n/routing";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
+
+// TODO add Media Size
+// TODO add Media Format
+// TODO add storage adapter
+// TODO add Static Pages
+// TODO add SEO
+// TODO add Cache Invalidation
 
 export default buildConfig({
   admin: {
@@ -20,7 +45,24 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  globals: [Company, Network],
+  collections: [
+    Users,
+    Media,
+    Categories,
+    Influencers,
+    Experts,
+    Brands,
+    Locations,
+    Awards,
+    AwardShows,
+    CreatorChallenges,
+    SocialMediaCampaigns,
+    NetworkEvents,
+    CertifiedInfluencers,
+    Agencies,
+    Conventions,
+  ],
   editor: lexicalEditor(),
   secret: env.PAYLOAD_SECRET,
   typescript: {
@@ -28,11 +70,24 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: env.POSTGRES_URL,
+      connectionString: env.PAYLOAD_DATABASE_URL,
     },
   }),
   sharp,
   plugins: [
     // storage-adapter-placeholder
+    polyglotPlugin({
+      locales: [...routing.locales],
+      schema: MESSAGES_SCHEMA,
+      tabs: true,
+      collection: {
+        admin: {
+          group: "Global",
+        },
+        // hooks: {
+        //   afterUpdate: () => revalidateCache("messages"),
+        // },
+      },
+    }),
   ],
 });

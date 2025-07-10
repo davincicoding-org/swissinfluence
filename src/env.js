@@ -6,6 +6,8 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "test", "production"]).optional(),
     BASE_URL: z.string(),
     POSTGRES_URL: z.string(),
+    // TODO Temp fix
+    PAYLOAD_DATABASE_URL: z.string(),
     PAYLOAD_SECRET: z.string(),
   },
 
@@ -31,6 +33,7 @@ export const env = createEnv({
     })(),
     PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
     POSTGRES_URL: process.env.POSTGRES_URL,
+    PAYLOAD_DATABASE_URL: process.env.PAYLOAD_DATABASE_URL,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },

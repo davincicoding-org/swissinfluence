@@ -1,4 +1,4 @@
-import type { MediaLibraryConfig } from "@davincicoding/cms/media-library";
+import type { MediaLibraryConfig } from "@davincicoding/cms/media";
 
 export const MEDIA_LIBRARY = {
   LANDING: {

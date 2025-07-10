@@ -7,6 +7,272 @@
  */
 
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Socials".
+ */
+export type Socials =
+  | {
+      platform:
+        | 'INSTAGRAM'
+        | 'TIKTOK'
+        | 'LINKEDIN'
+        | 'YOUTUBE'
+        | 'APPLE_PODCAST'
+        | 'SPOTIFY'
+        | 'TWITCH'
+        | 'WEBSITE'
+        | 'WHATSAPP';
+      url: string;
+      id?: string | null;
+    }[]
+  | null;
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Schedule".
+ */
+export type Schedule =
+  | {
+      title: string;
+      from?: string | null;
+      to?: string | null;
+      room?: string | null;
+      description: {
+        root: {
+          type: string;
+          children: {
+            type: string;
+            version: number;
+            [k: string]: unknown;
+          }[];
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+          indent: number;
+          version: number;
+        };
+        [k: string]: unknown;
+      };
+      id?: string | null;
+    }[]
+  | null;
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Language".
+ */
+export type Language =
+  | 'aa'
+  | 'ab'
+  | 'ae'
+  | 'af'
+  | 'ak'
+  | 'am'
+  | 'an'
+  | 'ar'
+  | 'as'
+  | 'av'
+  | 'ay'
+  | 'az'
+  | 'ba'
+  | 'be'
+  | 'bg'
+  | 'bi'
+  | 'bm'
+  | 'bn'
+  | 'bo'
+  | 'br'
+  | 'bs'
+  | 'ca'
+  | 'ce'
+  | 'ch'
+  | 'co'
+  | 'cr'
+  | 'cs'
+  | 'cu'
+  | 'cv'
+  | 'cy'
+  | 'da'
+  | 'de'
+  | 'dv'
+  | 'dz'
+  | 'ee'
+  | 'el'
+  | 'en'
+  | 'eo'
+  | 'es'
+  | 'et'
+  | 'eu'
+  | 'fa'
+  | 'ff'
+  | 'fi'
+  | 'fj'
+  | 'fo'
+  | 'fr'
+  | 'fy'
+  | 'ga'
+  | 'gd'
+  | 'gl'
+  | 'gn'
+  | 'gu'
+  | 'gv'
+  | 'ha'
+  | 'he'
+  | 'hi'
+  | 'ho'
+  | 'hr'
+  | 'ht'
+  | 'hu'
+  | 'hy'
+  | 'hz'
+  | 'ia'
+  | 'id'
+  | 'ie'
+  | 'ig'
+  | 'ii'
+  | 'ik'
+  | 'io'
+  | 'is'
+  | 'it'
+  | 'iu'
+  | 'ja'
+  | 'jv'
+  | 'ka'
+  | 'kg'
+  | 'ki'
+  | 'kj'
+  | 'kk'
+  | 'kl'
+  | 'km'
+  | 'kn'
+  | 'ko'
+  | 'kr'
+  | 'ks'
+  | 'ku'
+  | 'kv'
+  | 'kw'
+  | 'ky'
+  | 'la'
+  | 'lb'
+  | 'lg'
+  | 'li'
+  | 'ln'
+  | 'lo'
+  | 'lt'
+  | 'lu'
+  | 'lv'
+  | 'mg'
+  | 'mh'
+  | 'mi'
+  | 'mk'
+  | 'ml'
+  | 'mn'
+  | 'mr'
+  | 'ms'
+  | 'mt'
+  | 'my'
+  | 'na'
+  | 'nb'
+  | 'nd'
+  | 'ne'
+  | 'ng'
+  | 'nl'
+  | 'nn'
+  | 'no'
+  | 'nr'
+  | 'nv'
+  | 'ny'
+  | 'oc'
+  | 'oj'
+  | 'om'
+  | 'or'
+  | 'os'
+  | 'pa'
+  | 'pi'
+  | 'pl'
+  | 'ps'
+  | 'pt'
+  | 'qu'
+  | 'rm'
+  | 'rn'
+  | 'ro'
+  | 'ru'
+  | 'rw'
+  | 'sa'
+  | 'sc'
+  | 'sd'
+  | 'se'
+  | 'sg'
+  | 'si'
+  | 'sk'
+  | 'sl'
+  | 'sm'
+  | 'sn'
+  | 'so'
+  | 'sq'
+  | 'sr'
+  | 'ss'
+  | 'st'
+  | 'su'
+  | 'sv'
+  | 'sw'
+  | 'ta'
+  | 'te'
+  | 'tg'
+  | 'th'
+  | 'ti'
+  | 'tk'
+  | 'tl'
+  | 'tn'
+  | 'to'
+  | 'tr'
+  | 'ts'
+  | 'tt'
+  | 'tw'
+  | 'ty'
+  | 'ug'
+  | 'uk'
+  | 'ur'
+  | 'uz'
+  | 've'
+  | 'vi'
+  | 'vo'
+  | 'wa'
+  | 'wo'
+  | 'xh'
+  | 'yi'
+  | 'yo'
+  | 'za'
+  | 'zh';
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Canton".
+ */
+export type Canton =
+  | 'AG'
+  | 'AR'
+  | 'AI'
+  | 'BS'
+  | 'BL'
+  | 'BE'
+  | 'FR'
+  | 'GE'
+  | 'GL'
+  | 'GR'
+  | 'JU'
+  | 'LU'
+  | 'NE'
+  | 'NW'
+  | 'OW'
+  | 'SG'
+  | 'SH'
+  | 'SO'
+  | 'SZ'
+  | 'TG'
+  | 'TI'
+  | 'UR'
+  | 'VD'
+  | 'VS'
+  | 'ZG'
+  | 'ZH';
+/**
  * Supported timezones in IANA format.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -69,6 +335,20 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    categories: Category;
+    influencers: Influencer;
+    experts: Expert;
+    brands: Brand;
+    locations: Location;
+    awards: Award;
+    'award-shows': AwardShow;
+    'creator-challenges': CreatorChallenge;
+    'social-media-campaigns': SocialMediaCampaign;
+    'network-events': NetworkEvent;
+    'certified-influencers': CertifiedInfluencer;
+    agencies: Agency;
+    conventions: Convention;
+    polyglot_messages: PolyglotMessage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -77,15 +357,35 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    categories: CategoriesSelect<false> | CategoriesSelect<true>;
+    influencers: InfluencersSelect<false> | InfluencersSelect<true>;
+    experts: ExpertsSelect<false> | ExpertsSelect<true>;
+    brands: BrandsSelect<false> | BrandsSelect<true>;
+    locations: LocationsSelect<false> | LocationsSelect<true>;
+    awards: AwardsSelect<false> | AwardsSelect<true>;
+    'award-shows': AwardShowsSelect<false> | AwardShowsSelect<true>;
+    'creator-challenges': CreatorChallengesSelect<false> | CreatorChallengesSelect<true>;
+    'social-media-campaigns': SocialMediaCampaignsSelect<false> | SocialMediaCampaignsSelect<true>;
+    'network-events': NetworkEventsSelect<false> | NetworkEventsSelect<true>;
+    'certified-influencers': CertifiedInfluencersSelect<false> | CertifiedInfluencersSelect<true>;
+    agencies: AgenciesSelect<false> | AgenciesSelect<true>;
+    conventions: ConventionsSelect<false> | ConventionsSelect<true>;
+    polyglot_messages: PolyglotMessagesSelect<false> | PolyglotMessagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
-    defaultIDType: string;
+    defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    company: Company;
+    network: Network;
+  };
+  globalsSelect: {
+    company: CompanySelect<false> | CompanySelect<true>;
+    network: NetworkSelect<false> | NetworkSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -118,7 +418,7 @@ export interface UserAuthOperations {
  * via the `definition` "users".
  */
 export interface User {
-  id: string;
+  id: number;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -142,8 +442,8 @@ export interface User {
  * via the `definition` "media".
  */
 export interface Media {
-  id: string;
-  alt: string;
+  id: number;
+  alt?: string | null;
   updatedAt: string;
   createdAt: string;
   url?: string | null;
@@ -158,23 +458,369 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  image: number | Media;
+  name: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "influencers".
+ */
+export interface Influencer {
+  id: number;
+  name: string;
+  socials?: Socials;
+  image: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experts".
+ */
+export interface Expert {
+  id: number;
+  name: string;
+  description: string;
+  socials?: Socials;
+  image: number | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "brands".
+ */
+export interface Brand {
+  id: number;
+  image: number | Media;
+  name: string;
+  website: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations".
+ */
+export interface Location {
+  id: number;
+  name: string;
+  city: string;
+  url: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "awards".
+ */
+export interface Award {
+  id: number;
+  year: number;
+  newcomerScoutDeadline?: string | null;
+  newcomerScoutUrl?: string | null;
+  nominationDeadline?: string | null;
+  nominationUrl?: string | null;
+  votingDeadline?: string | null;
+  categories?:
+    | {
+        category: number | Category;
+        sponsor?: (number | null) | Brand;
+        winner?: (number | null) | Media;
+        nominees?:
+          | {
+              influencer: number | Influencer;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  jury?:
+    | {
+        expert: number | Expert;
+        id?: string | null;
+      }[]
+    | null;
+  partners?:
+    | {
+        brand: number | Brand;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "award-shows".
+ */
+export interface AwardShow {
+  id: number;
+  award: number | Award;
+  date: string;
+  location: number | Location;
+  registrationUrl?: string | null;
+  schedule?: Schedule;
+  videoUrl?: string | null;
+  images?: (number | Media)[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "creator-challenges".
+ */
+export interface CreatorChallenge {
+  id: number;
+  image: number | Media;
+  organizer: number | Brand;
+  location?: (number | null) | Location;
+  dateFrom?: string | null;
+  dateTo?: string | null;
+  registrationUrl?: string | null;
+  title: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "social-media-campaigns".
+ */
+export interface SocialMediaCampaign {
+  id: number;
+  image: number | Media;
+  organizer: number | Brand;
+  location?: (number | null) | Location;
+  dateFrom?: string | null;
+  dateTo?: string | null;
+  registrationUrl?: string | null;
+  title: string;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "network-events".
+ */
+export interface NetworkEvent {
+  id: number;
+  logo: number | Media;
+  image: number | Media;
+  location: number | Location;
+  dateFrom?: string | null;
+  dateTo?: string | null;
+  registrationUrl?: string | null;
+  title: string;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certified-influencers".
+ */
+export interface CertifiedInfluencer {
+  id: number;
+  image: number | Media;
+  categories: (number | Category)[];
+  birthdate: string;
+  languages: Language;
+  residence: Canton;
+  influencer: number | Influencer;
+  bio: string;
+  interests: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "agencies".
+ */
+export interface Agency {
+  id: number;
+  logo: number | Media;
+  image: number | Media;
+  name: string;
+  website: string;
+  email: string;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "conventions".
+ */
+export interface Convention {
+  id: number;
+  title: string;
+  date: string;
+  location: number | Location;
+  registrationUrl?: string | null;
+  partners?: (number | Brand)[] | null;
+  schedule?: Schedule;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "polyglot_messages".
+ */
+export interface PolyglotMessage {
+  id: number;
+  locale: string;
+  content:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
-  id: string;
+  id: number;
   document?:
     | ({
         relationTo: 'users';
-        value: string | User;
+        value: number | User;
       } | null)
     | ({
         relationTo: 'media';
-        value: string | Media;
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'categories';
+        value: number | Category;
+      } | null)
+    | ({
+        relationTo: 'influencers';
+        value: number | Influencer;
+      } | null)
+    | ({
+        relationTo: 'experts';
+        value: number | Expert;
+      } | null)
+    | ({
+        relationTo: 'brands';
+        value: number | Brand;
+      } | null)
+    | ({
+        relationTo: 'locations';
+        value: number | Location;
+      } | null)
+    | ({
+        relationTo: 'awards';
+        value: number | Award;
+      } | null)
+    | ({
+        relationTo: 'award-shows';
+        value: number | AwardShow;
+      } | null)
+    | ({
+        relationTo: 'creator-challenges';
+        value: number | CreatorChallenge;
+      } | null)
+    | ({
+        relationTo: 'social-media-campaigns';
+        value: number | SocialMediaCampaign;
+      } | null)
+    | ({
+        relationTo: 'network-events';
+        value: number | NetworkEvent;
+      } | null)
+    | ({
+        relationTo: 'certified-influencers';
+        value: number | CertifiedInfluencer;
+      } | null)
+    | ({
+        relationTo: 'agencies';
+        value: number | Agency;
+      } | null)
+    | ({
+        relationTo: 'conventions';
+        value: number | Convention;
+      } | null)
+    | ({
+        relationTo: 'polyglot_messages';
+        value: number | PolyglotMessage;
       } | null);
   globalSlug?: string | null;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   updatedAt: string;
   createdAt: string;
@@ -184,10 +830,10 @@ export interface PayloadLockedDocument {
  * via the `definition` "payload-preferences".
  */
 export interface PayloadPreference {
-  id: string;
+  id: number;
   user: {
     relationTo: 'users';
-    value: string | User;
+    value: number | User;
   };
   key?: string | null;
   value?:
@@ -207,7 +853,7 @@ export interface PayloadPreference {
  * via the `definition` "payload-migrations".
  */
 export interface PayloadMigration {
-  id: string;
+  id: number;
   name?: string | null;
   batch?: number | null;
   updatedAt: string;
@@ -255,6 +901,239 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories_select".
+ */
+export interface CategoriesSelect<T extends boolean = true> {
+  image?: T;
+  name?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "influencers_select".
+ */
+export interface InfluencersSelect<T extends boolean = true> {
+  name?: T;
+  socials?: T | SocialsSelect<T>;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Socials_select".
+ */
+export interface SocialsSelect<T extends boolean = true> {
+  platform?: T;
+  url?: T;
+  id?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "experts_select".
+ */
+export interface ExpertsSelect<T extends boolean = true> {
+  name?: T;
+  description?: T;
+  socials?: T | SocialsSelect<T>;
+  image?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "brands_select".
+ */
+export interface BrandsSelect<T extends boolean = true> {
+  image?: T;
+  name?: T;
+  website?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "locations_select".
+ */
+export interface LocationsSelect<T extends boolean = true> {
+  name?: T;
+  city?: T;
+  url?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "awards_select".
+ */
+export interface AwardsSelect<T extends boolean = true> {
+  year?: T;
+  newcomerScoutDeadline?: T;
+  newcomerScoutUrl?: T;
+  nominationDeadline?: T;
+  nominationUrl?: T;
+  votingDeadline?: T;
+  categories?:
+    | T
+    | {
+        category?: T;
+        sponsor?: T;
+        winner?: T;
+        nominees?:
+          | T
+          | {
+              influencer?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  jury?:
+    | T
+    | {
+        expert?: T;
+        id?: T;
+      };
+  partners?:
+    | T
+    | {
+        brand?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "award-shows_select".
+ */
+export interface AwardShowsSelect<T extends boolean = true> {
+  award?: T;
+  date?: T;
+  location?: T;
+  registrationUrl?: T;
+  schedule?: T | ScheduleSelect<T>;
+  videoUrl?: T;
+  images?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Schedule_select".
+ */
+export interface ScheduleSelect<T extends boolean = true> {
+  title?: T;
+  from?: T;
+  to?: T;
+  room?: T;
+  description?: T;
+  id?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "creator-challenges_select".
+ */
+export interface CreatorChallengesSelect<T extends boolean = true> {
+  image?: T;
+  organizer?: T;
+  location?: T;
+  dateFrom?: T;
+  dateTo?: T;
+  registrationUrl?: T;
+  title?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "social-media-campaigns_select".
+ */
+export interface SocialMediaCampaignsSelect<T extends boolean = true> {
+  image?: T;
+  organizer?: T;
+  location?: T;
+  dateFrom?: T;
+  dateTo?: T;
+  registrationUrl?: T;
+  title?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "network-events_select".
+ */
+export interface NetworkEventsSelect<T extends boolean = true> {
+  logo?: T;
+  image?: T;
+  location?: T;
+  dateFrom?: T;
+  dateTo?: T;
+  registrationUrl?: T;
+  title?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certified-influencers_select".
+ */
+export interface CertifiedInfluencersSelect<T extends boolean = true> {
+  image?: T;
+  categories?: T;
+  birthdate?: T;
+  languages?: T;
+  residence?: T;
+  influencer?: T;
+  bio?: T;
+  interests?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "agencies_select".
+ */
+export interface AgenciesSelect<T extends boolean = true> {
+  logo?: T;
+  image?: T;
+  name?: T;
+  website?: T;
+  email?: T;
+  description?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "conventions_select".
+ */
+export interface ConventionsSelect<T extends boolean = true> {
+  title?: T;
+  date?: T;
+  location?: T;
+  registrationUrl?: T;
+  partners?: T;
+  schedule?: T | ScheduleSelect<T>;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "polyglot_messages_select".
+ */
+export interface PolyglotMessagesSelect<T extends boolean = true> {
+  locale?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents_select".
  */
 export interface PayloadLockedDocumentsSelect<T extends boolean = true> {
@@ -284,6 +1163,60 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company".
+ */
+export interface Company {
+  id: number;
+  name: string;
+  address: string;
+  whatsappUrl: string;
+  contactUrl: string;
+  newsletterUrl: string;
+  socials?: Socials;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "network".
+ */
+export interface Network {
+  id: number;
+  influencerApplicationUrl: string;
+  agencyApplicationUrl: string;
+  cooperationApplicationUrl: string;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "company_select".
+ */
+export interface CompanySelect<T extends boolean = true> {
+  name?: T;
+  address?: T;
+  whatsappUrl?: T;
+  contactUrl?: T;
+  newsletterUrl?: T;
+  socials?: T | SocialsSelect<T>;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "network_select".
+ */
+export interface NetworkSelect<T extends boolean = true> {
+  influencerApplicationUrl?: T;
+  agencyApplicationUrl?: T;
+  cooperationApplicationUrl?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

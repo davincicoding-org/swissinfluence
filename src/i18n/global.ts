@@ -1,4 +1,4 @@
-import type { ResolvedMessagesSchema } from "@davincicoding/cms/messages";
+import type { ResolvedMessagesSchema } from "payload-polyglot";
 
 import type { MESSAGES_SCHEMA, SupportedLocale } from "./config";
 

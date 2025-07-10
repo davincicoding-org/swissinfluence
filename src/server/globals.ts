@@ -1,8 +1,8 @@
 "use server";
 
 import type { GlobalData, GlobalId } from "@/react-admin/cms/globals";
-import { GLOBALS } from "@/react-admin/cms/globals";
 import { db } from "@/database";
+import { GLOBALS } from "@/react-admin/cms/globals";
 
 import { cachedRequest } from "./cache";
 
@@ -12,6 +12,7 @@ export const fetchGlobal = cachedRequest(
       where: (t, { eq }) => eq(t.name, name),
     });
 
+    // @ts-expect-error - TODO: fix this
     return GLOBALS[name].parse(global?.data);
   },
   ["globals"],
