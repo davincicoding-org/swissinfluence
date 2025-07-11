@@ -29,7 +29,7 @@ export function AwardCategories({
   return (
     <section
       id={id}
-      className={cn("relative flex flex-col gap-[25dvh] pb-[25dvh]", className)}
+      className={cn("relative flex flex-col gap-[25dvh] pb-[50dvh]", className)}
     >
       <div className="container sticky top-0 grid h-[25dvh] items-end pb-4">
         <h3 className="flex items-end justify-between text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
@@ -46,7 +46,7 @@ export function AwardCategories({
       </div>
 
       {categories.map(({ category, nominees, sponsor }, index) => (
-        <div key={category.id} className="container sticky top-0 pt-[25dvh]">
+        <div key={category.id} className="container sticky top-[25dvh]">
           <CategoryCard
             category={category}
             nominees={nominees}
