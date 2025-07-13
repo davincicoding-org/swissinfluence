@@ -7,7 +7,8 @@ import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
   dsn: "https://c91caae9c8e3cbdfaea4c6656c4ee101@o4508201138388992.ingest.de.sentry.io/4508478306713680",
+  tracesSampleRate: process.env.NODE_ENV === "production" ? 0.1 : 1,
 
-  // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
-  tracesSampleRate: 1,
+  // Disable OpenTelemetry instrumentation to prevent require-in-the-middle errors
+  skipOpenTelemetrySetup: true,
 });
