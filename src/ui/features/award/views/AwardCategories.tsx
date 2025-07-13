@@ -98,7 +98,7 @@ function CategoryCard({
       <div className="relative">
         <Image
           src={category.image.src}
-          alt={category.title[locale]!}
+          alt={category.title[locale]}
           fill
           className="absolute inset-0 object-cover object-center"
         />

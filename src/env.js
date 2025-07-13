@@ -38,7 +38,7 @@ export const env = createEnv({
 
       return process.env.__NEXT_PRIVATE_ORIGIN ?? "https://localhost:3000";
     })(),
-    POSTGRES_URL: process.env.POSTGRES_URL,
+    POSTGRES_URL: process.env.POSTGRES_URL?.replace("sslmode=require&", ""),
     PAYLOAD_SECRET: process.env.PAYLOAD_SECRET,
     SUPABASE_URL: process.env.SUPABASE_URL,
     S3_BUCKET: process.env.S3_BUCKET,

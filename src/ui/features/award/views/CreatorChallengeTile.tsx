@@ -22,7 +22,7 @@ export function CreatorChallengeTile({
 
   return (
     <ExpandableCard
-      title={title[locale]!}
+      title={title[locale]}
       description={organizer.name}
       image={image}
       logo={
@@ -41,7 +41,7 @@ export function CreatorChallengeTile({
       content={
         <div className="flex flex-col gap-4">
           <RichText
-            content={content[locale]!}
+            content={content[locale]}
             className="prose prose-p:m-1 prose-li:m-0"
           />
         </div>

@@ -30,7 +30,7 @@ export function InfluencerDiscovery({
     () =>
       pool.map<ComboboxItem>(({ category: { id, title } }) => ({
         value: id.toString(),
-        label: title[locale]!,
+        label: title[locale],
       })),
     [pool, locale],
   );

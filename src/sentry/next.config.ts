@@ -2,10 +2,12 @@
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially useful
  * for Docker builds.
  */
-import "./src/env.js";
+// TODO temp disabled
+// import "./src/env.js";
 
 import type { NextConfig } from "next";
 import { withPayload } from "@payloadcms/next/withPayload";
+import { withSentryConfig } from "@sentry/nextjs";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const config: NextConfig = {
@@ -24,4 +26,14 @@ const config: NextConfig = {
 
 const withNextIntl = createNextIntlPlugin();
 
-export default withPayload(withNextIntl(config));
+// Injected content via Sentry wizard below
+
+export default withPayload(
+  withSentryConfig(withNextIntl(config), {
+    org: "davinci-coding-gmbh",
+    project: "swissinfluence",
+    silent: !process.env.CI,
+    // tunnelRoute: "/monitoring",
+    disableLogger: true,
+  }),
+);

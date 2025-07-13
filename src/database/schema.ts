@@ -8,13 +8,15 @@ import {
   uniqueIndex,
 } from "drizzle-orm/pg-core";
 
+import type { SupportedLocale } from "@/i18n/config";
+
 import type { SocialMedia } from "./enums";
 import { CantonEnum, LanguageCodeEnum } from "./enums";
 
 // MARK: JSON Schemas
 
-type Translatable = Record<string, string>;
-// type Translatable = Record<SupportedLocale, string>;
+// type Translatable = Record<string, string>;
+type Translatable = Record<SupportedLocale, string>;
 
 // MARK: CMS
 

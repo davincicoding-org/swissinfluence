@@ -158,7 +158,7 @@ export function EventTile({
               <p className="mt-8 text-3xl">{title[locale]}</p>
 
               <RichText
-                content={description[locale]!}
+                content={description[locale]}
                 className="prose-lg py-6 text-white"
               />
               <Button

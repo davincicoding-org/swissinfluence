@@ -41,7 +41,7 @@ export function CampaignTile({
 
   return (
     <ExpandableCard
-      title={title[locale]!}
+      title={title[locale]}
       badge={badge}
       description={organizer.name}
       image={image}
@@ -61,7 +61,7 @@ export function CampaignTile({
       content={
         <div className="flex flex-col gap-4">
           <RichText
-            content={content[locale]!}
+            content={content[locale]}
             className="prose prose-p:m-1 prose-li:m-0"
           />
         </div>
