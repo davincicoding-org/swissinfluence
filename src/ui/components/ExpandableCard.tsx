@@ -23,7 +23,7 @@ import { cn } from "@/ui/utils";
 interface ExpandableCardProps {
   title: string;
   description: string;
-  image: ImageAsset;
+  image: Omit<ImageAsset, "id" | "name">;
   logo?: ReactNode;
   content: ReactNode;
   badge?: ReactNode;

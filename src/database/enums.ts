@@ -50,6 +50,8 @@ export const CantonEnum = z.enum([
   "ZH",
 ]);
 
+export type Canton = z.infer<typeof CantonEnum>;
+
 export const LanguageCodeEnum = z.enum([
   "aa",
   "ab",
@@ -234,3 +236,5 @@ export const LanguageCodeEnum = z.enum([
   "za",
   "zh",
 ]);
+
+export type Language = z.infer<typeof LanguageCodeEnum>;

@@ -104,7 +104,7 @@ export const Awards: CollectionConfig = {
                           },
                         },
                         {
-                          name: "winner",
+                          name: "winnerImage",
                           type: "upload",
                           relationTo: "profile-pictures",
                         },

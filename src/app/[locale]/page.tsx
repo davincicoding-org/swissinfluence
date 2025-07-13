@@ -1,16 +1,26 @@
-import { fetchMediaLibrary } from "@/server/media-library";
+import IMAGES from "@/backup/images.json";
+import VIDEOS from "@/backup/videos.json";
 import { LandingPage as View } from "@/ui/features/landing";
 
 export default async function LandingPage() {
-  const media = await fetchMediaLibrary();
   return (
     <View
-      heroVideo={media.LANDING.HERO}
+      heroVideo={
+        VIDEOS.find((item) => item.name === "HERO" && item.group === "LANDING")!
+      }
       images={{
-        award: media.AWARD.HERO,
-        convention: media.CONVENTION.HERO,
-        network: media.NETWORK.HERO,
-        academy: media.ACADEMY.HERO,
+        award: IMAGES.find(
+          (item) => item.name === "HERO" && item.group === "AWARD",
+        )!,
+        convention: IMAGES.find(
+          (item) => item.name === "HERO" && item.group === "CONVENTION",
+        )!,
+        network: IMAGES.find(
+          (item) => item.name === "HERO" && item.group === "NETWORK",
+        )!,
+        academy: IMAGES.find(
+          (item) => item.name === "HERO" && item.group === "ACADEMY",
+        )!,
       }}
     />
   );

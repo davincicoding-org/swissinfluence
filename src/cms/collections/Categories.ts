@@ -1,7 +1,5 @@
 import type { CollectionConfig } from "payload";
 
-import { SocialsField } from "../shared/SocialsField";
-
 export const Categories: CollectionConfig = {
   slug: "categories",
   admin: {

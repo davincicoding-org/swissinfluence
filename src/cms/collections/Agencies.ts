@@ -55,7 +55,7 @@ export const Agencies: CollectionConfig = {
             },
             {
               name: "description",
-              type: "richText",
+              type: "textarea",
               localized: true,
               required: true,
             },

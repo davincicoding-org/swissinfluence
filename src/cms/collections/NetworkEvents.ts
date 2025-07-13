@@ -90,7 +90,7 @@ export const NetworkEvents: CollectionConfig = {
               localized: true,
             },
             {
-              name: "description",
+              name: "content",
               type: "richText",
               localized: true,
               required: true,

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "run-script": "tsx src/script.ts",
+    "run-script": "tsx ./script.ts",
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
@@ -75,6 +75,7 @@
     "react-hook-form": "7.56.4",
     "react-router-dom": "^7.1.1",
     "sharp": "^0.34.2",
+    "slugify": "^1.6.6",
     "tailwind-merge": "^3.3.0",
     "zod": "^3.25.7"
   },

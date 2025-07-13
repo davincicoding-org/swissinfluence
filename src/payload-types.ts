@@ -13,15 +13,15 @@
 export type Socials =
   | {
       platform:
-        | "INSTAGRAM"
-        | "TIKTOK"
-        | "LINKEDIN"
-        | "YOUTUBE"
-        | "APPLE_PODCAST"
-        | "SPOTIFY"
-        | "TWITCH"
-        | "WEBSITE"
-        | "WHATSAPP";
+        | 'INSTAGRAM'
+        | 'TIKTOK'
+        | 'LINKEDIN'
+        | 'YOUTUBE'
+        | 'APPLE_PODCAST'
+        | 'SPOTIFY'
+        | 'TWITCH'
+        | 'WEBSITE'
+        | 'WHATSAPP';
       url: string;
       id?: string | null;
     }[]
@@ -44,15 +44,8 @@ export type Schedule =
             version: number;
             [k: string]: unknown;
           }[];
-          direction: ("ltr" | "rtl") | null;
-          format:
-            | "left"
-            | "start"
-            | "center"
-            | "right"
-            | "end"
-            | "justify"
-            | "";
+          direction: ('ltr' | 'rtl') | null;
+          format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
           indent: number;
           version: number;
         };
@@ -65,220 +58,221 @@ export type Schedule =
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "Language".
  */
-export type Language =
-  | "aa"
-  | "ab"
-  | "ae"
-  | "af"
-  | "ak"
-  | "am"
-  | "an"
-  | "ar"
-  | "as"
-  | "av"
-  | "ay"
-  | "az"
-  | "ba"
-  | "be"
-  | "bg"
-  | "bi"
-  | "bm"
-  | "bn"
-  | "bo"
-  | "br"
-  | "bs"
-  | "ca"
-  | "ce"
-  | "ch"
-  | "co"
-  | "cr"
-  | "cs"
-  | "cu"
-  | "cv"
-  | "cy"
-  | "da"
-  | "de"
-  | "dv"
-  | "dz"
-  | "ee"
-  | "el"
-  | "en"
-  | "eo"
-  | "es"
-  | "et"
-  | "eu"
-  | "fa"
-  | "ff"
-  | "fi"
-  | "fj"
-  | "fo"
-  | "fr"
-  | "fy"
-  | "ga"
-  | "gd"
-  | "gl"
-  | "gn"
-  | "gu"
-  | "gv"
-  | "ha"
-  | "he"
-  | "hi"
-  | "ho"
-  | "hr"
-  | "ht"
-  | "hu"
-  | "hy"
-  | "hz"
-  | "ia"
-  | "id"
-  | "ie"
-  | "ig"
-  | "ii"
-  | "ik"
-  | "io"
-  | "is"
-  | "it"
-  | "iu"
-  | "ja"
-  | "jv"
-  | "ka"
-  | "kg"
-  | "ki"
-  | "kj"
-  | "kk"
-  | "kl"
-  | "km"
-  | "kn"
-  | "ko"
-  | "kr"
-  | "ks"
-  | "ku"
-  | "kv"
-  | "kw"
-  | "ky"
-  | "la"
-  | "lb"
-  | "lg"
-  | "li"
-  | "ln"
-  | "lo"
-  | "lt"
-  | "lu"
-  | "lv"
-  | "mg"
-  | "mh"
-  | "mi"
-  | "mk"
-  | "ml"
-  | "mn"
-  | "mr"
-  | "ms"
-  | "mt"
-  | "my"
-  | "na"
-  | "nb"
-  | "nd"
-  | "ne"
-  | "ng"
-  | "nl"
-  | "nn"
-  | "no"
-  | "nr"
-  | "nv"
-  | "ny"
-  | "oc"
-  | "oj"
-  | "om"
-  | "or"
-  | "os"
-  | "pa"
-  | "pi"
-  | "pl"
-  | "ps"
-  | "pt"
-  | "qu"
-  | "rm"
-  | "rn"
-  | "ro"
-  | "ru"
-  | "rw"
-  | "sa"
-  | "sc"
-  | "sd"
-  | "se"
-  | "sg"
-  | "si"
-  | "sk"
-  | "sl"
-  | "sm"
-  | "sn"
-  | "so"
-  | "sq"
-  | "sr"
-  | "ss"
-  | "st"
-  | "su"
-  | "sv"
-  | "sw"
-  | "ta"
-  | "te"
-  | "tg"
-  | "th"
-  | "ti"
-  | "tk"
-  | "tl"
-  | "tn"
-  | "to"
-  | "tr"
-  | "ts"
-  | "tt"
-  | "tw"
-  | "ty"
-  | "ug"
-  | "uk"
-  | "ur"
-  | "uz"
-  | "ve"
-  | "vi"
-  | "vo"
-  | "wa"
-  | "wo"
-  | "xh"
-  | "yi"
-  | "yo"
-  | "za"
-  | "zh";
+export type Language = (
+  | 'aa'
+  | 'ab'
+  | 'ae'
+  | 'af'
+  | 'ak'
+  | 'am'
+  | 'an'
+  | 'ar'
+  | 'as'
+  | 'av'
+  | 'ay'
+  | 'az'
+  | 'ba'
+  | 'be'
+  | 'bg'
+  | 'bi'
+  | 'bm'
+  | 'bn'
+  | 'bo'
+  | 'br'
+  | 'bs'
+  | 'ca'
+  | 'ce'
+  | 'ch'
+  | 'co'
+  | 'cr'
+  | 'cs'
+  | 'cu'
+  | 'cv'
+  | 'cy'
+  | 'da'
+  | 'de'
+  | 'dv'
+  | 'dz'
+  | 'ee'
+  | 'el'
+  | 'en'
+  | 'eo'
+  | 'es'
+  | 'et'
+  | 'eu'
+  | 'fa'
+  | 'ff'
+  | 'fi'
+  | 'fj'
+  | 'fo'
+  | 'fr'
+  | 'fy'
+  | 'ga'
+  | 'gd'
+  | 'gl'
+  | 'gn'
+  | 'gu'
+  | 'gv'
+  | 'ha'
+  | 'he'
+  | 'hi'
+  | 'ho'
+  | 'hr'
+  | 'ht'
+  | 'hu'
+  | 'hy'
+  | 'hz'
+  | 'ia'
+  | 'id'
+  | 'ie'
+  | 'ig'
+  | 'ii'
+  | 'ik'
+  | 'io'
+  | 'is'
+  | 'it'
+  | 'iu'
+  | 'ja'
+  | 'jv'
+  | 'ka'
+  | 'kg'
+  | 'ki'
+  | 'kj'
+  | 'kk'
+  | 'kl'
+  | 'km'
+  | 'kn'
+  | 'ko'
+  | 'kr'
+  | 'ks'
+  | 'ku'
+  | 'kv'
+  | 'kw'
+  | 'ky'
+  | 'la'
+  | 'lb'
+  | 'lg'
+  | 'li'
+  | 'ln'
+  | 'lo'
+  | 'lt'
+  | 'lu'
+  | 'lv'
+  | 'mg'
+  | 'mh'
+  | 'mi'
+  | 'mk'
+  | 'ml'
+  | 'mn'
+  | 'mr'
+  | 'ms'
+  | 'mt'
+  | 'my'
+  | 'na'
+  | 'nb'
+  | 'nd'
+  | 'ne'
+  | 'ng'
+  | 'nl'
+  | 'nn'
+  | 'no'
+  | 'nr'
+  | 'nv'
+  | 'ny'
+  | 'oc'
+  | 'oj'
+  | 'om'
+  | 'or'
+  | 'os'
+  | 'pa'
+  | 'pi'
+  | 'pl'
+  | 'ps'
+  | 'pt'
+  | 'qu'
+  | 'rm'
+  | 'rn'
+  | 'ro'
+  | 'ru'
+  | 'rw'
+  | 'sa'
+  | 'sc'
+  | 'sd'
+  | 'se'
+  | 'sg'
+  | 'si'
+  | 'sk'
+  | 'sl'
+  | 'sm'
+  | 'sn'
+  | 'so'
+  | 'sq'
+  | 'sr'
+  | 'ss'
+  | 'st'
+  | 'su'
+  | 'sv'
+  | 'sw'
+  | 'ta'
+  | 'te'
+  | 'tg'
+  | 'th'
+  | 'ti'
+  | 'tk'
+  | 'tl'
+  | 'tn'
+  | 'to'
+  | 'tr'
+  | 'ts'
+  | 'tt'
+  | 'tw'
+  | 'ty'
+  | 'ug'
+  | 'uk'
+  | 'ur'
+  | 'uz'
+  | 've'
+  | 'vi'
+  | 'vo'
+  | 'wa'
+  | 'wo'
+  | 'xh'
+  | 'yi'
+  | 'yo'
+  | 'za'
+  | 'zh'
+)[];
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "Canton".
  */
 export type Canton =
-  | "AG"
-  | "AR"
-  | "AI"
-  | "BS"
-  | "BL"
-  | "BE"
-  | "FR"
-  | "GE"
-  | "GL"
-  | "GR"
-  | "JU"
-  | "LU"
-  | "NE"
-  | "NW"
-  | "OW"
-  | "SG"
-  | "SH"
-  | "SO"
-  | "SZ"
-  | "TG"
-  | "TI"
-  | "UR"
-  | "VD"
-  | "VS"
-  | "ZG"
-  | "ZH";
+  | 'AG'
+  | 'AR'
+  | 'AI'
+  | 'BS'
+  | 'BL'
+  | 'BE'
+  | 'FR'
+  | 'GE'
+  | 'GL'
+  | 'GR'
+  | 'JU'
+  | 'LU'
+  | 'NE'
+  | 'NW'
+  | 'OW'
+  | 'SG'
+  | 'SH'
+  | 'SO'
+  | 'SZ'
+  | 'TG'
+  | 'TI'
+  | 'UR'
+  | 'VD'
+  | 'VS'
+  | 'ZG'
+  | 'ZH';
 /**
  * Supported timezones in IANA format.
  *
@@ -286,53 +280,53 @@ export type Canton =
  * via the `definition` "supportedTimezones".
  */
 export type SupportedTimezones =
-  | "Pacific/Midway"
-  | "Pacific/Niue"
-  | "Pacific/Honolulu"
-  | "Pacific/Rarotonga"
-  | "America/Anchorage"
-  | "Pacific/Gambier"
-  | "America/Los_Angeles"
-  | "America/Tijuana"
-  | "America/Denver"
-  | "America/Phoenix"
-  | "America/Chicago"
-  | "America/Guatemala"
-  | "America/New_York"
-  | "America/Bogota"
-  | "America/Caracas"
-  | "America/Santiago"
-  | "America/Buenos_Aires"
-  | "America/Sao_Paulo"
-  | "Atlantic/South_Georgia"
-  | "Atlantic/Azores"
-  | "Atlantic/Cape_Verde"
-  | "Europe/London"
-  | "Europe/Berlin"
-  | "Africa/Lagos"
-  | "Europe/Athens"
-  | "Africa/Cairo"
-  | "Europe/Moscow"
-  | "Asia/Riyadh"
-  | "Asia/Dubai"
-  | "Asia/Baku"
-  | "Asia/Karachi"
-  | "Asia/Tashkent"
-  | "Asia/Calcutta"
-  | "Asia/Dhaka"
-  | "Asia/Almaty"
-  | "Asia/Jakarta"
-  | "Asia/Bangkok"
-  | "Asia/Shanghai"
-  | "Asia/Singapore"
-  | "Asia/Tokyo"
-  | "Asia/Seoul"
-  | "Australia/Brisbane"
-  | "Australia/Sydney"
-  | "Pacific/Guam"
-  | "Pacific/Noumea"
-  | "Pacific/Auckland"
-  | "Pacific/Fiji";
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Brisbane'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
 
 export interface Config {
   auth: {
@@ -343,64 +337,48 @@ export interface Config {
     users: User;
     photos: Photo;
     logos: Logo;
-    "profile-pictures": ProfilePicture;
+    'profile-pictures': ProfilePicture;
     categories: Category;
     influencers: Influencer;
     experts: Expert;
     brands: Brand;
     locations: Location;
     awards: Award;
-    "award-shows": AwardShow;
-    "creator-challenges": CreatorChallenge;
-    "social-media-campaigns": SocialMediaCampaign;
-    "network-events": NetworkEvent;
-    "certified-influencers": CertifiedInfluencer;
+    'award-shows': AwardShow;
+    'creator-challenges': CreatorChallenge;
+    'social-media-campaigns': SocialMediaCampaign;
+    'network-events': NetworkEvent;
+    'certified-influencers': CertifiedInfluencer;
     agencies: Agency;
     conventions: Convention;
     polyglot_messages: PolyglotMessage;
-    "payload-locked-documents": PayloadLockedDocument;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'payload-locked-documents': PayloadLockedDocument;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     photos: PhotosSelect<false> | PhotosSelect<true>;
     logos: LogosSelect<false> | LogosSelect<true>;
-    "profile-pictures":
-      | ProfilePicturesSelect<false>
-      | ProfilePicturesSelect<true>;
+    'profile-pictures': ProfilePicturesSelect<false> | ProfilePicturesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     influencers: InfluencersSelect<false> | InfluencersSelect<true>;
     experts: ExpertsSelect<false> | ExpertsSelect<true>;
     brands: BrandsSelect<false> | BrandsSelect<true>;
     locations: LocationsSelect<false> | LocationsSelect<true>;
     awards: AwardsSelect<false> | AwardsSelect<true>;
-    "award-shows": AwardShowsSelect<false> | AwardShowsSelect<true>;
-    "creator-challenges":
-      | CreatorChallengesSelect<false>
-      | CreatorChallengesSelect<true>;
-    "social-media-campaigns":
-      | SocialMediaCampaignsSelect<false>
-      | SocialMediaCampaignsSelect<true>;
-    "network-events": NetworkEventsSelect<false> | NetworkEventsSelect<true>;
-    "certified-influencers":
-      | CertifiedInfluencersSelect<false>
-      | CertifiedInfluencersSelect<true>;
+    'award-shows': AwardShowsSelect<false> | AwardShowsSelect<true>;
+    'creator-challenges': CreatorChallengesSelect<false> | CreatorChallengesSelect<true>;
+    'social-media-campaigns': SocialMediaCampaignsSelect<false> | SocialMediaCampaignsSelect<true>;
+    'network-events': NetworkEventsSelect<false> | NetworkEventsSelect<true>;
+    'certified-influencers': CertifiedInfluencersSelect<false> | CertifiedInfluencersSelect<true>;
     agencies: AgenciesSelect<false> | AgenciesSelect<true>;
     conventions: ConventionsSelect<false> | ConventionsSelect<true>;
-    polyglot_messages:
-      | PolyglotMessagesSelect<false>
-      | PolyglotMessagesSelect<true>;
-    "payload-locked-documents":
-      | PayloadLockedDocumentsSelect<false>
-      | PayloadLockedDocumentsSelect<true>;
-    "payload-preferences":
-      | PayloadPreferencesSelect<false>
-      | PayloadPreferencesSelect<true>;
-    "payload-migrations":
-      | PayloadMigrationsSelect<false>
-      | PayloadMigrationsSelect<true>;
+    polyglot_messages: PolyglotMessagesSelect<false> | PolyglotMessagesSelect<true>;
+    'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
+    'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
+    'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
   };
   db: {
     defaultIDType: number;
@@ -413,9 +391,9 @@ export interface Config {
     company: CompanySelect<false> | CompanySelect<true>;
     network: NetworkSelect<false> | NetworkSelect<true>;
   };
-  locale: null;
+  locale: 'en' | 'de' | 'fr' | 'it';
   user: User & {
-    collection: "users";
+    collection: 'users';
   };
   jobs: {
     tasks: unknown;
@@ -643,7 +621,7 @@ export interface Award {
     | {
         category: number | Category;
         sponsor?: (number | null) | Brand;
-        winner?: (number | null) | ProfilePicture;
+        winnerImage?: (number | null) | ProfilePicture;
         nominees?:
           | {
               influencer: number | Influencer;
@@ -675,7 +653,7 @@ export interface Award {
 export interface AwardShow {
   id: number;
   award: number | Award;
-  date: string;
+  date?: string | null;
   location: number | Location;
   registrationUrl?: string | null;
   schedule?: Schedule;
@@ -705,8 +683,8 @@ export interface CreatorChallenge {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -736,8 +714,8 @@ export interface SocialMediaCampaign {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -759,7 +737,7 @@ export interface NetworkEvent {
   dateTo?: string | null;
   registrationUrl?: string | null;
   title: string;
-  description: {
+  content: {
     root: {
       type: string;
       children: {
@@ -767,8 +745,8 @@ export interface NetworkEvent {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       version: number;
     };
@@ -790,7 +768,7 @@ export interface CertifiedInfluencer {
   residence: Canton;
   influencer: number | Influencer;
   bio: string;
-  interests: string;
+  interests?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -805,21 +783,7 @@ export interface Agency {
   name: string;
   website: string;
   email: string;
-  description: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
+  description: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -865,80 +829,80 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: "users";
+        relationTo: 'users';
         value: number | User;
       } | null)
     | ({
-        relationTo: "photos";
+        relationTo: 'photos';
         value: number | Photo;
       } | null)
     | ({
-        relationTo: "logos";
+        relationTo: 'logos';
         value: number | Logo;
       } | null)
     | ({
-        relationTo: "profile-pictures";
+        relationTo: 'profile-pictures';
         value: number | ProfilePicture;
       } | null)
     | ({
-        relationTo: "categories";
+        relationTo: 'categories';
         value: number | Category;
       } | null)
     | ({
-        relationTo: "influencers";
+        relationTo: 'influencers';
         value: number | Influencer;
       } | null)
     | ({
-        relationTo: "experts";
+        relationTo: 'experts';
         value: number | Expert;
       } | null)
     | ({
-        relationTo: "brands";
+        relationTo: 'brands';
         value: number | Brand;
       } | null)
     | ({
-        relationTo: "locations";
+        relationTo: 'locations';
         value: number | Location;
       } | null)
     | ({
-        relationTo: "awards";
+        relationTo: 'awards';
         value: number | Award;
       } | null)
     | ({
-        relationTo: "award-shows";
+        relationTo: 'award-shows';
         value: number | AwardShow;
       } | null)
     | ({
-        relationTo: "creator-challenges";
+        relationTo: 'creator-challenges';
         value: number | CreatorChallenge;
       } | null)
     | ({
-        relationTo: "social-media-campaigns";
+        relationTo: 'social-media-campaigns';
         value: number | SocialMediaCampaign;
       } | null)
     | ({
-        relationTo: "network-events";
+        relationTo: 'network-events';
         value: number | NetworkEvent;
       } | null)
     | ({
-        relationTo: "certified-influencers";
+        relationTo: 'certified-influencers';
         value: number | CertifiedInfluencer;
       } | null)
     | ({
-        relationTo: "agencies";
+        relationTo: 'agencies';
         value: number | Agency;
       } | null)
     | ({
-        relationTo: "conventions";
+        relationTo: 'conventions';
         value: number | Convention;
       } | null)
     | ({
-        relationTo: "polyglot_messages";
+        relationTo: 'polyglot_messages';
         value: number | PolyglotMessage;
       } | null);
   globalSlug?: string | null;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: number | User;
   };
   updatedAt: string;
@@ -951,7 +915,7 @@ export interface PayloadLockedDocument {
 export interface PayloadPreference {
   id: number;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: number | User;
   };
   key?: string | null;
@@ -1196,7 +1160,7 @@ export interface AwardsSelect<T extends boolean = true> {
     | {
         category?: T;
         sponsor?: T;
-        winner?: T;
+        winnerImage?: T;
         nominees?:
           | T
           | {
@@ -1291,7 +1255,7 @@ export interface NetworkEventsSelect<T extends boolean = true> {
   dateTo?: T;
   registrationUrl?: T;
   title?: T;
-  description?: T;
+  content?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1443,6 +1407,7 @@ export interface Auth {
   [k: string]: unknown;
 }
 
-declare module "payload" {
+
+declare module 'payload' {
   export interface GeneratedTypes extends Config {}
 }

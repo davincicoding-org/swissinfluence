@@ -39,6 +39,7 @@ export const CertifiedInfluencers: CollectionConfig = {
             {
               name: "languages",
               type: "select",
+              hasMany: true,
               interfaceName: "Language",
               required: true,
               options: [
@@ -281,7 +282,6 @@ export const CertifiedInfluencers: CollectionConfig = {
               name: "interests",
               type: "textarea",
               localized: true,
-              required: true,
             },
           ],
         },

@@ -24,6 +24,7 @@ export const ProfilePictures: CollectionConfig = {
       height: 800,
       position: "centre",
       fit: "outside",
+      withoutEnlargement: true,
     },
     imageSizes: [
       {

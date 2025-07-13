@@ -1,0 +1,2285 @@
+[
+  {
+    "firebase_id": "3BeIyTz9qqgWZ5EG6eB2",
+    "id": 2,
+    "image": {
+      "src": "images/certified_influencers/76-1747931684403.webp",
+      "width": 1536,
+      "height": 2304,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQAgCdASoKAA8AAUAmJQBOgMXS22WgS/Vq2gAA/vjKSWvj+1H0D7cG3/Xdzx8Iocd4pmUgg0+mSdTmi1VMmxlSok7L1r7XEiICv3Me1a5KDcfmLq0fVtUZmdb8tuocjlqHItMk1N1F2BE70BB4+WJSbSez6AAA"
+    },
+    "birthdate": "2003-08-11",
+    "residence": "BE",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Hallo, ich bin Sreya, in Bern geboren und aufgewachsen, aber ursprünglich aus Südindien. Als englischsprachige Content Creatoin teile ich meine Gedanken und Erfahrungen zu Lifestyle, Mental Health sowie Studenten- und Arbeitsleben. Mein Fokus liegt darauf, informativer und inspirierender Content zu erstellen. Sei es über soziale Medien oder in meinem Podcast.",
+      "en": "Hallo, ich bin Sreya, in Bern geboren und aufgewachsen, aber ursprünglich aus Südindien. Als englischsprachige Content Creatoin teile ich meine Gedanken und Erfahrungen zu Lifestyle, Mental Health sowie Studenten- und Arbeitsleben. Mein Fokus liegt darauf, informativer und inspirierender Content zu erstellen. Sei es über soziale Medien oder in meinem Podcast.",
+      "fr": "Hallo, ich bin Sreya, in Bern geboren und aufgewachsen, aber ursprünglich aus Südindien. Als englischsprachige Content Creatoin teile ich meine Gedanken und Erfahrungen zu Lifestyle, Mental Health sowie Studenten- und Arbeitsleben. Mein Fokus liegt darauf, informativer und inspirierender Content zu erstellen. Sei es über soziale Medien oder in meinem Podcast.",
+      "it": "Hallo, ich bin Sreya, in Bern geboren und aufgewachsen, aber ursprünglich aus Südindien. Als englischsprachige Content Creatoin teile ich meine Gedanken und Erfahrungen zu Lifestyle, Mental Health sowie Studenten- und Arbeitsleben. Mein Fokus liegt darauf, informativer und inspirierender Content zu erstellen. Sei es über soziale Medien oder in meinem Podcast."
+    },
+    "otherInterests": {
+      "de": "Beauty, Fashion, Technology",
+      "en": "Beauty, Fashion, Technology",
+      "fr": "Beauty, Fashion, Technology",
+      "it": "Beauty, Fashion, Technology"
+    },
+    "influencer": {
+      "firebase_id": "RecAVOslHG0VqSboY4Kb",
+      "id": 76,
+      "name": "sreyadasari",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/sreyadasari/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@sreyadasari?_t=ZN-8ttcf9cOWBi&_r=1&fbclid=PAZXh0bgNhZW0CMTEAAabIJaYLrICUw9dv_SWmehJsuUJoXLZ0wNmT8x9aSVlzubtgWb4jimnge9M_aem_hWOJkVZsPxmrutt1HHUPpw",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/sreyadasari-1747923343062.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAQCdASoKAAoAAUAmJQBOgCPOnMBFPAAA/vZ91re/jYzei5qt7WL2+1A1xLmjlPpWHsT2h+VXD+9pYfWKgnXo8aF4Ncy/HMKws/SvcbGvqVvoww/iD1E6pQJY6SeIe1XM6AAA"
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 36,
+            "title": {
+              "de": "Newcomer",
+              "en": "Newcomer",
+              "fr": "Nouveau Venu",
+              "it": "Novo Arrivato"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "3FgzVHdoHLmLlSVgSIuf",
+    "id": 3,
+    "image": {
+      "src": "images/certified_influencers/92-1747931686298.webp",
+      "width": 1066,
+      "height": 1600,
+      "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwAgCdASoKAA8AAUAmJQBOgMW53xNd//rQAAD++NJ9zCudU6WRM9+Wjjc//53HwKSErlcK4/RCoUr1w25do12RTkXALu+bZVAIkzfXp8IC4QtiXOi1hyjgGuXrwrb9FN0ZbGQJLVX0JH0i1bVIk+arVUAAAA=="
+    },
+    "birthdate": "1984-07-07",
+    "residence": "AG",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Sehr Freundlich Type, Sehr spontan und offen für alles🫶🏼",
+      "en": "Sehr Freundlich Type, Sehr spontan und offen für alles🫶🏼",
+      "fr": "Sehr Freundlich Type, Sehr spontan und offen für alles🫶🏼",
+      "it": "Sehr Freundlich Type, Sehr spontan und offen für alles🫶🏼"
+    },
+    "otherInterests": {
+      "de": "Travel, Hotels, lifestyle",
+      "en": "Travel, Hotels, lifestyle",
+      "fr": "Travel, Hotels, lifestyle",
+      "it": "Travel, Hotels, lifestyle"
+    },
+    "influencer": {
+      "firebase_id": "VmuYvcevMhEEabhZZ4Vx",
+      "id": 92,
+      "name": "marcoxmarquess",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/marcoxmarques?igshid=YTQwZjQ0NmI0OA%3D%3D",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "http://www.tiktok.com/@swiss_beautiful",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/marcoxmarquess-1747923358066.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQAgCdASoKAAoAAUAmJQBOgB9iyEwrH+0AAMkmpjZriuYRsScxFPgq4u5lczfmA1nJoDIDHr+vroZW9eW+T6PEzHfK+NFkO4I7dphjOteDwRgU92YkR/v6TcDwhhQkA5KjfHx55pWK4PJyAAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 21,
+            "title": {
+              "de": "Travel",
+              "en": "Travel",
+              "fr": "Travel",
+              "it": "Travel"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "7FePdpJjyHMzTVk2vSfR",
+    "id": 5,
+    "image": {
+      "src": "images/certified_influencers/130-1747931689843.webp",
+      "width": 828,
+      "height": 1792,
+      "blurDataURL": "data:image/webp;base64,UklGRqAAAABXRUJQVlA4IJQAAADwAwCdASoKABYAPm0skkWkIqGYBABABsSygE6AEPBv9xMHZdIfpUZMAP7+h2Orr52T5jNgg8Q+QMOuTKeDEIl8Eym66tS0m0eEh1oqbY4cZiFvXJXyFm+PV6jONVmC9x8I2s7hxv7wn/9oGu2ofxta9S8ekChAMsrHyJEcaQaeiyIxp2wO1E3irq9Ytx6y8B9gAAAA"
+    },
+    "birthdate": "2002-12-11",
+    "residence": "SZ",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Hallo! Ich bin die Natascha, bin 22 Jahre alt und komme aus Pfäffikon SZ. Ich mache Geräteturnen seit über 16 Jahren und betätige mich allgemein gerne sportlich. Ebenfalls interessiere ich mich sehr an Mode. Beauty und Skincare sind auch Interessen des meinen. Liebe Grüsse 💋",
+      "en": "Hallo! Ich bin die Natascha, bin 22 Jahre alt und komme aus Pfäffikon SZ. Ich mache Geräteturnen seit über 16 Jahren und betätige mich allgemein gerne sportlich. Ebenfalls interessiere ich mich sehr an Mode. Beauty und Skincare sind auch Interessen des meinen. Liebe Grüsse 💋",
+      "fr": "Hallo! Ich bin die Natascha, bin 22 Jahre alt und komme aus Pfäffikon SZ. Ich mache Geräteturnen seit über 16 Jahren und betätige mich allgemein gerne sportlich. Ebenfalls interessiere ich mich sehr an Mode. Beauty und Skincare sind auch Interessen des meinen. Liebe Grüsse 💋",
+      "it": "Hallo! Ich bin die Natascha, bin 22 Jahre alt und komme aus Pfäffikon SZ. Ich mache Geräteturnen seit über 16 Jahren und betätige mich allgemein gerne sportlich. Ebenfalls interessiere ich mich sehr an Mode. Beauty und Skincare sind auch Interessen des meinen. Liebe Grüsse 💋"
+    },
+    "otherInterests": {
+      "de": "Fashion, Beauty, Sport",
+      "en": "Fashion, Beauty, Sport",
+      "fr": "Fashion, Beauty, Sport",
+      "it": "Fashion, Beauty, Sport"
+    },
+    "influencer": {
+      "firebase_id": "klLhYslo1Ii6DvFZBE6q",
+      "id": 130,
+      "name": "Nataschenlampe",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/nataschenlampe/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@nataschenlampe?_t=ZN-8ukobP7lVlW&_r=1",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/nataschenlampe-1747923860705.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAQAgCdASoKAAoAAUAmJZQCdAEWYTXfVvYAAP7Kq175m8M2vHZxsGBaVoEq7MxbtvKsAqcHFAPcUU92ZHrd3DV5XF//wxLMUgjNAj9U7vAg1+zLkIz6UeUrJzNZ1UY3a2fj4uEtq30mfw0AAAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 32,
+            "title": {
+              "de": "Fashion",
+              "en": "Fashion",
+              "fr": "Mode",
+              "it": "Moda"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "7geuZz9yGm97Ja2gmzkO",
+    "id": 6,
+    "image": {
+      "src": "images/certified_influencers/153-1747931691894.webp",
+      "width": 1284,
+      "height": 1371,
+      "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABQAgCdASoKAAsAAUAmJYgCdAYsjuHS1bsG0AAA/u7zTzbO7158BJE56p9OSkToR4knH509PvzYVWCxF5Xkil7+a/IJjJomXuHW76O3y57xaNBl+6iJceBYDRe9bTv2PGe5q8MgL/kq6dPy8vQhfEdDcDffwIDQAAA="
+    },
+    "birthdate": "1999-02-08",
+    "residence": "BL",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Ich bin ein Sänger/Content Creator auf Social Media, der es liebt Videos von Covers (und auch lustige Videos, die mit Musik zu tun haben) zu posten. Da ich momentan noch im Studium MSc Drug Sciences bin, habe ich leider noch keine Zeit gefunden, Originals zu schreiben/komponieren, aber das kommt bestimmt noch! In meinen Stories nehme ich meine Follower generell fast überall mit und lasse sie an meinem Leben teilhaben :)",
+      "en": "Ich bin ein Sänger/Content Creator auf Social Media, der es liebt Videos von Covers (und auch lustige Videos, die mit Musik zu tun haben) zu posten. Da ich momentan noch im Studium MSc Drug Sciences bin, habe ich leider noch keine Zeit gefunden, Originals zu schreiben/komponieren, aber das kommt bestimmt noch! In meinen Stories nehme ich meine Follower generell fast überall mit und lasse sie an meinem Leben teilhaben :)",
+      "fr": "Ich bin ein Sänger/Content Creator auf Social Media, der es liebt Videos von Covers (und auch lustige Videos, die mit Musik zu tun haben) zu posten. Da ich momentan noch im Studium MSc Drug Sciences bin, habe ich leider noch keine Zeit gefunden, Originals zu schreiben/komponieren, aber das kommt bestimmt noch! In meinen Stories nehme ich meine Follower generell fast überall mit und lasse sie an meinem Leben teilhaben :)",
+      "it": "Ich bin ein Sänger/Content Creator auf Social Media, der es liebt Videos von Covers (und auch lustige Videos, die mit Musik zu tun haben) zu posten. Da ich momentan noch im Studium MSc Drug Sciences bin, habe ich leider noch keine Zeit gefunden, Originals zu schreiben/komponieren, aber das kommt bestimmt noch! In meinen Stories nehme ich meine Follower generell fast überall mit und lasse sie an meinem Leben teilhaben :)"
+    },
+    "otherInterests": {
+      "de": "Musik, Travel, Food",
+      "en": "Musik, Travel, Food",
+      "fr": "Musik, Travel, Food",
+      "it": "Musik, Travel, Food"
+    },
+    "influencer": {
+      "firebase_id": "toGbNC7IVdYbPKy1CV3s",
+      "id": 153,
+      "name": "Davide Magliocca",
+      "socials": [
+        {
+          "url": "https://instagram.com/theofficialdavide?igshid=YmMyMTA2M2Y=",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@theofficialdavide?_t=8UWH8NxWco2&_r=1",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/davide-magliocca-1747923880293.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwAgCdASoKAAoAAUAmJYgCdAEU9H8a0T9yAAD+8SKPHBHoT/DqefwMDCvEf2t/gYTr1Lse6HX4o8RqhLn522b19NU3Yg9ZzeZ1S8kIZJg+79072c0+h3fZmbsFJ37G9faxFn/JVPl5oandTjGnv77+BLAAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 37,
+            "title": {
+              "de": "Music",
+              "en": "Music",
+              "fr": "Musique",
+              "it": "Musica"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "8sa0uEGWERpmtOh5T70l",
+    "id": 8,
+    "image": {
+      "src": "images/certified_influencers/90-1747931695247.webp",
+      "width": 584,
+      "height": 610,
+      "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQAgCdASoKAAoAAUAmJYwCdAEXfKK5qswAAP0D1LB9HzP+c1LumI/PB2eoP2fc9mnflsXeGHz/qkw/zn/J8L3ycatbAdtGucRjRMutB0bh9c9wsBrjPS85jeGJXLmEdIGBn2TpBSP4swgwnNZDOC0dAAA="
+    },
+    "birthdate": "1989-03-02",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Jey Cisullo ist eine Schweizer Content Creatorin, bekannt als \"Cooking with Jey\". Auf ihren Social-Media-Kanälen, insbesondere Instagram und TikTok, teilt sie einfache und schnelle Rezepte mit ihren Followern. Ihr Motto lautet: \"Liebe geht durch den Magen\". Mit ihrer authentischen Art hat sie eine treue Anhängerschaft aufgebaut.",
+      "en": "Jey Cisullo is a Swiss content creator, known as \"Cooking with Jey.\" On her social media channels, especially Instagram and TikTok, she shares simple and quick recipes with her followers. Her motto is: \"Love goes through the stomach.\" With her authentic style, she has built a loyal following.",
+      "fr": "Jey Cisullo est une créatrice de contenu suisse, connue sous le nom de \"Cooking with Jey\". Sur ses chaînes de médias sociaux, notamment Instagram et TikTok, elle partage des recettes simples et rapides avec ses abonnés. Son slogan est : \"L'amour passe par l'estomac\". Avec son style authentique, elle a construit une audience fidèle.",
+      "it": "Jey Cisullo è una creatrice di contenuti svizzera, nota come \"Cooking with Jey\". Sui suoi canali social, in particolare Instagram e TikTok, condivide ricette semplici e veloci con i suoi follower. Il suo motto è: \"L'amore passa per lo stomaco\". Con il suo stile autentico, ha costruito un seguito fedele."
+    },
+    "otherInterests": {
+      "de": "Essen",
+      "en": "Food",
+      "fr": "Food",
+      "it": "Food"
+    },
+    "influencer": {
+      "firebase_id": "Ug5AiP6a7LXuxcBmBcT4",
+      "id": 90,
+      "name": "Cooking with Jey",
+      "socials": [
+        {
+          "url": "https://instagram.com/cookingwithjey",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@cookingwithjey",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/cooking-with-jey-1747923355594.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwAQCdASoKAAoAAUAmJagCdADbHL8WpgAA/t4Mw3pFjLuQmadgFttrQX9GG/EXBPh+k2t36jU2C9rEGn6Ucu2KTRqMhNDyY9V5WXCeGmVMImlDIrmsdMRRP/UZsO3kjQtXypg3OcXenyNErf6JmfGygAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 29,
+            "title": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food",
+              "it": "Food"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "9ceO3Xlii04htMKK4NUY",
+    "id": 9,
+    "image": {
+      "src": "images/certified_influencers/158-1747931697445.webp",
+      "width": 566,
+      "height": 574,
+      "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoKAAoAAUAmJZQCw7EO4rZUZxCAAP78diRTs0wZtq6KaFfMeOMLIU+8SEbZJ75ar5dB4W19NQZfvq/z3Df1+Zfqy28V+RnXY3I9/i1hUndJJzi30W0CvzNmKCkp9eAA"
+    },
+    "birthdate": "1998-03-04",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Loris Zimmerli ist ein Schweizer Influencer, Content Creator und Schauspieler aus Olten. Er ist für seine humorvollen Videos auf TikTok, Instagram und YouTube bekannt. 2024 gewann er den Smile Swiss Influence Award in der Kategorie Entertainment. Zudem spielte er in Webserien wie Krass Klassenfahrt (2019).",
+      "en": "Loris Zimmerli is a Swiss influencer, content creator, and actor from Olten. He is known for his humorous videos on TikTok, Instagram, and YouTube. In 2024, he won the Smile Swiss Influence Award in the Entertainment category. He also appeared in web series like Krass Klassenfahrt (2019).",
+      "fr": "Loris Zimmerli est un influenceur, créateur de contenu et acteur suisse d'Olten. Il est connu pour ses vidéos humoristiques sur TikTok, Instagram et YouTube. En 2024, il a remporté le Smile Swiss Influence Award dans la catégorie Entertainment. Il a aussi joué dans Krass Klassenfahrt (2019).",
+      "it": "Loris Zimmerli è un influencer, creatore di contenuti e attore svizzero di Olten. È noto per i suoi video umoristici su TikTok, Instagram e YouTube. Nel 2024 ha vinto il Smile Swiss Influence Award nella categoria Entertainment. Ha anche recitato in Krass Klassenfahrt (2019)."
+    },
+    "otherInterests": {
+      "de": "Entertainment",
+      "en": "Entertainment",
+      "fr": "Entertainment",
+      "it": "Entertainment"
+    },
+    "influencer": {
+      "firebase_id": "uJl0VuHjJhD8scGm8sWw",
+      "id": 158,
+      "name": "Loris Zimmerli",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/loriszimmerli/",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/loris-zimmerli-1747923883349.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABQAgCdASoKAAoAAUAmJZACdH8AE7ZhIF3q4AAA/uxUsIgeLc3z9KvvpP82uhgcb3CvOP3LQqNR1v0T12684i1s7K/55d2gIce18e2elRvLIgwhseXjUpHzhcCPvx0xcYWy852dg/amZfq5iQAAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 24,
+            "title": {
+              "de": "Entertainment",
+              "en": "Entertainment",
+              "fr": "Entertainment",
+              "it": "Entertainment"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "9ePLa5rnJn9M42f3QFHi",
+    "id": 10,
+    "image": {
+      "src": "images/certified_influencers/166-1747931698518.webp",
+      "width": 628,
+      "height": 458,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABQAgCdASoKAAcAAUAmJbACdLoB+AACiywBkeAA/vfYUvh1xH5q3B6GpC/3Hy3a5kG5PX6Qo76i/E7AnKE9rR+XgSaqINuv2/gLcn+8OfxW7FbiRU2d+P/ure1IS13av1OAAA=="
+    },
+    "birthdate": "2023-03-13",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Studio 404 ist ein Satireformat von SRF, das gesellschaftliche und politische Themen humorvoll aufgreift. Die Show bietet einen unkonventionellen Wochenrückblick und produziert Parodien sowie Challenges. Sie läuft auf SRF zwei und ersetzt seit 2023 „Zwei am Morge“.",
+      "en": "Studio 404 is a satire show by SRF that humorously addresses social and political issues. The show features an unconventional weekly review, parodies, and challenges. It airs on SRF zwei and has replaced \"Zwei am Morge\" since 2023.",
+      "fr": "Studio 404 est une émission satirique de la SRF qui aborde avec humour des thèmes sociaux et politiques. L'émission propose un récapitulatif hebdomadaire décalé, des parodies et des défis. Elle est diffusée sur SRF zwei et a remplacé \"Zwei am Morge\" depuis 2023.",
+      "it": "Studio 404 è uno show satirico della SRF che tratta con umorismo temi sociali e politici. Il programma offre un riepilogo settimanale non convenzionale, parodie e sfide. Va in onda su SRF zwei e dal 2023 ha sostituito \"Zwei am Morge\"."
+    },
+    "otherInterests": {
+      "de": "Media",
+      "en": "Media",
+      "fr": "Media",
+      "it": "Media"
+    },
+    "influencer": {
+      "firebase_id": "xOJHlxj50YDpIFRzIQVz",
+      "id": 166,
+      "name": "Studio 404",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/srfstudio404",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/studio-404-1747923888783.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwAgCdASoKAAoAAUAmJbACdLoAAuQIPhk4oAD+/AKpcd5fatN/XwDVjZLPbtI/2cEJ8JZ+8N+FQGgAKhgixfESkZPLAsk1tLedBy87ma71NXRinPU3/ju74idsPvFreLtq+gXdn+V6Ly5aZm37Lwg/sa3gAAAA"
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 27,
+            "title": {
+              "de": "Media",
+              "en": "Media",
+              "fr": "Médias",
+              "it": "Media"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "B5VzuHkMk1anfipOkhua",
+    "id": 11,
+    "image": {
+      "src": "images/certified_influencers/165-1747931700009.webp",
+      "width": 732,
+      "height": 736,
+      "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABQAgCdASoKAAoAAUAmJQBOgMUy4SJTshe7DwAA/u5qnx7SyYFWoDh+gKAjeeX21xXEWsVhL+cPfnFbrlat9anTq0eCQR/V9qH9fcSWUw9km7DsXdEpIpISyl7TQAuFHaSlArBCvczs+9fD4Tg2Iwpmcr/9s/wf0pctBciAAAA="
+    },
+    "birthdate": "1997-03-12",
+    "residence": "FR",
+    "languages": [
+      "fr"
+    ],
+    "bio": {
+      "de": "Noam Yaron ist ein Schweizer Schauspieler, Content Creator und Öko-Abenteurer, geboren am 14. Januar 1997 in Morges, Schweiz. Er begann seine Karriere 2016 in den sozialen Medien, was ihm Aufmerksamkeit von Marken und Medien einbrachte. Neben seiner Schauspielkarriere engagiert er sich für Umweltprojekte und plant im Juni 2025 einen Weltrekordversuch: eine 180 km lange Schwimmstrecke von Calvi nach Monaco, um auf die Bedeutung des Naturschutzes aufmerksam zu machen.",
+      "en": "Noam Yaron is a Swiss actor, content creator, and eco-adventurer, born on January 14, 1997, in Morges, Switzerland. He began his career in 2016 on social media, which brought him attention from brands and the media. In addition to his acting career, he is involved in environmental projects and plans a world record attempt in June 2025: a 180 km swim from Calvi to Monaco to raise awareness about the importance of nature conservation.​",
+      "fr": "Noam Yaron est un acteur suisse, créateur de contenu et éco-aventurier, né le 14 janvier 1997 à Morges, en Suisse. Il a commencé sa carrière en 2016 sur les réseaux sociaux, ce qui lui a valu l'attention des marques et des médias. En plus de sa carrière d'acteur, il s'engage dans des projets environnementaux et prévoit une tentative de record du monde en juin 2025 : une nage de 180 km de Calvi à Monaco pour sensibiliser à l'importance de la conservation de la nature.",
+      "it": "Noam Yaron è un attore svizzero, creatore di contenuti ed eco-avventuriero, nato il 14 gennaio 1997 a Morges, in Svizzera. Ha iniziato la sua carriera nel 2016 sui social media, attirando l'attenzione di marchi e media. Oltre alla sua carriera di attore, è coinvolto in progetti ambientali e prevede un tentativo di record mondiale nel giugno 2025: una nuotata di 180 km da Calvi a Monaco per sensibilizzare sull'importanza della conservazione della natura.​"
+    },
+    "otherInterests": {
+      "de": "Sport",
+      "en": "Sports",
+      "fr": "Sport",
+      "it": "Sport"
+    },
+    "influencer": {
+      "firebase_id": "w2iJnQJbJ2sTfvvote5N",
+      "id": 165,
+      "name": "Noam Yaron",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/noamyaron_",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@noamyaron_",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/noam-yaron-1747923888550.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQAgCdASoKAAoAAUAmJaACdAEXftotq/AAAP7uPXfndjHRp69RZW/aCl/363Yggf3NldHzgjC1lTEPueBfRviHyaMBd2e/ockJPFmd95zFPcYh81PijHSFYWl7Al5UW9vm3WTmbJngzfu70odaiRwAAAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 28,
+            "title": {
+              "de": "Sport",
+              "en": "Sport",
+              "fr": "Sport",
+              "it": "Sport"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "FPjM49Yuplw9CGCFUYiV",
+    "id": 12,
+    "image": {
+      "src": "images/certified_influencers/96-1747931701825.webp",
+      "width": 744,
+      "height": 508,
+      "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAABQAgCdASoKAAcAAUAmJbACdDBAAZHHC2ba5AAA/vdw+T1leMCmv/jYFwDSe3Ec9IdwF9LXH86QxJR9wdNnTywgFafOK2cRnQx/yX54SACIInUifdNtt+ucfS/4RL/uy3gAAA=="
+    },
+    "birthdate": "1996-03-11",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "​M-Budget ist die 1996 eingeführte Eigenmarke der Schweizer Einzelhandelskette Migros für preisgünstige Produkte. Ursprünglich mit 70 Artikeln gestartet, umfasst das Sortiment heute über 700 Produkte, darunter Lebensmittel, Kleidung und Elektronik. Die Verpackung zeichnet sich durch ein einheitliches Design mit grünem Hintergrund und wiederholtem Migros-Logo aus. M-Budget hat sich zu einer Kultmarke entwickelt, mit Initiativen wie M-Budget-Partys und dem Mobilfunkangebot M-Budget Mobile.",
+      "en": "M-Budget is the private label introduced in 1996 by the Swiss retail chain Migros for affordable products. Originally launched with 70 items, the range now includes over 700 products, including food, clothing, and electronics. The packaging features a uniform design with a green background and repeated Migros logo. M-Budget has evolved into a cult brand, with initiatives like M-Budget parties and the mobile phone service M-Budget Mobile.​",
+      "fr": "M-Budget est la marque propre introduite en 1996 par la chaîne de distribution suisse Migros pour des produits abordables. Lancée à l'origine avec 70 articles, la gamme comprend désormais plus de 700 produits, y compris des aliments, des vêtements et de l'électronique. L'emballage présente un design uniforme avec un fond vert et le logo Migros répété. M-Budget est devenue une marque culte, avec des initiatives comme les soirées M-Budget et le service de téléphonie mobile M-Budget Mobile.​",
+      "it": "M-Budget è il marchio privato introdotto nel 1996 dalla catena di vendita al dettaglio svizzera Migros per prodotti a prezzi accessibili. Inizialmente lanciata con 70 articoli, la gamma ora comprende oltre 700 prodotti, tra cui alimenti, abbigliamento ed elettronica. Il packaging presenta un design uniforme con sfondo verde e logo Migros ripetuto. M-Budget è diventato un marchio di culto, con iniziative come le feste M-Budget e il servizio di telefonia mobile M-Budget Mobile."
+    },
+    "otherInterests": {
+      "de": "Brands\nFood",
+      "en": "Brands",
+      "fr": "Brands\nFood",
+      "it": "Brands\nFood"
+    },
+    "influencer": {
+      "firebase_id": "X4cDxrvJfgIkeoZjyVL9",
+      "id": 96,
+      "name": "M-Budget",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/m_budget",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/m-budget-1747923361772.webp",
+        "width": 345,
+        "height": 177,
+        "blurDataURL": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoKAAUAAUAmJZQC7AELXDzmgAD+/ZleeazNnj3fXCpMnPHPu4k4XZZwN3/lxH7gB+cIzfHuTkTMy93YgAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 34,
+            "title": {
+              "de": "Brands",
+              "en": "Brands",
+              "fr": "Marques",
+              "it": "Marche"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "G75Yz0Ingf4P6E5jpQtn",
+    "id": 14,
+    "image": {
+      "src": "images/certified_influencers/150-1747931707930.webp",
+      "width": 875,
+      "height": 875,
+      "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoKAAoAAUAmJYwC7AELYIu8e4AAAP7+tiWiMP8wY7XhxJX0TK1L3LfayCfl5ce/BrBnOqD4pJz6pV45mNM+TC9LEJEuu3FP+GZvH78DgAA="
+    },
+    "birthdate": "1990-07-25",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Mein Name ist Jenni, ich bin 34 Jahre alt und stolze Mama von drei wunderbaren Kindern. Mit meiner positiven und authentischen Art möchte ich andere Menschen inspirieren und ihnen zeigen, dass man mit einer positiven Einstellung jede Herausforderung des Lebens meistern kann. Jeden Tag gebe ich meiner Community mit, dass das Leben – auch in seinen schwierigen Momenten – mit Liebe und Optimismus viel leichter wird. Mein Content ist mein Herzensprojekt, das ich mit viel Hingabe und Leidenschaft erschaffe.",
+      "en": "Mein Name ist Jenni, ich bin 34 Jahre alt und stolze Mama von drei wunderbaren Kindern. Mit meiner positiven und authentischen Art möchte ich andere Menschen inspirieren und ihnen zeigen, dass man mit einer positiven Einstellung jede Herausforderung des Lebens meistern kann. Jeden Tag gebe ich meiner Community mit, dass das Leben – auch in seinen schwierigen Momenten – mit Liebe und Optimismus viel leichter wird. Mein Content ist mein Herzensprojekt, das ich mit viel Hingabe und Leidenschaft erschaffe.",
+      "fr": "Mein Name ist Jenni, ich bin 34 Jahre alt und stolze Mama von drei wunderbaren Kindern. Mit meiner positiven und authentischen Art möchte ich andere Menschen inspirieren und ihnen zeigen, dass man mit einer positiven Einstellung jede Herausforderung des Lebens meistern kann. Jeden Tag gebe ich meiner Community mit, dass das Leben – auch in seinen schwierigen Momenten – mit Liebe und Optimismus viel leichter wird. Mein Content ist mein Herzensprojekt, das ich mit viel Hingabe und Leidenschaft erschaffe.",
+      "it": "Mein Name ist Jenni, ich bin 34 Jahre alt und stolze Mama von drei wunderbaren Kindern. Mit meiner positiven und authentischen Art möchte ich andere Menschen inspirieren und ihnen zeigen, dass man mit einer positiven Einstellung jede Herausforderung des Lebens meistern kann. Jeden Tag gebe ich meiner Community mit, dass das Leben – auch in seinen schwierigen Momenten – mit Liebe und Optimismus viel leichter wird. Mein Content ist mein Herzensprojekt, das ich mit viel Hingabe und Leidenschaft erschaffe."
+    },
+    "otherInterests": {
+      "de": "Food, Family, Comedy",
+      "en": "Food, Family, Comedy",
+      "fr": "Food, Family, Comedy",
+      "it": "Food, Family, Comedy"
+    },
+    "influencer": {
+      "firebase_id": "tDrwmFRCIx3zTVdacXRT",
+      "id": 150,
+      "name": "tiktok_jenni",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/tiktok_jenni?igsh=MWQwNDk5bmNsZDB6ZQ%3D%3D&utm_source=qr",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@tiktok_jenni_?_t=8mz8Fii719c&_r=1",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/tiktok_jenni-1747923877326.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoKAAoAAUAmJYwC7AELYIu8e4AAAP7+tiWiMP8wY7XhxJX0TK1L3LfayCfl5ce/BrBnOqD4pJz6pV45mNM+TC9LEJEuu3FP+GZvH78DgAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 30,
+            "title": {
+              "de": "Family",
+              "en": "Family",
+              "fr": "Famile",
+              "it": "Famiglia"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "O5jsflihjsowdk14wMsl",
+    "id": 16,
+    "image": {
+      "src": "images/certified_influencers/120-1747931710897.webp",
+      "width": 734,
+      "height": 576,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoKAAgAAUAmJQBOgMVztbGdCnCAAP76ZcgEZKfmY+H6x7KJQtftRWAe03X/1GJP0OeFMcRsGl3FtCvSXJ+GFW1Flu9sXMCC+K0ENxY/DnUH1OJnGCrFa+gA"
+    },
+    "birthdate": "1989-03-04",
+    "residence": "NW",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Instaswiss ist eine Plattform, die die Schweiz durch beeindruckende Naturaufnahmen präsentiert. Mit über 109.000 Followern auf Instagram (@instaswiss) teilt sie Wander- und Reisetipps. Zudem bietet die Website instaswiss.ch personalisierte Wandervorschläge.",
+      "en": "Instaswiss showcases Switzerland through stunning nature photography. With over 109,000 followers on Instagram (@instaswiss), it shares hiking and travel tips. The website instaswiss.ch provides personalized hiking recommendations.",
+      "fr": "Instaswiss met en valeur la Suisse à travers des photos de nature impressionnantes. Avec plus de 109 000 abonnés sur Instagram (@instaswiss), elle partage des conseils de randonnée et de voyage. Le site instaswiss.ch propose des suggestions de randonnées personnalisées.",
+      "it": "Instaswiss presenta la Svizzera con straordinarie immagini naturalistiche. Con oltre 109.000 follower su Instagram (@instaswiss), condivide consigli su escursioni e viaggi. Il sito instaswiss.ch offre suggerimenti per escursioni personalizzate."
+    },
+    "otherInterests": {
+      "de": "Travel",
+      "en": "Travel",
+      "fr": "Travel",
+      "it": "Travel"
+    },
+    "influencer": {
+      "firebase_id": "h9Hij0UZwkoMHoa3kfeZ",
+      "id": 120,
+      "name": "Instaswiss",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/instaswiss/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@instaswiss",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/instaswiss-1747923854033.webp",
+        "width": 225,
+        "height": 225,
+        "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoKAAoAAUAmJbACdAEPByEQkgAA/vdW+BV2yAGpGhfrRJ79f4hmZF2Pik4GSMFFPBHC03i1K20p8/8hXa3/CrUNi7/xD4i/l1Hs2uJAAAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 21,
+            "title": {
+              "de": "Travel",
+              "en": "Travel",
+              "fr": "Travel",
+              "it": "Travel"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "PcmO6vm5IS0cQyh1WSf9",
+    "id": 17,
+    "image": {
+      "src": "images/certified_influencers/179-1747931712592.webp",
+      "width": 488,
+      "height": 626,
+      "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAAAQAgCdASoKAA0AAUAmJagCdAYvrmx6KDdAAP7xv2LvuZhKf2VAGj/OoP8Jw6mxJZ9HsdYR/Q7lIjrHL78asFm2bmKhlmOdTfwXT7IIJ53hkbTrZxvEDEjPaq9EDuTw1MW2/CwxaJXW/wx8csL6cSYjCt0+fex+MlLr2cbH9sXB8ZauSsEOAAAA"
+    },
+    "birthdate": "2002-03-06",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Mirlinda Lajqi ist eine Schweizer Influencerin und Digital Creator, die sich auf Beauty, Fashion und Travel spezialisiert hat. Sie lebt in Zürich und teilt auf ihrem Instagram-Profil (@mirlindalajqi) inspirierende Inhalte zu diesen Themen. Im Oktober 2024 wurde sie mit dem Smile Swiss Influence Award in der Kategorie Beauty ausgezeichnet.",
+      "en": "Mirlinda Lajqi is a Swiss influencer and digital creator specializing in beauty, fashion, and travel. Based in Zurich, she shares inspiring content on these topics on her Instagram profile (@mirlindalajqi). In October 2024, she was honored with the Smile Swiss Influence Award in the Beauty category.",
+      "fr": "Mirlinda Lajqi est une influenceuse et créatrice de contenu suisse spécialisée dans la beauté, la mode et les voyages. Basée à Zurich, elle partage du contenu inspirant sur ces sujets sur son profil Instagram (@mirlindalajqi). En octobre 2024, elle a été récompensée par le Smile Swiss Influence Award dans la catégorie Beauté.",
+      "it": "Mirlinda Lajqi è un'influencer e creatrice di contenuti svizzera specializzata in bellezza, moda e viaggi. Con sede a Zurigo, condivide contenuti ispiratori su questi argomenti sul suo profilo Instagram (@mirlindalajqi). Nell'ottobre 2024, è stata premiata con lo Smile Swiss Influence Award nella categoria Bellezza."
+    },
+    "otherInterests": {
+      "de": "Lifestyle\nBeauty \nFashion",
+      "en": "Lifestyle\nBeauty\nFashion",
+      "fr": "Lifestyle\nBeauty \nFashion",
+      "it": "Lifestyle"
+    },
+    "influencer": {
+      "firebase_id": "z1NCZe8464OfCmovVGec",
+      "id": 179,
+      "name": "Mirlinda Lajqi",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/mirlindalajqi/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@mirlindalajqi",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/mirlinda-lajqi-1747923898677.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAAAwAgCdASoKAAoAAUAmJYgCdAEeh04Qq+OwwAD+/l+dmL8uN9Dq8lT//JILpObQDAx09/UbHf1Mt2fDP86jynruQcDiLtArd0fAe+AakF+ufCZs27AJCwBBCHGRg7VR4GBeWgbQivbWiOjIAAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 33,
+            "title": {
+              "de": "Lifestyle",
+              "en": "Lifestyle",
+              "fr": "Lifestyle",
+              "it": "Lifestyle"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "QfNVQLAy8V7Oeq90euyK",
+    "id": 19,
+    "image": {
+      "src": "images/certified_influencers/174-1747931715462.webp",
+      "width": 488,
+      "height": 626,
+      "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAQAgCdASoKAA0AAUAmJQBOgCLs3+yHwtiAAP7ru2HhDWEqbk2gnrsNFxrcr+Ldcf7SQFeIRUXB+L8WfTO7Rf1C9aFq/WNWiIa+hsX2peILTHzJ4i2lMBnVo19qFZsxKYBnSzH8M8hC/+sLHFnJvpNOhyx3Tqk7znCLPE+3rcwAAA=="
+    },
+    "birthdate": "1989-03-13",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Mirco Casorelli, besser bekannt unter seinem Pseudonym Bireweich, ist ein Schweizer Influencer und Content Creator aus Schaffhausen. Er erlangte Bekanntheit durch seine humorvollen und satirischen Videos auf TikTok, in denen er kulturelle Missverständnisse, gesellschaftliche Themen und Alltagsbeobachtungen aufgreift. Sein ursprünglicher TikTok-Account mit über 85.000 Followern wurde gesperrt, woraufhin er auf seinem neuen Account (@bireweichesouhund) weiterhin aktiv ist.",
+      "en": "Englisch: Mirco Casorelli, known by his pseudonym Bireweich, is a Swiss influencer and content creator from Schaffhausen. He gained recognition through his humorous and satirical TikTok videos, where he addresses cultural misunderstandings, societal issues, and everyday observations. His original TikTok account with over 85,000 followers was suspended, after which he continued his activity on his new account (@bireweichesouhund).",
+      "fr": "Mirco Casorelli, connu sous le pseudonyme Bireweich, est un influenceur et créateur de contenu suisse originaire de Schaffhouse. Il s'est fait connaître grâce à ses vidéos humoristiques et satiriques sur TikTok, où il aborde les malentendus culturels, les questions sociétales et les observations du quotidien. Son compte TikTok original avec plus de 85 000 abonnés a été suspendu, après quoi il a continué son activité sur son nouveau compte (@bireweichesouhund).",
+      "it": "Mirco Casorelli, noto con lo pseudonimo Bireweich, è un influencer e creatore di contenuti svizzero di Sciaffusa. Ha guadagnato riconoscimento attraverso i suoi video umoristici e satirici su TikTok, dove affronta malintesi culturali, questioni sociali e osservazioni quotidiane. Il suo account TikTok originale con oltre 85.000 follower è stato sospeso, dopodiché ha continuato la sua attività sul suo nuovo account (@bireweichesouhund). ​"
+    },
+    "otherInterests": {
+      "de": "Gaming",
+      "en": "Gaming",
+      "fr": "Gaming",
+      "it": "Gaming"
+    },
+    "influencer": {
+      "firebase_id": "yoF2m1QE6zD0H0ZZvEuF",
+      "id": 174,
+      "name": "BireweichGaming",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/bireweich__gaming",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@bireweich.gaming",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/bireweichgaming-1747923895857.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoKAAoAAUAmJQBOgCBUqHw51aX8AP6KeZTw+wsKXjhW94Y19oWxiQlabO4xJauqttpsQppt0sFDr2M/tDKc6rs7COrNljU2SpJHy+HrxzOcGr95HcCBE5QAAAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 26,
+            "title": {
+              "de": "Gaming/Streaming ",
+              "en": "Gaming/Streaming ",
+              "fr": "Jeux/Streaming ",
+              "it": "Giochi/Streaming "
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "RqIaL5IvOJTQB1o84IKI",
+    "id": 20,
+    "image": {
+      "src": "images/certified_influencers/152-1747931716505.webp",
+      "width": 201,
+      "height": 251,
+      "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADQAQCdASoKAAwAAUAmJaQAAlo+PDcvgAD++lkuNH31CR+Ba38/6tZ632/1Z8tbQWGN+7mOqQHvuwj4b2xh7Hza7ZfbNba/4uqGzSC6Ke9XF/eyhNN6v54f925ra1Nb3y60qp8x+LN/KCwfBl/ttB7BIAA="
+    },
+    "birthdate": "2005-06-14",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Ich bin eine leidenschaftliche Tänzerin und Sängerin, die ihre Reiseabenteuer gerne auf Instagram teilt. Ich setze viel auf positive Energie und Zuverlässigkeit. Mein Motto ist: “I can and I will.”",
+      "en": "Ich bin eine leidenschaftliche Tänzerin und Sängerin, die ihre Reiseabenteuer gerne auf Instagram teilt. Ich setze viel auf positive Energie und Zuverlässigkeit. Mein Motto ist: “I can and I will.”",
+      "fr": "Ich bin eine leidenschaftliche Tänzerin und Sängerin, die ihre Reiseabenteuer gerne auf Instagram teilt. Ich setze viel auf positive Energie und Zuverlässigkeit. Mein Motto ist: “I can and I will.”",
+      "it": "Ich bin eine leidenschaftliche Tänzerin und Sängerin, die ihre Reiseabenteuer gerne auf Instagram teilt. Ich setze viel auf positive Energie und Zuverlässigkeit. Mein Motto ist: “I can and I will.”"
+    },
+    "otherInterests": {
+      "de": "Travel, fashion, lifestyle",
+      "en": "Travel, fashion, lifestyle",
+      "fr": "Travel, fashion, lifestyle",
+      "it": "Travel, fashion, lifestyle"
+    },
+    "influencer": {
+      "firebase_id": "te77XhBnA4ID2ZrbsptK",
+      "id": 152,
+      "name": "Livia Benito",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/livia.benito/",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/livia-benito-1747923878927.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAQCdASoKAAoAAUAmJQBOgB6TJHqjMAAA/uiu4oHcq0WI16D/FA7178ftrmyAz1NTYBtOhGp8M4AZkIquXxiDtv6GTUbOPDcDY/xTLsQMV1Iv36iuT2pcDVqrKg5gWAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 33,
+            "title": {
+              "de": "Lifestyle",
+              "en": "Lifestyle",
+              "fr": "Lifestyle",
+              "it": "Lifestyle"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "SY8CZWmEwZdL4uimibgb",
+    "id": 21,
+    "image": {
+      "src": "images/certified_influencers/89-1747931718185.webp",
+      "width": 1284,
+      "height": 1371,
+      "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABQAgCdASoKAAsAAUAmJYgCdAYsjuHS1bsG0AAA/u7zTzbO7158BJE56p9OSkToR4knH509PvzYVWCxF5Xkil7+a/IJjJomXuHW76O3y57xaNBl+6iJceBYDRe9bTv2PGe5q8MgL/kq6dPy8vQhfEdDcDffwIDQAAA="
+    },
+    "birthdate": "1988-03-08",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Seit 3 Jahren lebe ich in meinem Van und liebe es täglich neue Abenteuer zu erleben. Nebst dem entdecken von neuen Destinationen verbringe ich gerne Zeit beim Sport. Egal ob Wandern, Rennradfahren oder Joggen - Hauptsache draussen sein. Um Abzuschalten liebe ich es mich un der veganen Küche auszuprobieren und Qualitytime mit meinen Freunden zu verbringen ◡̈",
+      "en": "Seit 3 Jahren lebe ich in meinem Van und liebe es täglich neue Abenteuer zu erleben. Nebst dem entdecken von neuen Destinationen verbringe ich gerne Zeit beim Sport. Egal ob Wandern, Rennradfahren oder Joggen - Hauptsache draussen sein. Um Abzuschalten liebe ich es mich un der veganen Küche auszuprobieren und Qualitytime mit meinen Freunden zu verbringen ◡̈",
+      "fr": "Seit 3 Jahren lebe ich in meinem Van und liebe es täglich neue Abenteuer zu erleben. Nebst dem entdecken von neuen Destinationen verbringe ich gerne Zeit beim Sport. Egal ob Wandern, Rennradfahren oder Joggen - Hauptsache draussen sein. Um Abzuschalten liebe ich es mich un der veganen Küche auszuprobieren und Qualitytime mit meinen Freunden zu verbringen ◡̈",
+      "it": "Seit 3 Jahren lebe ich in meinem Van und liebe es täglich neue Abenteuer zu erleben. Nebst dem entdecken von neuen Destinationen verbringe ich gerne Zeit beim Sport. Egal ob Wandern, Rennradfahren oder Joggen - Hauptsache draussen sein. Um Abzuschalten liebe ich es mich un der veganen Küche auszuprobieren und Qualitytime mit meinen Freunden zu verbringen ◡̈"
+    },
+    "otherInterests": {
+      "de": "Travel, Sport, Food",
+      "en": "Travel, Sport, Food",
+      "fr": "Travel, Sport, Food",
+      "it": "Travel, Sport, Food"
+    },
+    "influencer": {
+      "firebase_id": "UTYMl7eAXT1cpuCowHJk",
+      "id": 89,
+      "name": "Chris Jäger",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/chrisjaeger_",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/chris-jager-1747923354810.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwAgCdASoKAAoAAUAmJbACdLoAAncXy7NXSAD9xpuQjkfA1oGZPfbKIehtEXNABusvMp7dih/T+xUK4uUu7vhexrmIZx54IgXQvpWWpP/yHhUHf8o5kk2X87f/gxTxSLInboaYoAAAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 21,
+            "title": {
+              "de": "Travel",
+              "en": "Travel",
+              "fr": "Travel",
+              "it": "Travel"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "W6llTQo0TuD5T3LqV2yK",
+    "id": 23,
+    "image": {
+      "src": "images/certified_influencers/137-1747931721806.webp",
+      "width": 566,
+      "height": 718,
+      "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwAgCdASoKAA0AAUAmJYgCdAaZS/Z7wOCSJvIAAP75VzyTRLZC/2eRoyJv+2fZ/HWNxFzpuqznKeRUROe2GN21XXcOznO3YWUDG0b1LVxZ6t8pAXySYXl3+NpYY2kZUE0oMYCir92txb+Nd+7VlXZ3qLCd+8JGcPWJqCvzIYISHDUFxBh/aEAA"
+    },
+    "birthdate": "1998-03-05",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Mimoza Lekaj ist eine in Zürich ansässige Influencerin, spezialisiert auf Lifestyle, Beauty und Kochen. Sie ist Mutter von zwei Kindern und fungiert als Gastgeberin und Leiterin des Alba Festivals. ",
+      "en": "Mimoza Lekaj is a Zurich-based influencer specializing in lifestyle, beauty, and cooking. She is a mother of two and serves as the host and leader of the Alba Festival.",
+      "fr": "Mimoza Lekaj est une influenceuse basée à Zurich, spécialisée dans le lifestyle, la beauté et la cuisine. Elle est mère de deux enfants et est l'hôte et la responsable de l'Alba Festival.",
+      "it": "Mimoza Lekaj è un'influencer con sede a Zurigo, specializzata in lifestyle, bellezza e cucina. È madre di due figli ed è l'ospite e la leader dell'Alba Festival."
+    },
+    "otherInterests": {
+      "de": "Beauty\nFamily",
+      "en": "Family",
+      "fr": "Family",
+      "it": "Family"
+    },
+    "influencer": {
+      "firebase_id": "nDvsBZBUfyh3R1HHKvcf",
+      "id": 137,
+      "name": "Mimoza",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/mimoza/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@mimoza.le",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/mimoza-1747923867012.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAQAgCdASoKAAoAAUAmJQBOgCHg0SB9rDAAAP7xnU2yoeCTD8Ux/FjljfLbWr+w/wK/46STZKo8/ysckT7iqcCb8bHsprl56FPaN4TNBw04+0lh/wp02wyN++L2bjxzcWIu1VN+eVhwAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 25,
+            "title": {
+              "de": "Beauty",
+              "en": "Beauty",
+              "fr": "Beauty",
+              "it": "Beauty"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "a7OUsO8DQ3GtWi7du0wv",
+    "id": 25,
+    "image": {
+      "src": "images/certified_influencers/149-1747931725508.webp",
+      "width": 2000,
+      "height": 2500,
+      "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABQAgCdASoKAAwAAUAmJZQCdEf/geGS7Vb/dhAA/uXrvE8OyOyh7YK/6Xw1q+G1cksSrUI19KOHTVV0mhWth6j68QNF0a1Bjt8NSkX7f7J8Y0/MLgm1LzVgIQ6JSrD0V1hSo5c1Uc6ASOgAAAA="
+    },
+    "birthdate": "1998-12-09",
+    "residence": "BE",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Ich bin Tamara und leidenschaftliche Reiterin. Auf meinem Profil berichte ich von meinem Alltag mit meinen beiden Pferden Leming und Volvic. Wir drei sind in den Disziplinen Vielseitigkeit, Springen, Dressur und Gymkhana unterwegs.",
+      "en": "Ich bin Tamara und leidenschaftliche Reiterin. Auf meinem Profil berichte ich von meinem Alltag mit meinen beiden Pferden Leming und Volvic. Wir drei sind in den Disziplinen Vielseitigkeit, Springen, Dressur und Gymkhana unterwegs.",
+      "fr": "Ich bin Tamara und leidenschaftliche Reiterin. Auf meinem Profil berichte ich von meinem Alltag mit meinen beiden Pferden Leming und Volvic. Wir drei sind in den Disziplinen Vielseitigkeit, Springen, Dressur und Gymkhana unterwegs.",
+      "it": "Ich bin Tamara und leidenschaftliche Reiterin. Auf meinem Profil berichte ich von meinem Alltag mit meinen beiden Pferden Leming und Volvic. Wir drei sind in den Disziplinen Vielseitigkeit, Springen, Dressur und Gymkhana unterwegs."
+    },
+    "otherInterests": {
+      "de": "Reiten, Sport, Ernährung",
+      "en": "Reiten, Sport, Ernährung",
+      "fr": "Reiten, Sport, Ernährung",
+      "it": "Reiten, Sport, Ernährung"
+    },
+    "influencer": {
+      "firebase_id": "smSTahlVupx31afdtsk0",
+      "id": 149,
+      "name": "leming_ch",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/leming_ch?igsh=MTZ0N3Y0bGJzdGFk&utm_source=qr",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.youtube.com/c/LemingCH",
+          "platform": "YOUTUBE"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/leming_ch-1747923876447.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAABQAgCdASoKAAoAAUAmJYgCdAYvXa1yujivWAAA/q3HLxj1+eG1pzw4Z0nGuewKuHZ9eAEO5mgyO2El3CNly25sp03O7yfDanmqhPrm739GX4IkJJEUVL1nsqP9i+ZohtvDs8deM1o36xzF3/Uin7bLc+KqikmP9vUZAAAA"
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 28,
+            "title": {
+              "de": "Sport",
+              "en": "Sport",
+              "fr": "Sport",
+              "it": "Sport"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "ePwmv6V6GhgYfRL6CShY",
+    "id": 26,
+    "image": {
+      "src": "images/certified_influencers/17-1747931726326.webp",
+      "width": 1500,
+      "height": 1154,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAAAQAgCdASoKAAgAAUAmJZQCdAYq/bZwubJwAP7VEJNq7KpLKj0cy/C9WmzIIB0x2G3+5lEOGb/mVwmD7ZUmtUrwssvkOiEVSOtzQRgo8PHuVmBqzy4zmkD6NwZGAAAA"
+    },
+    "birthdate": "1999-08-08",
+    "residence": "TG",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Ich bin Yael und bringe authentischer Alltags-Comedy mit einer guten Portion Flachwitz-Charme direkt aus dem Thurgau – der Heimat des berüchtigtsten Dialekts der Schweiz. Mit meinem unverkennbaren Humor und einem Schuss Selbstironie verwandelt ich die kleinen Herausforderungen des Alltags in grosse Lacher und beweise damit, dass man selbst mit dem \"schlimmsten\" Dialekt Comedy auf höchstem Niveau liefern kann.",
+      "en": "Ich bin Yael und bringe authentischer Alltags-Comedy mit einer guten Portion Flachwitz-Charme direkt aus dem Thurgau – der Heimat des berüchtigtsten Dialekts der Schweiz. Mit meinem unverkennbaren Humor und einem Schuss Selbstironie verwandelt ich die kleinen Herausforderungen des Alltags in grosse Lacher und beweise damit, dass man selbst mit dem \"schlimmsten\" Dialekt Comedy auf höchstem Niveau liefern kann.",
+      "fr": "Ich bin Yael und bringe authentischer Alltags-Comedy mit einer guten Portion Flachwitz-Charme direkt aus dem Thurgau – der Heimat des berüchtigtsten Dialekts der Schweiz. Mit meinem unverkennbaren Humor und einem Schuss Selbstironie verwandelt ich die kleinen Herausforderungen des Alltags in grosse Lacher und beweise damit, dass man selbst mit dem \"schlimmsten\" Dialekt Comedy auf höchstem Niveau liefern kann.",
+      "it": "Ich bin Yael und bringe authentischer Alltags-Comedy mit einer guten Portion Flachwitz-Charme direkt aus dem Thurgau – der Heimat des berüchtigtsten Dialekts der Schweiz. Mit meinem unverkennbaren Humor und einem Schuss Selbstironie verwandelt ich die kleinen Herausforderungen des Alltags in grosse Lacher und beweise damit, dass man selbst mit dem \"schlimmsten\" Dialekt Comedy auf höchstem Niveau liefern kann."
+    },
+    "otherInterests": {
+      "de": "Travel, Fashion, Media",
+      "en": "Travel, Fashion, Media",
+      "fr": "Travel, Fashion, Media",
+      "it": "Travel, Fashion, Media"
+    },
+    "influencer": {
+      "firebase_id": "7A3C0YmOdTGT0Pt1JpWL",
+      "id": 17,
+      "name": "Yaelsvenja",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/yaelsvenja/profilecard/?igsh=bmtjendheHZxaWJz",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@yaelsvenja?_t=ZN-8v8gzeGdsLW&_r=1",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/yaelsvenja-1747922872104.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAQCdASoKAAoAAUAmJYwCdAYsFj5bnFAA/sJU+v3nn/yeuz/1NxUFHN2Gs+jvQIsH2Rx7MEMiCpbLnqYnDF2BawJx7TA2+KjJOKiEw+pgOqxBYhrg2p/wrW2DuFOAAAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 36,
+            "title": {
+              "de": "Newcomer",
+              "en": "Newcomer",
+              "fr": "Nouveau Venu",
+              "it": "Novo Arrivato"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "ftq8LuzOrMUacI3wHYXt",
+    "id": 28,
+    "image": {
+      "src": "images/certified_influencers/126-1747931729883.webp",
+      "width": 1284,
+      "height": 1371,
+      "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABQAgCdASoKAAsAAUAmJYgCdAYsjuHS1bsG0AAA/u7zTzbO7158BJE56p9OSkToR4knH509PvzYVWCxF5Xkil7+a/IJjJomXuHW76O3y57xaNBl+6iJceBYDRe9bTv2PGe5q8MgL/kq6dPy8vQhfEdDcDffwIDQAAA="
+    },
+    "birthdate": "1995-03-10",
+    "residence": "AG",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Mit Leidenschaft & Mission mein Umfeld, Gäste, Familie und Freunde mit gutem Essen zu begeistern. Meine Reise begann 2010 in einem kleinen Gourmet-Lokal in Olten mit einer Kochlehre. Mittlerweile bin ich Küchenchef, 28 Jahre jung & Content Creator mit Herz und Seele.",
+      "en": "Mit Leidenschaft & Mission mein Umfeld, Gäste, Familie und Freunde mit gutem Essen zu begeistern. Meine Reise begann 2010 in einem kleinen Gourmet-Lokal in Olten mit einer Kochlehre. Mittlerweile bin ich Küchenchef, 28 Jahre jung & Content Creator mit Herz und Seele.",
+      "fr": "Mit Leidenschaft & Mission mein Umfeld, Gäste, Familie und Freunde mit gutem Essen zu begeistern. Meine Reise begann 2010 in einem kleinen Gourmet-Lokal in Olten mit einer Kochlehre. Mittlerweile bin ich Küchenchef, 28 Jahre jung & Content Creator mit Herz und Seele.",
+      "it": "Mit Leidenschaft & Mission mein Umfeld, Gäste, Familie und Freunde mit gutem Essen zu begeistern. Meine Reise begann 2010 in einem kleinen Gourmet-Lokal in Olten mit einer Kochlehre. Mittlerweile bin ich Küchenchef, 28 Jahre jung & Content Creator mit Herz und Seele."
+    },
+    "otherInterests": {
+      "de": "Food, Lifestyle",
+      "en": "Food, Lifestyle",
+      "fr": "Food, Lifestyle",
+      "it": "Food, Lifestyle"
+    },
+    "influencer": {
+      "firebase_id": "jXajD3PJYMY1kIcoEAiW",
+      "id": 126,
+      "name": "Marco von Arx",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/marco.vonarx",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@marco.vonarx",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/marco-von-arx-1747923856875.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwAgCdASoKAAoAAUAmJZwCdAYrnbaPn9bIAAD+bTw6KX3ywR7+//VD4V08U+HZoK+pId/Lp78u/7Yr4C/SZR/t+tj1C1md5/XrzxiDWLM2V1qdBv4suBTtE/AAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 29,
+            "title": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food",
+              "it": "Food"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "jehk1hGkBNW9DyLhoRU7",
+    "id": 29,
+    "image": {
+      "src": "images/certified_influencers/104-1747931731952.webp",
+      "width": 1167,
+      "height": 1166,
+      "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAQAgCdASoKAAoAAUAmJQBOgBu1T4LfE7KsAP76jZHOvtuz6FVDL/La2Hfvp//XUqc4vqm/e6LPxtXpwn7zQYD5fz+//Ld4wVr+xoLWZjn2fWKM+64Is+6O+3intxtp5+bl+ADi4HaaD24YxUCOFOIAAAA="
+    },
+    "birthdate": "1996-03-20",
+    "residence": "BE",
+    "languages": [
+      "de",
+      "en",
+      "sr"
+    ],
+    "bio": {
+      "de": "Mein Name ist Kristina und ich komme aus der schönen Schweiz. Ich liebe es, meine Follower in meinem Alltag mitzunehmen und sie im Bereich der Schönheit zu inspirieren.",
+      "en": "My name is Kristina and I come from beautiful Switzerland. I love taking my followers with me in my everyday life and inspiring them in the area of beauty.",
+      "fr": "Je m'appelle Kristina et je viens de la belle Suisse. J'aime emmener mes followers avec moi dans ma vie de tous les jours et les inspirer dans le domaine de la beauté.",
+      "it": "Mi chiamo Kristina e vengo dalla bellissima Svizzera. Amo portare i miei follower con me nella vita di tutti i giorni e ispirarli nel campo della bellezza."
+    },
+    "otherInterests": {
+      "de": "Einrichtung\nRestaurants",
+      "en": "Furnishings\nRestaurants",
+      "fr": "Ameublement\nRestaurants",
+      "it": "Arredamento\nRistoranti"
+    },
+    "influencer": {
+      "firebase_id": "byYR7MBUjTcS4PAGx1ff",
+      "id": 104,
+      "name": "Kknovaa",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/kknovaa/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@kknovaa",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/kknovaa-1747923842408.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQAgCdASoKAAoAAUAmJQBOgBu1U/ke7F2AAP76jZHOvtuz6FVDL/La2Hfvp//XUqc4vqm/e6xRiM2Bc+9f2yXe15v3IehGl/bSZhVYZt/Hho+3Z/beLhJHIGiqGgj/l9mc7qChpwccsxDu/4AAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 25,
+            "title": {
+              "de": "Beauty",
+              "en": "Beauty",
+              "fr": "Beauty",
+              "it": "Beauty"
+            }
+          }
+        },
+        {
+          "category": {
+            "id": 36,
+            "title": {
+              "de": "Newcomer",
+              "en": "Newcomer",
+              "fr": "Nouveau Venu",
+              "it": "Novo Arrivato"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "kTENZv49wHiuluTw1rbj",
+    "id": 31,
+    "image": {
+      "src": "images/certified_influencers/87-1747931736195.webp",
+      "width": 1757,
+      "height": 1757,
+      "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAwAgCdASoKAAoAAUAmJbACdH8AFxSIXmo4AAD+7bPs5/T5wB6regOh667QxDxUI59dUI0vj0u+Lf/Se5o76RP69nRY8f+cfBydIH7R90ShRhj9wkBscZe4pip0h9IpJ4lIQfsST/kGP9fNHnuaYtxzTmty7IpoNCOAh8rVZAAAAA=="
+    },
+    "birthdate": "2006-02-13",
+    "residence": "SG",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Hi! Ich heisse Sani und bin 18 Jahre alt. Ich bin ein leidenschaftlicher Gamer und erstelle Content rundum Roblox. Mein Ziel ist es, meine Community mit abwechslungsreichen Gaming-Content zu unterhalten.",
+      "en": "Hi! Ich heisse Sani und bin 18 Jahre alt. Ich bin ein leidenschaftlicher Gamer und erstelle Content rundum Roblox. Mein Ziel ist es, meine Community mit abwechslungsreichen Gaming-Content zu unterhalten.",
+      "fr": "Hi! Ich heisse Sani und bin 18 Jahre alt. Ich bin ein leidenschaftlicher Gamer und erstelle Content rundum Roblox. Mein Ziel ist es, meine Community mit abwechslungsreichen Gaming-Content zu unterhalten.",
+      "it": "Hi! Ich heisse Sani und bin 18 Jahre alt. Ich bin ein leidenschaftlicher Gamer und erstelle Content rundum Roblox. Mein Ziel ist es, meine Community mit abwechslungsreichen Gaming-Content zu unterhalten."
+    },
+    "otherInterests": {
+      "de": "Gaming, Fashion, Lifestyle",
+      "en": "Gaming, Fashion, Lifestyle",
+      "fr": "Gaming, Fashion, Lifestyle",
+      "it": "Gaming, Fashion, Lifestyle"
+    },
+    "influencer": {
+      "firebase_id": "TC6UngY5mkPAc7dhbZTd",
+      "id": 87,
+      "name": "Rupthyy",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/rupthyy",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/rupthyy-1747923352884.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAADwAQCdASoKAAoAAUAmJZQCdADcNc2NbdAA/ub9Pf/vsIWQlGD/wQ1ftt6m7vIA9LKweO7bOXkfl8x7efjyVhZZo1z4zpsO0fRdFKur5fEXzJPI9Qg9cjmvtnbm6h5T2cAAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 26,
+            "title": {
+              "de": "Gaming/Streaming ",
+              "en": "Gaming/Streaming ",
+              "fr": "Jeux/Streaming ",
+              "it": "Giochi/Streaming "
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "o6QUEzh6xZmxUGAKAsMH",
+    "id": 33,
+    "image": {
+      "src": "images/certified_influencers/53-1747931739885.webp",
+      "width": 1284,
+      "height": 1371,
+      "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABQAgCdASoKAAsAAUAmJYgCdAYsjuHS1bsG0AAA/u7zTzbO7158BJE56p9OSkToR4knH509PvzYVWCxF5Xkil7+a/IJjJomXuHW76O3y57xaNBl+6iJceBYDRe9bTv2PGe5q8MgL/kq6dPy8vQhfEdDcDffwIDQAAA="
+    },
+    "birthdate": "1998-04-18",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Sängerin / Producerin / Songwriterin / Content Creator/ Entertainment / Creativity",
+      "en": "Sängerin / Producerin / Songwriterin / Content Creator/ Entertainment / Creativity",
+      "fr": "Sängerin / Producerin / Songwriterin / Content Creator/ Entertainment / Creativity",
+      "it": "Sängerin / Producerin / Songwriterin / Content Creator/ Entertainment / Creativity"
+    },
+    "otherInterests": {
+      "de": "Musik, Entertainment, Lifestyle",
+      "en": "Musik, Entertainment, Lifestyle",
+      "fr": "Musik, Entertainment, Lifestyle",
+      "it": "Musik, Entertainment, Lifestyle"
+    },
+    "influencer": {
+      "firebase_id": "JjRTW6mR5vEJ7U2WmBde",
+      "id": 53,
+      "name": "Anna Smith",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/annasmith_official",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/anna-smith-1747923307119.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAABQAgCdASoKAAoAAUAmJZACdAYtp6Fclr58mIAA/vsfj+gKKfrEM4n1BPD7/8ig/2pT4/TfLrve4u+n/wG8bph4FHgBZY5sYZvNW9XfRQ/HrgtvUy//4I1yyX6tFo1LPa42IchWG3tpH/Az2+vVl+8HzL8f8//g2VPKFnL/g2QAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 37,
+            "title": {
+              "de": "Music",
+              "en": "Music",
+              "fr": "Musique",
+              "it": "Musica"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "tiw7zWx6qSumdmiebLgU",
+    "id": 35,
+    "image": {
+      "src": "images/certified_influencers/15-1747931743077.webp",
+      "width": 1536,
+      "height": 2304,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQAgCdASoKAA8AAUAmJQBOgMXS22WgS/Vq2gAA/vjKSWvj+1H0D7cG3/Xdzx8Iocd4pmUgg0+mSdTmi1VMmxlSok7L1r7XEiICv3Me1a5KDcfmLq0fVtUZmdb8tuocjlqHItMk1N1F2BE70BB4+WJSbSez6AAA"
+    },
+    "birthdate": "1986-07-09",
+    "residence": "GR",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Im Winter mache ich täglich IRL Content auf den Pisten in Davos. Ich arbeite am Berg im Skigebiet Parsenn und zeige das Leben am Berg hauptsächlich auf TikTok. Dabei gebe ich Tips und Tricks durch mein Fachwissen das ich in der Wintersportbranche im letzten Jahrzehnt angeeignet habe. Mein Content ist so einzigartig in der Schweiz und ich bin sehr motiviert mein Content auf das nächste Level zu bringen.",
+      "en": "Im Winter mache ich täglich IRL Content auf den Pisten in Davos. Ich arbeite am Berg im Skigebiet Parsenn und zeige das Leben am Berg hauptsächlich auf TikTok. Dabei gebe ich Tips und Tricks durch mein Fachwissen das ich in der Wintersportbranche im letzten Jahrzehnt angeeignet habe. Mein Content ist so einzigartig in der Schweiz und ich bin sehr motiviert mein Content auf das nächste Level zu bringen.",
+      "fr": "Im Winter mache ich täglich IRL Content auf den Pisten in Davos. Ich arbeite am Berg im Skigebiet Parsenn und zeige das Leben am Berg hauptsächlich auf TikTok. Dabei gebe ich Tips und Tricks durch mein Fachwissen das ich in der Wintersportbranche im letzten Jahrzehnt angeeignet habe. Mein Content ist so einzigartig in der Schweiz und ich bin sehr motiviert mein Content auf das nächste Level zu bringen.",
+      "it": "Im Winter mache ich täglich IRL Content auf den Pisten in Davos. Ich arbeite am Berg im Skigebiet Parsenn und zeige das Leben am Berg hauptsächlich auf TikTok. Dabei gebe ich Tips und Tricks durch mein Fachwissen das ich in der Wintersportbranche im letzten Jahrzehnt angeeignet habe. Mein Content ist so einzigartig in der Schweiz und ich bin sehr motiviert mein Content auf das nächste Level zu bringen."
+    },
+    "otherInterests": {
+      "de": "WinterSport,Travel, Multimediatechnik",
+      "en": "WinterSport,Travel, Multimediatechnik",
+      "fr": "WinterSport,Travel, Multimediatechnik",
+      "it": "WinterSport,Travel, Multimediatechnik"
+    },
+    "influencer": {
+      "firebase_id": "6wW1Dn48IotVasTdRZng",
+      "id": 15,
+      "name": " smart4winter",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/smart4winter/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@smart4winter",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/smart4winter-1747922870087.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAAAwAgCdASoKAAoAAUAmJbACdAEegoH8c+k2AAD+bSDl3/PqNKn3jfvrPlCj9zsWvNvW44L0VN5v2+121GBUJ2ur6rh6mYDXI/Hiz6Kg0z2NgjRDHspy/XfZmx/Y/xZqdZqGm+LPt6UcFxPVpDIea85yi90vZeRcP1/5/qRI0AMw7D826D/Q1CAA"
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 28,
+            "title": {
+              "de": "Sport",
+              "en": "Sport",
+              "fr": "Sport",
+              "it": "Sport"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "x7Scb1yDZMQ1gFHsePRX",
+    "id": 37,
+    "image": {
+      "src": "images/certified_influencers/95-1747931747134.webp",
+      "width": 3000,
+      "height": 4000,
+      "blurDataURL": "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwAgCdASoKAA0AAUAmJYwCdAELVSy6PIN6AAD++7eUyg6vZrFjHKO44M5I7ALE9fr8/0349WkgJsLNf5xAO45/uOy/I6shYnw1fn/zVpeI2Tp/7GTGrPNppmk8e2KZq4dVMAtJXwAAAA=="
+    },
+    "birthdate": "2005-12-18",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "I am a fashion and beauty related content creator that loves to film and post aesthetic photos & videos since I was little. Now that I started to take my chances I can finally follow my passion & inspire others to create the best version of themselves.",
+      "en": "I am a fashion and beauty related content creator that loves to film and post aesthetic photos & videos since I was little. Now that I started to take my chances I can finally follow my passion & inspire others to create the best version of themselves.",
+      "fr": "I am a fashion and beauty related content creator that loves to film and post aesthetic photos & videos since I was little. Now that I started to take my chances I can finally follow my passion & inspire others to create the best version of themselves.",
+      "it": "I am a fashion and beauty related content creator that loves to film and post aesthetic photos & videos since I was little. Now that I started to take my chances I can finally follow my passion & inspire others to create the best version of themselves."
+    },
+    "otherInterests": {
+      "de": "Selfcare, home interior, Haustier",
+      "en": "Selfcare, home interior, Haustier",
+      "fr": "Selfcare, home interior, Haustier",
+      "it": "Selfcare, home interior, Haustier"
+    },
+    "influencer": {
+      "firebase_id": "WvV17LppIUDAUpTR5m4P",
+      "id": 95,
+      "name": "evie.leclair",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/evie.leclair?igsh=dzczd3A1OWt3YTFy&utm_source=qr",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@evieleclair?_t=8i0pQ3bTQZs&_r=1",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/evie.leclair-1747923361077.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADwAQCdASoKAAoAAUAmJQBOgCKKVgJaeYAA/vQWQs6P3iU2qQpGehlnvZb4KJyVILn+6aM9uIy4OP/04C9ezqVIMoX+eF2h8q1bMb9/MdfzEzWIKUfOfAA6W+TQySE1RVqPn3MR8RlE2e6Y4AA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 32,
+            "title": {
+              "de": "Fashion",
+              "en": "Fashion",
+              "fr": "Mode",
+              "it": "Moda"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "1i91Ts1HPDJ3VUmzpzM0",
+    "id": 1,
+    "image": {
+      "src": "images/certified_influencers/122-1747931682290.webp",
+      "width": 2827,
+      "height": 3688,
+      "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAACQAgCdASoKAA0AAUAmJYwCdAabQ9D+ztAtK5z8AAD+rflPd5HbPvPhr9tobxU8GgqByBkmZKZCLTRE94ZG48P3Ckd0qzBDk9/Dh08picBYtUPa1WGu+vqQ782ZoZAh7kDyWfL/qq8C9kwG7v498DxTyblRxQodVt8g9/8nlckz6IFpEVQ2FOgAAAA="
+    },
+    "birthdate": "2005-07-22",
+    "residence": "SZ",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Mein Name ist Daniel Keller und ich bin mit dem Namen Daniel Kello auf Social Media unterwegs. Ich kreiere gerne unterhaltsame Videos, hauptsächlich Comedy welche ich auf TikTok oder Instareels hochlade. Ich stehe gerne vor der Kamera und ziehe meine Sachen durch weil ich mich so am besten ausdrücken kann und meinen Gedanken und Ideen freien Lauf lassen kann.",
+      "en": "Mein Name ist Daniel Keller und ich bin mit dem Namen Daniel Kello auf Social Media unterwegs. Ich kreiere gerne unterhaltsame Videos, hauptsächlich Comedy welche ich auf TikTok oder Instareels hochlade. Ich stehe gerne vor der Kamera und ziehe meine Sachen durch weil ich mich so am besten ausdrücken kann und meinen Gedanken und Ideen freien Lauf lassen kann.",
+      "fr": "Mein Name ist Daniel Keller und ich bin mit dem Namen Daniel Kello auf Social Media unterwegs. Ich kreiere gerne unterhaltsame Videos, hauptsächlich Comedy welche ich auf TikTok oder Instareels hochlade. Ich stehe gerne vor der Kamera und ziehe meine Sachen durch weil ich mich so am besten ausdrücken kann und meinen Gedanken und Ideen freien Lauf lassen kann.",
+      "it": "Mein Name ist Daniel Keller und ich bin mit dem Namen Daniel Kello auf Social Media unterwegs. Ich kreiere gerne unterhaltsame Videos, hauptsächlich Comedy welche ich auf TikTok oder Instareels hochlade. Ich stehe gerne vor der Kamera und ziehe meine Sachen durch weil ich mich so am besten ausdrücken kann und meinen Gedanken und Ideen freien Lauf lassen kann."
+    },
+    "otherInterests": {
+      "de": "Travel, Fashion, Festival",
+      "en": "Travel, Fashion, Festival",
+      "fr": "Travel, Fashion, Festival",
+      "it": "Travel, Fashion, Festival"
+    },
+    "influencer": {
+      "firebase_id": "i53fAatV2DHPTgt7G0ak",
+      "id": 122,
+      "name": " danielkello",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/danielkello/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@danielkello",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/danielkello-1747923855213.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAADwAQCdASoKAAoAAUAmJQBOgCHhlVJQwmAA+X7qq2c6AccGqHyW70JL8aKATnM21dPmFTnPrDi1Z6vTgKcWyM1UfmACWMfOHNuIcm6uIDD0BcGv0sagtBqEWm4cREAZRdt5Kur5GjEno622G2V0mVE0GgX6cTE4Ap3SAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 36,
+            "title": {
+              "de": "Newcomer",
+              "en": "Newcomer",
+              "fr": "Nouveau Venu",
+              "it": "Novo Arrivato"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "4YR1grDJim8d4lhbLKI7",
+    "id": 4,
+    "image": {
+      "src": "images/certified_influencers/176-1747931688090.webp",
+      "width": 726,
+      "height": 660,
+      "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAABwAgCdASoKAAkAAUAmJYgCdEf/i1jMk7NN50QAAP14ySuatChqR7efmtV38g6sA72C3jKfCJhtHjeFZvUD7FL7K/5iJlo6OPr8q53bcZvfajaxzfwMfittHhzlWt7Dyp54WdvfAhUWg8fgcSGvWPKYJAA="
+    },
+    "birthdate": "1998-03-02",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Fabio Zerzuben ist ein Schweizer Content Creator und Creative Director, der 1982 geboren wurde. Er ist verheiratet mit Frieda Hodel, der ehemaligen Schweizer Bachelorette, und gemeinsam haben sie zwei Töchter, Zuria und Kaia. Auf seinen Social-Media-Kanälen teilt er Einblicke in sein Familienleben und seine kreativen Projekte. Für seine Arbeit wurde er mit dem Swiss Influencer Award ausgezeichnet.",
+      "en": "Fabio Zerzuben is a Swiss content creator and creative director, born in 1982. He is married to Frieda Hodel, the former Swiss Bachelorette, and together they have two daughters, Zuria and Kaia. On his social media channels, he shares insights into his family life and creative projects. He has been awarded the Swiss Influencer Award for his work.",
+      "fr": "Fabio Zerzuben est un créateur de contenu et directeur créatif suisse, né en 1982. Il est marié à Frieda Hodel, l'ancienne Bachelorette suisse, et ensemble, ils ont deux filles, Zuria et Kaia. Sur ses réseaux sociaux, il partage des aperçus de sa vie de famille et de ses projets créatifs. Il a reçu le Swiss Influencer Award pour son travail.",
+      "it": "Fabio Zerzuben è un creatore di contenuti e direttore creativo svizzero, nato nel 1982. È sposato con Frieda Hodel, l'ex Bachelorette svizzera, e insieme hanno due figlie, Zuria e Kaia. Sui suoi canali social, condivide scorci della sua vita familiare e dei suoi progetti creativi. Ha ricevuto il Swiss Influencer Award per il suo lavoro."
+    },
+    "otherInterests": {
+      "de": "Family",
+      "en": "Family",
+      "fr": "Famille",
+      "it": "Famiglia"
+    },
+    "influencer": {
+      "firebase_id": "yuFUDnvgbTOk4VHwDNuc",
+      "id": 176,
+      "name": "Fabio Zerzuben",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/fabiozerzuben/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@fabiozerzuben",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/fabio-zerzuben-1747923897263.webp",
+        "width": 225,
+        "height": 225,
+        "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAABwAgCdASoKAAoAAUAmJQBOgMV7+AGfU5Tu1AsAAP75/b4hqY5VJYTkTIcePkdoGRlrJP9MRCXC+y4/ab2IH/sz/UVP/DGFRNnm/X4GbiIUgO2jdUv9l9vAi0n7j/9Ntei2C1eI+NOUongIP0b5vbxDSUfIUzGMAAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 30,
+            "title": {
+              "de": "Family",
+              "en": "Family",
+              "fr": "Famile",
+              "it": "Famiglia"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "mm5yNt5kg8uxOiSEFXuA",
+    "id": 32,
+    "image": {
+      "src": "images/certified_influencers/112-1747931738008.webp",
+      "width": 600,
+      "height": 616,
+      "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAQAgCdASoKAAoAAUAmJQBOgMW+tnoWy2ygAP7YfesY3CQnHJ+/rKJRo3EVgi8V97XDOf670RUARfYxG75gPxCBz/4n0srT/AZcszz7tTMDfk5iCKalOnCK4dgC6U8nvfGH3ojpEXB6Nqq4ZBztP7gA"
+    },
+    "birthdate": "1990-03-27",
+    "residence": "LU",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Angela Mygind, bekannt als Miss Finance, ist eine Schweizer Finanzbloggerin und Podcasterin. Auf missfinance.ch und im Podcast Money Matters erklärt sie Finanzthemen einfach und verständlich. Ihr Ziel ist es, Frauen für Finanzen zu begeistern. Auf Instagram (@missfinance.ch) hat sie über 22.000 Follower.",
+      "en": "Angela Mygind, known as Miss Finance, is a Swiss finance blogger and podcaster. On missfinance.ch and in her Money Matters podcast, she simplifies financial topics. Her mission is to empower women in finance. She has over 22,000 followers on Instagram (@missfinance.ch).",
+      "fr": "Angela Mygind, alias Miss Finance, est une blogueuse et podcasteuse suisse spécialisée en finances. Sur missfinance.ch et son podcast Money Matters, elle vulgarise les sujets financiers. Elle vise à sensibiliser les femmes aux finances. Elle compte plus de 22 000 abonnés sur Instagram (@missfinance.ch).",
+      "it": "Angela Mygind, nota come Miss Finance, è una blogger e podcaster svizzera. Su missfinance.ch e nel podcast Money Matters, spiega argomenti finanziari in modo semplice. Il suo obiettivo è avvicinare le donne alla finanza. Su Instagram (@missfinance.ch) ha oltre 22.000 follower."
+    },
+    "otherInterests": {
+      "de": "Finance",
+      "en": "Finance",
+      "fr": "Finance",
+      "it": "Finance"
+    },
+    "influencer": {
+      "firebase_id": "fX7wi60RkFVH2mLBaasO",
+      "id": 112,
+      "name": "Missfinance.ch",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/luise_ammerschuber",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/missfinancech-1748350007383.webp",
+        "width": 618,
+        "height": 618,
+        "blurDataURL": "data:image/webp;base64,UklGRlQCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggZgAAAPABAJ0BKgoACgACwEwlAE6QJiJ0XJX+KAD+mOqtKA1N+iw3B9blFiUqPMrEpsepJUOic//d//hM9uwt4+I2UEzWjED38ZsQEneUEqSeVEf5qFZxiBKU4uom219CuSytz2miDHVwAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 20,
+            "title": {
+              "de": "Business",
+              "en": "Business",
+              "fr": "Entreprise",
+              "it": "Attività commerciale"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "8gndvboBZr2SYfgu3pa8",
+    "id": 7,
+    "image": {
+      "src": "images/certified_influencers/141-1747931693562.webp",
+      "width": 736,
+      "height": 734,
+      "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABQAgCdASoKAAoAAUAmJQBOgMXXyY0pi6HeRgAA/voOPVn9iJCH/vlLufyDPpuX8cvhX/xPEbhm/H5fD0xED8+AnfSz72D7NEKzdTqbKcaIx+di9cjW2dQR7XZMr12Hd7/H/7Xrli2ZzVxcArO0g/xp7j7st/Zuxl673FBS+kw/E1TRFh4MCAAA"
+    },
+    "birthdate": "1997-03-02",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Die Thronsitzung\" war ein Podcast der Schweizer Moderatorinnen Karin Bearpark und Dara Masi, in dem sie wöchentlich persönliche Themen, Sorgen und Freuden besprachen. Anfang 2025 entschieden sie sich, ihren Podcast unter dem neuen Namen \"Die Thronfolge\" fortzusetzen. In diesem neuen Format verlassen sie die metaphorische \"Frauentoilette\" und thematisieren Gespräche aus Chefetagen, Kirchenbänken und anderen Bereichen des Lebens. Der Podcast ist auf Plattformen wie Spotify und Apple Podcasts verfügbar. ",
+      "en": "Die Thronsitzung\" was a Swiss podcast hosted by Karin Bearpark and Dara Masi, where they discussed personal topics, worries, and joys every week. (instagram.com) In early 2025, they decided to continue the podcast under the new name \"Die Thronfolge\". (persoenlich.com) In this new format, they move beyond the metaphorical \"women's restroom\" and discuss conversations from boardrooms, church benches, and other aspects of life. (die-thronfolge.podigee.io) The podcast is available on platforms such as Spotify and Apple Podcasts. ",
+      "fr": "Die Thronsitzung\" était un podcast suisse animé par Karin Bearpark et Dara Masi, où elles discutaient chaque semaine de sujets personnels, de préoccupations et de joies. (instagram.com) Début 2025, elles ont décidé de poursuivre le podcast sous le nouveau nom \"Die Thronfolge\". (persoenlich.com) Dans ce nouveau format, elles quittent la \"toilette des femmes\" métaphorique pour aborder des conversations issues des salles de réunion, des bancs d’église et d'autres aspects de la vie. (die-thronfolge.podigee.io) Le podcast est disponible sur Spotify et Apple Podcasts.",
+      "it": "Die Thronsitzung\" era un podcast svizzero condotto da Karin Bearpark e Dara Masi, in cui ogni settimana discutevano di argomenti personali, preoccupazioni e gioie. (instagram.com) All'inizio del 2025, hanno deciso di continuare il podcast con il nuovo nome \"Die Thronfolge\". (persoenlich.com) In questo nuovo formato, escono dalla metaforica \"toilette delle donne\" e affrontano conversazioni che spaziano dalle sale riunioni ai banchi di chiesa e ad altri aspetti della vita. (die-thronfolge.podigee.io) Il podcast è disponibile su Spotify e Apple Podcasts"
+    },
+    "otherInterests": {
+      "de": "Podcast",
+      "en": "Podcast",
+      "fr": "Podcast",
+      "it": "Podcast"
+    },
+    "influencer": {
+      "firebase_id": "o04breQROEyh1FTWPdfE",
+      "id": 141,
+      "name": "Die Thronsitzung",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/diethronsitzung",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/die-thronsitzung-1747923870434.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRpgAAABXRUJQVlA4IIwAAABQAgCdASoKAAoAAUAmJbACdAYaiTmTHS/VNgAA/DPj132Z6Bvncg/To6IfjRLqbo/9TcT2AMjfrwANCJL8oB9pp8BKL9wBgLUNHUErAx8UBod50cO2/AM3ha1Id/b2KZf8hw4HN//o4rUZ87O672lWT9ngJOAsMYL74G//EiebxT7zPPf2Yj6xHGAAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 23,
+            "title": {
+              "de": "Podcast",
+              "en": "Podcast",
+              "fr": "Podcast",
+              "it": "Podcast"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "FumlXtCUWsemm9agnMM2",
+    "id": 13,
+    "image": {
+      "src": "images/certified_influencers/127-1747931704440.webp",
+      "width": 2400,
+      "height": 3000,
+      "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABwAgCdASoKAAwAAUAmJZgCdAYs32XiIRM3gEFoAP78ceue6ii+H8/vc7aRGghnGSJp8RP/j3F2N/1/9N4hInHaSUHEBoRraP0+TrvccFrfSr7I6bZ15nn5HSA94LYBYl/Ei1LGaPOFlo/4+O9+NWj4YAHtRv6r0zpB5rggAAA="
+    },
+    "birthdate": "1994-11-03",
+    "residence": "SG",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Ich bin Koch, Papi, Food und Lifestyle Influencer und bald auch Fernsehkoch. Ich liebe es, authentischen, unterhaltsamen Content zu kreieren. Wenn ich damit die Leute noch motivieren kann, um selbst zu kochen, umso besser.",
+      "en": "Ich bin Koch, Papi, Food und Lifestyle Influencer und bald auch Fernsehkoch. Ich liebe es, authentischen, unterhaltsamen Content zu kreieren. Wenn ich damit die Leute noch motivieren kann, um selbst zu kochen, umso besser.",
+      "fr": "Ich bin Koch, Papi, Food und Lifestyle Influencer und bald auch Fernsehkoch. Ich liebe es, authentischen, unterhaltsamen Content zu kreieren. Wenn ich damit die Leute noch motivieren kann, um selbst zu kochen, umso besser.",
+      "it": "Ich bin Koch, Papi, Food und Lifestyle Influencer und bald auch Fernsehkoch. Ich liebe es, authentischen, unterhaltsamen Content zu kreieren. Wenn ich damit die Leute noch motivieren kann, um selbst zu kochen, umso besser."
+    },
+    "otherInterests": {
+      "de": "Food, Sport, Fashion",
+      "en": "Food, Sport, Fashion",
+      "fr": "Food, Sport, Fashion",
+      "it": "Food, Sport, Fashion"
+    },
+    "influencer": {
+      "firebase_id": "jchiHpkCFKMvyHqImiyQ",
+      "id": 127,
+      "name": "Noah Bachofen",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/noahbachofen_/",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@bachofennoah",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/noah-bachofen-1747923857926.webp",
+        "width": 225,
+        "height": 225,
+        "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABQAgCdASoKAAoAAUAmJZACdADhjhRYwoSmGAAA/I9NkR+xPJmF8H++rLPr0z/BUMRqe+EjwzFN9OWpqjM7eRLaKIh3/9hv/RaNn0qSvlFSO6Z5275/3/mYw2YIWdFvJxFMzoMHHCP5uACSaGL4DzvkuberSQLQprArznN4AAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 29,
+            "title": {
+              "de": "Food",
+              "en": "Food",
+              "fr": "Food",
+              "it": "Food"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "JuMtl9LpImJuKHP582bQ",
+    "id": 15,
+    "image": {
+      "src": "images/certified_influencers/19-1747931709524.webp",
+      "width": 1757,
+      "height": 1757,
+      "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAwAgCdASoKAAoAAUAmJbACdH8AFxSIXmo4AAD+7bPs5/T5wB6regOh667QxDxUI59dUI0vj0u+Lf/Se5o76RP69nRY8f+cfBydIH7R90ShRhj9wkBscZe4pip0h9IpJ4lIQfsST/kGP9fNHnuaYtxzTmty7IpoNCOAh8rVZAAAAA=="
+    },
+    "birthdate": "1990-08-08",
+    "residence": "BL",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Ich bin Ella, Mama von einem 5-jährigen Knopf, Ehefrau, Enterpreneurin, Kreativkopf, Fotografin, Creator, energiegeladen, lebendig, mit somalisch/schweizerischen Wurzeln. Teile mein Leben seit bald 6 Jahren mit meiner Community, ehrlich, bodenständig und authentisch ♥️",
+      "en": "Ich bin Ella, Mama von einem 5-jährigen Knopf, Ehefrau, Enterpreneurin, Kreativkopf, Fotografin, Creator, energiegeladen, lebendig, mit somalisch/schweizerischen Wurzeln. Teile mein Leben seit bald 6 Jahren mit meiner Community, ehrlich, bodenständig und authentisch ♥️",
+      "fr": "Ich bin Ella, Mama von einem 5-jährigen Knopf, Ehefrau, Enterpreneurin, Kreativkopf, Fotografin, Creator, energiegeladen, lebendig, mit somalisch/schweizerischen Wurzeln. Teile mein Leben seit bald 6 Jahren mit meiner Community, ehrlich, bodenständig und authentisch ♥️",
+      "it": "Ich bin Ella, Mama von einem 5-jährigen Knopf, Ehefrau, Enterpreneurin, Kreativkopf, Fotografin, Creator, energiegeladen, lebendig, mit somalisch/schweizerischen Wurzeln. Teile mein Leben seit bald 6 Jahren mit meiner Community, ehrlich, bodenständig und authentisch ♥️"
+    },
+    "otherInterests": {
+      "de": "Beauty, Travel, Lifestyle",
+      "en": "Beauty, Travel, Lifestyle",
+      "fr": "Beauty, Travel, Lifestyle",
+      "it": "Beauty, Travel, Lifestyle"
+    },
+    "influencer": {
+      "firebase_id": "7MsrBC7KerNPB7OdPI9b",
+      "id": 19,
+      "name": "Ella Gianola",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/ella.zina",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@ella.zina",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/ella-gianola-1747922873574.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABQAgCdASoKAAoAAUAmJYwCdAYstwLTIv3PqwAA/QA/t46zsY3aHnbGYCD/z1OAbe6iI4jEozYX6WG8v+4WSdDHrQ0h7sLygw5+8Os08uLlIzzQhUJPXZzoHy2AAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 30,
+            "title": {
+              "de": "Family",
+              "en": "Family",
+              "fr": "Famile",
+              "it": "Famiglia"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "PkH6Cyl2eUrlw2mT7tea",
+    "id": 18,
+    "image": {
+      "src": "images/certified_influencers/77-1747931713939.webp",
+      "width": 566,
+      "height": 718,
+      "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAABwAgCdASoKAA0AAUAmJZQCdH8AgqytS9PHxAcAAP7ykaD9hAZcEpcpdnJw8nd5rxQu2OAx39Yed3Tg7mz/yDagwqIxrwP/TMCkJQTyKZMV3CpRuRpkvp0e/z//6aA/CXyx9Hccqyo/cRBctovL50gAAAA="
+    },
+    "birthdate": "1990-03-05",
+    "residence": "LU",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "The Fashion Fraction ist ein Mode- und Lifestyle-Blog, gegründet von der Schweizer Influencerin Michèle Krüsi. Sie lebt in Luzern und teilt auf ihrem Instagram-Profil (@thefashionfraction) inspirierende Inhalte zu Mode, Lifestyle und Reisen. Neben ihrer Tätigkeit als Content Creator ist sie Gründerin und Creative Director des Lingerie-Labels LIOALINGERIE. ",
+      "en": "The Fashion Fraction is a fashion and lifestyle blog founded by Swiss influencer Michèle Krüsi. Based in Lucerne, she shares inspiring content on fashion, lifestyle, and travel on her Instagram profile (@thefashionfraction). In addition to her work as a content creator, she is the founder and creative director of the lingerie label LIOALINGERIE.",
+      "fr": "The Fashion Fraction est un blog de mode et de lifestyle fondé par l'influenceuse suisse Michèle Krüsi. Basée à Lucerne, elle partage du contenu inspirant sur la mode, le lifestyle et les voyages sur son profil Instagram (@thefashionfraction). En plus de son travail en tant que créatrice de contenu, elle est la fondatrice et directrice créative de la marque de lingerie LIOALINGERIE.",
+      "it": "The Fashion Fraction è un blog di moda e lifestyle fondato dall'influencer svizzera Michèle Krüsi. Con sede a Lucerna, condivide contenuti ispiratori su moda, lifestyle e viaggi sul suo profilo Instagram (@thefashionfraction). Oltre al suo lavoro come creatrice di contenuti, è la fondatrice e direttrice creativa del marchio di lingerie LIOALINGERIE."
+    },
+    "otherInterests": {
+      "de": "Fashion",
+      "en": "Fashion",
+      "fr": "Fashion",
+      "it": "Fashion"
+    },
+    "influencer": {
+      "firebase_id": "RjGkZJdvvh8e87YUn3ef",
+      "id": 77,
+      "name": "The Fashion Fraction",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/thefashionfraction/",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/the-fashion-fraction-1747923343818.webp",
+        "width": 396,
+        "height": 573,
+        "blurDataURL": "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAABQAgCdASoKAA4AAUAmJYgCdAYvXvqdonPU4PgA/s+DyzNSYo+uo1Mu85mN3zOpnS2Kroy/ArzpTj/HXtE621yNe1PNItFqdDxGuwbYhbyfX+fPpuWoo9W6/YsystSz0wSef8mI9DhPnc0T6CfdO1erR6DgsTx5RlcqTLUkGdHayAAA"
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 32,
+            "title": {
+              "de": "Fashion",
+              "en": "Fashion",
+              "fr": "Mode",
+              "it": "Moda"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "VUsX3ivjwXnwFcWBxDFI",
+    "id": 22,
+    "image": {
+      "src": "images/certified_influencers/5-1747931720231.webp",
+      "width": 2000,
+      "height": 1334,
+      "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAQCdASoKAAcAAUAmJZQCdADcUoLG6wAA/vQX3R1dlf15kT8gh1PI5gZLv/duqjoV6g2hn7bo5InyzEX6f/pNhi1f6X+Tehr2vLMOMRKqn0HRDffuCGWubiAAAA=="
+    },
+    "birthdate": "2000-10-25",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "About us ",
+      "en": "About us",
+      "fr": "About us",
+      "it": "About us"
+    },
+    "otherInterests": {
+      "de": "Die Dangel Twins sind ein Schweizer DJ-Duo, bestehend aus den Zwillingsbrüdern Max und Moritz Dangel. Bekannt für ihre energiegeladenen Auftritte und vielseitigen Sets, begeistern sie das Publikum mit einer Mischung aus elektronischer Musik, House und Dance. Mit ihrem Talent und ihrer charismatischen Bühnenpräsenz haben sie sich einen festen Platz in der Schweizer Clubszene und darüber hinaus erarbeitet.",
+      "en": "The Dangel Twins are a Swiss DJ duo composed of twin brothers Max and Moritz Dangel. Known for their energetic performances and diverse sets, they captivate audiences with a mix of electronic music, house, and dance. Their talent and charismatic stage presence have earned them a solid place in the Swiss club scene and beyond.",
+      "fr": "Les Dangel Twins sont un duo de DJ suisses composé des frères jumeaux Max et Moritz Dangel. Connus pour leurs performances énergiques et leurs sets variés, ils séduisent le public avec un mélange de musique électronique, house et dance. Grâce à leur talent et à leur présence scénique charismatique, ils se sont imposés dans la scène des clubs suisses et au-delà.",
+      "it": "I Dangel Twins sono un duo di DJ svizzeri composto dai fratelli gemelli Max e Moritz Dangel. Famosi per le loro esibizioni energiche e i set variegati, conquistano il pubblico con un mix di musica elettronica, house e dance. Grazie al loro talento e alla presenza scenica carismatica, si sono affermati nella scena dei club svizzeri e oltre."
+    },
+    "influencer": {
+      "firebase_id": "1oTe1nasMJqcstgmbibF",
+      "id": 5,
+      "name": "Dangel Twins",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/dangeltwins",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@dangeltwins",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/dangel-twins-1747922862249.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAABQAgCdASoKAAoAAUAmJZwCdAYuluKbk+K2C3AA/vtidDXnvse7gAbFv3iiVAc4qrqS8f3H4a8fEUt75JWXdhPb5F02Ou4Vu60m+ZLqS5qnltaSP/BqdS5bkwa9Gsu6+TI6rbxBTvbdAAAA"
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 37,
+            "title": {
+              "de": "Music",
+              "en": "Music",
+              "fr": "Musique",
+              "it": "Musica"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "WiyO8vlR32ZbU5oy6FuR",
+    "id": 24,
+    "image": {
+      "src": "images/certified_influencers/151-1747931723404.webp",
+      "width": 728,
+      "height": 732,
+      "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABQAgCdASoKAAoAAUAmJZAC7AYstkv6ElEp0IAA/vYZ4hTcTyMA1Yf2LMBFNyV6fX7RmJdDysv+vbmX7euVl8CrxHbPebNaqv/c/E/kbdLuE7wcn0mO/VXHkvtNdToG/BikugR6sUOiBbKxgAA="
+    },
+    "birthdate": "1997-03-11",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Flavien Gousset ist ein Schweizer Politologe, Sportjournalist und politischer Aktivist, geboren 1997. Er ist Mitglied der Sozialdemokratischen Partei (SP) des Kantons Zürich und setzt sich für soziale Gerechtigkeit und politische Partizipation ein. Bekannt wurde er durch seine erklärenden Videos auf Instagram, in denen er politische Themen verständlich aufbereitet und damit ein breites Publikum erreicht.",
+      "en": "Flavien Gousset is a Swiss political scientist, sports journalist, and political activist, born in 1997. He is a member of the Social Democratic Party (SP) of the Canton of Zurich and advocates for social justice and political participation. He became known for his explanatory videos on Instagram, where he presents political topics in an accessible manner, reaching a wide audience.​",
+      "fr": "Flavien Gousset est un politologue, journaliste sportif et activiste politique suisse, né en 1997. Il est membre du Parti socialiste (PS) du canton de Zurich et s'engage pour la justice sociale et la participation politique. Il s'est fait connaître par ses vidéos explicatives sur Instagram, où il rend les sujets politiques accessibles à un large public.​",
+      "it": "Flavien Gousset è un politologo, giornalista sportivo e attivista politico svizzero, nato nel 1997. È membro del Partito Socialdemocratico (SP) del Canton Zurigo e si impegna per la giustizia sociale e la partecipazione politica. È diventato noto per i suoi video esplicativi su Instagram, dove presenta temi politici in modo comprensibile, raggiungendo un vasto pubblico."
+    },
+    "otherInterests": {
+      "de": "Politics",
+      "en": "Politics",
+      "fr": "Politics",
+      "it": "Politics"
+    },
+    "influencer": {
+      "firebase_id": "tNjxunRoBsRuF43a83np",
+      "id": 151,
+      "name": "Flavien Gousset",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/flaviengousset",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/flavien-gousset-1747923878128.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAABwAgCdASoKAAoAAUAmJZQCdAYuRnZC50RMj6oAAP70xbth6Pny+5C+VzB+jPn/90lVb6Bx/9dJ6VRrejY+vJyD/BNKyw+Ui8IlqeerEM1edXeCJgtXu/1dC0bIn9nsyNvv+lIV87swDrehf+UsFVKMzVlMY99XaBKKoU8YeQ0RM6AAAAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 35,
+            "title": {
+              "de": "Politics",
+              "en": "Politics",
+              "fr": "Politique",
+              "it": "Politica"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "eUQvrdfpldMwZ9yqxtAM",
+    "id": 27,
+    "image": {
+      "src": "images/certified_influencers/124-1747931728145.webp",
+      "width": 736,
+      "height": 700,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQAgCdASoKAAoAAUAmJYgCdDiAATD+zUyqGwAA/vtZ1Cf6mNSh5m2kdW30u0x6BH3MBHT0TIYGnpfGwdmdlp2oKV3+K91xRnsb6FVApq8FMCz/JyXb6B0e8yL3J7sVz4V9JVxdKjcq1k9ec6IUH5LLpTIhEAAA"
+    },
+    "birthdate": "1996-03-03",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Marina, bekannt unter dem Handle @itsmarinasummer, ist ein Schweizer Model und Content Creator aus Zürich. Sie ist Markenbotschafterin für renommierte Unternehmen wie Lancôme und Kérastase. Auf Instagram teilt sie regelmäßig Beiträge zu Mode und Lifestyle mit über 12.000 Followern. Zudem ist sie auf der Plattform Threads aktiv, wo sie 1.700 Follower hat. Marina arbeitet mit verschiedenen Modebrands zusammen, darunter ANOUK Fashion, für die sie Kollektionen präsentiert. ",
+      "en": "Marina, known by the handle @itsmarinasummer, is a Swiss model and content creator based in Zurich. She serves as a brand ambassador for renowned companies such as Lancôme and Kérastase. On Instagram, she regularly shares fashion and lifestyle content with over 12,000 followers. Additionally, she is active on the Threads platform, where she has 1,700 followers. Marina collaborates with various fashion brands, including ANOUK Fashion, for which she showcases collections. ",
+      "fr": "Marina, connue sous le pseudonyme @itsmarinasummer, est un mannequin et créatrice de contenu suisse basée à Zurich. Elle est ambassadrice de marques renommées telles que Lancôme et Kérastase. Sur Instagram, elle partage régulièrement du contenu sur la mode et le lifestyle avec plus de 12 000 abonnés. De plus, elle est active sur la plateforme Threads, où elle compte 1 700 abonnés. Marina collabore avec diverses marques de mode, notamment ANOUK Fashion, pour lesquelles elle présente des collections.",
+      "it": "Marina, conosciuta con il nickname @itsmarinasummer, è una modella e creatrice di contenuti svizzera con sede a Zurigo. È ambasciatrice di marchi rinomati come Lancôme e Kérastase. Su Instagram, condivide regolarmente contenuti di moda e lifestyle con oltre 12.000 follower. Inoltre, è attiva sulla piattaforma Threads, dove conta 1.700 follower. Marina collabora con vari marchi di moda, tra cui ANOUK Fashion, per i quali presenta collezioni. ​"
+    },
+    "otherInterests": {
+      "de": "Luxury",
+      "en": "Luxury",
+      "fr": "Luxury",
+      "it": "Luxury"
+    },
+    "influencer": {
+      "firebase_id": "jCGZwKh1P2ExOKjOjPet",
+      "id": 124,
+      "name": "Itsmarinasummer",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/itsmarinasummer",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@itsmarinasummer",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/itsmarinasummer-1747923855994.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAABwAgCdASoKAAoAAUAmJZgCdLoAEIwWGVHimE+AAP7y5kT96cknmgOWepG+X3hMp52VyeTdYA8T9+7+pTvHOIFTMWcPfsYfVeEJIJPDx9CbJZNH/vGxl8YmKAAAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 31,
+            "title": {
+              "de": "Luxury",
+              "en": "Luxury",
+              "fr": "Luxe",
+              "it": "Lusso"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "k3jgNsxSd4wZRd8vaFGR",
+    "id": 30,
+    "image": {
+      "src": "images/certified_influencers/22-1747931734013.webp",
+      "width": 2000,
+      "height": 2500,
+      "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABQAgCdASoKAAwAAUAmJZQCdEf/geGS7Vb/dhAA/uXrvE8OyOyh7YK/6Xw1q+G1cksSrUI19KOHTVV0mhWth6j68QNF0a1Bjt8NSkX7f7J8Y0/MLgm1LzVgIQ6JSrD0V1hSo5c1Uc6ASOgAAAA="
+    },
+    "birthdate": "1977-01-04",
+    "residence": "ZH",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Ich bin iceXpaul, extreme & action Sportler mit Schweizer und Südafrikanische Wurzeln. Content creation finde ich voll inspirierend. Freue mich von deinem Projekt zu hören 😀",
+      "en": "Ich bin iceXpaul, extreme & action Sportler mit Schweizer und Südafrikanische Wurzeln. Content creation finde ich voll inspirierend. Freue mich von deinem Projekt zu hören 😀",
+      "fr": "Ich bin iceXpaul, extreme & action Sportler mit Schweizer und Südafrikanische Wurzeln. Content creation finde ich voll inspirierend. Freue mich von deinem Projekt zu hören 😀",
+      "it": "Ich bin iceXpaul, extreme & action Sportler mit Schweizer und Südafrikanische Wurzeln. Content creation finde ich voll inspirierend. Freue mich von deinem Projekt zu hören 😀"
+    },
+    "otherInterests": {
+      "de": "Sport, Travel, Luxus",
+      "en": "Sport, Travel, Luxus",
+      "fr": "Sport, Travel, Luxus",
+      "it": "Sport, Travel, Luxus"
+    },
+    "influencer": {
+      "firebase_id": "84mdRoQGLwJFVBgLYLxJ",
+      "id": 22,
+      "name": "icexpaul",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/icexpaul?igsh=MTl1aTJnNDI4eXM4cA%3D%3D&utm_source=qr",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@icexpaul?_t=8kZ4vsx2EW8&_r=1",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/icexpaul-1747922876007.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAABQAgCdASoKAAoAAUAmJZQCdAUYA3EPOFhyKgAA/uXsOPQFweLEXtSBfZ+HsaXJU2MM/al8y7VQYcP9HuTwliIIde/WBCKvXessT1rtolRRK4eOICE9+Nz/lRZvitXYgAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 28,
+            "title": {
+              "de": "Sport",
+              "en": "Sport",
+              "fr": "Sport",
+              "it": "Sport"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "ufmzFpa9aZUx1TOD9kR8",
+    "id": 36,
+    "image": {
+      "src": "images/certified_influencers/177-1747931744878.webp",
+      "width": 1179,
+      "height": 1457,
+      "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwAgCdASoKAAwAAUAmJbACdAYq/bMg1ghEAAD+sj2+PYp9pM1q4PnsaOF7Bc/2MK2T+RAlHd9Y/8NNeKvIdntkvXQoYcukFMuPBi4qd5OGOEfPBr9T3Vf8l5k3JS6VsTMCINtugEQ6Fk+29hliN/03l+uL4JwAAAA="
+    },
+    "birthdate": "1997-03-06",
+    "residence": "LU",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Stefanie, auf Instagram unter dem Benutzernamen @steffii.official, ist eine in Luzern ansässige Influencerin. Auf ihrem Profil teilt sie authentische und positive Einblicke in ihren Alltag, wobei sie ihren Fokus auf Lifestyle-Themen legt.",
+      "en": "Stefanie, auf Instagram unter dem Benutzernamen @steffii.official, ist eine in Luzern ansässige Influencerin. Auf ihrem Profil teilt sie authentische und positive Einblicke in ihren Alltag, wobei sie ihren Fokus auf Lifestyle-Themen legt.",
+      "fr": "Stefanie, auf Instagram unter dem Benutzernamen @steffii.official, ist eine in Luzern ansässige Influencerin. Auf ihrem Profil teilt sie authentische und positive Einblicke in ihren Alltag, wobei sie ihren Fokus auf Lifestyle-Themen legt.",
+      "it": "Stefanie, auf Instagram unter dem Benutzernamen @steffii.official, ist eine in Luzern ansässige Influencerin. Auf ihrem Profil teilt sie authentische und positive Einblicke in ihren Alltag, wobei sie ihren Fokus auf Lifestyle-Themen legt."
+    },
+    "otherInterests": {
+      "de": "Home",
+      "en": "Home",
+      "fr": "Home",
+      "it": "Home"
+    },
+    "influencer": {
+      "firebase_id": "ywJdFT3JeAOPgFo4BE44",
+      "id": 177,
+      "name": "steffii.official",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/steffii.official?igsh=YXBiMGtobzhnZjZw",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.instagram.com/steffii.official?igsh=YXBiMGtobzhnZjZw",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/steffii.official-1747923898201.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAADwAQCdASoKAAoAAUAmJbACdAD0pauo3EAA+Xy3r4Yl+6VLmhHXurOhCm5D+1i8ihzjPsH+41rxPsBqylJS5BesGl7tAp0pedW8yZul4FVa6J3GB14kMGVHyQ9LebiPZx33/AdFgAA="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 33,
+            "title": {
+              "de": "Lifestyle",
+              "en": "Lifestyle",
+              "fr": "Lifestyle",
+              "it": "Lifestyle"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "znH3lA2iYcVD9Sknncx8",
+    "id": 38,
+    "image": {
+      "src": "images/certified_influencers/47-1747931749925.webp",
+      "width": 1066,
+      "height": 1600,
+      "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwAgCdASoKAA8AAUAmJQBOgMW53xNd//rQAAD++NJ9zCudU6WRM9+Wjjc//53HwKSErlcK4/RCoUr1w25do12RTkXALu+bZVAIkzfXp8IC4QtiXOi1hyjgGuXrwrb9FN0ZbGQJLVX0JH0i1bVIk+arVUAAAA=="
+    },
+    "birthdate": "2001-07-21",
+    "residence": "BS",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Ich heisse Kevin Bannier. Werde 23 Jahre alt. Bin professioneller Tänzer und selbständig im Social Media Bereich tätig. Habe die Leidenschaft zum Tanzen mit 7 Jahren entdeckt, tanze jetzt schon seit 15 Jahren.",
+      "en": "Ich heisse Kevin Bannier. Werde 23 Jahre alt. Bin professioneller Tänzer und selbständig im Social Media Bereich tätig. Habe die Leidenschaft zum Tanzen mit 7 Jahren entdeckt, tanze jetzt schon seit 15 Jahren.",
+      "fr": "Ich heisse Kevin Bannier. Werde 23 Jahre alt. Bin professioneller Tänzer und selbständig im Social Media Bereich tätig. Habe die Leidenschaft zum Tanzen mit 7 Jahren entdeckt, tanze jetzt schon seit 15 Jahren.",
+      "it": "Ich heisse Kevin Bannier. Werde 23 Jahre alt. Bin professioneller Tänzer und selbständig im Social Media Bereich tätig. Habe die Leidenschaft zum Tanzen mit 7 Jahren entdeckt, tanze jetzt schon seit 15 Jahren."
+    },
+    "otherInterests": {
+      "de": "Fashion, Sport, Lifestyle",
+      "en": "Fashion, Sport, Lifestyle",
+      "fr": "Fashion, Sport, Lifestyle",
+      "it": "Fashion, Sport, Lifestyle"
+    },
+    "influencer": {
+      "firebase_id": "H3kGW9gese1w8o72bR0O",
+      "id": 47,
+      "name": "Kevin Bannier",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/kevinbannier_",
+          "platform": "INSTAGRAM"
+        },
+        {
+          "url": "https://www.tiktok.com/@kevinbannier_",
+          "platform": "TIKTOK"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/kevin-bannier-1747922893659.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAAAQAgCdASoKAAoAAUAmJZgCdAYsta9XBygAAPzWjGfYW/+ir77uw39HkoJ+n/emBVhBUps3sEhixGlZ28DfHXbU0mRRnyn5nLB1cIL3iYiguZ5aOXgmGIYDKQr9ezcjOqv4+DQfYBkvXM/uSiAAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 28,
+            "title": {
+              "de": "Sport",
+              "en": "Sport",
+              "fr": "Sport",
+              "it": "Sport"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "firebase_id": "soUamH5Mku3LNjWnXiv2",
+    "id": 34,
+    "image": {
+      "src": "images/certified_influencers/109-1748043167824.webp",
+      "width": 1399,
+      "height": 787,
+      "blurDataURL": "data:image/webp;base64,UklGRjACAABXRUJQVlA4WAoAAAAgAAAACQAABAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggQgAAAPABAJ0BKgoABQACwEwljAJ0AR6RfPfXUAD5di02rSONjnsKUeuQX+P+ogqrpGY+7MU6u/rVXU6UAI4qBRQsgS0AAA=="
+    },
+    "birthdate": "1983-03-12",
+    "residence": "TI",
+    "languages": [
+      "de"
+    ],
+    "bio": {
+      "de": "Christa Rigozzi (*1983, Monte Carasso, Tessin) ist eine Schweizer Moderatorin und Model. Sie wurde 2006 zur Miss Schweiz gewählt und etablierte sich als TV-Moderatorin, u. a. bei The Voice of Switzerland und Die grössten Schweizer Talente. Sie engagiert sich sozial und ist Markenbotschafterin.",
+      "en": "Christa Rigozzi (*1983, Monte Carasso, Ticino) is a Swiss TV presenter and model. She won Miss Switzerland 2006 and became a TV host, appearing on The Voice of Switzerland and Die grössten Schweizer Talente. She is also a brand ambassador and social advocate.",
+      "fr": "Christa Rigozzi (*1983, Monte Carasso, Tessin) est une animatrice télé et mannequin suisse. Élue Miss Suisse 2006, elle anime The Voice of Switzerland et Die grössten Schweizer Talente. Elle est ambassadrice de marque et engagée socialement.",
+      "it": "Christa Rigozzi (*1983, Monte Carasso, Ticino) è una presentatrice TV e modella svizzera. Eletta Miss Svizzera 2006, ha condotto The Voice of Switzerland e Die grössten Schweizer Talente. È ambasciatrice di marca e attiva nel sociale."
+    },
+    "otherInterests": {
+      "de": "Family",
+      "en": "Family",
+      "fr": "Family",
+      "it": "Famiglia"
+    },
+    "influencer": {
+      "firebase_id": "e6zr2CpglZS3gVEAZnkj",
+      "id": 109,
+      "name": "Christa Rigozzi",
+      "socials": [
+        {
+          "url": "https://www.instagram.com/christarigozzi",
+          "platform": "INSTAGRAM"
+        }
+      ],
+      "image": {
+        "src": "images/influencers/christa-rigozzi-1747923844027.webp",
+        "width": 600,
+        "height": 600,
+        "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoKAAoAAUAmJZQCw7EPBYpS80AA/v7XHdLzlzExU53/Vay1GGQQedOOhj5N08Nxjwb7Qm9eT3yaILDkIUYcKEokKTWGqPdmvSd2OoqgsIgAAA=="
+      },
+      "interests": [
+        {
+          "category": {
+            "id": 22,
+            "title": {
+              "de": "Public Figure",
+              "en": "Public Figure",
+              "fr": "Personnalité publique",
+              "it": "Figura pubblica"
+            }
+          }
+        }
+      ]
+    }
+  }
+]

@@ -1,16 +1,14 @@
 "use server";
 
 import type { GlobalData, GlobalId } from "@/react-admin/globals";
-import { db } from "@/database";
+import DATA from "@/backup/globals.json";
 import { GLOBALS } from "@/react-admin/globals";
 
 import { cachedRequest } from "./cache";
 
 export const fetchGlobal = cachedRequest(
   async <T extends GlobalId>(name: T): Promise<GlobalData<T>> => {
-    const global = await db.query.globals.findFirst({
-      where: (t, { eq }) => eq(t.name, name),
-    });
+    const global = DATA.find((item) => item.name === name);
 
     // @ts-expect-error - TODO: fix this
     return GLOBALS[name].parse(global?.data);
@@ -21,7 +19,7 @@ export const fetchGlobal = cachedRequest(
 export const fetchGlobals = cachedRequest(async (): Promise<{
   [K in GlobalId]: GlobalData<K>;
 }> => {
-  const globals = await db.query.globals.findMany();
+  const globals = DATA;
 
   return globals.reduce<{
     [K in GlobalId]: GlobalData<K>;

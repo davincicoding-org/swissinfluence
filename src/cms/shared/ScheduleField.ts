@@ -52,7 +52,6 @@ export const ScheduleField: ArrayField = {
         },
       ],
     },
-
     {
       name: "description",
       type: "richText",

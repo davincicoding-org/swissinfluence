@@ -58,9 +58,6 @@ const dirname = path.dirname(filename);
 // TODO add Cache Invalidation
 
 export default buildConfig({
-  routes: {
-    admin: "/admin-next",
-  },
   admin: {
     user: Users.slug,
     importMap: {
@@ -129,8 +126,6 @@ export default buildConfig({
     defaultFromName: "swissinfluence.ch",
     apiKey: env.RESEND_API_KEY,
   }),
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   sharp,
   plugins: [
     // storage-adapter-placeholder

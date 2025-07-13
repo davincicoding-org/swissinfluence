@@ -16,7 +16,7 @@ export interface IPersonaCardProps {
   name: string;
   description?: string;
   revealed?: boolean;
-  image: ImageAsset;
+  image: Omit<ImageAsset, "id" | "name">;
   socials?: Array<SocialMedia>;
   compact?: boolean;
   classNames?: {

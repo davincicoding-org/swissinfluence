@@ -14,6 +14,7 @@ import { CantonEnum, LanguageCodeEnum } from "./enums";
 // MARK: JSON Schemas
 
 type Translatable = Record<string, string>;
+// type Translatable = Record<SupportedLocale, string>;
 
 // MARK: CMS
 
@@ -77,7 +78,7 @@ export const categories = pgTable("categories", (d) => ({
   firebase_id: d.text(),
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
-  image: d.jsonb().$type<ImageAsset>().notNull(),
+  image: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
 }));
 
 // MARK: Influencers
@@ -88,7 +89,7 @@ export const influencers = pgTable("influencers", (d) => ({
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
   socials: d.jsonb().$type<SocialMedia>().array().notNull(),
-  image: d.jsonb().$type<ImageAsset>().notNull(),
+  image: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
 }));
 
 export const influencerCategories = pgTable("influencer_categories", (d) => ({
@@ -141,7 +142,7 @@ export const certifiedInfluencers = pgTable("certified_influencers", (d) => ({
     .references(() => influencers.id)
     .notNull()
     .unique(),
-  image: d.jsonb().$type<ImageAsset>().notNull(),
+  image: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
   birthdate: d.date().notNull(),
   residence: residenceEnum().notNull(),
   languages: languageEnum().array().notNull(),
@@ -168,7 +169,7 @@ export const experts = pgTable("experts", (d) => ({
   name: d.text().notNull(),
   description: d.jsonb().$type<Translatable>().notNull(),
   socials: d.jsonb().$type<SocialMedia>().array().notNull(),
-  image: d.jsonb().$type<ImageAsset>().notNull(),
+  image: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
 }));
 
 // MARK: Brands
@@ -179,7 +180,7 @@ export const brands = pgTable("brands", (d) => ({
   id: d.serial().primaryKey(),
   name: d.text().notNull().unique(),
   website: d.text().notNull(),
-  image: d.jsonb().$type<ImageAsset>().notNull(),
+  image: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
 }));
 
 // MARK: Awards
@@ -283,7 +284,7 @@ export const awardCategories = pgTable(
       .references(() => awards.id)
       .notNull(),
     sponsor: d.integer().references(() => brands.id),
-    winner: d.jsonb().$type<ImageAsset>(),
+    winner: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>(),
   }),
   (t) => [index("idx_award_category_award").on(t.award)],
 );
@@ -362,7 +363,7 @@ export const awardShows = pgTable("award_shows", (d) => ({
   tickets: d.text(),
   schedule: d.jsonb().$type<AwardShowSchedule>().default([]).notNull(),
   video: d.text(),
-  impressions: d.jsonb().$type<ImageAsset[]>(),
+  impressions: d.jsonb().$type<Omit<ImageAsset, "id" | "name">[]>(),
 }));
 
 export const awardShowRelations = relations(awardShows, ({ one }) => ({
@@ -384,7 +385,7 @@ export const creatorChallenges = pgTable("creator_challenges", (d) => ({
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   content: d.jsonb().$type<Translatable>().notNull(),
-  image: d.jsonb().$type<ImageAsset>().notNull(),
+  image: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
   organizer: d
     .integer()
     .references(() => brands.id)
@@ -417,8 +418,8 @@ export const networkEvents = pgTable("network_events", (d) => ({
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   description: d.jsonb().$type<Translatable>().notNull(),
-  image: d.jsonb().$type<ImageAsset>().notNull(),
-  logo: d.jsonb().$type<ImageAsset>().notNull(),
+  image: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
+  logo: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
   location: d
     .integer()
     .references(() => locations.id)
@@ -443,7 +444,7 @@ export const socialMediaCampaigns = pgTable("social_media_campaigns", (d) => ({
   id: d.serial().primaryKey(),
   title: d.jsonb().$type<Translatable>().notNull(),
   content: d.jsonb().$type<Translatable>().notNull(),
-  image: d.jsonb().$type<ImageAsset>().notNull(),
+  image: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
   organizer: d
     .integer()
     .references(() => brands.id)
@@ -476,8 +477,8 @@ export const agencies = pgTable("agencies", (d) => ({
   id: d.serial().primaryKey(),
   name: d.text().notNull(),
   description: d.jsonb().$type<Translatable>().notNull(),
-  image: d.jsonb().$type<ImageAsset>().notNull(),
-  logo: d.jsonb().$type<ImageAsset>().notNull(),
+  image: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
+  logo: d.jsonb().$type<Omit<ImageAsset, "id" | "name">>().notNull(),
   website: d.text().notNull(),
   email: d.text().notNull(),
 }));

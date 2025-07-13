@@ -152,6 +152,9 @@ importers:
       sharp:
         specifier: ^0.34.2
         version: 0.34.3
+      slugify:
+        specifier: ^1.6.6
+        version: 1.6.6
       tailwind-merge:
         specifier: ^3.3.0
         version: 3.3.1

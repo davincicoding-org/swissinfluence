@@ -1,0 +1,284 @@
+[
+  {
+    "id": 6,
+    "name": "NENI",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/NENI-1747919486722.webp",
+    "website": "https://nenifood.com/restaurants/zurich"
+  },
+  {
+    "id": 7,
+    "name": "Frame",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Frame-1747919486723.svg",
+    "website": "https://www.frame.ch"
+  },
+  {
+    "id": 25,
+    "name": "ZEAM",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/ZEAM-1747919486733.svg",
+    "website": "https://www.zeam.xyz/"
+  },
+  {
+    "id": 8,
+    "name": "Migros Hiking Sounds",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Migros_Hiking_Sounds-1747919486724.webp",
+    "website": "https://migroshikingsounds.ch"
+  },
+  {
+    "id": 11,
+    "name": "Swiss Influence Network",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Swiss_Influence_Network-1747919486725.webp",
+    "website": "https://www.swissinfluence.ch/"
+  },
+  {
+    "id": 12,
+    "name": "Universal Music",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Universal_Music-1747919486726.svg",
+    "website": "https://universalmusic.ch/"
+  },
+  {
+    "id": 13,
+    "name": "De'Longhi",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/De'Longhi-1747919486726.webp",
+    "website": "https://www.delonghi.com/de-ch"
+  },
+  {
+    "id": 14,
+    "name": "Cadillac",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Cadillac-1747919486727.svg",
+    "website": "https://www.cadillaceurope.com"
+  },
+  {
+    "id": 15,
+    "name": "Weleda",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Weleda-1747919486728.webp",
+    "website": "https://www.weleda.ch/?srsltid=AfmBOoqc1K4sACnk8DjxvQah8Kok_76zYcJKylmt7dyPjpW7RiO3v9as"
+  },
+  {
+    "id": 16,
+    "name": "Swiss Creator Academy",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Swiss_Creator_Academy-1747919486728.svg",
+    "website": "https://www.swisscreatoracademy.com/"
+  },
+  {
+    "id": 17,
+    "name": "Schweizer Kinofilmproduktion ",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Schweizer_Kinofilmproduktion_-1747919486729.webp",
+    "website": "https://www.swissinfluence.ch/network/connect-with-brands-influencers"
+  },
+  {
+    "id": 18,
+    "name": "EMMI CAFFÈ LATTE BEACHTOUR 2024",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/EMMI_CAFFE_LATTE_BEACHTOUR_2024-1747919486729.webp",
+    "website": "https://beachvolleytour.ch"
+  },
+  {
+    "id": 19,
+    "name": "Zurich Film Festival",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Zurich_Film_Festival-1747919486730.webp",
+    "website": "https://zff.com"
+  },
+  {
+    "id": 20,
+    "name": "DAVINCI CODING",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/DAVINCI_CODING-1747919486731.svg",
+    "website": "https://davincicoding.ch"
+  },
+  {
+    "id": 21,
+    "name": "THOMY",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/THOMY-1747919486731.webp",
+    "website": "https://thomy.ch/de/"
+  },
+  {
+    "id": 22,
+    "name": "20 Minuten",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/20_Minuten-1747919486731.svg",
+    "website": "https://www.20min.ch/"
+  },
+  {
+    "id": 23,
+    "name": "Kingfluencers",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Kingfluencers-1747919486732.webp",
+    "website": "https://kingfluencers.com/"
+  },
+  {
+    "id": 24,
+    "name": "auftanken.tv",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/auftanken.tv-1747919486732.webp",
+    "website": "https://www.auftanken.tv/"
+  },
+  {
+    "id": 9,
+    "name": "The Green Montain",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Green_Montain-1747919486724.webp",
+    "website": "https://www.thegreenmountain.ch/"
+  },
+  {
+    "id": 26,
+    "name": "FACES",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/FACES-1747919486733.webp",
+    "website": "https://www.faces.ch/"
+  },
+  {
+    "id": 27,
+    "name": "Mobility",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Mobility-1747919486733.webp",
+    "website": "https://www.mobility.ch/de/privatkunden"
+  },
+  {
+    "id": 28,
+    "name": "Smile Versicherung",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Smile_Versicherung-1747919486733.svg",
+    "website": "https://www.smile-insurances.com/"
+  },
+  {
+    "id": 30,
+    "name": "Farner",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Farner-1747919486734.webp",
+    "website": "https://www.farner.ch/"
+  },
+  {
+    "id": 31,
+    "name": " Boda Borg",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Boda_Borg-1747919486734.webp",
+    "website": "https://www.bodaborg.ch/locations/zuerich/"
+  },
+  {
+    "id": 32,
+    "name": "Jensen",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Jensen-1747919486735.svg",
+    "website": "https://www.jensen.ch/"
+  },
+  {
+    "id": 33,
+    "name": "Selfie Hotel",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Selfie_Hotel-1747919486735.svg",
+    "website": "https://selfiehotel.ch/"
+  },
+  {
+    "id": 34,
+    "name": "OpenAir Gampel",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/OpenAir_Gampel-1747919486735.webp",
+    "website": "https://www.openairgampel.ch/2025_xmas/de/home"
+  },
+  {
+    "id": 35,
+    "name": "Dr Hauschka",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Dr_Hauschka-1747919486736.svg",
+    "website": "https://www.drhauschka.ch/?utm_source=google&utm_medium=sea&utm_campaign=alwayson_ch_paid_dec_brand&gad_source=1&gbraid=0AAAAApoVUEDRjxHpJylEzfPQLaZFxYozO&gclid=Cj0KCQiAsOq6BhDuARIsAGQ4-zgWRqynAPpo2Ky-XSXr-r69-mGaWRaf2rTIG9WWAKPQWT74nTozITkaAva3EALw_wcB"
+  },
+  {
+    "id": 36,
+    "name": "Avyn Skin",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Avyn_Skin-1747919486736.webp",
+    "website": "https://avynskin.com/de"
+  },
+  {
+    "id": 37,
+    "name": "the mall of switzerland",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/the_mall_of_switzerland-1747919486736.webp",
+    "website": "https://www.mallofswitzerland.ch/"
+  },
+  {
+    "id": 38,
+    "name": "Orell Füssli",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Orell_Fussli-1747919486737.webp",
+    "website": "https://www.orellfuessli.ch"
+  },
+  {
+    "id": 39,
+    "name": "Swiss",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Swiss-1747919486737.svg",
+    "website": "https://www.swiss.com/ch"
+  },
+  {
+    "id": 40,
+    "name": "Sony",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/Sony-1747919486737.svg",
+    "website": "https://www.sony.ch"
+  },
+  {
+    "id": 43,
+    "name": "Offroad",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/offroad-1748262722209.webp",
+    "website": "https://www.offroad.ch"
+  },
+  {
+    "id": 29,
+    "name": "Braun",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/braun-1749153233062.webp",
+    "website": "http://braunhousehold.ch/ "
+  },
+  {
+    "id": 44,
+    "name": "Aqua Spa & Resorts",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/aqua-spa-and-resorts-1749050581491.webp",
+    "website": "https://www.aqua-spa-resorts.ch/de/huerlimannbad-spa-zuerich?_gl=1*scj9ch*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwuvrBBhDcARIsAKRrkjef9ajGuD4xfOmwAJMBtpA1iK3cSNpNuiwbcgs3HNMOccERP7qOV2saAj5NEALw_wcB&gbraid=0AAAAADPgvi81MKXPxDdiipM7771r7MtX2"
+  },
+  {
+    "id": 45,
+    "name": "Beauty2Go ",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/beauty2go-1749055150456.webp",
+    "website": " https://beauty2go.ch/?mtm_campaign=12548616427&mtm_keyword=beauty%202%20go&mtm_source=googleads&mtm_medium=cpc&mtm_content=512832901103&gad_source=1&gad_campaignid=12548616427&gbraid=0AAAAADRV0yauIwmEH9NhZm7QcsqAKxDVn&gclid=EAIaIQobChMIqtXEkprYjQMVJ5GDBx0magwWEAAYASAAEgLPPvD_BwE"
+  },
+  {
+    "id": 41,
+    "name": "Yuh",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/yuh-1748442780213.webp",
+    "website": "https://www.yuh.com/de/"
+  },
+  {
+    "id": 46,
+    "name": "Ribelli Restaurant",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/ribelli-restaurant-1749106708355.webp",
+    "website": "https://ribelli-restaurant.ch/"
+  },
+  {
+    "id": 48,
+    "name": "Mineralbad & Spa Samedan",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/mineralbad-and-spa-samedan-1749543215999.webp",
+    "website": "https://www.aqua-spa-resorts.ch/de/mineralbad-spa-samedan?_gl=1*ms3ov5*_up*MQ..*_gs*MQ..&gclid=CjwKCAjwr5_CBhBlEiwAzfwYuGERd-E1mDkeRBPz1-o1z-12XyVRUiVJqwf_yqs0kxouaU28nmrlCRoCWMwQAvD_BwE&gbraid=0AAAAADPgvi9uwvxVZ7G7cw_JYivCQYRxV"
+  },
+  {
+    "id": 10,
+    "name": "Nutribullet",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/nutribullet-1749153206077.webp",
+    "website": "https://www.nutribullet.com/de-ch"
+  },
+  {
+    "id": 47,
+    "name": "Mineralbad & Spa Rigi Kaltbad",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/mineralbad-and-spa-rigi-kaltbad-1749543187286.webp",
+    "website": "https://www.aqua-spa-resorts.ch/de/mineralbad-spa-rigi-kaltbad?_gl=1*1167it5*_up*MQ..*_gs*MQ..&gclid=CjwKCAjwr5_CBhBlEiwAzfwYuGERd-E1mDkeRBPz1-o1z-12XyVRUiVJqwf_yqs0kxouaU28nmrlCRoCWMwQAvD_BwE&gbraid=0AAAAADPgvi9uwvxVZ7G7cw_JYivCQYRxV"
+  },
+  {
+    "id": 49,
+    "name": "Termali Salini & Spa Locarno",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/termali-salini-and-spa-locarno-1749543240272.webp",
+    "website": "https://www.aqua-spa-resorts.ch/de/termali-salini-spa-locarno?_gl=1*ms3ov5*_up*MQ..*_gs*MQ..&gclid=CjwKCAjwr5_CBhBlEiwAzfwYuGERd-E1mDkeRBPz1-o1z-12XyVRUiVJqwf_yqs0kxouaU28nmrlCRoCWMwQAvD_BwE&gbraid=0AAAAADPgvi9uwvxVZ7G7cw_JYivCQYRxV"
+  },
+  {
+    "id": 50,
+    "name": "Hammam & Spa Oktogon Bern",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/hammam-and-spa-oktogon-bern-1749543268359.webp",
+    "website": "https://www.aqua-spa-resorts.ch/de/hammam-spa-oktogon-bern?_gl=1*6p61uy*_up*MQ..*_gs*MQ..&gclid=CjwKCAjwr5_CBhBlEiwAzfwYuGERd-E1mDkeRBPz1-o1z-12XyVRUiVJqwf_yqs0kxouaU28nmrlCRoCWMwQAvD_BwE&gbraid=0AAAAADPgvi9uwvxVZ7G7cw_JYivCQYRxV"
+  },
+  {
+    "id": 51,
+    "name": "Solbad & Spa Schönbühl",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/solbad-and-spa-schonbuhl-1749543298014.webp",
+    "website": "https://www.aqua-spa-resorts.ch/de/solbad-spa-schoenbuehl?_gl=1*6p61uy*_up*MQ..*_gs*MQ..&gclid=CjwKCAjwr5_CBhBlEiwAzfwYuGERd-E1mDkeRBPz1-o1z-12XyVRUiVJqwf_yqs0kxouaU28nmrlCRoCWMwQAvD_BwE&gbraid=0AAAAADPgvi9uwvxVZ7G7cw_JYivCQYRxV"
+  },
+  {
+    "id": 52,
+    "name": "Hürlimannbad & Spa Zürich",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/hurlimannbad-and-spa-zurich-1749543337550.webp",
+    "website": "https://www.aqua-spa-resorts.ch/de/huerlimannbad-spa-zuerich?_gl=1*1lnelki*_up*MQ..*_gs*MQ..&gclid=CjwKCAjwr5_CBhBlEiwAzfwYuGERd-E1mDkeRBPz1-o1z-12XyVRUiVJqwf_yqs0kxouaU28nmrlCRoCWMwQAvD_BwE&gbraid=0AAAAADPgvi9uwvxVZ7G7cw_JYivCQYRxV"
+  },
+  {
+    "id": 53,
+    "name": "SAE",
+    "logo": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/brands/sae-1751037147464.webp",
+    "website": "https://www.sae.edu/che/?utm_campaign=SAE-CHE-ZRH-SALL-PSE-BRNWR-GGLBRANDSRCH-CDNOTSET-20211203&utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=176446194&gbraid=0AAAAAD2Vk16ctx1DWuqOV7GfDtcxhDdfM&gclid=Cj0KCQjwgvnCBhCqARIsADBLZoJI3CYYIyC9gGEgkN0lYAXOo5_7vLtlHY5e_nVc--_d6IL7jNnRIesaAtWuEALw_wcB"
+  }
+]

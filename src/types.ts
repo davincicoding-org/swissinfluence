@@ -121,7 +121,7 @@ export interface AwardRanking
 
 export interface AwardCategoryRanking {
   category: Pick<typeof db.categories.$inferSelect, "id" | "title">;
-  winner: ImageAsset | null;
+  winner: Omit<ImageAsset, "id" | "name"> | null;
   nominees: Array<AwardNominee>;
 }
 

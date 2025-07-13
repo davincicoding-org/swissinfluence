@@ -2,37 +2,13 @@ import { groupBy } from "lodash-es";
 
 import type { SocialMedia } from "@/database/enums";
 import type { CategoryWithInfluencers, CertifiedInfluencer } from "@/types";
-import { db } from "@/database";
+import DATA from "@/backup/certified-influencers.json";
 
 import { cachedRequest } from "./cache";
 
 export const getCategoriesWithCertifiedInfluencers =
   cachedRequest(async (): Promise<Array<CategoryWithInfluencers>> => {
-    const influencers = await db.query.certifiedInfluencers.findMany({
-      columns: {
-        influencer: false,
-      },
-      with: {
-        influencer: {
-          columns: {
-            name: true,
-          },
-          with: {
-            interests: {
-              columns: {},
-              with: {
-                category: {
-                  columns: {
-                    id: true,
-                    title: true,
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
+    const influencers = DATA;
     const influencerCategoryPairs = influencers.flatMap(
       ({ id, image, influencer }) =>
         influencer.interests.map<{
@@ -61,32 +37,7 @@ export const getCategoriesWithCertifiedInfluencers =
 
 export const getCertifiedInfluencer = cachedRequest(
   async (id: string): Promise<CertifiedInfluencer | null> => {
-    const data = await db.query.certifiedInfluencers.findFirst({
-      where: (t, { eq }) => eq(t.id, parseInt(id)),
-      columns: {
-        influencer: false,
-      },
-      with: {
-        influencer: {
-          columns: {
-            id: false,
-            image: false,
-          },
-          with: {
-            interests: {
-              with: {
-                category: {
-                  columns: {
-                    id: true,
-                    title: true,
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    });
+    const data = DATA.find((item) => item.id === Number(id));
 
     if (!data) return null;
 

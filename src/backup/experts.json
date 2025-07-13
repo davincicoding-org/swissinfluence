@@ -1,0 +1,564 @@
+[
+  {
+    "firebase_id": "3uM20j5J7CFNl5K0Hbvl",
+    "id": 2,
+    "name": "Andreas Lanz",
+    "description": {
+      "de": "Marketing-Professor an der Universität Basel",
+      "en": "Marketing Professor at University of Basel",
+      "fr": "Professeur de marketing à l'Université de Bâle",
+      "it": "Professore di marketing all'Università di Basilea"
+    },
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/andreaslanz",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/andreas-lanz-1747924551696.webp",
+      "width": 449,
+      "height": 449,
+      "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAwAgCdASoKAAoAAUAmJYwCdAEedH0MQ9B8AAD5Z+MTPSZd2vIBXX6HluHcvYHQa4/XHyBxuMyhdi0mT8ciSCHVA3KSdK67/9gr9X/szadXhqtedeZnLglN/d3TmH44LeWzk/Og74VM/Aa1SSL4fuFD4AA="
+    }
+  },
+  {
+    "firebase_id": "CQ4aHKajVYhCjUPZ10FA",
+    "id": 3,
+    "name": "Jo & Michèl",
+    "description": {
+      "de": "Mitbegründer ZEAM & Leiter der Kreativabteilung ZEAM",
+      "en": "Co-Founder ZEAM & Head of Creative ZEAM",
+      "fr": "Cofondateur de ZEAM et responsable de la création de ZEAM",
+      "it": "Co-fondatore di ZEAM e responsabile della creatività di ZEAM"
+    },
+    "socials": [
+      {
+        "url": "https://www.zeam.xyz/",
+        "platform": "WEBSITE"
+      }
+    ],
+    "image": {
+      "src": "images/experts/jo-and-michel-1747924562732.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAQAgCdASoKAAoAAUAmJaACdAEQzGO8cAoAAP7oP1gNp8/1wIb9+fMDv6wR8jBTOIkcf7N/8Mfaa7xlU4oSdyaLhuPYEbUDyJ+f5sWeK/09DAUb5n6mStxY6f/ORPZF8sMJS0ji/2ieX2HwzVUSuNv4eaPj/9DDr1i3vyf5N8sT/yb/qhW9/JqEAAA="
+    }
+  },
+  {
+    "firebase_id": "LI5YrdPnSy5VcXqO29pv",
+    "id": 4,
+    "name": "Fabian Plüss",
+    "description": {
+      "de": "Mitbegründer von Smile Swiss Influence Award",
+      "en": "Co-Founder at Smile Swiss Influence Award",
+      "fr": "Co-fondateur de Smile Swiss Influence Award",
+      "it": "Co-fondatore del Premio Influenza Smile Svizzera"
+    },
+    "socials": [
+      {
+        "url": "https://ch.linkedin.com/in/fabian-pl%C3%BCss-99791430",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/fabian-pluss-1747924563886.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQAgCdASoKAAoAAUAmJYwCdAYrTvty4DgvAQAA/uiRjqrzuBG6GEWs5uhMDKwT/119StonR1rjRdnDgwSchSkd91xVx9u2LLPJv/JCVf9ycp0rxxdrAAuEPR7V+wrrNY/2pDPfe8IAjjqbdB/BdH9N+gFh2AAA"
+    }
+  },
+  {
+    "firebase_id": "PwiQUjrdFrQ7QE4aHuzt",
+    "id": 5,
+    "name": "Siria Beerli",
+    "description": {
+      "de": "Mitbegründer equipe One AG",
+      "en": "Co-Founder equipe One AG",
+      "fr": "Co-fondateur equipe One AG",
+      "it": "Cofondatore di equipe One AG"
+    },
+    "socials": [
+      {
+        "url": "https://ch.linkedin.com/in/siria-berli-a61a86203",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/siria-beerli-1747924564797.webp",
+      "width": 480,
+      "height": 480,
+      "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAAAQAgCdASoKAAoAAUAmJZQCdAELhUsd0megAP780+fNJ05YP/adNEt7FxOU7xvcd537vKeF9kpsvHKggpGmuuto04V9IREZ+jN8kOpsJ+YmDb7PN9njtsIlPV0LKcQW2AA="
+    }
+  },
+  {
+    "firebase_id": "QM6SlNPT20EFbjVi1Pq4",
+    "id": 6,
+    "name": "Tamara Glück González",
+    "description": {
+      "de": " Inhaberin Glück Management & Consulting",
+      "en": " Inhaberin Glück Management & Consulting",
+      "fr": " Inhaberin Glück Management & Consulting",
+      "it": " Inhaberin Glück Management & Consulting"
+    },
+    "socials": [
+      {
+        "url": " https://www.linkedin.com/in/tamara-glueck-gonzalez/ ",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/tamara-gluck-gonzalez-1747924565852.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAQAgCdASoKAAoAAUAmJZgCdAEPBWm191wAAP79upTR034NpJLn9d/Tmv5rU6AaU1QT/jR6mGg9ma1r+Afi0/CsYBCwptSD1dXW/RlsNfTXINvSt5JXafVqwCskpbt5z7+G3t90LxUUl6thn8G8pgAA"
+    }
+  },
+  {
+    "firebase_id": "SuM7TiQbyN18QBJ3oePc",
+    "id": 7,
+    "name": "Timon Sommer",
+    "description": {
+      "de": "Founder VIRALLY | Content Creator | Social Media Marketing",
+      "en": "Founder VIRALLY | Content Creator | Social Media Marketing",
+      "fr": "Founder VIRALLY | Content Creator | Social Media Marketing",
+      "it": "Founder VIRALLY | Content Creator | Social Media Marketing"
+    },
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/timonsommer/",
+        "platform": "LINKEDIN"
+      },
+      {
+        "url": "https://virally.ch",
+        "platform": "WEBSITE"
+      }
+    ],
+    "image": {
+      "src": "images/experts/timon-sommer-1747924566908.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwAgCdASoKAAoAAUAmJbACdDBQCIvMOmXwwl6QAP72+iS2nUbO59yQlz7fbWP96qhbvIakdV3+BbkuqYt2T96Fwo5VU8tdL08sCcxj/4xfsfHoQ/3q20s6R9XnMo6JbeZ15yQJEVspb8rfi/H/4Rx5a/+2H/dyKo7OP7ucOrcwo3H1sAftcMgA"
+    }
+  },
+  {
+    "firebase_id": "U25n5gz9h8aP3Brzcow3",
+    "id": 8,
+    "name": " Renata Angehrn",
+    "description": {
+      "de": "Promi Vermittlerin, Gründerin des Swiss Men's Award und Netzwerkerin",
+      "en": "Celebrity Agent, Founder of the Swiss Men’s Award and Networker",
+      "fr": "Agent des célébrités, fondatrice du Swiss Men’s Award et experte en réseautage",
+      "it": "Agente delle celebrità, fondatrice dello Swiss Men’s Award e esperta di networking"
+    },
+    "socials": [
+      {
+        "url": "https://swissmensaward.ch/",
+        "platform": "WEBSITE"
+      },
+      {
+        "url": "https://ch.linkedin.com/in/renata-angehrn-b4908563",
+        "platform": "LINKEDIN"
+      },
+      {
+        "url": "https://www.instagram.com/angehrnwuermli/",
+        "platform": "INSTAGRAM"
+      }
+    ],
+    "image": {
+      "src": "images/experts/renata-angehrn-1747924568054.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABwAgCdASoKAAoAAUAmJaACdAYu2gAK5NJYzI5AAP727Fp2bcBnXRj6yudFGEiQPo3/nM/JwUmyka9woSyt5pdDP2W5ezr0oAMmifpzFk4YYJAR8ShDjJlt/FT5HIb/vSNhlIteok/19QKTrNPmgmuX8vMAIk13+K5mCqyAAAA="
+    }
+  },
+  {
+    "firebase_id": "dehx7ke51zVMY8mLoJjY",
+    "id": 10,
+    "name": "Valeria Wagner",
+    "description": {
+      "de": "Programmiererin am Zurich Film Festival",
+      "en": "Programmer at Zurich Film Festival",
+      "fr": "Programmeuse au Festival du film de Zurich",
+      "it": "Programmatrice al Festival del Cinema di Zurigo"
+    },
+    "socials": [],
+    "image": {
+      "src": "images/experts/valeria-wagner-1747924570112.webp",
+      "width": 480,
+      "height": 480,
+      "blurDataURL": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAADwAQCdASoKAAoAAUAmJaQAAl0Bl4X0sAAA/sq/bkCtv+TuEDpH5c43sf9N/xixGGiyS8LP/gBvb1i2H1wsIeQHSpVerwI6L/KLcXgaJ8jWRiKygAAAAA=="
+    }
+  },
+  {
+    "firebase_id": "aLPr3tdiLcL3n5v1q9LF",
+    "id": 9,
+    "name": "Sibylle de Marin de Carranrais",
+    "description": {
+      "de": "Consultant PR, Ampli & Social Media",
+      "en": "Consultant PR, Ampli & Social Media",
+      "fr": "Consultant PR, Ampli & Social Media",
+      "it": "Consultant PR, Ampli & Social Media"
+    },
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/sibylle-de-marin-de-carranrais-233a4a7b/",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/sibylle-de-marin-de-carranrais-1747924569217.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoKAAoAAUAmJZwCdAD0tERtuAAA/v6/dSbTxfmQsNWpWUSpwbbpTy5VyFbnBR+zkUjO3JWe/2yuuzHecFUnnUpHocpY5IJyDvh6JeLMAhqC2DAA"
+    }
+  },
+  {
+    "firebase_id": "khd65SzxNLS96XCb4cqH",
+    "id": 12,
+    "name": "Constanze Fristensky",
+    "description": {
+      "de": "Vorstandsmitglied Conscious Influence Hub",
+      "en": "Vorstandsmitglied Conscious Influence Hub",
+      "fr": "Vorstandsmitglied Conscious Influence Hub",
+      "it": "Vorstandsmitglied Conscious Influence Hub"
+    },
+    "socials": [
+      {
+        "url": " https://www.linkedin.com/in/constanze-fristensky-9a5b57159/",
+        "platform": "LINKEDIN"
+      },
+      {
+        "url": "https://consciousinfluencehub.org/",
+        "platform": "WEBSITE"
+      }
+    ],
+    "image": {
+      "src": "images/experts/constanze-fristensky-1747924572230.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAwAgCdASoKAAoAAUAmJQBOhxAAJRZSuO9RgAD+3jGrIEq8zNrPf3nNMZXPp0fvcunPofwK1Hw+vP9rMbb2pebo4hYBqRe+R10TDKPkXXEQaWqfEj9BcZZ1/5is4q78EckVqfWF+i5inE3eJrOzQR+aiAZxOfg6e+PwAA=="
+    }
+  },
+  {
+    "firebase_id": "oxyIcxlpH9gRaXqR8L1l",
+    "id": 13,
+    "name": "Constanze Fristensky",
+    "description": {
+      "de": "Vorstandsmitglied bei Conscious Influence Hub",
+      "en": "Board Member at Conscious Influence Hub",
+      "fr": "Membre du conseil de Conscious Influence Hub",
+      "it": "Membro del consiglio di Conscious Influence Hub"
+    },
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/constanze-fristensky-9a5b57159/",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/constanze-fristensky-1747924573197.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwAgCdASoKAAoAAUAmJYwCdADdsau6O1owAAD++uX5jNnH6KzXtfGPKR9cxP2j+/LfaASqn0VPIj8Zeyz/6unZz/543Mr0tjoNMvxWTxpdpDcXI4gkYQ+3/78zGpmEvmdzlOjRsJ/Ke5czB218K+GZ8jzA6v809xxWSUtddFR3Dg/gAAA="
+    }
+  },
+  {
+    "firebase_id": "qqshJYR27qD9GU5ovlTD",
+    "id": 15,
+    "name": "Aurel Count",
+    "description": {
+      "de": "Programmleiter, Kino Frame, Zürich",
+      "en": "Head of Programme, Kino Frame, Zurich",
+      "fr": "Chef de programme, Kino Frame, Zurich",
+      "it": "Responsabile del programma, Kino Frame, Zurigo"
+    },
+    "socials": [],
+    "image": {
+      "src": "images/experts/aurel-count-1747924575293.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAACwAQCdASoKAAoAAUAmJaQAAlw18Wc4AP72xmRkt972bhB9Nb+bT57B37wBXMq4UH8blFnfJr6q40el+/Dv+uvIwRpafzL5oJ21AAAA"
+    }
+  },
+  {
+    "firebase_id": "s1PVYZ625Yar4bLWsVgi",
+    "id": 16,
+    "name": "Philipp Nüssli",
+    "description": {
+      "de": "Brand Manager / Gründer bei Headz Agency",
+      "en": "Brand Manager / Founder at Headz Agency",
+      "fr": "Directrice de la marque / Fondatrice de Headz Agency",
+      "it": "Responsabile del marchio / Fondatore presso Headz Agency"
+    },
+    "socials": [
+      {
+        "url": "https://ch.linkedin.com/in/philipp-n%C3%BCssli-661b39153",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/philipp-nussli-1747924579068.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQAgCdASoKAAoAAUAmJZQCdAD7FRjm6ONAAP7uWvMwQxqz6+m/1VrELOE96z1CfkzKEnA9+vQgO/hLQfoZ7P4v5669ECb8RL3dd1QCZC+6rks++Vc6R2dI/57iTGatUWwHgdMgAAA="
+    }
+  },
+  {
+    "firebase_id": "whvJ6HEZNuXt0x4qv5sd",
+    "id": 17,
+    "name": "Dominic Stöcklin",
+    "description": {
+      "de": "Programmleiter an der HWZ",
+      "en": "Program Director at HWZ",
+      "fr": "Directeur de programme à HWZ",
+      "it": "Direttore del programma presso HWZ"
+    },
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/dstoecklin",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/dominic-stocklin-1747924579874.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoKAAoAAUAmJZACdAEfA6ycfl4DXoAA4nSGmSw2XG44yDrwNk45vp3OpToc+BXtgV3ahLBilLmwk8oOcj7NHABaWs1eYk7n/um/DF1oSAOuXsHx6Ly4VSgA"
+    }
+  },
+  {
+    "firebase_id": "qUaeXN5zUXxcLYCGhpqO",
+    "id": 14,
+    "name": "Susanne Schgaguler",
+    "description": {
+      "de": "Chief Marketing Officer WELEDA AG",
+      "en": "Chief Marketing Officer WELEDA AG",
+      "fr": "Chief Marketing Officer WELEDA AG",
+      "it": "Chief Marketing Officer WELEDA AG"
+    },
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/susanneschg/",
+        "platform": "LINKEDIN"
+      },
+      {
+        "url": "https://www.weleda.de",
+        "platform": "WEBSITE"
+      }
+    ],
+    "image": {
+      "src": "images/experts/susanne-schgaguler-1748257035301.webp",
+      "width": 500,
+      "height": 500,
+      "blurDataURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAA7eLj1AAABUElEQVQYGSWQS0sCURiGnxnHUaeypKIiE6daCIatchVUEkQQUduin9AyqEURbfoX/Ylo0aqgG7lxE0EgmZSgZhdKCi8z0zmnD87l5Tzn/d5ztNtszvM8F9d10TQNx3G5OD1mZnEZXdeFdtSqO/yXoGm1mgw0yqymomyvLwndot1uK8DwhFNTANJxY2GWrbUM+XyRq0JVAbKLPDNwHaSbHHZ/F0k7xlh0kLdfVFsJytIloDYiz/RUAmtkHM3q5P6pojJLN8kYihKTFJFwiL3dQ5LDEUbjQ8TiNsXCo8opHFE30+k0j6UP4r1hHmp1NvcP6O3pJBbtU17GV72OT+R4fa2yc3RCZm6e65scwaDF12cZ1zNFNzCCpoFpBgiJXAHTx+RESmiT99oLVkc3uiEfK/747PzS6ytlsfwm1vQKus/Pz9szDcdg2E5QyN9RqX3zBzSWj2Aqvr2fAAAAAElFTkSuQmCC"
+    }
+  },
+  {
+    "firebase_id": "0Losc80kWmr48WMY1jHf",
+    "id": 1,
+    "name": " Patrick \"Pät\" Schreiber",
+    "description": {
+      "de": "Medienexperte",
+      "en": "Media Expert",
+      "fr": "Expert en médias",
+      "it": "Esperto di media"
+    },
+    "socials": [
+      {
+        "url": "http://www.linkedin.com/in/patrickp%C3%A4tschreiber",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/patrick-pat-schreiber-1747924550663.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAADwAQCdASoKAAoAAUAmJagCdAYtLZnowsAA/uvHERB2pFkpl5El/CgS4AeeB5/5mIK3zPUUF2ddQv7ebZ+6+incl5VMg/jfPNj8z5IPU9vSc242MhKCIopfzWmMNa8Hlf51PUQdLvxYq30mc7bAAA=="
+    }
+  },
+  {
+    "firebase_id": "kRl07r3YI9YacDjbYyE0",
+    "id": 11,
+    "name": "Dominique Hufschmid",
+    "description": {
+      "de": "Direktorin für Strategie, Marketing und Innovation bei Kingfluencer",
+      "en": "Director of Strategy, Marketing and Innovation at Kingfluencers",
+      "fr": "Directrice de la stratégie, du marketing et de l'innovation chez Kingfluencer",
+      "it": "Direttore di strategia, marketing e innovazione di Kingfluencer"
+    },
+    "socials": [],
+    "image": {
+      "src": "images/experts/dominique-hufschmid-1747924570984.webp",
+      "width": 600,
+      "height": 600,
+      "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAQCdASoKAAoAAUAmJQBOgB6R8PAePAAA/uu72nG0TrncHqHyKc4aLHaKUJ3eheyNF+by7dn+Z2xF35Flj9ZSG0/24jnWnS90FFurI+GS4l5IYHj3n3bHX/5NuYAA"
+    }
+  },
+  {
+    "firebase_id": null,
+    "id": 32,
+    "name": "Manuel Meier und Philippe Arbenz",
+    "description": {
+      "de": "Co-Creative Directors OFFROAD",
+      "en": "Co-Creative Directors OFFROAD",
+      "fr": "Co-Creative Directors OFFROAD",
+      "it": "Co-Creative Directors OFFROAD"
+    },
+    "socials": [
+      {
+        "url": "https://www.offroad.ch",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/manuel-meier-und-philippe-arbenz-1748262563140.webp",
+      "width": 1280,
+      "height": 1280,
+      "blurDataURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAA7eLj1AAABfklEQVQYGRXQvWsTcQDG8e/97s17ycWQi6SpRazSKEgDHRyk2ElcHBxqFxE6dSv+A4VS2v4F4tKlS3Ho0iGDLg7NYAVR8A1prNagpQ4lISa5l1zuzuszPNMzPHyk6oOZdGRpaNKQMBakgxApSJBUjUCJkcMRSTRAyJUCekmDAVhFG71ioF81cLwh5v5PxJiGnDcRRknQ2/vCE1GmXz8klzNp733j0/sWHj7JzmdsV0dRJ8u8ejpPfqrKo4e3WTj7Shil3LQv8WLlMdXp68y83EK5OJGn1WhyxR9x/LePcc/mx/omBydv6P5p0koUZHccoRQsbtTG2Nh9jaIPsEyLxfkuR997XCvXcJ0KVinNhtnp1ftVlu7c4tnBR1IvIfZ8xl2HD79/IRsGaawj+qcBa9zl8tws2/W3dP1/NGafc6yGdJw2TemId8u7SPlcMRWqSZx4WFaRTruXOfkYF1SifsJ5dElCUTQnqzgDtknCiEjOSLwMOruEphMEPqrh8h8HpYjKoBZ9PQAAAABJRU5ErkJggg=="
+    }
+  },
+  {
+    "firebase_id": null,
+    "id": 31,
+    "name": "Leah Vomvoris",
+    "description": {
+      "de": "Influencer Relations Professional Samsung",
+      "en": "Influencer Relations Professional Samsung",
+      "fr": "Influencer Relations Professional Samsung",
+      "it": "Influencer Relations Professional Samsung"
+    },
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/leah-vomvoris/",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/leah-vomvoris-1748349784123.webp",
+      "width": 2646,
+      "height": 3355,
+      "blurDataURL": "data:image/webp;base64,UklGRk4CAABXRUJQVlA4WAoAAAAgAAAABgAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggYAAAABACAJ0BKgcACgACwEwlsAJ0AN2x29w60AAA/tgNfcLT/P6eR0/69LAZNhoZsuZ9MFZTxvrFuR++jpTg9HiP/ofwzuz7Klug+klbUCM0S9oS/wtoHhbGhd1SMAS1EGoAAA=="
+    }
+  },
+  {
+    "firebase_id": null,
+    "id": 33,
+    "name": "Angela Mygind",
+    "description": {
+      "de": "Missfinance.ch & Winner Business 2024",
+      "en": "Missfinance.ch & Winner Business 2024",
+      "fr": "Missfinance.ch & Winner Business 2024",
+      "it": "Missfinance.ch & Winner Business 2024"
+    },
+    "socials": [
+      {
+        "url": "https://www.instagram.com/missfinance.ch/",
+        "platform": "INSTAGRAM"
+      },
+      {
+        "url": "https://www.tiktok.com/@missfinance.ch",
+        "platform": "TIKTOK"
+      },
+      {
+        "url": "https://www.linkedin.com/in/angela-mygind-33302662/",
+        "platform": "LINKEDIN"
+      },
+      {
+        "url": "https://open.spotify.com/show/6k8Nh2UXaIZ0vcIn8ygrcX?si=ANFuM2a0RTaXoGykMC7FJQ",
+        "platform": "SPOTIFY"
+      }
+    ],
+    "image": {
+      "src": "images/experts/angela-mygind-1748350083924.webp",
+      "width": 1280,
+      "height": 853,
+      "blurDataURL": "data:image/webp;base64,UklGRjwCAABXRUJQVlA4WAoAAAAgAAAACQAABQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggTgAAANABAJ0BKgoABgACwEwlAE6AIuoHKF4gAPwi5vI2EsQ3BaTV3eyWRs8/H+TGPU+2QRwiynP2Rleamb3iIhDkXujvW69C23pUjnmbZQAAAA=="
+    }
+  },
+  {
+    "firebase_id": null,
+    "id": 34,
+    "name": "Josef T. Molnar",
+    "description": {
+      "de": "Leiter Marketing & Kommunikation",
+      "en": "Leiter Marketing & Kommunikation",
+      "fr": "Leiter Marketing & Kommunikation",
+      "it": "Leiter Marketing & Kommunikation"
+    },
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/josefmolnar",
+        "platform": "LINKEDIN"
+      },
+      {
+        "url": "https://www.instagram.com/djmadness_official/",
+        "platform": "INSTAGRAM"
+      },
+      {
+        "url": "https://www.tiktok.com/@djmadness_official",
+        "platform": "TIKTOK"
+      },
+      {
+        "url": "https://www.aqua-spa-resorts.ch/de",
+        "platform": "WEBSITE"
+      }
+    ],
+    "image": {
+      "src": "images/experts/josef-t-molnar-1749019777599.webp",
+      "width": 606,
+      "height": 646,
+      "blurDataURL": "data:image/webp;base64,UklGRlYCAABXRUJQVlA4WAoAAAAgAAAACAAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggaAAAABACAJ0BKgkACgACwEwlsAJ0BismTImNUAAA/gnholA9RpPpyjFcrJlzou+vU76Li1ikauTiSz7glQMi50+19BJg9N7nKqv3V/9jJcputVPFk5/vXiD/MvmJNzuJxL4xSQ9Z4dCY6AAA"
+    }
+  },
+  {
+    "firebase_id": null,
+    "id": 35,
+    "name": "Sonia Milici",
+    "description": {
+      "de": "Head of Marketing and Sales Yuh",
+      "en": "Head of Marketing and Sales Yuh",
+      "fr": "Head of Marketing and Sales Yuh",
+      "it": "Head of Marketing and Sales Yuh"
+    },
+    "socials": [
+      {
+        "url": "https://www.linkedin.com/in/sonia-milici/",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/sonia-milici-1749041579571.webp",
+      "width": 582,
+      "height": 875,
+      "blurDataURL": "data:image/webp;base64,UklGRloCAABXRUJQVlA4WAoAAAAgAAAABQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggbAAAAHACAJ0BKgYACgACwEwloAJ0a4APOc1arD9gZYAA/sKeolvKfaJHGRDyZfU7jrXRKcIDVOv60hKgmXU2arP+0Fb/+vxngDBEkHdLY4BUoIkIMJYdG6+E7j7InRE5F6Vf+WBOaaa8W6F/hwAAAA=="
+    }
+  },
+  {
+    "firebase_id": null,
+    "id": 36,
+    "name": "Thomas Frei",
+    "description": {
+      "de": "SAE Director Switzerland",
+      "en": "SAE Director Switzerland",
+      "fr": "SAE Director Switzerland",
+      "it": "SAE Director Switzerland"
+    },
+    "socials": [
+      {
+        "url": "https://www.sae.edu/che/",
+        "platform": "WEBSITE"
+      },
+      {
+        "url": "https://www.linkedin.com/in/thomas-frei-63b5a772/",
+        "platform": "LINKEDIN"
+      }
+    ],
+    "image": {
+      "src": "images/experts/thomas-frei-1752223486860.webp",
+      "width": 1296,
+      "height": 972,
+      "blurDataURL": "data:image/webp;base64,UklGRlICAABXRUJQVlA4WAoAAAAgAAAACQAABgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggZAAAALABAJ0BKgoABwACwEwlsAJ0ANmU3YAA/upLNTEacQPvP2w8J/pKKCGRsReDtb+JGqFzumMSphi3ErNyKEdIMIQlznhRUg9SBAzh8d3SnWeOYPDhKIx8fOkpM80e/xv8pI1AAAA="
+    }
+  }
+]

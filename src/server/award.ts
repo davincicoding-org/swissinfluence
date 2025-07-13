@@ -4,68 +4,29 @@ import type {
   AwardShowImpressions,
   CreatorChallenge,
 } from "@/types";
-import { db } from "@/database";
+import CREATOR_CHALLENGES from "@/backup/creator-challenges.json";
+import CURRENT_AWARD from "@/backup/current-award.json";
+import HALL_OF_FAME from "@/backup/hall-of-fame.json";
 
 import { cachedRequest } from "./cache";
 
 export const getCurrentAward =
   cachedRequest(async (): Promise<Award | null> => {
-    const award = await db.query.awards.findFirst({
-      orderBy: (t, { desc }) => [desc(t.year)],
-      //   where: (t, { eq }) => eq(t.year, 2024),
-      with: {
-        jury: {
-          columns: {
-            expert: false,
-          },
-          with: {
-            expert: true,
-          },
-        },
-        partners: {
-          columns: {
-            brand: false,
-          },
-          with: {
-            brand: true,
-          },
-        },
-        show: {
-          columns: {
-            location: false,
-          },
-          with: {
-            location: true,
-          },
-        },
-        categories: {
-          columns: {
-            category: false,
-            winner: true,
-            sponsor: false,
-          },
-          with: {
-            category: true,
-            sponsor: true,
-            nominees: {
-              columns: {
-                influencer: false,
-                ranking: true,
-              },
-              with: {
-                influencer: true,
-              },
-            },
-          },
-        },
-      },
-    });
+    const award = CURRENT_AWARD;
 
     if (!award) return null;
     const { jury, partners, ...rest } = award;
 
     return {
       ...rest,
+      show: {
+        ...award.show,
+        schedule: award.show.schedule.map((item) => ({
+          ...item,
+          start: new Date(item.start),
+          end: new Date(item.end),
+        })),
+      },
       jury: jury.map(({ expert }) => expert),
       partners: partners.map(({ brand }) => brand),
     };
@@ -74,48 +35,13 @@ export const getCurrentAward =
 export const getCreatorChallenges = cachedRequest(async (): Promise<
   Array<CreatorChallenge>
 > => {
-  return db.query.creatorChallenges.findMany({
-    columns: {
-      organizer: false,
-      location: false,
-    },
-    with: {
-      location: true,
-      organizer: true,
-    },
-  });
+  return CREATOR_CHALLENGES;
 }, ["cms"]);
 
 export const getHallOfFame = cachedRequest(async (): Promise<
   Array<AwardRanking>
 > => {
-  const awards = await db.query.awards.findMany({
-    orderBy: (t, { desc }) => [desc(t.year)],
-    columns: {
-      year: true,
-    },
-    with: {
-      categories: {
-        columns: {
-          winner: true,
-        },
-        with: {
-          category: true,
-          nominees: {
-            columns: {
-              influencer: false,
-              ranking: true,
-            },
-            where: (t, { isNotNull }) => isNotNull(t.ranking),
-            orderBy: (t, { asc }) => [asc(t.ranking)],
-            with: {
-              influencer: true,
-            },
-          },
-        },
-      },
-    },
-  });
+  const awards = HALL_OF_FAME;
 
   return awards.filter(({ categories }) =>
     categories.some(({ nominees }) =>

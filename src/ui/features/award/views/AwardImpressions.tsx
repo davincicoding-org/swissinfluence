@@ -9,7 +9,7 @@ import { cn } from "@/ui/utils";
 
 export interface IAwardImpressionsProps {
   video: string;
-  images: Array<ImageAsset>;
+  images: Array<Omit<ImageAsset, "id" | "name">>;
   className?: string;
 }
 

@@ -1,0 +1,222 @@
+[
+  {
+    "id": 20,
+    "name": {
+      "de": "Business",
+      "en": "Business",
+      "fr": "Entreprise",
+      "it": "Attività commerciale"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/business-1747921185451.webp"
+  },
+  {
+    "id": 22,
+    "name": {
+      "de": "Public Figure",
+      "en": "Public Figure",
+      "fr": "Personnalité publique",
+      "it": "Figura pubblica"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/public-figure-1747921185040.webp"
+  },
+  {
+    "id": 23,
+    "name": {
+      "de": "Podcast",
+      "en": "Podcast",
+      "fr": "Podcast",
+      "it": "Podcast"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/podcast-1747921184871.webp"
+  },
+  {
+    "id": 25,
+    "name": {
+      "de": "Beauty",
+      "en": "Beauty",
+      "fr": "Beauty",
+      "it": "Beauty"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/beauty-1747921184841.webp"
+  },
+  {
+    "id": 26,
+    "name": {
+      "de": "Gaming/Streaming ",
+      "en": "Gaming/Streaming ",
+      "fr": "Jeux/Streaming ",
+      "it": "Giochi/Streaming "
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/gamingstreaming-1747921184828.webp"
+  },
+  {
+    "id": 27,
+    "name": {
+      "de": "Media",
+      "en": "Media",
+      "fr": "Médias",
+      "it": "Media"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/media-1747921184916.webp"
+  },
+  {
+    "id": 28,
+    "name": {
+      "de": "Sport",
+      "en": "Sport",
+      "fr": "Sport",
+      "it": "Sport"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/sport-1747921185155.webp"
+  },
+  {
+    "id": 21,
+    "name": {
+      "de": "Travel",
+      "en": "Travel",
+      "fr": "Travel",
+      "it": "Travel"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/travel-1752227263965.webp"
+  },
+  {
+    "id": 30,
+    "name": {
+      "de": "Family",
+      "en": "Family",
+      "fr": "Famile",
+      "it": "Famiglia"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/family-1747921184905.webp"
+  },
+  {
+    "id": 31,
+    "name": {
+      "de": "Luxury",
+      "en": "Luxury",
+      "fr": "Luxe",
+      "it": "Lusso"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/luxury-1747921184734.webp"
+  },
+  {
+    "id": 32,
+    "name": {
+      "de": "Fashion",
+      "en": "Fashion",
+      "fr": "Mode",
+      "it": "Moda"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/fashion-1747921184913.webp"
+  },
+  {
+    "id": 34,
+    "name": {
+      "de": "Brands",
+      "en": "Brands",
+      "fr": "Marques",
+      "it": "Marche"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/brands-1747921184955.webp"
+  },
+  {
+    "id": 35,
+    "name": {
+      "de": "Politics",
+      "en": "Politics",
+      "fr": "Politique",
+      "it": "Politica"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/politics-1747921184835.webp"
+  },
+  {
+    "id": 36,
+    "name": {
+      "de": "Newcomer",
+      "en": "Newcomer",
+      "fr": "Nouveau Venu",
+      "it": "Novo Arrivato"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/newcomer-1747921184983.webp"
+  },
+  {
+    "id": 37,
+    "name": {
+      "de": "Music",
+      "en": "Music",
+      "fr": "Musique",
+      "it": "Musica"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/music-1747921184656.webp"
+  },
+  {
+    "id": 38,
+    "name": {
+      "de": "Business & Finance",
+      "en": "Business & Finance",
+      "fr": "Business & Finance",
+      "it": "Business & Finance"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/business-and-finance-1752160354641.webp"
+  },
+  {
+    "id": 39,
+    "name": {
+      "de": "Cross Media",
+      "en": "Cross Media",
+      "fr": "Cross Media",
+      "it": "Cross Media"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/cross-media-1752160378298.webp"
+  },
+  {
+    "id": 40,
+    "name": {
+      "de": "DACH (DE,CH & AT)",
+      "en": "DACH (DE,CH & AT)",
+      "fr": "DACH (DE,CH & AT)",
+      "it": "DACH (DE,CH & AT)"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/dach-de,ch-and-at-1752160405599.webp"
+  },
+  {
+    "id": 33,
+    "name": {
+      "de": "Lifestyle",
+      "en": "Lifestyle",
+      "fr": "Lifestyle",
+      "it": "Lifestyle"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/lifestyle-1752234540815.webp"
+  },
+  {
+    "id": 41,
+    "name": {
+      "de": "KI Creator",
+      "en": "KI Creator",
+      "fr": "KI Creator",
+      "it": "KI Creator"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/ki-creator-1752160475260.webp"
+  },
+  {
+    "id": 29,
+    "name": {
+      "de": "Food",
+      "en": "Food",
+      "fr": "Food",
+      "it": "Food"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/food-1752227203154.webp"
+  },
+  {
+    "id": 24,
+    "name": {
+      "de": "Entertainment",
+      "en": "Entertainment",
+      "fr": "Entertainment",
+      "it": "Entertainment"
+    },
+    "image": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/images/categories/entertainment-1752233883832.webp"
+  }
+]

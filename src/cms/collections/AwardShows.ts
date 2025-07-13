@@ -28,7 +28,6 @@ export const AwardShows: CollectionConfig = {
             {
               name: "date",
               type: "date",
-              required: true,
             },
             {
               name: "location",

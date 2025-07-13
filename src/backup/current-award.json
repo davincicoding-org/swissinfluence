@@ -1,0 +1,2143 @@
+{
+  "firebase_id": "0mQzi5ggOxjHPNdrgDdc",
+  "id": 6,
+  "year": 2025,
+  "nominationDeadline": "2025-05-31",
+  "nominationUrl": " https://airtable.com/applXcFO5P0xfoPBU/shrJjIDpkMv5yZXIg",
+  "newcomerScoutDeadline": "2025-07-31",
+  "newcomerScoutUrl": "https://airtable.com/appNyAyiNMRJrdrDP/shrownAM5ZgwlNH5O",
+  "votingDeadline": null,
+  "jury": [
+    {
+      "id": 14,
+      "award": 6,
+      "expert": {
+        "firebase_id": "s1PVYZ625Yar4bLWsVgi",
+        "id": 16,
+        "name": "Philipp Nüssli",
+        "description": {
+          "de": "Brand Manager / Gründer bei Headz Agency",
+          "en": "Brand Manager / Founder at Headz Agency",
+          "fr": "Directrice de la marque / Fondatrice de Headz Agency",
+          "it": "Responsabile del marchio / Fondatore presso Headz Agency"
+        },
+        "socials": [
+          {
+            "url": "https://ch.linkedin.com/in/philipp-n%C3%BCssli-661b39153",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/philipp-nussli-1747924579068.webp",
+          "width": 600,
+          "height": 600,
+          "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQAgCdASoKAAoAAUAmJZQCdAD7FRjm6ONAAP7uWvMwQxqz6+m/1VrELOE96z1CfkzKEnA9+vQgO/hLQfoZ7P4v5669ECb8RL3dd1QCZC+6rks++Vc6R2dI/57iTGatUWwHgdMgAAA="
+        }
+      }
+    },
+    {
+      "id": 15,
+      "award": 6,
+      "expert": {
+        "firebase_id": "LI5YrdPnSy5VcXqO29pv",
+        "id": 4,
+        "name": "Fabian Plüss",
+        "description": {
+          "de": "Mitbegründer von Smile Swiss Influence Award",
+          "en": "Co-Founder at Smile Swiss Influence Award",
+          "fr": "Co-fondateur de Smile Swiss Influence Award",
+          "it": "Co-fondatore del Premio Influenza Smile Svizzera"
+        },
+        "socials": [
+          {
+            "url": "https://ch.linkedin.com/in/fabian-pl%C3%BCss-99791430",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/fabian-pluss-1747924563886.webp",
+          "width": 600,
+          "height": 600,
+          "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABQAgCdASoKAAoAAUAmJYwCdAYrTvty4DgvAQAA/uiRjqrzuBG6GEWs5uhMDKwT/119StonR1rjRdnDgwSchSkd91xVx9u2LLPJv/JCVf9ycp0rxxdrAAuEPR7V+wrrNY/2pDPfe8IAjjqbdB/BdH9N+gFh2AAA"
+        }
+      }
+    },
+    {
+      "id": 16,
+      "award": 6,
+      "expert": {
+        "firebase_id": "3uM20j5J7CFNl5K0Hbvl",
+        "id": 2,
+        "name": "Andreas Lanz",
+        "description": {
+          "de": "Marketing-Professor an der Universität Basel",
+          "en": "Marketing Professor at University of Basel",
+          "fr": "Professeur de marketing à l'Université de Bâle",
+          "it": "Professore di marketing all'Università di Basilea"
+        },
+        "socials": [
+          {
+            "url": "https://www.linkedin.com/in/andreaslanz",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/andreas-lanz-1747924551696.webp",
+          "width": 449,
+          "height": 449,
+          "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAAAwAgCdASoKAAoAAUAmJYwCdAEedH0MQ9B8AAD5Z+MTPSZd2vIBXX6HluHcvYHQa4/XHyBxuMyhdi0mT8ciSCHVA3KSdK67/9gr9X/szadXhqtedeZnLglN/d3TmH44LeWzk/Og74VM/Aa1SSL4fuFD4AA="
+        }
+      }
+    },
+    {
+      "id": 17,
+      "award": 6,
+      "expert": {
+        "firebase_id": "CQ4aHKajVYhCjUPZ10FA",
+        "id": 3,
+        "name": "Jo & Michèl",
+        "description": {
+          "de": "Mitbegründer ZEAM & Leiter der Kreativabteilung ZEAM",
+          "en": "Co-Founder ZEAM & Head of Creative ZEAM",
+          "fr": "Cofondateur de ZEAM et responsable de la création de ZEAM",
+          "it": "Co-fondatore di ZEAM e responsabile della creatività di ZEAM"
+        },
+        "socials": [
+          {
+            "url": "https://www.zeam.xyz/",
+            "platform": "WEBSITE"
+          }
+        ],
+        "image": {
+          "src": "images/experts/jo-and-michel-1747924562732.webp",
+          "width": 600,
+          "height": 600,
+          "blurDataURL": "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAQAgCdASoKAAoAAUAmJaACdAEQzGO8cAoAAP7oP1gNp8/1wIb9+fMDv6wR8jBTOIkcf7N/8Mfaa7xlU4oSdyaLhuPYEbUDyJ+f5sWeK/09DAUb5n6mStxY6f/ORPZF8sMJS0ji/2ieX2HwzVUSuNv4eaPj/9DDr1i3vyf5N8sT/yb/qhW9/JqEAAA="
+        }
+      }
+    },
+    {
+      "id": 18,
+      "award": 6,
+      "expert": {
+        "firebase_id": "whvJ6HEZNuXt0x4qv5sd",
+        "id": 17,
+        "name": "Dominic Stöcklin",
+        "description": {
+          "de": "Programmleiter an der HWZ",
+          "en": "Program Director at HWZ",
+          "fr": "Directeur de programme à HWZ",
+          "it": "Direttore del programma presso HWZ"
+        },
+        "socials": [
+          {
+            "url": "https://www.linkedin.com/in/dstoecklin",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/dominic-stocklin-1747924579874.webp",
+          "width": 600,
+          "height": 600,
+          "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoKAAoAAUAmJZACdAEfA6ycfl4DXoAA4nSGmSw2XG44yDrwNk45vp3OpToc+BXtgV3ahLBilLmwk8oOcj7NHABaWs1eYk7n/um/DF1oSAOuXsHx6Ly4VSgA"
+        }
+      }
+    },
+    {
+      "id": 19,
+      "award": 6,
+      "expert": {
+        "firebase_id": "U25n5gz9h8aP3Brzcow3",
+        "id": 8,
+        "name": " Renata Angehrn",
+        "description": {
+          "de": "Promi Vermittlerin, Gründerin des Swiss Men's Award und Netzwerkerin",
+          "en": "Celebrity Agent, Founder of the Swiss Men’s Award and Networker",
+          "fr": "Agent des célébrités, fondatrice du Swiss Men’s Award et experte en réseautage",
+          "it": "Agente delle celebrità, fondatrice dello Swiss Men’s Award e esperta di networking"
+        },
+        "socials": [
+          {
+            "url": "https://swissmensaward.ch/",
+            "platform": "WEBSITE"
+          },
+          {
+            "url": "https://ch.linkedin.com/in/renata-angehrn-b4908563",
+            "platform": "LINKEDIN"
+          },
+          {
+            "url": "https://www.instagram.com/angehrnwuermli/",
+            "platform": "INSTAGRAM"
+          }
+        ],
+        "image": {
+          "src": "images/experts/renata-angehrn-1747924568054.webp",
+          "width": 600,
+          "height": 600,
+          "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAABwAgCdASoKAAoAAUAmJaACdAYu2gAK5NJYzI5AAP727Fp2bcBnXRj6yudFGEiQPo3/nM/JwUmyka9woSyt5pdDP2W5ezr0oAMmifpzFk4YYJAR8ShDjJlt/FT5HIb/vSNhlIteok/19QKTrNPmgmuX8vMAIk13+K5mCqyAAAA="
+        }
+      }
+    },
+    {
+      "id": 20,
+      "award": 6,
+      "expert": {
+        "firebase_id": "SuM7TiQbyN18QBJ3oePc",
+        "id": 7,
+        "name": "Timon Sommer",
+        "description": {
+          "de": "Founder VIRALLY | Content Creator | Social Media Marketing",
+          "en": "Founder VIRALLY | Content Creator | Social Media Marketing",
+          "fr": "Founder VIRALLY | Content Creator | Social Media Marketing",
+          "it": "Founder VIRALLY | Content Creator | Social Media Marketing"
+        },
+        "socials": [
+          {
+            "url": "https://www.linkedin.com/in/timonsommer/",
+            "platform": "LINKEDIN"
+          },
+          {
+            "url": "https://virally.ch",
+            "platform": "WEBSITE"
+          }
+        ],
+        "image": {
+          "src": "images/experts/timon-sommer-1747924566908.webp",
+          "width": 600,
+          "height": 600,
+          "blurDataURL": "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABwAgCdASoKAAoAAUAmJbACdDBQCIvMOmXwwl6QAP72+iS2nUbO59yQlz7fbWP96qhbvIakdV3+BbkuqYt2T96Fwo5VU8tdL08sCcxj/4xfsfHoQ/3q20s6R9XnMo6JbeZ15yQJEVspb8rfi/H/4Rx5a/+2H/dyKo7OP7ucOrcwo3H1sAftcMgA"
+        }
+      }
+    },
+    {
+      "id": 21,
+      "award": 6,
+      "expert": {
+        "firebase_id": "khd65SzxNLS96XCb4cqH",
+        "id": 12,
+        "name": "Constanze Fristensky",
+        "description": {
+          "de": "Vorstandsmitglied Conscious Influence Hub",
+          "en": "Vorstandsmitglied Conscious Influence Hub",
+          "fr": "Vorstandsmitglied Conscious Influence Hub",
+          "it": "Vorstandsmitglied Conscious Influence Hub"
+        },
+        "socials": [
+          {
+            "url": " https://www.linkedin.com/in/constanze-fristensky-9a5b57159/",
+            "platform": "LINKEDIN"
+          },
+          {
+            "url": "https://consciousinfluencehub.org/",
+            "platform": "WEBSITE"
+          }
+        ],
+        "image": {
+          "src": "images/experts/constanze-fristensky-1747924572230.webp",
+          "width": 600,
+          "height": 600,
+          "blurDataURL": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAwAgCdASoKAAoAAUAmJQBOhxAAJRZSuO9RgAD+3jGrIEq8zNrPf3nNMZXPp0fvcunPofwK1Hw+vP9rMbb2pebo4hYBqRe+R10TDKPkXXEQaWqfEj9BcZZ1/5is4q78EckVqfWF+i5inE3eJrOzQR+aiAZxOfg6e+PwAA=="
+        }
+      }
+    },
+    {
+      "id": 22,
+      "award": 6,
+      "expert": {
+        "firebase_id": "QM6SlNPT20EFbjVi1Pq4",
+        "id": 6,
+        "name": "Tamara Glück González",
+        "description": {
+          "de": " Inhaberin Glück Management & Consulting",
+          "en": " Inhaberin Glück Management & Consulting",
+          "fr": " Inhaberin Glück Management & Consulting",
+          "it": " Inhaberin Glück Management & Consulting"
+        },
+        "socials": [
+          {
+            "url": " https://www.linkedin.com/in/tamara-glueck-gonzalez/ ",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/tamara-gluck-gonzalez-1747924565852.webp",
+          "width": 600,
+          "height": 600,
+          "blurDataURL": "data:image/webp;base64,UklGRnwAAABXRUJQVlA4IHAAAAAQAgCdASoKAAoAAUAmJZgCdAEPBWm191wAAP79upTR034NpJLn9d/Tmv5rU6AaU1QT/jR6mGg9ma1r+Afi0/CsYBCwptSD1dXW/RlsNfTXINvSt5JXafVqwCskpbt5z7+G3t90LxUUl6thn8G8pgAA"
+        }
+      }
+    },
+    {
+      "id": 23,
+      "award": 6,
+      "expert": {
+        "firebase_id": "qUaeXN5zUXxcLYCGhpqO",
+        "id": 14,
+        "name": "Susanne Schgaguler",
+        "description": {
+          "de": "Chief Marketing Officer WELEDA AG",
+          "en": "Chief Marketing Officer WELEDA AG",
+          "fr": "Chief Marketing Officer WELEDA AG",
+          "it": "Chief Marketing Officer WELEDA AG"
+        },
+        "socials": [
+          {
+            "url": "https://www.linkedin.com/in/susanneschg/",
+            "platform": "LINKEDIN"
+          },
+          {
+            "url": "https://www.weleda.de",
+            "platform": "WEBSITE"
+          }
+        ],
+        "image": {
+          "src": "images/experts/susanne-schgaguler-1748257035301.webp",
+          "width": 500,
+          "height": 500,
+          "blurDataURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAA7eLj1AAABUElEQVQYGSWQS0sCURiGnxnHUaeypKIiE6daCIatchVUEkQQUduin9AyqEURbfoX/Ylo0aqgG7lxE0EgmZSgZhdKCi8z0zmnD87l5Tzn/d5ztNtszvM8F9d10TQNx3G5OD1mZnEZXdeFdtSqO/yXoGm1mgw0yqymomyvLwndot1uK8DwhFNTANJxY2GWrbUM+XyRq0JVAbKLPDNwHaSbHHZ/F0k7xlh0kLdfVFsJytIloDYiz/RUAmtkHM3q5P6pojJLN8kYihKTFJFwiL3dQ5LDEUbjQ8TiNsXCo8opHFE30+k0j6UP4r1hHmp1NvcP6O3pJBbtU17GV72OT+R4fa2yc3RCZm6e65scwaDF12cZ1zNFNzCCpoFpBgiJXAHTx+RESmiT99oLVkc3uiEfK/747PzS6ytlsfwm1vQKus/Pz9szDcdg2E5QyN9RqX3zBzSWj2Aqvr2fAAAAAElFTkSuQmCC"
+        }
+      }
+    },
+    {
+      "id": 24,
+      "award": 6,
+      "expert": {
+        "firebase_id": null,
+        "id": 31,
+        "name": "Leah Vomvoris",
+        "description": {
+          "de": "Influencer Relations Professional Samsung",
+          "en": "Influencer Relations Professional Samsung",
+          "fr": "Influencer Relations Professional Samsung",
+          "it": "Influencer Relations Professional Samsung"
+        },
+        "socials": [
+          {
+            "url": "https://www.linkedin.com/in/leah-vomvoris/",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/leah-vomvoris-1748349784123.webp",
+          "width": 2646,
+          "height": 3355,
+          "blurDataURL": "data:image/webp;base64,UklGRk4CAABXRUJQVlA4WAoAAAAgAAAABgAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggYAAAABACAJ0BKgcACgACwEwlsAJ0AN2x29w60AAA/tgNfcLT/P6eR0/69LAZNhoZsuZ9MFZTxvrFuR++jpTg9HiP/ofwzuz7Klug+klbUCM0S9oS/wtoHhbGhd1SMAS1EGoAAA=="
+        }
+      }
+    },
+    {
+      "id": 25,
+      "award": 6,
+      "expert": {
+        "firebase_id": null,
+        "id": 32,
+        "name": "Manuel Meier und Philippe Arbenz",
+        "description": {
+          "de": "Co-Creative Directors OFFROAD",
+          "en": "Co-Creative Directors OFFROAD",
+          "fr": "Co-Creative Directors OFFROAD",
+          "it": "Co-Creative Directors OFFROAD"
+        },
+        "socials": [
+          {
+            "url": "https://www.offroad.ch",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/manuel-meier-und-philippe-arbenz-1748262563140.webp",
+          "width": 1280,
+          "height": 1280,
+          "blurDataURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAACgAAAAA7eLj1AAABfklEQVQYGRXQvWsTcQDG8e/97s17ycWQi6SpRazSKEgDHRyk2ElcHBxqFxE6dSv+A4VS2v4F4tKlS3Ho0iGDLg7NYAVR8A1prNagpQ4lISa5l1zuzuszPNMzPHyk6oOZdGRpaNKQMBakgxApSJBUjUCJkcMRSTRAyJUCekmDAVhFG71ioF81cLwh5v5PxJiGnDcRRknQ2/vCE1GmXz8klzNp733j0/sWHj7JzmdsV0dRJ8u8ejpPfqrKo4e3WTj7Shil3LQv8WLlMdXp68y83EK5OJGn1WhyxR9x/LePcc/mx/omBydv6P5p0koUZHccoRQsbtTG2Nh9jaIPsEyLxfkuR997XCvXcJ0KVinNhtnp1ftVlu7c4tnBR1IvIfZ8xl2HD79/IRsGaawj+qcBa9zl8tws2/W3dP1/NGafc6yGdJw2TemId8u7SPlcMRWqSZx4WFaRTruXOfkYF1SifsJ5dElCUTQnqzgDtknCiEjOSLwMOruEphMEPqrh8h8HpYjKoBZ9PQAAAABJRU5ErkJggg=="
+        }
+      }
+    },
+    {
+      "id": 26,
+      "award": 6,
+      "expert": {
+        "firebase_id": null,
+        "id": 33,
+        "name": "Angela Mygind",
+        "description": {
+          "de": "Missfinance.ch & Winner Business 2024",
+          "en": "Missfinance.ch & Winner Business 2024",
+          "fr": "Missfinance.ch & Winner Business 2024",
+          "it": "Missfinance.ch & Winner Business 2024"
+        },
+        "socials": [
+          {
+            "url": "https://www.instagram.com/missfinance.ch/",
+            "platform": "INSTAGRAM"
+          },
+          {
+            "url": "https://www.tiktok.com/@missfinance.ch",
+            "platform": "TIKTOK"
+          },
+          {
+            "url": "https://www.linkedin.com/in/angela-mygind-33302662/",
+            "platform": "LINKEDIN"
+          },
+          {
+            "url": "https://open.spotify.com/show/6k8Nh2UXaIZ0vcIn8ygrcX?si=ANFuM2a0RTaXoGykMC7FJQ",
+            "platform": "SPOTIFY"
+          }
+        ],
+        "image": {
+          "src": "images/experts/angela-mygind-1748350083924.webp",
+          "width": 1280,
+          "height": 853,
+          "blurDataURL": "data:image/webp;base64,UklGRjwCAABXRUJQVlA4WAoAAAAgAAAACQAABQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggTgAAANABAJ0BKgoABgACwEwlAE6AIuoHKF4gAPwi5vI2EsQ3BaTV3eyWRs8/H+TGPU+2QRwiynP2Rleamb3iIhDkXujvW69C23pUjnmbZQAAAA=="
+        }
+      }
+    },
+    {
+      "id": 27,
+      "award": 6,
+      "expert": {
+        "firebase_id": "aLPr3tdiLcL3n5v1q9LF",
+        "id": 9,
+        "name": "Sibylle de Marin de Carranrais",
+        "description": {
+          "de": "Consultant PR, Ampli & Social Media",
+          "en": "Consultant PR, Ampli & Social Media",
+          "fr": "Consultant PR, Ampli & Social Media",
+          "it": "Consultant PR, Ampli & Social Media"
+        },
+        "socials": [
+          {
+            "url": "https://www.linkedin.com/in/sibylle-de-marin-de-carranrais-233a4a7b/",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/sibylle-de-marin-de-carranrais-1747924569217.webp",
+          "width": 600,
+          "height": 600,
+          "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADwAQCdASoKAAoAAUAmJZwCdAD0tERtuAAA/v6/dSbTxfmQsNWpWUSpwbbpTy5VyFbnBR+zkUjO3JWe/2yuuzHecFUnnUpHocpY5IJyDvh6JeLMAhqC2DAA"
+        }
+      }
+    },
+    {
+      "id": 28,
+      "award": 6,
+      "expert": {
+        "firebase_id": null,
+        "id": 34,
+        "name": "Josef T. Molnar",
+        "description": {
+          "de": "Leiter Marketing & Kommunikation",
+          "en": "Leiter Marketing & Kommunikation",
+          "fr": "Leiter Marketing & Kommunikation",
+          "it": "Leiter Marketing & Kommunikation"
+        },
+        "socials": [
+          {
+            "url": "https://www.linkedin.com/in/josefmolnar",
+            "platform": "LINKEDIN"
+          },
+          {
+            "url": "https://www.instagram.com/djmadness_official/",
+            "platform": "INSTAGRAM"
+          },
+          {
+            "url": "https://www.tiktok.com/@djmadness_official",
+            "platform": "TIKTOK"
+          },
+          {
+            "url": "https://www.aqua-spa-resorts.ch/de",
+            "platform": "WEBSITE"
+          }
+        ],
+        "image": {
+          "src": "images/experts/josef-t-molnar-1749019777599.webp",
+          "width": 606,
+          "height": 646,
+          "blurDataURL": "data:image/webp;base64,UklGRlYCAABXRUJQVlA4WAoAAAAgAAAACAAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggaAAAABACAJ0BKgkACgACwEwlsAJ0BismTImNUAAA/gnholA9RpPpyjFcrJlzou+vU76Li1ikauTiSz7glQMi50+19BJg9N7nKqv3V/9jJcputVPFk5/vXiD/MvmJNzuJxL4xSQ9Z4dCY6AAA"
+        }
+      }
+    },
+    {
+      "id": 29,
+      "award": 6,
+      "expert": {
+        "firebase_id": null,
+        "id": 35,
+        "name": "Sonia Milici",
+        "description": {
+          "de": "Head of Marketing and Sales Yuh",
+          "en": "Head of Marketing and Sales Yuh",
+          "fr": "Head of Marketing and Sales Yuh",
+          "it": "Head of Marketing and Sales Yuh"
+        },
+        "socials": [
+          {
+            "url": "https://www.linkedin.com/in/sonia-milici/",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/sonia-milici-1749041579571.webp",
+          "width": 582,
+          "height": 875,
+          "blurDataURL": "data:image/webp;base64,UklGRloCAABXRUJQVlA4WAoAAAAgAAAABQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggbAAAAHACAJ0BKgYACgACwEwloAJ0a4APOc1arD9gZYAA/sKeolvKfaJHGRDyZfU7jrXRKcIDVOv60hKgmXU2arP+0Fb/+vxngDBEkHdLY4BUoIkIMJYdG6+E7j7InRE5F6Vf+WBOaaa8W6F/hwAAAA=="
+        }
+      }
+    },
+    {
+      "id": 30,
+      "award": 6,
+      "expert": {
+        "firebase_id": null,
+        "id": 36,
+        "name": "Thomas Frei",
+        "description": {
+          "de": "SAE Director Switzerland",
+          "en": "SAE Director Switzerland",
+          "fr": "SAE Director Switzerland",
+          "it": "SAE Director Switzerland"
+        },
+        "socials": [
+          {
+            "url": "https://www.sae.edu/che/",
+            "platform": "WEBSITE"
+          },
+          {
+            "url": "https://www.linkedin.com/in/thomas-frei-63b5a772/",
+            "platform": "LINKEDIN"
+          }
+        ],
+        "image": {
+          "src": "images/experts/thomas-frei-1752223486860.webp",
+          "width": 1296,
+          "height": 972,
+          "blurDataURL": "data:image/webp;base64,UklGRlICAABXRUJQVlA4WAoAAAAgAAAACQAABgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggZAAAALABAJ0BKgoABwACwEwlsAJ0ANmU3YAA/upLNTEacQPvP2w8J/pKKCGRsReDtb+JGqFzumMSphi3ErNyKEdIMIQlznhRUg9SBAzh8d3SnWeOYPDhKIx8fOkpM80e/xv8pI1AAAA="
+        }
+      }
+    }
+  ],
+  "partners": [
+    {
+      "id": 13,
+      "award": 6,
+      "brand": {
+        "firebase_id": "SzVs4PKN1opYpCnG3Yl1",
+        "id": 22,
+        "name": "20 Minuten",
+        "website": "https://www.20min.ch/",
+        "image": {
+          "src": "images/brands/20_Minuten-1747919486731.svg",
+          "width": 476,
+          "height": 633,
+          "blurDataURL": "data:image/webp;base64,UklGRgoBAABXRUJQVlA4WAoAAAAQAAAACQAADAAAQUxQSDoAAAAFYCLbdpqXxEXV4v630lpmRkeSFMMGImICDJ7EcexEGwQV+znVqXwAVLhApDP8iogHU6D1zA+CwO8AVlA4IKoAAABQAwCdASoKAA0AAUAmJbACdLoAEhd8VmZl/qi9FruFNPTkgAD++WdCr3sq+ah+9Lf/W9Q4bYfmP9Bu3ZHZ/553Ufja/56XjOg8//BK/oYe0TergXZ//rl4KYD3Qyj/Dnc29N11fq/i4qsvV6++Zun17ZRrN+1vD+Rc+O+Isg9whVDF2/2PPa/oBnMn/yYYJF6SM8/QY43XzKICkhD+RblM/zfY+k4kswAAAA=="
+        }
+      }
+    },
+    {
+      "id": 14,
+      "award": 6,
+      "brand": {
+        "firebase_id": "Xhd44bGoX2IIu510PpH8",
+        "id": 25,
+        "name": "ZEAM",
+        "website": "https://www.zeam.xyz/",
+        "image": {
+          "src": "images/brands/ZEAM-1747919486733.svg",
+          "width": 1074,
+          "height": 277,
+          "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4WAoAAAAQAAAACQAAAgAAQUxQSB8AAAAAdqVzcw+jHpwNqUhMkXMlq3WhltKmdXRzZEN7bIRuAFZQOCAYAAAAMAEAnQEqCgADAAFAJiWkAANwAP79NmgA"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "award": 6,
+      "brand": {
+        "firebase_id": "YK2WY8590H9jNEbPyj0V",
+        "id": 26,
+        "name": "FACES",
+        "website": "https://www.faces.ch/",
+        "image": {
+          "src": "images/brands/FACES-1747919486733.webp",
+          "width": 425,
+          "height": 140,
+          "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoKAAMAAUAmJaQAEkAERsXYVAAA/b+nDmvxbmn4JTXOyEJEwyuvetfsE7P9zYNu4H68iGSINACgAA=="
+        }
+      }
+    },
+    {
+      "id": 17,
+      "award": 6,
+      "brand": {
+        "firebase_id": "b6UdXCdYh9Azlj0cXy8b",
+        "id": 28,
+        "name": "Smile Versicherung",
+        "website": "https://www.smile-insurances.com/",
+        "image": {
+          "src": "images/brands/Smile_Versicherung-1747919486733.svg",
+          "width": 400,
+          "height": 178,
+          "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4WAoAAAAQAAAACQAAAwAAQUxQSCkAAAAAABEIDg4gSxwOAB+Af5F6Y2VnpycRdlBQM2dgRmUQAAAAAAx+fgQAAABWUDggNAAAABACAJ0BKgoABAABQCYloAJ0ugH4AfgAA8gA/s1X3dqniAn//16IPEG/Wg/+4N9kXP/UgAA="
+        }
+      }
+    },
+    {
+      "id": 18,
+      "award": 6,
+      "brand": {
+        "firebase_id": "DaL5EYo7uCAg036wnUaM",
+        "id": 9,
+        "name": "The Green Montain",
+        "website": "https://www.thegreenmountain.ch/",
+        "image": {
+          "src": "images/brands/Green_Montain-1747919486724.webp",
+          "width": 1241,
+          "height": 1242,
+          "blurDataURL": "data:image/webp;base64,UklGRggBAABXRUJQVlA4WAoAAAAQAAAACQAACQAAQUxQSFkAAAABcJNt25W8QAIm6MIIBTDD2RhOxmB2c6SBNtAKOp+/w1MjIqJUN79fc6dSKycTW2pBGFgw7jEAY3t0gCQOZwzAOA33SEi/9WqfmPFoVGnCnUlVoXp9vaxqFQBWUDggiAAAAJACAJ0BKgoACgABQCYlkAJ0Bi13kMsjHf4jwMyQAP6r3M9LmPpd/LJtJO5RE3JYZS64ScBbn3/Dm7crdQumaoRrUrvknb/eU0+CXti4DAfiAf5q6y3//2sx0f6suuPUh4LxX9d/xC/zypThD4nDN1EO3azNrBnpqCQ0XjCa3G7s5QMlJjn90AA="
+        }
+      }
+    },
+    {
+      "id": 20,
+      "award": 6,
+      "brand": {
+        "firebase_id": "JL8LfRPQQQH9G1OAyFcK",
+        "id": 15,
+        "name": "Weleda",
+        "website": "https://www.weleda.ch/?srsltid=AfmBOoqc1K4sACnk8DjxvQah8Kok_76zYcJKylmt7dyPjpW7RiO3v9as",
+        "image": {
+          "src": "images/brands/Weleda-1747919486728.webp",
+          "width": 512,
+          "height": 143,
+          "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4WAoAAAAQAAAACQAAAgAAQUxQSB8AAAAAammQNlJeN2trVnZZazZhZTZsXGMYHBMkDhMQGxwdAFZQOCAYAAAAMAEAnQEqCgADAAFAJiWkAANwAP789AAA"
+        }
+      }
+    },
+    {
+      "id": 22,
+      "award": 6,
+      "brand": {
+        "firebase_id": "HjIf3LpjKJBjCKJZvJsC",
+        "id": 13,
+        "name": "De'Longhi",
+        "website": "https://www.delonghi.com/de-ch",
+        "image": {
+          "src": "images/brands/De'Longhi-1747919486726.webp",
+          "width": 512,
+          "height": 159,
+          "blurDataURL": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4WAoAAAAQAAAACQAAAgAAQUxQSB8AAAAAXoVndVpaWm5rXl7DraWXo6Ovml5cbmhtbGmYem1dAFZQOCAaAAAAMAEAnQEqCgADAAFAJiWkAANwAP787bQAAAA="
+        }
+      }
+    },
+    {
+      "id": 23,
+      "award": 6,
+      "brand": {
+        "firebase_id": "bTwoYhKW65wD89uxUs0p",
+        "id": 29,
+        "name": "Braun",
+        "website": "http://braunhousehold.ch/ ",
+        "image": {
+          "src": "images/brands/braun-1749153233062.webp",
+          "width": 3845,
+          "height": 2225,
+          "blurDataURL": "data:image/webp;base64,UklGRiQCAABXRUJQVlA4WAoAAAAwAAAACQAABAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIEQAAAAEPMP8REUIgkOKQBjyi/0EGAFZQOCAcAAAAUAEAnQEqCgAFAALATCWkAAR0AAD7P//BvAAAAA=="
+        }
+      }
+    },
+    {
+      "id": 24,
+      "award": 6,
+      "brand": {
+        "firebase_id": "E8sd499WEzziSF45rkR8",
+        "id": 10,
+        "name": "Nutribullet",
+        "website": "https://www.nutribullet.com/de-ch",
+        "image": {
+          "src": "images/brands/nutribullet-1749153206077.webp",
+          "width": 1201,
+          "height": 612,
+          "blurDataURL": "data:image/webp;base64,UklGRi4CAABXRUJQVlA4WAoAAAAwAAAACQAABAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIGwAAAAEXQJBtM3/m7deIiOBCSECIBvq/xoiI/idLDgBWUDggHAAAAFABAJ0BKgoABQACwEwlpAAEdAAA+z//wbwAAAA="
+        }
+      }
+    },
+    {
+      "id": 36,
+      "award": 6,
+      "brand": {
+        "firebase_id": null,
+        "id": 43,
+        "name": "Offroad",
+        "website": "https://www.offroad.ch",
+        "image": {
+          "src": "images/brands/offroad-1748262722209.webp",
+          "width": 756,
+          "height": 231,
+          "blurDataURL": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAADCAYAAACqPZ51AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAACqADAAQAAAABAAAAAwAAAAA2aNqEAAAANklEQVQIHWNkgIL/QABjg2hGIADRUPHTYAaIgwReIikAybOD+GBdIAYIgBSDTALREBEICRIDABKNK6CLAL2BAAAAAElFTkSuQmCC"
+        }
+      }
+    },
+    {
+      "id": 39,
+      "award": 6,
+      "brand": {
+        "firebase_id": "zJs4Fr7ACXee7g9LtNQl",
+        "id": 41,
+        "name": "Yuh",
+        "website": "https://www.yuh.com/de/",
+        "image": {
+          "src": "images/brands/yuh-1748442780213.webp",
+          "width": 1000,
+          "height": 1000,
+          "blurDataURL": "data:image/webp;base64,UklGRj4CAABXRUJQVlA4WAoAAAAwAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIKwAAAAEfIBAgWPL/ZiMighOKIklqhiAgCsr//MW/DxAR0f/kj4wuxtXj6NC0AR4AVlA4IBwAAABQAQCdASoKAAoAAsBMJaQABHQAAPhX//wbwAAA"
+        }
+      }
+    },
+    {
+      "id": 41,
+      "award": 6,
+      "brand": {
+        "firebase_id": null,
+        "id": 44,
+        "name": "Aqua Spa & Resorts",
+        "website": "https://www.aqua-spa-resorts.ch/de/huerlimannbad-spa-zuerich?_gl=1*scj9ch*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwuvrBBhDcARIsAKRrkjef9ajGuD4xfOmwAJMBtpA1iK3cSNpNuiwbcgs3HNMOccERP7qOV2saAj5NEALw_wcB&gbraid=0AAAAADPgvi81MKXPxDdiipM7771r7MtX2",
+        "image": {
+          "src": "images/brands/aqua-spa-and-resorts-1749050581491.webp",
+          "width": 1772,
+          "height": 547,
+          "blurDataURL": "data:image/webp;base64,UklGRiwCAABXRUJQVlA4WAoAAAAwAAAACQAAAgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIHQAAAAEfICQgVGf9b25ERLDBTMCkyQHqTQAj+h89+gIAAFZQOCAYAAAAMAEAnQEqCgADAALATCWkAANwAP73jAAA"
+        }
+      }
+    },
+    {
+      "id": 42,
+      "award": 6,
+      "brand": {
+        "firebase_id": null,
+        "id": 53,
+        "name": "SAE",
+        "website": "https://www.sae.edu/che/?utm_campaign=SAE-CHE-ZRH-SALL-PSE-BRNWR-GGLBRANDSRCH-CDNOTSET-20211203&utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=176446194&gbraid=0AAAAAD2Vk16ctx1DWuqOV7GfDtcxhDdfM&gclid=Cj0KCQjwgvnCBhCqARIsADBLZoJI3CYYIyC9gGEgkN0lYAXOo5_7vLtlHY5e_nVc--_d6IL7jNnRIesaAtWuEALw_wcB",
+        "image": {
+          "src": "images/brands/sae-1751037147464.webp",
+          "width": 1097,
+          "height": 705,
+          "blurDataURL": "data:image/webp;base64,UklGRjoCAABXRUJQVlA4WAoAAAAwAAAACQAABQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBILAAAAAEvQBZgmtw1kgBCSKaICHw6KIQkyZlLJC/yCHH9Ye4hIvqf6kJLfGLVoI1ZVlA4IBgAAAAwAQCdASoKAAYAAsBMJaQAA3AA/veMAAA="
+        }
+      }
+    }
+  ],
+  "show": {
+    "id": 2,
+    "award": 6,
+    "date": "2025-10-17",
+    "content": null,
+    "tickets": "https://shop.bookinea.app/ssia2025",
+    "schedule": [
+      {
+        "end": "2025-05-27T16:00:36.651Z",
+        "start": "2025-05-27T11:00:34.236Z",
+        "title": {
+          "de": "Creator Convention",
+          "en": "Creator & Brands Convention",
+          "fr": "Creator Convention",
+          "it": "Creator Convention"
+        },
+        "description": {
+          "de": "<p><strong>Workshops | Keynotes | Networking | AI Media Award</strong></p><p>Tauche ein in die Welt der kreativsten Köpfe und innovativsten Marken! Die&nbsp;<strong>Creator &amp; Brands Convention 2025</strong>&nbsp;bringt Content Creator, Unternehmen und Medienprofis zusammen – mit inspirierenden&nbsp;<strong>Workshops</strong>, zukunftsweisenden&nbsp;<strong>Keynotes</strong>&nbsp;und spannenden Networking-Möglichkeiten.</p><p>Mit dabei:&nbsp;<strong>Weleda, TikTok, Samsung</strong>&nbsp;und viele weitere führende Marken.</p><p>Ein besonderes Highlight: der&nbsp;<strong>AI Media Award 2025</strong>&nbsp;– mit der neuen Kategorie&nbsp;<strong>“Swiss AI Content Creator”</strong>, die herausragende Leistungen im Bereich KI-generierter Medieninhalte würdigt.<br>Mehr Infos:&nbsp;<a rel=\"noopener noreferrer nofollow\" href=\"http://www.ai-media-award.com\">www.ai-media-award.com</a></p><p>🎟️&nbsp;<strong>Tickets jetzt sichern!</strong></p>",
+          "en": "<p><strong>Workshops | Keynotes | Networking | AI Media Award</strong></p><p><strong>Creator &amp; Brands Convention 2025</strong><br>Dive into a world of creative minds and cutting-edge brands!</p><p>The&nbsp;<strong>Creator &amp; Brands Convention 2025</strong>&nbsp;brings together content creators, companies, and media professionals – with inspiring&nbsp;<strong>workshops</strong>, visionary&nbsp;<strong>keynotes</strong>, and exciting&nbsp;<strong>networking opportunities</strong>.</p><p>Featuring top brands like&nbsp;<strong>Weleda, TikTok, Samsung</strong>&nbsp;– and many more.</p><p>🌟&nbsp;<strong>Highlight of the year:</strong><br>The&nbsp;<strong>AI Media Award 2025</strong>&nbsp;– featuring the new category&nbsp;<strong>“Swiss AI Content Creator”</strong>, celebrating outstanding achievements in AI-generated media content.</p><p>🎟️&nbsp;<strong>Get your tickets now:</strong><br>👉&nbsp;<a rel=\"noopener noreferrer nofollow\" href=\"http://www.ai-media-award.com\">www.ai-media-award.com</a></p>",
+          "fr": "<p><strong>Ateliers | Keynotes | Réseautage | AI Media Award</strong></p><p><strong>Creator &amp; Brands Convention 2025</strong><br>Plonge dans l’univers des esprits les plus créatifs et des marques les plus innovantes !</p><p>La&nbsp;<strong>Creator &amp; Brands Convention 2025</strong>&nbsp;réunit créateurs de contenu, entreprises et professionnels des médias – avec des&nbsp;<strong>ateliers</strong>&nbsp;inspirants, des&nbsp;<strong>keynotes</strong>&nbsp;visionnaires et de belles opportunités de&nbsp;<strong>réseautage</strong>.</p><p>Avec des marques de renom telles que&nbsp;<strong>Weleda, TikTok, Samsung</strong>&nbsp;– et bien d’autres encore.</p><p>🌟&nbsp;<strong>Le moment fort de l’année :</strong><br>Le&nbsp;<strong>AI Media Award 2025</strong>&nbsp;– avec la nouvelle catégorie&nbsp;<strong>“Swiss AI Content Creator”</strong>, qui récompense l’excellence dans le domaine des contenus médiatiques générés par l’IA.</p><p>🎟️&nbsp;<strong>Réserve ton billet maintenant :</strong><br>👉&nbsp;<a rel=\"noopener noreferrer nofollow\" href=\"http://www.ai-media-award.com\">www.ai-media-award.com</a></p>",
+          "it": "<p><strong>Workshop | Keynote | Networking | AI Media Award</strong></p><p><strong>Creator &amp; Brands Convention 2025</strong><br>Scopri il mondo delle menti più creative e dei brand più innovativi!</p><p>La&nbsp;<strong>Creator &amp; Brands Convention 2025</strong>&nbsp;riunisce content creator, aziende e professionisti dei media – con&nbsp;<strong>workshop</strong>stimolanti,&nbsp;<strong>keynote</strong>&nbsp;ispiratrici e imperdibili occasioni di&nbsp;<strong>networking</strong>.</p><p>Con brand leader come&nbsp;<strong>Weleda, TikTok, Samsung</strong>&nbsp;– e molti altri ancora.</p><p>✨&nbsp;<strong>Punto forte del 2025:</strong><br>L’<strong>AI Media Award</strong>&nbsp;– con la nuova categoria&nbsp;<strong>“Swiss AI Content Creator”</strong>, che premia l’eccellenza nei contenuti mediatici generati con l’intelligenza artificiale.</p><p>🎟️&nbsp;<strong>Prenota ora il tuo biglietto:</strong><br>👉&nbsp;<a rel=\"noopener noreferrer nofollow\" href=\"http://www.ai-media-award.com\">www.ai-media-award.com</a></p>"
+        }
+      },
+      {
+        "end": "2025-05-26T16:00:35.705Z",
+        "start": "2025-05-26T14:00:33.393Z",
+        "title": {
+          "de": "VIP Apéro",
+          "en": "VIP Apéro",
+          "fr": "VIP Apéro",
+          "it": "VIP Apéro"
+        },
+        "description": {
+          "de": "<p><strong>Exklusiver VIP-Apéro für die Top 3 &amp; Medien</strong></p><p>Vor der offiziellen Türöffnung und der Preisverleihung laden wir die&nbsp;<strong>Top 3 Nominierten jeder der 16 Kategorien</strong>&nbsp;sowie ausgewählte&nbsp;<strong>Medienvertreter:innen</strong>&nbsp;zu einem&nbsp;<strong>exklusiven VIP-Apéro</strong>&nbsp;ein. In stilvollem Ambiente bietet sich die Gelegenheit, mit anderen Finalist:innen, Branchenexpert:innen und Journalist:innen ins Gespräch zu kommen, neue Kontakte zu knüpfen und erste mediale Sichtbarkeit zu erhalten.</p><p>Der VIP-Apéro schafft den passenden Rahmen für vertiefte Gespräche abseits der Bühne – persönlich, inspirierend und zukunftsgerichtet.</p>",
+          "en": "<p><strong>Exklusiver VIP-Apéro für die Top 3 &amp; Medien</strong></p><p>Vor der offiziellen Türöffnung und der Preisverleihung laden wir die&nbsp;<strong>Top 3 Nominierten jeder der 16 Kategorien</strong>&nbsp;sowie ausgewählte&nbsp;<strong>Medienvertreter:innen</strong>&nbsp;zu einem&nbsp;<strong>exklusiven VIP-Apéro</strong>&nbsp;ein. In stilvollem Ambiente bietet sich die Gelegenheit, mit anderen Finalist:innen, Branchenexpert:innen und Journalist:innen ins Gespräch zu kommen, neue Kontakte zu knüpfen und erste mediale Sichtbarkeit zu erhalten.</p><p>Der VIP-Apéro schafft den passenden Rahmen für vertiefte Gespräche abseits der Bühne – persönlich, inspirierend und zukunftsgerichtet.</p>",
+          "fr": "<p><strong>Exklusiver VIP-Apéro für die Top 3 &amp; Medien</strong></p><p>Vor deroffiziellen Türöffnung und der Preisverleihung laden wir die&nbsp;<strong>Top 3 Nominierten jeder der 16 Kategorien</strong>&nbsp;sowie ausgewählte&nbsp;<strong>Medienvertreter:innen</strong>&nbsp;zu einem&nbsp;<strong>exklusiven VIP-Apéro</strong>&nbsp;ein. In stilvollem Ambiente bietet sich die Gelegenheit, mit anderen Finalist:innen, Branchenexpert:innen und Journalist:innen ins Gespräch zu kommen, neue Kontakte zu knüpfen und erste mediale Sichtbarkeit zu erhalten.</p><p>Der VIP-Apéro schafft den passenden Rahmen für vertiefte Gespräche abseits der Bühne – persönlich, inspirierend und zukunftsgerichtet.</p>",
+          "it": "<p><strong>Exklusiver VIP-Apéro für die Top 3 &amp; Medien</strong></p><p>Vor deroffiziellen Türöffnung und der Preisverleihung laden wir die&nbsp;<strong>Top 3 Nominierten jeder der 16 Kategorien</strong>&nbsp;sowie ausgewählte&nbsp;<strong>Medienvertreter:innen</strong>&nbsp;zu einem&nbsp;<strong>exklusiven VIP-Apéro</strong>&nbsp;ein. In stilvollem Ambiente bietet sich die Gelegenheit, mit anderen Finalist:innen, Branchenexpert:innen und Journalist:innen ins Gespräch zu kommen, neue Kontakte zu knüpfen und erste mediale Sichtbarkeit zu erhalten.</p><p>Der VIP-Apéro schafft den passenden Rahmen für vertiefte Gespräche abseits der Bühne – persönlich, inspirierend und zukunftsgerichtet.</p>"
+        }
+      },
+      {
+        "end": "2025-05-26T18:00:34.955Z",
+        "start": "2025-05-26T16:00:32.917Z",
+        "title": {
+          "de": "Türöffnung",
+          "en": "Doors open",
+          "fr": "Türöffnung",
+          "it": "Türöffnung"
+        },
+        "description": {
+          "de": "<p><strong>Türöffnung ab 18:00 Uhr – willkommen zum Smile Swiss Influence Award 2025</strong></p><p>Ab&nbsp;<strong>18:00 Uhr</strong>&nbsp;öffnen sich die Türen für alle Besucher:innen – und damit für einen Abend voller Inspiration, Begegnungen und Erlebnisse.</p><p>Freu dich auf:<br>✨&nbsp;<strong>Vielfältige Standflächen</strong>&nbsp;innovativer Marken &amp; Creator<br>🎁&nbsp;<strong>Exklusive Goodies</strong>&nbsp;für die ersten Gäste<br>🟧&nbsp;<strong>Orange Carpet &amp; Fotowall</strong>&nbsp;für deinen perfekten Auftritt<br>🥂&nbsp;<strong>Flying Apéro</strong>&nbsp;mit ausgewählten Snacks &amp; Drinks in entspannter Atmosphäre</p><p>Ein Abend, der Content, Community und Kreativität verbindet – live und hautnah.</p>",
+          "en": "<p><strong>Türöffnung ab 18:00 Uhr – willkommen zum Smile Swiss Influence Award 2025</strong></p><p>Ab&nbsp;<strong>18:00 Uhr</strong>&nbsp;öffnen sich die Türen für alle Besucher:innen – und damit für einen Abend voller Inspiration, Begegnungen und Erlebnisse.</p><p>Freu dich auf:<br>✨&nbsp;<strong>Vielfältige Standflächen</strong>&nbsp;innovativer Marken &amp; Creator<br>🎁&nbsp;<strong>Exklusive Goodies</strong>&nbsp;für die ersten Gäste<br>🟧&nbsp;<strong>Orange Carpet &amp; Fotowall</strong>&nbsp;für deinen perfekten Auftritt<br>🥂&nbsp;<strong>Flying Apéro</strong>&nbsp;mit ausgewählten Snacks &amp; Drinks in entspannter Atmosphäre</p><p>Ein Abend, der Content, Community und Kreativität verbindet – live und hautnah.</p>",
+          "fr": "<p><strong>Türöffnung ab 18:00 Uhr – willkommen zum Smile Swiss Influence Award 2025</strong></p><p>Ab&nbsp;<strong>18:00 Uhr</strong>&nbsp;öffnen sich die Türen für alle Besucher:innen – und damit für einen Abend voller Inspiration, Begegnungen und Erlebnisse.</p><p>Freu dich auf:<br>✨&nbsp;<strong>Vielfältige Standflächen</strong>&nbsp;innovativer Marken &amp; Creator<br>🎁&nbsp;<strong>Exklusive Goodies</strong>&nbsp;für die ersten Gäste<br>🟧&nbsp;<strong>Orange Carpet &amp; Fotowall</strong>&nbsp;für deinen perfekten Auftritt<br>🥂&nbsp;<strong>Flying Apéro</strong>&nbsp;mit ausgewählten Snacks &amp; Drinks in entspannter Atmosphäre</p><p>Ein Abend, der Content, Community und Kreativität verbindet – live und hautnah.</p>",
+          "it": "<p><strong>Türöffnung ab 18:00 Uhr – willkommen zum Smile Swiss Influence Award 2025</strong></p><p>Ab&nbsp;<strong>18:00 Uhr</strong>&nbsp;öffnen sich die Türen für alle Besucher:innen – und damit für einen Abend voller Inspiration, Begegnungen und Erlebnisse.</p><p>Freu dich auf:<br>✨&nbsp;<strong>Vielfältige Standflächen</strong>&nbsp;innovativer Marken &amp; Creator<br>🎁&nbsp;<strong>Exklusive Goodies</strong>&nbsp;für die ersten Gäste<br>🟧&nbsp;<strong>Orange Carpet &amp; Fotowall</strong>&nbsp;für deinen perfekten Auftritt<br>🥂&nbsp;<strong>Flying Apéro</strong>&nbsp;mit ausgewählten Snacks &amp; Drinks in entspannter Atmosphäre</p><p>Ein Abend, der Content, Community und Kreativität verbindet – live und hautnah.</p>"
+        }
+      },
+      {
+        "end": "2025-05-26T19:30:32.761Z",
+        "start": "2025-05-26T18:00:29.390Z",
+        "title": {
+          "de": "Smile Swiss Influence Awardshow",
+          "en": "Smile Swiss Influence Awardshow",
+          "fr": "Smile Swiss Influence Awardshow",
+          "it": "Smile Swiss Influence Awardshow"
+        },
+        "description": {
+          "de": "<p><strong>Live-Show von 20:00 bis ca. 21:30 Uhr</strong></p><p>Erlebe die&nbsp;<strong>Smile Swiss Influence Awardshow 2025</strong>&nbsp;live und hautnah:<br>Von&nbsp;<strong>20:00 bis ca. 21:30 Uhr</strong>&nbsp;feiern wir die kreativsten, relevantesten und einflussreichsten Persönlichkeiten der Schweizer Creator-Szene.</p><p>Die Awardshow umfasst:<br>🏆&nbsp;<strong>16 Kategorien</strong>&nbsp;– von Lifestyle über Nachhaltigkeit bis AI &amp; Innovation<br>🎤&nbsp;<strong>Live-Moderation</strong>&nbsp;mit Show-Elementen und Überraschungsmomenten<br>🌟 Emotionale Laudationen, ehrliche Danksagungen und große Auftritte</p><p>Ein Abend voller Anerkennung, Sichtbarkeit und Community-Spirit – live auf der Bühne.</p>",
+          "en": "<p><strong>Live-Show von 20:00 bis ca. 21:30 Uhr</strong></p><p>Erlebe die&nbsp;<strong>Smile Swiss Influence Awardshow 2025</strong>&nbsp;live und hautnah:<br>Von&nbsp;<strong>20:00 bis ca. 21:30 Uhr</strong>&nbsp;feiern wir die kreativsten, relevantesten und einflussreichsten Persönlichkeiten der Schweizer Creator-Szene.</p><p>Die Awardshow umfasst:<br>🏆&nbsp;<strong>16 Kategorien</strong>&nbsp;– von Lifestyle über Nachhaltigkeit bis AI &amp; Innovation<br>🎤&nbsp;<strong>Live-Moderation</strong>&nbsp;mit Show-Elementen und Überraschungsmomenten<br>🌟 Emotionale Laudationen, ehrliche Danksagungen und große Auftritte</p><p>Ein Abend voller Anerkennung, Sichtbarkeit und Community-Spirit – live auf der Bühne.</p>",
+          "fr": "<p><strong>Live-Show von 20:00 bis ca. 21:30 Uhr</strong></p><p>Erlebe die&nbsp;<strong>Smile Swiss Influence Awardshow 2025</strong>&nbsp;live und hautnah:<br>Von&nbsp;<strong>20:00 bis ca. 21:30 Uhr</strong>&nbsp;feiern wir die kreativsten, relevantesten und einflussreichsten Persönlichkeiten der Schweizer Creator-Szene.</p><p>Die Awardshow umfasst:<br>🏆&nbsp;<strong>16 Kategorien</strong>&nbsp;– von Lifestyle über Nachhaltigkeit bis AI &amp; Innovation<br>🎤&nbsp;<strong>Live-Moderation</strong>&nbsp;mit Show-Elementen und Überraschungsmomenten<br>🌟 Emotionale Laudationen, ehrliche Danksagungen und große Auftritte</p><p>Ein Abend voller Anerkennung, Sichtbarkeit und Community-Spirit – live auf der Bühne.</p>",
+          "it": "<p><strong>Live-Show von 20:00 bis ca. 21:30 Uhr</strong></p><p>Erlebe die&nbsp;<strong>Smile Swiss Influence Awardshow 2025</strong>&nbsp;live und hautnah:<br>Von&nbsp;<strong>20:00 bis ca. 21:30 Uhr</strong>&nbsp;feiern wir die kreativsten, relevantesten und einflussreichsten Persönlichkeiten der Schweizer Creator-Szene.</p><p>Die Awardshow umfasst:<br>🏆&nbsp;<strong>16 Kategorien</strong>&nbsp;– von Lifestyle über Nachhaltigkeit bis AI &amp; Innovation<br>🎤&nbsp;<strong>Live-Moderation</strong>&nbsp;mit Show-Elementen und Überraschungsmomenten<br>🌟 Emotionale Laudationen, ehrliche Danksagungen und große Auftritte</p><p>Ein Abend voller Anerkennung, Sichtbarkeit und Community-Spirit – live auf der Bühne.</p>"
+        }
+      },
+      {
+        "end": "2025-05-25T22:00:51.983Z",
+        "start": "2025-05-26T20:00:53.910Z",
+        "title": {
+          "de": "Afterparty",
+          "en": "Afterparty",
+          "fr": "Afterparty",
+          "it": "Afterparty"
+        },
+        "description": {
+          "de": "<p>Nach der Preisverleihung geht’s weiter: Ab&nbsp;<strong>ca. 21:30 Uhr</strong>&nbsp;steigt die offizielle&nbsp;<strong>Afterparty</strong>&nbsp;– laut, kreativ und absolut unforgettable.</p><p>Erlebe:<br>🎧&nbsp;<strong>2 Floors</strong>&nbsp;mit angesagten&nbsp;<strong>DJs</strong>, die für Beats &amp; Stimmung sorgen<br>🔥 Feiere mit der&nbsp;<strong>Creator- und Influencer-Szene der Schweiz</strong><br>🍸 Stylische&nbsp;<strong>Bars </strong>&amp; gute Vibes<br>📸&nbsp;<strong>Fotospots</strong>, spontane Showmomente und echte Begegnungen</p><p>Ob TikTok-Star, YouTuberin, Insta-Creator oder Markenpartner – bei der Afterparty kommen alle zusammen, die Content lieben und feiern können.</p>",
+          "en": "<p>Nach der Preisverleihung geht’s weiter: Ab&nbsp;<strong>ca. 21:30 Uhr</strong>&nbsp;steigt die offizielle&nbsp;<strong>Afterparty</strong>&nbsp;– laut, kreativ und absolut unforgettable.</p><p>Erlebe:<br>🎧&nbsp;<strong>2 Floors</strong>&nbsp;mit angesagten&nbsp;<strong>DJs</strong>, die für Beats &amp; Stimmung sorgen<br>🔥 Feiere mit der&nbsp;<strong>Creator- und Influencer-Szene der Schweiz</strong><br>🍸 Stylische&nbsp;<strong>Bars </strong>&amp; gute Vibes<br>📸&nbsp;<strong>Fotospots</strong>, spontane Showmomente und echte Begegnungen</p><p>Ob TikTok-Star, YouTuberin, Insta-Creator oder Markenpartner – bei der Afterparty kommen alle zusammen, die Content lieben und feiern können.</p>",
+          "fr": "<p>Nach der Preisverleihung geht’s weiter: Ab&nbsp;<strong>ca. 21:30 Uhr</strong>&nbsp;steigt die offizielle&nbsp;<strong>Afterparty</strong>&nbsp;– laut, kreativ und absolut unforgettable.</p><p>Erlebe:<br>🎧&nbsp;<strong>2 Floors</strong>&nbsp;mit angesagten&nbsp;<strong>DJs</strong>, die für Beats &amp; Stimmung sorgen<br>🔥 Feiere mit der&nbsp;<strong>Creator- und Influencer-Szene der Schweiz</strong><br>🍸 Stylische&nbsp;<strong>Bars </strong>&amp; gute Vibes<br>📸&nbsp;<strong>Fotospots</strong>, spontane Showmomente und echte Begegnungen</p><p>Ob TikTok-Star, YouTuberin, Insta-Creator oder Markenpartner – bei der Afterparty kommen alle zusammen, die Content lieben und feiern können.</p>",
+          "it": "<p>Nach der Preisverleihung geht’s weiter: Ab&nbsp;<strong>ca. 21:30 Uhr</strong>&nbsp;steigt die offizielle&nbsp;<strong>Afterparty</strong>&nbsp;– laut, kreativ und absolut unforgettable.</p><p>Erlebe:<br>🎧&nbsp;<strong>2 Floors</strong>&nbsp;mit angesagten&nbsp;<strong>DJs</strong>, die für Beats &amp; Stimmung sorgen<br>🔥 Feiere mit der&nbsp;<strong>Creator- und Influencer-Szene der Schweiz</strong><br>🍸 Stylische&nbsp;<strong>Bars </strong>&amp; gute Vibes<br>📸&nbsp;<strong>Fotospots</strong>, spontane Showmomente und echte Begegnungen</p><p>Ob TikTok-Star, YouTuberin, Insta-Creator oder Markenpartner – bei der Afterparty kommen alle zusammen, die Content lieben und feiern können.</p>"
+        }
+      }
+    ],
+    "video": null,
+    "impressions": null,
+    "location": {
+      "id": 1,
+      "title": "The Hall",
+      "city": "Dübendorf",
+      "maps": "https://maps.app.goo.gl/2CP1Ryc2YZGg7Umt8"
+    }
+  },
+  "categories": [
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "Yz2ot0n34NOtFd61aorF",
+        "id": 29,
+        "title": {
+          "de": "Food",
+          "en": "Food",
+          "fr": "Food",
+          "it": "Food"
+        },
+        "image": {
+          "src": "images/categories/food-1752227203154.webp",
+          "width": 1920,
+          "height": 1440,
+          "blurDataURL": "data:image/webp;base64,UklGRigCAABXRUJQVlA4WAoAAAAgAAAACQAABgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggOgAAAPABAJ0BKgoABwACwEwlAE6AIp82a8/TgAD+93mw24gEVaNoTpWq4bBqVVMqc3tusn6yCDLibsSAAAA="
+        }
+      },
+      "sponsor": {
+        "firebase_id": "DaL5EYo7uCAg036wnUaM",
+        "id": 9,
+        "name": "The Green Montain",
+        "website": "https://www.thegreenmountain.ch/",
+        "image": {
+          "src": "images/brands/Green_Montain-1747919486724.webp",
+          "width": 1241,
+          "height": 1242,
+          "blurDataURL": "data:image/webp;base64,UklGRggBAABXRUJQVlA4WAoAAAAQAAAACQAACQAAQUxQSFkAAAABcJNt25W8QAIm6MIIBTDD2RhOxmB2c6SBNtAKOp+/w1MjIqJUN79fc6dSKycTW2pBGFgw7jEAY3t0gCQOZwzAOA33SEi/9WqfmPFoVGnCnUlVoXp9vaxqFQBWUDggiAAAAJACAJ0BKgoACgABQCYlkAJ0Bi13kMsjHf4jwMyQAP6r3M9LmPpd/LJtJO5RE3JYZS64ScBbn3/Dm7crdQumaoRrUrvknb/eU0+CXti4DAfiAf5q6y3//2sx0f6suuPUh4LxX9d/xC/zypThD4nDN1EO3azNrBnpqCQ0XjCa3G7s5QMlJjn90AA="
+        }
+      },
+      "nominees": [
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 182,
+            "name": "Ana und Nina",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/anaundnina",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/ana-und-nina-1752162050982.webp",
+              "width": 854,
+              "height": 854,
+              "blurDataURL": "data:image/webp;base64,UklGRlgCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggagAAABACAJ0BKgoACgACwEwlAE6A0u13KX5cBAAA/tqqzX6a630/5/27N10UF3fubItcVdJQwye5jv0K90uLlQdJjruQpALVjjUCpcU135rVDvvgCAkaLBZX7t+XhLh25hzOy0iH0NXQ6EPfoAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "MF2BgiS4MeWHHIB9QY9h",
+            "id": 61,
+            "name": "David Geisser",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/david.geisser/",
+                "platform": "INSTAGRAM"
+              },
+              {
+                "url": "https://www.tiktok.com/@david.geisser",
+                "platform": "TIKTOK"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/david-geisser-1747923315745.webp",
+              "width": 225,
+              "height": 224,
+              "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAACQAgCdASoKAAoAAUAmJagCdGuAQIAEgZVuYP12AAD8++CZsuENvImWNh49QYsR2vULG+3B+jGIPY6+vNc3cJ+svsu8uH3CJD1mELFEmrxgN43Tu6Y3itD/p+iforz+BfBWLh/iVv33CB7HxZeH8Wiz9gAAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "ffZaMMFFAyPF7FvXsSth",
+            "id": 114,
+            "name": "Fatkitchens",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/fatkitchens/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/fatkitchens-1747923845397.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAABQAgCdASoKAAoAAUAmJYwCdAYtfbaNMDvanQAA/nkxfeadOUBjY1xG8EVWLO0TbTEEfC5OuobdhRXyFaAFmeACrLg2EQqiZg3f7x0U9A8oYyq+DMVmfU/a9TmqtlZPzs8C7HHBu6X+eSzRAAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "Ug5AiP6a7LXuxcBmBcT4",
+            "id": 90,
+            "name": "Cooking with Jey",
+            "socials": [
+              {
+                "url": "https://instagram.com/cookingwithjey",
+                "platform": "INSTAGRAM"
+              },
+              {
+                "url": "https://www.tiktok.com/@cookingwithjey",
+                "platform": "TIKTOK"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/cooking-with-jey-1747923355594.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwAQCdASoKAAoAAUAmJagCdADbHL8WpgAA/t4Mw3pFjLuQmadgFttrQX9GG/EXBPh+k2t36jU2C9rEGn6Ucu2KTRqMhNDyY9V5WXCeGmVMImlDIrmsdMRRP/UZsO3kjQtXypg3OcXenyNErf6JmfGygAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "nQFjQ8Moa5xcYdFojZrk",
+            "id": 138,
+            "name": "Marcel Paa",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/marcelpaa_einfachbacken",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/marcel-paa-1747923867575.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAQAgCdASoKAAoAAUAmJZQCdAEWUOwYjBcAAP79bxR9v4xjSWdx91qPixBCwzKBfWZH1Gbn7/NqH35QohMqqWt45V8GwMGPTj/9Lk4v4xRSbqa+gu+BYPwAAAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "jXajD3PJYMY1kIcoEAiW",
+            "id": 126,
+            "name": "Marco von Arx",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/marco.vonarx",
+                "platform": "INSTAGRAM"
+              },
+              {
+                "url": "https://www.tiktok.com/@marco.vonarx",
+                "platform": "TIKTOK"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/marco-von-arx-1747923856875.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAAAwAgCdASoKAAoAAUAmJZwCdAYrnbaPn9bIAAD+bTw6KX3ywR7+//VD4V08U+HZoK+pId/Lp78u/7Yr4C/SZR/t+tj1C1md5/XrzxiDWLM2V1qdBv4suBTtE/AAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "NZSfdMDGZM6Ge5e41n96",
+            "id": 66,
+            "name": "Thispronto",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/thispronto/",
+                "platform": "INSTAGRAM"
+              },
+              {
+                "url": "https://www.tiktok.com/@thispronto",
+                "platform": "TIKTOK"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/thispronto-1747923321053.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADQAQCdASoKAAoAAUAmJYwCdADp4Ye8SAD+/biLdFNWEKnfEH/Wyke6R0/pw+1j5sg43wCoSb41sW3qsQ+flj/Vyw+gYAioYhOZ5YbpLM+MIVt1w0gw7F1A9Y1fK+dxIAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "Cl1rtfXb79oUCNBXGRAi",
+            "id": 35,
+            "name": "Sandro Zinggeler",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/sandro_zinggeler",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/sandro-zinggeler-1747922885956.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRowAAABXRUJQVlA4IIAAAAAwAgCdASoKAAoAAUAmJbACdAYvXkr3chprAAD9txMD1py1fgdP9pmtDpLtylYr8fehHv3RG9K+rwWoUOedneP/tD1hoEbRL6uJ5b4nQHNKG7+NrrOzJgsO3FOvFgypF91wF9/Cf5fYrv8KvRjgX+C6McVl++M7X+xmDGSoC4gAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "DlQiF073fG8mZwrDr8Al",
+            "id": 37,
+            "name": "Steve Merson",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/stevemerson/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/steve-merson-1747922887042.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwAgCdASoKAAoAAUAmJZACdAEWQ9Zzp5VUgAD+/eUrHd7jDqMO95v9+7eCk3Uuf65w4rVQ+/qaG3/+/2SqGZt97KU62PaR/sPH0WxzQOG2AmJ+9jR9e/xlz7HH2r8oqpfw65sdqN12C6IDB0TK63Y0oIAb7MLz8z+GoLiPpYA6ZpyAAAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 184,
+            "name": "Eat Click Travel",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/eat.click.travel/?hl=de",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/eat-click-travel-1752162291515.webp",
+              "width": 2268,
+              "height": 2268,
+              "blurDataURL": "data:image/webp;base64,UklGRloCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggbAAAAPABAJ0BKgoACgACwEwlAE6Axea2xcfyAAD+pqwdAmTlvkAmZZtI3xB8/PpHMhPQO/3gPX3yPr5OHLFgRmstCAec2B3FG6bB52RFu9LpwEa7rpxRwXxVtLaaaUN4fIcPkHwieAAFj/a3gEgAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 183,
+            "name": "Basel Eats",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/basel_eats/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/basel-eats-1752162211634.webp",
+              "width": 1536,
+              "height": 1536,
+              "blurDataURL": "data:image/webp;base64,UklGRmwCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggfgAAADACAJ0BKgoACgACwEwlAE6P4A3wBa4hQJ1gAP7qQfLbYFGtEThjnyX/UPfFPOOd5Ov3U5HQMA9Yvpk00kW40VXq3ADGbdMUl89swCnEg0hr0hG+i2nMb/MD9Vi0hJSSXxnQxS/BfnTNcWcmArfCo+k/5NHa30kCpsBKWDgAAA=="
+            }
+          }
+        }
+      ]
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "3eLuIMLVn4XIr6lNYi9F",
+        "id": 21,
+        "title": {
+          "de": "Travel",
+          "en": "Travel",
+          "fr": "Travel",
+          "it": "Travel"
+        },
+        "image": {
+          "src": "images/categories/travel-1752227263965.webp",
+          "width": 2490,
+          "height": 1200,
+          "blurDataURL": "data:image/webp;base64,UklGRiICAABXRUJQVlA4WAoAAAAgAAAACAAAAwAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggNAAAAJABAJ0BKgkABAACwEwllAACXBhAaAD+8bUWnXSrJIbnw/P4NcPN7LXjr7y9KtgkFs0AWAA="
+        }
+      },
+      "sponsor": {
+        "firebase_id": null,
+        "id": 44,
+        "name": "Aqua Spa & Resorts",
+        "website": "https://www.aqua-spa-resorts.ch/de/huerlimannbad-spa-zuerich?_gl=1*scj9ch*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwuvrBBhDcARIsAKRrkjef9ajGuD4xfOmwAJMBtpA1iK3cSNpNuiwbcgs3HNMOccERP7qOV2saAj5NEALw_wcB&gbraid=0AAAAADPgvi81MKXPxDdiipM7771r7MtX2",
+        "image": {
+          "src": "images/brands/aqua-spa-and-resorts-1749050581491.webp",
+          "width": 1772,
+          "height": 547,
+          "blurDataURL": "data:image/webp;base64,UklGRiwCAABXRUJQVlA4WAoAAAAwAAAACQAAAgAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIHQAAAAEfICQgVGf9b25ERLDBTMCkyQHqTQAj+h89+gIAAFZQOCAYAAAAMAEAnQEqCgADAALATCWkAANwAP73jAAA"
+        }
+      },
+      "nominees": [
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "fkJXb8HDOlhDFFtgtNJl",
+            "id": 115,
+            "name": "Sarina Schroff",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/sarinaschrofff",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/sarina-schroff-1747923845835.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAABQAgCdASoKAAoAAUAmJYwCdAYuRqyh46ZLxAAA/vgK8XmYuwj+HcF+730YC9X/x/9tCzxNp1Iwmxe8+4mADHfTpZI3FvOld1H7zXuG1HMfnb3euAkKqI9eS6RmhftRvZJXchbtvqiYacJ051i7wGl3KdMIj4YcTqAAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "XjPQAibCy3YtpbHyt2Ip",
+            "id": 98,
+            "name": "Zoe in Zurich",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/zoe.in.zurich/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/zoe-in-zurich-1747923363542.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQAgCdASoKAAoAAUAmJZQCdAEekojQj0YAAP77oKEFKJeltPXY5351frPuep3+MdRCF9bG/6cSDtstfA+zH5UfaqUjeB15CoJgxqi5vnQkPKGf3ITDQgoxhSIuKMCXCsjbiQIAAAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 185,
+            "name": "Michaela Carrot",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/michaelacarrot",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/michaela-carrot-1752226745805.webp",
+              "width": 1200,
+              "height": 1200,
+              "blurDataURL": "data:image/webp;base64,UklGRlICAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggZAAAAPABAJ0BKgoACgACwEwlAE6AHpQW3zkngADeZCgZqe74VENarWrghGu9lP8o7WbNssxEvLLveXZrZeBIuGIX6/+tL6Xo6dw0Ra1R/PxnHuOjeS4y66HIsAIbNzrGXlvf0uLQAAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 186,
+            "name": "Voyage avec Jo Garcia",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/voyageavecjogarcia?igsh=OWFxdDk4Z2RtMjdh&utm_source=qr",
+                "platform": "INSTAGRAM"
+              },
+              {
+                "url": "https://www.tiktok.com/@voyageavecjogarcia?_t=ZN-8wtoto73pUk&_r=1",
+                "platform": "TIKTOK"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/voyage-avec-jo-garcia-1752226810408.webp",
+              "width": 957,
+              "height": 957,
+              "blurDataURL": "data:image/webp;base64,UklGRloCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggbAAAAPABAJ0BKgoACgACwEwllAJ0Bi2lm2rLAAD++KEll/Mo8ZDX2EapYejartg/H/kYw27pxATLVr8mLDAK7Bmf2+LHoy5iO+1Q75pyzP/kKnTH++VX48NVrrAoTCFVKb/KHsJPumbU+Y3G+CnAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 187,
+            "name": "Nata on the road",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/nata_ontheroad",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/nata-on-the-road-1752226855082.webp",
+              "width": 1707,
+              "height": 1707,
+              "blurDataURL": "data:image/webp;base64,UklGRmACAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggcgAAAJACAJ0BKgoACgACwEwljAJ0fwCCrMXf7ktEexlAAP7obdQp/Znev1bs8UZ789ysTjQtYPls5zNa0me6Cu8nLeVlSZSpx/7bGQKVDUVfXDf5TH1Hv8g32O9Q2D/9F0+aPmFqeLk7PNbGhEFyr7JyMfxIAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 188,
+            "name": "Jessmelu",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/jessmelu?igsh=MTJwZ3VqNTdkbWhqdQ%3D%3D&utm_source=qr",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/jessmelu-1752226894807.webp",
+              "width": 3644,
+              "height": 3644,
+              "blurDataURL": "data:image/webp;base64,UklGRlICAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggZAAAAFACAJ0BKgoACgACwEwlsAJ0AR+GIFC1zH0CAAD+82LS+H1mt3W2QDX+VnLiz+ft/0NjzXNLgFI4t5OAcrlr0g58mgV0EaM88trpot6sHwLviZUTJdDGK1b17J3XrlkZfNvigAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 189,
+            "name": "Federico Sette",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/federico.sette/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/federico-sette-1752227001593.webp",
+              "width": 605,
+              "height": 605,
+              "blurDataURL": "data:image/webp;base64,UklGRmACAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggcgAAAFACAJ0BKgoACgACwEwlsAJ0Bismde0ObxEUkAD+6EujLvVfxyCAvPPqbsL/lr7S2ka5RCMsmTP4tk2TfiWftW4ObVMkolrvBVkUwCn2A8afSDIh+gw8Bgio1bJG4Npf8B9IzTfoxyMrIP+ZAM/uJYAAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 190,
+            "name": "Life of Fab",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/life_of_fab27?igsh=eWdzYjlpZHlqcmdr",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/life-of-fab-1752227044955.webp",
+              "width": 3024,
+              "height": 3024,
+              "blurDataURL": "data:image/webp;base64,UklGRlYCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggaAAAANABAJ0BKgoACgACwEwlmAJ0AQ7iixsAAOJ+0w137WPiSSHNqrWYWT17L1rdITSJ5A89FjHM4Iky0avzn4wptfJx9BO6q+aKFtWI8/n2UpmBqBZpKqshE/fL/4KpHuFJO8RyyHO3n0AA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 191,
+            "name": "Swiss Voyage",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/swiss_voyage/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/swiss-voyage-1752227090770.webp",
+              "width": 3135,
+              "height": 3135,
+              "blurDataURL": "data:image/webp;base64,UklGRk4CAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggYAAAANABAJ0BKgoACgACwEwlAE6AIWq5Id0gAPlQtT+f0UgzF+0/OcBenZ08UcdQLe2U3yDUS0mMWLTmX2Rb/gv5iwhzMaEWosqfuxL5e+MbmlCOQlgc9LVZBgBxGAgE/uAAAA=="
+            }
+          }
+        }
+      ]
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "GcSPNc1vj1JDhzCKQCuO",
+        "id": 24,
+        "title": {
+          "de": "Entertainment",
+          "en": "Entertainment",
+          "fr": "Entertainment",
+          "it": "Entertainment"
+        },
+        "image": {
+          "src": "images/categories/entertainment-1752233883832.webp",
+          "width": 1920,
+          "height": 1080,
+          "blurDataURL": "data:image/webp;base64,UklGRjgCAABXRUJQVlA4WAoAAAAgAAAACQAABAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggSgAAAPABAJ0BKgoABQACwEwljAJ0ARe2QhQ3gAD+lQx06citckntXRupYuRoOu2Itg+emMt42pPLGFrMbAEf8YA9HYATRYNAsyNlDwAA"
+        }
+      },
+      "sponsor": {
+        "firebase_id": "b6UdXCdYh9Azlj0cXy8b",
+        "id": 28,
+        "name": "Smile Versicherung",
+        "website": "https://www.smile-insurances.com/",
+        "image": {
+          "src": "images/brands/Smile_Versicherung-1747919486733.svg",
+          "width": 400,
+          "height": 178,
+          "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4WAoAAAAQAAAACQAAAwAAQUxQSCkAAAAAABEIDg4gSxwOAB+Af5F6Y2VnpycRdlBQM2dgRmUQAAAAAAx+fgQAAABWUDggNAAAABACAJ0BKgoABAABQCYloAJ0ugH4AfgAA8gA/s1X3dqniAn//16IPEG/Wg/+4N9kXP/UgAA="
+        }
+      },
+      "nominees": [
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "dYNKTLrqk6V1UWcdMU8L",
+            "id": 108,
+            "name": "Fabio Landert",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/fabio_landert/",
+                "platform": "INSTAGRAM"
+              },
+              {
+                "url": "https://www.tiktok.com/@fabiolandert",
+                "platform": "TIKTOK"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/fabio-landert-1747923843532.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAAAwAgCdASoKAAoAAUAmJZQCdAUYAyV1rpqywAD8ZlRZfCc1PyZXT1whMs7unYQauS9ay8+uhR5zIFbfgy/WXkuOrFeU3PgsLjHC1pv46ADtAPhy69vcjmjGFFhf+wSR+d6rrS+5xdTMbFpBTfwKkFO/k42vpwAA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "yFBgN5wgJOuTqKEw3Bis",
+            "id": 171,
+            "name": "Flavio Leu",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/flavioleu/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/flavio-leu-1747923892690.webp",
+              "width": 130,
+              "height": 130,
+              "blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAADQAQCdASoKAAoAAUAmJZwAAp1ThlS7gAD++KQAxZ82UTfylNSL5U2S4j0DUU3wY1e5CtY/6453mG/WcyZFnB6dgNLEIpIlH5AaI+9wjcqnYmKJ7d1yJeAA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "G5V0UtGTHse6lBbyBZy8",
+            "id": 45,
+            "name": "Anais Decasper",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/anaisdecasper/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/anais-decasper-1747922892719.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAACQAgCdASoKAAoAAUAmJZQCdAb4DkrtZHpTNz5GAAD+rdAa7+jzrTL8Pq5d86yoKNOzTC739mJ+WLdA24YZZ/W19mpWIVAnIAbR9oLYR96edJxG5ZclrMrnYaf+O3/qhMqK3nzBIH9AXNkRyuVgnjJbs676UkQNvc41lyJgwAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "7JK4pzivqhoa41iDNv06",
+            "id": 18,
+            "name": "Nathi Style",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/nathistyle_/",
+                "platform": "INSTAGRAM"
+              },
+              {
+                "url": "https://www.tiktok.com/@nathistyle/",
+                "platform": "TIKTOK"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/nathi-style-1747922873169.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwAgCdASoKAAoAAUAmJZQCdAYtVbaa8B5ueADONb9mZ/n/VHtmXsr8tKfLrjAoh7yEzo0uV7fVUkJkZtlZ/fhxOW9F/mGB1X/R59z0EnKl+1Sn08NT8lp6gvX5b1o55BKu1KmIPNuhwHT8VxCtbYv/mV4AAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "DlQiF073fG8mZwrDr8Al",
+            "id": 37,
+            "name": "Steve Merson",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/stevemerson/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/steve-merson-1747922887042.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRpAAAABXRUJQVlA4IIQAAAAwAgCdASoKAAoAAUAmJZACdAEWQ9Zzp5VUgAD+/eUrHd7jDqMO95v9+7eCk3Uuf65w4rVQ+/qaG3/+/2SqGZt97KU62PaR/sPH0WxzQOG2AmJ+9jR9e/xlz7HH2r8oqpfw65sdqN12C6IDB0TK63Y0oIAb7MLz8z+GoLiPpYA6ZpyAAAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 192,
+            "name": "Gabirano",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/gabirano?igsh=dXlkazFwb2RxcHpo",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/gabirano-1752234047532.webp",
+              "width": 853,
+              "height": 853,
+              "blurDataURL": "data:image/webp;base64,UklGRjYCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggSAAAAJABAJ0BKgoACgACwEwlnAABa3WNgAD+wm3zTX68L2Xf+d/+n/HW9MPZb/LcqvvQ7mex+Yw51HuGqo3u3XMHGTFg6o1asPIAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 193,
+            "name": "Mathias Thalmann",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/mathiasthalmann/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/mathias-thalmann-1752234092366.webp",
+              "width": 1232,
+              "height": 1232,
+              "blurDataURL": "data:image/webp;base64,UklGRkoCAABXRUJQVlA4WAoAAAAgAAAACAAACAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggXAAAAPABAJ0BKgkACQACwEwlAE6A0m98f9GV4AD+8JYgnz4j46Zrbu0j7zUNHo/+LyXp7EfaIL2vHH+YvLFav+Q58H+YOibuX9scR8vBF/47YJBwy7OJSja7igcwAAAA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 194,
+            "name": "Konnichiwa Njeri - Duff",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/duffeyz?igsh=ZDNhODl1N3pscXB6&utm_source=qr",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/konnichiwa-njeri-1752234129099.webp",
+              "width": 993,
+              "height": 993,
+              "blurDataURL": "data:image/webp;base64,UklGRlgCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggagAAADACAJ0BKgoACgACwEwlsAJ0ugACd60VMhgAAP62o+dFy9V/49kf2dfobE8GtpQ2cu0C43KX65xzacrb0TP+uHwlXjdm3/sxJPWzyh1+YfXtf6QUYvX9jBMCuXSUPNfOX8Cpp+LZQkgGQAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 195,
+            "name": "The Lord Johny",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/thelordjohny?igsh=ZHM2cGY0cW40cjAy&utm_source=qr",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/the-lord-johny-1752234195450.webp",
+              "width": 853,
+              "height": 853,
+              "blurDataURL": "data:image/webp;base64,UklGRlYCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggaAAAADACAJ0BKgoACgACwEwlkAJ0AN2qr7PMLHQAAP73kTsRnD5VsbZtGc8VBDZ8e369A5i/0JMFOPRrdlwA4Zlx+w0QfEgdc7ZYO4d4Orwfzn5mjXYBXXBBenHyYxae3L2MAG7j5ZcZAAAA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 196,
+            "name": "Hamza Raya",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/hamza.raya/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/hamza-raya-1752234254308.webp",
+              "width": 960,
+              "height": 960,
+              "blurDataURL": "data:image/webp;base64,UklGRlwCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggbgAAAHACAJ0BKgoACgACwEwlpAAPjEmAfqAX6aoEimAA/vC27jPQ73Z1bWdvs1myFI1P/jaI1fzb2jXHlVV8fMFv3GQkbhFZfM4Qy/JV7yuOpdnf7nQmqDifkf1/+SfezvPI3UfvxqcnGy6nTXHax/AA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 197,
+            "name": "Change Moments - Stefan Pfister",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/change_moments?igsh=MWQ1a2tmbmw5ZDZxYQ%3D%3D&utm_source=qr",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/change-moments-stefan-pfister-1752234310033.webp",
+              "width": 984,
+              "height": 984,
+              "blurDataURL": "data:image/webp;base64,UklGRlACAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggYgAAABACAJ0BKgoACgACwEwllAJ0AQN4YtofrsAA/rf92QL2deACFbIx1iwY4383k6beBHhLrA/55LIviFE/rl1nfx8K0PfOEJAQl4Utf2x2tvgq+kcQhLkNds+izlIo2GM+AAAA"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "XWJgcgykFXBp5oL4TnmX",
+        "id": 28,
+        "title": {
+          "de": "Sport",
+          "en": "Sport",
+          "fr": "Sport",
+          "it": "Sport"
+        },
+        "image": {
+          "src": "images/categories/sport-1747921185155.webp",
+          "width": 1500,
+          "height": 1000,
+          "blurDataURL": "data:image/webp;base64,UklGRngAAABXRUJQVlA4IGwAAADQAgCdASoKAAcAAUAmJbACdLoAyv8WsZ2t1NC/CpAAAP6tR0rgcPeTUyfCdP9zpoXNSGxfbMsr3Gf9ACLPJex11rG9WS6pgbOeUzLak3PmZP6wAxGUm8EmlZf/KWu93hcZFyhb2DgeDeUwAAA="
+        }
+      },
+      "sponsor": null,
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "igMUCa76iOrctMoEQ0Ya",
+        "id": 33,
+        "title": {
+          "de": "Lifestyle",
+          "en": "Lifestyle",
+          "fr": "Lifestyle",
+          "it": "Lifestyle"
+        },
+        "image": {
+          "src": "images/categories/lifestyle-1752234540815.webp",
+          "width": 1920,
+          "height": 1080,
+          "blurDataURL": "data:image/webp;base64,UklGRjoCAABXRUJQVlA4WAoAAAAgAAAACQAABAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggTAAAANABAJ0BKgoABQACwEwlAE6AH4WbrdAAAP72L4poBO+/KKa7C/IjsRdGJvt0fqP6SB6w+tD2Mhmh13vxQH29aCNgF2H8xOMIqM51QAA="
+        }
+      },
+      "sponsor": {
+        "firebase_id": "JL8LfRPQQQH9G1OAyFcK",
+        "id": 15,
+        "name": "Weleda",
+        "website": "https://www.weleda.ch/?srsltid=AfmBOoqc1K4sACnk8DjxvQah8Kok_76zYcJKylmt7dyPjpW7RiO3v9as",
+        "image": {
+          "src": "images/brands/Weleda-1747919486728.webp",
+          "width": 512,
+          "height": 143,
+          "blurDataURL": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4WAoAAAAQAAAACQAAAgAAQUxQSB8AAAAAammQNlJeN2trVnZZazZhZTZsXGMYHBMkDhMQGxwdAFZQOCAYAAAAMAEAnQEqCgADAAFAJiWkAANwAP789AAA"
+        }
+      },
+      "nominees": [
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "migVD2w0sTkdg5cUDtfD",
+            "id": 136,
+            "name": "Jeta Gjukaj",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/jetagjukaj/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/jeta-gjukaj-1747923865782.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAQCdASoKAAoAAUAmJQBOgCLHtHB1WgAA/k/Tkrzdy6vkIMDX8ykRZ0O0Xx/5DLBb/ovUkqHL45q0pYxcvsLx1/I2C9W6SFDIFhZ1gP3HtjOd2UDK6xXVlpZ0dEAA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "ReIw1Fii6ooqSNvXr8Ap",
+            "id": 74,
+            "name": "Agnes Boldis",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/x._agnes/",
+                "platform": "INSTAGRAM"
+              },
+              {
+                "url": "https://www.tiktok.com/@x._agnes",
+                "platform": "TIKTOK"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/agnes-boldis-1747923340138.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAADwAQCdASoKAAoAAUAmJYwCdAELVYsQGQAA/j+IrIRZXvv6kpo96iCF6eOTVO0vUrji19gz5Osn4o7RxRN3ures9zmQh+pfOxZRKa5Mqqu4d76nplpDbXtcxIWiZFlY+E+R8DmMuQp9QLMwLDVNVQoUc5C9wAAA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "St02VTMTX31JFxDA5oM7",
+            "id": 83,
+            "name": "Ramona Brüniger",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/ramonabr_/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/ramona-bruniger-1747923348517.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAwAgCdASoKAAoAAUAmJYgCdLoAArsKJKd5CAD++/j8oh5Bm9A1qwyWIJgJc3j//F1k2l5C845K+stI8rd8c6Au4WeWsnsm+soLGuN8bNW1GfugpW99G5MNAbDkvETCwb+U05MvgtfG+P0mI3fvCNAhtQY49nzN4I1AAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": "xsDoQqgSWs8QCrNmz2qa",
+            "id": 170,
+            "name": "Elijah Tetilla",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/elijahtetilla",
+                "platform": "INSTAGRAM"
+              },
+              {
+                "url": "https://www.tiktok.com/@el1jahtetilla?_t=8ooEDZ3X0Gv&_r=1",
+                "platform": "TIKTOK"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/elijah-tetilla-1747923892406.webp",
+              "width": 600,
+              "height": 600,
+              "blurDataURL": "data:image/webp;base64,UklGRoAAAABXRUJQVlA4IHQAAAAwAgCdASoKAAoAAUAmJZgAD4bQz4FuB6OWSAD+9rR/A/jYjV2aXbq5Y3aUZ/w87qT/VHzd+qdTwujSE4iH+ckyEgbXsfqAvM7ZJkUzbCdazEKzb5EI3/BTtDFJZHxWxoOfYDDb//Mg6PzT+InxHt87g4AAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 204,
+            "name": "Withliv",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/withliv?igsh=OTYzc3FsdmVsMjF6&utm_source=qr",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/withliv-1752237868197.webp",
+              "width": 2316,
+              "height": 2316,
+              "blurDataURL": "data:image/webp;base64,UklGRlwCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggbgAAAFACAJ0BKgoACgACwEwlmAJ0BipdriW1sWPUAAD+68WsRDfiaPN6Ni9Ing5Lvt2v+U5Oc+Qge14smO+ScF9+iYxRO2qDyysYZVcxcP/zeRWTm5VPdBm7ZvG2tVt/clj2GQ3GYSfyoMBCcWAdpYAA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 203,
+            "name": "Carina de Zwerg",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/carinadezwerg?igsh=azlpb201ZzJ4NTZ3&utm_source=qr",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/carina-de-zwerg-1752237832279.webp",
+              "width": 4284,
+              "height": 4284,
+              "blurDataURL": "data:image/webp;base64,UklGRkQCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggVgAAADACAJ0BKgoACgACwEwllALsBiwXN66YGD+gAMx+H8EJ4evX83yj5MlN5DRVRe25B9x65H/sTK4ph07+v3Lq3joLA3vYkBV5Y5maBx9cJ1qDJTWMmAAA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 202,
+            "name": "Flow Joao",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/flow_joao/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/flow-joao-1752237790609.webp",
+              "width": 960,
+              "height": 960,
+              "blurDataURL": "data:image/webp;base64,UklGRlICAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggZAAAABACAJ0BKgoACgACwEwljALsAPY8MhJQtgAA/vI1XJBOhIu3FYnvwCdo0D5W4K1nPNdCYrbP4vncPOvatNZzLw4WoYWAzj3PCv/dx9YeKFQoj+0yB5wegvd681VGFLvQKJqIAAA="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 201,
+            "name": "Alison Liaudat",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/alisonliaudat",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/alison-liaudat-1752237729120.webp",
+              "width": 1179,
+              "height": 1179,
+              "blurDataURL": "data:image/webp;base64,UklGRloCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggbAAAAFACAJ0BKgoACgACwEwlAE6Axb61/cZTJqyIAAD+9FxZRNkxp14NNpurQiBfMFuB3VVLoDWq/M3SRqtDuf+flZFKUQ4B0Vfl45VS0TNFOK5gnptmoz3cH2w8PbdPwR0lwzlgJ1SY7ZBLS8AAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 200,
+            "name": "Celenovela",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/celenovela/",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/celenovela-1752237685458.webp",
+              "width": 1440,
+              "height": 1440,
+              "blurDataURL": "data:image/webp;base64,UklGRlACAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggYgAAADACAJ0BKgoACgACwEwljAJ0BizeeUmkpmbgAPwmuq+lrG+FOex14raErCHsFKjyPqPlwbvYqOf2Wg/Xuvn5H0Kgk1cttZXJM47qB8OchyMBks+VuRFzg2cgWWCPjYuvaAAA"
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 199,
+            "name": "Lana Bante",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/lanabante/?hl=de",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/lana-bante-1752237646813.webp",
+              "width": 2422,
+              "height": 2422,
+              "blurDataURL": "data:image/webp;base64,UklGRmACAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggcgAAADACAJ0BKgoACgACwEwlAE6AxbS211CxihBAAP6tOQCfkBackMlN6NmTC9GtAt/YTXHABUWgC0//7Vk/s8hV0bUNFNso6xy2i7TdHI3Xx5GUNV9JLW0sgoeAZdpaPzsyeQFplVljXLYQ05/DL/4LhAAAAA=="
+            }
+          }
+        },
+        {
+          "ranking": null,
+          "influencer": {
+            "firebase_id": null,
+            "id": 198,
+            "name": "Filiparies",
+            "socials": [
+              {
+                "url": "https://www.instagram.com/filiparies?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
+                "platform": "INSTAGRAM"
+              }
+            ],
+            "image": {
+              "src": "images/influencers/filiparies-1752237598558.webp",
+              "width": 2316,
+              "height": 2316,
+              "blurDataURL": "data:image/webp;base64,UklGRlQCAABXRUJQVlA4WAoAAAAgAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggZgAAABACAJ0BKgoACgACwEwlmAJ0APmLn99HHQAA/cTEH0+YcHL5uX5C8fRTk9w+Aa39OiYc2pkTkVBbwhHRnbbTsmCkavf/tn8eE4TElFblae19mQJpcvps9W+fZDeSfxTmOrpMnCVQAA=="
+            }
+          }
+        }
+      ]
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "depM6IiJuS51uLe1JbQA",
+        "id": 31,
+        "title": {
+          "de": "Luxury",
+          "en": "Luxury",
+          "fr": "Luxe",
+          "it": "Lusso"
+        },
+        "image": {
+          "src": "images/categories/luxury-1747921184734.webp",
+          "width": 1500,
+          "height": 856,
+          "blurDataURL": "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAAAQAgCdASoKAAYAAUAmJQBOhggBKQCOYOHAAP75AZuKM+FC8Xn9/yvJq4Lp6/IttD79IaNbTbzw64B6zFalfwOHSpmYBXeqYjDcgriRYB8kn8U29jvvOU15sCh/xLvdrWigAAAA"
+        }
+      },
+      "sponsor": {
+        "firebase_id": "YK2WY8590H9jNEbPyj0V",
+        "id": 26,
+        "name": "FACES",
+        "website": "https://www.faces.ch/",
+        "image": {
+          "src": "images/brands/FACES-1747919486733.webp",
+          "width": 425,
+          "height": 140,
+          "blurDataURL": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADwAQCdASoKAAMAAUAmJaQAEkAERsXYVAAA/b+nDmvxbmn4JTXOyEJEwyuvetfsE7P9zYNu4H68iGSINACgAA=="
+        }
+      },
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "HQo66pR2mIyClyHinQHR",
+        "id": 25,
+        "title": {
+          "de": "Beauty",
+          "en": "Beauty",
+          "fr": "Beauty",
+          "it": "Beauty"
+        },
+        "image": {
+          "src": "images/categories/beauty-1747921184841.webp",
+          "width": 1500,
+          "height": 1000,
+          "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAQCdASoKAAcAAUAmJQBOgMWgs3IuOQAA/vjiFFPhANUIL9E9MVs1JGCn4Gj0V9mJZoNEqiSt887i1kJzcCS2Ni+2JXlC6xrB8bS0WHJtwJ329ABW3HhKXaAAAA=="
+        }
+      },
+      "sponsor": {
+        "firebase_id": "pYjHd37QxqbZU9HJ30hi",
+        "id": 36,
+        "name": "Avyn Skin",
+        "website": "https://avynskin.com/de",
+        "image": {
+          "src": "images/brands/Avyn_Skin-1747919486736.webp",
+          "width": 320,
+          "height": 98,
+          "blurDataURL": "data:image/webp;base64,UklGRkAAAABXRUJQVlA4IDQAAACwAQCdASoKAAMAAUAmJaQAAu18sl4AAP7+wIG421iofx+/PhVkoXuLaOiIYFrlJGJUQAAA"
+        }
+      },
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": null,
+        "id": 38,
+        "title": {
+          "de": "Business & Finance",
+          "en": "Business & Finance",
+          "fr": "Business & Finance",
+          "it": "Business & Finance"
+        },
+        "image": {
+          "src": "images/categories/business-and-finance-1752160354641.webp",
+          "width": 1334,
+          "height": 2000,
+          "blurDataURL": "data:image/webp;base64,UklGRkQCAABXRUJQVlA4WAoAAAAgAAAABQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggVgAAANABAJ0BKgYACgACwEwliAJ0AQ624xNAAP7nqksFMLUEObUyy4oH2GMx9jDPIC0beFmhffBZxUR/GBR3caYPhI8RC/56aQHYANtok4Q8+DLphO+LgAAA"
+        }
+      },
+      "sponsor": {
+        "firebase_id": "zJs4Fr7ACXee7g9LtNQl",
+        "id": 41,
+        "name": "Yuh",
+        "website": "https://www.yuh.com/de/",
+        "image": {
+          "src": "images/brands/yuh-1748442780213.webp",
+          "width": 1000,
+          "height": 1000,
+          "blurDataURL": "data:image/webp;base64,UklGRj4CAABXRUJQVlA4WAoAAAAwAAAACQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBIKwAAAAEfIBAgWPL/ZiMighOKIklqhiAgCsr//MW/DxAR0f/kj4wuxtXj6NC0AR4AVlA4IBwAAABQAQCdASoKAAoAAsBMJaQABHQAAPhX//wbwAAA"
+        }
+      },
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": null,
+        "id": 39,
+        "title": {
+          "de": "Cross Media",
+          "en": "Cross Media",
+          "fr": "Cross Media",
+          "it": "Cross Media"
+        },
+        "image": {
+          "src": "images/categories/cross-media-1752160378298.webp",
+          "width": 1334,
+          "height": 2000,
+          "blurDataURL": "data:image/webp;base64,UklGRk4CAABXRUJQVlA4WAoAAAAgAAAABQAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggYAAAAHACAJ0BKgYACgACwEwljAJ0gTcn+B9ipN8nSWgA/scsef7bjHUHirvFyuiidqxfVAFskSgfvVmQc1d00MIlqQ2qTtjoyvR9JMEcIS4vOj0iaY+RW6PP0BJ641c6oAAAAA=="
+        }
+      },
+      "sponsor": null,
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": null,
+        "id": 40,
+        "title": {
+          "de": "DACH (DE,CH & AT)",
+          "en": "DACH (DE,CH & AT)",
+          "fr": "DACH (DE,CH & AT)",
+          "it": "DACH (DE,CH & AT)"
+        },
+        "image": {
+          "src": "images/categories/dach-de,ch-and-at-1752160405599.webp",
+          "width": 2999,
+          "height": 2000,
+          "blurDataURL": "data:image/webp;base64,UklGRl4CAABXRUJQVlA4WAoAAAAgAAAACQAABQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggcAAAANABAJ0BKgoABgACwEwliAJ0APlqCgKkAP6Rv6ezvGG9G0fjz/cQaFXG5vvv4Oz+n/nfesfdk7FpyMqbsZvdpK0BMee05vo0/qjsQHhVIfMUdKm9ffh4POI5iOKw6pOQNlP8Kcg+OrjCLLeZG79AAAA="
+        }
+      },
+      "sponsor": null,
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "Zm8efthPHtsSkVodj0G8",
+        "id": 30,
+        "title": {
+          "de": "Family",
+          "en": "Family",
+          "fr": "Famile",
+          "it": "Famiglia"
+        },
+        "image": {
+          "src": "images/categories/family-1747921184905.webp",
+          "width": 1500,
+          "height": 1230,
+          "blurDataURL": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAADwAQCdASoKAAgAAUAmJZQCdAEUpL45Z1AA/cWjvb+jn1f/OumKUE+EpfHfW/e4fASfj56gItNesY2xw/+/geE4xUkqZYa0biBNrOVchiFiTer1rbPFlHh7BjElXf4AAAA="
+        }
+      },
+      "sponsor": null,
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "y19x6LNJaKLaG2eA8K7B",
+        "id": 37,
+        "title": {
+          "de": "Music",
+          "en": "Music",
+          "fr": "Musique",
+          "it": "Musica"
+        },
+        "image": {
+          "src": "images/categories/music-1747921184656.webp",
+          "width": 1500,
+          "height": 825,
+          "blurDataURL": "data:image/webp;base64,UklGRmgAAABXRUJQVlA4IFwAAADwAQCdASoKAAYAAUAmJYwCdAD0kEGpCAAA/vVjxqmb87idjx1czCIve3hkNbr/Ms6HqV9/mY/8sYT77aL5p56/zeR5mcNpNSM8zQHKBmDEOLIWg6GtV83zlgAAAA=="
+        }
+      },
+      "sponsor": null,
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "gRRy8xz0PYegomnPgiiu",
+        "id": 32,
+        "title": {
+          "de": "Fashion",
+          "en": "Fashion",
+          "fr": "Mode",
+          "it": "Moda"
+        },
+        "image": {
+          "src": "images/categories/fashion-1747921184913.webp",
+          "width": 1500,
+          "height": 1000,
+          "blurDataURL": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoKAAcAAUAmJZQCdAEQFDQggAD+/JK+abTzDOjIwLtEXjDDKK9AP6XouPfHIuVdblvyCJhw6DMyh/nxCR7q+quyxjWfDFj0gAA="
+        }
+      },
+      "sponsor": null,
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "D8IjqSK5hNt8szRTJ07a",
+        "id": 23,
+        "title": {
+          "de": "Podcast",
+          "en": "Podcast",
+          "fr": "Podcast",
+          "it": "Podcast"
+        },
+        "image": {
+          "src": "images/categories/podcast-1747921184871.webp",
+          "width": 1500,
+          "height": 750,
+          "blurDataURL": "data:image/webp;base64,UklGRlwAAABXRUJQVlA4IFAAAADwAQCdASoKAAUAAUAmJYwCdAD7FQJJEMAA/upOm0BP22+pV6HJLb/8NbPA1yHMjd6H7F/Bz+r7QsX50IqZ5+l32EsVPZ0w3YzaXwXecQAAAA=="
+        }
+      },
+      "sponsor": null,
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": null,
+        "id": 41,
+        "title": {
+          "de": "KI Creator",
+          "en": "KI Creator",
+          "fr": "KI Creator",
+          "it": "KI Creator"
+        },
+        "image": {
+          "src": "images/categories/ki-creator-1752160475260.webp",
+          "width": 1080,
+          "height": 1920,
+          "blurDataURL": "data:image/webp;base64,UklGRjoCAABXRUJQVlA4WAoAAAAgAAAABAAACQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggTAAAAFACAJ0BKgUACgACwEwlsAJ0fwYn+BuKejhWAADOLEGV8+wYdO8Hb6icOTXL9D7CqzZFeJOJmvkjRK3tVXA1RQaHzPuAt4t5BjtoAAA="
+        }
+      },
+      "sponsor": {
+        "firebase_id": null,
+        "id": 53,
+        "name": "SAE",
+        "website": "https://www.sae.edu/che/?utm_campaign=SAE-CHE-ZRH-SALL-PSE-BRNWR-GGLBRANDSRCH-CDNOTSET-20211203&utm_source=google&utm_medium=cpc&gad_source=1&gad_campaignid=176446194&gbraid=0AAAAAD2Vk16ctx1DWuqOV7GfDtcxhDdfM&gclid=Cj0KCQjwgvnCBhCqARIsADBLZoJI3CYYIyC9gGEgkN0lYAXOo5_7vLtlHY5e_nVc--_d6IL7jNnRIesaAtWuEALw_wcB",
+        "image": {
+          "src": "images/brands/sae-1751037147464.webp",
+          "width": 1097,
+          "height": 705,
+          "blurDataURL": "data:image/webp;base64,UklGRjoCAABXRUJQVlA4WAoAAAAwAAAACQAABQAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZBTFBILAAAAAEvQBZgmtw1kgBCSKaICHw6KIQkyZlLJC/yCHH9Ye4hIvqf6kJLfGLVoI1ZVlA4IBgAAAAwAQCdASoKAAYAAsBMJaQAA3AA/veMAAA="
+        }
+      },
+      "nominees": []
+    },
+    {
+      "winner": null,
+      "category": {
+        "firebase_id": "v5yxMkR10mdHZSWNUDik",
+        "id": 36,
+        "title": {
+          "de": "Newcomer",
+          "en": "Newcomer",
+          "fr": "Nouveau Venu",
+          "it": "Novo Arrivato"
+        },
+        "image": {
+          "src": "images/categories/newcomer-1747921184983.webp",
+          "width": 1500,
+          "height": 999,
+          "blurDataURL": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAADwAQCdASoKAAcAAUAmJQBOgCLv1rfXAIAA/op+NvhWu/7vuffUg7rumSHfuhGZSw0mybnalG+9IPmd96qyGxYMECZ9uY59qgCE632CbgvzYN5rZDyxExn3AAA="
+        }
+      },
+      "sponsor": {
+        "firebase_id": "b6UdXCdYh9Azlj0cXy8b",
+        "id": 28,
+        "name": "Smile Versicherung",
+        "website": "https://www.smile-insurances.com/",
+        "image": {
+          "src": "images/brands/Smile_Versicherung-1747919486733.svg",
+          "width": 400,
+          "height": 178,
+          "blurDataURL": "data:image/webp;base64,UklGRoQAAABXRUJQVlA4WAoAAAAQAAAACQAAAwAAQUxQSCkAAAAAABEIDg4gSxwOAB+Af5F6Y2VnpycRdlBQM2dgRmUQAAAAAAx+fgQAAABWUDggNAAAABACAJ0BKgoABAABQCYloAJ0ugH4AfgAA8gA/s1X3dqniAn//16IPEG/Wg/+4N9kXP/UgAA="
+        }
+      },
+      "nominees": []
+    }
+  ]
+}

@@ -2,7 +2,8 @@
 
 import { createMediaLibraryFetcher } from "@davincicoding/cms/media-library";
 
-import { db } from "@/database";
+import IMAGES from "@/backup/images.json";
+import VIDEOS from "@/backup/videos.json";
 import { MEDIA_LIBRARY } from "@/react-admin/media-library";
 
 import { cachedRequest } from "./cache";
@@ -10,13 +11,9 @@ import { cachedRequest } from "./cache";
 const mediaLibraryFetcher = createMediaLibraryFetcher({
   config: MEDIA_LIBRARY,
   fetchImageAsset: async (group, name) =>
-    db.query.images.findFirst({
-      where: (t, { eq, and }) => and(eq(t.name, name), eq(t.group, group)),
-    }),
+    IMAGES.find((item) => item.name === name && item.group === group),
   fetchVideoAsset: async (group, name) =>
-    db.query.videos.findFirst({
-      where: (t, { eq, and }) => and(eq(t.name, name), eq(t.group, group)),
-    }),
+    VIDEOS.find((item) => item.name === name && item.group === group),
 });
 
 export const fetchMediaLibrary = cachedRequest(
