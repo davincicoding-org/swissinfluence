@@ -1,5 +1,11 @@
 import { createEnv } from "@t3-oss/env-nextjs";
+// import { config } from "dotenv";
 import { z } from "zod/v4";
+
+// TODO Temp fix
+// config({ path: ".env.development.local" });
+// config({ path: ".env.local" });
+// config({ path: ".env" });
 
 export const env = createEnv({
   server: {
@@ -7,7 +13,7 @@ export const env = createEnv({
     BASE_URL: z.string(),
     POSTGRES_URL: z.string(),
     // TODO Temp fix
-    PAYLOAD_DATABASE_URL: z.string(),
+    PAYLOAD_DATABASE_URL: z.string().optional(),
     PAYLOAD_SECRET: z.string(),
     SUPABASE_URL: z.string(),
     S3_BUCKET: z.string(),

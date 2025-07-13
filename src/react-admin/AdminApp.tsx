@@ -265,8 +265,14 @@ const dataProvider = withLifecycleCallbacks(
 
 const authProvider = supabaseAuthProvider(supabaseClient, {});
 
+const IS_DISABLED = true;
+
 export function AdminApp() {
   const notify = useNotify();
+
+  if (IS_DISABLED) {
+    return <div>Admin is disabled</div>;
+  }
 
   return (
     <BrowserRouter basename="/admin">

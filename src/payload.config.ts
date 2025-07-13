@@ -72,6 +72,10 @@ export default buildConfig({
       fileSize: 5_000_000,
     },
   },
+  localization: {
+    locales: routing.locales,
+    defaultLocale: "en",
+  },
   globals: [Company, Network],
   collections: [
     Users,
@@ -125,11 +129,12 @@ export default buildConfig({
     defaultFromName: "swissinfluence.ch",
     apiKey: env.RESEND_API_KEY,
   }),
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   sharp,
   plugins: [
     // storage-adapter-placeholder
     polyglotPlugin({
-      locales: [...routing.locales],
       schema: MESSAGES_SCHEMA,
       tabs: true,
       collection: {
