@@ -6,28 +6,23 @@ import slugify from "slugify";
 import type { Canton, Language, SocialMedia } from "@/database/enums";
 import type { SupportedLocale } from "@/i18n/config";
 import type { Award } from "@/payload-types";
-import { db } from "@/database";
 import { env } from "@/env";
 import { routing } from "@/i18n/routing";
 import { getPayloadClient } from "@/server/payload";
+
+import * as AWARDS from "./src/backup/awards.json";
+import * as DATA from "./src/data";
 
 const payload = await getPayloadClient();
 
 // MARK: Migrations
 
 async function migrateInfluencers() {
-  const entries = await db.query.influencers.findMany();
-
-  for (const {
-    id,
-    name,
-    image: { src: imageSrc },
-    socials,
-  } of entries) {
+  for (const { id, name, image: imageUrl, socials } of DATA.INFLUENCERS) {
     try {
       console.log(`Migrating: ${name}`);
 
-      const imageFile = await fetchLegacyImage(imageSrc, name);
+      const imageFile = await fetchLegacyImage(imageUrl, name);
 
       const image = await payload.create({
         collection: "profile-pictures",
@@ -55,19 +50,17 @@ async function migrateInfluencers() {
 }
 
 async function migrateExperts() {
-  const entries = await db.query.experts.findMany();
-
   for (const {
     id,
     name,
     description,
-    image: { src: imageSrc },
+    image: imageUrl,
     socials,
-  } of entries) {
+  } of DATA.EXPERTS) {
     try {
       console.log(`Migrating: ${name}`);
 
-      const imageFile = await fetchLegacyImage(imageSrc, name);
+      const imageFile = await fetchLegacyImage(imageUrl, name);
 
       const image = await payload.create({
         collection: "profile-pictures",
@@ -107,18 +100,11 @@ async function migrateExperts() {
 }
 
 async function migrateBrands() {
-  const entries = await db.query.brands.findMany();
-
-  for (const {
-    id,
-    name,
-    image: { src: imageSrc },
-    website,
-  } of entries) {
+  for (const { id, name, logo: imageUrl, website } of DATA.BRANDS) {
     try {
       console.log(`Migrating: ${name}`);
 
-      const imageFile = await fetchLegacyImage(imageSrc, name);
+      const imageFile = await fetchLegacyImage(imageUrl, name);
 
       const image = await payload.create({
         collection: "logos",
@@ -146,41 +132,33 @@ async function migrateBrands() {
 }
 
 async function migrateLocations() {
-  const entries = await db.query.locations.findMany();
-
-  for (const { id, title, city, maps } of entries) {
+  for (const { id, name, city, url } of DATA.LOCATIONS) {
     try {
-      console.log(`Migrating: ${title}`);
+      console.log(`Migrating: ${name}`);
 
       await payload.create({
         collection: "locations",
         data: {
           id,
-          name: title,
+          name,
           city,
-          url: maps,
+          url,
         },
       });
 
-      console.log(`Successfully migrated: ${title} (ID: ${id})`);
+      console.log(`Successfully migrated: ${name} (ID: ${id})`);
     } catch (error) {
-      console.error(`Failed to migrate ${title}:`, error);
+      console.error(`Failed to migrate ${name}:`, error);
     }
   }
 }
 
 async function migrateCategories() {
-  const entries = await db.query.categories.findMany();
-
-  for (const {
-    id,
-    title,
-    image: { src: imageSrc },
-  } of entries) {
+  for (const { id, name, image: imageUrl } of DATA.CATEGORIES) {
     try {
-      console.log(`Migrating: ${title.en}`);
+      console.log(`Migrating: ${name.en}`);
 
-      const imageFile = await fetchLegacyImage(imageSrc, title.en);
+      const imageFile = await fetchLegacyImage(imageUrl, name.en);
 
       const image = await payload.create({
         collection: "photos",
@@ -188,18 +166,18 @@ async function migrateCategories() {
         file: imageFile,
       });
 
-      console.log(`Successfully uploaded image for ${title.en}`);
+      console.log(`Successfully uploaded image for ${name.en}`);
 
       await payload.create({
         collection: "categories",
         data: {
           id,
-          name: title.en,
+          name: name.en,
           image: image.id,
         },
       });
 
-      for (const [locale, value] of Object.entries(title)) {
+      for (const [locale, value] of Object.entries(name)) {
         await payload.update({
           collection: "categories",
           id,
@@ -210,46 +188,34 @@ async function migrateCategories() {
         });
       }
 
-      console.log(`Successfully migrated: ${title.en} (ID: ${id})`);
+      console.log(`Successfully migrated: ${name.en} (ID: ${id})`);
     } catch (error) {
-      console.error(`Failed to migrate ${title.en}:`, error);
+      console.error(`Failed to migrate ${name.en}:`, error);
     }
   }
 }
 
 async function migrateCertifiedInfluencers() {
-  const entries = await db.query.certifiedInfluencers.findMany({
-    with: {
-      influencer: {
-        columns: {
-          id: true,
-          name: true,
-        },
-        with: {
-          interests: {
-            columns: {
-              category: true,
-            },
-          },
-        },
-      },
-    },
-  });
-
   for (const {
     id,
     influencer,
-    image: { src: imageSrc },
+    image: imageUrl,
     birthdate,
     languages,
     residence,
     bio,
-    otherInterests,
-  } of entries) {
-    try {
-      console.log(`Migrating: ${influencer.name}`);
+    interests,
+    categories,
+  } of DATA.CERTIFIED_INFLUENCERS) {
+    const influencerData = DATA.INFLUENCERS.find(({ id }) => id === influencer);
 
-      const imageFile = await fetchLegacyImage(imageSrc, influencer.name);
+    try {
+      console.log(`Migrating: ${influencerData?.name}`);
+
+      const imageFile = await fetchLegacyImage(
+        imageUrl,
+        influencerData?.name ?? id.toString(),
+      );
 
       const image = await payload.create({
         collection: "photos",
@@ -257,19 +223,19 @@ async function migrateCertifiedInfluencers() {
         file: imageFile,
       });
 
-      console.log(`Successfully uploaded image for ${influencer.name}`);
+      console.log(`Successfully uploaded image for ${influencerData?.name}`);
 
       await payload.create({
         collection: "certified-influencers",
         data: {
           id,
-          influencer: influencer.id,
+          influencer: influencer,
           image: image.id,
           birthdate,
           languages: languages as Language[],
           residence: residence as Canton,
           bio: "",
-          categories: influencer.interests.map(({ category }) => category),
+          categories,
         },
       });
 
@@ -280,36 +246,34 @@ async function migrateCertifiedInfluencers() {
           locale,
           data: {
             bio: bio[locale],
-            interests: otherInterests?.[locale],
+            interests: interests?.[locale],
           },
         });
       }
 
-      console.log(`Successfully migrated: ${influencer.name} (ID: ${id})`);
+      console.log(`Successfully migrated: ${influencerData?.name} (ID: ${id})`);
     } catch (error) {
-      console.error(`Failed to migrate ${influencer.name}:`, error);
+      console.error(`Failed to migrate ${influencerData?.name}:`, error);
     }
   }
 }
 
 async function migrateSocialMediaCampaigns() {
-  const entries = await db.query.socialMediaCampaigns.findMany({});
-
   for (const {
     id,
-    image: { src: imageSrc },
+    image: imageUrl,
     organizer,
     title,
     content,
-    start,
-    end,
+    dateFrom,
+    dateTo,
     location,
-    registration,
-  } of entries) {
+    registrationUrl,
+  } of DATA.SOCIAL_MEDIA_CAMPAIGNS) {
     try {
       console.log(`Migrating: ${title.en}`);
 
-      const imageFile = await fetchLegacyImage(imageSrc, title.en);
+      const imageFile = await fetchLegacyImage(imageUrl, title.en);
 
       const image = await payload.create({
         collection: "photos",
@@ -336,10 +300,10 @@ async function migrateSocialMediaCampaigns() {
               version: 1,
             },
           },
-          dateFrom: start,
-          dateTo: end,
+          dateFrom,
+          dateTo,
           location,
-          registrationUrl: registration,
+          registrationUrl,
         },
       });
 
@@ -364,23 +328,21 @@ async function migrateSocialMediaCampaigns() {
 }
 
 async function migrateNetworkEvents() {
-  const entries = await db.query.networkEvents.findMany({});
-
   for (const {
     id,
-    image: { src: imageSrc },
+    image: imageUrl,
     title,
-    start,
-    end,
+    dateFrom,
+    dateTo,
     location,
     description,
-    logo: { src: logoSrc },
-    tickets,
-  } of entries) {
+    logo: logoUrl,
+    registrationUrl,
+  } of DATA.NETWORK_EVENTS) {
     try {
       console.log(`Migrating: ${title.en}`);
 
-      const imageFile = await fetchLegacyImage(imageSrc, title.en);
+      const imageFile = await fetchLegacyImage(imageUrl, title.en);
 
       const image = await payload.create({
         collection: "photos",
@@ -390,7 +352,7 @@ async function migrateNetworkEvents() {
 
       console.log(`Successfully uploaded image for ${title.en}`);
 
-      const logoFile = await fetchLegacyImage(logoSrc, title.en);
+      const logoFile = await fetchLegacyImage(logoUrl, title.en);
 
       const logo = await payload.create({
         collection: "logos",
@@ -417,10 +379,10 @@ async function migrateNetworkEvents() {
               version: 1,
             },
           },
-          dateFrom: start,
-          dateTo: end,
+          dateFrom,
+          dateTo,
           location,
-          registrationUrl: tickets,
+          registrationUrl,
         },
       });
 
@@ -445,21 +407,19 @@ async function migrateNetworkEvents() {
 }
 
 async function migrateAgencies() {
-  const entries = await db.query.agencies.findMany({});
-
   for (const {
     id,
     name,
-    image: { src: imageSrc },
+    image: imageUrl,
     description,
-    logo: { src: logoSrc },
+    logo: logoUrl,
     email,
     website,
-  } of entries) {
+  } of DATA.AGENCIES) {
     try {
       console.log(`Migrating: ${name}`);
 
-      const imageFile = await fetchLegacyImage(imageSrc, name);
+      const imageFile = await fetchLegacyImage(imageUrl, name);
 
       const image = await payload.create({
         collection: "photos",
@@ -469,7 +429,7 @@ async function migrateAgencies() {
 
       console.log(`Successfully uploaded image for ${name}`);
 
-      const logoFile = await fetchLegacyImage(logoSrc, name);
+      const logoFile = await fetchLegacyImage(logoUrl, name);
 
       const logo = await payload.create({
         collection: "logos",
@@ -511,23 +471,21 @@ async function migrateAgencies() {
 }
 
 async function migrateCreatorChallenges() {
-  const entries = await db.query.creatorChallenges.findMany({});
-
   for (const {
     id,
-    image: { src: imageSrc },
+    image: imageUrl,
     organizer,
     title,
     content,
-    start,
-    end,
+    dateFrom,
+    dateTo,
     location,
-    registration,
-  } of entries) {
+    registrationUrl,
+  } of DATA.CREATOR_CHALLENGES) {
     try {
       console.log(`Migrating: ${title.en}`);
 
-      const imageFile = await fetchLegacyImage(imageSrc, title.en);
+      const imageFile = await fetchLegacyImage(imageUrl, title.en);
 
       const image = await payload.create({
         collection: "photos",
@@ -554,10 +512,10 @@ async function migrateCreatorChallenges() {
               version: 1,
             },
           },
-          dateFrom: start,
-          dateTo: end,
+          dateFrom,
+          dateTo,
           location,
-          registrationUrl: registration,
+          registrationUrl,
         },
       });
 
@@ -582,21 +540,15 @@ async function migrateCreatorChallenges() {
 }
 
 async function migrateConversations() {
-  const entries = await db.query.conventions.findMany({
-    with: {
-      partners: true,
-    },
-  });
-
   for (const {
     id,
     title,
-    tickets,
+    registrationUrl,
     date,
     location,
     schedule,
     partners,
-  } of entries) {
+  } of DATA.CONVENTIONS) {
     try {
       console.log(`Migrating: ${title}`);
 
@@ -607,13 +559,13 @@ async function migrateConversations() {
           title,
           date,
           location,
-          partners: partners.map(({ brand }) => brand),
+          partners,
           // TODO update description manually
           schedule: schedule.map(
             ({ title, start, end, room, description }) => ({
               title: title.en,
-              from: start.toISOString(),
-              to: end.toISOString(),
+              from: start,
+              to: end,
               room,
               description: {
                 root: {
@@ -627,7 +579,7 @@ async function migrateConversations() {
               },
             }),
           ),
-          registrationUrl: tickets,
+          registrationUrl,
         },
       });
 
@@ -639,19 +591,6 @@ async function migrateConversations() {
 }
 
 async function migrateAwards() {
-  const entries = await db.query.awards.findMany({
-    with: {
-      jury: true,
-      partners: true,
-      categories: {
-        with: {
-          category: true,
-          nominees: true,
-        },
-      },
-    },
-  });
-
   for (const {
     id,
     year,
@@ -663,7 +602,7 @@ async function migrateAwards() {
     jury,
     partners,
     categories,
-  } of entries) {
+  } of AWARDS) {
     try {
       console.log(`Migrating: ${year}`);
 
@@ -683,8 +622,10 @@ async function migrateAwards() {
               if (!winner) {
                 results.push({
                   category: category.id,
-                  sponsor,
-                  nominees: nominees.map(({ influencer }) => ({ influencer })),
+                  sponsor: sponsor?.id,
+                  nominees: nominees.map(({ influencer }) => ({
+                    influencer: influencer.id,
+                  })),
                 });
                 continue;
               }
@@ -702,15 +643,17 @@ async function migrateAwards() {
 
               results.push({
                 category: category.id,
-                sponsor,
-                nominees: nominees.map(({ influencer }) => ({ influencer })),
+                sponsor: sponsor?.id,
+                nominees: nominees.map(({ influencer }) => ({
+                  influencer: influencer.id,
+                })),
                 winnerImage: winnerImage.id,
               });
             }
             return results;
           })(),
-          jury: jury.map(({ expert }) => ({ expert })),
-          partners: partners.map(({ brand }) => ({ brand })),
+          jury: jury.map(({ expert }) => ({ expert: expert.id })),
+          partners: partners.map(({ brand }) => ({ brand: brand.id })),
           newcomerScoutDeadline,
           newcomerScoutUrl,
           nominationDeadline,
@@ -727,12 +670,6 @@ async function migrateAwards() {
 }
 
 async function migrateAwardShows() {
-  const entries = await db.query.awardShows.findMany({
-    with: {
-      award: true,
-    },
-  });
-
   for (const {
     id,
     award,
@@ -742,17 +679,19 @@ async function migrateAwardShows() {
     schedule,
     video,
     impressions,
-  } of entries) {
+  } of DATA.AWARD_SHOWS) {
+    const awardData = AWARDS.find(({ id }) => id === award);
+
     try {
-      console.log(`Migrating: ${award.year}`);
+      console.log(`Migrating: ${awardData?.year}`);
 
       const images = new Array<number>();
       let index = 0;
 
-      for (const { src } of impressions ?? []) {
+      for (const src of impressions ?? []) {
         const imageFile = await fetchLegacyImage(
           src,
-          `impression-${award.year}-${index}`,
+          `impression-${awardData?.year}-${index}`,
         );
         const image = await payload.create({
           collection: "photos",
@@ -768,14 +707,14 @@ async function migrateAwardShows() {
         collection: "award-shows",
         data: {
           id,
-          award: award.id,
+          award,
           date,
           location,
           // TODO update description manually
           schedule: schedule.map(({ title, start, end, description }) => ({
             title: title.en,
-            from: start?.toISOString(),
-            to: end?.toISOString(),
+            from: start,
+            to: end,
             description: {
               root: {
                 type: "doc",
@@ -793,9 +732,9 @@ async function migrateAwardShows() {
         },
       });
 
-      console.log(`Successfully migrated: ${award.year} (ID: ${id})`);
+      console.log(`Successfully migrated: ${awardData?.year} (ID: ${id})`);
     } catch (error) {
-      console.error(`Failed to migrate ${award.year}:`, error);
+      console.error(`Failed to migrate ${awardData?.year}:`, error);
     }
   }
 }
