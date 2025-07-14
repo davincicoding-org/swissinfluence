@@ -8,6 +8,14 @@ export const Categories: CollectionConfig = {
   },
   fields: [
     {
+      name: "legacyId",
+      type: "number",
+      required: true,
+      // admin: {
+      //   hidden: true,
+      // },
+    },
+    {
       type: "row",
       fields: [
         {

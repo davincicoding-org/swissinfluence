@@ -4,7 +4,7 @@ export const ScheduleField: ArrayField = {
   name: "schedule",
   type: "array",
   label: false,
-  interfaceName: "Schedule",
+  interfaceName: "ScheduleSlots",
   fields: [
     {
       type: "row",

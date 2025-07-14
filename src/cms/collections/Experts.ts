@@ -10,6 +10,14 @@ export const Experts: CollectionConfig = {
   },
   fields: [
     {
+      name: "legacyId",
+      type: "number",
+      required: true,
+      admin: {
+        hidden: true,
+      },
+    },
+    {
       type: "row",
       fields: [
         {

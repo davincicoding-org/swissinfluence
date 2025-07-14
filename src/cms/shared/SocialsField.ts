@@ -12,6 +12,7 @@ export const SocialsField: ArrayField = {
         {
           name: "platform",
           type: "select",
+          dbName: "social_platforms",
           options: [
             "INSTAGRAM",
             "TIKTOK",

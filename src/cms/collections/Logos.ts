@@ -27,14 +27,5 @@ export const Logos: CollectionConfig = {
       fit: "outside",
       withoutEnlargement: true,
     },
-    imageSizes: [
-      {
-        name: "thubmnail",
-        width: 300,
-        height: 300,
-        fit: "contain",
-        background: { r: 255, g: 255, b: 255, alpha: 0 },
-      },
-    ],
   },
 };

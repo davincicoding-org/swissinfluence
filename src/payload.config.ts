@@ -118,7 +118,7 @@ export default buildConfig({
   db: postgresAdapter({
     migrationDir: path.resolve(dirname, "cms/migrations"),
     pool: {
-      connectionString: env.PAYLOAD_DATABASE_URL,
+      connectionString: env.POSTGRES_URL,
     },
   }),
   email: resendAdapter({

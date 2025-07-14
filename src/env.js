@@ -1,13 +1,14 @@
 import { createEnv } from "@t3-oss/env-nextjs";
+// import { config } from "dotenv";
 import { z } from "zod/v4";
+
+// config({ path: ".env.local" });
 
 export const env = createEnv({
   server: {
     NODE_ENV: z.enum(["development", "test", "production"]).optional(),
     BASE_URL: z.string(),
     POSTGRES_URL: z.string(),
-    // TODO Temp fix
-    PAYLOAD_DATABASE_URL: z.string().optional(),
     PAYLOAD_SECRET: z.string(),
     SUPABASE_URL: z.string(),
     S3_BUCKET: z.string(),
@@ -47,7 +48,6 @@ export const env = createEnv({
     S3_REGION: process.env.S3_REGION,
     S3_ENDPOINT: process.env.S3_ENDPOINT,
     RESEND_API_KEY: process.env.RESEND_API_KEY,
-    PAYLOAD_DATABASE_URL: process.env.PAYLOAD_DATABASE_URL,
     NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },

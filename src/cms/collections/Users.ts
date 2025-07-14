@@ -46,7 +46,7 @@ export const Users: CollectionConfig = {
   },
   auth: true,
   hooks: {
-    afterChange: [inviteNewUserHook],
+    // afterChange: [inviteNewUserHook],
   },
   fields: [
     {
