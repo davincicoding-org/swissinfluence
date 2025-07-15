@@ -10,10 +10,9 @@ export const Categories: CollectionConfig = {
     {
       name: "legacyId",
       type: "number",
-      required: true,
-      // admin: {
-      //   hidden: true,
-      // },
+      admin: {
+        hidden: true,
+      },
     },
     {
       type: "row",

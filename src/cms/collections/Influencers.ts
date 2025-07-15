@@ -12,7 +12,6 @@ export const Influencers: CollectionConfig = {
     {
       name: "legacyId",
       type: "number",
-      required: true,
       admin: {
         hidden: true,
       },

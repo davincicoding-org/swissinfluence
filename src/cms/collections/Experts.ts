@@ -12,7 +12,6 @@ export const Experts: CollectionConfig = {
     {
       name: "legacyId",
       type: "number",
-      required: true,
       admin: {
         hidden: true,
       },

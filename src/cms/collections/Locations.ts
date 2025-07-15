@@ -10,7 +10,6 @@ export const Locations: CollectionConfig = {
     {
       name: "legacyId",
       type: "number",
-      required: true,
       admin: {
         hidden: true,
       },
