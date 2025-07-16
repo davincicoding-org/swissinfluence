@@ -1,12 +1,12 @@
+import type { ImageAsset } from "@davincicoding/cms/image";
 import { type ReactNode } from "react";
 import Image from "next/image";
 import { Flex, Paper, Stack } from "@mantine/core";
 
-import type { Photo } from "@/payload-types";
 import { cn } from "@/ui/utils";
 
 export interface IPageHeroProps {
-  image: Photo;
+  image: Omit<ImageAsset, "id" | "group" | "name">;
   title: ReactNode;
   headline?: ReactNode;
   footer?: ReactNode;
@@ -14,6 +14,9 @@ export interface IPageHeroProps {
   className?: string;
 }
 
+/**
+ * @deprecated Use PageHero instead
+ */
 export function PageHero({
   image,
   title,
@@ -30,7 +33,7 @@ export function PageHero({
       className={cn("relative z-10 flex h-svh flex-col", className)}
     >
       <Image
-        src={image.url ?? ""}
+        src={image.src ?? ""}
         // placeholder={image.blurDataURL ? "blur" : undefined}
         // blurDataURL={image.blurDataURL}
         // width={image.width ?? 0}

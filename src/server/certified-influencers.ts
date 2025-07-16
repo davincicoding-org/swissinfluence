@@ -1,25 +1,33 @@
 import { groupBy } from "lodash-es";
 
-import type { SocialMedia } from "@/database/enums";
+import type { SupportedLocale } from "@/i18n/config";
 import type { CategoryWithInfluencers, CertifiedInfluencer } from "@/types";
-import DATA from "@/backup/certified-influencers.json";
+import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
 import { cachedRequest } from "./cache";
+import { getPayloadClient } from "./payload";
 
-export const getCategoriesWithCertifiedInfluencers =
-  cachedRequest(async (): Promise<Array<CategoryWithInfluencers>> => {
-    const influencers = DATA;
+export const getCategoriesWithCertifiedInfluencers = cachedRequest(
+  async (locale: SupportedLocale): Promise<Array<CategoryWithInfluencers>> => {
+    const payload = await getPayloadClient();
+
+    const { docs: influencers } = await payload.find({
+      collection: "certified-influencers",
+      locale,
+      limit: 500,
+    });
+
     const influencerCategoryPairs = influencers.flatMap(
-      ({ id, image, influencer }) =>
-        influencer.interests.map<{
+      ({ id, image, influencer, categories }) =>
+        ensureResolvedArray(categories).map<{
           category: CategoryWithInfluencers["category"];
           influencer: CategoryWithInfluencers["influencers"][number];
-        }>(({ category }) => ({
+        }>((category) => ({
           category,
           influencer: {
             id,
             image,
-            name: influencer.name,
+            name: ensureResolved(influencer)!.name,
           },
         })),
     );
@@ -33,20 +41,36 @@ export const getCategoriesWithCertifiedInfluencers =
       category: pairs[0]!.category,
       influencers: pairs.map((pair) => pair.influencer),
     }));
-  }, ["cms"]);
+  },
+  ["cms"],
+);
 
 export const getCertifiedInfluencer = cachedRequest(
-  async (id: string): Promise<CertifiedInfluencer | null> => {
-    const data = DATA.find((item) => item.id === Number(id));
+  async (
+    id: string,
+    locale: SupportedLocale,
+  ): Promise<CertifiedInfluencer | null> => {
+    const payload = await getPayloadClient();
+
+    const {
+      docs: [data],
+    } = await payload.find({
+      collection: "certified-influencers",
+      locale,
+      where: {
+        id: { equals: id },
+      },
+    });
 
     if (!data) return null;
 
-    const { influencer, ...rest } = data;
+    const influencer = ensureResolved(data.influencer)!;
+    const categories = ensureResolvedArray(data.categories);
     return {
+      ...data,
       name: influencer.name,
-      socials: influencer.socials as Array<SocialMedia>,
-      interests: influencer.interests.map(({ category }) => category),
-      ...rest,
+      socials: influencer.socials ?? [],
+      categories,
     };
   },
   ["cms"],

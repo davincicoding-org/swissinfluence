@@ -3,7 +3,7 @@ import { type Route } from "next";
 import { useTranslations } from "next-intl";
 
 import { LinkTile } from "@/ui/components/LinkTile";
-import { PageHero } from "@/ui/components/PageHero";
+import { PageHero } from "@/ui/components/PageHero-dep";
 import { cn } from "@/ui/utils";
 
 export interface INetworkPageProps<R extends string> {

@@ -3,7 +3,7 @@ import { Button, Paper, Stack } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { SocialMediaCampaign } from "@/types";
-import { PageHero } from "@/ui/components/PageHero";
+import { PageHero } from "@/ui/components/PageHero-dep";
 import { RichText } from "@/ui/components/RichText-dep";
 
 import { CampaignDiscovery } from "./views/CampaignDiscovery";

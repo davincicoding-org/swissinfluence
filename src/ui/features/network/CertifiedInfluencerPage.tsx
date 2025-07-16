@@ -7,6 +7,7 @@ import { PageHero } from "@/ui/components/PageHero";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { cn, derivative } from "@/ui/utils";
 import { getCantonLabel } from "@/utils/cantons";
+import { ensureResolved } from "@/utils/payload";
 
 export interface ICertifiedInfluencerPageProps {
   influencer: CertifiedInfluencer;
@@ -21,8 +22,8 @@ export function CertifiedInfluencerPage({
     residence,
     languages,
     bio,
+    categories,
     interests,
-    otherInterests,
   },
 }: ICertifiedInfluencerPageProps) {
   const locale = useLocale();
@@ -35,7 +36,7 @@ export function CertifiedInfluencerPage({
   return (
     <>
       <PageHero
-        image={image}
+        image={ensureResolved(image)!}
         title={name}
         className="snap-start"
         CTA={
@@ -67,7 +68,7 @@ export function CertifiedInfluencerPage({
               p="md"
               className="bg-neutral-200"
             >
-              <p className="text-xl">{bio[locale]}</p>
+              <p className="text-xl">{bio}</p>
             </Paper>
             <Flex gap="lg" className="min-w-0 flex-wrap">
               <Paper
@@ -128,9 +129,9 @@ export function CertifiedInfluencerPage({
                   Cooperation Interests
                 </span>
                 <ul>
-                  {interests.map((category) => (
+                  {categories.map((category) => (
                     <li key={category.id} className="text-2xl">
-                      {category.title[locale]}
+                      {category.name}
                     </li>
                   ))}
                 </ul>
@@ -147,7 +148,7 @@ export function CertifiedInfluencerPage({
                   Other Interests
                 </span>
                 <ul>
-                  {otherInterests?.[locale]?.split(/[\n,]+/).map((interest) => (
+                  {interests?.split(/[\n,]+/).map((interest) => (
                     <li key={interest} className="text-2xl">
                       {interest.trim()}
                     </li>

@@ -28,13 +28,13 @@ export function CreatorChallenges({
       Record<"current" | "past", Array<CreatorChallenge>>
     >(
       (acc, campaign) => {
-        if (!campaign.end)
+        if (!campaign.dateTo)
           return {
             ...acc,
             current: [...acc.current, campaign],
           };
 
-        if (dayjs(campaign.end).isAfter())
+        if (dayjs(campaign.dateTo).isAfter())
           return {
             ...acc,
             current: [...acc.current, campaign],
@@ -53,13 +53,13 @@ export function CreatorChallenges({
 
     return {
       currentCampaigns: current.sort((a, b) => {
-        const dateA = a.end ? Date.parse(a.end) : Infinity;
-        const dateB = b.end ? Date.parse(b.end) : Infinity;
+        const dateA = a.dateTo ? Date.parse(a.dateTo) : Infinity;
+        const dateB = b.dateTo ? Date.parse(b.dateTo) : Infinity;
         return dateA - dateB;
       }),
       pastCampaigns: past.sort((a, b) => {
-        const dateA = a.end ? Date.parse(a.end) : Infinity;
-        const dateB = b.end ? Date.parse(b.end) : Infinity;
+        const dateA = a.dateTo ? Date.parse(a.dateTo) : Infinity;
+        const dateB = b.dateTo ? Date.parse(b.dateTo) : Infinity;
         return dateA - dateB;
       }),
     };

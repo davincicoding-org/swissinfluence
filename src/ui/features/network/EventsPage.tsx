@@ -2,7 +2,7 @@ import type { ImageAsset } from "@davincicoding/cms/image";
 import { useTranslations } from "next-intl";
 
 import type { NetworkEvent } from "@/types";
-import { PageHero } from "@/ui/components/PageHero";
+import { PageHero } from "@/ui/components/PageHero-dep";
 
 import { EventTile } from "./views/EventTile";
 

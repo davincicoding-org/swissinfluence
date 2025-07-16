@@ -9,7 +9,7 @@ import type {
   CreatorChallenge,
   CurrentAward,
 } from "@/types";
-import { PageHero } from "@/ui/components/PageHero";
+import { PageHero } from "@/ui/components/PageHero-dep";
 
 import { useHeaderContent } from "./hooks";
 import { AwardCategories } from "./views/AwardCategories";

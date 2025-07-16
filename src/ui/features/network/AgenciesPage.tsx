@@ -2,8 +2,8 @@ import type { ImageAsset } from "@davincicoding/cms/image";
 import { Paper, Stack } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import type { Agency } from "@/types";
-import { PageHero } from "@/ui/components/PageHero";
+import type { Agency } from "@/payload-types";
+import { PageHero } from "@/ui/components/PageHero-dep";
 import { RichText } from "@/ui/components/RichText-dep";
 
 import { AgencyTile } from "./views/AgencyTile";

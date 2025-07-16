@@ -26,7 +26,7 @@ export default async function AwardPage() {
     await Promise.all([
       fetchMediaLibrary(),
       getCurrentAward(locale),
-      getCreatorChallenges(),
+      getCreatorChallenges(locale),
       getPastImpressions(),
       getHallOfFame(locale),
     ]);

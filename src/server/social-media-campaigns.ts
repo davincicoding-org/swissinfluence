@@ -1,10 +1,24 @@
+import type { SupportedLocale } from "@/i18n/config";
 import type { SocialMediaCampaign } from "@/types";
-import DATA from "@/backup/social-media-campaigns.json";
+import { ensureResolved } from "@/utils/payload";
 
 import { cachedRequest } from "./cache";
+import { getPayloadClient } from "./payload";
 
-export const getSocialMediaCampaigns = cachedRequest(async (): Promise<
-  Array<SocialMediaCampaign>
-> => {
-  return DATA;
-}, ["cms"]);
+export const getSocialMediaCampaigns = cachedRequest(
+  async (locale: SupportedLocale): Promise<Array<SocialMediaCampaign>> => {
+    const payload = await getPayloadClient();
+
+    const { docs: campaigns } = await payload.find({
+      collection: "social-media-campaigns",
+      locale,
+      limit: 100,
+    });
+
+    return campaigns.map((campaign) => ({
+      ...campaign,
+      organizer: ensureResolved(campaign.organizer)!,
+    }));
+  },
+  ["cms"],
+);

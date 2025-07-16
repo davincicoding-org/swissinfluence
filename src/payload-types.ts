@@ -734,8 +734,7 @@ export interface NetworkEvent {
   logo: number | Logo;
   image: number | Photo;
   location: number | Location;
-  dateFrom?: string | null;
-  dateTo?: string | null;
+  date: string;
   registrationUrl?: string | null;
   title: string;
   content: {
@@ -1252,8 +1251,7 @@ export interface NetworkEventsSelect<T extends boolean = true> {
   logo?: T;
   image?: T;
   location?: T;
-  dateFrom?: T;
-  dateTo?: T;
+  date?: T;
   registrationUrl?: T;
   title?: T;
   content?: T;

@@ -3,7 +3,8 @@ import { Paper, Space } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { CategoryWithInfluencers } from "@/types";
-import { PageHero } from "@/ui/components/PageHero";
+import { Photo } from "@/payload-types";
+import { PageHero } from "@/ui/components/PageHero-dep";
 import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 

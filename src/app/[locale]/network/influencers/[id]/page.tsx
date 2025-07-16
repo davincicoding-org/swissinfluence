@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { getLocale } from "next-intl/server";
 
 import { getCertifiedInfluencer } from "@/server/certified-influencers";
 import { CertifiedInfluencerPage as View } from "@/ui/features/network";
@@ -11,12 +12,11 @@ export default async function CertifiedInfluencerPage({
   }>;
 }) {
   const { id } = await params;
+  const locale = await getLocale();
 
-  const influencer = await getCertifiedInfluencer(id);
+  const influencer = await getCertifiedInfluencer(id, locale);
 
-  if (!influencer) {
-    notFound();
-  }
+  if (!influencer) notFound();
 
   return <View influencer={influencer} />;
 }

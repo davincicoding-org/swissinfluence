@@ -1,6 +1,5 @@
 "use client";
 
-import type { ImageAsset } from "@davincicoding/cms/image";
 import type { ReactNode } from "react";
 import { useId } from "react";
 import Image from "next/image";
@@ -18,12 +17,13 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconX } from "@tabler/icons-react";
 import { motion } from "motion/react";
 
+import type { Photo } from "@/payload-types";
 import { cn } from "@/ui/utils";
 
 interface ExpandableCardProps {
   title: string;
   description: string;
-  image: Omit<ImageAsset, "id" | "name">;
+  image: Photo;
   logo?: ReactNode;
   content: ReactNode;
   badge?: ReactNode;
@@ -66,13 +66,13 @@ export function ExpandableCard({
         <div className="flex w-full flex-col gap-4">
           <motion.div layoutId={`image-${title}-${id}`}>
             <Image
-              width={image.width}
-              height={image.height}
-              src={image.src}
+              src={image.url ?? ""}
+              width={image.width ?? 0}
+              height={image.height ?? 0}
               alt={title}
               className="h-60 w-full rounded-lg object-cover object-center"
-              placeholder={image.blurDataURL ? "blur" : undefined}
-              blurDataURL={image.blurDataURL}
+              // placeholder={image.blurDataURL ? "blur" : undefined}
+              // blurDataURL={image.blurDataURL}
             />
           </motion.div>
           <div className="flex flex-col items-center justify-center">
@@ -114,13 +114,13 @@ export function ExpandableCard({
             <motion.div layoutId={`image-${title}-${id}`} className="relative">
               <Image
                 priority
-                width={image.width}
-                height={image.height}
-                src={image.src}
+                src={image.url ?? ""}
+                width={image.width ?? 0}
+                height={image.height ?? 0}
                 alt={title}
                 className="h-80 w-full object-cover object-center lg:h-80"
-                placeholder={image.blurDataURL ? "blur" : undefined}
-                blurDataURL={image.blurDataURL}
+                // placeholder={image.blurDataURL ? "blur" : undefined}
+                // blurDataURL={image.blurDataURL}
               />
               <Group
                 justify="space-between"

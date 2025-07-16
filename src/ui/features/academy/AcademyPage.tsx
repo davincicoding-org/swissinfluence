@@ -2,7 +2,7 @@ import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import { PageHero } from "@/ui/components/PageHero";
+import { PageHero } from "@/ui/components/PageHero-dep";
 
 export interface IAcademyPageProps {
   heroImage: ImageAsset;

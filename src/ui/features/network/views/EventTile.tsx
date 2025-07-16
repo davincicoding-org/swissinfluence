@@ -1,6 +1,5 @@
 "use client";
 
-import { useMemo } from "react";
 import Image from "next/image";
 import {
   ActionIcon,
@@ -13,40 +12,24 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { IconArrowRight, IconX } from "@tabler/icons-react";
 import dayjs from "dayjs";
-import { useLocale } from "next-intl";
 
 import type { NetworkEvent } from "@/types";
-import { RichText } from "@/ui/components/RichText-dep";
+import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
+import { ensureResolved } from "@/utils/payload";
 
 export interface IEventTileProps {
   data: NetworkEvent;
   className?: string;
 }
 
-export function EventTile({
-  data: {
-    title,
-    image,
-    description,
-    start: startDate,
-    end: endDate,
-    logo,
-    tickets,
-  },
-  className,
-}: IEventTileProps) {
-  const locale = useLocale();
+export function EventTile({ data, className }: IEventTileProps) {
   const [isExpanded, expansion] = useDisclosure(false);
 
-  const formattedDate = useMemo(() => {
-    const fromDate = dayjs(startDate);
-    const untilDate = dayjs(endDate);
+  const formattedDate = dayjs(data.date).format("DD.MM.YYYY");
 
-    if (fromDate.isSame(untilDate, "day")) return fromDate.format("DD.MM.YYYY");
-
-    return `${fromDate.format("DD.MM.YYYY")} - ${untilDate.format("DD.MM.YYYY")}`;
-  }, [startDate, endDate]);
+  const image = ensureResolved(data.image)!;
+  const logo = ensureResolved(data.logo)!;
 
   return (
     <>
@@ -66,29 +49,32 @@ export function EventTile({
           });
         }}
       >
-        <Image
-          src={image.src}
-          alt="Background"
-          fill
-          placeholder={image.blurDataURL ? "blur" : undefined}
-          blurDataURL={image.blurDataURL}
-          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-        />
+        {image && (
+          <Image
+            src={image.url ?? ""}
+            alt="Background"
+            fill
+            // placeholder={image.blurDataURL ? "blur" : undefined}
+            // blurDataURL={image.blurDataURL}
+            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          />
+        )}
         <Flex
           className="absolute inset-0 bg-black/40"
           direction="column"
           justify="space-between"
         >
-          <Image
-            alt="Event Organizer Logo"
-            className="m-4 ml-auto h-12 w-auto"
-            src={logo.src}
-            width={logo.width}
-            height={logo.height}
-            placeholder={logo.blurDataURL ? "blur" : undefined}
-            blurDataURL={logo.blurDataURL}
-          />
-
+          {logo && (
+            <Image
+              alt="Event Organizer Logo"
+              className="m-4 ml-auto h-12 w-auto"
+              src={logo.url ?? ""}
+              width={logo.width ?? 0}
+              height={logo.height ?? 0}
+              // placeholder={logo.blurDataURL ? "blur" : undefined}
+              // blurDataURL={logo.blurDataURL}
+            />
+          )}
           <Flex
             className={cn("relative mt-auto p-4 text-white")}
             gap="sm"
@@ -98,7 +84,7 @@ export function EventTile({
           >
             <div>
               <span>{formattedDate}</span>
-              <p className="text-2xl">{title[locale]}</p>
+              <p className="text-2xl">{data.title}</p>
             </div>
             <IconArrowRight className={cn("shrink-0")} size={32} stroke={1.5} />
           </Flex>
@@ -123,14 +109,16 @@ export function EventTile({
           className="bg-cover bg-fixed bg-center"
           classNames={{ inner: "!bg-none" }}
         >
-          <Image
-            alt="Event Background"
-            src={image.src}
-            fill
-            placeholder={image.blurDataURL ? "blur" : undefined}
-            blurDataURL={image.blurDataURL}
-            className="absolute inset-0 object-cover"
-          />
+          {image && (
+            <Image
+              alt="Event Background"
+              src={image.url ?? ""}
+              fill
+              // placeholder={image.blurDataURL ? "blur" : undefined}
+              // blurDataURL={image.blurDataURL}
+              className="absolute inset-0 object-cover"
+            />
+          )}
           <Modal.Header>
             <ActionIcon
               color="white"
@@ -145,20 +133,22 @@ export function EventTile({
           <Modal.Body className="relative -mt-16 grid">
             <FocusTrap.InitialFocus />
             <div className="flex flex-col bg-black/60 p-6 text-white">
-              <Image
-                alt="Event Organizer Logo"
-                className="m-4 mx-auto h-16 w-auto"
-                src={logo.src}
-                width={logo.width}
-                height={logo.height}
-                placeholder={logo.blurDataURL ? "blur" : undefined}
-                blurDataURL={logo.blurDataURL}
-              />
+              {logo && (
+                <Image
+                  alt="Event Organizer Logo"
+                  className="m-4 mx-auto h-16 w-auto"
+                  src={logo.url ?? ""}
+                  width={logo.width ?? 0}
+                  height={logo.height ?? 0}
+                  // placeholder={logo.blurDataURL ? "blur" : undefined}
+                  // blurDataURL={logo.blurDataURL}
+                />
+              )}
 
-              <p className="mt-8 text-3xl">{title[locale]}</p>
+              <p className="mt-8 text-3xl">{data.title}</p>
 
               <RichText
-                content={description[locale]}
+                data={data.content}
                 className="prose-lg py-6 text-white"
               />
               <Button
@@ -167,8 +157,8 @@ export function EventTile({
                 size="lg"
                 fullWidth
                 className="uppercase"
-                disabled={!tickets}
-                href={tickets ?? undefined}
+                disabled={!data.registrationUrl}
+                href={data.registrationUrl ?? undefined}
                 target="_blank"
               >
                 Apply Now

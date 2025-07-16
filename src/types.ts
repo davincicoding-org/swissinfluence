@@ -1,124 +1,96 @@
-import type * as db from "@/database/schema";
-
 import type { SocialMedia } from "./database/enums";
-import type {
-  Award,
-  AwardShow,
-  Brand,
-  Category,
-  Convention,
-  Expert,
-  Influencer,
-  Location,
-  Photo,
-  ProfilePicture,
-} from "./payload-types";
+import type * as payloadTypes from "./payload-types";
 
 export interface LatestConvention
-  extends Pick<Convention, "date" | "registrationUrl" | "schedule"> {
-  partners: Array<Brand>;
-  location: Location;
+  extends Pick<
+    payloadTypes.Convention,
+    "date" | "registrationUrl" | "schedule"
+  > {
+  partners: Array<payloadTypes.Brand>;
+  location: payloadTypes.Location;
 }
 
 export interface NetworkEvent
-  extends Pick<
-    typeof db.networkEvents.$inferSelect,
-    | "id"
-    | "title"
-    | "description"
-    | "image"
-    | "logo"
-    | "start"
-    | "end"
-    | "tickets"
+  extends Omit<
+    payloadTypes.NetworkEvent,
+    "updatedAt" | "createdAt" | "location"
   > {
-  location: Omit<typeof db.locations.$inferSelect, "id">;
+  location: payloadTypes.Location;
 }
 
-export type Agency = typeof db.agencies.$inferSelect;
-
 export interface CategoryWithInfluencers {
-  category: Pick<typeof db.categories.$inferSelect, "id" | "title">;
+  category: Pick<payloadTypes.Category, "id" | "name">;
   influencers: Array<Pick<CertifiedInfluencer, "id" | "name" | "image">>;
 }
 
 export interface CertifiedInfluencer
-  extends Pick<
-      typeof db.certifiedInfluencers.$inferSelect,
-      | "id"
-      | "bio"
-      | "image"
-      | "birthdate"
-      | "residence"
-      | "languages"
-      | "otherInterests"
+  extends Omit<
+      payloadTypes.CertifiedInfluencer,
+      "createdAt" | "updatedAt" | "influencer" | "categories"
     >,
-    Pick<typeof db.influencers.$inferSelect, "name"> {
+    Pick<payloadTypes.Influencer, "name"> {
   socials: Array<SocialMedia>;
-  interests: Array<Pick<typeof db.categories.$inferSelect, "id" | "title">>;
+  categories: Array<Pick<payloadTypes.Category, "id" | "name">>;
 }
 
 export interface SocialMediaCampaign
-  extends Pick<
-    typeof db.socialMediaCampaigns.$inferSelect,
-    "id" | "title" | "content" | "image" | "start" | "end" | "registration"
+  extends Omit<
+    payloadTypes.SocialMediaCampaign,
+    "updatedAt" | "createdAt" | "organizer"
   > {
-  organizer: Pick<
-    typeof db.brands.$inferSelect,
-    "id" | "name" | "image" | "website"
-  >;
+  organizer: payloadTypes.Brand;
 }
 
 // MARK: Award
 
 export interface AwardShowImpressions {
   year: number;
-  images: Array<Photo>;
+  images: Array<payloadTypes.Photo>;
   videoUrl: string;
 }
 
 export interface CurrentAward
   extends Omit<
-    Award,
+    payloadTypes.Award,
     "updatedAt" | "createdAt" | "jury" | "partners" | "categories"
   > {
-  jury: Array<Expert>;
-  partners: Array<Brand>;
+  jury: Array<payloadTypes.Expert>;
+  partners: Array<payloadTypes.Brand>;
   categories: Array<AwardCategory>;
   show: CurrentAwardShow | null;
 }
 
 export interface CurrentAwardShow
-  extends Omit<AwardShow, "award" | "updatedAt" | "createdAt" | "location"> {
-  location: Location;
-  images: Array<Photo>;
+  extends Omit<
+    payloadTypes.AwardShow,
+    "award" | "updatedAt" | "createdAt" | "location"
+  > {
+  location: payloadTypes.Location;
+  images: Array<payloadTypes.Photo>;
 }
 
 export interface AwardCategory {
   ranked: boolean;
-  category: Category;
-  sponsor: Brand | null;
-  winnerImage: ProfilePicture | null;
-  nominees: Array<Influencer>;
+  category: payloadTypes.Category;
+  sponsor: payloadTypes.Brand | null;
+  winnerImage: payloadTypes.ProfilePicture | null;
+  nominees: Array<payloadTypes.Influencer>;
 }
 
-export interface AwardRanking extends Pick<Award, "year"> {
+export interface AwardRanking extends Pick<payloadTypes.Award, "year"> {
   categories: Array<AwardCategoryRanking>;
 }
 
 export interface AwardCategoryRanking {
-  category: Pick<Category, "id" | "name">;
-  winnerImage: ProfilePicture | null;
-  nominees: Array<Influencer>;
+  category: Pick<payloadTypes.Category, "id" | "name">;
+  winnerImage: payloadTypes.ProfilePicture | null;
+  nominees: Array<payloadTypes.Influencer>;
 }
 
 export interface CreatorChallenge
-  extends Pick<
-    typeof db.creatorChallenges.$inferSelect,
-    "id" | "title" | "content" | "image" | "start" | "end" | "registration"
+  extends Omit<
+    payloadTypes.CreatorChallenge,
+    "updatedAt" | "createdAt" | "organizer"
   > {
-  organizer: Pick<
-    typeof db.brands.$inferSelect,
-    "id" | "name" | "image" | "website"
-  >;
+  organizer: payloadTypes.Brand;
 }

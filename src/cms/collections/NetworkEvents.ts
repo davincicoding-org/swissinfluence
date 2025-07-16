@@ -49,37 +49,16 @@ export const NetworkEvents: CollectionConfig = {
                 placeholder: "Select Location",
               },
             },
-
             {
-              type: "group",
-              fields: [
-                {
-                  name: "dateFrom",
-                  label: "From",
-                  type: "date",
-                  admin: {
-                    date: {
-                      displayFormat: "dd/MM/yyyy HH:mm",
-                      timeFormat: "HH:mm",
-                      pickerAppearance: "dayAndTime",
-                      timeIntervals: 15,
-                    },
-                  },
+              name: "date",
+              type: "date",
+              required: true,
+              admin: {
+                date: {
+                  displayFormat: "dd/MM/yyyy",
+                  pickerAppearance: "dayOnly",
                 },
-                {
-                  name: "dateTo",
-                  label: "To",
-                  type: "date",
-                  admin: {
-                    date: {
-                      displayFormat: "dd/MM/yyyy HH:mm",
-                      timeFormat: "HH:mm",
-                      pickerAppearance: "dayAndTime",
-                      timeIntervals: 15,
-                    },
-                  },
-                },
-              ],
+              },
             },
             {
               name: "registrationUrl",

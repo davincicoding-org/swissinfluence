@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 
 import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
+import { ensureResolved } from "@/utils/payload";
 
 export interface ICertificationRegistrationProps {
   title: string;
@@ -32,6 +33,8 @@ export function CertificationRegistration({
   const t = useTranslations("network.influencers.certification");
   const [isExpanded, expansion] = useDisclosure(false);
 
+  const photo = ensureResolved(image);
+
   return (
     <>
       <Paper
@@ -44,15 +47,17 @@ export function CertificationRegistration({
         )}
         onClick={expansion.open}
       >
-        <Image
-          src={image.src}
-          alt=""
-          width={image.width}
-          height={image.height}
-          placeholder={image.blurDataURL ? "blur" : undefined}
-          blurDataURL={image.blurDataURL}
-          className="aspect-video w-full"
-        />
+        {photo && (
+          <Image
+            src={photo.src ?? ""}
+            alt=""
+            width={photo.width ?? 0}
+            height={photo.height ?? 0}
+            // placeholder={image.blurDataURL ? "blur" : undefined}
+            // blurDataURL={image.blurDataURL}
+            className="aspect-video w-full"
+          />
+        )}
         <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 text-white before:absolute before:inset-x-0 before:-top-24 before:h-24 before:bg-gradient-to-t before:from-black/50 before:to-transparent">
           <h3 className="mb-1.5 text-balance text-xl font-medium uppercase leading-tight sm:text-2xl">
             {title}

@@ -3,13 +3,13 @@
 import type { ComboboxItem } from "@mantine/core";
 import { useMemo, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { Button, Flex, Paper, ScrollArea, Tabs } from "@mantine/core";
-import { useLocale } from "next-intl";
 
 import type { CategoryWithInfluencers } from "@/types";
+import { Link } from "@/i18n/navigation";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
 import { cn } from "@/ui/utils";
+import { ensureResolved } from "@/utils/payload";
 
 export interface IInfluencerDiscoveryProps {
   pool: Array<CategoryWithInfluencers>;
@@ -20,19 +20,17 @@ export function InfluencerDiscovery({
   pool,
   className,
 }: IInfluencerDiscoveryProps) {
-  const locale = useLocale();
-
   const [selectedCategoryID, setSelectedCategoryID] = useState(
     pool[0]?.category.id.toString(),
   );
 
   const categoryOptions = useMemo(
     () =>
-      pool.map<ComboboxItem>(({ category: { id, title } }) => ({
+      pool.map<ComboboxItem>(({ category: { id, name } }) => ({
         value: id.toString(),
-        label: title[locale],
+        label: name,
       })),
-    [pool, locale],
+    [pool],
   );
 
   return (
@@ -93,49 +91,55 @@ export function InfluencerDiscovery({
               }}
             >
               <Flex p="lg" gap="md">
-                {influencers.map((influencer) => (
-                  <Link
-                    key={influencer.id}
-                    target="_blank"
-                    href={`/${locale}/network/influencers/${influencer.id}`}
-                    className="snap-center first:ml-auto last:mr-auto"
-                  >
-                    <Paper
-                      shadow="xs"
-                      withBorder
-                      radius="lg"
-                      className={cn("relative h-64 w-64 overflow-clip")}
-                    >
-                      <Image
-                        src={influencer.image.src}
-                        width={influencer.image.width}
-                        height={influencer.image.height}
-                        placeholder={
-                          influencer.image.blurDataURL ? "blur" : undefined
-                        }
-                        blurDataURL={influencer.image.blurDataURL}
-                        alt={influencer.name}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
+                {influencers.map((influencer) => {
+                  const image = ensureResolved(influencer.image);
 
-                      <div
-                        className={cn(
-                          "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
-                        )}
+                  return (
+                    <Link
+                      key={influencer.id}
+                      target="_blank"
+                      href={`/network/influencers/${influencer.id}`}
+                      className="snap-center first:ml-auto last:mr-auto"
+                    >
+                      <Paper
+                        shadow="xs"
+                        withBorder
+                        radius="lg"
+                        className={cn("relative h-64 w-64 overflow-clip")}
                       >
-                        <TextOverflowReveal
-                          text={influencer.name}
-                          classNames={{
-                            root: "mb-1",
-                            text: cn(
-                              "pl-4 text-xl font-medium leading-none tracking-widest text-white",
-                            ),
-                          }}
-                        />
-                      </div>
-                    </Paper>
-                  </Link>
-                ))}
+                        {image && (
+                          <Image
+                            src={image.url ?? ""}
+                            width={image.width ?? 0}
+                            height={image.height ?? 0}
+                            // placeholder={
+                            //   influencer.image.blurDataURL ? "blur" : undefined
+                            // }
+                            // blurDataURL={influencer.image.blurDataURL}
+                            alt={influencer.name}
+                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        )}
+
+                        <div
+                          className={cn(
+                            "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
+                          )}
+                        >
+                          <TextOverflowReveal
+                            text={influencer.name}
+                            classNames={{
+                              root: "mb-1",
+                              text: cn(
+                                "pl-4 text-xl font-medium leading-none tracking-widest text-white",
+                              ),
+                            }}
+                          />
+                        </div>
+                      </Paper>
+                    </Link>
+                  );
+                })}
               </Flex>
             </ScrollArea>
           </Tabs.Panel>

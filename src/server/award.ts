@@ -5,7 +5,6 @@ import type {
   CreatorChallenge,
   CurrentAward,
 } from "@/types";
-import CREATOR_CHALLENGES from "@/backup/creator-challenges.json";
 import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
 import { cachedRequest } from "./cache";
@@ -66,11 +65,23 @@ export const getCurrentAward = // cachedRequest(
 // ["cms"],
 // );
 
-export const getCreatorChallenges = cachedRequest(async (): Promise<
-  Array<CreatorChallenge>
-> => {
-  return CREATOR_CHALLENGES;
-}, ["cms"]);
+export const getCreatorChallenges = cachedRequest(
+  async (locale: SupportedLocale): Promise<Array<CreatorChallenge>> => {
+    const payload = await getPayloadClient();
+
+    const { docs: campaigns } = await payload.find({
+      collection: "creator-challenges",
+      locale,
+      limit: 100,
+    });
+
+    return campaigns.map((campaign) => ({
+      ...campaign,
+      organizer: ensureResolved(campaign.organizer)!,
+    }));
+  },
+  ["cms"],
+);
 
 export const getHallOfFame = // cachedRequest(
   async (locale: SupportedLocale): Promise<Array<AwardRanking>> => {
