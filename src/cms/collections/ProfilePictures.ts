@@ -4,6 +4,7 @@ export const ProfilePictures: CollectionConfig = {
   slug: "profile-pictures",
   admin: {
     group: "Media",
+    hidden: true,
   },
   access: {
     read: () => true,

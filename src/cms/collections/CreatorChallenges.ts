@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 export const CreatorChallenges: CollectionConfig = {
   slug: "creator-challenges",
   admin: {
@@ -104,4 +106,7 @@ export const CreatorChallenges: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("creator-challenges")],
+  },
 };

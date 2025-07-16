@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 import { ScheduleField } from "../shared/ScheduleField";
 
 export const AwardShows: CollectionConfig = {
@@ -73,4 +75,7 @@ export const AwardShows: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("award-shows")],
+  },
 };

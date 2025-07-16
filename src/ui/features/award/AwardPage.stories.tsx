@@ -16,16 +16,9 @@ const meta = {
   component: AwardPage,
   args: {
     heroImage: {
-      src: "https://firebasestorage.googleapis.com/v0/b/swissinfluence-86ce8.firebasestorage.app/o/media%2Faward%2Fmedia.images.hero.webp?alt=media&token=55556934-46ca-4a4c-b4a6-b087039fabff",
-      blurDataURL:
-        "data:image/png;base64,UklGRjQBAABXRUJQVlA4TCgBAAAvCYABAC/COAAAI5fNl13ftmnxdrBtrOE4AAAiyrZtN0C/Zm6bNvDZPsYBABi57Jfrr2EauGVs25z/CAEnDh4WoPX/O0yduSnfq/1IBAJIAP3inisEwygoSLpAiAC/bhGY/jWc/KHi7WBQFDTLTRTU4fZ/C1wI0dNGXHH/8XEOlhtHWPkL1hk7F8sONyIaIb+M4Z1QdjODsJ4jUcJrx07OgUB/UdebhzwkCsSg8QfC4mQcYHER+dcsL6BiNjCya44rpt8RFx0KwdKlMgIvanU1r4kZ4+7mlHw4cYvRPgLihfkeGDgIAIBsw7Nt2zZuRvQ/FNi6+c7pApBkj3PnrRfQFB//KemD5ZoJ99/AVe2+xdrzezBs+I4Q9fVpaL4oc1mvUxQnSAozAA==",
-      width: 5090,
-      height: 3393,
-    },
-    newcomerScoutImage: {
-      src: "https://firebasestorage.googleapis.com/v0/b/swissinfluence-86ce8.firebasestorage.app/o/media%2Faward%2Fmedia.images.newcomerScout.webp?alt=media&token=9e8e2892-6900-4e49-84a9-038760a4cdce",
-      blurDataURL:
-        "data:image/png;base64,UklGRjQBAABXRUJQVlA4TCgBAAAvCYABAC/COAAAI5fNl13ftmnxdrBtrOE4AAAiyrZtN0C/Zm6bNvDZPsYBABi57Jfrr2EauGVs25z/CAEnDh4WoPX/O0yduSnfq/1IBAJIAP3inisEwygoSLpAiAC/bhGY/jWc/KHi7WBQFDTLTRTU4fZ/C1wI0dNGXHH/8XEOlhtHWPkL1hk7F8sONyIaIb+M4Z1QdjODsJ4jUcJrx07OgUB/UdebhzwkCsSg8QfC4mQcYHER+dcsL6BiNjCya44rpt8RFx0KwdKlMgIvanU1r4kZ4+7mlHw4cYvRPgLihfkeGDgIAIBsw7Nt2zZuRvQ/FNi6+c7pApBkj3PnrRfQFB//KemD5ZoJ99/AVe2+xdrzezBs+I4Q9fVpaL4oc1mvUxQnSAozAA==",
+      url: "https://firebasestorage.googleapis.com/v0/b/swissinfluence-86ce8.firebasestorage.app/o/media%2Faward%2Fmedia.images.hero.webp?alt=media&token=55556934-46ca-4a4c-b4a6-b087039fabff",
+      // blurDataURL:
+      //   "data:image/png;base64,UklGRjQBAABXRUJQVlA4TCgBAAAvCYABAC/COAAAI5fNl13ftmnxdrBtrOE4AAAiyrZtN0C/Zm6bNvDZPsYBABi57Jfrr2EauGVs25z/CAEnDh4WoPX/O0yduSnfq/1IBAJIAP3inisEwygoSLpAiAC/bhGY/jWc/KHi7WBQFDTLTRTU4fZ/C1wI0dNGXHH/8XEOlhtHWPkL1hk7F8sONyIaIb+M4Z1QdjODsJ4jUcJrx07OgUB/UdebhzwkCsSg8QfC4mQcYHER+dcsL6BiNjCya44rpt8RFx0KwdKlMgIvanU1r4kZ4+7mlHw4cYvRPgLihfkeGDgIAIBsw7Nt2zZuRvQ/FNi6+c7pApBkj3PnrRfQFB//KemD5ZoJ99/AVe2+xdrzezBs+I4Q9fVpaL4oc1mvUxQnSAozAA==",
       width: 5090,
       height: 3393,
     },

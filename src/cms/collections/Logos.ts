@@ -4,6 +4,7 @@ export const Logos: CollectionConfig = {
   slug: "logos",
   admin: {
     group: "Media",
+    hidden: true,
   },
   access: {
     read: () => true,

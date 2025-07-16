@@ -1,20 +1,21 @@
 "use client";
 
-import type { ImageAsset } from "@davincicoding/cms/image";
 import Image from "next/image";
 import { Button, FocusTrap, Modal, Paper } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useTranslations } from "next-intl";
 
-import { RichText } from "@/ui/components/RichText-dep";
+import type { Photo } from "@/payload-types";
+import type { RichTextProps } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
 export interface ICertificationRegistrationProps {
   title: string;
   headline: string;
-  image: ImageAsset;
-  description: string;
+  image: Photo;
+  content: RichTextProps["data"];
   application: {
     label: string;
     url: string;
@@ -25,7 +26,7 @@ export interface ICertificationRegistrationProps {
 export function CertificationRegistration({
   title,
   headline,
-  description,
+  content,
   image,
   className,
   application,
@@ -49,7 +50,7 @@ export function CertificationRegistration({
       >
         {photo && (
           <Image
-            src={photo.src ?? ""}
+            src={photo.url ?? ""}
             alt=""
             width={photo.width ?? 0}
             height={photo.height ?? 0}
@@ -76,10 +77,7 @@ export function CertificationRegistration({
         }}
       >
         <FocusTrap.InitialFocus />
-        <RichText
-          className="prose prose-p:m-3 prose-li:m-0"
-          content={description}
-        />
+        <RichText className="prose prose-p:m-3 prose-li:m-0" data={content} />
         <Button
           component="a"
           mt="lg"

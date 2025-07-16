@@ -1,13 +1,20 @@
 import { getLocale } from "next-intl/server";
 
+import type { Photo } from "@/payload-types";
 import { getAgencies } from "@/server/agencies";
-import { fetchMediaLibrary } from "@/server/media-library";
+import { getPage } from "@/server/pages";
 import { AgenciesPage as View } from "@/ui/features/network";
 
 export default async function AgenciesPage() {
   const locale = await getLocale();
-  const media = await fetchMediaLibrary();
+  const page = await getPage("agencies", locale);
   const agencies = await getAgencies(locale);
 
-  return <View heroImage={media.NETWORK.AGENCIES} agencies={agencies} />;
+  return (
+    <View
+      heroImage={page.heroImage as Photo}
+      agencies={agencies}
+      content={page.content}
+    />
+  );
 }

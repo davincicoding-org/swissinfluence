@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 export const Categories: CollectionConfig = {
   slug: "categories",
   admin: {
@@ -35,4 +37,7 @@ export const Categories: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("categories")],
+  },
 };

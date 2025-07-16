@@ -1,10 +1,9 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
 import { Paper, Space } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
+import type { Certification, Photo } from "@/payload-types";
 import type { CategoryWithInfluencers } from "@/types";
-import { Photo } from "@/payload-types";
-import { PageHero } from "@/ui/components/PageHero-dep";
+import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
@@ -12,21 +11,15 @@ import { CertificationRegistration } from "./views/CertificationRegistration";
 import { InfluencerDiscovery } from "./views/InfluencerDiscovery";
 
 export interface ICertifiedInfluencersPageProps {
-  heroImage: ImageAsset;
-  influencerImage: ImageAsset;
-  agencyImage: ImageAsset;
+  heroImage: Photo;
   pool: Array<CategoryWithInfluencers>;
-  influencerForm: string;
-  agencyForm: string;
+  certification: Certification;
 }
 
 export function CertifiedInfluencersPage({
   heroImage,
-  influencerImage,
-  agencyImage,
   pool,
-  influencerForm,
-  agencyForm,
+  certification,
 }: ICertifiedInfluencersPageProps) {
   const t = useTranslations("network.influencers");
   return (
@@ -40,25 +33,23 @@ export function CertifiedInfluencersPage({
 
           <div className="grid gap-8 lg:grid-cols-2">
             <CertificationRegistration
-              image={influencerImage}
-              title={t("certification.influencer.title")}
-              headline={t("certification.influencer.headline")}
-              description={String(
-                t.raw("certification.influencer.description"),
-              )}
+              image={certification.influencerImage as Photo}
+              title={certification.influencerTitle}
+              headline={certification.influencerHeadline}
+              content={certification.influencerContent}
               application={{
-                url: influencerForm,
-                label: t("certification.influencer.applicationCTA"),
+                url: certification.influencerApplicationUrl,
+                label: certification.influencerApplicationCta,
               }}
             />
             <CertificationRegistration
-              image={agencyImage}
-              title={t("certification.agency.title")}
-              headline={t("certification.agency.headline")}
-              description={String(t.raw("certification.agency.description"))}
+              image={certification.agencyImage as Photo}
+              title={certification.agencyTitle}
+              headline={certification.agencyHeadline}
+              content={certification.agencyContent}
               application={{
-                url: agencyForm,
-                label: t("certification.agency.applicationCTA"),
+                url: certification.agencyApplicationUrl,
+                label: certification.agencyApplicationCta,
               }}
             />
           </div>

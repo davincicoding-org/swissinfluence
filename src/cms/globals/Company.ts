@@ -1,5 +1,7 @@
 import type { GlobalConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 import { SocialsField } from "../shared/SocialsField";
 
 export const Company: GlobalConfig = {
@@ -33,4 +35,7 @@ export const Company: GlobalConfig = {
     },
     SocialsField,
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("company")],
+  },
 };

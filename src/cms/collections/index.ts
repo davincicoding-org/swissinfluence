@@ -3,6 +3,7 @@ export * from "./Experts";
 export * from "./Brands";
 export * from "./Locations";
 export * from "./Awards";
+export * from "./Pages";
 export * from "./AwardShows";
 export * from "./CreatorChallenges";
 export * from "./SocialMediaCampaigns";

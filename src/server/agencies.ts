@@ -16,5 +16,5 @@ export const getAgencies = cachedRequest(
 
     return agencies;
   },
-  ["cms"],
+  ["agencies"],
 );

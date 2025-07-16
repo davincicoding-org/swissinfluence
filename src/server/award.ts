@@ -10,7 +10,7 @@ import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 import { cachedRequest } from "./cache";
 import { getPayloadClient } from "./payload";
 
-export const getCurrentAward = // cachedRequest(
+export const getCurrentAward = cachedRequest(
   async (locale: SupportedLocale): Promise<CurrentAward | null> => {
     const payload = await getPayloadClient();
     const {
@@ -61,9 +61,9 @@ export const getCurrentAward = // cachedRequest(
         images: ensureResolvedArray((show?.images ?? []).map((photo) => photo)),
       },
     };
-  };
-// ["cms"],
-// );
+  },
+  ["awards", "award-shows"],
+);
 
 export const getCreatorChallenges = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<CreatorChallenge>> => {
@@ -80,10 +80,10 @@ export const getCreatorChallenges = cachedRequest(
       organizer: ensureResolved(campaign.organizer)!,
     }));
   },
-  ["cms"],
+  ["creator-challenges"],
 );
 
-export const getHallOfFame = // cachedRequest(
+export const getHallOfFame = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<AwardRanking>> => {
     const payload = await getPayloadClient();
     const { docs: awards } = await payload.find({
@@ -118,12 +118,12 @@ export const getHallOfFame = // cachedRequest(
         ),
       }))
       .filter(({ categories }) => categories.some(({ ranked }) => ranked));
-  };
-//   ["cms"],
-// );
+  },
+  ["awards"],
+);
 
-export const getPastImpressions = //cachedRequest(
-  async (): Promise<AwardShowImpressions | null> => {
+export const getPastImpressions =
+  cachedRequest(async (): Promise<AwardShowImpressions | null> => {
     const payload = await getPayloadClient();
     const {
       docs: [, pastAward],
@@ -161,6 +161,4 @@ export const getPastImpressions = //cachedRequest(
       ),
       videoUrl: pastShow.videoUrl ?? "",
     };
-
-    return null;
-  }; //, ["cms"]);
+  }, ["awards", "award-shows"]);

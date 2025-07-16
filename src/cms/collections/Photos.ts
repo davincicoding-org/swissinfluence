@@ -8,6 +8,7 @@ export const Photos: CollectionConfig = {
   },
   admin: {
     group: "Media",
+    hidden: true,
   },
   fields: [
     {

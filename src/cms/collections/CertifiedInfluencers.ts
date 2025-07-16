@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 export const CertifiedInfluencers: CollectionConfig = {
   slug: "certified-influencers",
   admin: {
@@ -295,4 +297,7 @@ export const CertifiedInfluencers: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("certified-influencers")],
+  },
 };

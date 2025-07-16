@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 import { SocialsField } from "../shared/SocialsField";
 
 export const Influencers: CollectionConfig = {
@@ -43,4 +45,7 @@ export const Influencers: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("influencers")],
+  },
 };

@@ -12,20 +12,25 @@
  */
 export type Socials =
   | {
-      platform:
-        | 'INSTAGRAM'
-        | 'TIKTOK'
-        | 'LINKEDIN'
-        | 'YOUTUBE'
-        | 'APPLE_PODCAST'
-        | 'SPOTIFY'
-        | 'TWITCH'
-        | 'WEBSITE'
-        | 'WHATSAPP';
+      platform: SocialMediaPlatform;
       url: string;
       id?: string | null;
     }[]
   | null;
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SocialMediaPlatform".
+ */
+export type SocialMediaPlatform =
+  | 'INSTAGRAM'
+  | 'TIKTOK'
+  | 'LINKEDIN'
+  | 'YOUTUBE'
+  | 'APPLE_PODCAST'
+  | 'SPOTIFY'
+  | 'TWITCH'
+  | 'WEBSITE'
+  | 'WHATSAPP';
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ScheduleSlots".
@@ -338,6 +343,7 @@ export interface Config {
     photos: Photo;
     logos: Logo;
     'profile-pictures': ProfilePicture;
+    pages: Page;
     categories: Category;
     influencers: Influencer;
     experts: Expert;
@@ -362,6 +368,7 @@ export interface Config {
     photos: PhotosSelect<false> | PhotosSelect<true>;
     logos: LogosSelect<false> | LogosSelect<true>;
     'profile-pictures': ProfilePicturesSelect<false> | ProfilePicturesSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     influencers: InfluencersSelect<false> | InfluencersSelect<true>;
     experts: ExpertsSelect<false> | ExpertsSelect<true>;
@@ -386,10 +393,12 @@ export interface Config {
   globals: {
     company: Company;
     network: Network;
+    certification: Certification;
   };
   globalsSelect: {
     company: CompanySelect<false> | CompanySelect<true>;
     network: NetworkSelect<false> | NetworkSelect<true>;
+    certification: CertificationSelect<false> | CertificationSelect<true>;
   };
   locale: 'en' | 'de' | 'fr' | 'it';
   user: User & {
@@ -537,6 +546,32 @@ export interface ProfilePicture {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
+export interface Page {
+  id: string;
+  title: string;
+  heroImage?: (number | null) | Photo;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories".
  */
 export interface Category {
@@ -608,8 +643,6 @@ export interface Award {
   id: number;
   legacyId?: number | null;
   year: number;
-  newcomerScoutDeadline?: string | null;
-  newcomerScoutUrl?: string | null;
   nominationDeadline?: string | null;
   nominationUrl?: string | null;
   votingDeadline?: string | null;
@@ -640,6 +673,24 @@ export interface Award {
         id?: string | null;
       }[]
     | null;
+  newcomerScoutImage?: (number | null) | Photo;
+  newcomerScoutDeadline?: string | null;
+  newcomerScoutUrl?: string | null;
+  newcomerScoutContent?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -846,6 +897,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'profile-pictures';
         value: number | ProfilePicture;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: string | Page;
       } | null)
     | ({
         relationTo: 'categories';
@@ -1071,6 +1126,18 @@ export interface ProfilePicturesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  id?: T;
+  title?: T;
+  heroImage?: T;
+  content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
@@ -1145,8 +1212,6 @@ export interface LocationsSelect<T extends boolean = true> {
 export interface AwardsSelect<T extends boolean = true> {
   legacyId?: T;
   year?: T;
-  newcomerScoutDeadline?: T;
-  newcomerScoutUrl?: T;
   nominationDeadline?: T;
   nominationUrl?: T;
   votingDeadline?: T;
@@ -1177,6 +1242,10 @@ export interface AwardsSelect<T extends boolean = true> {
         brand?: T;
         id?: T;
       };
+  newcomerScoutImage?: T;
+  newcomerScoutDeadline?: T;
+  newcomerScoutUrl?: T;
+  newcomerScoutContent?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -1368,9 +1437,58 @@ export interface Company {
  */
 export interface Network {
   id: number;
-  influencerApplicationUrl: string;
-  agencyApplicationUrl: string;
   cooperationApplicationUrl: string;
+  campaignRequestUrl: string;
+  whatsappImage: number | Photo;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certification".
+ */
+export interface Certification {
+  id: number;
+  influencerImage: number | Photo;
+  influencerTitle: string;
+  influencerHeadline: string;
+  influencerContent: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  influencerApplicationUrl: string;
+  influencerApplicationCta: string;
+  agencyImage: number | Photo;
+  agencyTitle: string;
+  agencyHeadline: string;
+  agencyContent: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  agencyApplicationUrl: string;
+  agencyApplicationCta: string;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1394,9 +1512,30 @@ export interface CompanySelect<T extends boolean = true> {
  * via the `definition` "network_select".
  */
 export interface NetworkSelect<T extends boolean = true> {
-  influencerApplicationUrl?: T;
-  agencyApplicationUrl?: T;
   cooperationApplicationUrl?: T;
+  campaignRequestUrl?: T;
+  whatsappImage?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certification_select".
+ */
+export interface CertificationSelect<T extends boolean = true> {
+  influencerImage?: T;
+  influencerTitle?: T;
+  influencerHeadline?: T;
+  influencerContent?: T;
+  influencerApplicationUrl?: T;
+  influencerApplicationCta?: T;
+  agencyImage?: T;
+  agencyTitle?: T;
+  agencyHeadline?: T;
+  agencyContent?: T;
+  agencyApplicationUrl?: T;
+  agencyApplicationCta?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

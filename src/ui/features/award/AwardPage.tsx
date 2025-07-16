@@ -1,15 +1,15 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button } from "@mantine/core";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
+import type { Photo } from "@/payload-types";
 import type {
   AwardRanking,
   AwardShowImpressions,
   CreatorChallenge,
   CurrentAward,
 } from "@/types";
-import { PageHero } from "@/ui/components/PageHero-dep";
+import { PageHero } from "@/ui/components/PageHero";
 
 import { useHeaderContent } from "./hooks";
 import { AwardCategories } from "./views/AwardCategories";
@@ -26,17 +26,15 @@ import { NewcomerScout } from "./views/NewcomerScout";
 const FEATURE_FLAG_VOTING = false;
 
 export interface AwardPageProps {
-  heroImage: Omit<ImageAsset, "id" | "group" | "name">;
+  heroImage: Pick<Photo, "url" | "width" | "height">;
   currentAward: CurrentAward | null;
   challenges: Array<CreatorChallenge>;
   hallOfFame: Array<AwardRanking>;
-  newcomerScoutImage: Omit<ImageAsset, "id" | "group" | "name">;
   pastImpressions: AwardShowImpressions | null;
 }
 
 export function AwardPage({
   heroImage,
-  newcomerScoutImage,
   currentAward,
   pastImpressions,
   hallOfFame,
@@ -104,6 +102,8 @@ export function AwardPage({
               </section>
             ) : null}
             {currentAward.newcomerScoutUrl &&
+            currentAward.newcomerScoutImage &&
+            currentAward.newcomerScoutContent &&
             currentAward.newcomerScoutDeadline &&
             dayjs(currentAward.newcomerScoutDeadline).isAfter() ? (
               <section
@@ -111,7 +111,8 @@ export function AwardPage({
                 className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
               >
                 <NewcomerScout
-                  image={newcomerScoutImage}
+                  content={currentAward.newcomerScoutContent}
+                  image={currentAward.newcomerScoutImage as Photo}
                   deadline={currentAward.newcomerScoutDeadline}
                   formURL={currentAward.newcomerScoutUrl}
                   className="my-auto"

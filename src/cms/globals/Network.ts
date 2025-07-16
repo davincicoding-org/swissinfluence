@@ -1,22 +1,28 @@
 import type { GlobalConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 export const Network: GlobalConfig = {
   slug: "network",
   fields: [
-    {
-      name: "influencerApplicationUrl",
-      type: "text",
-      required: true,
-    },
-    {
-      name: "agencyApplicationUrl",
-      type: "text",
-      required: true,
-    },
     {
       name: "cooperationApplicationUrl",
       type: "text",
       required: true,
     },
+    {
+      name: "campaignRequestUrl",
+      type: "text",
+      required: true,
+    },
+    {
+      name: "whatsappImage",
+      type: "upload",
+      relationTo: "photos",
+      required: true,
+    },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("network")],
+  },
 };

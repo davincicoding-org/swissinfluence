@@ -41,7 +41,7 @@ export function CertifiedInfluencerPage({
         className="snap-start"
         CTA={
           <Flex gap="lg" className="my-auto">
-            {socials.map((social) => (
+            {(socials ?? []).map((social) => (
               <ActionIcon
                 key={social.platform}
                 component="a"

@@ -4,24 +4,17 @@ import Image from "next/image";
 import { Button, Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
+import type { Company } from "@/payload-types";
 import { Link } from "@/i18n/navigation";
-import { type GlobalData } from "@/react-admin/globals";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { cn } from "@/ui/utils";
 
 export interface IFooterProps {
-  company: GlobalData<"company">;
-  contactURL: string;
-  newsletterURL: string;
+  company: Company;
   className?: string;
 }
 
-export function Footer({
-  company,
-  contactURL,
-  newsletterURL,
-  className,
-}: IFooterProps) {
+export function Footer({ company, className }: IFooterProps) {
   const t = useTranslations();
 
   return (
@@ -52,7 +45,7 @@ export function Footer({
           </p>
           <Button
             component="a"
-            href={newsletterURL}
+            href={company.newsletterUrl}
             target="_blank"
             size="xs"
             className="shrink-0 max-sm:basis-full"
@@ -61,7 +54,7 @@ export function Footer({
           </Button>
         </Paper>
         <div className={cn("flex justify-end gap-2 md:w-36")}>
-          {company.socials.map((social) => (
+          {(company.socials ?? []).map((social) => (
             <a
               key={social.platform}
               href={social.url}
@@ -102,7 +95,7 @@ export function Footer({
           className={cn("flex flex-1 flex-wrap gap-x-4 gap-y-1 md:justify-end")}
         >
           <a
-            href={contactURL}
+            href={company.contactUrl}
             target="_blank"
             rel="noopener"
             className="underline-offset-4 hover:underline"

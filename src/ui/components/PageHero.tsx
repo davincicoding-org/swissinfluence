@@ -6,7 +6,7 @@ import type { Photo } from "@/payload-types";
 import { cn } from "@/ui/utils";
 
 export interface IPageHeroProps {
-  image: Photo;
+  image: Pick<Photo, "url" | "width" | "height">;
   title: ReactNode;
   headline?: ReactNode;
   footer?: ReactNode;

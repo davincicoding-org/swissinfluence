@@ -20,5 +20,6 @@ export const getSocialMediaCampaigns = cachedRequest(
       organizer: ensureResolved(campaign.organizer)!,
     }));
   },
-  ["cms"],
+  ["social-media-campaigns"],
+  // ["social-media-campaigns", "brands"],
 );

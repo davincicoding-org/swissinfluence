@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 export const NetworkEvents: CollectionConfig = {
   slug: "network-events",
   labels: {
@@ -86,4 +88,7 @@ export const NetworkEvents: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("network-events")],
+  },
 };

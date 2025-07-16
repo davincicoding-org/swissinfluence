@@ -1,24 +1,22 @@
 import { getLocale } from "next-intl/server";
 
+import type { Photo } from "@/payload-types";
 import { getCategoriesWithCertifiedInfluencers } from "@/server/certified-influencers";
-import { fetchGlobal } from "@/server/globals";
-import { fetchMediaLibrary } from "@/server/media-library";
+import { fetchCertification } from "@/server/globals";
+import { getPage } from "@/server/pages";
 import { CertifiedInfluencersPage as View } from "@/ui/features/network";
 
 export default async function InfluencersPage() {
   const locale = await getLocale();
-  const media = await fetchMediaLibrary();
-  const forms = await fetchGlobal("forms");
+  const page = await getPage("influencers", locale);
+  const certification = await fetchCertification(locale);
   const pool = await getCategoriesWithCertifiedInfluencers(locale);
 
   return (
     <View
-      heroImage={media.NETWORK.INFLUENCERS}
-      influencerImage={media.NETWORK.INFLUENCER_CERTIFICATION}
-      agencyImage={media.NETWORK.AGENCY_CERTIFICATION}
+      heroImage={page.heroImage as Photo}
       pool={pool}
-      influencerForm={forms.influencerApplication}
-      agencyForm={forms.agencyApplication}
+      certification={certification}
     />
   );
 }

@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 import { SocialsField } from "../shared/SocialsField";
 
 export const Experts: CollectionConfig = {
@@ -49,4 +51,7 @@ export const Experts: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("experts")],
+  },
 };

@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 export const Awards: CollectionConfig = {
   slug: "awards",
   admin: {
@@ -29,22 +31,6 @@ export const Awards: CollectionConfig = {
             {
               type: "row",
               fields: [
-                {
-                  type: "group",
-                  label: "Newcomer Scout",
-                  fields: [
-                    {
-                      name: "newcomerScoutDeadline",
-                      label: "Deadline",
-                      type: "date",
-                    },
-                    {
-                      name: "newcomerScoutUrl",
-                      label: "URL",
-                      type: "text",
-                    },
-                  ],
-                },
                 {
                   type: "group",
                   label: "Nomination",
@@ -193,7 +179,39 @@ export const Awards: CollectionConfig = {
             },
           ],
         },
+        {
+          label: "Newcomer Scout",
+          fields: [
+            {
+              name: "newcomerScoutImage",
+              label: "Image",
+              type: "upload",
+              relationTo: "photos",
+              // required: true,
+            },
+            {
+              name: "newcomerScoutDeadline",
+              label: "Deadline",
+              type: "date",
+            },
+            {
+              name: "newcomerScoutUrl",
+              label: "URL",
+              type: "text",
+            },
+            {
+              name: "newcomerScoutContent",
+              type: "richText",
+              label: "Content",
+              localized: true,
+              // required: true,
+            },
+          ],
+        },
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("awards")],
+  },
 };

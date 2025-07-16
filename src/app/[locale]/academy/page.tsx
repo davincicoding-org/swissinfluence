@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
+import type { Photo } from "@/payload-types";
 import { env } from "@/env";
-import { fetchMediaLibrary } from "@/server/media-library";
+import { getPage } from "@/server/pages";
 import { AcademyPage as View } from "@/ui/features/academy";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -16,7 +17,8 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AcademyPage() {
-  const media = await fetchMediaLibrary();
+  const locale = await getLocale();
+  const page = await getPage("academy", locale);
 
-  return <View heroImage={media.ACADEMY.HERO} />;
+  return <View heroImage={page.heroImage as Photo} />;
 }

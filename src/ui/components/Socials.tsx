@@ -5,12 +5,12 @@ import { useMemo } from "react";
 import { ActionIcon, Flex, HoverCard } from "@mantine/core";
 import { IconDotsVertical } from "@tabler/icons-react";
 
-import type { SocialMedia } from "@/database/enums";
+import type { Socials } from "@/payload-types";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
 
 export interface ISocialsProps {
-  items: Array<SocialMedia>;
+  items: NonNullable<Socials>;
   ActionIconProps?: Omit<ActionIconProps, "children" | "className">;
   HoverCardProps?: Omit<HoverCardProps, "children" | "className">;
 }

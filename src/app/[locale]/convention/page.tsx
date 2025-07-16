@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 
+import type { Photo } from "@/payload-types";
 import { env } from "@/env";
 import { getLatestConvention } from "@/server/convention";
-import { fetchMediaLibrary } from "@/server/media-library";
+import { getPage } from "@/server/pages";
 import { ConventionPage as View } from "@/ui/features/convention";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -18,12 +19,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ConventionPage() {
   const locale = await getLocale();
-  const [latestConvention, media] = await Promise.all([
+  const [page, latestConvention] = await Promise.all([
+    getPage("convention", locale),
     getLatestConvention(locale),
-    fetchMediaLibrary(),
   ]);
 
   return (
-    <View heroImage={media.CONVENTION.HERO} convention={latestConvention} />
+    <View heroImage={page.heroImage as Photo} convention={latestConvention} />
   );
 }

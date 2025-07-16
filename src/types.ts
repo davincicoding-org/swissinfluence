@@ -1,4 +1,3 @@
-import type { SocialMedia } from "./database/enums";
 import type * as payloadTypes from "./payload-types";
 
 export interface LatestConvention
@@ -29,7 +28,7 @@ export interface CertifiedInfluencer
       "createdAt" | "updatedAt" | "influencer" | "categories"
     >,
     Pick<payloadTypes.Influencer, "name"> {
-  socials: Array<SocialMedia>;
+  socials: payloadTypes.Socials;
   categories: Array<Pick<payloadTypes.Category, "id" | "name">>;
 }
 

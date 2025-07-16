@@ -1,44 +1,52 @@
-import { getLocale, getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 
-import { fetchGlobal } from "@/server/globals";
-import { fetchMediaLibrary } from "@/server/media-library";
+import type { Photo } from "@/payload-types";
+import { fetchCompany, fetchNetwork } from "@/server/globals";
+import { getPage } from "@/server/pages";
 import { NetworkPage as View } from "@/ui/features/network";
 
 export default async function NetworkPage() {
-  const t = await getTranslations("network");
   const locale = await getLocale();
-  const company = await fetchGlobal("company");
-  const media = await fetchMediaLibrary();
+  const [company, network, page, influencers, campaigns, events, agencies] =
+    await Promise.all([
+      fetchCompany(),
+      fetchNetwork(),
+      getPage("network", locale),
+      getPage("influencers", locale),
+      getPage("campaigns", locale),
+      getPage("events", locale),
+      getPage("agencies", locale),
+    ]);
 
   return (
     <View
-      heroImage={media.NETWORK.HERO}
+      heroImage={page.heroImage as Photo}
       links={[
         {
-          label: t("page.links.influencers"),
-          image: media.NETWORK.INFLUENCERS,
+          label: influencers.title,
+          image: influencers.heroImage as Photo,
           href: `/${locale}/network/influencers`,
           large: true,
         },
         {
-          label: t("page.links.campaigns"),
-          image: media.NETWORK.CAMPAIGNS,
+          label: campaigns.title,
+          image: campaigns.heroImage as Photo,
           href: `/${locale}/network/campaigns`,
         },
         {
-          label: t("page.links.events"),
-          image: media.NETWORK.EVENTS,
+          label: events.title,
+          image: events.heroImage as Photo,
           href: `/${locale}/network/events`,
         },
         {
-          label: t("page.links.agencies"),
-          image: media.NETWORK.AGENCIES,
+          label: agencies.title,
+          image: agencies.heroImage as Photo,
           href: `/${locale}/network/agencies`,
         },
         {
-          label: t("page.links.whatsapp"),
-          image: media.NETWORK.WHATSAPP,
-          href: company.whatsapp,
+          label: "Whatsapp",
+          image: network.whatsappImage as Photo,
+          href: company.whatsappUrl,
           external: true,
         },
       ]}

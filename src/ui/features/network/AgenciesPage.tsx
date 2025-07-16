@@ -1,19 +1,23 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
 import { Paper, Stack } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import type { Agency } from "@/payload-types";
-import { PageHero } from "@/ui/components/PageHero-dep";
-import { RichText } from "@/ui/components/RichText-dep";
+import type { Agency, Page, Photo } from "@/payload-types";
+import { PageHero } from "@/ui/components/PageHero";
+import { RichText } from "@/ui/components/RichText";
 
 import { AgencyTile } from "./views/AgencyTile";
 
 export interface IAgenciesPageProps {
-  heroImage: ImageAsset;
+  heroImage: Photo;
+  content: Page["content"];
   agencies: Array<Agency>;
 }
 
-export function AgenciesPage({ heroImage, agencies }: IAgenciesPageProps) {
+export function AgenciesPage({
+  heroImage,
+  agencies,
+  content,
+}: IAgenciesPageProps) {
   const t = useTranslations("network.agencies");
 
   return (
@@ -26,17 +30,20 @@ export function AgenciesPage({ heroImage, agencies }: IAgenciesPageProps) {
       />
       <main className="relative z-20 snap-start bg-white/80 pb-32 pt-12 backdrop-blur">
         <section className="container">
-          <Paper
-            radius="lg"
-            shadow="xs"
-            withBorder
-            className="bg-neutral-200 p-8"
-          >
-            <RichText
-              className="prose-lg"
-              content={String(t.raw("description"))}
-            />
-          </Paper>
+          {content && (
+            <Paper
+              radius="lg"
+              shadow="xs"
+              withBorder
+              className="bg-neutral-200 p-8"
+            >
+              <RichText
+                className="prose-lg"
+                data={content}
+                enableProse={false}
+              />
+            </Paper>
+          )}
 
           <h3 className="mb-8 mt-16 text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
             {t("list-title")}

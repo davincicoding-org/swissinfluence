@@ -1,13 +1,13 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
 import { useTranslations } from "next-intl";
 
+import type { Photo } from "@/payload-types";
 import type { NetworkEvent } from "@/types";
-import { PageHero } from "@/ui/components/PageHero-dep";
+import { PageHero } from "@/ui/components/PageHero";
 
 import { EventTile } from "./views/EventTile";
 
 export interface IEventsPageProps {
-  heroImage: ImageAsset;
+  heroImage: Photo;
   events: Array<NetworkEvent>;
 }
 

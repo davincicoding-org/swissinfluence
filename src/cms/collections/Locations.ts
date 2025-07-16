@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 export const Locations: CollectionConfig = {
   slug: "locations",
   admin: {
@@ -37,4 +39,7 @@ export const Locations: CollectionConfig = {
       required: true,
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("locations")],
+  },
 };

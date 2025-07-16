@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { revalidateCache } from "@/server/revalidate";
+
 export const SocialMediaCampaigns: CollectionConfig = {
   slug: "social-media-campaigns",
   labels: {
@@ -108,4 +110,7 @@ export const SocialMediaCampaigns: CollectionConfig = {
       ],
     },
   ],
+  hooks: {
+    afterChange: [() => revalidateCache("social-media-campaigns")],
+  },
 };

@@ -1,21 +1,23 @@
 import { getLocale } from "next-intl/server";
 
-import { fetchGlobal } from "@/server/globals";
-import { fetchMediaLibrary } from "@/server/media-library";
+import type { Photo } from "@/payload-types";
+import { fetchNetwork } from "@/server/globals";
+import { getPage } from "@/server/pages";
 import { getSocialMediaCampaigns } from "@/server/social-media-campaigns";
 import { CampaignsPage as View } from "@/ui/features/network";
 
 export default async function CampaignsPage() {
   const locale = await getLocale();
-  const media = await fetchMediaLibrary();
-  const forms = await fetchGlobal("forms");
+  const page = await getPage("campaigns", locale);
+  const forms = await fetchNetwork();
   const campaigns = await getSocialMediaCampaigns(locale);
 
   return (
     <View
-      heroImage={media.NETWORK.CAMPAIGNS}
+      heroImage={page.heroImage as Photo}
+      content={page.content}
       campaigns={campaigns}
-      campaignForm={forms.campaignRequest}
+      campaignForm={forms.campaignRequestUrl}
     />
   );
 }

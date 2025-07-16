@@ -1,16 +1,16 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
 import { type Route } from "next";
 import { useTranslations } from "next-intl";
 
+import type { Photo } from "@/payload-types";
 import { LinkTile } from "@/ui/components/LinkTile";
-import { PageHero } from "@/ui/components/PageHero-dep";
+import { PageHero } from "@/ui/components/PageHero";
 import { cn } from "@/ui/utils";
 
 export interface INetworkPageProps<R extends string> {
-  heroImage: ImageAsset;
+  heroImage: Photo;
   links: Array<{
     label: string;
-    image: ImageAsset;
+    image: Photo;
     href: Route<R> | string;
     large?: boolean;
     external?: boolean;

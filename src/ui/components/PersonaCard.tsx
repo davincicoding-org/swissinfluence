@@ -5,8 +5,7 @@ import Image from "next/image";
 import { ActionIcon, Flex, Paper } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
-import type { SocialMedia } from "@/database/enums";
-import type { ProfilePicture } from "@/payload-types";
+import type { ProfilePicture, Socials } from "@/payload-types";
 import { cn } from "@/ui/utils";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
@@ -17,7 +16,7 @@ export interface IPersonaCardProps {
   description?: string;
   revealed?: boolean;
   image: ProfilePicture;
-  socials?: Array<SocialMedia>;
+  socials?: NonNullable<Socials>;
   compact?: boolean;
   classNames?: {
     name?: string;

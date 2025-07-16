@@ -1,10 +1,8 @@
-import { residenceEnum } from "@/database/schema";
+import type { Canton } from "@/payload-types";
 import { type SupportedLocale } from "@/i18n/config";
 
-export type SwissCantonCode = (typeof residenceEnum.enumValues)[number];
-
 const SwissCantonTranslations: Record<
-  SwissCantonCode,
+  Canton,
   Record<"en" | "de" | "fr" | "it", string>
 > = {
   AG: { en: "Aargau", de: "Aargau", fr: "Argovie", it: "Argovia" },
@@ -60,12 +58,5 @@ const SwissCantonTranslations: Record<
   ZH: { en: "Zurich", de: "Zürich", fr: "Zurich", it: "Zurigo" },
 };
 
-export const getCantonLabel = (
-  code: SwissCantonCode,
-  locale: SupportedLocale,
-) => SwissCantonTranslations[code]![locale];
-
-export const CANTON_CHOICES = residenceEnum.enumValues.map((code) => ({
-  id: code,
-  name: getCantonLabel(code, "en"),
-}));
+export const getCantonLabel = (code: Canton, locale: SupportedLocale) =>
+  SwissCantonTranslations[code][locale];

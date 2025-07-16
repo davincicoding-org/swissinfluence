@@ -72,8 +72,6 @@ export const MESSAGES_SCHEMA = {
       CTA: "short",
     },
     "newcomer-scout": {
-      title: "short",
-      description: "rich",
       CTA: "short",
     },
     "creator-challenges": {
@@ -111,18 +109,6 @@ export const MESSAGES_SCHEMA = {
       title: "short",
       certification: {
         title: "short",
-        influencer: {
-          title: "short",
-          headline: "short",
-          description: "rich",
-          applicationCTA: "short",
-        },
-        agency: {
-          title: "short",
-          headline: "long",
-          description: "rich",
-          applicationCTA: "short",
-        },
       },
       discovery: {
         title: "short",
@@ -131,7 +117,6 @@ export const MESSAGES_SCHEMA = {
     },
     campaigns: {
       title: "short",
-      description: "rich",
       request: {
         title: "short",
         CTA: "short",
@@ -144,7 +129,6 @@ export const MESSAGES_SCHEMA = {
     agencies: {
       title: "short",
       headline: "long",
-      description: "rich",
       "list-title": "short",
       "contact-CTA": "short",
     },

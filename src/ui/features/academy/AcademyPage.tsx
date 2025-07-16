@@ -1,11 +1,11 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import { PageHero } from "@/ui/components/PageHero-dep";
+import type { Photo } from "@/payload-types";
+import { PageHero } from "@/ui/components/PageHero";
 
 export interface IAcademyPageProps {
-  heroImage: ImageAsset;
+  heroImage: Photo;
 }
 
 export function AcademyPage({ heroImage }: IAcademyPageProps) {
@@ -30,7 +30,6 @@ export function AcademyPage({ heroImage }: IAcademyPageProps) {
           </Button>
         }
       />
-      {/*<main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur" />*/}
     </>
   );
 }

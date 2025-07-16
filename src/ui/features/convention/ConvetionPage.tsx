@@ -1,10 +1,10 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
 import { Paper, Spoiler } from "@mantine/core";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 
+import type { Photo } from "@/payload-types";
 import type { LatestConvention } from "@/types";
-import { PageHero } from "@/ui/components/PageHero-dep";
+import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
@@ -13,7 +13,7 @@ import { ConventionPartners } from "./views/ConventionPartners";
 
 export interface IConventionPageProps {
   convention: LatestConvention | null;
-  heroImage: ImageAsset;
+  heroImage: Photo;
 }
 
 export function ConventionPage({

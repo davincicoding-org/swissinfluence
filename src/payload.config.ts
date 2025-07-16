@@ -1,5 +1,5 @@
-import path from "path";
-import { fileURLToPath } from "url";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { resendAdapter } from "@payloadcms/email-resend";
 import {
@@ -39,6 +39,7 @@ import {
   Locations,
   Logos,
   NetworkEvents,
+  Pages,
   Photos,
   ProfilePictures,
   SocialMediaCampaigns,
@@ -50,12 +51,15 @@ import { env } from "@/env";
 import { MESSAGES_SCHEMA } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
 
+import { Certification } from "./cms/globals/Certification";
+import { revalidateCache } from "./server/revalidate";
+
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 // TODO add Static Pages
 // TODO add SEO
-// TODO add Cache Invalidation
+// TODO optimize image loading
 
 export default buildConfig({
   admin: {
@@ -66,19 +70,20 @@ export default buildConfig({
   },
   upload: {
     limits: {
-      fileSize: 12_000_000,
+      fileSize: 10_000_000,
     },
   },
   localization: {
     locales: routing.locales,
-    defaultLocale: "en",
+    defaultLocale: routing.defaultLocale,
   },
-  globals: [Company, Network],
+  globals: [Company, Network, Certification],
   collections: [
     Users,
     Photos,
     Logos,
     ProfilePictures,
+    Pages,
     Categories,
     Influencers,
     Experts,
@@ -128,17 +133,22 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    // storage-adapter-placeholder
     polyglotPlugin({
       schema: MESSAGES_SCHEMA,
       tabs: true,
+      access: {
+        read: () => true,
+        create: ({ req }) => req.user !== null,
+        update: ({ req }) => req.user !== null,
+        delete: ({ req }) => req.user !== null,
+      },
       collection: {
         admin: {
           group: "Global",
         },
-        // hooks: {
-        //   afterUpdate: () => revalidateCache("messages"),
-        // },
+        hooks: {
+          afterUpdate: () => revalidateCache("messages"),
+        },
       },
     }),
     s3Storage({

@@ -25,5 +25,6 @@ export const getLatestConvention = cachedRequest(
       location: ensureResolved(convention.location)!,
     };
   },
-  ["cms"],
+  ["conventions"],
+  // ["conventions", "locations", "brands"],
 );

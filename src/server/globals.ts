@@ -1,35 +1,28 @@
 "use server";
 
-import type { GlobalData, GlobalId } from "@/react-admin/globals";
-import DATA from "@/backup/globals.json";
-import { GLOBALS } from "@/react-admin/globals";
+import type { SupportedLocale } from "@/i18n/config";
+import type { Certification, Company, Network } from "@/payload-types";
 
 import { cachedRequest } from "./cache";
+import { getPayloadClient } from "./payload";
 
-export const fetchGlobal = cachedRequest(
-  async <T extends GlobalId>(name: T): Promise<GlobalData<T>> => {
-    const global = DATA.find((item) => item.name === name);
+export const fetchCompany = cachedRequest(async (): Promise<Company> => {
+  const payload = await getPayloadClient();
 
-    // @ts-expect-error - TODO: fix this
-    return GLOBALS[name].parse(global?.data);
+  return payload.findGlobal({ slug: "company" });
+}, ["company"]);
+
+export const fetchNetwork = cachedRequest(async (): Promise<Network> => {
+  const payload = await getPayloadClient();
+
+  return payload.findGlobal({ slug: "network" });
+}, ["network"]);
+
+export const fetchCertification = cachedRequest(
+  async (locale: SupportedLocale): Promise<Certification> => {
+    const payload = await getPayloadClient();
+
+    return payload.findGlobal({ slug: "certification", locale });
   },
-  ["globals"],
+  ["certification"],
 );
-
-export const fetchGlobals = cachedRequest(async (): Promise<{
-  [K in GlobalId]: GlobalData<K>;
-}> => {
-  const globals = DATA;
-
-  return globals.reduce<{
-    [K in GlobalId]: GlobalData<K>;
-  }>(
-    (acc, { name, data }) => ({
-      ...acc,
-      [name]: GLOBALS[name as GlobalId].parse(data),
-    }),
-    {} as {
-      [K in GlobalId]: GlobalData<K>;
-    },
-  );
-}, ["cms", "globals"]);

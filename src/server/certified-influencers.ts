@@ -42,7 +42,8 @@ export const getCategoriesWithCertifiedInfluencers = cachedRequest(
       influencers: pairs.map((pair) => pair.influencer),
     }));
   },
-  ["cms"],
+  ["certified-influencers"],
+  // ["certified-influencers", "categories", "influencers"],
 );
 
 export const getCertifiedInfluencer = cachedRequest(
@@ -73,5 +74,6 @@ export const getCertifiedInfluencer = cachedRequest(
       categories,
     };
   },
-  ["cms"],
+  ["certified-influencers"],
+  // ["certified-influencers", "categories", "influencers"],
 );

@@ -1,21 +1,23 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
 import { Button, Paper, Stack } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
+import type { Page, Photo } from "@/payload-types";
 import type { SocialMediaCampaign } from "@/types";
-import { PageHero } from "@/ui/components/PageHero-dep";
-import { RichText } from "@/ui/components/RichText-dep";
+import { PageHero } from "@/ui/components/PageHero";
+import { RichText } from "@/ui/components/RichText";
 
 import { CampaignDiscovery } from "./views/CampaignDiscovery";
 
 export interface ICampaignsPageProps {
-  heroImage: ImageAsset;
+  heroImage: Photo;
+  content: Page["content"];
   campaigns: Array<SocialMediaCampaign>;
   campaignForm: string;
 }
 
 export function CampaignsPage({
   heroImage,
+  content,
   campaigns,
   campaignForm,
 }: ICampaignsPageProps) {
@@ -26,17 +28,20 @@ export function CampaignsPage({
       <PageHero image={heroImage} title={t("title")} className="snap-start" />
       <main className="relative z-20 snap-start bg-white/80 pb-32 pt-12 backdrop-blur">
         <Stack component="section" className="container" gap="xl">
-          <Paper
-            withBorder
-            shadow="sm"
-            radius="lg"
-            className="container bg-neutral-200 p-4"
-          >
-            <RichText
-              content={String(t.raw("description"))}
-              className="prose-xl"
-            />
-          </Paper>
+          {content && (
+            <Paper
+              withBorder
+              shadow="sm"
+              radius="lg"
+              className="container bg-neutral-200 p-4"
+            >
+              <RichText
+                data={content}
+                className="prose-xl"
+                enableProse={false}
+              />
+            </Paper>
+          )}
 
           <CampaignDiscovery campaigns={campaigns} />
 

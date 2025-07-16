@@ -26,5 +26,6 @@ export const getNetworkEvents = cachedRequest(
       location: ensureResolved(event.location)!,
     }));
   },
-  ["cms"],
+  ["network-events"],
+  // ["network-events", "locations"],
 );

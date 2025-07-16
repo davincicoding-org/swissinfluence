@@ -1,27 +1,16 @@
-import IMAGES from "@/backup/images.json";
-import VIDEOS from "@/backup/videos.json";
+import { getLocale } from "next-intl/server";
+
+import { getPage } from "@/server/pages";
 import { LandingPage as View } from "@/ui/features/landing";
 
 export default async function LandingPage() {
-  return (
-    <View
-      heroVideo={
-        VIDEOS.find((item) => item.name === "HERO" && item.group === "LANDING")!
-      }
-      images={{
-        award: IMAGES.find(
-          (item) => item.name === "HERO" && item.group === "AWARD",
-        )!,
-        convention: IMAGES.find(
-          (item) => item.name === "HERO" && item.group === "CONVENTION",
-        )!,
-        network: IMAGES.find(
-          (item) => item.name === "HERO" && item.group === "NETWORK",
-        )!,
-        academy: IMAGES.find(
-          (item) => item.name === "HERO" && item.group === "ACADEMY",
-        )!,
-      }}
-    />
-  );
+  const locale = await getLocale();
+  const pages = await Promise.all([
+    getPage("award", locale),
+    getPage("convention", locale),
+    getPage("network", locale),
+    getPage("academy", locale),
+  ]);
+
+  return <View heroVideo="hero.mp4" pages={pages} />;
 }

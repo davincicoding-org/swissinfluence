@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getLocale, getTranslations } from "next-intl/server";
 
+import type { Photo } from "@/payload-types";
 import { env } from "@/env";
 import {
   getCreatorChallenges,
@@ -8,7 +9,7 @@ import {
   getHallOfFame,
   getPastImpressions,
 } from "@/server/award";
-import { fetchMediaLibrary } from "@/server/media-library";
+import { getPage } from "@/server/pages";
 import { AwardPage as View } from "@/ui/features/award";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -22,9 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function AwardPage() {
   const locale = await getLocale();
-  const [media, currentAward, challenges, pastImpressions, hallOfFame] =
+  const [page, currentAward, challenges, pastImpressions, hallOfFame] =
     await Promise.all([
-      fetchMediaLibrary(),
+      getPage("award", locale),
       getCurrentAward(locale),
       getCreatorChallenges(locale),
       getPastImpressions(),
@@ -33,8 +34,7 @@ export default async function AwardPage() {
 
   return (
     <View
-      heroImage={media.AWARD.HERO}
-      newcomerScoutImage={media.AWARD.NEWCOMER_SCOUT}
+      heroImage={page.heroImage as Photo}
       currentAward={currentAward}
       challenges={challenges}
       hallOfFame={hallOfFame}

@@ -1,15 +1,17 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
 import Image from "next/image";
 import { Button, Paper, ScrollArea } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import { RichText } from "@/ui/components/RichText-dep";
+import type { Photo } from "@/payload-types";
+import type { RichTextProps } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
 import { cn } from "@/ui/utils";
 
 export interface IAwardNominationProps {
   deadline: string;
-  image: Omit<ImageAsset, "id" | "group" | "name">;
+  image: Photo;
+  content: RichTextProps["data"];
   formURL: string;
   className?: string;
 }
@@ -17,6 +19,7 @@ export interface IAwardNominationProps {
 export function NewcomerScout({
   deadline,
   formURL,
+  content,
   image,
   className,
 }: IAwardNominationProps) {
@@ -37,10 +40,10 @@ export function NewcomerScout({
         className="relative flex aspect-square flex-col gap-2 bg-neutral-400 shadow-sm lg:order-2"
       >
         <Image
-          src={image.src}
+          src={image.url ?? ""}
           alt="Newcomer Scout"
-          width={image.width}
-          height={image.height}
+          width={image.width ?? 0}
+          height={image.height ?? 0}
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
 
@@ -77,13 +80,10 @@ export function NewcomerScout({
         }}
       >
         <div className="grid">
-          <h3 className="px-4 py-6 pb-0 text-2xl font-light uppercase tracking-wider lg:px-8">
-            {t("title")}
-          </h3>
-
           <RichText
             className="prose-lg min-w-0 max-w-full shrink text-pretty px-4 py-6 leading-snug lg:px-8"
-            content={String(t.raw("description") ?? "")}
+            enableProse={false}
+            data={content}
           />
           <div className="m-4 mt-0 grid gap-2 lg:hidden">
             <Button

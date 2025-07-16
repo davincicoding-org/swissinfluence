@@ -15,7 +15,7 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 
 import { env } from "@/env";
 import { routing } from "@/i18n/routing";
-import { fetchGlobals } from "@/server/globals";
+import { fetchCompany } from "@/server/globals";
 import { theme } from "@/ui/theme";
 import { cn } from "@/ui/utils";
 
@@ -44,9 +44,9 @@ export default async function LocaleLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocale();
-  const [messages, globals, t] = await Promise.all([
+  const [messages, company, t] = await Promise.all([
     getMessages(),
-    fetchGlobals(),
+    fetchCompany(),
     getTranslations("navigation"),
   ]);
 
@@ -151,12 +151,7 @@ export default async function LocaleLayout({
               ]}
             />
             {children}
-            <Footer
-              className="snap-end"
-              company={globals.company}
-              contactURL={globals.forms.contact}
-              newsletterURL={globals.forms.newsletter}
-            />
+            <Footer className="snap-end" company={company} />
           </NextIntlClientProvider>
         </MantineProvider>
         <SpeedInsights />
