@@ -6,7 +6,7 @@ import { Button, FocusTrap, Modal, Paper } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useTranslations } from "next-intl";
 
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
 export interface ICertificationRegistrationProps {

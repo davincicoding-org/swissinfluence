@@ -16,7 +16,7 @@ import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
 import type { NetworkEvent } from "@/types";
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
 export interface IEventTileProps {

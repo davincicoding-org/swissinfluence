@@ -16,6 +16,8 @@ export const ScheduleField: ArrayField = {
             width: "55%",
           },
           required: true,
+          localized: true,
+          defaultValue: "Title",
         },
         {
           name: "from",

@@ -1,15 +1,16 @@
 "use client";
 
-import type { ImageAsset } from "@davincicoding/cms/image";
 import Image from "next/image";
 import { Flex, Paper } from "@mantine/core";
 import Marquee from "react-fast-marquee";
 
+import type { Photo } from "@/payload-types";
 import { cn } from "@/ui/utils";
+import { ensureResolvedArray } from "@/utils/payload";
 
 export interface IAwardImpressionsProps {
   video: string;
-  images: Array<Omit<ImageAsset, "id" | "name">>;
+  images: Array<Photo>;
   className?: string;
 }
 
@@ -38,15 +39,15 @@ export function AwardImpressions({
       </a>
       <Marquee pauseOnHover autoFill>
         <Flex className="h-64" wrap="nowrap">
-          {images.map((image, index) => (
+          {ensureResolvedArray(images).map((image, index) => (
             <Image
               alt={`Award impression ${index + 1}`}
-              key={image.src}
-              src={image.src}
-              height={image.height}
-              width={image.width}
-              blurDataURL={image.blurDataURL}
-              placeholder={image.blurDataURL ? "blur" : undefined}
+              key={image.id}
+              src={image.url ?? ""}
+              height={image.height ?? 0}
+              width={image.width ?? 0}
+              // blurDataURL={image.blurDataURL}
+              // placeholder={image.blurDataURL ? "blur" : undefined}
               className="h-full w-auto shrink-0 snap-center md:snap-end"
             />
           ))}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { env } from "@/env";
 import {
@@ -21,13 +21,14 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function AwardPage() {
+  const locale = await getLocale();
   const [media, currentAward, challenges, pastImpressions, hallOfFame] =
     await Promise.all([
       fetchMediaLibrary(),
-      getCurrentAward(),
+      getCurrentAward(locale),
       getCreatorChallenges(),
       getPastImpressions(),
-      getHallOfFame(),
+      getHallOfFame(locale),
     ]);
 
   return (

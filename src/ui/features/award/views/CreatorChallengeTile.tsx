@@ -5,7 +5,7 @@ import { useLocale } from "next-intl";
 
 import type { CreatorChallenge } from "@/types";
 import { ExpandableCard } from "@/ui/components/ExpandableCard";
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 
 export interface ICreatorChallengeTileProps {
   data: CreatorChallenge;

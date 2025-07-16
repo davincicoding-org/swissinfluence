@@ -4,20 +4,18 @@ import Image from "next/image";
 import { Carousel } from "@mantine/carousel";
 import { Badge, Center, Paper, ScrollArea, Tabs } from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
-import { useLocale } from "next-intl";
 
 import type { AwardRanking } from "@/types";
 import { Socials } from "@/ui/components/Socials";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
 import { cn } from "@/ui/utils";
+import { ensureResolved } from "@/utils/payload";
 
 export interface IHallOfFameProps {
   awards: Array<AwardRanking>;
 }
 
 export function HallOfFame({ awards }: IHallOfFameProps) {
-  const locale = useLocale();
-
   return (
     <div>
       <Tabs
@@ -71,7 +69,7 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
                     radius="md"
                     className="text-medium text-wrap bg-mocha-700 text-xl font-normal tracking-widest"
                   >
-                    {category.title[locale]}
+                    {category.name}
                   </Badge>
                 </Center>
 
@@ -90,61 +88,67 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
                     }
                     draggable={nominees.length > 1}
                   >
-                    {nominees.map(({ influencer }, index) => (
-                      <Carousel.Slide key={influencer.id}>
-                        <Paper
-                          shadow="xs"
-                          withBorder
-                          radius={0}
-                          className={cn(
-                            "relative aspect-square overflow-hidden",
-                          )}
-                        >
-                          <Image
-                            src={influencer.image.src}
-                            width={influencer.image.width}
-                            height={influencer.image.height}
-                            alt={influencer.name}
-                            placeholder={
-                              influencer.image.blurDataURL ? "blur" : undefined
-                            }
-                            blurDataURL={influencer.image.blurDataURL}
-                            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                          />
+                    {nominees.map((influencer, index) => {
+                      const image = ensureResolved(influencer.image);
+                      if (!image) return null;
 
-                          <div
+                      return (
+                        <Carousel.Slide key={influencer.id}>
+                          <Paper
+                            shadow="xs"
+                            withBorder
+                            radius={0}
                             className={cn(
-                              "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
+                              "relative aspect-square overflow-hidden",
                             )}
                           >
-                            <div className="flex w-full min-w-0 items-end justify-between gap-2">
-                              <div className="min-w-0">
-                                <p
-                                  className={cn(
-                                    "text-pretty px-4 font-medium uppercase leading-relaxed tracking-wider text-mocha-300",
-                                  )}
-                                >
-                                  {index === 0
-                                    ? "Winner"
-                                    : `${index + 1}. Place`}
-                                </p>
-                                <TextOverflowReveal
-                                  text={influencer.name}
-                                  classNames={{
-                                    root: "mb-1",
-                                    text: cn(
-                                      "pl-4 text-xl font-medium leading-none tracking-widest text-white",
-                                    ),
-                                  }}
-                                />
+                            <Image
+                              src={image.url ?? ""}
+                              width={image.width ?? 0}
+                              height={image.height ?? 0}
+                              alt={influencer.name}
+                              // placeholder={
+                              //   image.blurDataURL
+                              //     ? "blur"
+                              //     : undefined
+                              // }
+                              // blurDataURL={image.blurDataURL}
+                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            />
+
+                            <div
+                              className={cn(
+                                "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
+                              )}
+                            >
+                              <div className="flex w-full min-w-0 items-end justify-between gap-2">
+                                <div className="min-w-0">
+                                  <p
+                                    className={cn(
+                                      "text-pretty px-4 font-medium uppercase leading-relaxed tracking-wider text-mocha-300",
+                                    )}
+                                  >
+                                    {index === 0
+                                      ? "Winner"
+                                      : `${index + 1}. Place`}
+                                  </p>
+                                  <TextOverflowReveal
+                                    text={influencer.name}
+                                    classNames={{
+                                      root: "mb-1",
+                                      text: cn(
+                                        "pl-4 text-xl font-medium leading-none tracking-widest text-white",
+                                      ),
+                                    }}
+                                  />
+                                </div>
+                                <Socials items={influencer.socials ?? []} />
                               </div>
-                              {/* @ts-expect-error - FIXME */}
-                              <Socials items={influencer.socials} />
                             </div>
-                          </div>
-                        </Paper>
-                      </Carousel.Slide>
-                    ))}
+                          </Paper>
+                        </Carousel.Slide>
+                      );
+                    })}
                   </Carousel>
                 </Paper>
               </div>

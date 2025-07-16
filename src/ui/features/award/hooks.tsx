@@ -4,11 +4,11 @@ import { Button } from "@mantine/core";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
-import type { Award } from "@/types";
+import type { CurrentAward } from "@/types";
 
 import { AwardCountdown } from "./views/AwardCountdown";
 
-export const useHeaderContent = (data: Award | null) => {
+export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");
 
   return useMemo<{
@@ -125,17 +125,13 @@ export const useHeaderContent = (data: Award | null) => {
       };
 
     // POST_SHOW
-    if (
-      !data.categories?.every(({ nominees }) =>
-        nominees.some(({ ranking }) => ranking !== null),
-      )
-    )
+    if (!data.categories?.every(({ ranked }) => ranked))
       return {
         headline: t("post-show.headline"),
       };
 
     // AWARDED
-    if (!data.show?.impressions)
+    if (!data.show?.images.length)
       return {
         headline: t("awarded.headline"),
         cta: (

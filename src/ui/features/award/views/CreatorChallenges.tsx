@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 
 import type { CreatorChallenge } from "@/types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
 import { CreatorChallengeTile } from "./CreatorChallengeTile";

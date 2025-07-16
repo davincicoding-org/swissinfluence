@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button, Paper, ScrollArea } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 import { TimeLeft } from "@/ui/components/TimeLeft";
 import { cn } from "@/ui/utils";
 

@@ -10,6 +10,7 @@ import Marquee from "react-fast-marquee";
 import type { AwardCategory } from "@/types";
 import { PersonaCard } from "@/ui/components/PersonaCard";
 import { cn } from "@/ui/utils";
+import { ensureResolved } from "@/utils/payload";
 
 export interface AwardCategoriesProps {
   className?: string;
@@ -97,8 +98,8 @@ function CategoryCard({
     >
       <div className="relative">
         <Image
-          src={category.image.src}
-          alt={category.title[locale]}
+          src={ensureResolved(category.image)?.url ?? ""}
+          alt={category.name}
           fill
           className="absolute inset-0 object-cover object-center"
         />
@@ -110,7 +111,7 @@ function CategoryCard({
         >
           <div className="shrink">
             <h3 className="text-wrap text-3xl font-medium text-white md:text-5xl">
-              {category.title[locale]}
+              {category.name}
             </h3>
             {sponsor && (
               <p className="text-sm text-gray-200 md:text-lg">
@@ -118,12 +119,12 @@ function CategoryCard({
               </p>
             )}
           </div>
-          {sponsor && (
+          {sponsor && typeof sponsor.logo === "object" && (
             <Image
-              src={sponsor.image.src}
+              src={sponsor.logo.url ?? ""}
               alt={sponsor.name}
-              width={sponsor.image.width}
-              height={sponsor.image.height}
+              width={sponsor.logo.width ?? 0}
+              height={sponsor.logo.height ?? 0}
               className={cn("h-auto max-h-20 w-auto min-w-0 max-w-32 shrink")}
             />
           )}
@@ -131,13 +132,12 @@ function CategoryCard({
       </div>
       {nominees.length > 0 && (
         <Marquee className="py-6 md:py-8" play={isTop} pauseOnHover>
-          {nominees.map(({ influencer }) => (
+          {nominees.map((influencer) => (
             <PersonaCard
               key={influencer.id}
               name={influencer.name}
-              image={influencer.image}
-              // @ts-expect-error - FIXME
-              socials={influencer.socials}
+              image={ensureResolved(influencer.image)!}
+              socials={influencer.socials ?? []}
               className="ml-6 h-64 w-64 md:ml-8"
             />
           ))}

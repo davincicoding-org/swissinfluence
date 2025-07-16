@@ -541,7 +541,7 @@ export interface ProfilePicture {
  */
 export interface Category {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   image: number | Photo;
   name: string;
   updatedAt: string;
@@ -553,7 +553,7 @@ export interface Category {
  */
 export interface Influencer {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   name: string;
   socials?: Socials;
   image: number | ProfilePicture;
@@ -566,7 +566,7 @@ export interface Influencer {
  */
 export interface Expert {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   name: string;
   description: string;
   socials?: Socials;
@@ -580,7 +580,7 @@ export interface Expert {
  */
 export interface Brand {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   logo: number | Logo;
   name: string;
   website: string;
@@ -593,7 +593,7 @@ export interface Brand {
  */
 export interface Location {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   name: string;
   city: string;
   url: string;
@@ -606,7 +606,7 @@ export interface Location {
  */
 export interface Award {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   year: number;
   newcomerScoutDeadline?: string | null;
   newcomerScoutUrl?: string | null;
@@ -618,6 +618,7 @@ export interface Award {
         category: number | Category;
         sponsor?: (number | null) | Brand;
         winnerImage?: (number | null) | ProfilePicture;
+        ranked?: boolean | null;
         nominees?:
           | {
               influencer: number | Influencer;
@@ -648,7 +649,7 @@ export interface Award {
  */
 export interface AwardShow {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   award: number | Award;
   date?: string | null;
   location: number | Location;
@@ -665,7 +666,7 @@ export interface AwardShow {
  */
 export interface CreatorChallenge {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   image: number | Photo;
   organizer: number | Brand;
   location?: (number | null) | Location;
@@ -697,7 +698,7 @@ export interface CreatorChallenge {
  */
 export interface SocialMediaCampaign {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   image: number | Photo;
   organizer: number | Brand;
   location?: (number | null) | Location;
@@ -729,7 +730,7 @@ export interface SocialMediaCampaign {
  */
 export interface NetworkEvent {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   logo: number | Logo;
   image: number | Photo;
   location: number | Location;
@@ -761,7 +762,7 @@ export interface NetworkEvent {
  */
 export interface CertifiedInfluencer {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   image: number | Photo;
   categories: (number | Category)[];
   birthdate: string;
@@ -779,7 +780,7 @@ export interface CertifiedInfluencer {
  */
 export interface Agency {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   logo: number | Logo;
   image: number | Photo;
   name: string;
@@ -795,7 +796,7 @@ export interface Agency {
  */
 export interface Convention {
   id: number;
-  legacyId: number;
+  legacyId?: number | null;
   title: string;
   date: string;
   location: number | Location;
@@ -1156,6 +1157,7 @@ export interface AwardsSelect<T extends boolean = true> {
         category?: T;
         sponsor?: T;
         winnerImage?: T;
+        ranked?: T;
         nominees?:
           | T
           | {

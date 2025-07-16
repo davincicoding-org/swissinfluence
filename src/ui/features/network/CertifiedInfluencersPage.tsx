@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import type { CategoryWithInfluencers } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
 import { CertificationRegistration } from "./views/CertificationRegistration";

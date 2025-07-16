@@ -1,12 +1,12 @@
 "use client";
 
-import type { ImageAsset } from "@davincicoding/cms/image";
 import type { PaperProps } from "@mantine/core";
 import Image from "next/image";
 import { ActionIcon, Flex, Paper } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 import type { SocialMedia } from "@/database/enums";
+import type { ProfilePicture } from "@/payload-types";
 import { cn } from "@/ui/utils";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
@@ -16,7 +16,7 @@ export interface IPersonaCardProps {
   name: string;
   description?: string;
   revealed?: boolean;
-  image: Omit<ImageAsset, "id" | "name">;
+  image: ProfilePicture;
   socials?: Array<SocialMedia>;
   compact?: boolean;
   classNames?: {
@@ -47,11 +47,11 @@ export function PersonaCard({
       {...paperProps}
     >
       <Image
-        src={image.src}
-        width={image.width}
-        height={image.height}
-        placeholder={image.blurDataURL ? "blur" : undefined}
-        blurDataURL={image.blurDataURL}
+        src={image.url ?? ""}
+        width={image.width ?? 0}
+        height={image.height ?? 0}
+        // placeholder={image.blurDataURL ? "blur" : undefined}
+        // blurDataURL={image.blurDataURL}
         alt={name}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
       />

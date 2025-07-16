@@ -1,23 +1,23 @@
-import type { ImageAsset } from "@davincicoding/cms/image";
-
 import type * as db from "@/database/schema";
 
 import type { SocialMedia } from "./database/enums";
+import type {
+  Award,
+  AwardShow,
+  Brand,
+  Category,
+  Convention,
+  Expert,
+  Influencer,
+  Location,
+  Photo,
+  ProfilePicture,
+} from "./payload-types";
 
-export type Brand = typeof db.brands.$inferSelect;
-export type Category = typeof db.categories.$inferSelect;
-
-export type Expert = typeof db.experts.$inferSelect;
-
-export type Influencer = typeof db.influencers.$inferSelect;
-
-export interface Convention
-  extends Pick<
-    typeof db.conventions.$inferSelect,
-    "date" | "tickets" | "schedule"
-  > {
-  partners: Array<typeof db.brands.$inferSelect>;
-  location: Omit<typeof db.locations.$inferSelect, "id">;
+export interface LatestConvention
+  extends Pick<Convention, "date" | "registrationUrl" | "schedule"> {
+  partners: Array<Brand>;
+  location: Location;
 }
 
 export interface NetworkEvent
@@ -71,58 +71,45 @@ export interface SocialMediaCampaign
 
 // MARK: Award
 
-export interface AwardShowImpressions
-  extends Pick<typeof db.awards.$inferSelect, "year"> {
-  impressions: Array<ImageAsset>;
-  video: string;
+export interface AwardShowImpressions {
+  year: number;
+  images: Array<Photo>;
+  videoUrl: string;
 }
 
-export interface Award
-  extends Pick<
-    typeof db.awards.$inferSelect,
-    | "year"
-    | "nominationDeadline"
-    | "nominationUrl"
-    | "newcomerScoutDeadline"
-    | "newcomerScoutUrl"
-    | "votingDeadline"
+export interface CurrentAward
+  extends Omit<
+    Award,
+    "updatedAt" | "createdAt" | "jury" | "partners" | "categories"
   > {
   jury: Array<Expert>;
-  partners: Array<typeof db.brands.$inferSelect>;
+  partners: Array<Brand>;
   categories: Array<AwardCategory>;
-  show: AwardShow | null;
-  // ranked?: boolean;
+  show: CurrentAwardShow | null;
+}
+
+export interface CurrentAwardShow
+  extends Omit<AwardShow, "award" | "updatedAt" | "createdAt" | "location"> {
+  location: Location;
+  images: Array<Photo>;
 }
 
 export interface AwardCategory {
+  ranked: boolean;
   category: Category;
   sponsor: Brand | null;
-  winner: ImageAsset | null;
-  nominees: Array<AwardNominee>;
+  winnerImage: ProfilePicture | null;
+  nominees: Array<Influencer>;
 }
 
-export interface AwardNominee {
-  influencer: Influencer;
-  ranking: number | null;
-}
-
-export interface AwardShow
-  extends Pick<
-    typeof db.awardShows.$inferSelect,
-    "date" | "schedule" | "tickets" | "impressions" | "video"
-  > {
-  location: Omit<typeof db.locations.$inferSelect, "id">;
-}
-
-export interface AwardRanking
-  extends Pick<typeof db.awards.$inferSelect, "year"> {
+export interface AwardRanking extends Pick<Award, "year"> {
   categories: Array<AwardCategoryRanking>;
 }
 
 export interface AwardCategoryRanking {
-  category: Pick<typeof db.categories.$inferSelect, "id" | "title">;
-  winner: Omit<ImageAsset, "id" | "name"> | null;
-  nominees: Array<AwardNominee>;
+  category: Pick<Category, "id" | "name">;
+  winnerImage: ProfilePicture | null;
+  nominees: Array<Influencer>;
 }
 
 export interface CreatorChallenge

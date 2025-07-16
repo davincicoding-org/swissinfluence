@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import type { SocialMediaCampaign } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 
 import { CampaignDiscovery } from "./views/CampaignDiscovery";
 

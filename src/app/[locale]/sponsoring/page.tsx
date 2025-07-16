@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 
 export default async function SponsoringPage() {
   const t = await getTranslations("sponsoring");

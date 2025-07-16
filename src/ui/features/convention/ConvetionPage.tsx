@@ -3,16 +3,16 @@ import { Paper, Spoiler } from "@mantine/core";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 
-import type { Convention } from "@/types";
+import type { LatestConvention } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
 import { ConventionEvent } from "./views/ConventionEvent";
 import { ConventionPartners } from "./views/ConventionPartners";
 
 export interface IConventionPageProps {
-  convention: Convention | null;
+  convention: LatestConvention | null;
   heroImage: ImageAsset;
 }
 

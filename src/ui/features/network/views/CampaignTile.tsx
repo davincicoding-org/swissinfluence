@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import type { SocialMediaCampaign } from "@/types";
 import { ExpandableCard } from "@/ui/components/ExpandableCard";
-import { RichText } from "@/ui/components/RichText";
+import { RichText } from "@/ui/components/RichText-dep";
 
 export interface ICampaignTileProps {
   data: SocialMediaCampaign;

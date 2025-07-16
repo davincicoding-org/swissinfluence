@@ -1,19 +1,29 @@
-import type { Convention } from "@/types";
-import DATA from "@/backup/latest-convention.json";
+import type { SupportedLocale } from "@/i18n/config";
+import type { LatestConvention } from "@/types";
+import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
 import { cachedRequest } from "./cache";
+import { getPayloadClient } from "./payload";
 
-export const getLatestConvention =
-  cachedRequest(async (): Promise<Convention | null> => {
-    if (!DATA) return null;
+export const getLatestConvention = cachedRequest(
+  async (locale: SupportedLocale): Promise<LatestConvention | null> => {
+    const payload = await getPayloadClient();
+
+    const {
+      docs: [convention],
+    } = await payload.find({
+      collection: "conventions",
+      sort: "-date",
+      locale,
+      limit: 1,
+    });
+    if (!convention) return null;
 
     return {
-      ...DATA,
-      schedule: DATA.schedule.map((item) => ({
-        ...item,
-        start: new Date(item.start),
-        end: new Date(item.end),
-      })),
-      partners: DATA.partners.map((partner) => partner.brand),
+      ...convention,
+      partners: ensureResolvedArray(convention.partners),
+      location: ensureResolved(convention.location)!,
     };
-  }, ["cms"]);
+  },
+  ["cms"],
+);

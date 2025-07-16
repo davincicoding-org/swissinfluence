@@ -1,18 +1,28 @@
-import { cn } from "@/ui/utils";
+import type { DefaultTypedEditorState } from "@payloadcms/richtext-lexical";
+import { RichText as ConvertRichText } from "@payloadcms/richtext-lexical/react";
 
-export interface IRichTextProps {
-  content: string;
-  className?: string;
-}
+import { cn } from "../utils";
 
-export function RichText({ content, className }: IRichTextProps) {
+export type RichTextProps = {
+  data: DefaultTypedEditorState;
+  enableProse?: boolean;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+export function RichText({
+  className,
+  enableProse = true,
+  ...rest
+}: RichTextProps) {
   return (
-    <div
+    <ConvertRichText
       className={cn(
-        "prose-h1:font-light prose-h2:font-light prose-h3:font-light prose-h4:font-medium prose-h5:font-medium prose-h6:font-medium prose-a:font-medium prose-a:text-mocha-500 prose-a:underline-offset-2 hover:prose-a:underline prose-strong:text-inherit prose-ol:mt-0 prose-ol:list-decimal prose-ul:mt-0 prose-ul:list-disc prose-li:marker:text-inherit [&_li>p]:my-0",
+        "payload-richtext",
+        {
+          "md:prose-md prose mx-auto": enableProse,
+        },
         className,
       )}
-      dangerouslySetInnerHTML={{ __html: content }}
+      {...rest}
     />
   );
 }

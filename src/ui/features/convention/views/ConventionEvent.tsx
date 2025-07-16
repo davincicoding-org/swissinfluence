@@ -1,18 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { Accordion, Paper, ScrollArea, Space } from "@mantine/core";
+import { Paper, Space } from "@mantine/core";
 import { IconCalendar, IconMapPin } from "@tabler/icons-react";
 import dayjs from "dayjs";
-import { AnimatePresence, motion } from "motion/react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
-import type { Convention } from "@/types";
-import { RichText } from "@/ui/components/RichText";
+import type { LatestConvention } from "@/types";
+import { Schedule } from "@/ui/components/Schedule";
 import { cn } from "@/ui/utils";
 
 export interface IConventionEventProps {
-  convention: Omit<Convention, "partners">;
+  convention: Omit<LatestConvention, "partners">;
   className?: string;
   id?: string;
 }
@@ -22,18 +20,15 @@ export function ConventionEvent({
   className,
   id,
 }: IConventionEventProps) {
-  const locale = useLocale();
   // FIXME: use correct translations
   const t = useTranslations("award.show");
-
-  const [activeSection, setActiveSection] = useState(0);
 
   return (
     <section
       id={id}
       className={cn(
         "container flex max-w-4xl flex-col py-24 sm:py-32",
-        { "min-h-screen": convention.schedule.length },
+        { "min-h-screen": convention.schedule?.length },
         className,
       )}
     >
@@ -67,7 +62,7 @@ export function ConventionEvent({
           radius="md"
           className="grid flex-1 overflow-clip bg-neutral-200 transition-transform active:scale-95 md:flex md:items-center"
           component="a"
-          href={convention.location.maps}
+          href={convention.location.url}
           target="_blank"
         >
           <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
@@ -79,19 +74,19 @@ export function ConventionEvent({
           </div>
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
             <h3 className="text-xl font-light uppercase tracking-wider">
-              {convention.location.title}
+              {convention.location.name}
             </h3>
             <p className="uppercase max-md:text-sm">
               {convention.location.city}
             </p>
           </div>
         </Paper>
-        {convention.tickets && (
+        {convention.registrationUrl && (
           <Paper
             shadow="sm"
             radius="md"
             component="a"
-            href={convention.tickets ?? undefined}
+            href={convention.registrationUrl}
             target="_blank"
             className={cn(
               "col-span-2 flex flex-1 cursor-pointer items-center justify-center overflow-clip bg-mocha-500 p-3 text-2xl uppercase tracking-wider text-white transition-all hover:bg-mocha-300 active:scale-95",
@@ -102,99 +97,10 @@ export function ConventionEvent({
         )}
       </div>
 
-      {convention.schedule.length > 0 && (
+      {convention.schedule && convention.schedule.length > 0 && (
         <>
           <Space h="lg" />
-
-          <Paper
-            radius="md"
-            className="mb-auto overflow-clip bg-neutral-200 md:hidden"
-          >
-            <Accordion>
-              {convention.schedule.map((slot, index) => (
-                <Accordion.Item
-                  key={slot.title.en}
-                  value={index.toString()}
-                  className="border-b-2 last:border-none"
-                >
-                  <Accordion.Control className="active:bg-transparent">
-                    <div className="mb-1 flex items-center gap-2">
-                      <h4 className="text-lg leading-none text-mocha-500">
-                        {`${dayjs(slot.start).format("HH:mm")} - ${dayjs(slot.end).format("HH:mm")}`}
-                      </h4>
-                      <span className="leading-none text-neutral-500">
-                        {slot.room}
-                      </span>
-                    </div>
-                    <h4 className="text-nowrap text-xl font-medium leading-none">
-                      {slot.title[locale]}
-                    </h4>
-                  </Accordion.Control>
-                  <Accordion.Panel className="bg-white">
-                    <RichText
-                      className="prose-lg prose-li:m-0"
-                      content={String(slot.description[locale])}
-                    />
-                  </Accordion.Panel>
-                </Accordion.Item>
-              ))}
-            </Accordion>
-          </Paper>
-
-          <Paper
-            shadow="sm"
-            radius="md"
-            className="mb-auto grid h-80 grid-cols-[2fr,3fr] grid-rows-1 overflow-clip bg-white max-md:hidden"
-          >
-            <ScrollArea type="never" className="bg-neutral-200 shadow">
-              {convention.schedule.map((slot, index) => (
-                <div
-                  key={slot.title.en}
-                  className={cn(
-                    "border-b-2 border-neutral-300 px-4 py-3 last:border-none",
-                    {
-                      "bg-mocha-200": activeSection === index,
-                    },
-                  )}
-                  onMouseEnter={() => setActiveSection(index)}
-                >
-                  <div className="mb-1 flex items-center justify-between gap-2">
-                    <h4 className="text-lg leading-none text-mocha-500">
-                      {`${dayjs(slot.start).format("HH:mm")} - ${dayjs(slot.end).format("HH:mm")}`}
-                    </h4>
-                    <span className="text-sm text-neutral-500">
-                      {slot.room}
-                    </span>
-                  </div>
-
-                  <h4 className="text-nowrap text-xl font-medium leading-none">
-                    {slot.title[locale]}
-                  </h4>
-                </div>
-              ))}
-            </ScrollArea>
-            <ScrollArea
-              className="my-auto h-full"
-              classNames={{ viewport: "p-3" }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeSection}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <RichText
-                    className="prose-lg prose-li:m-0"
-                    content={String(
-                      convention.schedule[activeSection]?.description[locale],
-                    )}
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </ScrollArea>
-          </Paper>
+          <Schedule slots={convention.schedule} />
         </>
       )}
     </section>

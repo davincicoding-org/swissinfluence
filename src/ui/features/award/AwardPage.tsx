@@ -4,10 +4,10 @@ import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
 import type {
-  Award,
   AwardRanking,
   AwardShowImpressions,
   CreatorChallenge,
+  CurrentAward,
 } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
 
@@ -27,7 +27,7 @@ const FEATURE_FLAG_VOTING = false;
 
 export interface AwardPageProps {
   heroImage: Omit<ImageAsset, "id" | "group" | "name">;
-  currentAward: Award | null;
+  currentAward: CurrentAward | null;
   challenges: Array<CreatorChallenge>;
   hallOfFame: Array<AwardRanking>;
   newcomerScoutImage: Omit<ImageAsset, "id" | "group" | "name">;
@@ -76,14 +76,14 @@ export function AwardPage({
               />
             ) : null}
 
-            {currentAward.show?.impressions && currentAward.show?.video ? (
+            {currentAward.show?.images.length && currentAward.show?.videoUrl ? (
               <section
                 id="impressions"
                 className="container min-h-screen snap-start snap-always py-16 sm:py-32"
               >
                 <AwardImpressions
-                  video={currentAward.show.video}
-                  images={currentAward.show.impressions}
+                  video={currentAward.show.videoUrl}
+                  images={currentAward.show.images}
                   className="my-auto"
                 />
               </section>
@@ -163,14 +163,14 @@ export function AwardPage({
           </>
         ) : null}
 
-        {!currentAward?.show?.impressions && pastImpressions ? (
+        {!currentAward?.show?.images.length && pastImpressions ? (
           <section className="container flex min-h-screen snap-start snap-always flex-col py-32">
             <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
               This was {pastImpressions.year}
             </h3>
             <AwardImpressions
-              video={pastImpressions.video}
-              images={pastImpressions.impressions}
+              video={pastImpressions.videoUrl}
+              images={pastImpressions.images}
               className="my-auto"
             />
           </section>

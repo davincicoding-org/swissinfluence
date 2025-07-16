@@ -110,6 +110,7 @@ export const Awards: CollectionConfig = {
                             placeholder: "Select Brand",
                           },
                         },
+
                         {
                           name: "winnerImage",
                           type: "upload",
@@ -118,20 +119,29 @@ export const Awards: CollectionConfig = {
                       ],
                     },
                     {
-                      name: "nominees",
-                      type: "array",
-                      admin: {
-                        width: "50%",
-                      },
+                      type: "group",
                       fields: [
                         {
-                          name: "influencer",
-                          type: "relationship",
-                          relationTo: "influencers",
-                          required: true,
+                          name: "ranked",
+                          type: "checkbox",
+                        },
+                        {
+                          name: "nominees",
+                          type: "array",
                           admin: {
-                            placeholder: "Select Influencer",
+                            width: "50%",
                           },
+                          fields: [
+                            {
+                              name: "influencer",
+                              type: "relationship",
+                              relationTo: "influencers",
+                              required: true,
+                              admin: {
+                                placeholder: "Select Influencer",
+                              },
+                            },
+                          ],
                         },
                       ],
                     },
