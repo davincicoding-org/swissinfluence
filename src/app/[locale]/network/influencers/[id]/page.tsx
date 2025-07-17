@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getLocale } from "next-intl/server";
 
-import { getCertifiedInfluencer } from "@/server/certified-influencers";
+import { getCertifiedInfluencer } from "@/server/queries";
 import { CertifiedInfluencerPage as View } from "@/ui/features/network";
 
 export default async function CertifiedInfluencerPage({

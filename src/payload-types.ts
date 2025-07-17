@@ -340,6 +340,7 @@ export interface Config {
   blocks: {};
   collections: {
     users: User;
+    'publish-queue': PublishQueue;
     photos: Photo;
     logos: Logo;
     'profile-pictures': ProfilePicture;
@@ -365,6 +366,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
+    'publish-queue': PublishQueueSelect<false> | PublishQueueSelect<true>;
     photos: PhotosSelect<false> | PhotosSelect<true>;
     logos: LogosSelect<false> | LogosSelect<true>;
     'profile-pictures': ProfilePicturesSelect<false> | ProfilePicturesSelect<true>;
@@ -454,6 +456,20 @@ export interface User {
       }[]
     | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publish-queue".
+ */
+export interface PublishQueue {
+  id: number;
+  entityType: string;
+  /**
+   * ID of the changed entity
+   */
+  entityId?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -887,6 +903,10 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
+        relationTo: 'publish-queue';
+        value: number | PublishQueue;
+      } | null)
+    | ({
         relationTo: 'photos';
         value: number | Photo;
       } | null)
@@ -1027,6 +1047,16 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "publish-queue_select".
+ */
+export interface PublishQueueSelect<T extends boolean = true> {
+  entityType?: T;
+  entityId?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

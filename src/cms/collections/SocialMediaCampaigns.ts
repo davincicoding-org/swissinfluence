@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
+import { trackCollectionChange } from "../track-changes";
 
 export const SocialMediaCampaigns: CollectionConfig = {
   slug: "social-media-campaigns",
@@ -111,6 +111,6 @@ export const SocialMediaCampaigns: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("social-media-campaigns")],
+    afterChange: [trackCollectionChange()],
   },
 };

@@ -1,9 +1,11 @@
+"use server";
+
 import type { SupportedLocale } from "@/i18n/config";
 import type { LatestConvention } from "@/types";
 import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
-import { cachedRequest } from "./cache";
-import { getPayloadClient } from "./payload";
+import { cachedRequest } from "../cache";
+import { getPayloadClient } from "../payload";
 
 export const getLatestConvention = cachedRequest(
   async (locale: SupportedLocale): Promise<LatestConvention | null> => {
@@ -26,5 +28,4 @@ export const getLatestConvention = cachedRequest(
     };
   },
   ["conventions"],
-  // ["conventions", "locations", "brands"],
 );

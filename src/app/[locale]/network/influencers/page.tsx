@@ -1,9 +1,11 @@
 import { getLocale } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
-import { getCategoriesWithCertifiedInfluencers } from "@/server/certified-influencers";
-import { fetchCertification } from "@/server/globals";
-import { getPage } from "@/server/pages";
+import {
+  fetchCertification,
+  getCategoriesWithCertifiedInfluencers,
+  getPage,
+} from "@/server/queries";
 import { CertifiedInfluencersPage as View } from "@/ui/features/network";
 
 export default async function InfluencersPage() {

@@ -1,8 +1,7 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
-
 import { ScheduleField } from "../shared/ScheduleField";
+import { trackCollectionChange } from "../track-changes";
 
 export const AwardShows: CollectionConfig = {
   slug: "award-shows",
@@ -76,6 +75,6 @@ export const AwardShows: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("award-shows")],
+    afterChange: [trackCollectionChange()],
   },
 };

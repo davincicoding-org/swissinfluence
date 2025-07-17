@@ -1,6 +1,6 @@
 import { getLocale } from "next-intl/server";
 
-import { getPage } from "@/server/pages";
+import { getPage } from "@/server/queries";
 import { LandingPage as View } from "@/ui/features/landing";
 
 export default async function LandingPage() {

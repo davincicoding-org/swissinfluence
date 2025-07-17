@@ -1,8 +1,7 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
-
 import { ScheduleField } from "../shared/ScheduleField";
+import { trackCollectionChange } from "../track-changes";
 
 export const Conventions: CollectionConfig = {
   slug: "conventions",
@@ -74,6 +73,6 @@ export const Conventions: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("conventions")],
+    afterChange: [trackCollectionChange()],
   },
 };

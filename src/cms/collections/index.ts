@@ -15,4 +15,5 @@ export * from "./Users";
 export * from "./Photos";
 export * from "./Logos";
 export * from "./ProfilePictures";
+export * from "./PublishQueue";
 export * from "./Categories";

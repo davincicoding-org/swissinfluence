@@ -1,8 +1,7 @@
 import { getLocale } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
-import { getNetworkEvents } from "@/server/network-events";
-import { getPage } from "@/server/pages";
+import { getNetworkEvents, getPage } from "@/server/queries";
 import { EventsPage as View } from "@/ui/features/network";
 
 export default async function EventsPage() {

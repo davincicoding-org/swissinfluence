@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { trackCollectionChange } from "../track-changes";
+
 // TODO image resizing is skipped when focal point is used
 export const Photos: CollectionConfig = {
   slug: "photos",
@@ -40,5 +42,8 @@ export const Photos: CollectionConfig = {
         height: 630,
       },
     ],
+  },
+  hooks: {
+    afterChange: [trackCollectionChange(["update"])],
   },
 };

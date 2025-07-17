@@ -1,8 +1,10 @@
+"use server";
+
 import type { SupportedLocale } from "@/i18n/config";
 import type { Page } from "@/payload-types";
 
-import { cachedRequest } from "./cache";
-import { getPayloadClient } from "./payload";
+import { cachedRequest } from "../cache";
+import { getPayloadClient } from "../payload";
 
 type PageId =
   | "award"
@@ -12,7 +14,8 @@ type PageId =
   | "influencers"
   | "campaigns"
   | "events"
-  | "agencies";
+  | "agencies"
+  | (string & {});
 
 export const getPage = cachedRequest(
   async (id: PageId, locale: SupportedLocale): Promise<Page> => {

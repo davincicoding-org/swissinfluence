@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { trackCollectionChange } from "../track-changes";
+
 export const ProfilePictures: CollectionConfig = {
   slug: "profile-pictures",
   admin: {
@@ -36,5 +38,8 @@ export const ProfilePictures: CollectionConfig = {
         position: "centre",
       },
     ],
+  },
+  hooks: {
+    afterChange: [trackCollectionChange(["update"])],
   },
 };

@@ -1,6 +1,6 @@
 import { getRequestConfig } from "next-intl/server";
 
-import { fetchCachedMessages } from "@/server/messages";
+import { fetchMessages } from "@/server/queries";
 
 import type { SupportedLocale } from "./config";
 import { routing } from "./routing";
@@ -12,6 +12,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = routing.defaultLocale;
   return {
     locale: locale as SupportedLocale,
-    messages: await fetchCachedMessages(locale),
+    messages: await fetchMessages(locale),
   };
 });

@@ -3,8 +3,8 @@
 import type { SupportedLocale } from "@/i18n/config";
 import type { Certification, Company, Network } from "@/payload-types";
 
-import { cachedRequest } from "./cache";
-import { getPayloadClient } from "./payload";
+import { cachedRequest } from "../cache";
+import { getPayloadClient } from "../payload";
 
 export const fetchCompany = cachedRequest(async (): Promise<Company> => {
   const payload = await getPayloadClient();

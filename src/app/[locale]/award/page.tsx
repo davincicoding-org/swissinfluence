@@ -7,9 +7,9 @@ import {
   getCreatorChallenges,
   getCurrentAward,
   getHallOfFame,
+  getPage,
   getPastImpressions,
-} from "@/server/award";
-import { getPage } from "@/server/pages";
+} from "@/server/queries";
 import { AwardPage as View } from "@/ui/features/award";
 
 export async function generateMetadata(): Promise<Metadata> {

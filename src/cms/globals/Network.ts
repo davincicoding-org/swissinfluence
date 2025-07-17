@@ -1,6 +1,6 @@
 import type { GlobalConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
+import { trackGlobalChange } from "../track-changes";
 
 export const Network: GlobalConfig = {
   slug: "network",
@@ -23,6 +23,6 @@ export const Network: GlobalConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("network")],
+    afterChange: [trackGlobalChange],
   },
 };

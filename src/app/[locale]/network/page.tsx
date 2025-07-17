@@ -1,8 +1,7 @@
 import { getLocale } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
-import { fetchCompany, fetchNetwork } from "@/server/globals";
-import { getPage } from "@/server/pages";
+import { fetchCompany, fetchNetwork, getPage } from "@/server/queries";
 import { NetworkPage as View } from "@/ui/features/network";
 
 export default async function NetworkPage() {

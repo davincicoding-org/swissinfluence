@@ -1,9 +1,11 @@
+"use server";
+
 import type { SupportedLocale } from "@/i18n/config";
 import type { SocialMediaCampaign } from "@/types";
 import { ensureResolved } from "@/utils/payload";
 
-import { cachedRequest } from "./cache";
-import { getPayloadClient } from "./payload";
+import { cachedRequest } from "../cache";
+import { getPayloadClient } from "../payload";
 
 export const getSocialMediaCampaigns = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<SocialMediaCampaign>> => {
@@ -21,5 +23,4 @@ export const getSocialMediaCampaigns = cachedRequest(
     }));
   },
   ["social-media-campaigns"],
-  // ["social-media-campaigns", "brands"],
 );

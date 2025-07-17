@@ -1,8 +1,7 @@
 import type { GlobalConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
-
 import { SocialsField } from "../shared/SocialsField";
+import { trackGlobalChange } from "../track-changes";
 
 export const Company: GlobalConfig = {
   slug: "company",
@@ -36,6 +35,6 @@ export const Company: GlobalConfig = {
     SocialsField,
   ],
   hooks: {
-    afterChange: [() => revalidateCache("company")],
+    afterChange: [trackGlobalChange],
   },
 };

@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
+import { trackCollectionChange } from "../track-changes";
 
 export const Brands: CollectionConfig = {
   slug: "brands",
@@ -8,6 +8,7 @@ export const Brands: CollectionConfig = {
     useAsTitle: "name",
     defaultColumns: ["name", "image", "updatedAt"],
   },
+
   fields: [
     {
       name: "legacyId",
@@ -48,6 +49,6 @@ export const Brands: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("brands")],
+    afterChange: [trackCollectionChange(["update"])],
   },
 };

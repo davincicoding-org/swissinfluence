@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
+import { trackCollectionChange } from "../track-changes";
 
 export const CreatorChallenges: CollectionConfig = {
   slug: "creator-challenges",
@@ -107,6 +107,6 @@ export const CreatorChallenges: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("creator-challenges")],
+    afterChange: [trackCollectionChange()],
   },
 };

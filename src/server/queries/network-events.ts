@@ -1,9 +1,11 @@
+"use server";
+
 import type { SupportedLocale } from "@/i18n/config";
 import type { NetworkEvent } from "@/types";
 import { ensureResolved } from "@/utils/payload";
 
-import { cachedRequest } from "./cache";
-import { getPayloadClient } from "./payload";
+import { cachedRequest } from "../cache";
+import { getPayloadClient } from "../payload";
 
 export const getNetworkEvents = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<NetworkEvent>> => {
@@ -27,5 +29,4 @@ export const getNetworkEvents = cachedRequest(
     }));
   },
   ["network-events"],
-  // ["network-events", "locations"],
 );

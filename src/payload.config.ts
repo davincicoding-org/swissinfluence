@@ -42,30 +42,36 @@ import {
   Pages,
   Photos,
   ProfilePictures,
+  PublishQueue,
   SocialMediaCampaigns,
   Users,
 } from "@/cms/collections";
+import { Certification } from "@/cms/globals/Certification";
 import { Company } from "@/cms/globals/Company";
 import { Network } from "@/cms/globals/Network";
+import { trackCollectionChange } from "@/cms/track-changes";
 import { env } from "@/env";
 import { MESSAGES_SCHEMA } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
-
-import { Certification } from "./cms/globals/Certification";
-import { revalidateCache } from "./server/revalidate";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 // TODO add Static Pages
 // TODO add SEO
-// TODO optimize image loading
 
 export default buildConfig({
   admin: {
     user: Users.slug,
     importMap: {
       baseDir: path.resolve(dirname),
+    },
+    components: {
+      actions: [
+        {
+          path: "@/cms/components/PublishButton",
+        },
+      ],
     },
   },
   upload: {
@@ -80,6 +86,7 @@ export default buildConfig({
   globals: [Company, Network, Certification],
   collections: [
     Users,
+    PublishQueue,
     Photos,
     Logos,
     ProfilePictures,
@@ -147,7 +154,7 @@ export default buildConfig({
           group: "Global",
         },
         hooks: {
-          afterUpdate: () => revalidateCache("messages"),
+          afterChange: [trackCollectionChange()],
         },
       },
     }),
@@ -155,7 +162,6 @@ export default buildConfig({
       collections: {
         photos: {
           prefix: "photos",
-
           generateFileURL: async ({ filename, prefix }) =>
             `${env.SUPABASE_URL}/storage/v1/object/public/${env.S3_BUCKET}/${prefix}/${filename}`,
         },
@@ -185,4 +191,7 @@ export default buildConfig({
       collections: ["photos", "profile-pictures", "logos"],
     }),
   ],
+  // onInit: async () => {
+  //   clearDependencyGraphCache();
+  // },
 });

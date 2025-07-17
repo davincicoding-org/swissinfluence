@@ -1,6 +1,6 @@
 import type { GlobalConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
+import { trackGlobalChange } from "../track-changes";
 
 export const Certification: GlobalConfig = {
   slug: "certification",
@@ -106,6 +106,6 @@ export const Certification: GlobalConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("certification")],
+    afterChange: [trackGlobalChange],
   },
 };

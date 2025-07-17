@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
+import { trackCollectionChange } from "../track-changes";
 
 export const Agencies: CollectionConfig = {
   slug: "agencies",
@@ -74,6 +74,6 @@ export const Agencies: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("agencies")],
+    afterChange: [trackCollectionChange()],
   },
 };

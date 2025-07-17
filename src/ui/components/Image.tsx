@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
 import NextImage from "next/image";
-import { Blurhash } from "react-blurhash";
 
 import type { Logo, Photo, ProfilePicture } from "@/payload-types";
 

@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
+import { trackCollectionChange } from "../track-changes";
 
 export const Awards: CollectionConfig = {
   slug: "awards",
@@ -212,6 +212,6 @@ export const Awards: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("awards")],
+    afterChange: [trackCollectionChange()],
   },
 };

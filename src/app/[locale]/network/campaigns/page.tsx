@@ -1,9 +1,11 @@
 import { getLocale } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
-import { fetchNetwork } from "@/server/globals";
-import { getPage } from "@/server/pages";
-import { getSocialMediaCampaigns } from "@/server/social-media-campaigns";
+import {
+  fetchNetwork,
+  getPage,
+  getSocialMediaCampaigns,
+} from "@/server/queries";
 import { CampaignsPage as View } from "@/ui/features/network";
 
 export default async function CampaignsPage() {

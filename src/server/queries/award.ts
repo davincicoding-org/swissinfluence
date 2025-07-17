@@ -1,3 +1,5 @@
+"use server";
+
 import type { SupportedLocale } from "@/i18n/config";
 import type {
   AwardRanking,
@@ -7,8 +9,8 @@ import type {
 } from "@/types";
 import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
-import { cachedRequest } from "./cache";
-import { getPayloadClient } from "./payload";
+import { cachedRequest } from "../cache";
+import { getPayloadClient } from "../payload";
 
 export const getCurrentAward = cachedRequest(
   async (locale: SupportedLocale): Promise<CurrentAward | null> => {

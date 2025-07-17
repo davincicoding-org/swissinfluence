@@ -3,8 +3,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
 import { env } from "@/env";
-import { getLatestConvention } from "@/server/convention";
-import { getPage } from "@/server/pages";
+import { getLatestConvention, getPage } from "@/server/queries";
 import { ConventionPage as View } from "@/ui/features/convention";
 
 export async function generateMetadata(): Promise<Metadata> {

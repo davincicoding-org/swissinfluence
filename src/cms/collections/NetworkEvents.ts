@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
+import { trackCollectionChange } from "../track-changes";
 
 export const NetworkEvents: CollectionConfig = {
   slug: "network-events",
@@ -89,6 +89,6 @@ export const NetworkEvents: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("network-events")],
+    afterChange: [trackCollectionChange()],
   },
 };

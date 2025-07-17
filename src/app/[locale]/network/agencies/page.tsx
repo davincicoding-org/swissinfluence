@@ -1,8 +1,7 @@
 import { getLocale } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
-import { getAgencies } from "@/server/agencies";
-import { getPage } from "@/server/pages";
+import { getAgencies, getPage } from "@/server/queries";
 import { AgenciesPage as View } from "@/ui/features/network";
 
 export default async function AgenciesPage() {

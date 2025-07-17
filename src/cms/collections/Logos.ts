@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import { trackCollectionChange } from "../track-changes";
+
 export const Logos: CollectionConfig = {
   slug: "logos",
   admin: {
@@ -28,5 +30,8 @@ export const Logos: CollectionConfig = {
       fit: "outside",
       withoutEnlargement: true,
     },
+  },
+  hooks: {
+    afterChange: [trackCollectionChange(["update"])],
   },
 };

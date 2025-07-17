@@ -1,6 +1,6 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
+import { trackCollectionChange } from "../track-changes";
 
 export const CertifiedInfluencers: CollectionConfig = {
   slug: "certified-influencers",
@@ -298,6 +298,6 @@ export const CertifiedInfluencers: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("certified-influencers")],
+    afterChange: [trackCollectionChange()],
   },
 };

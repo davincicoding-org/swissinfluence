@@ -1,8 +1,7 @@
 import type { CollectionConfig } from "payload";
 
-import { revalidateCache } from "@/server/revalidate";
-
 import { SocialsField } from "../shared/SocialsField";
+import { trackCollectionChange } from "../track-changes";
 
 export const Experts: CollectionConfig = {
   slug: "experts",
@@ -52,6 +51,6 @@ export const Experts: CollectionConfig = {
     },
   ],
   hooks: {
-    afterChange: [() => revalidateCache("experts")],
+    afterChange: [trackCollectionChange(["update"])],
   },
 };

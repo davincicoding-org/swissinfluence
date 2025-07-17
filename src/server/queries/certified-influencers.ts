@@ -1,11 +1,13 @@
+"use server";
+
 import { groupBy } from "lodash-es";
 
 import type { SupportedLocale } from "@/i18n/config";
 import type { CategoryWithInfluencers, CertifiedInfluencer } from "@/types";
 import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
-import { cachedRequest } from "./cache";
-import { getPayloadClient } from "./payload";
+import { cachedRequest } from "../cache";
+import { getPayloadClient } from "../payload";
 
 export const getCategoriesWithCertifiedInfluencers = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<CategoryWithInfluencers>> => {
@@ -43,7 +45,6 @@ export const getCategoriesWithCertifiedInfluencers = cachedRequest(
     }));
   },
   ["certified-influencers"],
-  // ["certified-influencers", "categories", "influencers"],
 );
 
 export const getCertifiedInfluencer = cachedRequest(
@@ -75,5 +76,4 @@ export const getCertifiedInfluencer = cachedRequest(
     };
   },
   ["certified-influencers"],
-  // ["certified-influencers", "categories", "influencers"],
 );
