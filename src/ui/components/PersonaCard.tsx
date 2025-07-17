@@ -1,11 +1,11 @@
 "use client";
 
 import type { PaperProps } from "@mantine/core";
-import Image from "next/image";
 import { ActionIcon, Flex, Paper } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 import type { ProfilePicture, Socials } from "@/payload-types";
+import { Image } from "@/ui/components/Image";
 import { cn } from "@/ui/utils";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
@@ -46,13 +46,11 @@ export function PersonaCard({
       {...paperProps}
     >
       <Image
-        src={image.url ?? ""}
-        width={image.width ?? 0}
-        height={image.height ?? 0}
-        // placeholder={image.blurDataURL ? "blur" : undefined}
-        // blurDataURL={image.blurDataURL}
+        resource={image}
         alt={name}
-        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+        className="aspect-square"
+        imgClassName="transition-transform duration-500 group-hover:scale-110"
+        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
       />
 
       <div

@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import { Button, FocusTrap, Modal, Paper } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
 import type { RichTextProps } from "@/ui/components/RichText";
+import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
@@ -50,13 +50,10 @@ export function CertificationRegistration({
       >
         {photo && (
           <Image
-            src={photo.url ?? ""}
+            resource={photo}
             alt=""
-            width={photo.width ?? 0}
-            height={photo.height ?? 0}
-            // placeholder={image.blurDataURL ? "blur" : undefined}
-            // blurDataURL={image.blurDataURL}
             className="aspect-video w-full"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         )}
         <div className="absolute bottom-0 left-0 right-0 bg-black/50 p-4 text-white before:absolute before:inset-x-0 before:-top-24 before:h-24 before:bg-gradient-to-t before:from-black/50 before:to-transparent">
@@ -70,6 +67,9 @@ export function CertificationRegistration({
         title={t("title")}
         opened={isExpanded}
         onClose={expansion.close}
+        closeButtonProps={{
+          size: "lg",
+        }}
         radius="lg"
         classNames={{
           header: "bg-transparent backdrop-blur",

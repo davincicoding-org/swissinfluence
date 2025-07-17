@@ -1,12 +1,13 @@
 import { type ReactNode } from "react";
-import Image from "next/image";
 import { Flex, Paper, Stack } from "@mantine/core";
 
 import type { Photo } from "@/payload-types";
 import { cn } from "@/ui/utils";
 
+import { Image } from "./Image";
+
 export interface IPageHeroProps {
-  image: Pick<Photo, "url" | "width" | "height">;
+  image: Photo;
   title: ReactNode;
   headline?: ReactNode;
   footer?: ReactNode;
@@ -30,11 +31,7 @@ export function PageHero({
       className={cn("relative z-10 flex h-svh flex-col", className)}
     >
       <Image
-        src={image.url ?? ""}
-        // placeholder={image.blurDataURL ? "blur" : undefined}
-        // blurDataURL={image.blurDataURL}
-        // width={image.width ?? 0}
-        // height={image.height ?? 0}
+        resource={image}
         alt="Page hero"
         sizes="100vw"
         fill

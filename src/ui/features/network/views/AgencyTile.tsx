@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { Button, Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Agency } from "@/payload-types";
+import { Image } from "@/ui/components/Image";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
@@ -24,12 +24,11 @@ export function AgencyTile({ data, className }: IAgencyTileProps) {
     >
       {image && (
         <Image
-          src={image.url ?? ""}
-          alt={`${data.name} logo`}
+          resource={image}
+          alt={`${data.name} background`}
           fill
-          // placeholder={image.blurDataURL ? "blur" : undefined}
-          // blurDataURL={image.blurDataURL}
           className="absolute inset-0 object-cover"
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
       )}
       <div
@@ -47,13 +46,10 @@ export function AgencyTile({ data, className }: IAgencyTileProps) {
             className="mb-8"
           >
             <Image
-              src={logo.url ?? ""}
+              resource={logo}
               alt={`${data.name} logo`}
-              width={logo.width ?? 0}
-              height={logo.height ?? 0}
-              // placeholder={logo.blurDataURL ? "blur" : undefined}
-              // blurDataURL={logo.blurDataURL}
               className="mx-auto max-h-24 max-w-[80%]"
+              sizes="(max-width: 768px) 160px, 256px"
             />
           </a>
         )}

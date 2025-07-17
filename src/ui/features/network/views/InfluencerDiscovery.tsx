@@ -2,11 +2,11 @@
 
 import type { ComboboxItem } from "@mantine/core";
 import { useMemo, useState } from "react";
-import Image from "next/image";
 import { Button, Flex, Paper, ScrollArea, Tabs } from "@mantine/core";
 
 import type { CategoryWithInfluencers } from "@/types";
 import { Link } from "@/i18n/navigation";
+import { Image } from "@/ui/components/Image";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
@@ -48,27 +48,30 @@ export function InfluencerDiscovery({
           nextCategory && setSelectedCategoryID(nextCategory)
         }
       >
-        <Paper className="overflow-clip bg-neutral-300">
+        <Paper className="overflow-clip bg-mocha-50" radius={0}>
           <ScrollArea
             scrollbars="x"
-            classNames={{ viewport: "overscroll-x-contain bg-white" }}
+            type="never"
+            classNames={{ viewport: "overscroll-x-contain" }}
           >
-            <Flex py="sm" px="sm" className="shadow-inner">
-              {categoryOptions.map(({ label, value }) => (
+            <Flex gap="xs" className="flex-nowrap py-2">
+              <div className="h-px w-px shrink-0" />
+
+              {categoryOptions.map(({ value, label }) => (
                 <Button
+                  variant={selectedCategoryID === value ? "filled" : "subtle"}
+                  size="sm"
+                  radius="md"
                   key={value}
-                  size="compact-lg"
-                  color={value === selectedCategoryID ? "mocha" : "gray"}
-                  variant={value === selectedCategoryID ? "filled" : "subtle"}
-                  className={cn(
-                    "shrink-0 scroll-mx-3 uppercase tracking-widest transition-colors",
-                    {
-                      "pointer-events-none": value === selectedCategoryID,
-                    },
-                  )}
-                  onClick={({ currentTarget }) => {
+                  className="shrink-0 text-center capitalize"
+                  onClick={(e) => {
+                    e.currentTarget.scrollIntoView({
+                      inline: "nearest",
+                      block: "nearest",
+                      behavior: "smooth",
+                    });
                     setSelectedCategoryID(value);
-                    currentTarget.scrollIntoView({
+                    e.currentTarget.scrollIntoView({
                       inline: "nearest",
                       block: "nearest",
                       behavior: "smooth",
@@ -78,6 +81,7 @@ export function InfluencerDiscovery({
                   {label}
                 </Button>
               ))}
+              <div className="h-px w-px shrink-0" />
             </Flex>
           </ScrollArea>
         </Paper>
@@ -109,30 +113,18 @@ export function InfluencerDiscovery({
                       >
                         {image && (
                           <Image
-                            src={image.url ?? ""}
-                            width={image.width ?? 0}
-                            height={image.height ?? 0}
-                            // placeholder={
-                            //   influencer.image.blurDataURL ? "blur" : undefined
-                            // }
-                            // blurDataURL={influencer.image.blurDataURL}
+                            resource={image}
                             alt={influencer.name}
                             className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            sizes="256px"
                           />
                         )}
 
-                        <div
-                          className={cn(
-                            "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
-                          )}
-                        >
+                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 from-20% to-transparent p-4 text-white">
                           <TextOverflowReveal
                             text={influencer.name}
                             classNames={{
-                              root: "mb-1",
-                              text: cn(
-                                "pl-4 text-xl font-medium leading-none tracking-widest text-white",
-                              ),
+                              text: "text-lg font-medium tracking-widest",
                             }}
                           />
                         </div>

@@ -29,7 +29,7 @@ export function Footer({ company, className }: IFooterProps) {
           <Image
             className="w-24 lg:w-32"
             alt="SIA Logo"
-            src="$/logos/main.svg"
+            src="/logos/main.svg"
             width={89}
             height={44}
           />

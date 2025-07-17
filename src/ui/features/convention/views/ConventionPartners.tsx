@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { Flex, Tooltip } from "@mantine/core";
 import Marquee from "react-fast-marquee";
 
 import type { Brand } from "@/payload-types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
+import { Image } from "@/ui/components/Image";
 import { ensureResolved } from "@/utils/payload";
 
 export interface IConventionPartnersProps {
@@ -25,17 +25,14 @@ export function ConventionPartners({ partners }: IConventionPartnersProps) {
                 href={partner.website}
                 target="_blank"
                 rel="noopener"
-                className="aspect-video h-16"
               >
                 <Tooltip label={partner.name} position="bottom">
                   <Image
-                    src={logo.url ?? ""}
-                    width={logo.width ?? 0}
-                    height={logo.height ?? 0}
-                    // placeholder={logo.blurDataURL ? "blur" : undefined}
-                    // blurDataURL={image.blurDataURL}
+                    resource={logo}
                     alt={partner.name}
-                    className="h-full w-full object-contain object-center"
+                    className="aspect-video h-16"
+                    imgClassName="object-contain object-center"
+                    sizes="128px"
                   />
                 </Tooltip>
               </a>

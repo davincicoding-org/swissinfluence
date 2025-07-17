@@ -1,12 +1,12 @@
 "use client";
 
 import { useMemo } from "react";
-import Image from "next/image";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
 import type { SocialMediaCampaign } from "@/types";
 import { ExpandableCard } from "@/ui/components/ExpandableCard";
+import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { ensureResolved } from "@/utils/payload";
 
@@ -46,13 +46,10 @@ export function CampaignTile({ data, past, className }: ICampaignTileProps) {
       logo={
         <a href={data.organizer.website} target="_blank" rel="noopener">
           <Image
+            resource={organizerLogo}
             alt="Logo"
             className="h-auto w-20"
-            src={organizerLogo.url ?? ""}
-            width={organizerLogo.width ?? 0}
-            height={organizerLogo.height ?? 0}
-            // placeholder={organizerLogo.blurDataURL ? "blur" : undefined}
-            // blurDataURL={organizerLogo.blurDataURL}
+            sizes="(max-width: 768px) 160px, 256px"
           />
         </a>
       }

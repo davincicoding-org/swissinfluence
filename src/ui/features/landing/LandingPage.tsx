@@ -1,11 +1,10 @@
 import { type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
-import type { Page } from "@/payload-types";
+import type { Page, Photo } from "@/payload-types";
 import { BackgroundVideo } from "@/ui/components/BackgroundVideo";
 import { FlipWords } from "@/ui/components/FlipWords";
 import { LinkTile } from "@/ui/components/LinkTile";
-import { ensureResolved } from "@/utils/payload";
 
 export interface LandingPageProps {
   heroVideo: string;
@@ -37,9 +36,13 @@ export function LandingPage({ heroVideo, pages }: LandingPageProps) {
             <LinkTile
               key={page.id}
               label={page.title}
-              image={ensureResolved(page.heroImage) ?? null}
+              imageProps={{
+                resource: page.heroImage as Photo,
+                className: "aspect-video",
+                sizes:
+                  "(max-width: 768px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 480px, (max-width: 1536px) 608px, 736px",
+              }}
               href={`/${locale}/${page.id}`}
-              className="aspect-video"
               initial={{ scale: 0.9, opacity: 0.5 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.7 }}

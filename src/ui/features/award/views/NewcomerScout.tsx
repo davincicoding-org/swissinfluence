@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { Button, Paper, ScrollArea } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
 import type { RichTextProps } from "@/ui/components/RichText";
+import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
 import { cn } from "@/ui/utils";
@@ -40,11 +40,10 @@ export function NewcomerScout({
         className="relative flex aspect-square flex-col gap-2 bg-neutral-400 shadow-sm lg:order-2"
       >
         <Image
-          src={image.url ?? ""}
+          resource={image}
           alt="Newcomer Scout"
-          width={image.width ?? 0}
-          height={image.height ?? 0}
           className="absolute inset-0 h-full w-full object-cover object-center"
+          sizes="(max-width: 1023px) 100vw, 50vw"
         />
 
         <Paper

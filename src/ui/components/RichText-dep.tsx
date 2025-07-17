@@ -5,6 +5,9 @@ export interface IRichTextProps {
   className?: string;
 }
 
+/*
+ * @deprecated Use RichText instead
+ */
 export function RichText({ content, className }: IRichTextProps) {
   return (
     <div

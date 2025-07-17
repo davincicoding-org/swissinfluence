@@ -8,14 +8,22 @@ import type { NextConfig } from "next";
 import { withPayload } from "@payloadcms/next/withPayload";
 import createNextIntlPlugin from "next-intl/plugin";
 
+import { env } from "./src/env.js";
+
 const config: NextConfig = {
   eslint: {
     dirs: ["src"],
   },
   images: {
-    loader: "custom",
-    loaderFile: "./supabase-image-loader.js",
+    // loader: "custom",
+    // loaderFile: "./supabase-image-loader.js",
     dangerouslyAllowSVG: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: new URL(env.SUPABASE_URL).hostname,
+      },
+    ],
   },
   experimental: {
     optimizePackageImports: ["@mantine/core", "@mantine/hooks", "motion"],

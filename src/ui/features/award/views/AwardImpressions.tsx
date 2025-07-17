@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { Flex, Paper } from "@mantine/core";
 import Marquee from "react-fast-marquee";
 
 import type { Photo } from "@/payload-types";
+import { Image } from "@/ui/components/Image";
 import { cn } from "@/ui/utils";
 import { ensureResolvedArray } from "@/utils/payload";
 
@@ -41,14 +41,11 @@ export function AwardImpressions({
         <Flex className="h-64" wrap="nowrap">
           {ensureResolvedArray(images).map((image, index) => (
             <Image
+              resource={image}
               alt={`Award impression ${index + 1}`}
               key={image.id}
-              src={image.url ?? ""}
-              height={image.height ?? 0}
-              width={image.width ?? 0}
-              // blurDataURL={image.blurDataURL}
-              // placeholder={image.blurDataURL ? "blur" : undefined}
               className="h-full w-auto shrink-0 snap-center md:snap-end"
+              sizes="(max-width: 768px) 256px, 384px"
             />
           ))}
         </Flex>

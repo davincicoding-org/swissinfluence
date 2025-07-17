@@ -37,7 +37,10 @@ export function NetworkPage<R extends string>({
             <LinkTile
               key={link.label}
               label={link.label}
-              image={link.image}
+              imageProps={{
+                resource: link.image,
+                sizes: link.large ? "100vw" : "(max-width: 767px) 100vw, 50vw",
+              }}
               href={link.href as Route<R>}
               external={link.external}
               className={cn("aspect-video", {

@@ -2,7 +2,6 @@
 
 import type { ReactNode } from "react";
 import { useId } from "react";
-import Image from "next/image";
 import {
   ActionIcon,
   Badge,
@@ -18,6 +17,7 @@ import { IconX } from "@tabler/icons-react";
 import { motion } from "motion/react";
 
 import type { Photo } from "@/payload-types";
+import { Image } from "@/ui/components/Image";
 import { cn } from "@/ui/utils";
 
 interface ExpandableCardProps {
@@ -64,15 +64,15 @@ export function ExpandableCard({
         onClick={open}
       >
         <div className="flex w-full flex-col gap-4">
-          <motion.div layoutId={`image-${title}-${id}`}>
+          <motion.div
+            layoutId={`image-${title}-${id}`}
+            className="relative overflow-clip rounded-lg"
+          >
             <Image
-              src={image.url ?? ""}
-              width={image.width ?? 0}
-              height={image.height ?? 0}
+              resource={image}
               alt={title}
-              className="h-60 w-full rounded-lg object-cover object-center"
-              // placeholder={image.blurDataURL ? "blur" : undefined}
-              // blurDataURL={image.blurDataURL}
+              className="h-60 w-full"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
           </motion.div>
           <div className="flex flex-col items-center justify-center">
@@ -113,14 +113,11 @@ export function ExpandableCard({
             <FocusTrap.InitialFocus />
             <motion.div layoutId={`image-${title}-${id}`} className="relative">
               <Image
-                priority
-                src={image.url ?? ""}
-                width={image.width ?? 0}
-                height={image.height ?? 0}
+                resource={image}
                 alt={title}
                 className="h-80 w-full object-cover object-center lg:h-80"
-                // placeholder={image.blurDataURL ? "blur" : undefined}
-                // blurDataURL={image.blurDataURL}
+                sizes="(max-width: 768px) 100vw, 768px"
+                priority
               />
               <Group
                 justify="space-between"

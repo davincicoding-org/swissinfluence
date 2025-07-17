@@ -277,7 +277,7 @@ function MobileNavigation({
               priority
               className="h-12 translate-y-1"
               alt="SIA Logo"
-              src="$/logos/main.svg"
+              src="/logos/main.svg"
               width={89}
               height={44}
             />

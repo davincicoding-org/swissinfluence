@@ -70,7 +70,7 @@ export default async function LocaleLayout({
                   priority
                   className="h-9 w-auto translate-y-0.5"
                   alt="SIA Logo"
-                  src="$/logos/main.svg"
+                  src="/logos/main.svg"
                   width={89}
                   height={44}
                 />
@@ -84,7 +84,7 @@ export default async function LocaleLayout({
                       priority
                       className="h-9 w-auto"
                       alt="Award Logo"
-                      src="$/logos/award.svg"
+                      src="/logos/award.svg"
                       width={100}
                       height={44}
                     />
@@ -124,7 +124,7 @@ export default async function LocaleLayout({
                       priority
                       className="h-9 w-auto"
                       alt="Academy Logo"
-                      src="$/logos/academy.svg"
+                      src="/logos/academy.svg"
                       width={445}
                       height={196}
                     />

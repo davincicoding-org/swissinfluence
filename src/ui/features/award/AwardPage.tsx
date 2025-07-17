@@ -26,7 +26,7 @@ import { NewcomerScout } from "./views/NewcomerScout";
 const FEATURE_FLAG_VOTING = false;
 
 export interface AwardPageProps {
-  heroImage: Pick<Photo, "url" | "width" | "height">;
+  heroImage: Photo;
   currentAward: CurrentAward | null;
   challenges: Array<CreatorChallenge>;
   hallOfFame: Array<AwardRanking>;

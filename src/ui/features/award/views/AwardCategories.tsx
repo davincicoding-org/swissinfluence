@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { Button, Paper } from "@mantine/core";
 import { useInView } from "motion/react";
-import { useLocale } from "next-intl";
 import Marquee from "react-fast-marquee";
 
+import type { Photo } from "@/payload-types";
 import type { AwardCategory } from "@/types";
+import { Image } from "@/ui/components/Image";
 import { PersonaCard } from "@/ui/components/PersonaCard";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
@@ -87,8 +87,6 @@ function CategoryCard({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInView]);
 
-  const locale = useLocale();
-
   return (
     <Paper
       withBorder
@@ -98,10 +96,11 @@ function CategoryCard({
     >
       <div className="relative">
         <Image
-          src={ensureResolved(category.image)?.url ?? ""}
+          resource={category.image as Photo}
           alt={category.name}
           fill
           className="absolute inset-0 object-cover object-center"
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 1280px, (max-width: 1024px) 1536px, (max-width: 1280px) 2048px, (max-width: 1536px) 2560px, 3072px"
         />
         <div
           className={cn(
@@ -121,11 +120,10 @@ function CategoryCard({
           </div>
           {sponsor && typeof sponsor.logo === "object" && (
             <Image
-              src={sponsor.logo.url ?? ""}
+              resource={sponsor.logo}
               alt={sponsor.name}
-              width={sponsor.logo.width ?? 0}
-              height={sponsor.logo.height ?? 0}
               className={cn("h-auto max-h-20 w-auto min-w-0 max-w-32 shrink")}
+              sizes="(max-width: 768px) 160px, 256px"
             />
           )}
         </div>

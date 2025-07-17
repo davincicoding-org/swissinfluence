@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import {
   ActionIcon,
   Button,
@@ -14,6 +13,7 @@ import { IconArrowRight, IconX } from "@tabler/icons-react";
 import dayjs from "dayjs";
 
 import type { NetworkEvent } from "@/types";
+import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
@@ -51,11 +51,10 @@ export function EventTile({ data, className }: IEventTileProps) {
       >
         {image && (
           <Image
-            src={image.url ?? ""}
+            resource={image}
             alt="Background"
             fill
-            // placeholder={image.blurDataURL ? "blur" : undefined}
-            // blurDataURL={image.blurDataURL}
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
         )}
@@ -66,13 +65,10 @@ export function EventTile({ data, className }: IEventTileProps) {
         >
           {logo && (
             <Image
+              resource={logo}
               alt="Event Organizer Logo"
+              sizes="96px"
               className="m-4 ml-auto h-12 w-auto"
-              src={logo.url ?? ""}
-              width={logo.width ?? 0}
-              height={logo.height ?? 0}
-              // placeholder={logo.blurDataURL ? "blur" : undefined}
-              // blurDataURL={logo.blurDataURL}
             />
           )}
           <Flex
@@ -111,11 +107,11 @@ export function EventTile({ data, className }: IEventTileProps) {
         >
           {image && (
             <Image
+              resource={image}
               alt="Event Background"
-              src={image.url ?? ""}
               fill
-              // placeholder={image.blurDataURL ? "blur" : undefined}
-              // blurDataURL={image.blurDataURL}
+              sizes="(max-width: 768px) 100vw, 768px"
+              priority
               className="absolute inset-0 object-cover"
             />
           )}
@@ -135,13 +131,10 @@ export function EventTile({ data, className }: IEventTileProps) {
             <div className="flex flex-col bg-black/60 p-6 text-white">
               {logo && (
                 <Image
+                  resource={logo}
                   alt="Event Organizer Logo"
+                  sizes="128px"
                   className="m-4 mx-auto h-16 w-auto"
-                  src={logo.url ?? ""}
-                  width={logo.width ?? 0}
-                  height={logo.height ?? 0}
-                  // placeholder={logo.blurDataURL ? "blur" : undefined}
-                  // blurDataURL={logo.blurDataURL}
                 />
               )}
 

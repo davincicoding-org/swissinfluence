@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { ActionIcon } from "@mantine/core";
 
 import type { Expert } from "@/payload-types";
+import { Image } from "@/ui/components/Image";
 import { PersonaCard } from "@/ui/components/PersonaCard";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { ensureResolved } from "@/utils/payload";
@@ -36,13 +36,10 @@ export function AwardJury({ members }: IAwardJuryProps) {
             >
               <div className="flex cursor-pointer items-center space-x-4 rounded-xl border bg-mocha-50 p-4 shadow backdrop-blur-sm">
                 <Image
-                  src={image.url ?? ""}
-                  width={image.width ?? 0}
-                  height={image.height ?? 0}
-                  // placeholder={image.blurDataURL ? "blur" : undefined}
-                  // blurDataURL={image.blurDataURL}
+                  resource={image}
                   alt={member.name}
                   className="h-16 w-16 shrink-0 rounded-full object-cover"
+                  sizes="128px"
                 />
                 <div>
                   <h3 className="text-lg font-semibold">{member.name}</h3>
