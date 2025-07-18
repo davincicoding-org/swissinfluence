@@ -2,6 +2,7 @@ import { getLocale } from "next-intl/server";
 
 import { getPage } from "@/server/queries";
 import { LandingPage as View } from "@/ui/features/landing";
+import { env } from "@/env";
 
 export default async function LandingPage() {
   const locale = await getLocale();
@@ -12,5 +13,5 @@ export default async function LandingPage() {
     getPage("academy", locale),
   ]);
 
-  return <View heroVideo="hero.mp4" pages={pages} />;
+  return <View heroVideo={`${env.BASE_URL}/hero.mp4`} pages={pages} />;
 }
