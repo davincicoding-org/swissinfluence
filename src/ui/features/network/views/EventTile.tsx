@@ -142,7 +142,7 @@ export function EventTile({ data, className }: IEventTileProps) {
 
               <RichText
                 data={data.content}
-                className="prose-lg py-6 text-white"
+                className="py-6 text-white"
               />
               <Button
                 component="a"

@@ -77,7 +77,9 @@ export function CertificationRegistration({
         }}
       >
         <FocusTrap.InitialFocus />
-        <RichText className="prose prose-p:m-3 prose-li:m-0" data={content} />
+        <RichText
+        // className="prose prose-p:m-3 prose-li:m-0"
+         data={content} />
         <Button
           component="a"
           mt="lg"

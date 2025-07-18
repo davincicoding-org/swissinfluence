@@ -80,8 +80,7 @@ export function NewcomerScout({
       >
         <div className="grid">
           <RichText
-            className="prose-lg min-w-0 max-w-full shrink text-pretty px-4 py-6 leading-snug lg:px-8"
-            enableProse={false}
+            className="min-w-0 max-w-full shrink text-pretty px-4 py-6 leading-snug lg:px-8"
             data={content}
           />
           <div className="m-4 mt-0 grid gap-2 lg:hidden">

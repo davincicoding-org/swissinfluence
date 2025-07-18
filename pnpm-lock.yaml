@@ -96,8 +96,8 @@ importers:
         specifier: ^3.1.0
         version: 3.1.0(sharp@0.34.3)
       payload-polyglot:
-        specifier: ^0.2.3
-        version: 0.2.3(@tiptap/core@2.26.1(@tiptap/pm@2.26.1))(@tiptap/pm@2.26.1)(payload@3.48.0(graphql@16.11.0)(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+        specifier: ^0.2.4
+        version: 0.2.4(@tiptap/core@2.26.1(@tiptap/pm@2.26.1))(@tiptap/pm@2.26.1)(payload@3.48.0(graphql@16.11.0)(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       postgres:
         specifier: ^3.4.6
         version: 3.4.7
@@ -6174,8 +6174,8 @@ packages:
     peerDependencies:
       sharp: 0.x
 
-  payload-polyglot@0.2.3:
-    resolution: {integrity: sha512-YS1yTNwtCaIH9xIaOtonZJ2aJPinHuTbheLwmJm4Xh35fKu+mWtIG6A2RG3bjGe0cvfzv+zfhdLGq0dEVF67Vw==}
+  payload-polyglot@0.2.4:
+    resolution: {integrity: sha512-/1m/S7s/5+DTGjvNg6IEvn4fbHUcyaIWfI8aQIr+qtDwjWVdYin19mPIadWXrbgU5b65aRh+DzVBBP91X+4wzQ==}
     engines: {node: ^18.20.2 || >=20.9.0, pnpm: ^9 || ^10}
     peerDependencies:
       payload: ^3.37.0
@@ -14910,7 +14910,7 @@ snapshots:
       sharp: 0.34.3
       zod: 3.25.76
 
-  payload-polyglot@0.2.3(@tiptap/core@2.26.1(@tiptap/pm@2.26.1))(@tiptap/pm@2.26.1)(payload@3.48.0(graphql@16.11.0)(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
+  payload-polyglot@0.2.4(@tiptap/core@2.26.1(@tiptap/pm@2.26.1))(@tiptap/pm@2.26.1)(payload@3.48.0(graphql@16.11.0)(typescript@5.8.3))(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:
       '@tabler/icons-react': 3.34.0(react@19.1.0)
       '@tiptap/extension-highlight': 2.26.1(@tiptap/core@2.26.1(@tiptap/pm@2.26.1))
@@ -14924,6 +14924,7 @@ snapshots:
       lodash-es: 4.17.21
       payload: 3.48.0(graphql@16.11.0)(typescript@5.8.3)
       react-hook-form: 7.60.0(react@19.1.0)
+      sonner: 2.0.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
     transitivePeerDependencies:
       - '@tiptap/core'
       - '@tiptap/pm'

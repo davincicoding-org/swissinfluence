@@ -182,9 +182,9 @@ export function Navigation({
                           href={childLink.href}
                           scroll
                           className={cn(
-                            "relative flex items-center space-x-1 text-base font-medium uppercase tracking-wider text-neutral-400 underline-offset-4 transition-all hover:text-mocha-500",
+                            "relative flex items-center space-x-1 text-base font-medium uppercase tracking-wider text-neutral-400 transition-all hover:text-mocha-500",
                             {
-                              "text-neutral-200 underline":
+                              "text-white":
                                 pathname === childLink.href,
                             },
                           )}

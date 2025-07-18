@@ -38,7 +38,7 @@ export function AgenciesPage({
               className="bg-neutral-200 p-8"
             >
               <RichText
-                className="prose-lg"
+                // className="prose-lg"
                 data={content}
                 enableProse={false}
               />

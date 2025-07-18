@@ -39,7 +39,6 @@ export function CreatorChallengeTile({
         <div className="flex flex-col gap-4">
           <RichText
             data={data.content}
-            className="prose prose-p:m-1 prose-li:m-0"
           />
         </div>
       }

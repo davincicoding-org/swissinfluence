@@ -54,7 +54,6 @@ export function Schedule({ slots }: ScheduleProps) {
               </Accordion.Control>
               <Accordion.Panel className="bg-white">
                 <RichText
-                  className="prose-lg prose-li:m-0"
                   data={slot.description}
                 />
               </Accordion.Panel>
@@ -115,7 +114,7 @@ export function Schedule({ slots }: ScheduleProps) {
           >
             <ScrollArea className="!h-96" scrollbars="y">
               <RichText
-                className="prose-lg p-3 prose-li:m-0"
+                className="p-3"
                 data={
                   slots[activeSection]?.description ?? {
                     root: {

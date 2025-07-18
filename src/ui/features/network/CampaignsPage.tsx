@@ -37,7 +37,7 @@ export function CampaignsPage({
             >
               <RichText
                 data={content}
-                className="prose-xl"
+                className="prose-lg"
                 enableProse={false}
               />
             </Paper>
