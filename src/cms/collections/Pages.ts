@@ -5,7 +5,8 @@ import { trackCollectionChange } from "../track-changes";
 export const Pages: CollectionConfig = {
   slug: "pages",
   admin: {
-    useAsTitle: "title",
+    useAsTitle: "id",
+    defaultColumns: ["id", "title", "heroImage", "content", "updatedAt"],
   },
   fields: [
     {

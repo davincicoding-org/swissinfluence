@@ -71,6 +71,7 @@ const meta = {
 } satisfies Meta<typeof AwardPage>;
 
 export default meta;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type Story = StoryObj<typeof meta>;
 
 export const Showcase: StoryObj<

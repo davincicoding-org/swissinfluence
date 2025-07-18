@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { getLocale, getTranslations } from "next-intl/server";
+import { getLocale } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
-import { env } from "@/env";
 import {
   getCreatorChallenges,
   getCurrentAward,
@@ -11,15 +10,13 @@ import {
   getPastImpressions,
 } from "@/server/queries";
 import { AwardPage as View } from "@/ui/features/award";
+import { resolveMetadata } from "@/utils/resolveMetadata";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslations();
-  return {
-    title: t("award.meta.title"),
-    description: t("award.meta.description"),
-    metadataBase: new URL(env.BASE_URL),
-  };
-}
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getLocale();
+  const { meta, heroImage } = await getPage("award", locale);
+  return resolveMetadata(meta, heroImage);
+};
 
 export default async function AwardPage() {
   const locale = await getLocale();

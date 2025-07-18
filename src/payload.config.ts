@@ -2,6 +2,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { resendAdapter } from "@payloadcms/email-resend";
+import { seoPlugin } from "@payloadcms/plugin-seo";
 import {
   AlignFeature,
   BlockquoteFeature,
@@ -54,10 +55,10 @@ import { env } from "@/env";
 import { MESSAGES_SCHEMA } from "@/i18n/config";
 import { routing } from "@/i18n/routing";
 
+import type { Page } from "./payload-types";
+
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
-
-// TODO add SEO
 
 export default buildConfig({
   admin: {
@@ -186,11 +187,14 @@ export default buildConfig({
         endpoint: env.S3_ENDPOINT,
       },
     }),
+    seoPlugin({
+      collections: ["pages"],
+      uploadsCollection: "photos",
+      tabbedUI: true,
+      generateTitle: async ({ doc }) => (doc as Page).title,
+    }),
     blurhashPlugin({
       collections: ["photos", "profile-pictures", "logos"],
     }),
   ],
-  // onInit: async () => {
-  //   clearDependencyGraphCache();
-  // },
 });

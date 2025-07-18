@@ -4,6 +4,7 @@ import type { CollectionSlug } from "payload";
 
 import { routing } from "@/i18n/routing";
 
+import type { PageId } from "./queries/pages";
 import { fetchMessages } from "./messages";
 import * as QUERIES from "./queries";
 
@@ -43,7 +44,7 @@ export async function prefetchData(
     await fetchCertification(locale);
 
     for (const page of changes.pages ?? []) {
-      await getPage(page, locale);
+      await getPage(page as PageId, locale);
     }
 
     for (const certifiedInfluencer of changes["certified-influencers"] ?? []) {

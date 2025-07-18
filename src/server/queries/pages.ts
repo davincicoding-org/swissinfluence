@@ -6,7 +6,7 @@ import type { Page } from "@/payload-types";
 import { cachedRequest } from "../cache";
 import { getPayloadClient } from "../payload";
 
-type PageId =
+export type PageId =
   | "award"
   | "network"
   | "convention"
@@ -18,8 +18,7 @@ type PageId =
   | "imprint"
   | "privacy"
   | "nomination-process"
-  | "sponsoring"
-  | (string & {});
+  | "sponsoring";
 
 export const getPage = cachedRequest(
   async (id: PageId, locale: SupportedLocale): Promise<Page> => {

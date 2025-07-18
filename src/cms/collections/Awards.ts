@@ -1,6 +1,4 @@
-import type { CollectionConfig, Condition } from "payload";
-
-import { Award } from "@/payload-types";
+import type { CollectionConfig } from "payload";
 
 import { trackCollectionChange } from "../track-changes";
 

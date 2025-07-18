@@ -1,8 +1,16 @@
+import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
 import { fetchCompany, fetchNetwork, getPage } from "@/server/queries";
 import { NetworkPage as View } from "@/ui/features/network";
+import { resolveMetadata } from "@/utils/resolveMetadata";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getLocale();
+  const { meta, heroImage } = await getPage("network", locale);
+  return resolveMetadata(meta, heroImage);
+};
 
 export default async function NetworkPage() {
   const locale = await getLocale();

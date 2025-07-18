@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getLocale } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
@@ -7,6 +8,13 @@ import {
   getSocialMediaCampaigns,
 } from "@/server/queries";
 import { CampaignsPage as View } from "@/ui/features/network";
+import { resolveMetadata } from "@/utils/resolveMetadata";
+
+export const generateMetadata = async (): Promise<Metadata> => {
+  const locale = await getLocale();
+  const { meta, heroImage } = await getPage("campaigns", locale);
+  return resolveMetadata(meta, heroImage);
+};
 
 export default async function CampaignsPage() {
   const locale = await getLocale();

@@ -40,10 +40,6 @@ export const MESSAGES_SCHEMA = {
     },
   },
   award: {
-    meta: {
-      title: "short",
-      description: "long",
-    },
     hero: {
       default: {
         title: "short",
@@ -89,10 +85,6 @@ export const MESSAGES_SCHEMA = {
   },
   network: {
     page: {
-      meta: {
-        title: "short",
-        description: "long",
-      },
       hero: {
         title: "short",
         headline: "long",
@@ -134,10 +126,6 @@ export const MESSAGES_SCHEMA = {
     },
   },
   convention: {
-    meta: {
-      title: "short",
-      description: "long",
-    },
     hero: {
       title: "short",
       headline: "long",
@@ -146,10 +134,6 @@ export const MESSAGES_SCHEMA = {
     content: "rich",
   },
   academy: {
-    meta: {
-      title: "short",
-      description: "long",
-    },
     hero: {
       title: "short",
       headline: "long",
