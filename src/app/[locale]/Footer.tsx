@@ -40,7 +40,7 @@ export function Footer({ company, className }: IFooterProps) {
           radius="md"
           className="flex items-center justify-between gap-x-4 gap-y-3 bg-neutral-600 p-3 max-md:order-1 max-md:basis-full max-sm:flex-wrap md:p-2"
         >
-          <p className="md:text-centerd text-pretty text-sm leading-snug text-neutral-300">
+          <p className="md:text-centerd text-pretty text-sm leading-snug text-neutral-300 md:pl-2">
             {t("newsletter.description")}
           </p>
           <Button

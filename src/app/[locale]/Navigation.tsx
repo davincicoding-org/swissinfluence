@@ -184,8 +184,7 @@ export function Navigation({
                           className={cn(
                             "relative flex items-center space-x-1 text-base font-medium uppercase tracking-wider text-neutral-400 transition-all hover:text-mocha-500",
                             {
-                              "text-white":
-                                pathname === childLink.href,
+                              "text-white": pathname === childLink.href,
                             },
                           )}
                         >

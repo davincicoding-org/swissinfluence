@@ -1,4 +1,6 @@
-import type { CollectionConfig } from "payload";
+import type { CollectionConfig, Condition } from "payload";
+
+import { Award } from "@/payload-types";
 
 import { trackCollectionChange } from "../track-changes";
 
@@ -9,6 +11,7 @@ export const Awards: CollectionConfig = {
     useAsTitle: "year",
     defaultColumns: ["year", "updatedAt"],
   },
+  defaultSort: "-year",
   fields: [
     {
       name: "legacyId",
@@ -24,37 +27,76 @@ export const Awards: CollectionConfig = {
           label: "General",
           fields: [
             {
-              name: "year",
-              type: "number",
-              required: true,
-            },
-            {
               type: "row",
               fields: [
                 {
                   type: "group",
-                  label: "Nomination",
+                  admin: {
+                    width: "30%",
+                  },
                   fields: [
                     {
-                      name: "nominationDeadline",
-                      label: "Deadline",
-                      type: "date",
+                      name: "year",
+                      type: "number",
+                      required: true,
+                    },
+
+                    {
+                      type: "group",
+                      label: "Nomination",
+                      fields: [
+                        {
+                          name: "nominationDeadline",
+                          label: "Deadline",
+                          type: "date",
+                        },
+                        {
+                          name: "nominationUrl",
+                          label: "URL",
+                          type: "text",
+                        },
+                      ],
                     },
                     {
-                      name: "nominationUrl",
-                      label: "URL",
-                      type: "text",
+                      type: "group",
+                      label: "Voting",
+                      fields: [
+                        {
+                          name: "votingDeadline",
+                          label: "Deadline",
+                          type: "date",
+                        },
+                      ],
                     },
                   ],
                 },
                 {
-                  type: "group",
-                  label: "Voting",
+                  name: "jury",
+                  type: "array",
                   fields: [
                     {
-                      name: "votingDeadline",
-                      label: "Deadline",
-                      type: "date",
+                      name: "expert",
+                      type: "relationship",
+                      relationTo: "experts",
+                      required: true,
+                      admin: {
+                        placeholder: "Select Expert",
+                      },
+                    },
+                  ],
+                },
+                {
+                  name: "partners",
+                  type: "array",
+                  fields: [
+                    {
+                      name: "brand",
+                      type: "relationship",
+                      relationTo: "brands",
+                      required: true,
+                      admin: {
+                        placeholder: "Select Brand",
+                      },
                     },
                   ],
                 },
@@ -63,73 +105,55 @@ export const Awards: CollectionConfig = {
           ],
         },
         {
-          label: "Categories",
+          label: "Categories/Nominees",
           fields: [
             {
               name: "categories",
               type: "array",
               label: false,
+              admin: {
+                className: "horizontal-array",
+              },
               fields: [
                 {
-                  type: "row",
+                  name: "category",
+                  type: "relationship",
+                  relationTo: "categories",
+                  required: true,
+                  admin: {
+                    placeholder: "Select Category",
+                  },
+                },
+                {
+                  name: "sponsor",
+                  type: "relationship",
+                  relationTo: "brands",
+                  admin: {
+                    placeholder: "Select Brand",
+                  },
+                },
+                {
+                  name: "ranked",
+                  type: "checkbox",
+                },
+                {
+                  name: "winnerImage",
+                  type: "upload",
+                  relationTo: "profile-pictures",
+                },
+
+                {
+                  name: "nominees",
+                  type: "array",
                   fields: [
                     {
-                      type: "group",
+                      name: "influencer",
+                      type: "relationship",
+                      relationTo: "influencers",
+                      required: true,
                       admin: {
-                        width: "50%",
+                        placeholder: "Select Influencer",
                       },
-                      fields: [
-                        {
-                          name: "category",
-                          type: "relationship",
-                          relationTo: "categories",
-                          required: true,
-                          admin: {
-                            placeholder: "Select Category",
-                          },
-                        },
-                        {
-                          name: "sponsor",
-                          type: "relationship",
-                          relationTo: "brands",
-                          admin: {
-                            placeholder: "Select Brand",
-                          },
-                        },
-
-                        {
-                          name: "winnerImage",
-                          type: "upload",
-                          relationTo: "profile-pictures",
-                        },
-                      ],
-                    },
-                    {
-                      type: "group",
-                      fields: [
-                        {
-                          name: "ranked",
-                          type: "checkbox",
-                        },
-                        {
-                          name: "nominees",
-                          type: "array",
-                          admin: {
-                            width: "50%",
-                          },
-                          fields: [
-                            {
-                              name: "influencer",
-                              type: "relationship",
-                              relationTo: "influencers",
-                              required: true,
-                              admin: {
-                                placeholder: "Select Influencer",
-                              },
-                            },
-                          ],
-                        },
-                      ],
                     },
                   ],
                 },
@@ -137,48 +161,7 @@ export const Awards: CollectionConfig = {
             },
           ],
         },
-        {
-          label: "Jury",
-          fields: [
-            {
-              name: "jury",
-              type: "array",
-              label: false,
-              fields: [
-                {
-                  name: "expert",
-                  type: "relationship",
-                  relationTo: "experts",
-                  required: true,
-                  admin: {
-                    placeholder: "Select Expert",
-                  },
-                },
-              ],
-            },
-          ],
-        },
-        {
-          label: "Partners",
-          fields: [
-            {
-              name: "partners",
-              type: "array",
-              label: false,
-              fields: [
-                {
-                  name: "brand",
-                  type: "relationship",
-                  relationTo: "brands",
-                  required: true,
-                  admin: {
-                    placeholder: "Select Brand",
-                  },
-                },
-              ],
-            },
-          ],
-        },
+
         {
           label: "Newcomer Scout",
           fields: [

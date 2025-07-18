@@ -1,0 +1,11 @@
+.horizontal-array > .array-field__draggable-rows {
+    flex-direction: row;
+    overflow-x: auto;
+
+    & > div {
+        flex-basis: 28rem;
+        flex-shrink: 0;
+    }
+
+
+}

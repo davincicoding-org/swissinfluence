@@ -24,6 +24,5 @@ export const PublishQueue: CollectionConfig = {
         description: "ID of the changed entity",
       },
     },
-    
   ],
 };

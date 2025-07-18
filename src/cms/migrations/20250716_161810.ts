@@ -1,4 +1,4 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+import { MigrateDownArgs, MigrateUpArgs, sql } from "@payloadcms/db-postgres";
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
@@ -49,10 +49,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "awards_newcomer_scout_image_idx" ON "awards" USING btree ("newcomer_scout_image_id");
   CREATE INDEX "network_whatsapp_image_idx" ON "network" USING btree ("whatsapp_image_id");
   ALTER TABLE "network" DROP COLUMN "influencer_application_url";
-  ALTER TABLE "network" DROP COLUMN "agency_application_url";`)
+  ALTER TABLE "network" DROP COLUMN "agency_application_url";`);
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({
+  db,
+  payload,
+  req,
+}: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    ALTER TABLE "awards_locales" DISABLE ROW LEVEL SECURITY;
   ALTER TABLE "certification" DISABLE ROW LEVEL SECURITY;
@@ -70,5 +74,5 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   ALTER TABLE "network" ADD COLUMN "agency_application_url" varchar NOT NULL;
   ALTER TABLE "awards" DROP COLUMN "newcomer_scout_image_id";
   ALTER TABLE "network" DROP COLUMN "campaign_request_url";
-  ALTER TABLE "network" DROP COLUMN "whatsapp_image_id";`)
+  ALTER TABLE "network" DROP COLUMN "whatsapp_image_id";`);
 }

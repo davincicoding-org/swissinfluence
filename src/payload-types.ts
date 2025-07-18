@@ -662,21 +662,6 @@ export interface Award {
   nominationDeadline?: string | null;
   nominationUrl?: string | null;
   votingDeadline?: string | null;
-  categories?:
-    | {
-        category: number | Category;
-        sponsor?: (number | null) | Brand;
-        winnerImage?: (number | null) | ProfilePicture;
-        ranked?: boolean | null;
-        nominees?:
-          | {
-              influencer: number | Influencer;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
   jury?:
     | {
         expert: number | Expert;
@@ -686,6 +671,21 @@ export interface Award {
   partners?:
     | {
         brand: number | Brand;
+        id?: string | null;
+      }[]
+    | null;
+  categories?:
+    | {
+        category: number | Category;
+        sponsor?: (number | null) | Brand;
+        ranked?: boolean | null;
+        winnerImage?: (number | null) | ProfilePicture;
+        nominees?:
+          | {
+              influencer: number | Influencer;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -1245,21 +1245,6 @@ export interface AwardsSelect<T extends boolean = true> {
   nominationDeadline?: T;
   nominationUrl?: T;
   votingDeadline?: T;
-  categories?:
-    | T
-    | {
-        category?: T;
-        sponsor?: T;
-        winnerImage?: T;
-        ranked?: T;
-        nominees?:
-          | T
-          | {
-              influencer?: T;
-              id?: T;
-            };
-        id?: T;
-      };
   jury?:
     | T
     | {
@@ -1270,6 +1255,21 @@ export interface AwardsSelect<T extends boolean = true> {
     | T
     | {
         brand?: T;
+        id?: T;
+      };
+  categories?:
+    | T
+    | {
+        category?: T;
+        sponsor?: T;
+        ranked?: T;
+        winnerImage?: T;
+        nominees?:
+          | T
+          | {
+              influencer?: T;
+              id?: T;
+            };
         id?: T;
       };
   newcomerScoutImage?: T;

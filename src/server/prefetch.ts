@@ -4,8 +4,8 @@ import type { CollectionSlug } from "payload";
 
 import { routing } from "@/i18n/routing";
 
-import * as QUERIES from "./queries";
 import { fetchMessages } from "./messages";
+import * as QUERIES from "./queries";
 
 export async function prefetchData(
   changes: Partial<Record<CollectionSlug, string[]>>,

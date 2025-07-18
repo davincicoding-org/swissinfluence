@@ -55,9 +55,7 @@ export function CampaignTile({ data, past, className }: ICampaignTileProps) {
       }
       content={
         <div className="flex flex-col gap-4">
-          <RichText
-            data={data.content}
-          />
+          <RichText data={data.content} />
         </div>
       }
       cta={

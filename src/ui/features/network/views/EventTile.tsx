@@ -140,10 +140,7 @@ export function EventTile({ data, className }: IEventTileProps) {
 
               <p className="mt-8 text-3xl">{data.title}</p>
 
-              <RichText
-                data={data.content}
-                className="py-6 text-white"
-              />
+              <RichText data={data.content} className="py-6 text-white" />
               <Button
                 component="a"
                 radius="md"

@@ -1,4 +1,4 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+import { MigrateDownArgs, MigrateUpArgs, sql } from "@payloadcms/db-postgres";
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
@@ -14,10 +14,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   ALTER TABLE "network_events" ALTER COLUMN "legacy_id" DROP NOT NULL;
   ALTER TABLE "certified_influencers" ALTER COLUMN "legacy_id" DROP NOT NULL;
   ALTER TABLE "agencies" ALTER COLUMN "legacy_id" DROP NOT NULL;
-  ALTER TABLE "conventions" ALTER COLUMN "legacy_id" DROP NOT NULL;`)
+  ALTER TABLE "conventions" ALTER COLUMN "legacy_id" DROP NOT NULL;`);
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({
+  db,
+  payload,
+  req,
+}: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    ALTER TABLE "categories" ALTER COLUMN "legacy_id" SET NOT NULL;
   ALTER TABLE "influencers" ALTER COLUMN "legacy_id" SET NOT NULL;
@@ -31,5 +35,5 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   ALTER TABLE "network_events" ALTER COLUMN "legacy_id" SET NOT NULL;
   ALTER TABLE "certified_influencers" ALTER COLUMN "legacy_id" SET NOT NULL;
   ALTER TABLE "agencies" ALTER COLUMN "legacy_id" SET NOT NULL;
-  ALTER TABLE "conventions" ALTER COLUMN "legacy_id" SET NOT NULL;`)
+  ALTER TABLE "conventions" ALTER COLUMN "legacy_id" SET NOT NULL;`);
 }

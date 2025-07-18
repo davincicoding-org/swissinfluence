@@ -1,4 +1,4 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+import { MigrateDownArgs, MigrateUpArgs, sql } from "@payloadcms/db-postgres";
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
@@ -729,10 +729,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "payload_migrations_updated_at_idx" ON "payload_migrations" USING btree ("updated_at");
   CREATE INDEX "payload_migrations_created_at_idx" ON "payload_migrations" USING btree ("created_at");
   CREATE INDEX "company_socials_order_idx" ON "company_socials" USING btree ("_order");
-  CREATE INDEX "company_socials_parent_id_idx" ON "company_socials" USING btree ("_parent_id");`)
+  CREATE INDEX "company_socials_parent_id_idx" ON "company_socials" USING btree ("_parent_id");`);
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({
+  db,
+  payload,
+  req,
+}: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    DROP TABLE "users_sessions" CASCADE;
   DROP TABLE "users" CASCADE;
@@ -786,5 +790,5 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."_locales";
   DROP TYPE "public"."social_platforms";
   DROP TYPE "public"."enum_certified_influencers_languages";
-  DROP TYPE "public"."enum_certified_influencers_residence";`)
+  DROP TYPE "public"."enum_certified_influencers_residence";`);
 }

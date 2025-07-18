@@ -53,9 +53,7 @@ export function Schedule({ slots }: ScheduleProps) {
                 </h4>
               </Accordion.Control>
               <Accordion.Panel className="bg-white">
-                <RichText
-                  data={slot.description}
-                />
+                <RichText data={slot.description} />
               </Accordion.Panel>
             </Accordion.Item>
           ))}
