@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Button, Paper } from "@mantine/core";
 import { useInView } from "motion/react";
+import { useTranslations } from "next-intl";
 import Marquee from "react-fast-marquee";
 
 import type { Photo } from "@/payload-types";
@@ -25,6 +26,7 @@ export function AwardCategories({
   categories,
   skipTarget,
 }: AwardCategoriesProps) {
+  const t = useTranslations("award.categories");
   const [visibleStack, setVisibleStack] = useState<number[]>([]);
 
   return (
@@ -34,14 +36,14 @@ export function AwardCategories({
     >
       <div className="container sticky top-0 grid h-[25dvh] items-end pb-4">
         <h3 className="flex items-end justify-between text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
-          Categories
+          {t("title")}
           <Button
             component="a"
             href={`#${skipTarget}`}
             variant="subtle"
             size="md"
           >
-            SKIP
+            {t("skip")}
           </Button>
         </h3>
       </div>
@@ -79,6 +81,7 @@ function CategoryCard({
   isTop,
   onVisibleChange,
 }: CategoryCardProps) {
+  const t = useTranslations("award.categories");
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { amount: "all" });
 
@@ -114,7 +117,7 @@ function CategoryCard({
             </h3>
             {sponsor && (
               <p className="text-sm text-gray-200 md:text-lg">
-                Sponsored by {sponsor.name}
+                {t("sponsoredBy", { brand: sponsor.name })}
               </p>
             )}
           </div>
@@ -122,7 +125,8 @@ function CategoryCard({
             <Image
               resource={sponsor.logo}
               alt={sponsor.name}
-              className={cn("h-auto max-h-20 w-auto min-w-0 max-w-32 shrink")}
+              className={cn("aspect-square w-32 shrink")}
+              imgClassName="object-contain object-bottom"
               sizes="(max-width: 768px) 160px, 256px"
             />
           )}

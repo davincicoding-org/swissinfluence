@@ -82,6 +82,11 @@ export const MESSAGES_SCHEMA = {
       "date-tbd": "short",
       "sale-not-open": "short",
     },
+    categories: {
+      title: "short",
+      skip: "short",
+      sponsoredBy: ["short", "{brand}"],
+    },
   },
   network: {
     page: {
