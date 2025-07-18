@@ -15,12 +15,7 @@ export const env = createEnv({
     S3_ENDPOINT: z.string(),
     RESEND_API_KEY: z.string(),
   },
-
-  client: {
-    NEXT_PUBLIC_SUPABASE_URL: z.string(),
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string(),
-  },
-
+  client: {},
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     BASE_URL: (() => {
@@ -45,8 +40,6 @@ export const env = createEnv({
     S3_REGION: process.env.S3_REGION,
     S3_ENDPOINT: process.env.S3_ENDPOINT,
     RESEND_API_KEY: process.env.RESEND_API_KEY,
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
