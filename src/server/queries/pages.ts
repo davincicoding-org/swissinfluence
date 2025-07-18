@@ -23,7 +23,7 @@ type PageId =
 
 export const getPage = cachedRequest(
   async (id: PageId, locale: SupportedLocale): Promise<Page> => {
-    console.log("getPage", id, locale);
+    console.log("CACHE MISS: getPage", id, locale);
     const payload = await getPayloadClient();
 
     const page = await payload.findByID({

@@ -7,12 +7,14 @@ import { cachedRequest } from "../cache";
 import { getPayloadClient } from "../payload";
 
 export const fetchCompany = cachedRequest(async (): Promise<Company> => {
+  console.log("CACHE MISS: fetchCompany");
   const payload = await getPayloadClient();
 
   return payload.findGlobal({ slug: "company" });
 }, ["company"]);
 
 export const fetchNetwork = cachedRequest(async (): Promise<Network> => {
+  console.log("CACHE MISS: fetchNetwork");
   const payload = await getPayloadClient();
 
   return payload.findGlobal({ slug: "network" });
@@ -20,6 +22,7 @@ export const fetchNetwork = cachedRequest(async (): Promise<Network> => {
 
 export const fetchCertification = cachedRequest(
   async (locale: SupportedLocale): Promise<Certification> => {
+    console.log("CACHE MISS: fetchCertification", locale);
     const payload = await getPayloadClient();
 
     return payload.findGlobal({ slug: "certification", locale });

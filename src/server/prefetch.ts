@@ -10,6 +10,7 @@ import * as QUERIES from "./queries";
 export async function prefetchData(
   changes: Partial<Record<CollectionSlug, string[]>>,
 ) {
+  console.log("PREFETCHING DATA");
   const {
     getAgencies,
     getCurrentAward,

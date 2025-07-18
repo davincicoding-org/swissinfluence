@@ -11,6 +11,7 @@ import { getPayloadClient } from "../payload";
 
 export const getCategoriesWithCertifiedInfluencers = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<CategoryWithInfluencers>> => {
+    console.log("CACHE MISS: getCategoriesWithCertifiedInfluencers", locale);
     const payload = await getPayloadClient();
 
     const { docs: influencers } = await payload.find({
@@ -52,6 +53,7 @@ export const getCertifiedInfluencer = cachedRequest(
     id: string,
     locale: SupportedLocale,
   ): Promise<CertifiedInfluencer | null> => {
+    console.log("CACHE MISS: getCertifiedInfluencer", id, locale);
     const payload = await getPayloadClient();
 
     const {

@@ -10,6 +10,7 @@ export const cachedRequest = <T extends (...args: any[]) => Promise<any>>(
 ): T =>
   unstable_cache(fn, undefined, {
     tags,
+    revalidate: false,
   });
 
 export const revalidateCache = async (tag: CacheTag) => revalidateTag(tag);
