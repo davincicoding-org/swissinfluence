@@ -15,10 +15,15 @@ type PageId =
   | "campaigns"
   | "events"
   | "agencies"
+  | "imprint"
+  | "privacy"
+  | "nomination-process"
+  | "sponsoring"
   | (string & {});
 
 export const getPage = cachedRequest(
   async (id: PageId, locale: SupportedLocale): Promise<Page> => {
+    console.log("getPage", id, locale);
     const payload = await getPayloadClient();
 
     const page = await payload.findByID({

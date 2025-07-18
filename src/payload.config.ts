@@ -57,7 +57,6 @@ import { routing } from "@/i18n/routing";
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
-// TODO add Static Pages
 // TODO add SEO
 
 export default buildConfig({

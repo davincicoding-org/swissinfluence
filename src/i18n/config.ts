@@ -160,20 +160,4 @@ export const MESSAGES_SCHEMA = {
     description: "long",
     CTA: "short",
   },
-  imprint: {
-    title: "short",
-    content: "rich",
-  },
-  "nomination-process": {
-    title: "short",
-    content: "rich",
-  },
-  privacy: {
-    title: "short",
-    content: "rich",
-  },
-  sponsoring: {
-    title: "short",
-    content: "rich",
-  },
 } satisfies MessagesSchema;
