@@ -34,16 +34,16 @@ export function AwardJury({ members }: IAwardJuryProps) {
               onClick={() => handleMemberClick(member)}
               tabIndex={0}
             >
-              <div className="flex cursor-pointer items-center space-x-4 rounded-xl border bg-mocha-50 p-4 shadow backdrop-blur-sm">
+              <div className="flex cursor-pointer items-center space-x-4 rounded-xl border bg-mocha-50 p-2 shadow backdrop-blur-sm">
                 <Image
                   resource={image}
                   alt={member.name}
-                  className="h-16 w-16 shrink-0 rounded-full object-cover"
+                  className="h-20 w-20 shrink-0 rounded-lg object-cover"
                   sizes="128px"
                 />
                 <div>
                   <h3 className="text-lg font-semibold">{member.name}</h3>
-                  <p className="text-sm text-neutral-600">
+                  <p className="text-pretty text-sm leading-tight text-neutral-600">
                     {member.description}
                   </p>
                 </div>

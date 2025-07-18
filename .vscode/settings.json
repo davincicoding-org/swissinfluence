@@ -2,5 +2,6 @@
   "workbench.colorCustomizations": {
     "titleBar.activeBackground": "#906653",
     "titleBar.activeForeground": "#ffffff"
-  }
+  },
+  "editor.linkedEditing": true
 }

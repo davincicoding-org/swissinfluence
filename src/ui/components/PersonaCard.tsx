@@ -48,7 +48,7 @@ export function PersonaCard({
       <Image
         resource={image}
         alt={name}
-        className="aspect-square"
+        className="block aspect-square"
         imgClassName="transition-transform duration-500 group-hover:scale-110"
         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
       />
@@ -59,52 +59,55 @@ export function PersonaCard({
           (isTouchDevice ?? revealed) ? "opacity-100" : "opacity-0",
         )}
       >
-        <div className="absolute inset-x-0 bottom-0 pb-4 pr-3">
-          <TextOverflowReveal
-            text={name}
-            classNames={{
-              root: "mb-1",
-              text: cn(
-                "pl-4 text-lg font-medium tracking-widest text-white",
-                classNames?.name,
-              ),
-            }}
-          />
-          <div
-            className={cn("flex", {
-              "flex-col gap-1": !compact,
-              "-mt-2 items-end justify-between": compact,
-            })}
-          >
-            <p
-              className={cn(
-                "text-pretty px-4 font-light leading-snug text-neutral-300 empty:hidden",
-                classNames?.description,
-              )}
+        <div className="absolute inset-x-0 bottom-0 flex w-full min-w-0 items-end justify-between gap-1 pb-4 pr-3">
+          <div className="min-w-0 shrink">
+            <TextOverflowReveal
+              text={name}
+              classNames={{
+                root: "mb-1",
+                text: cn(
+                  "pl-4 text-lg font-medium tracking-widest text-white",
+                  classNames?.name,
+                ),
+              }}
+            />
+            <div
+              className={cn("flex", {
+                "flex-col gap-1": !compact,
+                "-mt-2 items-end justify-between": compact,
+              })}
             >
-              {description}
-            </p>
-            <Flex gap={4} className={cn("px-4", { "px-1": compact })}>
-              {socials.map((social) => (
-                <ActionIcon
-                  key={social.platform}
-                  component="a"
-                  href={social.url}
-                  target="_blank"
-                  variant="subtle"
-                  color="white"
-                  radius="md"
-                  className="transition-colors hover:text-mocha-500"
-                >
-                  <SocialMediaPlatformIcon
-                    platform={social.platform}
-                    size={28}
-                    stroke={1.25}
-                  />
-                </ActionIcon>
-              ))}
-            </Flex>
+              <p
+                className={cn(
+                  "text-pretty px-4 font-light leading-snug text-neutral-300 empty:hidden",
+                  classNames?.description,
+                )}
+              >
+                {description}
+              </p>
+            </div>
           </div>
+          <Flex gap={4} direction="column">
+            {socials.map((social) => (
+              <ActionIcon
+                key={social.platform}
+                component="a"
+                href={social.url}
+                target="_blank"
+                variant="subtle"
+                color="white"
+                radius="md"
+                size="lg"
+                className="transition-colors hover:text-mocha-500"
+              >
+                <SocialMediaPlatformIcon
+                  platform={social.platform}
+                  size={32}
+                  stroke={1.25}
+                />
+              </ActionIcon>
+            ))}
+          </Flex>
         </div>
       </div>
     </Paper>

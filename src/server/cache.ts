@@ -13,4 +13,7 @@ export const cachedRequest = <T extends (...args: any[]) => Promise<any>>(
     revalidate: false,
   });
 
-export const revalidateCache = async (tag: CacheTag) => revalidateTag(tag);
+export const revalidateCache = async (tag: CacheTag) => {
+  console.log("INVALIDATE CACHE", tag);
+  revalidateTag(tag);
+};
