@@ -1,6 +1,6 @@
 import { getRequestConfig } from "next-intl/server";
 
-import { fetchMessages } from "@/server/queries";
+import { fetchMessages } from "@/server/messages";
 
 import type { SupportedLocale } from "./config";
 import { routing } from "./routing";

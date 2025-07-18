@@ -28,6 +28,9 @@ const config: NextConfig = {
   experimental: {
     optimizePackageImports: ["@mantine/core", "@mantine/hooks", "motion"],
   },
+
+  // Turbopack: no special aliasing required; we pin `file-type` to a
+  // version whose default export already includes `fileTypeFromFile`.
 };
 
 const withNextIntl = createNextIntlPlugin();

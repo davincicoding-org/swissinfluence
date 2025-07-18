@@ -5,7 +5,7 @@ import { stringify } from "qs-esm";
 
 import { env } from "@/env";
 
-import { cachedRequest } from "../cache";
+import { cachedRequest } from "./cache";
 
 export const fetchMessages = cachedRequest(
   async (locale) => {

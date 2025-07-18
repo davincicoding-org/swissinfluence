@@ -3,7 +3,6 @@ export * from "./award";
 export * from "./certified-influencers";
 export * from "./convention";
 export * from "./globals";
-export * from "./messages";
 export * from "./network-events";
 export * from "./pages";
 export * from "./social-media-campaigns";

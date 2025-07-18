@@ -5,6 +5,7 @@ import type { CollectionSlug } from "payload";
 import { routing } from "@/i18n/routing";
 
 import * as QUERIES from "./queries";
+import { fetchMessages } from "./messages";
 
 export async function prefetchData(
   changes: Partial<Record<CollectionSlug, string[]>>,
@@ -18,7 +19,6 @@ export async function prefetchData(
     getNetworkEvents,
     getPage,
     getSocialMediaCampaigns,
-    fetchMessages,
     getLatestConvention,
     getCategoriesWithCertifiedInfluencers,
     getCertifiedInfluencer,
