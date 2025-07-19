@@ -1,6 +1,7 @@
 "use client";
 
 import type { PaperProps } from "@mantine/core";
+import type { HTMLAttributes } from "react";
 import { ActionIcon, Flex, Paper } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -34,7 +35,9 @@ export function PersonaCard({
   className,
   compact,
   ...paperProps
-}: IPersonaCardProps & Omit<PaperProps, "classNames">) {
+}: IPersonaCardProps &
+  Omit<PaperProps, "classNames"> &
+  HTMLAttributes<HTMLDivElement>) {
   const isTouchDevice = useMediaQuery("(hover: none)");
 
   return (
@@ -56,15 +59,14 @@ export function PersonaCard({
       <div
         className={cn(
           "absolute inset-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white transition-opacity duration-300 group-hover:opacity-100",
-          (isTouchDevice ?? revealed) ? "opacity-100" : "opacity-0",
+          isTouchDevice || revealed ? "opacity-100" : "opacity-0",
         )}
       >
-        <div className="absolute inset-x-0 bottom-0 flex w-full min-w-0 items-end justify-between gap-1 pb-4 pr-3">
+        <div className="user-select-none absolute inset-x-0 bottom-0 flex w-full min-w-0 items-end justify-between gap-1 pb-3 pr-2">
           <div className="min-w-0 shrink">
             <TextOverflowReveal
               text={name}
               classNames={{
-                root: "mb-1",
                 text: cn(
                   "pl-4 text-lg font-medium tracking-widest text-white",
                   classNames?.name,
@@ -87,7 +89,7 @@ export function PersonaCard({
               </p>
             </div>
           </div>
-          <Flex gap={4} direction="column">
+          <Flex gap={4} direction="column" className="empty:hidden">
             {socials.map((social) => (
               <ActionIcon
                 key={social.platform}

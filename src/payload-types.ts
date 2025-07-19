@@ -669,6 +669,7 @@ export interface Award {
   year: number;
   nominationDeadline?: string | null;
   nominationUrl?: string | null;
+  votingOpening?: string | null;
   votingDeadline?: string | null;
   jury?:
     | {
@@ -1259,6 +1260,7 @@ export interface AwardsSelect<T extends boolean = true> {
   year?: T;
   nominationDeadline?: T;
   nominationUrl?: T;
+  votingOpening?: T;
   votingDeadline?: T;
   jury?:
     | T

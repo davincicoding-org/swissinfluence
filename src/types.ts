@@ -93,3 +93,9 @@ export interface CreatorChallenge
   > {
   organizer: payloadTypes.Brand;
 }
+
+export interface VotingValues {
+  email: string;
+  votes: payloadTypes.Influencer["id"][];
+  newsletter: boolean;
+}

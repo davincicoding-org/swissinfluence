@@ -9,6 +9,7 @@ import type {
   CreatorChallenge,
   CurrentAward,
 } from "@/types";
+import { submitVoting } from "@/server/voting";
 import { PageHero } from "@/ui/components/PageHero";
 
 import { useHeaderContent } from "./hooks";
@@ -18,12 +19,10 @@ import { AwardJury } from "./views/AwardJury";
 import { AwardNomination } from "./views/AwardNomination";
 import { AwardPartners } from "./views/AwardPartners";
 import { AwardShow } from "./views/AwardShow";
-import { AwardVoting } from "./views/AwardVoting";
 import { CreatorChallenges } from "./views/CreatorChallenges";
 import { HallOfFame } from "./views/HallOfFame";
 import { NewcomerScout } from "./views/NewcomerScout";
-
-const FEATURE_FLAG_VOTING = false;
+import { VotingProvider } from "./views/VotingProvider";
 
 export interface AwardPageProps {
   heroImage: Photo;
@@ -42,9 +41,20 @@ export function AwardPage({
 }: AwardPageProps) {
   const { headline, cta } = useHeaderContent(currentAward);
   const t = useTranslations("award");
+  const canVote = (() => {
+    if (!currentAward) return false;
+    if (!currentAward.votingOpening) return false;
+    if (!currentAward.votingDeadline) return false;
+    if (dayjs(currentAward.votingOpening).isAfter()) return false;
+    if (dayjs(currentAward.votingDeadline).isBefore()) return false;
+    return true;
+  })();
 
   return (
-    <>
+    <VotingProvider
+      categories={currentAward?.categories ?? []}
+      submissionHandler={submitVoting}
+    >
       <PageHero
         image={heroImage}
         title={t("hero.default.title", { year: currentAward?.year ?? "" })}
@@ -120,23 +130,13 @@ export function AwardPage({
               </section>
             ) : null}
 
-            {FEATURE_FLAG_VOTING &&
-            currentAward.votingDeadline &&
-            dayjs(currentAward.votingDeadline).isAfter() ? (
-              <section
-                id="voting"
-                className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
-              >
-                <AwardVoting deadline={currentAward.votingDeadline} />
-              </section>
-            ) : null}
-
             {currentAward.categories && currentAward.categories.length > 0 && (
               <AwardCategories
                 id="categories"
                 className="snap-start snap-always"
                 skipTarget={challenges.length ? "challenges" : "jury"}
                 categories={currentAward.categories}
+                canVote={canVote}
               />
             )}
 
@@ -187,6 +187,6 @@ export function AwardPage({
           <HallOfFame awards={hallOfFame} />
         </section>
       </main>
-    </>
+    </VotingProvider>
   );
 }

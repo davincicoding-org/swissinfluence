@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl";
 import type { CurrentAward } from "@/types";
 
 import { AwardCountdown } from "./views/AwardCountdown";
+import { VotingButton } from "./views/VotingProvider";
 
 export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");
@@ -46,10 +47,12 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
+    const canVote = dayjs(data.votingOpening).isAfter();
+
     // NOMINATION_ENDED
     if (
       !data.categories.every(({ nominees }) => nominees.length > 0) ||
-      !data.votingDeadline
+      !canVote
     )
       return {
         headline: t("nomination-ended.headline"),
@@ -67,24 +70,13 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    const canVote = dayjs(data.votingDeadline).isAfter();
+    const hasVotingEnded = dayjs(data.votingDeadline).isBefore();
 
     // VOTING
-    if (canVote)
+    if (!hasVotingEnded)
       return {
         headline: t("voting.headline"),
-        cta: (
-          <Button
-            size="lg"
-            radius="md"
-            component="a"
-            href="#voting"
-            target="_self"
-            className="uppercase tracking-widest"
-          >
-            {t("voting.CTA")}
-          </Button>
-        ),
+        cta: <VotingButton />,
       };
 
     // VOTING_ENDED

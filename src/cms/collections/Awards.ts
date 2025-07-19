@@ -60,6 +60,11 @@ export const Awards: CollectionConfig = {
                       label: "Voting",
                       fields: [
                         {
+                          name: "votingOpening",
+                          label: "Opening",
+                          type: "date",
+                        },
+                        {
                           name: "votingDeadline",
                           label: "Deadline",
                           type: "date",

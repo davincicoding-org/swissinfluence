@@ -1,11 +1,30 @@
+.horizontal-array {
+  overflow-y: visible;
+}
+
 .horizontal-array > .array-field__draggable-rows {
-    flex-direction: row;
-    overflow-x: auto;
+  flex-direction: row;
+  overflow-x: auto;
 
-    & > div {
-        flex-basis: 28rem;
-        flex-shrink: 0;
+  & > div {
+    flex-basis: 28rem;
+    flex-shrink: 0;
+  }
+
+  &
+    > div
+    > .collapsible
+    > .collapsible__toggle-wrap
+    > .collapsible__actions-wrap
+    > .collapsible__actions
+    > .popup
+    > .popup__content {
+    bottom: 0;
+    transform: translate(-50%, calc(100% + var(--popup-caret-size)));
+
+    & > .popup__caret {
+      top: 1px;
+      transform: translate(-50%, -100%) rotate(180deg);
     }
-
-
+  }
 }

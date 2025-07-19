@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
   ActionIcon,
   Button,
@@ -9,7 +10,7 @@ import {
   Modal,
   Paper,
 } from "@mantine/core";
-import { IconArrowDown, IconChevronDown } from "@tabler/icons-react";
+import { IconArrowDown } from "@tabler/icons-react";
 import { useInView } from "motion/react";
 import { useTranslations } from "next-intl";
 import Marquee from "react-fast-marquee";
@@ -21,11 +22,14 @@ import { PersonaCard } from "@/ui/components/PersonaCard";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
+import { VotingButton } from "./VotingProvider";
+
 export interface AwardCategoriesProps {
   className?: string;
   id: string;
   categories: Array<AwardCategory>;
   skipTarget: string;
+  canVote: boolean;
 }
 
 export function AwardCategories({
@@ -33,9 +37,13 @@ export function AwardCategories({
   className,
   categories,
   skipTarget,
+  canVote,
 }: AwardCategoriesProps) {
   const t = useTranslations("award.categories");
   const [visibleStack, setVisibleStack] = useState<number[]>([]);
+  const searchParams = useSearchParams();
+  // TEMP
+  const enforceVoting = searchParams.get("ENABLE_VOTING") !== null;
 
   return (
     <section
@@ -74,6 +82,12 @@ export function AwardCategories({
           />
         </div>
       ))}
+
+      {(canVote || enforceVoting) && (
+        <Center pos="sticky" bottom={0} className="-mb-[10dvh] py-4">
+          <VotingButton />
+        </Center>
+      )}
     </section>
   );
 }
@@ -177,7 +191,7 @@ function CategoryCard({
               size="compact-md"
               onClick={() => setIsExpanded(true)}
             >
-              SHOW ALL
+              VIEW ALL
             </Button>
           </Center>
         )}
