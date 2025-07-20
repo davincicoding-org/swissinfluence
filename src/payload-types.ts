@@ -358,6 +358,7 @@ export interface Config {
     'certified-influencers': CertifiedInfluencer;
     agencies: Agency;
     conventions: Convention;
+    'voting-submissions': VotingSubmission;
     polyglot_messages: PolyglotMessage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -384,6 +385,7 @@ export interface Config {
     'certified-influencers': CertifiedInfluencersSelect<false> | CertifiedInfluencersSelect<true>;
     agencies: AgenciesSelect<false> | AgenciesSelect<true>;
     conventions: ConventionsSelect<false> | ConventionsSelect<true>;
+    'voting-submissions': VotingSubmissionsSelect<false> | VotingSubmissionsSelect<true>;
     polyglot_messages: PolyglotMessagesSelect<false> | PolyglotMessagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -436,6 +438,7 @@ export interface UserAuthOperations {
 export interface User {
   id: number;
   access?: {
+    admin?: boolean | null;
     users?: boolean | null;
     content?: boolean | null;
   };
@@ -883,6 +886,27 @@ export interface Convention {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "voting-submissions".
+ */
+export interface VotingSubmission {
+  id: number;
+  email: string;
+  award: number | Award;
+  confirmed: boolean;
+  hash: string;
+  newsletter: boolean;
+  votes?:
+    | {
+        influencer: number | Influencer;
+        category: number | Category;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "polyglot_messages".
  */
 export interface PolyglotMessage {
@@ -984,6 +1008,10 @@ export interface PayloadLockedDocument {
         value: number | Convention;
       } | null)
     | ({
+        relationTo: 'voting-submissions';
+        value: number | VotingSubmission;
+      } | null)
+    | ({
         relationTo: 'polyglot_messages';
         value: number | PolyglotMessage;
       } | null);
@@ -1037,6 +1065,7 @@ export interface UsersSelect<T extends boolean = true> {
   access?:
     | T
     | {
+        admin?: T;
         users?: T;
         content?: T;
       };
@@ -1418,6 +1447,26 @@ export interface ConventionsSelect<T extends boolean = true> {
   registrationUrl?: T;
   partners?: T;
   schedule?: T | ScheduleSlotsSelect<T>;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "voting-submissions_select".
+ */
+export interface VotingSubmissionsSelect<T extends boolean = true> {
+  email?: T;
+  award?: T;
+  confirmed?: T;
+  hash?: T;
+  newsletter?: T;
+  votes?:
+    | T
+    | {
+        influencer?: T;
+        category?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

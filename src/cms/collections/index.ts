@@ -17,3 +17,4 @@ export * from "./Logos";
 export * from "./ProfilePictures";
 export * from "./PublishQueue";
 export * from "./Categories";
+export * from "./Voting";

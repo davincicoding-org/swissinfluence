@@ -46,6 +46,7 @@ import {
   PublishQueue,
   SocialMediaCampaigns,
   Users,
+  VotingSubmissions,
 } from "@/cms/collections";
 import { Certification } from "@/cms/globals/Certification";
 import { Company } from "@/cms/globals/Company";
@@ -104,6 +105,7 @@ export default buildConfig({
     CertifiedInfluencers,
     Agencies,
     Conventions,
+    VotingSubmissions,
   ],
   editor: lexicalEditor({
     features: [

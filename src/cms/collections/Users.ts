@@ -35,10 +35,10 @@ const inviteNewUserHook: CollectionAfterChangeHook<User> = async ({
 export const Users: CollectionConfig = {
   slug: "users",
   access: {
-    read: withAccess("users"),
-    create: withAccess("users"),
-    update: withAccess("users"),
-    delete: withAccess("users"),
+    read: withAccess("admin"),
+    create: withAccess("admin"),
+    update: withAccess("admin"),
+    delete: withAccess("admin"),
   },
   admin: {
     useAsTitle: "email",
@@ -53,6 +53,10 @@ export const Users: CollectionConfig = {
       name: "access",
       type: "group",
       fields: [
+        {
+          name: "admin",
+          type: "checkbox",
+        },
         {
           name: "users",
           type: "checkbox",

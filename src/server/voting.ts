@@ -2,12 +2,28 @@
 
 import type { VotingValues } from "@/types";
 
-export async function submitVoting(values: VotingValues) {
-  await new Promise((resolve) => setTimeout(resolve, 5_000));
+import { getPayloadClient } from "./payload";
 
-  // TODO store to db with hash column
-  // TODO send email with confirmation link
-  // TODO add route to confirm email
+export async function submitVoting({
+  email,
+  award,
+  votes,
+  newsletter,
+}: VotingValues) {
+  const payload = await getPayloadClient();
+  const submission = await payload.create({
+    collection: "voting-submissions",
+    data: {
+      email,
+      award,
+      votes,
+      newsletter,
+      confirmed: false,
+      hash: crypto.randomUUID(),
+    },
+  });
+
   // TODO sign up for newsletter
-  console.log(values);
+  // TODO add route to confirm email
+  console.log(submission);
 }
