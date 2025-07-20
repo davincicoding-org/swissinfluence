@@ -25,6 +25,8 @@ export interface IPersonaCardProps {
   };
 }
 
+// TODO start text scroll when revealed
+
 export function PersonaCard({
   name,
   description,

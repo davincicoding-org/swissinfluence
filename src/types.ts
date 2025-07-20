@@ -94,8 +94,16 @@ export interface CreatorChallenge
   organizer: payloadTypes.Brand;
 }
 
+export interface InfluencerVote {
+  influencer: payloadTypes.Influencer["id"];
+  category: payloadTypes.Category["id"];
+}
+
+// TODO votes should probably include the award id and category as well
+// TODO voters should maybe be stores as well
 export interface VotingValues {
   email: string;
-  votes: payloadTypes.Influencer["id"][];
+  award: payloadTypes.Award["id"];
+  votes: Array<InfluencerVote>;
   newsletter: boolean;
 }

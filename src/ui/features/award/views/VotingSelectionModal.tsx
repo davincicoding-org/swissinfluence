@@ -5,23 +5,29 @@ import {
   ActionIcon,
   Button,
   CloseButton,
+  Divider,
   Indicator,
   Modal,
   NavLink,
+  Paper,
   Popover,
+  ScrollArea,
+  Stack,
+  Text,
 } from "@mantine/core";
 import { IconList, IconX } from "@tabler/icons-react";
+import { isEqual } from "lodash-es";
 import { AnimatePresence, motion } from "motion/react";
 
-import type { Influencer, ProfilePicture } from "@/payload-types";
-import type { AwardCategory, VotingValues } from "@/types";
+import type { Category, Influencer, ProfilePicture } from "@/payload-types";
+import type { AwardCategory, InfluencerVote, VotingValues } from "@/types";
 import { PersonaCard } from "@/ui/components/PersonaCard";
 import { cn } from "@/ui/utils";
 
 export interface VotingSelectionModalProps {
   categories: AwardCategory[];
   votes: VotingValues["votes"];
-  onToggleVote: (id: Influencer["id"]) => void;
+  onToggleVote: (vote: InfluencerVote) => void;
   opened: boolean;
   onClose: () => void;
   onSubmit: () => void;
@@ -37,11 +43,23 @@ export function VotingSelectionModal({
   onClose,
   onSubmit,
 }: VotingSelectionModalProps) {
-  const selectedInfluencers = useMemo(
+  const selectedInfluencers = useMemo<
+    {
+      category: Pick<Category, "id" | "name">;
+      influencers: Array<Pick<Influencer, "id" | "name">>;
+    }[]
+  >(
     () =>
-      categories.flatMap(({ nominees }) =>
-        nominees.filter((nominee) => votes.includes(nominee.id)),
-      ),
+      categories
+        .map(({ nominees, category }) => ({
+          category,
+          influencers: nominees.filter((nominee) =>
+            votes.some((vote) =>
+              isEqual(vote, { influencer: nominee.id, category: category.id }),
+            ),
+          ),
+        }))
+        .filter(({ influencers }) => influencers.length > 0),
     [categories, votes],
   );
 
@@ -71,12 +89,21 @@ export function VotingSelectionModal({
                     className={cn(
                       "cursor-pointer opacity-70 transition-all hover:opacity-100",
                       {
-                        "border-8 border-mocha-500 opacity-100": votes.includes(
-                          nominee.id,
+                        "border-8 border-mocha-500 opacity-100": votes.some(
+                          (vote) =>
+                            isEqual(vote, {
+                              influencer: nominee.id,
+                              category: category.id,
+                            }),
                         ),
                       },
                     )}
-                    onClick={() => onToggleVote(nominee.id)}
+                    onClick={() =>
+                      onToggleVote({
+                        influencer: nominee.id,
+                        category: category.id,
+                      })
+                    }
                     name={nominee.name}
                     image={nominee.image as ProfilePicture}
                     revealed
@@ -91,7 +118,7 @@ export function VotingSelectionModal({
         <AnimatePresence mode="wait">
           {votes.length > 0 ? (
             <>
-              <Popover position="top-start" offset={0}>
+              <Popover position="top-start" offset={0} radius="md">
                 <Popover.Target>
                   <Indicator
                     label={votes.length}
@@ -116,19 +143,57 @@ export function VotingSelectionModal({
                     </ActionIcon>
                   </Indicator>
                 </Popover.Target>
-                <Popover.Dropdown p={0} className="overflow-hidden">
-                  <AnimatePresence>
-                    {selectedInfluencers.map((influencer) => (
-                      <NavLink
-                        key={influencer.id}
-                        label={influencer.name}
-                        component={motion.button}
-                        exit={{ opacity: 0, x: 10 }}
-                        rightSection={<IconX size={16} />}
-                        onClick={() => onToggleVote(influencer.id)}
-                      />
-                    ))}
-                  </AnimatePresence>
+                <Popover.Dropdown
+                  p={0}
+                  className="!bg-white/30 backdrop-blur-sm"
+                >
+                  <ScrollArea
+                    scrollbars="y"
+                    classNames={{
+                      viewport: "max-h-96",
+                    }}
+                  >
+                    <Stack gap={8} p="xs">
+                      {selectedInfluencers.map(({ category, influencers }) => (
+                        <Paper
+                          key={category.id}
+                          withBorder
+                          radius="md"
+                          className="overflow-clip !bg-white/50"
+                        >
+                          {/* <Divider label={category.name} /> */}
+                          <Text
+                            c="white"
+                            size="sm"
+                            bg="mocha.3"
+                            className="px-2 py-1.5 font-medium"
+                          >
+                            {category.name}
+                          </Text>
+                          <Divider />
+                          <AnimatePresence>
+                            {influencers.map((influencer) => (
+                              <NavLink
+                                key={influencer.id}
+                                label={influencer.name}
+                                component={motion.button}
+                                exit={{ opacity: 0, x: 10 }}
+                                rightSection={<IconX size={16} />}
+                                py={4}
+                                px="xs"
+                                onClick={() =>
+                                  onToggleVote({
+                                    influencer: influencer.id,
+                                    category: category.id,
+                                  })
+                                }
+                              />
+                            ))}
+                          </AnimatePresence>
+                        </Paper>
+                      ))}
+                    </Stack>
+                  </ScrollArea>
                 </Popover.Dropdown>
               </Popover>
 

@@ -5,10 +5,11 @@ import type { PropsWithChildren } from "react";
 import { createContext, useContext, useState } from "react";
 import { Button, Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
+import { isEqual } from "lodash-es";
 import { useTranslations } from "next-intl";
 
-import type { Influencer } from "@/payload-types";
-import type { AwardCategory, VotingValues } from "@/types";
+import type { Award } from "@/payload-types";
+import type { AwardCategory, InfluencerVote, VotingValues } from "@/types";
 
 import { VotingSelectionModal } from "./VotingSelectionModal";
 import { VotingSubmissionModal } from "./VotingSubmissionModal";
@@ -22,19 +23,23 @@ const VotingContext = createContext<VotingContext>({
 });
 
 export interface VotingProviderProps {
+  awardId: Award["id"] | undefined;
   categories: AwardCategory[];
   submissionHandler: (values: VotingValues) => Promise<void>;
 }
 
 export function VotingProvider({
+  awardId,
   categories,
   submissionHandler,
   children,
 }: PropsWithChildren<VotingProviderProps>) {
   const [votes, setVotes] = useState<VotingValues["votes"]>([]);
-  const onToggleVote = (id: Influencer["id"]) =>
+  const onToggleVote = (vote: InfluencerVote) =>
     setVotes((prev) =>
-      prev.includes(id) ? prev.filter((id) => id !== id) : [...prev, id],
+      prev.some((v) => isEqual(v, vote))
+        ? prev.filter((v) => !isEqual(v, vote))
+        : [...prev, vote],
     );
   const [isSelectionModalOpen, selectionModal] = useDisclosure(false);
   const [isSubmissionModalOpen, submissionModal] = useDisclosure(false);
@@ -50,7 +55,9 @@ export function VotingProvider({
     values: Pick<VotingValues, "email" | "newsletter">,
   ) => {
     setIsSubmitting(true);
+    if (awardId === undefined) return;
     await submissionHandler({
+      award: awardId,
       email: values.email,
       newsletter: values.newsletter,
       votes,

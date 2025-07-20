@@ -52,6 +52,7 @@ export function AwardPage({
 
   return (
     <VotingProvider
+      awardId={currentAward?.id}
       categories={currentAward?.categories ?? []}
       submissionHandler={submitVoting}
     >
