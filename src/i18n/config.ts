@@ -66,6 +66,7 @@ export const MESSAGES_SCHEMA = {
       submission: {
         title: "short",
         emailPlaceholder: "short",
+        gmailAliasWarning: "long",
         disclaimer: "short",
         newsletter: "short",
       },

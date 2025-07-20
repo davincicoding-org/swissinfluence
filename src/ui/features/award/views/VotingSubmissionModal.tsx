@@ -4,13 +4,16 @@ import type { FormEventHandler } from "react";
 import { useState } from "react";
 import {
   ActionIcon,
+  Blockquote,
   Center,
   Checkbox,
+  Collapse,
   Modal,
   Paper,
   TextInput,
+  Tooltip,
 } from "@mantine/core";
-import { IconSend } from "@tabler/icons-react";
+import { IconInfoCircle, IconSend } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 
 import type { VotingValues } from "@/types";
@@ -35,6 +38,11 @@ export function VotingSubmissionModal({
     email: "",
     newsletter: true,
   });
+
+  const shouldShowGmailWarning =
+    /^[a-zA-Z0-9._-]+\+[a-zA-Z0-9._-]+@(gmail|googlemail)\.com$/.test(
+      values.email,
+    );
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -74,6 +82,16 @@ export function VotingSubmissionModal({
           }
         />
       </form>
+
+      <Collapse in={shouldShowGmailWarning} animateOpacity className="">
+        <Paper
+          radius="md"
+          bg="yellow.0"
+          className="-mt-4 border border-yellow-500 p-2 pt-5 text-xs"
+        >
+          {t("gmailAliasWarning")}
+        </Paper>
+      </Collapse>
 
       <Paper
         bg="gray.0"
