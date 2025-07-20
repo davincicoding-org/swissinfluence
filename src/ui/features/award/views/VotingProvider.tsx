@@ -11,6 +11,8 @@ import { useTranslations } from "next-intl";
 import type { Award } from "@/payload-types";
 import type { AwardCategory, InfluencerVote, VotingValues } from "@/types";
 
+import { VotingConfirmationModal } from "./VotingConfirmationModal";
+import { VotingConfirmedModal } from "./VotingConfirmedModal";
 import { VotingSelectionModal } from "./VotingSelectionModal";
 import { VotingSubmissionModal } from "./VotingSubmissionModal";
 
@@ -66,7 +68,6 @@ export function VotingProvider({
     submissionModal.close();
     selectionModal.close();
     setVotes([]);
-    await new Promise((resolve) => setTimeout(resolve, 500));
     setIsSubmitted(true);
   };
 
@@ -91,22 +92,11 @@ export function VotingProvider({
         onClose={submissionModal.close}
         onSubmit={handleSubmit}
       />
-      <Modal
+      <VotingConfirmationModal
         opened={isSubmitted}
         onClose={() => setIsSubmitted(false)}
-        withCloseButton={false}
-        centered
-        radius="md"
-        transitionProps={{
-          transition: "pop",
-          duration: 200,
-        }}
-      >
-        {/* TODO i18n */}
-        <p className="text-center text-2xl font-medium">
-          Your votes have been submitted successfully.
-        </p>
-      </Modal>
+      />
+      <VotingConfirmedModal />
     </VotingContext.Provider>
   );
 }

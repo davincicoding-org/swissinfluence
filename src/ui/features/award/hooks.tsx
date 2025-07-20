@@ -61,7 +61,7 @@ export const useHeaderContent = (data: CurrentAward | null) => {
             size="lg"
             radius="md"
             component="a"
-            href="#nominees"
+            href="#categories"
             target="_self"
             className="uppercase tracking-widest"
           >

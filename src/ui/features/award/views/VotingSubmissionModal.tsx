@@ -11,6 +11,7 @@ import {
   TextInput,
 } from "@mantine/core";
 import { IconSend } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import type { VotingValues } from "@/types";
 
@@ -21,14 +22,13 @@ export interface VotingSubmissionModalProps {
   onSubmit: (values: Pick<VotingValues, "email" | "newsletter">) => void;
 }
 
-// TODO i18n
-
 export function VotingSubmissionModal({
   opened,
   isSubmitting,
   onClose,
   onSubmit,
 }: VotingSubmissionModalProps) {
+  const t = useTranslations("award.voting.submission");
   const [values, setValues] = useState<
     Pick<VotingValues, "email" | "newsletter">
   >({
@@ -54,12 +54,10 @@ export function VotingSubmissionModal({
         duration: 200,
       }}
     >
-      <p className="mb-4 text-center text-2xl font-medium">
-        Some nice title here
-      </p>
+      <p className="mb-4 text-center text-2xl font-medium">{t("title")}</p>
       <form onSubmit={handleSubmit}>
         <TextInput
-          placeholder="Enter your email"
+          placeholder={t("emailPlaceholder")}
           type="email"
           required
           size="lg"
@@ -83,17 +81,12 @@ export function VotingSubmissionModal({
         radius="md"
         className="mx-auto mt-3 text-pretty p-2 text-sm leading-tight text-gray-500 shadow-sm"
       >
-        In order for your votes to be valid, you will need to confirm your
-        email.
+        {t("disclaimer")}
       </Paper>
 
-      {/* <p className="text-centerd text-balanced mt-3 text-sm leading-tight text-gray-500">
-          In order for your votes to be valid, you will need to confirm your
-          email.
-        </p> */}
       <Center>
         <Checkbox
-          label="Stay updated on the latest news and events"
+          label={t("newsletter")}
           checked={values.newsletter}
           className="mt-4"
           disabled={isSubmitting}

@@ -1,23 +1,27 @@
 import type { CollectionAfterChangeHook, CollectionConfig } from "payload";
+import { getTranslations } from "next-intl/server";
 
 import type { VotingSubmission } from "@/payload-types";
 import { env } from "@/env";
 
 import { authenticated, withAccess } from "../access";
 
-const createHook: CollectionAfterChangeHook<VotingSubmission> = ({
+const createHook: CollectionAfterChangeHook<VotingSubmission> = async ({
   doc,
   operation,
   req: { payload },
 }) => {
   if (operation !== "create") return;
 
-  // TODO i18n
+  const t = await getTranslations("award.voting.email");
+
   return payload.sendEmail({
     to: doc.email,
     // TODO add swissinfluce.ch as sender
-    subject: "Confirm your votes",
-    html: `Click <a href="${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/confirm?hash=${doc.hash}">here</a> to confirm your votes`,
+    subject: t("subject"),
+    html: `<p>${t("content", {
+      link: `<a href="${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/confirm?hash=${doc.hash}">${t("linkLabel")}</a>`,
+    })}</p>`,
   });
 };
 
@@ -128,13 +132,6 @@ export const VotingSubmissions: CollectionConfig = {
           if (votingSubmission.hash !== hash)
             return Response.json({ error: "Invalid hash" }, { status: 400 });
 
-          // Check if already confirmed
-          if (votingSubmission.confirmed)
-            return Response.json(
-              { message: "Vote already confirmed" },
-              { status: 200 },
-            );
-
           // Update the voting submission to set confirmed to true
           await req.payload.update({
             collection: "voting-submissions",
@@ -144,9 +141,10 @@ export const VotingSubmissions: CollectionConfig = {
             },
           });
 
-          return Response.json(
-            { message: "Vote confirmed successfully" },
-            { status: 200 },
+          // Redirect to award page with success confirmation
+          return Response.redirect(
+            `${env.BASE_URL}/award?voting-confirmed`,
+            302,
           );
         } catch (error) {
           console.error("Error confirming vote:", error);

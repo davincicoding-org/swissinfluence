@@ -51,7 +51,7 @@ export default async function LocaleLayout({
   ]);
 
   return (
-    <html lang={locale} {...mantineHtmlProps}>
+    <html lang={locale} data-scroll-behavior="smooth" {...mantineHtmlProps}>
       <Scroll />
 
       <head>

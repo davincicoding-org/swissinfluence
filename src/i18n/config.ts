@@ -58,9 +58,30 @@ export const MESSAGES_SCHEMA = {
       finished: { headline: "short", CTA: "short" },
     },
     voting: {
-      title: "short",
-      description: "rich",
       CTA: "short",
+      selection: {
+        empty: "short",
+        submit: "short",
+      },
+      submission: {
+        title: "short",
+        emailPlaceholder: "short",
+        disclaimer: "short",
+        newsletter: "short",
+      },
+      confirmation: {
+        title: "short",
+        description: "long",
+      },
+      email: {
+        subject: "short",
+        content: ["long", "{link}"],
+        linkLabel: "short",
+      },
+      confirmed: {
+        title: "short",
+        description: "long",
+      },
     },
     nomination: {
       title: "short",

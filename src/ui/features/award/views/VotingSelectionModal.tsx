@@ -18,6 +18,7 @@ import {
 import { IconList, IconX } from "@tabler/icons-react";
 import { isEqual } from "lodash-es";
 import { AnimatePresence, motion } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import type { Category, Influencer, ProfilePicture } from "@/payload-types";
 import type { AwardCategory, InfluencerVote, VotingValues } from "@/types";
@@ -33,8 +34,6 @@ export interface VotingSelectionModalProps {
   onSubmit: () => void;
 }
 
-// TODO i18n
-
 export function VotingSelectionModal({
   categories,
   votes,
@@ -43,6 +42,7 @@ export function VotingSelectionModal({
   onClose,
   onSubmit,
 }: VotingSelectionModalProps) {
+  const t = useTranslations("award.voting.selection");
   const selectedInfluencers = useMemo<
     {
       category: Pick<Category, "id" | "name">;
@@ -207,7 +207,7 @@ export function VotingSelectionModal({
                 exit={{ opacity: 0 }}
                 onClick={onSubmit}
               >
-                Submit Votes
+                {t("submit")}
               </Button>
             </>
           ) : (
@@ -218,7 +218,7 @@ export function VotingSelectionModal({
               exit={{ opacity: 0 }}
               className="text-balance text-lg font-medium leading-tight"
             >
-              Select all the Nominees you&apos;d like to vote for
+              {t("empty")}
             </motion.span>
           )}
         </AnimatePresence>
