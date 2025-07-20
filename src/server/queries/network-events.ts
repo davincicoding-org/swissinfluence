@@ -15,7 +15,7 @@ export const getNetworkEvents = cachedRequest(
     const events = await payload.find({
       collection: "network-events",
       locale,
-      limit: 100,
+      pagination: false,
       sort: "date",
       where: {
         date: {

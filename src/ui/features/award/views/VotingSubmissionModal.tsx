@@ -4,19 +4,18 @@ import type { FormEventHandler } from "react";
 import { useState } from "react";
 import {
   ActionIcon,
-  Blockquote,
   Center,
   Checkbox,
   Collapse,
   Modal,
   Paper,
   TextInput,
-  Tooltip,
 } from "@mantine/core";
-import { IconInfoCircle, IconSend } from "@tabler/icons-react";
+import { IconSend } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 
 import type { VotingValues } from "@/types";
+import { isPotentiallySubAddress } from "@/utils/voting";
 
 export interface VotingSubmissionModalProps {
   opened: boolean;
@@ -39,10 +38,7 @@ export function VotingSubmissionModal({
     newsletter: true,
   });
 
-  const shouldShowGmailWarning =
-    /^[a-zA-Z0-9._-]+\+[a-zA-Z0-9._-]+@(gmail|googlemail)\.com$/.test(
-      values.email,
-    );
+  const shouldShowSubaddressWarning = isPotentiallySubAddress(values.email);
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -83,13 +79,16 @@ export function VotingSubmissionModal({
         />
       </form>
 
-      <Collapse in={shouldShowGmailWarning} animateOpacity className="">
+      <Collapse
+        in={shouldShowSubaddressWarning && !isSubmitting}
+        animateOpacity
+      >
         <Paper
           radius="md"
           bg="yellow.0"
           className="-mt-4 border border-yellow-500 p-2 pt-5 text-xs"
         >
-          {t("gmailAliasWarning")}
+          {t("subaddressWarning")}
         </Paper>
       </Collapse>
 

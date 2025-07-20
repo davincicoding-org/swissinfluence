@@ -894,14 +894,11 @@ export interface VotingSubmission {
   award: number | Award;
   confirmed: boolean;
   hash: string;
-  newsletter: boolean;
-  votes?:
-    | {
-        influencer: number | Influencer;
-        category: number | Category;
-        id?: string | null;
-      }[]
-    | null;
+  votes: {
+    influencer: number | Influencer;
+    category: number | Category;
+    id?: string | null;
+  }[];
   updatedAt: string;
   createdAt: string;
 }
@@ -1459,7 +1456,6 @@ export interface VotingSubmissionsSelect<T extends boolean = true> {
   award?: T;
   confirmed?: T;
   hash?: T;
-  newsletter?: T;
   votes?:
     | T
     | {

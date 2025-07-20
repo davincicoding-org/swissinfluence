@@ -15,7 +15,7 @@ export const getSocialMediaCampaigns = cachedRequest(
     const { docs: campaigns } = await payload.find({
       collection: "social-media-campaigns",
       locale,
-      limit: 100,
+      pagination: false,
     });
 
     return campaigns.map((campaign) => ({

@@ -57,8 +57,6 @@ export async function publishChanges() {
 
       if (visited.has(dependent.entity.slug)) continue;
 
-      console.log("checking", dependent.entity.slug);
-
       const { docs: affectedItems } = await payload.find({
         collection: dependent.entity.slug,
         where: {

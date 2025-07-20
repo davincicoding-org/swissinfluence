@@ -14,7 +14,7 @@ export const getAgencies = cachedRequest(
     const { docs: agencies } = await payload.find({
       collection: "agencies",
       locale,
-      limit: 100,
+      pagination: false,
     });
 
     return agencies;

@@ -1,0 +1,106 @@
+[
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": "Ana und Nina",
+    "category": "Food",
+    "date": "2025-07-20T15:15:49.311Z",
+    "unique": false
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": "Marcel Paa",
+    "category": "Food",
+    "date": "2025-07-20T15:15:49.311Z",
+    "unique": false
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": "Life of Fab",
+    "category": "Travel",
+    "date": "2025-07-20T15:15:49.311Z",
+    "unique": true
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": "Nathi Style",
+    "category": "Entertainment",
+    "date": "2025-07-20T15:15:49.311Z",
+    "unique": true
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": "Iamlaurabe",
+    "category": "Sport",
+    "date": "2025-07-20T15:15:49.311Z",
+    "unique": true
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": "Ana und Nina",
+    "category": "Food",
+    "date": "2025-07-20T15:20:35.784Z",
+    "unique": false
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": "Ana und Nina",
+    "category": "Food",
+    "date": "2025-07-20T15:22:44.685Z",
+    "unique": false
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": "Ana und Nina",
+    "category": "Food",
+    "date": "2025-07-20T15:25:58.943Z",
+    "unique": false
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": true,
+    "influencer": "Marcel Paa",
+    "category": "Food",
+    "date": "2025-07-20T15:28:44.363Z",
+    "unique": false
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": true,
+    "influencer": "Marcel Paa",
+    "category": "Food",
+    "date": "2025-07-20T16:21:14.318Z",
+    "unique": false
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": true,
+    "influencer": "Thispronto",
+    "category": "Food",
+    "date": "2025-07-20T16:21:14.318Z",
+    "unique": true
+  },
+  {
+    "email": "michael@davincicoding.ch",
+    "confirmed": false,
+    "influencer": "Iamlaurabe",
+    "category": "Sport",
+    "date": "2025-07-20T22:01:32.685Z",
+    "unique": false
+  },
+  {
+    "email": "michael+demo@davincicoding.ch",
+    "confirmed": false,
+    "influencer": "Iamlaurabe",
+    "category": "Sport",
+    "date": "2025-07-20T22:04:44.656Z",
+    "unique": false
+  }
+]

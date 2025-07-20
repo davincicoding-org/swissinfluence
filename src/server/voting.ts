@@ -1,6 +1,8 @@
 "use server";
 
+import type { Award } from "@/payload-types";
 import type { VotingValues } from "@/types";
+import { consolidateVotes, summarizeVotes } from "@/utils/voting";
 
 import { getPayloadClient } from "./payload";
 
@@ -11,19 +13,44 @@ export async function submitVoting({
   newsletter,
 }: VotingValues) {
   const payload = await getPayloadClient();
-  const submission = await payload.create({
+
+  await payload.create({
     collection: "voting-submissions",
     data: {
       email,
       award,
       votes,
-      newsletter,
       confirmed: false,
       hash: crypto.randomUUID(),
     },
   });
+  if (newsletter) {
+    // TODO sign up for newsletter
+  }
+}
 
-  // TODO sign up for newsletter
-  // TODO add route to confirm email
-  console.log(submission);
+export async function exportVoting(award: Award["id"]) {
+  const payload = await getPayloadClient();
+  const { docs: submissions } = await payload.find({
+    collection: "voting-submissions",
+    select: {
+      email: true,
+      confirmed: true,
+      votes: true,
+      createdAt: true,
+    },
+    where: {
+      award: {
+        equals: award,
+      },
+    },
+    sort: "createdAt",
+    pagination: false,
+  });
+
+  const votes = consolidateVotes(submissions);
+
+  const summary = summarizeVotes(votes);
+
+  return { votes, summary };
 }

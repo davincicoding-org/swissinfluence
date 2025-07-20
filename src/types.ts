@@ -107,3 +107,20 @@ export interface VotingValues {
   votes: Array<InfluencerVote>;
   newsletter: boolean;
 }
+
+export interface ValidatedVote {
+  email: string;
+  confirmed: boolean;
+  influencer: string;
+  category: string;
+  date: string;
+  unique: boolean;
+}
+
+export interface InfluencerVotingSummary {
+  influencer: string;
+  category: string;
+  totalVotes: number;
+  confirmedVotes: number;
+  unconfirmedVotes: number;
+}

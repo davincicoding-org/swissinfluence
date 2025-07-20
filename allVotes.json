@@ -1,0 +1,1143 @@
+[
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": {
+      "id": 181,
+      "legacyId": 182,
+      "name": "Ana und Nina",
+      "socials": [
+        {
+          "id": "6874c8f7012f45dcfe2e491b",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/anaundnina"
+        }
+      ],
+      "image": {
+        "id": 203,
+        "prefix": "profile-pictures",
+        "blurhash": "KDF=Q|-oac00Iotm~WIUIA",
+        "updatedAt": "2025-07-13T15:28:54.303Z",
+        "createdAt": "2025-07-13T15:28:53.870Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/ana-und-nina.webp",
+        "thumbnailURL": "/api/profile-pictures/file/ana-und-nina-300x300.webp",
+        "filename": "ana-und-nina.webp",
+        "mimeType": "image/webp",
+        "filesize": 57232,
+        "width": 800,
+        "height": 800,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/ana-und-nina-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 15164,
+            "filename": "ana-und-nina-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:08:07.259Z",
+      "createdAt": "2025-07-13T15:28:54.401Z"
+    },
+    "category": {
+      "id": 18,
+      "legacyId": 29,
+      "image": {
+        "id": 18,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K27,oWNH03E3NH^49uNc~A",
+        "updatedAt": "2025-07-13T15:20:38.165Z",
+        "createdAt": "2025-07-13T15:20:37.295Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food.webp",
+        "thumbnailURL": "/api/photos/file/food-300x300.webp",
+        "filename": "food.webp",
+        "mimeType": "image/webp",
+        "filesize": 71442,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 6690,
+            "filename": "food-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 29394,
+            "filename": "food-1200x630.webp"
+          }
+        }
+      },
+      "name": "Food",
+      "updatedAt": "2025-07-13T15:20:39.202Z",
+      "createdAt": "2025-07-13T15:20:38.355Z"
+    },
+    "date": "2025-07-20T15:15:49.311Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": {
+      "id": 136,
+      "legacyId": 138,
+      "name": "Marcel Paa",
+      "socials": [
+        {
+          "id": "6874c8ea012f45dcfe2e48d6",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/marcelpaa_einfachbacken"
+        }
+      ],
+      "image": {
+        "id": 158,
+        "prefix": "profile-pictures",
+        "blurhash": "K19?qCFw00F|^O8^000L~9",
+        "updatedAt": "2025-07-13T15:28:17.438Z",
+        "createdAt": "2025-07-13T15:28:17.165Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/marcel-paa.webp",
+        "thumbnailURL": "/api/profile-pictures/file/marcel-paa-300x300.webp",
+        "filename": "marcel-paa.webp",
+        "mimeType": "image/webp",
+        "filesize": 24892,
+        "width": 600,
+        "height": 600,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/marcel-paa-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 7794,
+            "filename": "marcel-paa-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:07:54.142Z",
+      "createdAt": "2025-07-13T15:28:17.626Z"
+    },
+    "category": {
+      "id": 18,
+      "legacyId": 29,
+      "image": {
+        "id": 18,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K27,oWNH03E3NH^49uNc~A",
+        "updatedAt": "2025-07-13T15:20:38.165Z",
+        "createdAt": "2025-07-13T15:20:37.295Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food.webp",
+        "thumbnailURL": "/api/photos/file/food-300x300.webp",
+        "filename": "food.webp",
+        "mimeType": "image/webp",
+        "filesize": 71442,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 6690,
+            "filename": "food-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 29394,
+            "filename": "food-1200x630.webp"
+          }
+        }
+      },
+      "name": "Food",
+      "updatedAt": "2025-07-13T15:20:39.202Z",
+      "createdAt": "2025-07-13T15:20:38.355Z"
+    },
+    "date": "2025-07-20T15:15:49.311Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": {
+      "id": 189,
+      "legacyId": 190,
+      "name": "Life of Fab",
+      "socials": [
+        {
+          "id": "6874c8f9012f45dcfe2e4924",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/life_of_fab27?igsh=eWdzYjlpZHlqcmdr"
+        }
+      ],
+      "image": {
+        "id": 211,
+        "prefix": "profile-pictures",
+        "blurhash": "KNFX;i,n$f~VNaNGicW?M|",
+        "updatedAt": "2025-07-13T15:29:01.861Z",
+        "createdAt": "2025-07-13T15:29:01.314Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/life-of-fab.webp",
+        "thumbnailURL": "/api/profile-pictures/file/life-of-fab-300x300.webp",
+        "filename": "life-of-fab.webp",
+        "mimeType": "image/webp",
+        "filesize": 70994,
+        "width": 800,
+        "height": 800,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/life-of-fab-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 19026,
+            "filename": "life-of-fab-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:08:09.694Z",
+      "createdAt": "2025-07-13T15:29:01.966Z"
+    },
+    "category": {
+      "id": 7,
+      "legacyId": 21,
+      "image": {
+        "id": 7,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K5BzB{Io00.-IVXTXmIV~W",
+        "updatedAt": "2025-07-13T15:20:11.224Z",
+        "createdAt": "2025-07-13T15:20:10.211Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/travel.webp",
+        "thumbnailURL": "/api/photos/file/travel-300x300.webp",
+        "filename": "travel.webp",
+        "mimeType": "image/webp",
+        "filesize": 128472,
+        "width": 2490,
+        "height": 1200,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/travel-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 8950,
+            "filename": "travel-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/travel-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 45964,
+            "filename": "travel-1200x630.webp"
+          }
+        }
+      },
+      "name": "Travel",
+      "updatedAt": "2025-07-13T15:20:12.282Z",
+      "createdAt": "2025-07-13T15:20:11.339Z"
+    },
+    "date": "2025-07-20T15:15:49.311Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": {
+      "id": 17,
+      "legacyId": 18,
+      "name": "Nathi Style",
+      "socials": [
+        {
+          "id": "6874c8c7012f45dcfe2e4822",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/nathistyle_/"
+        },
+        {
+          "id": "6874c8c7012f45dcfe2e4823",
+          "platform": "TIKTOK",
+          "url": "https://www.tiktok.com/@nathistyle/"
+        }
+      ],
+      "image": {
+        "id": 39,
+        "prefix": "profile-pictures",
+        "blurhash": "KaGIG:E0x^~XInWXtRkBRP",
+        "updatedAt": "2025-07-13T15:26:38.916Z",
+        "createdAt": "2025-07-13T15:26:38.410Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/nathi-style.webp",
+        "thumbnailURL": "/api/profile-pictures/file/nathi-style-300x300.webp",
+        "filename": "nathi-style.webp",
+        "mimeType": "image/webp",
+        "filesize": 26632,
+        "width": 600,
+        "height": 600,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/nathi-style-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 9376,
+            "filename": "nathi-style-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:07:19.288Z",
+      "createdAt": "2025-07-13T15:26:39.101Z"
+    },
+    "category": {
+      "id": 19,
+      "legacyId": 24,
+      "image": {
+        "id": 19,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "KYE{CC%1-;~qRjt7.8oebb",
+        "updatedAt": "2025-07-13T15:20:40.672Z",
+        "createdAt": "2025-07-13T15:20:39.654Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/entertainment.webp",
+        "thumbnailURL": "/api/photos/file/entertainment-300x300.webp",
+        "filename": "entertainment.webp",
+        "mimeType": "image/webp",
+        "filesize": 112450,
+        "width": 1920,
+        "height": 1080,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/entertainment-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 10920,
+            "filename": "entertainment-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/entertainment-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 48182,
+            "filename": "entertainment-1200x630.webp"
+          }
+        }
+      },
+      "name": "Entertainment",
+      "updatedAt": "2025-07-13T15:20:41.697Z",
+      "createdAt": "2025-07-13T15:20:40.779Z"
+    },
+    "date": "2025-07-20T15:15:49.311Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": {
+      "id": 9,
+      "legacyId": 10,
+      "name": "Iamlaurabe",
+      "socials": [
+        {
+          "id": "6874c8c5012f45dcfe2e4814",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/iamlaurabe"
+        }
+      ],
+      "image": {
+        "id": 31,
+        "prefix": "profile-pictures",
+        "blurhash": "KFGa?{yXg$56MxJCAGrr}p",
+        "updatedAt": "2025-07-13T15:26:31.489Z",
+        "createdAt": "2025-07-13T15:26:31.240Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/iamlaurabe.webp",
+        "thumbnailURL": "/api/profile-pictures/file/iamlaurabe-300x300.webp",
+        "filename": "iamlaurabe.webp",
+        "mimeType": "image/webp",
+        "filesize": 23942,
+        "width": 600,
+        "height": 600,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/iamlaurabe-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 8978,
+            "filename": "iamlaurabe-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:07:17.022Z",
+      "createdAt": "2025-07-13T15:26:31.589Z"
+    },
+    "category": {
+      "id": 6,
+      "legacyId": 28,
+      "image": {
+        "id": 94,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K67BcbRPR%HXtSWC%%Rjt7",
+        "updatedAt": "2025-07-15T09:09:04.535Z",
+        "createdAt": "2025-07-15T09:09:01.821Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/Sport V2.webp",
+        "thumbnailURL": "/api/photos/file/Sport%20V2-300x300.png",
+        "filename": "Sport V2.webp",
+        "mimeType": "image/webp",
+        "filesize": 136412,
+        "width": 2440,
+        "height": 400,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/Sport V2-300x300.png",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/png",
+            "filesize": 183997,
+            "filename": "Sport V2-300x300.png"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/Sport V2-1200x630.png",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/png",
+            "filesize": 1399497,
+            "filename": "Sport V2-1200x630.png"
+          }
+        }
+      },
+      "name": "Sport",
+      "updatedAt": "2025-07-15T09:09:08.643Z",
+      "createdAt": "2025-07-13T15:20:08.842Z"
+    },
+    "date": "2025-07-20T15:15:49.311Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": {
+      "id": 181,
+      "legacyId": 182,
+      "name": "Ana und Nina",
+      "socials": [
+        {
+          "id": "6874c8f7012f45dcfe2e491b",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/anaundnina"
+        }
+      ],
+      "image": {
+        "id": 203,
+        "prefix": "profile-pictures",
+        "blurhash": "KDF=Q|-oac00Iotm~WIUIA",
+        "updatedAt": "2025-07-13T15:28:54.303Z",
+        "createdAt": "2025-07-13T15:28:53.870Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/ana-und-nina.webp",
+        "thumbnailURL": "/api/profile-pictures/file/ana-und-nina-300x300.webp",
+        "filename": "ana-und-nina.webp",
+        "mimeType": "image/webp",
+        "filesize": 57232,
+        "width": 800,
+        "height": 800,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/ana-und-nina-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 15164,
+            "filename": "ana-und-nina-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:08:07.259Z",
+      "createdAt": "2025-07-13T15:28:54.401Z"
+    },
+    "category": {
+      "id": 18,
+      "legacyId": 29,
+      "image": {
+        "id": 18,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K27,oWNH03E3NH^49uNc~A",
+        "updatedAt": "2025-07-13T15:20:38.165Z",
+        "createdAt": "2025-07-13T15:20:37.295Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food.webp",
+        "thumbnailURL": "/api/photos/file/food-300x300.webp",
+        "filename": "food.webp",
+        "mimeType": "image/webp",
+        "filesize": 71442,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 6690,
+            "filename": "food-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 29394,
+            "filename": "food-1200x630.webp"
+          }
+        }
+      },
+      "name": "Food",
+      "updatedAt": "2025-07-13T15:20:39.202Z",
+      "createdAt": "2025-07-13T15:20:38.355Z"
+    },
+    "date": "2025-07-20T15:20:35.784Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": {
+      "id": 181,
+      "legacyId": 182,
+      "name": "Ana und Nina",
+      "socials": [
+        {
+          "id": "6874c8f7012f45dcfe2e491b",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/anaundnina"
+        }
+      ],
+      "image": {
+        "id": 203,
+        "prefix": "profile-pictures",
+        "blurhash": "KDF=Q|-oac00Iotm~WIUIA",
+        "updatedAt": "2025-07-13T15:28:54.303Z",
+        "createdAt": "2025-07-13T15:28:53.870Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/ana-und-nina.webp",
+        "thumbnailURL": "/api/profile-pictures/file/ana-und-nina-300x300.webp",
+        "filename": "ana-und-nina.webp",
+        "mimeType": "image/webp",
+        "filesize": 57232,
+        "width": 800,
+        "height": 800,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/ana-und-nina-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 15164,
+            "filename": "ana-und-nina-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:08:07.259Z",
+      "createdAt": "2025-07-13T15:28:54.401Z"
+    },
+    "category": {
+      "id": 18,
+      "legacyId": 29,
+      "image": {
+        "id": 18,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K27,oWNH03E3NH^49uNc~A",
+        "updatedAt": "2025-07-13T15:20:38.165Z",
+        "createdAt": "2025-07-13T15:20:37.295Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food.webp",
+        "thumbnailURL": "/api/photos/file/food-300x300.webp",
+        "filename": "food.webp",
+        "mimeType": "image/webp",
+        "filesize": 71442,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 6690,
+            "filename": "food-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 29394,
+            "filename": "food-1200x630.webp"
+          }
+        }
+      },
+      "name": "Food",
+      "updatedAt": "2025-07-13T15:20:39.202Z",
+      "createdAt": "2025-07-13T15:20:38.355Z"
+    },
+    "date": "2025-07-20T15:22:44.685Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": false,
+    "influencer": {
+      "id": 181,
+      "legacyId": 182,
+      "name": "Ana und Nina",
+      "socials": [
+        {
+          "id": "6874c8f7012f45dcfe2e491b",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/anaundnina"
+        }
+      ],
+      "image": {
+        "id": 203,
+        "prefix": "profile-pictures",
+        "blurhash": "KDF=Q|-oac00Iotm~WIUIA",
+        "updatedAt": "2025-07-13T15:28:54.303Z",
+        "createdAt": "2025-07-13T15:28:53.870Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/ana-und-nina.webp",
+        "thumbnailURL": "/api/profile-pictures/file/ana-und-nina-300x300.webp",
+        "filename": "ana-und-nina.webp",
+        "mimeType": "image/webp",
+        "filesize": 57232,
+        "width": 800,
+        "height": 800,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/ana-und-nina-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 15164,
+            "filename": "ana-und-nina-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:08:07.259Z",
+      "createdAt": "2025-07-13T15:28:54.401Z"
+    },
+    "category": {
+      "id": 18,
+      "legacyId": 29,
+      "image": {
+        "id": 18,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K27,oWNH03E3NH^49uNc~A",
+        "updatedAt": "2025-07-13T15:20:38.165Z",
+        "createdAt": "2025-07-13T15:20:37.295Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food.webp",
+        "thumbnailURL": "/api/photos/file/food-300x300.webp",
+        "filename": "food.webp",
+        "mimeType": "image/webp",
+        "filesize": 71442,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 6690,
+            "filename": "food-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 29394,
+            "filename": "food-1200x630.webp"
+          }
+        }
+      },
+      "name": "Food",
+      "updatedAt": "2025-07-13T15:20:39.202Z",
+      "createdAt": "2025-07-13T15:20:38.355Z"
+    },
+    "date": "2025-07-20T15:25:58.943Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": true,
+    "influencer": {
+      "id": 136,
+      "legacyId": 138,
+      "name": "Marcel Paa",
+      "socials": [
+        {
+          "id": "6874c8ea012f45dcfe2e48d6",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/marcelpaa_einfachbacken"
+        }
+      ],
+      "image": {
+        "id": 158,
+        "prefix": "profile-pictures",
+        "blurhash": "K19?qCFw00F|^O8^000L~9",
+        "updatedAt": "2025-07-13T15:28:17.438Z",
+        "createdAt": "2025-07-13T15:28:17.165Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/marcel-paa.webp",
+        "thumbnailURL": "/api/profile-pictures/file/marcel-paa-300x300.webp",
+        "filename": "marcel-paa.webp",
+        "mimeType": "image/webp",
+        "filesize": 24892,
+        "width": 600,
+        "height": 600,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/marcel-paa-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 7794,
+            "filename": "marcel-paa-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:07:54.142Z",
+      "createdAt": "2025-07-13T15:28:17.626Z"
+    },
+    "category": {
+      "id": 18,
+      "legacyId": 29,
+      "image": {
+        "id": 18,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K27,oWNH03E3NH^49uNc~A",
+        "updatedAt": "2025-07-13T15:20:38.165Z",
+        "createdAt": "2025-07-13T15:20:37.295Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food.webp",
+        "thumbnailURL": "/api/photos/file/food-300x300.webp",
+        "filename": "food.webp",
+        "mimeType": "image/webp",
+        "filesize": 71442,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 6690,
+            "filename": "food-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 29394,
+            "filename": "food-1200x630.webp"
+          }
+        }
+      },
+      "name": "Food",
+      "updatedAt": "2025-07-13T15:20:39.202Z",
+      "createdAt": "2025-07-13T15:20:38.355Z"
+    },
+    "date": "2025-07-20T15:28:44.363Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": true,
+    "influencer": {
+      "id": 136,
+      "legacyId": 138,
+      "name": "Marcel Paa",
+      "socials": [
+        {
+          "id": "6874c8ea012f45dcfe2e48d6",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/marcelpaa_einfachbacken"
+        }
+      ],
+      "image": {
+        "id": 158,
+        "prefix": "profile-pictures",
+        "blurhash": "K19?qCFw00F|^O8^000L~9",
+        "updatedAt": "2025-07-13T15:28:17.438Z",
+        "createdAt": "2025-07-13T15:28:17.165Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/marcel-paa.webp",
+        "thumbnailURL": "/api/profile-pictures/file/marcel-paa-300x300.webp",
+        "filename": "marcel-paa.webp",
+        "mimeType": "image/webp",
+        "filesize": 24892,
+        "width": 600,
+        "height": 600,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/marcel-paa-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 7794,
+            "filename": "marcel-paa-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:07:54.142Z",
+      "createdAt": "2025-07-13T15:28:17.626Z"
+    },
+    "category": {
+      "id": 18,
+      "legacyId": 29,
+      "image": {
+        "id": 18,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K27,oWNH03E3NH^49uNc~A",
+        "updatedAt": "2025-07-13T15:20:38.165Z",
+        "createdAt": "2025-07-13T15:20:37.295Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food.webp",
+        "thumbnailURL": "/api/photos/file/food-300x300.webp",
+        "filename": "food.webp",
+        "mimeType": "image/webp",
+        "filesize": 71442,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 6690,
+            "filename": "food-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 29394,
+            "filename": "food-1200x630.webp"
+          }
+        }
+      },
+      "name": "Food",
+      "updatedAt": "2025-07-13T15:20:39.202Z",
+      "createdAt": "2025-07-13T15:20:38.355Z"
+    },
+    "date": "2025-07-20T16:21:14.318Z"
+  },
+  {
+    "email": "michael.zeltner@me.com",
+    "confirmed": true,
+    "influencer": {
+      "id": 65,
+      "legacyId": 66,
+      "name": "Thispronto",
+      "socials": [
+        {
+          "id": "6874c8d5012f45dcfe2e486a",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/thispronto/"
+        },
+        {
+          "id": "6874c8d5012f45dcfe2e486b",
+          "platform": "TIKTOK",
+          "url": "https://www.tiktok.com/@thispronto"
+        }
+      ],
+      "image": {
+        "id": 87,
+        "prefix": "profile-pictures",
+        "blurhash": "K5BW9}000310xF~V00-p^j",
+        "updatedAt": "2025-07-13T15:27:17.483Z",
+        "createdAt": "2025-07-13T15:27:17.203Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/thispronto.webp",
+        "thumbnailURL": "/api/profile-pictures/file/thispronto-300x300.webp",
+        "filename": "thispronto.webp",
+        "mimeType": "image/webp",
+        "filesize": 13730,
+        "width": 600,
+        "height": 600,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/thispronto-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 5758,
+            "filename": "thispronto-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:07:33.312Z",
+      "createdAt": "2025-07-13T15:27:17.591Z"
+    },
+    "category": {
+      "id": 18,
+      "legacyId": 29,
+      "image": {
+        "id": 18,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K27,oWNH03E3NH^49uNc~A",
+        "updatedAt": "2025-07-13T15:20:38.165Z",
+        "createdAt": "2025-07-13T15:20:37.295Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food.webp",
+        "thumbnailURL": "/api/photos/file/food-300x300.webp",
+        "filename": "food.webp",
+        "mimeType": "image/webp",
+        "filesize": 71442,
+        "width": 1920,
+        "height": 1440,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 6690,
+            "filename": "food-300x300.webp"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/food-1200x630.webp",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/webp",
+            "filesize": 29394,
+            "filename": "food-1200x630.webp"
+          }
+        }
+      },
+      "name": "Food",
+      "updatedAt": "2025-07-13T15:20:39.202Z",
+      "createdAt": "2025-07-13T15:20:38.355Z"
+    },
+    "date": "2025-07-20T16:21:14.318Z"
+  },
+  {
+    "email": "michael@davincicoding.ch",
+    "confirmed": false,
+    "influencer": {
+      "id": 9,
+      "legacyId": 10,
+      "name": "Iamlaurabe",
+      "socials": [
+        {
+          "id": "6874c8c5012f45dcfe2e4814",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/iamlaurabe"
+        }
+      ],
+      "image": {
+        "id": 31,
+        "prefix": "profile-pictures",
+        "blurhash": "KFGa?{yXg$56MxJCAGrr}p",
+        "updatedAt": "2025-07-13T15:26:31.489Z",
+        "createdAt": "2025-07-13T15:26:31.240Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/iamlaurabe.webp",
+        "thumbnailURL": "/api/profile-pictures/file/iamlaurabe-300x300.webp",
+        "filename": "iamlaurabe.webp",
+        "mimeType": "image/webp",
+        "filesize": 23942,
+        "width": 600,
+        "height": 600,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/iamlaurabe-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 8978,
+            "filename": "iamlaurabe-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:07:17.022Z",
+      "createdAt": "2025-07-13T15:26:31.589Z"
+    },
+    "category": {
+      "id": 6,
+      "legacyId": 28,
+      "image": {
+        "id": 94,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K67BcbRPR%HXtSWC%%Rjt7",
+        "updatedAt": "2025-07-15T09:09:04.535Z",
+        "createdAt": "2025-07-15T09:09:01.821Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/Sport V2.webp",
+        "thumbnailURL": "/api/photos/file/Sport%20V2-300x300.png",
+        "filename": "Sport V2.webp",
+        "mimeType": "image/webp",
+        "filesize": 136412,
+        "width": 2440,
+        "height": 400,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/Sport V2-300x300.png",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/png",
+            "filesize": 183997,
+            "filename": "Sport V2-300x300.png"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/Sport V2-1200x630.png",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/png",
+            "filesize": 1399497,
+            "filename": "Sport V2-1200x630.png"
+          }
+        }
+      },
+      "name": "Sport",
+      "updatedAt": "2025-07-15T09:09:08.643Z",
+      "createdAt": "2025-07-13T15:20:08.842Z"
+    },
+    "date": "2025-07-20T22:01:32.685Z"
+  },
+  {
+    "email": "michael+demo@davincicoding.ch",
+    "confirmed": false,
+    "influencer": {
+      "id": 9,
+      "legacyId": 10,
+      "name": "Iamlaurabe",
+      "socials": [
+        {
+          "id": "6874c8c5012f45dcfe2e4814",
+          "platform": "INSTAGRAM",
+          "url": "https://www.instagram.com/iamlaurabe"
+        }
+      ],
+      "image": {
+        "id": 31,
+        "prefix": "profile-pictures",
+        "blurhash": "KFGa?{yXg$56MxJCAGrr}p",
+        "updatedAt": "2025-07-13T15:26:31.489Z",
+        "createdAt": "2025-07-13T15:26:31.240Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/iamlaurabe.webp",
+        "thumbnailURL": "/api/profile-pictures/file/iamlaurabe-300x300.webp",
+        "filename": "iamlaurabe.webp",
+        "mimeType": "image/webp",
+        "filesize": 23942,
+        "width": 600,
+        "height": 600,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/profile-pictures/iamlaurabe-300x300.webp",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/webp",
+            "filesize": 8978,
+            "filename": "iamlaurabe-300x300.webp"
+          }
+        }
+      },
+      "updatedAt": "2025-07-14T09:07:17.022Z",
+      "createdAt": "2025-07-13T15:26:31.589Z"
+    },
+    "category": {
+      "id": 6,
+      "legacyId": 28,
+      "image": {
+        "id": 94,
+        "alt": null,
+        "prefix": "photos",
+        "blurhash": "K67BcbRPR%HXtSWC%%Rjt7",
+        "updatedAt": "2025-07-15T09:09:04.535Z",
+        "createdAt": "2025-07-15T09:09:01.821Z",
+        "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/Sport V2.webp",
+        "thumbnailURL": "/api/photos/file/Sport%20V2-300x300.png",
+        "filename": "Sport V2.webp",
+        "mimeType": "image/webp",
+        "filesize": 136412,
+        "width": 2440,
+        "height": 400,
+        "focalX": 50,
+        "focalY": 50,
+        "sizes": {
+          "thumbnail": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/Sport V2-300x300.png",
+            "width": 300,
+            "height": 300,
+            "mimeType": "image/png",
+            "filesize": 183997,
+            "filename": "Sport V2-300x300.png"
+          },
+          "og": {
+            "url": "https://nbtwdawldawtwzkqrpuz.supabase.co/storage/v1/object/public/swissinfluence/photos/Sport V2-1200x630.png",
+            "width": 1200,
+            "height": 630,
+            "mimeType": "image/png",
+            "filesize": 1399497,
+            "filename": "Sport V2-1200x630.png"
+          }
+        }
+      },
+      "name": "Sport",
+      "updatedAt": "2025-07-15T09:09:08.643Z",
+      "createdAt": "2025-07-13T15:20:08.842Z"
+    },
+    "date": "2025-07-20T22:04:44.656Z"
+  }
+]

@@ -28,3 +28,12 @@
     }
   }
 }
+
+.voting-export {
+  display: flex;
+  justify-content: flex-end;
+
+  & > button {
+    margin-block: 0;
+  }
+}

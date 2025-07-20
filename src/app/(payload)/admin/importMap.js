@@ -20,6 +20,7 @@ import { MetaTitleComponent as MetaTitleComponent_a8a977ebc872c5d5ea7ee689724c08
 import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
+import { default as default_fe12e1b97f779755da28f64d5ae3bc57 } from '@/cms/components/VotingExport'
 import { MessagesEditor as MessagesEditor_c6c0778e90db7bb0cd65291aef6aa70f } from 'payload-polyglot/rsc'
 import { default as default_1336106370b487cf0f30382e572ff5cf } from '@/cms/components/PublishButton'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
@@ -47,6 +48,7 @@ export const importMap = {
   "@payloadcms/plugin-seo/client#MetaDescriptionComponent": MetaDescriptionComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#PreviewComponent": PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
+  "@/cms/components/VotingExport#default": default_fe12e1b97f779755da28f64d5ae3bc57,
   "payload-polyglot/rsc#MessagesEditor": MessagesEditor_c6c0778e90db7bb0cd65291aef6aa70f,
   "@/cms/components/PublishButton#default": default_1336106370b487cf0f30382e572ff5cf,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24

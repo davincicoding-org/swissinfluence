@@ -4,7 +4,7 @@ import { getTranslations } from "next-intl/server";
 import type { VotingSubmission } from "@/payload-types";
 import { env } from "@/env";
 
-import { authenticated, withAccess } from "../access";
+import { authenticated } from "../access";
 
 const createHook: CollectionAfterChangeHook<VotingSubmission> = async ({
   doc,
@@ -17,7 +17,7 @@ const createHook: CollectionAfterChangeHook<VotingSubmission> = async ({
 
   return payload.sendEmail({
     to: doc.email,
-    // TODO add swissinfluce.ch as sender
+    // TODO add swissinfluence.ch as sender
     subject: t("subject"),
     html: `<p>${t("content", {
       link: `<a href="${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/confirm?hash=${doc.hash}">${t("linkLabel")}</a>`,
@@ -31,11 +31,18 @@ export const VotingSubmissions: CollectionConfig = {
     read: authenticated,
     create: () => false,
     update: () => false,
-    delete: withAccess("admin"),
+    delete: authenticated,
   },
   admin: {
     useAsTitle: "email",
     defaultColumns: ["email", "confirmed", "award", "votes"],
+    components: {
+      beforeList: [
+        {
+          path: "@/cms/components/VotingExport",
+        },
+      ],
+    },
   },
   fields: [
     {
@@ -73,16 +80,9 @@ export const VotingSubmissions: CollectionConfig = {
       },
     },
     {
-      name: "newsletter",
-      type: "checkbox",
-      required: true,
-      admin: {
-        hidden: true,
-      },
-    },
-    {
       name: "votes",
       type: "array",
+      required: true,
       fields: [
         {
           name: "influencer",

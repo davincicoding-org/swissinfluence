@@ -75,7 +75,7 @@ export const getCreatorChallenges = cachedRequest(
     const { docs: campaigns } = await payload.find({
       collection: "creator-challenges",
       locale,
-      limit: 100,
+      pagination: false,
     });
 
     return campaigns.map((campaign) => ({
@@ -94,7 +94,7 @@ export const getHallOfFame = cachedRequest(
       collection: "awards",
       sort: "-year",
       locale,
-      limit: 30,
+      pagination: false,
       depth: 5,
       select: {
         year: true,
