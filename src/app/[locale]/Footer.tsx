@@ -1,21 +1,40 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Button, Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Company } from "@/payload-types";
+import type { NewsletterValues } from "@/types";
 import { Link } from "@/i18n/navigation";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { cn } from "@/ui/utils";
+import { NewsletterSignUp } from "@/ui/views/NewsletterSignUp";
 
 export interface IFooterProps {
   company: Company;
   className?: string;
+  newsletterHandler: (values: NewsletterValues) => Promise<void>;
 }
 
-export function Footer({ company, className }: IFooterProps) {
+export function Footer({
+  company,
+  className,
+  newsletterHandler,
+}: IFooterProps) {
   const t = useTranslations();
+
+  const [newsletterSignUpOpened, setNewsletterSignUpOpened] = useState(false);
+
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
+
+  const handleNewsletterSubmit = async (values: NewsletterValues) => {
+    setNewsletterSubmitting(true);
+    await newsletterHandler(values);
+    setNewsletterSignUpOpened(false);
+    setNewsletterSubmitting(false);
+  };
 
   return (
     <footer
@@ -44,14 +63,21 @@ export function Footer({ company, className }: IFooterProps) {
             {t("newsletter.description")}
           </p>
           <Button
-            component="a"
-            href={company.newsletterUrl}
-            target="_blank"
             size="xs"
             className="shrink-0 max-sm:basis-full"
+            // component="a"
+            // href={company.newsletterUrl}
+            // target="_blank"
+            onClick={() => setNewsletterSignUpOpened(true)}
           >
             {t("newsletter.CTA")}
           </Button>
+          <NewsletterSignUp
+            opened={newsletterSignUpOpened}
+            onClose={() => setNewsletterSignUpOpened(false)}
+            submitting={newsletterSubmitting}
+            onSubmit={handleNewsletterSubmit}
+          />
         </Paper>
         <div className={cn("flex justify-end gap-2 md:w-36")}>
           {(company.socials ?? []).map((social) => (
@@ -70,24 +96,6 @@ export function Footer({ company, className }: IFooterProps) {
             </a>
           ))}
         </div>
-        {/* <div className="flex gap-1 rounded border border-neutral-500 bg-white/20 text-white max-md:hidden">
-          {locales.map((option) => (
-            <Link
-              key={option}
-              href={
-                pathname.replace(
-                  new RegExp(`^/${locale}`),
-                  `/${option}`,
-                ) as Route<R>
-              }
-              className={cn("block px-2.5 py-2 uppercase leading-none", {
-                "pointer-events-none rounded bg-mocha-500": locale === option,
-              })}
-            >
-              {option}
-            </Link>
-          ))}
-        </div> */}
       </div>
 
       <div className="flex flex-col gap-4 md:flex-row-reverse md:items-center">

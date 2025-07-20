@@ -1,27 +1,31 @@
 "use client";
 
-import type { FormEventHandler } from "react";
-import { useState } from "react";
 import {
-  ActionIcon,
-  Center,
+  Button,
   Checkbox,
   Collapse,
+  Divider,
   Modal,
   Paper,
+  Stack,
   TextInput,
 } from "@mantine/core";
-import { IconSend } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
+import { useForm } from "react-hook-form";
 
 import type { VotingValues } from "@/types";
 import { isPotentiallySubAddress } from "@/utils/voting";
+
+type FormValues = Pick<
+  VotingValues,
+  "firstName" | "lastName" | "email" | "newsletter"
+>;
 
 export interface VotingSubmissionModalProps {
   opened: boolean;
   isSubmitting: boolean;
   onClose: () => void;
-  onSubmit: (values: Pick<VotingValues, "email" | "newsletter">) => void;
+  onSubmit: (values: FormValues) => void;
 }
 
 export function VotingSubmissionModal({
@@ -31,20 +35,17 @@ export function VotingSubmissionModal({
   onSubmit,
 }: VotingSubmissionModalProps) {
   const t = useTranslations("award.voting.submission");
-  const [values, setValues] = useState<
-    Pick<VotingValues, "email" | "newsletter">
-  >({
-    email: "",
-    newsletter: true,
+  const { register, watch, handleSubmit, formState } = useForm<FormValues>({
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      newsletter: true,
+    },
   });
 
-  const shouldShowSubaddressWarning = isPotentiallySubAddress(values.email);
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    if (values.email.trim() === "") return;
-    onSubmit(values);
-  };
+  const email = watch("email");
+  const shouldShowSubaddressWarning = isPotentiallySubAddress(email);
 
   return (
     <Modal
@@ -53,65 +54,87 @@ export function VotingSubmissionModal({
       centered
       withCloseButton={false}
       radius="md"
+      size="sm"
       transitionProps={{
         transition: "pop",
         duration: 200,
       }}
     >
-      <p className="mb-4 text-center text-2xl font-medium">{t("title")}</p>
-      <form onSubmit={handleSubmit}>
-        <TextInput
-          placeholder={t("emailPlaceholder")}
-          type="email"
-          required
-          size="lg"
-          radius="md"
-          disabled={isSubmitting}
-          value={values.email}
-          onChange={({ currentTarget: { value } }) =>
-            setValues((prev) => ({ ...prev, email: value }))
-          }
-          rightSection={
-            <ActionIcon size="lg" type="submit" loading={isSubmitting}>
-              <IconSend />
-            </ActionIcon>
-          }
-        />
+      <p className="text-center text-xl font-medium">{t("title")}</p>
+      <Divider mb="md" mt={8} />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Stack>
+          <Stack gap="xs">
+            <div className="flex gap-2">
+              <TextInput
+                flex={1}
+                placeholder={t("placeholders.firstName")}
+                disabled={isSubmitting}
+                {...register("firstName", {
+                  required: true,
+                  validate: (value) => value.trim().length >= 2,
+                })}
+                error={formState.errors.firstName !== undefined}
+              />
+              <TextInput
+                flex={1}
+                placeholder={t("placeholders.lastName")}
+                disabled={isSubmitting}
+                {...register("lastName", {
+                  required: true,
+                  validate: (value) => value.trim().length >= 2,
+                })}
+                error={formState.errors.lastName !== undefined}
+              />
+            </div>
+            <div>
+              <TextInput
+                placeholder={t("placeholders.email")}
+                type="email"
+                disabled={isSubmitting}
+                {...register("email", {
+                  required: true,
+                })}
+                error={formState.errors.email !== undefined}
+              />
+
+              <Collapse
+                in={shouldShowSubaddressWarning && !isSubmitting}
+                animateOpacity
+              >
+                <Paper
+                  radius="md"
+                  bg="yellow.0"
+                  className="-mt-4 border border-yellow-500 p-2 pt-5 text-xs"
+                >
+                  {t("subaddressWarning")}
+                </Paper>
+              </Collapse>
+            </div>
+
+            <p className="-mt-1 text-pretty text-xs leading-snug text-gray-500">
+              {t("disclaimer")}
+            </p>
+          </Stack>
+
+          <Button
+            type="submit"
+            fullWidth
+            size="md"
+            loading={isSubmitting}
+            // disabled={!formState.isValid}
+          >
+            {t("submit")}
+          </Button>
+
+          <Checkbox
+            label={t("newsletter")}
+            className="mx-auto"
+            disabled={isSubmitting}
+            {...register("newsletter", { required: true })}
+          />
+        </Stack>
       </form>
-
-      <Collapse
-        in={shouldShowSubaddressWarning && !isSubmitting}
-        animateOpacity
-      >
-        <Paper
-          radius="md"
-          bg="yellow.0"
-          className="-mt-4 border border-yellow-500 p-2 pt-5 text-xs"
-        >
-          {t("subaddressWarning")}
-        </Paper>
-      </Collapse>
-
-      <Paper
-        bg="gray.0"
-        withBorder
-        radius="md"
-        className="mx-auto mt-3 text-pretty p-2 text-sm leading-tight text-gray-500 shadow-sm"
-      >
-        {t("disclaimer")}
-      </Paper>
-
-      <Center>
-        <Checkbox
-          label={t("newsletter")}
-          checked={values.newsletter}
-          className="mt-4"
-          disabled={isSubmitting}
-          onChange={({ currentTarget: { checked } }) =>
-            setValues((prev) => ({ ...prev, newsletter: checked }))
-          }
-        />
-      </Center>
     </Modal>
   );
 }

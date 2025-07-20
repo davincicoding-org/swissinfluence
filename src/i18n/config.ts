@@ -65,9 +65,14 @@ export const MESSAGES_SCHEMA = {
       },
       submission: {
         title: "short",
-        emailPlaceholder: "short",
+        placeholders: {
+          firstName: "short",
+          lastName: "short",
+          email: "short",
+        },
         subaddressWarning: "long",
         disclaimer: "short",
+        submit: "short",
         newsletter: "short",
       },
       confirmation: {
@@ -170,5 +175,12 @@ export const MESSAGES_SCHEMA = {
   newsletter: {
     description: "long",
     CTA: "short",
+    title: "short",
+    placeholders: {
+      firstName: "short",
+      lastName: "short",
+      email: "short",
+    },
+    submit: "short",
   },
 } satisfies MessagesSchema;

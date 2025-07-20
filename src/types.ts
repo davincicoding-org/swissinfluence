@@ -99,10 +99,13 @@ export interface InfluencerVote {
   category: payloadTypes.Category["id"];
 }
 
-// TODO votes should probably include the award id and category as well
-// TODO voters should maybe be stores as well
-export interface VotingValues {
+export interface NewsletterValues {
+  firstName: string;
+  lastName: string;
   email: string;
+}
+
+export interface VotingValues extends NewsletterValues {
   award: payloadTypes.Award["id"];
   votes: Array<InfluencerVote>;
   newsletter: boolean;

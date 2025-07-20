@@ -54,13 +54,18 @@ export function VotingProvider({
   };
 
   const handleSubmit = async (
-    values: Pick<VotingValues, "email" | "newsletter">,
+    values: Pick<
+      VotingValues,
+      "firstName" | "lastName" | "email" | "newsletter"
+    >,
   ) => {
     setIsSubmitting(true);
     if (awardId === undefined) return;
     await submissionHandler({
       award: awardId,
-      email: values.email,
+      firstName: values.firstName.trim(),
+      lastName: values.lastName.trim(),
+      email: values.email.trim(),
       newsletter: values.newsletter,
       votes,
     });

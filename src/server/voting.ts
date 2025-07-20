@@ -4,9 +4,12 @@ import type { Award } from "@/payload-types";
 import type { VotingValues } from "@/types";
 import { consolidateVotes, summarizeVotes } from "@/utils/voting";
 
+import { subscribeToNewsletter } from "./newsletter";
 import { getPayloadClient } from "./payload";
 
 export async function submitVoting({
+  firstName,
+  lastName,
   email,
   award,
   votes,
@@ -17,6 +20,8 @@ export async function submitVoting({
   await payload.create({
     collection: "voting-submissions",
     data: {
+      firstName,
+      lastName,
       email,
       award,
       votes,
@@ -24,9 +29,7 @@ export async function submitVoting({
       hash: crypto.randomUUID(),
     },
   });
-  if (newsletter) {
-    // TODO sign up for newsletter
-  }
+  if (newsletter) void subscribeToNewsletter({ email, firstName, lastName });
 }
 
 export async function exportVoting(award: Award["id"]) {

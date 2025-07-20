@@ -893,6 +893,8 @@ export interface VotingSubmission {
   email: string;
   award: number | Award;
   confirmed: boolean;
+  firstName: string;
+  lastName: string;
   hash: string;
   votes: {
     influencer: number | Influencer;
@@ -1455,6 +1457,8 @@ export interface VotingSubmissionsSelect<T extends boolean = true> {
   email?: T;
   award?: T;
   confirmed?: T;
+  firstName?: T;
+  lastName?: T;
   hash?: T;
   votes?:
     | T

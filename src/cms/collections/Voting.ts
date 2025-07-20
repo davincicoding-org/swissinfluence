@@ -72,6 +72,22 @@ export const VotingSubmissions: CollectionConfig = {
       ],
     },
     {
+      name: "firstName",
+      type: "text",
+      required: true,
+      admin: {
+        hidden: true,
+      },
+    },
+    {
+      name: "lastName",
+      type: "text",
+      required: true,
+      admin: {
+        hidden: true,
+      },
+    },
+    {
       name: "hash",
       type: "text",
       required: true,
