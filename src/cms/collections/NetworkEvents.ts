@@ -27,7 +27,6 @@ export const NetworkEvents: CollectionConfig = {
               name: "logo",
               type: "upload",
               relationTo: "logos",
-              required: true,
             },
             {
               name: "image",
