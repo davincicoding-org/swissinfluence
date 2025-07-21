@@ -35,6 +35,7 @@ export const VotingSubmissions: CollectionConfig = {
   },
   admin: {
     useAsTitle: "email",
+    group: "Award",
     defaultColumns: ["email", "confirmed", "award", "votes"],
     components: {
       beforeList: [
