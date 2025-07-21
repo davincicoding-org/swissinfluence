@@ -6,12 +6,12 @@ import { Image } from "@/ui/components/Image";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
-export interface IAgencyTileProps {
+export interface AgencyTileProps {
   data: Agency;
   className?: string;
 }
 
-export function AgencyTile({ data, className }: IAgencyTileProps) {
+export function AgencyTile({ data, className }: AgencyTileProps) {
   const t = useTranslations("network.agencies");
 
   const image = ensureResolved(data.image);

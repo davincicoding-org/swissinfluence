@@ -9,7 +9,7 @@ import type { Socials } from "@/payload-types";
 
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
 
-export interface ISocialsProps {
+export interface SocialsProps {
   items: NonNullable<Socials>;
   ActionIconProps?: Omit<ActionIconProps, "children" | "className">;
   HoverCardProps?: Omit<HoverCardProps, "children" | "className">;
@@ -21,7 +21,7 @@ export function Socials({
   ActionIconProps,
   HoverCardProps,
   ...flexProps
-}: ISocialsProps & FlexProps) {
+}: SocialsProps & FlexProps) {
   const { inline, stacked } = useMemo(() => {
     if (items.length <= 2)
       return {

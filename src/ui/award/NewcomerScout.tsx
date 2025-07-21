@@ -8,7 +8,7 @@ import { RichText } from "@/ui/components/RichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
 import { cn } from "@/ui/utils";
 
-export interface IAwardNominationProps {
+export interface AwardNominationProps {
   deadline: string;
   image: Photo;
   content: RichTextProps["data"];
@@ -22,7 +22,7 @@ export function NewcomerScout({
   content,
   image,
   className,
-}: IAwardNominationProps) {
+}: AwardNominationProps) {
   const t = useTranslations("award.newcomer-scout");
 
   return (

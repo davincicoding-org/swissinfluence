@@ -12,14 +12,14 @@ import {
 
 import type { SocialMediaPlatform } from "@/payload-types";
 
-export interface ISocialMediaPlatformIconProps {
+export interface SocialMediaPlatformIconProps {
   platform: SocialMediaPlatform;
 }
 
 export function SocialMediaPlatformIcon({
   platform,
   ...iconProps
-}: ISocialMediaPlatformIconProps & IconProps) {
+}: SocialMediaPlatformIconProps & IconProps) {
   switch (platform) {
     case "INSTAGRAM":
       return <IconBrandInstagram {...iconProps} />;

@@ -6,11 +6,11 @@ import relativeTime from "dayjs/plugin/relativeTime";
 
 dayjs.extend(relativeTime);
 
-export interface ITimeLeftProps {
+export interface TimeLeftProps {
   deadline: string;
 }
 
-export function TimeLeft({ deadline }: ITimeLeftProps) {
+export function TimeLeft({ deadline }: TimeLeftProps) {
   const timeLeft = dayjs(deadline).fromNow(true);
 
   useEffect(() => {

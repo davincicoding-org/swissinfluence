@@ -3,7 +3,7 @@
 import { type PropsWithChildren } from "react";
 import { useElementSize } from "@mantine/hooks";
 
-export interface IFadeContainerProps {
+export interface FadeContainerProps {
   gradientWidth: number;
   className?: string;
 }
@@ -12,7 +12,7 @@ export function FadeContainer({
   gradientWidth,
   className,
   children,
-}: PropsWithChildren<IFadeContainerProps>) {
+}: PropsWithChildren<FadeContainerProps>) {
   const { ref, width } = useElementSize();
 
   return (

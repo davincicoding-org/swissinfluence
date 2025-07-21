@@ -9,20 +9,16 @@ import type { Company } from "@/payload-types";
 import type { ContactInfo } from "@/types";
 import { Link } from "@/i18n/navigation";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
+import { NewsletterSignUp } from "@/ui/global/NewsletterSignUp";
 import { cn } from "@/ui/utils";
-import { NewsletterSignUp } from "@/ui/views/NewsletterSignUp";
 
-export interface IFooterProps {
+export interface FooterProps {
   company: Company;
   className?: string;
   newsletterHandler: (values: ContactInfo) => Promise<void>;
 }
 
-export function Footer({
-  company,
-  className,
-  newsletterHandler,
-}: IFooterProps) {
+export function Footer({ company, className, newsletterHandler }: FooterProps) {
   const t = useTranslations();
 
   const [newsletterSignUpOpened, setNewsletterSignUpOpened] = useState(false);

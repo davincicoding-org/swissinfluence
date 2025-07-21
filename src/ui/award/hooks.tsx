@@ -5,9 +5,8 @@ import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
 import type { CurrentAward } from "@/types";
+import { Countdown } from "@/ui/components/Countdown";
 import { VotingButton } from "@/ui/voting";
-
-import { AwardCountdown } from "./AwardCountdown";
 
 export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");
@@ -90,7 +89,7 @@ export const useHeaderContent = (data: CurrentAward | null) => {
     // PRE_SHOW
     if (!hasShowStarted)
       return {
-        headline: <AwardCountdown date={data.show.date} />,
+        headline: <Countdown date={data.show.date} />,
         cta: (
           <Button
             size="lg"

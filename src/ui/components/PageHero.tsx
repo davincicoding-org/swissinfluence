@@ -6,7 +6,7 @@ import { cn } from "@/ui/utils";
 
 import { Image } from "./Image";
 
-export interface IPageHeroProps {
+export interface PageHeroProps {
   image: Photo;
   title: ReactNode;
   headline?: ReactNode;
@@ -22,7 +22,7 @@ export function PageHero({
   footer,
   CTA,
   className,
-}: IPageHeroProps) {
+}: PageHeroProps) {
   return (
     <Paper
       component="header"

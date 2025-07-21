@@ -11,7 +11,7 @@ import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
-export interface ICertificationRegistrationProps {
+export interface CertificationRegistrationProps {
   title: string;
   headline: string;
   image: Photo;
@@ -30,7 +30,7 @@ export function CertificationRegistration({
   image,
   className,
   application,
-}: ICertificationRegistrationProps) {
+}: CertificationRegistrationProps) {
   const t = useTranslations("network.influencers.certification");
   const [isExpanded, expansion] = useDisclosure(false);
 

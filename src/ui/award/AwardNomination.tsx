@@ -5,7 +5,7 @@ import { HTMLRichText } from "@/ui/components/HTMLRichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
 import { cn } from "@/ui/utils";
 
-export interface IAwardNominationProps {
+export interface AwardNominationProps {
   deadline: string;
   formURL: string;
   className?: string;
@@ -15,7 +15,7 @@ export function AwardNomination({
   deadline,
   formURL,
   className,
-}: IAwardNominationProps) {
+}: AwardNominationProps) {
   const t = useTranslations("award.nomination");
   return (
     <Paper

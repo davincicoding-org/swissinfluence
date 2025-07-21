@@ -10,7 +10,7 @@ import { cn } from "@/ui/utils";
 import type { ImageProps } from "./Image";
 import { Image } from "./Image";
 
-export interface ILinkTileProps<R extends string> {
+export interface LinkTileProps<R extends string> {
   label: string;
   imageProps: ImageProps;
   href: Route<R>;
@@ -26,7 +26,7 @@ export function LinkTile<R extends string>({
   className,
   external,
   ...motionProps
-}: ILinkTileProps<R> & MotionProps) {
+}: LinkTileProps<R> & MotionProps) {
   return (
     <motion.div className={cn("group", className)} {...motionProps}>
       <Link

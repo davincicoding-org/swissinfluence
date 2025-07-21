@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 
 import { cn } from "@/ui/utils";
 
-export interface IFlipWordsProps {
+export interface FlipWordsProps {
   words: [string, ...string[]];
   duration?: number;
   className?: string;
@@ -15,7 +15,7 @@ export function FlipWords({
   words,
   duration = 3000,
   className,
-}: IFlipWordsProps) {
+}: FlipWordsProps) {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
 

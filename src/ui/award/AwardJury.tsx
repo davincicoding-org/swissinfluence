@@ -8,11 +8,11 @@ import { PersonaCard } from "@/ui/components/PersonaCard";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { ensureResolved } from "@/utils/payload";
 
-export interface IAwardJuryProps {
+export interface AwardJuryProps {
   members: Array<Expert>;
 }
 
-export function AwardJury({ members }: IAwardJuryProps) {
+export function AwardJury({ members }: AwardJuryProps) {
   const handleMemberClick = (member: Expert) => {
     if (!member.socials) return;
     if (member.socials.length > 1) return;

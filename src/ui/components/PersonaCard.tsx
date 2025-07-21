@@ -12,7 +12,7 @@ import { cn } from "@/ui/utils";
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
 import { TextOverflowReveal } from "./TextOverflowReveal";
 
-export interface IPersonaCardProps {
+export interface PersonaCardProps {
   name: string;
   description?: string;
   revealed?: boolean;
@@ -41,7 +41,7 @@ export function PersonaCard({
   compact,
   onSocialClick,
   ...paperProps
-}: IPersonaCardProps &
+}: PersonaCardProps &
   Omit<PaperProps, "classNames"> &
   HTMLAttributes<HTMLDivElement>) {
   const isTouchDevice = useMediaQuery("(hover: none)");

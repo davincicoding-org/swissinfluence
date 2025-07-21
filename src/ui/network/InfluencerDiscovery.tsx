@@ -11,7 +11,7 @@ import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
-export interface IInfluencerDiscoveryProps {
+export interface InfluencerDiscoveryProps {
   pool: Array<CategoryWithInfluencers>;
   className?: string;
 }
@@ -19,7 +19,7 @@ export interface IInfluencerDiscoveryProps {
 export function InfluencerDiscovery({
   pool,
   className,
-}: IInfluencerDiscoveryProps) {
+}: InfluencerDiscoveryProps) {
   const [selectedCategoryID, setSelectedCategoryID] = useState(
     pool[0]?.category.id.toString(),
   );

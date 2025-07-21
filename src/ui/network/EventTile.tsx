@@ -17,12 +17,12 @@ import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 
-export interface IEventTileProps {
+export interface EventTileProps {
   data: Event;
   className?: string;
 }
 
-export function EventTile({ data, className }: IEventTileProps) {
+export function EventTile({ data, className }: EventTileProps) {
   const [isExpanded, expansion] = useDisclosure(false);
 
   const formattedDate = dayjs(data.date).format("DD.MM.YYYY");

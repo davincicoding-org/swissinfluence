@@ -17,12 +17,9 @@ import { env } from "@/env";
 import { routing } from "@/i18n/routing";
 import { subscribeToNewsletter } from "@/server/mailchimp";
 import { fetchCompany } from "@/server/queries";
+import { Footer, Navigation, Scroll } from "@/ui/global";
 import { theme } from "@/ui/theme";
 import { cn } from "@/ui/utils";
-
-import { Footer } from "./Footer";
-import { Navigation } from "./Navigation";
-import Scroll from "./Scroll";
 
 const poppins = Montserrat({
   subsets: ["latin"],

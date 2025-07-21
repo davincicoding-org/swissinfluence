@@ -8,7 +8,7 @@ import { Image } from "@/ui/components/Image";
 import { cn } from "@/ui/utils";
 import { ensureResolvedArray } from "@/utils/payload";
 
-export interface IAwardImpressionsProps {
+export interface AwardImpressionsProps {
   video: string;
   images: Array<Photo>;
   className?: string;
@@ -18,7 +18,7 @@ export function AwardImpressions({
   video,
   images,
   className,
-}: IAwardImpressionsProps) {
+}: AwardImpressionsProps) {
   return (
     <Paper
       withBorder

@@ -23,7 +23,7 @@ import {
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/ui/utils";
 
-export interface INavigationProps {
+export interface NavigationProps {
   homeLink: string;
   locale: string;
   mainLogo: ReactNode;
@@ -49,7 +49,7 @@ export function Navigation({
   mainLogo,
   mainLinks,
   subLinks,
-}: INavigationProps) {
+}: NavigationProps) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
@@ -231,7 +231,7 @@ export function Navigation({
 
 // MARK: Mobile Navigation
 
-interface IMobileNavigationProps extends Omit<INavigationProps, "mainLogo"> {
+interface MobileNavigationProps extends Omit<NavigationProps, "mainLogo"> {
   pathname: string;
   triggerClassName: string;
   onLocaleChange: (nextLocale: string | null) => void;
@@ -246,7 +246,7 @@ function MobileNavigation({
   triggerClassName,
   pathname,
   onLocaleChange,
-}: IMobileNavigationProps) {
+}: MobileNavigationProps) {
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <>

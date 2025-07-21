@@ -7,6 +7,7 @@ import {
   Button,
   Center,
   CloseButton,
+  FocusTrap,
   Modal,
   Paper,
 } from "@mantine/core";
@@ -209,6 +210,7 @@ function CategoryCard({
         }}
         onClose={() => setIsExpanded(false)}
       >
+        <FocusTrap.InitialFocus />
         <div className="sticky top-0 z-10 flex h-12 items-center justify-between bg-white/50 pl-4 pr-2 text-2xl font-medium backdrop-blur-sm">
           {category.name}
           <CloseButton size="lg" onClick={() => setIsExpanded(false)} />

@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState } from "react";
 import { LoadingOverlay } from "@mantine/core";
 
-export interface IBackgroundVideoProps {
+export interface BackgroundVideoProps {
   src: string;
 }
 
-export function BackgroundVideo({ src }: IBackgroundVideoProps) {
+export function BackgroundVideo({ src }: BackgroundVideoProps) {
   const [isVideoReady, setIsVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 

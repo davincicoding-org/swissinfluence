@@ -11,11 +11,11 @@ import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
-export interface IHallOfFameProps {
+export interface HallOfFameProps {
   awards: Array<AwardRanking>;
 }
 
-export function HallOfFame({ awards }: IHallOfFameProps) {
+export function HallOfFame({ awards }: HallOfFameProps) {
   return (
     <div>
       <Tabs

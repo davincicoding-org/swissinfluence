@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 import { cn } from "@/ui/utils";
 
-export interface ITextOverflowRevealProps {
+export interface TextOverflowRevealProps {
   text: string;
   className?: string;
   classNames?: {
@@ -18,7 +18,7 @@ export function TextOverflowReveal({
   text,
   className,
   classNames,
-}: ITextOverflowRevealProps) {
+}: TextOverflowRevealProps) {
   const { ref: spaceRef, width: spaceWidth } = useElementSize();
   const { ref: nameRef, width: nameWidth } = useElementSize();
 
