@@ -5,9 +5,9 @@ import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
 import type { CurrentAward } from "@/types";
+import { VotingButton } from "@/ui/voting";
 
 import { AwardCountdown } from "./views/AwardCountdown";
-import { VotingButton } from "./views/VotingProvider";
 
 export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");

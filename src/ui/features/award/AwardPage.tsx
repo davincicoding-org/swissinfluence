@@ -11,6 +11,7 @@ import type {
 } from "@/types";
 import { submitVoting } from "@/server/voting";
 import { PageHero } from "@/ui/components/PageHero";
+import { VotingProvider } from "@/ui/voting";
 
 import { useHeaderContent } from "./hooks";
 import { AwardCategories } from "./views/AwardCategories";
@@ -22,7 +23,6 @@ import { AwardShow } from "./views/AwardShow";
 import { CreatorChallenges } from "./views/CreatorChallenges";
 import { HallOfFame } from "./views/HallOfFame";
 import { NewcomerScout } from "./views/NewcomerScout";
-import { VotingProvider } from "./views/VotingProvider";
 
 export interface AwardPageProps {
   heroImage: Photo;

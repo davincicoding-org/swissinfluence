@@ -20,9 +20,8 @@ import type { AwardCategory } from "@/types";
 import { Image } from "@/ui/components/Image";
 import { PersonaCard } from "@/ui/components/PersonaCard";
 import { cn } from "@/ui/utils";
+import { VotingButton } from "@/ui/voting";
 import { ensureResolved } from "@/utils/payload";
-
-import { VotingButton } from "./VotingProvider";
 
 export interface AwardCategoriesProps {
   className?: string;
