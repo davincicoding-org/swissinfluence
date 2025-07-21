@@ -43,7 +43,7 @@ export const Awards: CollectionConfig = {
                           admin: {
                             date: {
                               pickerAppearance: "dayAndTime",
-                              displayFormat: "DD.MM.YYYY HH:mm",
+                              displayFormat: "dd/MM/yyyy HH:mm",
                               timeFormat: "HH:mm",
                               timeIntervals: 60,
                             },
@@ -67,7 +67,7 @@ export const Awards: CollectionConfig = {
                           admin: {
                             date: {
                               pickerAppearance: "dayAndTime",
-                              displayFormat: "DD.MM.YYYY HH:mm",
+                              displayFormat: "dd/MM/yyyy HH:mm",
                               timeFormat: "HH:mm",
                               timeIntervals: 60,
                             },
