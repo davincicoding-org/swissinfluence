@@ -4,11 +4,11 @@ import { useTranslations } from "next-intl";
 import type { Photo } from "@/payload-types";
 import { PageHero } from "@/ui/components/PageHero";
 
-export interface IAcademyPageProps {
+export interface AcademyPageProps {
   heroImage: Photo;
 }
 
-export function AcademyPage({ heroImage }: IAcademyPageProps) {
+export function AcademyPage({ heroImage }: AcademyPageProps) {
   const t = useTranslations("academy");
 
   return (

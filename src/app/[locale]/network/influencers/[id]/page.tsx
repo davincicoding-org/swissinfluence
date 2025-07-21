@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getLocale } from "next-intl/server";
 
 import { getCertifiedInfluencer } from "@/server/queries";
-import { CertifiedInfluencerPage as View } from "@/ui/features/network";
+import { CertifiedInfluencerPage as View } from "@/ui/pages";
 import { resolveMetadata } from "@/utils/resolveMetadata";
 
 export const generateMetadata = async ({

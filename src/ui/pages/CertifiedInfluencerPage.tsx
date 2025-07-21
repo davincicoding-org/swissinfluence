@@ -9,7 +9,7 @@ import { cn, derivative } from "@/ui/utils";
 import { getCantonLabel } from "@/utils/cantons";
 import { ensureResolved } from "@/utils/payload";
 
-export interface ICertifiedInfluencerPageProps {
+export interface CertifiedInfluencerPageProps {
   influencer: CertifiedInfluencer;
 }
 
@@ -25,7 +25,7 @@ export function CertifiedInfluencerPage({
     categories,
     interests,
   },
-}: ICertifiedInfluencerPageProps) {
+}: CertifiedInfluencerPageProps) {
   const locale = useLocale();
   const age = derivative(() => {
     const today = dayjs();

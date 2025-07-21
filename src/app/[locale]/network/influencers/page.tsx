@@ -7,7 +7,7 @@ import {
   getCategoriesWithCertifiedInfluencers,
   getPage,
 } from "@/server/queries";
-import { CertifiedInfluencersPage as View } from "@/ui/features/network";
+import { CertifiedInfluencersPage as View } from "@/ui/pages";
 import { resolveMetadata } from "@/utils/resolveMetadata";
 
 export const generateMetadata = async (): Promise<Metadata> => {

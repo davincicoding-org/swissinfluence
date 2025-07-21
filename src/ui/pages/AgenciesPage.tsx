@@ -5,9 +5,9 @@ import type { Agency, Page, Photo } from "@/payload-types";
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
 
-import { AgencyTile } from "./views/AgencyTile";
+import { AgencyTile } from "../network/AgencyTile";
 
-export interface IAgenciesPageProps {
+export interface AgenciesPageProps {
   heroImage: Photo;
   content: Page["content"];
   agencies: Array<Agency>;
@@ -17,7 +17,7 @@ export function AgenciesPage({
   heroImage,
   agencies,
   content,
-}: IAgenciesPageProps) {
+}: AgenciesPageProps) {
   const t = useTranslations("network.agencies");
 
   return (

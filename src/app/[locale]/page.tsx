@@ -2,7 +2,7 @@ import { getLocale } from "next-intl/server";
 
 import { env } from "@/env";
 import { getPage } from "@/server/queries";
-import { LandingPage as View } from "@/ui/features/landing";
+import { LandingPage as View } from "@/ui/pages";
 
 export default async function LandingPage() {
   const locale = await getLocale();

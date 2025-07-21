@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import type { CurrentAward } from "@/types";
 import { VotingButton } from "@/ui/voting";
 
-import { AwardCountdown } from "./views/AwardCountdown";
+import { AwardCountdown } from "./AwardCountdown";
 
 export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");

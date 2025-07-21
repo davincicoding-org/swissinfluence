@@ -6,7 +6,7 @@ import { LinkTile } from "@/ui/components/LinkTile";
 import { PageHero } from "@/ui/components/PageHero";
 import { cn } from "@/ui/utils";
 
-export interface INetworkPageProps<R extends string> {
+export interface NetworkPageProps<R extends string> {
   heroImage: Photo;
   links: Array<{
     label: string;
@@ -20,7 +20,7 @@ export interface INetworkPageProps<R extends string> {
 export function NetworkPage<R extends string>({
   heroImage,
   links,
-}: INetworkPageProps<R>) {
+}: NetworkPageProps<R>) {
   const t = useTranslations("network.page");
 
   return (

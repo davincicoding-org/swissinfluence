@@ -1,4 +1,4 @@
-import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-postgres'
+import { MigrateDownArgs, MigrateUpArgs, sql } from "@payloadcms/db-postgres";
 
 export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
@@ -35,10 +35,14 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   CREATE INDEX "voting_submissions_updated_at_idx" ON "voting_submissions" USING btree ("updated_at");
   CREATE INDEX "voting_submissions_created_at_idx" ON "voting_submissions" USING btree ("created_at");
   ALTER TABLE "payload_locked_documents_rels" ADD CONSTRAINT "payload_locked_documents_rels_voting_submissions_fk" FOREIGN KEY ("voting_submissions_id") REFERENCES "public"."voting_submissions"("id") ON DELETE cascade ON UPDATE no action;
-  CREATE INDEX "payload_locked_documents_rels_voting_submissions_id_idx" ON "payload_locked_documents_rels" USING btree ("voting_submissions_id");`)
+  CREATE INDEX "payload_locked_documents_rels_voting_submissions_id_idx" ON "payload_locked_documents_rels" USING btree ("voting_submissions_id");`);
 }
 
-export async function down({ db, payload, req }: MigrateDownArgs): Promise<void> {
+export async function down({
+  db,
+  payload,
+  req,
+}: MigrateDownArgs): Promise<void> {
   await db.execute(sql`
    ALTER TABLE "voting_submissions_votes" DISABLE ROW LEVEL SECURITY;
   ALTER TABLE "voting_submissions" DISABLE ROW LEVEL SECURITY;
@@ -48,5 +52,5 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   
   DROP INDEX "payload_locked_documents_rels_voting_submissions_id_idx";
   ALTER TABLE "users" DROP COLUMN "access_admin";
-  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "voting_submissions_id";`)
+  ALTER TABLE "payload_locked_documents_rels" DROP COLUMN "voting_submissions_id";`);
 }

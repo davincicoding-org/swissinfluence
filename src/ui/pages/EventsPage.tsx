@@ -4,14 +4,14 @@ import type { Photo } from "@/payload-types";
 import type { NetworkEvent } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
 
-import { EventTile } from "./views/EventTile";
+import { EventTile } from "../network/EventTile";
 
-export interface IEventsPageProps {
+export interface EventsPageProps {
   heroImage: Photo;
   events: Array<NetworkEvent>;
 }
 
-export function EventsPage({ heroImage, events }: IEventsPageProps) {
+export function EventsPage({ heroImage, events }: EventsPageProps) {
   const t = useTranslations("network.events");
 
   return (

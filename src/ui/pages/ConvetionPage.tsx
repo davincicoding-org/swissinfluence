@@ -8,18 +8,15 @@ import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
-import { ConventionEvent } from "./views/ConventionEvent";
-import { ConventionPartners } from "./views/ConventionPartners";
+import { BrandsMarquee } from "../components/BrandsMarquee";
+import { EventSection } from "../components/EventSection";
 
-export interface IConventionPageProps {
+export interface ConventionPageProps {
   convention: LatestConvention | null;
   heroImage: Photo;
 }
 
-export function ConventionPage({
-  convention,
-  heroImage,
-}: IConventionPageProps) {
+export function ConventionPage({ convention, heroImage }: ConventionPageProps) {
   const t = useTranslations("convention");
 
   return (
@@ -31,15 +28,18 @@ export function ConventionPage({
         className="mb-0 snap-start"
         footer={
           convention?.partners.length ? (
-            <ConventionPartners partners={convention.partners} />
+            <BrandsMarquee brands={convention.partners} />
           ) : null
         }
       />
       <main className="relative z-20 bg-white/80 pb-32 pt-24 backdrop-blur">
         {convention ? (
-          <ConventionEvent
+          <EventSection
             className="snap-start snap-always"
-            convention={convention}
+            date={convention.date}
+            location={convention.location}
+            registrationUrl={convention.registrationUrl}
+            schedule={convention.schedule}
           />
         ) : null}
 
@@ -70,7 +70,6 @@ export function ConventionPage({
                 content={String(t.raw("content"))}
               />
             </Spoiler>
-            {/* <ScrollArea classNames={{ viewport: "p-8" }}></ScrollArea> */}
           </Paper>
         </section>
       </main>

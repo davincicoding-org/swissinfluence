@@ -6,16 +6,16 @@ import { FadeContainer } from "@/ui/components/FadeContainer";
 import { Image } from "@/ui/components/Image";
 import { ensureResolved } from "@/utils/payload";
 
-export interface IConventionPartnersProps {
-  partners: Array<Brand>;
+export interface BrandsMarqueeProps {
+  brands: Array<Brand>;
 }
 
-export function ConventionPartners({ partners }: IConventionPartnersProps) {
+export function BrandsMarquee({ brands }: BrandsMarqueeProps) {
   return (
     <FadeContainer gradientWidth={100}>
       <Marquee pauseOnHover autoFill>
         <Flex className="gap-8 py-3 pr-8">
-          {partners.map((partner) => {
+          {brands.map((partner) => {
             const logo = ensureResolved(partner.logo);
             if (!logo) return null;
 

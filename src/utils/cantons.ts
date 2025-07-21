@@ -1,5 +1,35 @@
-import type { Canton } from "@/payload-types";
 import { type SupportedLocale } from "@/i18n/config";
+
+export const CANTON_CODES = [
+  "AG",
+  "AR",
+  "AI",
+  "BS",
+  "BL",
+  "BE",
+  "FR",
+  "GE",
+  "GL",
+  "GR",
+  "JU",
+  "LU",
+  "NE",
+  "NW",
+  "OW",
+  "SG",
+  "SH",
+  "SO",
+  "SZ",
+  "TG",
+  "TI",
+  "UR",
+  "VD",
+  "VS",
+  "ZG",
+  "ZH",
+] as const;
+
+export type Canton = (typeof CANTON_CODES)[number];
 
 const SwissCantonTranslations: Record<
   Canton,

@@ -9,7 +9,7 @@ import {
   getPage,
   getPastImpressions,
 } from "@/server/queries";
-import { AwardPage as View } from "@/ui/features/award";
+import { AwardPage as View } from "@/ui/pages";
 import { resolveMetadata } from "@/utils/resolveMetadata";
 
 export const generateMetadata = async (): Promise<Metadata> => {

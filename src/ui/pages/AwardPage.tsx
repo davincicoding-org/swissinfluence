@@ -10,19 +10,19 @@ import type {
   CurrentAward,
 } from "@/types";
 import { submitVoting } from "@/server/voting";
+import { AwardCategories } from "@/ui/award/AwardCategories";
+import { AwardImpressions } from "@/ui/award/AwardImpressions";
+import { AwardJury } from "@/ui/award/AwardJury";
+import { AwardNomination } from "@/ui/award/AwardNomination";
+import { CreatorChallenges } from "@/ui/award/CreatorChallenges";
+import { HallOfFame } from "@/ui/award/HallOfFame";
+import { useHeaderContent } from "@/ui/award/hooks";
+import { NewcomerScout } from "@/ui/award/NewcomerScout";
+import { BrandsMarquee } from "@/ui/components/BrandsMarquee";
 import { PageHero } from "@/ui/components/PageHero";
 import { VotingProvider } from "@/ui/voting";
 
-import { useHeaderContent } from "./hooks";
-import { AwardCategories } from "./views/AwardCategories";
-import { AwardImpressions } from "./views/AwardImpressions";
-import { AwardJury } from "./views/AwardJury";
-import { AwardNomination } from "./views/AwardNomination";
-import { AwardPartners } from "./views/AwardPartners";
-import { AwardShow } from "./views/AwardShow";
-import { CreatorChallenges } from "./views/CreatorChallenges";
-import { HallOfFame } from "./views/HallOfFame";
-import { NewcomerScout } from "./views/NewcomerScout";
+import { EventSection } from "../components/EventSection";
 
 export interface AwardPageProps {
   heroImage: Photo;
@@ -69,19 +69,20 @@ export function AwardPage({
           )
         }
         footer={
-          currentAward ? (
-            <AwardPartners partners={currentAward.partners} />
-          ) : null
+          currentAward ? <BrandsMarquee brands={currentAward.partners} /> : null
         }
       />
       <main className="relative z-20 bg-white/80 backdrop-blur">
         {currentAward ? (
           <>
             {currentAward.show ? (
-              <AwardShow
+              <EventSection
                 id="show"
-                show={currentAward.show}
                 className="snap-start snap-always"
+                date={currentAward.show.date}
+                location={currentAward.show.location}
+                registrationUrl={currentAward.show.registrationUrl}
+                schedule={currentAward.show.schedule}
               />
             ) : null}
 

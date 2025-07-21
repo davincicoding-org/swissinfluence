@@ -6,9 +6,9 @@ import type { SocialMediaCampaign } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
 
-import { CampaignDiscovery } from "./views/CampaignDiscovery";
+import { CampaignDiscovery } from "../network/CampaignDiscovery";
 
-export interface ICampaignsPageProps {
+export interface CampaignsPageProps {
   heroImage: Photo;
   content: Page["content"];
   campaigns: Array<SocialMediaCampaign>;
@@ -20,7 +20,7 @@ export function CampaignsPage({
   content,
   campaigns,
   campaignForm,
-}: ICampaignsPageProps) {
+}: CampaignsPageProps) {
   const t = useTranslations("network.campaigns");
 
   return (

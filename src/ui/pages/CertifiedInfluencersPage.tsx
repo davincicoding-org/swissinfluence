@@ -7,10 +7,10 @@ import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
-import { CertificationRegistration } from "./views/CertificationRegistration";
-import { InfluencerDiscovery } from "./views/InfluencerDiscovery";
+import { CertificationRegistration } from "../network/CertificationRegistration";
+import { InfluencerDiscovery } from "../network/InfluencerDiscovery";
 
-export interface ICertifiedInfluencersPageProps {
+export interface CertifiedInfluencersPageProps {
   heroImage: Photo;
   pool: Array<CategoryWithInfluencers>;
   certification: Certification;
@@ -20,7 +20,7 @@ export function CertifiedInfluencersPage({
   heroImage,
   pool,
   certification,
-}: ICertifiedInfluencersPageProps) {
+}: CertifiedInfluencersPageProps) {
   const t = useTranslations("network.influencers");
   return (
     <>

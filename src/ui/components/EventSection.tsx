@@ -5,21 +5,27 @@ import { IconCalendar, IconMapPin } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
-import type { LatestConvention } from "@/types";
+import type { Location, ScheduleSlots } from "@/payload-types";
 import { Schedule } from "@/ui/components/Schedule";
 import { cn } from "@/ui/utils";
 
-export interface IConventionEventProps {
-  convention: Omit<LatestConvention, "partners">;
+export interface EventSectionProps {
+  date: string | undefined | null;
+  location: Location;
+  registrationUrl: string | undefined | null;
   className?: string;
+  schedule: ScheduleSlots | undefined;
   id?: string;
 }
 
-export function ConventionEvent({
-  convention,
+export function EventSection({
+  date,
+  location,
+  registrationUrl,
+  schedule,
   className,
   id,
-}: IConventionEventProps) {
+}: EventSectionProps) {
   // FIXME: use correct translations
   const t = useTranslations("award.show");
 
@@ -28,7 +34,7 @@ export function ConventionEvent({
       id={id}
       className={cn(
         "container flex max-w-4xl flex-col py-24 sm:py-32",
-        { "min-h-screen": convention.schedule?.length },
+        { "min-h-screen": schedule?.length },
         className,
       )}
     >
@@ -50,10 +56,10 @@ export function ConventionEvent({
             <h3
               className={cn(
                 "font-light uppercase tracking-wider",
-                convention.date ? "text-nowrap text-2xl" : "text-balance",
+                date ? "text-nowrap text-2xl" : "text-balance",
               )}
             >
-              {dayjs(new Date(convention.date)).format("DD. MMM")}
+              {date ? dayjs(new Date(date)).format("DD. MMM") : t("date-tbd")}
             </h3>
           </div>
         </Paper>
@@ -62,7 +68,7 @@ export function ConventionEvent({
           radius="md"
           className="grid flex-1 overflow-clip bg-neutral-200 transition-transform active:scale-95 md:flex md:items-center"
           component="a"
-          href={convention.location.url}
+          href={location.url}
           target="_blank"
         >
           <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
@@ -74,19 +80,17 @@ export function ConventionEvent({
           </div>
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
             <h3 className="text-xl font-light uppercase tracking-wider">
-              {convention.location.name}
+              {location.name}
             </h3>
-            <p className="uppercase max-md:text-sm">
-              {convention.location.city}
-            </p>
+            <p className="uppercase max-md:text-sm">{location.city}</p>
           </div>
         </Paper>
-        {convention.registrationUrl && (
+        {registrationUrl && (
           <Paper
             shadow="sm"
             radius="md"
             component="a"
-            href={convention.registrationUrl}
+            href={registrationUrl}
             target="_blank"
             className={cn(
               "col-span-2 flex flex-1 cursor-pointer items-center justify-center overflow-clip bg-mocha-500 p-3 text-2xl uppercase tracking-wider text-white transition-all hover:bg-mocha-300 active:scale-95",
@@ -97,10 +101,10 @@ export function ConventionEvent({
         )}
       </div>
 
-      {convention.schedule && convention.schedule.length > 0 && (
+      {schedule && schedule.length > 0 && (
         <>
           <Space h="lg" />
-          <Schedule slots={convention.schedule} />
+          <Schedule slots={schedule} />
         </>
       )}
     </section>

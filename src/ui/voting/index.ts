@@ -1,1 +1,5 @@
-export * from "./VotingProvider";
+export {
+  VotingProvider,
+  type VotingProviderProps,
+  VotingButton,
+} from "./VotingProvider";

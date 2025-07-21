@@ -3,7 +3,7 @@ import { getLocale } from "next-intl/server";
 
 import type { Photo } from "@/payload-types";
 import { getPage } from "@/server/queries";
-import { AcademyPage as View } from "@/ui/features/academy";
+import { AcademyPage as View } from "@/ui/pages";
 import { resolveMetadata } from "@/utils/resolveMetadata";
 
 export const generateMetadata = async (): Promise<Metadata> => {
