@@ -60,6 +60,7 @@ export function AwardJury({ members }: IAwardJuryProps) {
                         key={social.platform}
                         component="a"
                         href={social.url}
+                        target="_blank"
                         size="xl"
                         variant="subtle"
                         color="default"
@@ -90,6 +91,7 @@ export function AwardJury({ members }: IAwardJuryProps) {
             description={member.description}
             className="aspect-square"
             classNames={{ description: "text-sm" }}
+            imageSizes="500px"
           />
         ))}
       </div>

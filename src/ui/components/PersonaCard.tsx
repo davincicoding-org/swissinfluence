@@ -1,7 +1,7 @@
 "use client";
 
 import type { PaperProps } from "@mantine/core";
-import type { HTMLAttributes } from "react";
+import type { HTMLAttributes, MouseEvent } from "react";
 import { ActionIcon, Flex, Paper } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
@@ -17,12 +17,14 @@ export interface IPersonaCardProps {
   description?: string;
   revealed?: boolean;
   image: ProfilePicture;
+  imageSizes?: string;
   socials?: NonNullable<Socials>;
   compact?: boolean;
   classNames?: {
     name?: string;
     description?: string;
   };
+  onSocialClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
 // TODO start text scroll when revealed
@@ -32,10 +34,12 @@ export function PersonaCard({
   description,
   image,
   revealed,
+  imageSizes,
   socials = [],
   classNames,
   className,
   compact,
+  onSocialClick,
   ...paperProps
 }: IPersonaCardProps &
   Omit<PaperProps, "classNames"> &
@@ -55,7 +59,7 @@ export function PersonaCard({
         alt={name}
         className="block aspect-square"
         imgClassName="transition-transform duration-500 group-hover:scale-110"
-        sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+        sizes={imageSizes}
       />
 
       <div
@@ -103,6 +107,7 @@ export function PersonaCard({
                 radius="md"
                 size="lg"
                 className="transition-colors hover:text-mocha-500"
+                onClick={onSocialClick}
               >
                 <SocialMediaPlatformIcon
                   platform={social.platform}

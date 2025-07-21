@@ -1,5 +1,7 @@
 "use client";
 
+import type { Ref } from "react";
+import { useImperativeHandle } from "react";
 import {
   Button,
   Checkbox,
@@ -26,23 +28,27 @@ export interface VotingSubmissionModalProps {
   isSubmitting: boolean;
   onClose: () => void;
   onSubmit: (values: FormValues) => void;
+  resetRef: Ref<() => void>;
 }
 
 export function VotingSubmissionModal({
   opened,
   isSubmitting,
+  resetRef,
   onClose,
   onSubmit,
 }: VotingSubmissionModalProps) {
   const t = useTranslations("award.voting.submission");
-  const { register, watch, handleSubmit, formState } = useForm<FormValues>({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      newsletter: true,
-    },
-  });
+  const { register, watch, handleSubmit, formState, reset } =
+    useForm<FormValues>({
+      defaultValues: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        newsletter: true,
+      },
+    });
+  useImperativeHandle(resetRef, () => reset);
 
   const email = watch("email");
   const shouldShowSubaddressWarning = isPotentiallySubAddress(email);

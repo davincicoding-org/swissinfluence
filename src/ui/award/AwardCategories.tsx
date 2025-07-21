@@ -169,6 +169,7 @@ function CategoryCard({
                   image={ensureResolved(influencer.image)!}
                   socials={influencer.socials ?? []}
                   className="ml-6 h-52 w-52"
+                  imageSizes="400px"
                 />
               ))}
             </Marquee>
@@ -222,6 +223,7 @@ function CategoryCard({
               image={ensureResolved(influencer.image)!}
               socials={influencer.socials ?? []}
               revealed
+              imageSizes="600px"
             />
           ))}
         </div>

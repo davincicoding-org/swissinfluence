@@ -2,7 +2,7 @@
 
 import type { ButtonProps } from "@mantine/core";
 import type { PropsWithChildren } from "react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 import { Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { isEqual } from "lodash-es";
@@ -47,6 +47,7 @@ export function VotingProvider({
   const [isSubmissionModalOpen, submissionModal] = useDisclosure(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const resetRef = useRef<() => void>(null);
 
   const handleSubmitSelection = () => {
     setVotes(votes);
@@ -70,6 +71,7 @@ export function VotingProvider({
       votes,
     });
     setIsSubmitting(false);
+    resetRef.current?.();
     submissionModal.close();
     selectionModal.close();
     setVotes([]);
@@ -94,6 +96,7 @@ export function VotingProvider({
       <VotingSubmissionModal
         opened={isSubmissionModalOpen}
         isSubmitting={isSubmitting}
+        resetRef={resetRef}
         onClose={submissionModal.close}
         onSubmit={handleSubmit}
       />
