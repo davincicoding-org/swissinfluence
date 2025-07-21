@@ -57,13 +57,14 @@ export function Footer({
           bg={undefined}
           shadow="xs"
           radius="md"
-          className="flex items-center justify-between gap-x-4 gap-y-3 bg-neutral-600 p-3 max-md:order-1 max-md:basis-full max-sm:flex-wrap md:p-2"
+          className="flex items-center justify-between bg-neutral-600 max-md:order-1 max-md:basis-full max-sm:flex-wrap"
         >
-          <p className="md:text-centerd text-pretty text-sm leading-snug text-neutral-300 md:pl-2">
+          <p className="text-pretty p-2 text-sm leading-snug text-neutral-300 md:px-2.5 md:pr-4">
             {t("newsletter.description")}
           </p>
           <Button
-            size="xs"
+            size="sm"
+            radius="md"
             className="shrink-0 max-sm:basis-full"
             // component="a"
             // href={company.newsletterUrl}
@@ -100,7 +101,9 @@ export function Footer({
 
       <div className="flex flex-col gap-4 md:flex-row-reverse md:items-center">
         <div
-          className={cn("flex flex-1 flex-wrap gap-x-4 gap-y-1 md:justify-end")}
+          className={cn(
+            "flex max-w-md flex-1 flex-wrap gap-x-4 gap-y-1 md:justify-end",
+          )}
         >
           <a
             href={company.contactUrl}
