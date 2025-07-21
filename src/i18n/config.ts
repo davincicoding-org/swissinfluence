@@ -25,6 +25,7 @@ export const MESSAGES_SCHEMA = {
       sponsoring: "short",
       privacy: "short",
     },
+    langSwitch: "short",
   },
   landing: {
     meta: {

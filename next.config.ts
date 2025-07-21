@@ -11,11 +11,15 @@ import createNextIntlPlugin from "next-intl/plugin";
 import { env } from "./src/env.js";
 
 const config: NextConfig = {
+  reactStrictMode: true,
   eslint: {
     dirs: ["src"],
   },
   images: {
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    formats: ["image/webp", "image/avif"],
     dangerouslyAllowSVG: true,
+    minimumCacheTTL: 60,
     remotePatterns: [
       {
         protocol: "https",
@@ -23,12 +27,18 @@ const config: NextConfig = {
       },
     ],
   },
-  experimental: {
-    optimizePackageImports: ["@mantine/core", "@mantine/hooks", "motion"],
-  },
 
-  // Turbopack: no special aliasing required; we pin `file-type` to a
-  // version whose default export already includes `fileTypeFromFile`.
+  experimental: {
+    optimizePackageImports: [
+      "@mantine/core",
+      "@mantine/hooks",
+      "@tabler/icons-react",
+      "framer-motion",
+      "dayjs",
+      "react-countdown",
+    ],
+    esmExternals: true,
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

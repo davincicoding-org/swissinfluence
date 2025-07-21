@@ -19,6 +19,7 @@ import {
   useMotionValueEvent,
   useScroll,
 } from "motion/react";
+import { useTranslations } from "next-intl";
 
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/ui/utils";
@@ -54,6 +55,7 @@ export function Navigation({
   const pathname = usePathname();
   const params = useParams();
   const { scrollY } = useScroll();
+  const t = useTranslations("navigation");
 
   const [visible, setVisible] = useState(true);
 
@@ -203,6 +205,7 @@ export function Navigation({
                       variant="transparent"
                       color="gray"
                       className="-ml-1"
+                      aria-label={t("langSwitch")}
                     >
                       <IconWorld stroke={1.5} />
                     </ActionIcon>

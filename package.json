@@ -7,6 +7,7 @@
     "dev": "next dev --turbo",
     "start": "next start",
     "build": "next build",
+    "build:analyze": "ANALYZE=true pnpm build",
     "check": "next lint && tsc --noEmit",
     "migrate": "payload migrate",
     "migrate:create": "payload migrate:create && pnpm format --log-level=silent",

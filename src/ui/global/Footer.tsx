@@ -78,6 +78,7 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
             <a
               key={social.platform}
               href={social.url}
+              aria-label={social.platform}
               target="_blank"
               rel="noopener"
               className="transition-colors hover:text-mocha-500"
