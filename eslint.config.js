@@ -18,8 +18,6 @@ export default tseslint.config(
       ...tseslint.configs.stylisticTypeChecked,
     ],
     rules: {
-      // TODO temp fix
-      "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/ban-tslint-comment": "off",
       "@typescript-eslint/array-type": "off",
       "@typescript-eslint/consistent-type-definitions": "off",

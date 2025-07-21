@@ -168,10 +168,6 @@ export const VotingSubmissions: CollectionConfig = {
             `${env.BASE_URL}/award?ENABLE_VOTING&voting-confirmed`,
             302,
           );
-          // return Response.redirect(
-          //   `${env.BASE_URL}/award?voting-confirmed`,
-          //   302,
-          // );
         } catch (error) {
           console.error("Error confirming vote:", error);
           return Response.json(
