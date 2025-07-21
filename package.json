@@ -20,6 +20,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@mailchimp/mailchimp_marketing": "^3.0.80",
+    "@mailchimp/mailchimp_transactional": "^1.0.59",
     "@mantine/carousel": "^8.0.0",
     "@mantine/core": "^8.0.0",
     "@mantine/hooks": "^8.0.0",
@@ -78,6 +80,8 @@
     "@tailwindcss/postcss": "^4.0.15",
     "@tailwindcss/typography": "^0.5.16",
     "@types/lodash-es": "^4.17.12",
+    "@types/mailchimp__mailchimp_marketing": "^3.0.21",
+    "@types/mailchimp__mailchimp_transactional": "^1.0.11",
     "@types/node": "^20.14.10",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

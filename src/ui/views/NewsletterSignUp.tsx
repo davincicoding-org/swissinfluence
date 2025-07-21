@@ -2,13 +2,13 @@ import { Button, Modal, Stack, TextInput } from "@mantine/core";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
-import type { NewsletterValues } from "@/types";
+import type { ContactInfo } from "@/types";
 
 export interface NewsletterSignUpProps {
   opened: boolean;
   onClose: () => void;
   submitting: boolean;
-  onSubmit: (values: NewsletterValues) => void;
+  onSubmit: (values: ContactInfo) => void;
 }
 
 export function NewsletterSignUp({
@@ -18,7 +18,7 @@ export function NewsletterSignUp({
   onSubmit,
 }: NewsletterSignUpProps) {
   const t = useTranslations("newsletter");
-  const { register, handleSubmit, formState } = useForm<NewsletterValues>({
+  const { register, handleSubmit, formState } = useForm<ContactInfo>({
     defaultValues: {
       email: "",
       firstName: "",

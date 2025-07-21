@@ -15,7 +15,7 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 
 import { env } from "@/env";
 import { routing } from "@/i18n/routing";
-import { subscribeToNewsletter } from "@/server/newsletter";
+import { subscribeToNewsletter } from "@/server/mailchimp";
 import { fetchCompany } from "@/server/queries";
 import { theme } from "@/ui/theme";
 import { cn } from "@/ui/utils";

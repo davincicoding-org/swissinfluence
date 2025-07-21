@@ -9,6 +9,7 @@ import {
   getPage,
   getPastImpressions,
 } from "@/server/queries";
+import { submitVoting } from "@/server/voting";
 import { AwardPage as View } from "@/ui/pages";
 import { resolveMetadata } from "@/utils/resolveMetadata";
 
@@ -36,6 +37,7 @@ export default async function AwardPage() {
       challenges={challenges}
       hallOfFame={hallOfFame}
       pastImpressions={pastImpressions}
+      votingHandler={submitVoting}
     />
   );
 }

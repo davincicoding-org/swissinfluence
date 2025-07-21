@@ -1,8 +1,8 @@
 "use server";
 
 import type { SupportedLocale } from "@/i18n/config";
+import type { Convention } from "@/payload-types";
 import type { LatestConvention } from "@/types";
-import { Convention } from "@/payload-types";
 import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
 import { cachedRequest } from "../cache";

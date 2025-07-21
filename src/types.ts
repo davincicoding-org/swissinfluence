@@ -104,13 +104,13 @@ export interface InfluencerVote {
   category: payloadTypes.Category["id"];
 }
 
-export interface NewsletterValues {
+export interface ContactInfo {
   firstName: string;
   lastName: string;
   email: string;
 }
 
-export interface VotingValues extends NewsletterValues {
+export interface VotingValues extends ContactInfo {
   award: payloadTypes.Award["id"];
   votes: Array<InfluencerVote>;
   newsletter: boolean;

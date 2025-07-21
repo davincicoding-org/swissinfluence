@@ -79,11 +79,6 @@ export const MESSAGES_SCHEMA = {
         title: "short",
         description: "long",
       },
-      email: {
-        subject: "short",
-        content: ["long", "{link}"],
-        linkLabel: "short",
-      },
       confirmed: {
         title: "short",
         description: "long",

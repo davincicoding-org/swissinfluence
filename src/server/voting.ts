@@ -4,7 +4,7 @@ import type { Award } from "@/payload-types";
 import type { VotingValues } from "@/types";
 import { consolidateVotes, summarizeVotes } from "@/utils/voting";
 
-import { subscribeToNewsletter } from "./newsletter";
+import { subscribeToNewsletter } from "./mailchimp";
 import { getPayloadClient } from "./payload";
 
 export async function submitVoting({
@@ -29,7 +29,14 @@ export async function submitVoting({
       hash: crypto.randomUUID(),
     },
   });
-  if (newsletter) void subscribeToNewsletter({ email, firstName, lastName });
+  if (newsletter) {
+    try {
+      await subscribeToNewsletter({ email, firstName, lastName });
+    } catch (error) {
+      console.error("Failed to subscribe to newsletter:", error);
+      // Don't throw - we don't want newsletter subscription to block voting
+    }
+  }
 }
 
 export async function exportVoting(award: Award["id"]) {

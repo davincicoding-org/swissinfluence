@@ -8,8 +8,8 @@ import type {
   AwardShowImpressions,
   CreatorChallenge,
   CurrentAward,
+  VotingValues,
 } from "@/types";
-import { submitVoting } from "@/server/voting";
 import { AwardCategories } from "@/ui/award/AwardCategories";
 import { AwardImpressions } from "@/ui/award/AwardImpressions";
 import { AwardJury } from "@/ui/award/AwardJury";
@@ -30,6 +30,7 @@ export interface AwardPageProps {
   challenges: Array<CreatorChallenge>;
   hallOfFame: Array<AwardRanking>;
   pastImpressions: AwardShowImpressions | null;
+  votingHandler: (values: VotingValues) => Promise<void>;
 }
 
 export function AwardPage({
@@ -38,6 +39,7 @@ export function AwardPage({
   pastImpressions,
   hallOfFame,
   challenges,
+  votingHandler,
 }: AwardPageProps) {
   const { headline, cta } = useHeaderContent(currentAward);
   const t = useTranslations("award");
@@ -54,7 +56,7 @@ export function AwardPage({
     <VotingProvider
       awardId={currentAward?.id}
       categories={currentAward?.categories ?? []}
-      submissionHandler={submitVoting}
+      submissionHandler={votingHandler}
     >
       <PageHero
         image={heroImage}

@@ -26,12 +26,6 @@ export const Company: GlobalConfig = {
       type: "text",
       required: true,
     },
-
-    {
-      name: "newsletterUrl",
-      type: "text",
-      required: true,
-    },
     SocialsField,
   ],
   hooks: {

@@ -6,7 +6,7 @@ import { Button, Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Company } from "@/payload-types";
-import type { NewsletterValues } from "@/types";
+import type { ContactInfo } from "@/types";
 import { Link } from "@/i18n/navigation";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { cn } from "@/ui/utils";
@@ -15,7 +15,7 @@ import { NewsletterSignUp } from "@/ui/views/NewsletterSignUp";
 export interface IFooterProps {
   company: Company;
   className?: string;
-  newsletterHandler: (values: NewsletterValues) => Promise<void>;
+  newsletterHandler: (values: ContactInfo) => Promise<void>;
 }
 
 export function Footer({
@@ -29,7 +29,7 @@ export function Footer({
 
   const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
 
-  const handleNewsletterSubmit = async (values: NewsletterValues) => {
+  const handleNewsletterSubmit = async (values: ContactInfo) => {
     setNewsletterSubmitting(true);
     await newsletterHandler(values);
     setNewsletterSignUpOpened(false);
@@ -66,9 +66,6 @@ export function Footer({
             size="sm"
             radius="md"
             className="shrink-0 max-sm:basis-full"
-            // component="a"
-            // href={company.newsletterUrl}
-            // target="_blank"
             onClick={() => setNewsletterSignUpOpened(true)}
           >
             {t("newsletter.CTA")}
@@ -102,7 +99,7 @@ export function Footer({
       <div className="flex flex-col gap-4 md:flex-row-reverse md:items-center">
         <div
           className={cn(
-            "flex max-w-md flex-1 flex-wrap gap-x-4 gap-y-1 md:justify-end",
+            "flex max-w-sm flex-1 flex-wrap gap-x-4 gap-y-1 md:justify-end",
           )}
         >
           <a

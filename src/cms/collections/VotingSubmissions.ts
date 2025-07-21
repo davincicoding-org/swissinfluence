@@ -1,8 +1,8 @@
 import type { CollectionAfterChangeHook, CollectionConfig } from "payload";
-import { getTranslations } from "next-intl/server";
 
 import type { VotingSubmission } from "@/payload-types";
 import { env } from "@/env";
+import { sendVotingVerificationEmail } from "@/server/mailchimp";
 
 import { authenticated } from "../access";
 
@@ -13,16 +13,20 @@ const createHook: CollectionAfterChangeHook<VotingSubmission> = async ({
 }) => {
   if (operation !== "create") return;
 
-  const t = await getTranslations("award.voting.email");
-
-  return payload.sendEmail({
-    to: doc.email,
-    // TODO add swissinfluence.ch as sender
-    subject: t("subject"),
-    html: `<p>${t("content", {
-      link: `<a href="${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/confirm?hash=${doc.hash}">${t("linkLabel")}</a>`,
-    })}</p>`,
-  });
+  try {
+    await sendVotingVerificationEmail(
+      {
+        email: doc.email,
+        firstName: doc.firstName,
+        lastName: doc.lastName,
+      },
+      `${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/verify?hash=${doc.hash}`,
+    );
+  } catch (error) {
+    console.error("Failed to send voting verification email:", error);
+    // Don't throw here to avoid blocking the voting submission creation
+    // The user will still be able to vote, but won't get the verification email
+  }
 };
 
 export const VotingSubmissions: CollectionConfig = {
@@ -118,7 +122,7 @@ export const VotingSubmissions: CollectionConfig = {
   ],
   endpoints: [
     {
-      path: "/:id/confirm",
+      path: "/:id/verify",
       method: "get",
       handler: async (req) => {
         try {
