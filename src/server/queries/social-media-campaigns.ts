@@ -1,14 +1,14 @@
 "use server";
 
 import type { SupportedLocale } from "@/i18n/config";
-import type { SocialMediaCampaign } from "@/types";
-import { ensureResolved } from "@/utils/payload";
+import type { Brand, Location, Photo } from "@/payload-types";
+import type { Campaign } from "@/types";
 
 import { cachedRequest } from "../cache";
 import { getPayloadClient } from "../payload";
 
 export const getSocialMediaCampaigns = cachedRequest(
-  async (locale: SupportedLocale): Promise<Array<SocialMediaCampaign>> => {
+  async (locale: SupportedLocale): Promise<Array<Campaign>> => {
     console.log("CACHE MISS: getSocialMediaCampaigns", locale);
     const payload = await getPayloadClient();
 
@@ -20,7 +20,10 @@ export const getSocialMediaCampaigns = cachedRequest(
 
     return campaigns.map((campaign) => ({
       ...campaign,
-      organizer: ensureResolved(campaign.organizer)!,
+      image: campaign.image as Photo,
+      organizer: campaign.organizer as Brand,
+      location: campaign.location as Location | null,
+      dateTo: campaign.dateTo ?? null,
     }));
   },
   ["social-media-campaigns"],

@@ -49,6 +49,7 @@ export const CreatorChallenges: CollectionConfig = {
                   name: "dateFrom",
                   label: "From",
                   type: "date",
+                  required: true,
                   admin: {
                     date: {
                       displayFormat: "dd/MM/yyyy HH:mm",

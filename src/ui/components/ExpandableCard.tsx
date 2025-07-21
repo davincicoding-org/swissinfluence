@@ -1,7 +1,6 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useId } from "react";
 import {
   ActionIcon,
   Badge,
@@ -20,7 +19,10 @@ import type { Photo } from "@/payload-types";
 import { Image } from "@/ui/components/Image";
 import { cn } from "@/ui/utils";
 
+import { TextOverflowReveal } from "./TextOverflowReveal";
+
 interface ExpandableCardProps {
+  id: string | number;
   title: string;
   description: string;
   image: Photo;
@@ -37,6 +39,7 @@ interface ExpandableCardProps {
 const ModalContent = motion(Modal.Content);
 
 export function ExpandableCard({
+  id,
   title,
   description,
   badge,
@@ -47,7 +50,6 @@ export function ExpandableCard({
   className,
 }: ExpandableCardProps) {
   const [isExpanded, { open, close }] = useDisclosure(false);
-  const id = useId();
 
   return (
     <>
@@ -66,22 +68,25 @@ export function ExpandableCard({
         <div className="flex w-full flex-col gap-4">
           <motion.div
             layoutId={`image-${title}-${id}`}
-            className="relative overflow-clip rounded-lg"
+            className="relative aspect-square overflow-clip rounded-lg"
           >
             <Image
               resource={image}
               alt={title}
-              className="h-60 w-full"
+              className="h-full w-full"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
           </motion.div>
-          <div className="flex flex-col items-center justify-center">
+          <div className="-ml-2 flex flex-col items-center justify-center">
             <Text
               component={motion.h3}
               layoutId={`title-${title}-${id}`}
-              className="mb-1 line-clamp-2 text-center text-base font-medium leading-tight"
+              className="mb-1 w-full min-w-0 text-nowrap text-center text-base font-medium"
             >
-              {title}
+              <TextOverflowReveal
+                className="w-full text-nowrap pl-2"
+                text={title}
+              />
             </Text>
             <Text className="text-center text-base text-neutral-600 md:text-left">
               {description}

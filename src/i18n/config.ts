@@ -69,6 +69,10 @@ export const MESSAGES_SCHEMA = {
     "creator-challenges": {
       title: "short",
       description: "rich",
+      labels: {
+        current: "short",
+        past: "short",
+      },
     },
     categories: {
       title: "short",
@@ -122,6 +126,10 @@ export const MESSAGES_SCHEMA = {
       request: {
         title: "short",
         CTA: "short",
+      },
+      labels: {
+        current: "short",
+        past: "short",
       },
     },
     agencies: {

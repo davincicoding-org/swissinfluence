@@ -2,16 +2,15 @@ import { Button, Paper, Stack } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Page, Photo } from "@/payload-types";
-import type { SocialMediaCampaign } from "@/types";
+import type { Campaign } from "@/types";
+import { CampaignDiscovery } from "@/ui/components/CampaignDiscovery";
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
-
-import { CampaignDiscovery } from "../network/CampaignDiscovery";
 
 export interface CampaignsPageProps {
   heroImage: Photo;
   content: Page["content"];
-  campaigns: Array<SocialMediaCampaign>;
+  campaigns: Array<Campaign>;
   campaignForm: string;
 }
 
@@ -43,15 +42,23 @@ export function CampaignsPage({
             </Paper>
           )}
 
-          <CampaignDiscovery campaigns={campaigns} />
+          <CampaignDiscovery
+            campaigns={campaigns}
+            labels={{
+              current: t("labels.current"),
+              past: t("labels.past"),
+            }}
+          />
 
           <Paper
             withBorder
             shadow="sm"
             radius="lg"
-            className="flex justify-between gap-6 bg-neutral-200 p-8 max-md:flex-col"
+            className="flex justify-between gap-x-6 gap-y-4 bg-neutral-200 p-4 max-md:flex-col"
           >
-            <h3 className="text-balance text-3xl">{t("request.title")}</h3>
+            <h3 className="flex items-center text-pretty text-2xl leading-tight">
+              <span className="flex-1">{t("request.title")}</span>
+            </h3>
             <Button
               component="a"
               href={campaignForm}

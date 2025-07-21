@@ -6,7 +6,7 @@ import type { Photo } from "@/payload-types";
 import type {
   AwardRanking,
   AwardShowImpressions,
-  CreatorChallenge,
+  Campaign,
   CurrentAward,
   VotingValues,
 } from "@/types";
@@ -14,20 +14,19 @@ import { AwardCategories } from "@/ui/award/AwardCategories";
 import { AwardImpressions } from "@/ui/award/AwardImpressions";
 import { AwardJury } from "@/ui/award/AwardJury";
 import { AwardNomination } from "@/ui/award/AwardNomination";
-import { CreatorChallenges } from "@/ui/award/CreatorChallenges";
 import { HallOfFame } from "@/ui/award/HallOfFame";
 import { useHeaderContent } from "@/ui/award/hooks";
 import { NewcomerScout } from "@/ui/award/NewcomerScout";
 import { BrandsMarquee } from "@/ui/components/BrandsMarquee";
+import { CampaignDiscovery } from "@/ui/components/CampaignDiscovery";
+import { EventSection } from "@/ui/components/EventSection";
 import { PageHero } from "@/ui/components/PageHero";
 import { VotingProvider } from "@/ui/voting";
-
-import { EventSection } from "../components/EventSection";
 
 export interface AwardPageProps {
   heroImage: Photo;
   currentAward: CurrentAward | null;
-  challenges: Array<CreatorChallenge>;
+  challenges: Array<Campaign>;
   hallOfFame: Array<AwardRanking>;
   pastImpressions: AwardShowImpressions | null;
   votingHandler: (values: VotingValues) => Promise<void>;
@@ -152,7 +151,13 @@ export function AwardPage({
                 <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
                   {t("creator-challenges.title")}
                 </h3>
-                <CreatorChallenges challenges={challenges} />
+                <CampaignDiscovery
+                  campaigns={challenges}
+                  labels={{
+                    current: t("creator-challenges.labels.current"),
+                    past: t("creator-challenges.labels.past"),
+                  }}
+                />
               </section>
             ) : null}
 

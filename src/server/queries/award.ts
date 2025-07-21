@@ -1,10 +1,11 @@
 "use server";
 
 import type { SupportedLocale } from "@/i18n/config";
+import type { Brand, Location, Photo } from "@/payload-types";
 import type {
   AwardRanking,
   AwardShowImpressions,
-  CreatorChallenge,
+  Campaign,
   CurrentAward,
 } from "@/types";
 import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
@@ -68,7 +69,7 @@ export const getCurrentAward = cachedRequest(
 );
 
 export const getCreatorChallenges = cachedRequest(
-  async (locale: SupportedLocale): Promise<Array<CreatorChallenge>> => {
+  async (locale: SupportedLocale): Promise<Array<Campaign>> => {
     console.log("CACHE MISS: getCreatorChallenges", locale);
     const payload = await getPayloadClient();
 
@@ -80,7 +81,10 @@ export const getCreatorChallenges = cachedRequest(
 
     return campaigns.map((campaign) => ({
       ...campaign,
-      organizer: ensureResolved(campaign.organizer)!,
+      image: campaign.image as Photo,
+      organizer: campaign.organizer as Brand,
+      location: campaign.location as Location | null,
+      dateTo: campaign.dateTo ?? null,
     }));
   },
   ["creator-challenges"],

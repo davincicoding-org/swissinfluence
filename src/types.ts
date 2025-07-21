@@ -37,12 +37,16 @@ export interface CertifiedInfluencer
   categories: Array<Pick<payloadTypes.Category, "id" | "name">>;
 }
 
-export interface SocialMediaCampaign
-  extends Omit<
-    payloadTypes.SocialMediaCampaign,
-    "updatedAt" | "createdAt" | "organizer"
-  > {
+export interface Campaign {
+  id: number;
+  image: payloadTypes.Photo;
   organizer: payloadTypes.Brand;
+  location: payloadTypes.Location | null;
+  dateFrom: string;
+  dateTo: string | null;
+  registrationUrl?: string | null;
+  title: string;
+  content: RichTextProps["data"];
 }
 
 // MARK: Award
@@ -89,14 +93,6 @@ export interface AwardCategoryRanking {
   category: Pick<payloadTypes.Category, "id" | "name">;
   winnerImage: payloadTypes.ProfilePicture | null;
   nominees: Array<payloadTypes.Influencer>;
-}
-
-export interface CreatorChallenge
-  extends Omit<
-    payloadTypes.CreatorChallenge,
-    "updatedAt" | "createdAt" | "organizer"
-  > {
-  organizer: payloadTypes.Brand;
 }
 
 export interface InfluencerVote {

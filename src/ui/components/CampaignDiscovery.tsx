@@ -4,36 +4,37 @@ import { useMemo } from "react";
 import { Flex, ScrollArea, Tabs } from "@mantine/core";
 import dayjs from "dayjs";
 
-import type { SocialMediaCampaign } from "@/types";
+import type { Campaign } from "@/types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
 
 import { CampaignTile } from "./CampaignTile";
 
-export interface ICampaignDiscoveryProps {
-  campaigns: Array<SocialMediaCampaign>;
+export interface CampaignDiscoveryProps {
+  campaigns: Array<Campaign>;
+  labels: {
+    current: string;
+    past: string;
+  };
 }
 
-export function CampaignDiscovery({ campaigns }: ICampaignDiscoveryProps) {
+export function CampaignDiscovery({
+  campaigns,
+  labels,
+}: CampaignDiscoveryProps) {
   const { currentCampaigns, pastCampaigns } = useMemo(() => {
     const { current, past } = campaigns.reduce<
-      Record<"current" | "past", Array<SocialMediaCampaign>>
+      Record<"current" | "past", Array<Campaign>>
     >(
       (acc, campaign) => {
-        if (!campaign.dateFrom)
+        if (campaign.dateTo && dayjs(campaign.dateTo).isBefore())
           return {
             ...acc,
-            current: [...acc.current, campaign],
-          };
-
-        if (dayjs(campaign.dateTo).isAfter())
-          return {
-            ...acc,
-            current: [...acc.current, campaign],
+            past: [...acc.past, campaign],
           };
 
         return {
           ...acc,
-          past: [...acc.past, campaign],
+          current: [...acc.current, campaign],
         };
       },
       {
@@ -55,8 +56,6 @@ export function CampaignDiscovery({ campaigns }: ICampaignDiscoveryProps) {
       }),
     };
   }, [campaigns]);
-
-  // TODO handle no campaigns
 
   return (
     <Tabs
@@ -89,7 +88,7 @@ export function CampaignDiscovery({ campaigns }: ICampaignDiscoveryProps) {
                 })
               }
             >
-              Current Campaigns
+              {labels.current}
             </Tabs.Tab>
             <Tabs.Tab
               value="past"
@@ -102,7 +101,7 @@ export function CampaignDiscovery({ campaigns }: ICampaignDiscoveryProps) {
                 })
               }
             >
-              Past Campaigns
+              {labels.past}
             </Tabs.Tab>
           </Tabs.List>
         </ScrollArea>
@@ -113,18 +112,22 @@ export function CampaignDiscovery({ campaigns }: ICampaignDiscoveryProps) {
             scrollbars="x"
             classNames={{
               viewport: "py-6 overscroll-x-contain snap-x snap-mandatory",
-              scrollbar: "px-4",
+              scrollbar: "px-8",
             }}
           >
-            <Flex gap="xl" wrap="nowrap" align="start" className="px-4">
-              {currentCampaigns.map((campaign) => (
-                <CampaignTile
-                  key={campaign.id}
-                  data={campaign}
-                  className="w-80 shrink-0 grow-0 snap-center"
-                />
-              ))}
-            </Flex>
+            <div className="flex">
+              <div className="h-8 w-8 shrink-0" />
+              <Flex gap="xl" wrap="nowrap" align="start" className="grow">
+                {currentCampaigns.map((campaign) => (
+                  <CampaignTile
+                    key={campaign.id}
+                    data={campaign}
+                    className="w-80 max-w-[70vw] shrink-0 grow-0 snap-center"
+                  />
+                ))}
+              </Flex>
+              <div className="h-4 w-4 shrink-0" />
+            </div>
           </ScrollArea>
         </FadeContainer>
       </Tabs.Panel>

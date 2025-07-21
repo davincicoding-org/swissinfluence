@@ -537,7 +537,7 @@ export interface CreatorChallenge {
   image: number | Photo;
   organizer: number | Brand;
   location?: (number | null) | Location;
-  dateFrom?: string | null;
+  dateFrom: string;
   dateTo?: string | null;
   registrationUrl?: string | null;
   title: string;
@@ -568,7 +568,7 @@ export interface SocialMediaCampaign {
   image: number | Photo;
   organizer: number | Brand;
   location?: (number | null) | Location;
-  dateFrom?: string | null;
+  dateFrom: string;
   dateTo?: string | null;
   registrationUrl?: string | null;
   title: string;
