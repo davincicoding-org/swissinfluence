@@ -60,8 +60,9 @@ export function ConventionPage({ convention, heroImage }: ConventionPageProps) {
               maxHeight={600}
               transitionDuration={500}
               classNames={{
+                root: "!mb-0",
                 control: cn(
-                  "border-1 !left-1/2 flex h-10 w-10 -translate-x-1/2 translate-y-1 items-center justify-center rounded-full border-solid border-neutral-300 bg-neutral-200 shadow-sm",
+                  "border-1 !left-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-solid border-neutral-300 bg-neutral-200 shadow-sm",
                 ),
               }}
             >

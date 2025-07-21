@@ -22,19 +22,20 @@ export function AwardJury({ members }: IAwardJuryProps) {
   return (
     <>
       {/* Mobile View */}
-      <div className="space-y-4 md:hidden">
-        {members.map((member) => {
+      <div className="flex flex-col gap-4 md:hidden">
+        {members.map((member, index) => {
           const image = ensureResolved(member.image);
           if (!image) return null;
           return (
             <div
               key={member.id}
               role="button"
-              className="group relative"
+              className="group max-sm:sticky"
               onClick={() => handleMemberClick(member)}
+              style={{ top: `${10 + index * 0.375}rem` }}
               tabIndex={0}
             >
-              <div className="flex cursor-pointer items-center space-x-4 rounded-xl border bg-mocha-50 p-2 shadow backdrop-blur-sm">
+              <div className="flex cursor-pointer items-center space-x-4 rounded-xl border bg-mocha-50 p-2 backdrop-blur-sm">
                 <Image
                   resource={image}
                   alt={member.name}

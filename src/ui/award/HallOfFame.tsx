@@ -25,33 +25,34 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
       >
         <Paper
           withBorder
-          className="overflow-clip bg-mocha-50 p-2"
+          className="overflow-clip bg-mocha-50"
           shadow="xs"
           radius="lg"
         >
-          <ScrollArea
-            scrollbars="x"
-            type="never"
-            classNames={{ viewport: "overscroll-x-contain" }}
-          >
-            <Tabs.List justify="center" grow className="flex-nowrap">
-              {awards.map(({ year }) => (
-                <Tabs.Tab
-                  key={year}
-                  value={year.toString()}
-                  className="scroll-mx-8 text-lg font-medium"
-                  onClick={({ currentTarget }) =>
-                    currentTarget.scrollIntoView({
-                      inline: "nearest",
-                      block: "nearest",
-                      behavior: "smooth",
-                    })
-                  }
-                >
-                  {year}
-                </Tabs.Tab>
-              ))}
-            </Tabs.List>
+          <ScrollArea scrollbars="x" type="never">
+            <div className="flex py-2">
+              <div className="h-2 w-2 shrink-0" />
+
+              <Tabs.List justify="center" grow className="grow flex-nowrap">
+                {awards.map(({ year }) => (
+                  <Tabs.Tab
+                    key={year}
+                    value={year.toString()}
+                    className="shrink-0 text-lg font-medium"
+                    onClick={({ currentTarget }) =>
+                      currentTarget.scrollIntoView({
+                        inline: "nearest",
+                        block: "nearest",
+                        behavior: "smooth",
+                      })
+                    }
+                  >
+                    {year}
+                  </Tabs.Tab>
+                ))}
+              </Tabs.List>
+              <div className="h-2 w-2 shrink-0" />
+            </div>
           </ScrollArea>
         </Paper>
 
@@ -78,7 +79,7 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
                     classNames={{
                       controls: "-mt-6 px-2",
                       control:
-                        "bg-transparent text-white rounded-md transition-colors hover:bg-white/20 shadow-none border-0 data-[inactive]:opacity-0 data-[inactive]:pointer-events-none",
+                        "bg-transparent text-white rounded-lg transition-colors hover:bg-white/20 shadow-none border-0 data-[inactive]:opacity-0 data-[inactive]:pointer-events-none",
                     }}
                     previousControlIcon={
                       <IconChevronLeft className="-ml-1" size={48} />
@@ -137,7 +138,7 @@ export function HallOfFame({ awards }: IHallOfFameProps) {
                                     classNames={{
                                       root: "mb-1",
                                       text: cn(
-                                        "pl-4 text-xl font-medium leading-none tracking-widest text-white",
+                                        "pl-4 text-xl font-medium leading-tight tracking-widest text-white",
                                       ),
                                     }}
                                   />

@@ -45,12 +45,9 @@ export function AwardCategories({
   const enforceVoting = searchParams.get("ENABLE_VOTING") !== null;
 
   return (
-    <section
-      id={id}
-      className={cn("relative flex flex-col gap-[25dvh] pb-[50dvh]", className)}
-    >
+    <section id={id} className={cn("relative pb-[50dvh]", className)}>
       <div className="container sticky top-0 grid h-[25dvh] items-end pb-4">
-        <h3 className="flex items-end justify-between text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
+        <h3 className="flex items-center justify-between text-3xl font-extralight uppercase tracking-wider sm:text-4xl md:text-6xl">
           {t("title")}
 
           <ActionIcon
@@ -60,27 +57,28 @@ export function AwardCategories({
             radius="lg"
             className="!size-12 md:!size-16"
           >
-            <IconArrowDown size="90%" />
+            <IconArrowDown size="80%" stroke={1.5} />
           </ActionIcon>
         </h3>
       </div>
-
-      {categories.map(({ category, nominees, sponsor }, index) => (
-        <div key={category.id} className="container sticky top-[25dvh]">
-          <CategoryCard
-            category={category}
-            nominees={nominees}
-            sponsor={sponsor}
-            isTop={visibleStack[0] === index}
-            onVisibleChange={(visible) => {
-              setVisibleStack((prev) => {
-                if (visible) return [index, ...prev];
-                return prev.filter((i) => i !== index);
-              });
-            }}
-          />
-        </div>
-      ))}
+      <div className="flex flex-col gap-[25dvh]">
+        {categories.map(({ category, nominees, sponsor }, index) => (
+          <div key={category.id} className="container sticky top-[25dvh]">
+            <CategoryCard
+              category={category}
+              nominees={nominees}
+              sponsor={sponsor}
+              isTop={visibleStack[0] === index}
+              onVisibleChange={(visible) => {
+                setVisibleStack((prev) => {
+                  if (visible) return [index, ...prev];
+                  return prev.filter((i) => i !== index);
+                });
+              }}
+            />
+          </div>
+        ))}
+      </div>
 
       {(canVote || enforceVoting) && (
         <Center pos="sticky" bottom={0} className="-mb-[10dvh] py-4">

@@ -1,7 +1,7 @@
 "use client";
 
 import { Button, Paper, Space } from "@mantine/core";
-import { IconCalendar, IconMapPin } from "@tabler/icons-react";
+import { IconCalendar, IconMapPin, IconTicket } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
@@ -58,14 +58,16 @@ export function EventSection({
                 date ? "text-nowrap text-2xl" : "text-balance",
               )}
             >
-              {date ? dayjs(new Date(date)).format("DD. MMM") : t("date-tbd")}
+              {date
+                ? dayjs(new Date(date)).format("DD.MM.YYYY")
+                : t("date-tbd")}
             </h3>
           </div>
         </Paper>
         <Paper
           shadow="sm"
           radius="md"
-          className="grid flex-1 overflow-clip bg-neutral-200 transition-transform active:scale-95 md:flex md:items-center"
+          className="grid flex-1 overflow-clip bg-neutral-200 transition-transform hover:scale-105 active:scale-95 md:flex md:items-center"
           component="a"
           href={location.url}
           target="_blank"
@@ -81,7 +83,9 @@ export function EventSection({
             <h3 className="text-xl font-light uppercase tracking-wider">
               {location.name}
             </h3>
-            <p className="uppercase max-md:text-sm">{location.city}</p>
+            <p className="text-sm uppercase text-neutral-600">
+              {location.city}
+            </p>
           </div>
         </Paper>
         {registrationUrl && (
@@ -90,7 +94,8 @@ export function EventSection({
             component="a"
             href={registrationUrl}
             target="_blank"
-            size="lg"
+            size="xl"
+            leftSection={<IconTicket size={40} stroke={1} />}
             classNames={{
               root: "md:max-h-none md:h-auto max-md:col-span-2",
               label: "font-medium text-xl md:text-2xl",

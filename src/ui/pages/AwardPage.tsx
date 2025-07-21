@@ -160,7 +160,7 @@ export function AwardPage({
               id="jury"
               className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
             >
-              <h3 className="mb-12 text-center text-4xl font-extralight tracking-wider sm:text-5xl md:text-6xl">
+              <h3 className="mb-12 text-center text-4xl font-extralight tracking-wider max-sm:sticky max-sm:top-24 sm:text-5xl md:text-6xl">
                 Meet our Jury
               </h3>
               <AwardJury members={currentAward.jury} />
