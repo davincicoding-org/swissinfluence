@@ -12,7 +12,7 @@ export interface EventsPageProps {
 }
 
 export function EventsPage({ heroImage, events }: EventsPageProps) {
-  const t = useTranslations("network.events");
+  const t = useTranslations("events.page");
 
   return (
     <>

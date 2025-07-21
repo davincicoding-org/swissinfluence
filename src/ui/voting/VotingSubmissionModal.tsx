@@ -38,7 +38,7 @@ export function VotingSubmissionModal({
   onClose,
   onSubmit,
 }: VotingSubmissionModalProps) {
-  const t = useTranslations("award.voting.submission");
+  const t = useTranslations("voting.submission");
   const { register, watch, handleSubmit, formState, reset } =
     useForm<FormValues>({
       defaultValues: {

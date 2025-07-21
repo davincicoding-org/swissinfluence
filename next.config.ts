@@ -15,8 +15,6 @@ const config: NextConfig = {
     dirs: ["src"],
   },
   images: {
-    // loader: "custom",
-    // loaderFile: "./supabase-image-loader.js",
     dangerouslyAllowSVG: true,
     remotePatterns: [
       {

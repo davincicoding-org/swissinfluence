@@ -17,7 +17,7 @@ export interface ICampaignTileProps {
 }
 
 export function CampaignTile({ data, past, className }: ICampaignTileProps) {
-  const t = useTranslations("award.show");
+  const t = useTranslations("events.event");
   const image = ensureResolved(data.image)!;
   const organizerLogo = ensureResolved(data.organizer.logo)!;
 

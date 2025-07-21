@@ -47,7 +47,7 @@ export function VotingSelectionModal({
   onClose,
   onSubmit,
 }: VotingSelectionModalProps) {
-  const t = useTranslations("award.voting.selection");
+  const t = useTranslations("voting.selection");
   const selectedInfluencers = useMemo<
     {
       category: Pick<Category, "id" | "name">;

@@ -57,16 +57,16 @@ export function ConventionPage({ convention, heroImage }: ConventionPageProps) {
             <Spoiler
               showLabel={<IconChevronDown size={32} />}
               hideLabel={<IconChevronUp size={32} />}
-              maxHeight={300}
+              maxHeight={600}
               transitionDuration={500}
               classNames={{
                 control: cn(
-                  "border-1 left-1/2 flex h-10 w-10 -translate-x-1/2 translate-y-1 items-center justify-center rounded-full border-solid border-neutral-300 bg-neutral-200 shadow-sm",
+                  "border-1 !left-1/2 flex h-10 w-10 -translate-x-1/2 translate-y-1 items-center justify-center rounded-full border-solid border-neutral-300 bg-neutral-200 shadow-sm",
                 ),
               }}
             >
               <RichText
-                className="prose-lg p-8 pb-0 prose-p:my-3"
+                className="prose-lg p-4 pb-0 prose-p:my-3 md:p-6"
                 content={String(t.raw("content"))}
               />
             </Spoiler>

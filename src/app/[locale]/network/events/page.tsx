@@ -41,7 +41,7 @@ export default async function EventsPage() {
     ...networkEvents,
     ...conventions.map<Event>((convention) => ({
       id: `convention-${convention.id}`,
-      title: t("convention"),
+      title: t("titles.convention"),
       date: convention.date,
       content: convention.description,
       image: conventionPage.heroImage as Photo,
@@ -50,7 +50,7 @@ export default async function EventsPage() {
     })),
     ...awardShows.map<Event>((awardShow) => ({
       id: `award-show-${awardShow.id}`,
-      title: t("awardShow"),
+      title: t("titles.awardShow"),
       date: awardShow.date,
       content: awardShow.description,
       image: awardPage.heroImage as Photo,

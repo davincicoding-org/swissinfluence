@@ -39,6 +39,7 @@ export const MESSAGES_SCHEMA = {
       forum: "short",
     },
   },
+
   award: {
     hero: {
       default: {
@@ -57,33 +58,6 @@ export const MESSAGES_SCHEMA = {
       awarded: { headline: "short", CTA: "short" },
       finished: { headline: "short", CTA: "short" },
     },
-    voting: {
-      CTA: "short",
-      selection: {
-        empty: "short",
-        submit: "short",
-      },
-      submission: {
-        title: "short",
-        placeholders: {
-          firstName: "short",
-          lastName: "short",
-          email: "short",
-        },
-        subaddressWarning: "long",
-        disclaimer: "short",
-        submit: "short",
-        newsletter: "short",
-      },
-      confirmation: {
-        title: "short",
-        description: "long",
-      },
-      confirmed: {
-        title: "short",
-        description: "long",
-      },
-    },
     nomination: {
       title: "short",
       description: "rich",
@@ -96,18 +70,37 @@ export const MESSAGES_SCHEMA = {
       title: "short",
       description: "rich",
     },
-    show: {
-      "buy-cta": "short",
-      "slot-from": ["short", "{time}"],
-      "slot-until": ["short", "{time}"],
-      "sold-out": "short",
-      "date-tbd": "short",
-      "sale-not-open": "short",
-    },
     categories: {
       title: "short",
       skip: "short",
       sponsoredBy: ["short", "{brand}"],
+    },
+  },
+  voting: {
+    CTA: "short",
+    selection: {
+      empty: "short",
+      submit: "short",
+    },
+    submission: {
+      title: "short",
+      placeholders: {
+        firstName: "short",
+        lastName: "short",
+        email: "short",
+      },
+      subaddressWarning: "long",
+      disclaimer: "short",
+      submit: "short",
+      newsletter: "short",
+    },
+    confirmation: {
+      title: "short",
+      description: "long",
+    },
+    confirmed: {
+      title: "short",
+      description: "long",
     },
   },
   network: {
@@ -124,6 +117,19 @@ export const MESSAGES_SCHEMA = {
         whatsapp: "short",
       },
     },
+    campaigns: {
+      title: "short",
+      request: {
+        title: "short",
+        CTA: "short",
+      },
+    },
+    agencies: {
+      title: "short",
+      headline: "long",
+      "list-title": "short",
+      "contact-CTA": "short",
+    },
     influencers: {
       title: "short",
       certification: {
@@ -134,27 +140,21 @@ export const MESSAGES_SCHEMA = {
         description: "rich",
       },
     },
-    campaigns: {
-      title: "short",
-      request: {
-        title: "short",
-        CTA: "short",
-      },
-    },
-    events: {
-      title: "short",
-      headline: "long",
-    },
-    agencies: {
-      title: "short",
-      headline: "long",
-      "list-title": "short",
-      "contact-CTA": "short",
-    },
   },
   events: {
-    awardShow: "short",
-    convention: "short",
+    titles: {
+      awardShow: "short",
+      convention: "short",
+    },
+    page: { title: "short", headline: "long" },
+    event: {
+      "register-cta": "short",
+      "slot-from": ["short", "{time}"],
+      "slot-until": ["short", "{time}"],
+      "sold-out": "short",
+      "date-tbd": "short",
+      "sale-not-open": "short",
+    },
   },
   convention: {
     hero: {

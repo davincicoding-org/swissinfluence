@@ -12,7 +12,7 @@ export function VotingConfirmationModal({
   opened,
   onClose,
 }: VotingConfirmationModalProps) {
-  const t = useTranslations("award.voting.confirmation");
+  const t = useTranslations("voting.confirmation");
 
   return (
     <Modal

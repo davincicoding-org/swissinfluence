@@ -14,8 +14,7 @@ export interface ScheduleProps {
 }
 
 export function Schedule({ slots }: ScheduleProps) {
-  // TODO: use correct translations
-  const t = useTranslations("award.show");
+  const t = useTranslations("events.event");
   const [activeSection, setActiveSection] = useState(0);
 
   return (
@@ -67,12 +66,18 @@ export function Schedule({ slots }: ScheduleProps) {
         radius="md"
         className="mb-auto grid grid-cols-[2fr,3fr] overflow-clip bg-white max-md:hidden"
       >
-        <ScrollArea className="!h-96 bg-neutral-200 shadow" scrollbars="y">
+        <ScrollArea
+          scrollbars="y"
+          classNames={{
+            root: "bg-neutral-200 shadow",
+            viewport: "max-h-96",
+          }}
+        >
           {slots.map((slot, index) => (
             <div
               key={slot.id}
               className={cn(
-                "border-b-2 border-neutral-300 px-4 py-3 last:border-none",
+                "border-b border-neutral-300 px-4 py-3 last:border-none",
                 {
                   "bg-mocha-200": activeSection === index,
                 },
@@ -110,7 +115,12 @@ export function Schedule({ slots }: ScheduleProps) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <ScrollArea className="!h-96" scrollbars="y">
+            <ScrollArea
+              scrollbars="y"
+              classNames={{
+                viewport: "max-h-96",
+              }}
+            >
               <RichText
                 className="p-3"
                 data={

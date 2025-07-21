@@ -11,7 +11,7 @@ export function VotingConfirmedModal({}: VotingConfirmedModalProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const t = useTranslations("award.voting.confirmed");
+  const t = useTranslations("voting.confirmed");
   const handleClose = () => {
     router.replace(pathname);
   };

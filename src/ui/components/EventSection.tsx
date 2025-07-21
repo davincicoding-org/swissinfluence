@@ -1,6 +1,6 @@
 "use client";
 
-import { Paper, Space } from "@mantine/core";
+import { Button, Paper, Space } from "@mantine/core";
 import { IconCalendar, IconMapPin } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
@@ -26,8 +26,7 @@ export function EventSection({
   className,
   id,
 }: EventSectionProps) {
-  // FIXME: use correct translations
-  const t = useTranslations("award.show");
+  const t = useTranslations("events.event");
 
   return (
     <section
@@ -86,18 +85,19 @@ export function EventSection({
           </div>
         </Paper>
         {registrationUrl && (
-          <Paper
-            shadow="sm"
+          <Button
             radius="md"
             component="a"
             href={registrationUrl}
             target="_blank"
-            className={cn(
-              "col-span-2 flex flex-1 cursor-pointer items-center justify-center overflow-clip bg-mocha-500 p-3 text-2xl uppercase tracking-wider text-white transition-all hover:bg-mocha-300 active:scale-95",
-            )}
+            size="lg"
+            classNames={{
+              root: "md:max-h-none md:h-auto max-md:col-span-2",
+              label: "font-medium text-xl md:text-2xl",
+            }}
           >
-            {t("buy-cta")}
-          </Paper>
+            {t("register-cta")}
+          </Button>
         )}
       </div>
 
