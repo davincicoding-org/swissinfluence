@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import purify from "dompurify";
+import purify from "isomorphic-dompurify";
 
 import { cn } from "@/ui/utils";
 
