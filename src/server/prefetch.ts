@@ -14,14 +14,16 @@ export async function prefetchData(
   console.log("PREFETCHING DATA");
   const {
     getAgencies,
+    getUpcomingAwardShows,
     getCurrentAward,
     getCreatorChallenges,
     getHallOfFame,
     getPastImpressions,
-    getNetworkEvents,
+    getUpcomingNetworkEvents,
     getPage,
     getSocialMediaCampaigns,
     getLatestConvention,
+    getUpcomingConvention,
     getCategoriesWithCertifiedInfluencers,
     getCertifiedInfluencer,
     fetchCertification,
@@ -34,12 +36,14 @@ export async function prefetchData(
     await fetchMessages(locale);
 
     await getAgencies(locale);
+    await getUpcomingAwardShows(locale);
     await getCurrentAward(locale);
     await getCreatorChallenges(locale);
     await getHallOfFame(locale);
-    await getNetworkEvents(locale);
+    await getUpcomingNetworkEvents(locale);
     await getSocialMediaCampaigns(locale);
     await getLatestConvention(locale);
+    await getUpcomingConvention(locale);
     await getCategoriesWithCertifiedInfluencers(locale);
     await fetchCertification(locale);
 

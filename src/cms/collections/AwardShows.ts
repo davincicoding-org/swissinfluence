@@ -29,6 +29,12 @@ export const AwardShows: CollectionConfig = {
             {
               name: "date",
               type: "date",
+              required: true,
+              admin: {
+                date: {
+                  displayFormat: "dd/MM/yyyy",
+                },
+              },
             },
             {
               name: "location",
@@ -42,6 +48,12 @@ export const AwardShows: CollectionConfig = {
             {
               name: "registrationUrl",
               type: "text",
+            },
+            {
+              name: "description",
+              type: "richText",
+              localized: true,
+              required: true,
             },
           ],
         },

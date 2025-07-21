@@ -7,8 +7,8 @@ export const Conventions: CollectionConfig = {
   slug: "conventions",
   admin: {
     group: "Convention",
-    useAsTitle: "title",
-    defaultColumns: ["title", "date", "location"],
+    useAsTitle: "date",
+    defaultColumns: ["date", "location"],
   },
   fields: [
     {
@@ -18,14 +18,14 @@ export const Conventions: CollectionConfig = {
           label: "Event",
           fields: [
             {
-              name: "title",
-              type: "text",
-              required: true,
-            },
-            {
               name: "date",
               type: "date",
               required: true,
+              admin: {
+                date: {
+                  displayFormat: "dd/MM/yyyy",
+                },
+              },
             },
             {
               name: "location",
@@ -40,6 +40,12 @@ export const Conventions: CollectionConfig = {
             {
               name: "registrationUrl",
               type: "text",
+            },
+            {
+              name: "description",
+              type: "richText",
+              localized: true,
+              required: true,
             },
           ],
         },

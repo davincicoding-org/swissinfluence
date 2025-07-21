@@ -9,17 +9,16 @@ import {
   Paper,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { IconArrowRight, IconX } from "@tabler/icons-react";
+import { IconX } from "@tabler/icons-react";
 import dayjs from "dayjs";
 
-import type { NetworkEvent } from "@/types";
+import type { Event } from "@/types";
 import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
-import { ensureResolved } from "@/utils/payload";
 
 export interface IEventTileProps {
-  data: NetworkEvent;
+  data: Event;
   className?: string;
 }
 
@@ -27,9 +26,6 @@ export function EventTile({ data, className }: IEventTileProps) {
   const [isExpanded, expansion] = useDisclosure(false);
 
   const formattedDate = dayjs(data.date).format("DD.MM.YYYY");
-
-  const image = ensureResolved(data.image)!;
-  const logo = ensureResolved(data.logo)!;
 
   return (
     <>
@@ -49,23 +45,21 @@ export function EventTile({ data, className }: IEventTileProps) {
           });
         }}
       >
-        {image && (
-          <Image
-            resource={image}
-            alt="Background"
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
-          />
-        )}
+        <Image
+          resource={data.image}
+          alt="Background"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+          className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+        />
         <Flex
           className="absolute inset-0 bg-black/40"
           direction="column"
           justify="space-between"
         >
-          {logo && (
+          {data.logo && (
             <Image
-              resource={logo}
+              resource={data.logo}
               alt="Event Organizer Logo"
               sizes="96px"
               className="m-4 ml-auto h-12 w-auto"
@@ -79,10 +73,10 @@ export function EventTile({ data, className }: IEventTileProps) {
             align="end"
           >
             <div>
-              <span>{formattedDate}</span>
-              <p className="text-2xl">{data.title}</p>
+              <p className="text-pretty text-xl leading-tight">{data.title}</p>
+              <span className="text-gray-200">{formattedDate}</span>
             </div>
-            <IconArrowRight className={cn("shrink-0")} size={32} stroke={1.5} />
+            {/* <IconArrowRight className={cn("shrink-0")} size={32} stroke={1.5} /> */}
           </Flex>
         </Flex>
       </Paper>
@@ -105,16 +99,14 @@ export function EventTile({ data, className }: IEventTileProps) {
           className="bg-cover bg-fixed bg-center"
           classNames={{ inner: "!bg-none" }}
         >
-          {image && (
-            <Image
-              resource={image}
-              alt="Event Background"
-              fill
-              sizes="(max-width: 768px) 100vw, 768px"
-              priority
-              className="absolute inset-0 object-cover"
-            />
-          )}
+          <Image
+            resource={data.image}
+            alt="Event Background"
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            priority
+            className="absolute inset-0 object-cover"
+          />
           <Modal.Header>
             <ActionIcon
               color="white"
@@ -129,10 +121,10 @@ export function EventTile({ data, className }: IEventTileProps) {
           <Modal.Body className="relative -mt-16 grid">
             <FocusTrap.InitialFocus />
             <div className="flex flex-col bg-black/60 p-6 text-white">
-              {logo && (
+              {data.logo && (
                 <Image
-                  resource={logo}
-                  alt="Event Organizer Logo"
+                  resource={data.logo}
+                  alt="Event Logo"
                   sizes="128px"
                   className="m-4 mx-auto h-16 w-auto"
                 />

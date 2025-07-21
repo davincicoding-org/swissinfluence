@@ -2,6 +2,7 @@
 
 import type { SupportedLocale } from "@/i18n/config";
 import type { LatestConvention } from "@/types";
+import { Convention } from "@/payload-types";
 import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
 import { cachedRequest } from "../cache";
@@ -27,6 +28,32 @@ export const getLatestConvention = cachedRequest(
       partners: ensureResolvedArray(convention.partners),
       location: ensureResolved(convention.location)!,
     };
+  },
+  ["conventions"],
+);
+
+export const getUpcomingConvention = cachedRequest(
+  async (locale: SupportedLocale): Promise<Convention[]> => {
+    console.log("CACHE MISS: getUpcomingConvention", locale);
+    const payload = await getPayloadClient();
+
+    const { docs: conventions } = await payload.find({
+      collection: "conventions",
+      locale,
+      pagination: false,
+      sort: "date",
+      where: {
+        date: {
+          greater_than: new Date().toISOString(),
+        },
+      },
+    });
+
+    return conventions.map((convention) => ({
+      ...convention,
+      partners: ensureResolvedArray(convention.partners),
+      location: ensureResolved(convention.location)!,
+    }));
   },
   ["conventions"],
 );

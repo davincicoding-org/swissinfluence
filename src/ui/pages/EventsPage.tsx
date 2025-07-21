@@ -1,14 +1,14 @@
 import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
-import type { NetworkEvent } from "@/types";
+import type { Event } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
 
 import { EventTile } from "../network/EventTile";
 
 export interface EventsPageProps {
   heroImage: Photo;
-  events: Array<NetworkEvent>;
+  events: Array<Event>;
 }
 
 export function EventsPage({ heroImage, events }: EventsPageProps) {

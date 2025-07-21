@@ -1,3 +1,5 @@
+import type { RichTextProps } from "@/ui/components/RichText";
+
 import type * as payloadTypes from "./payload-types";
 
 export interface LatestConvention
@@ -9,11 +11,14 @@ export interface LatestConvention
   location: payloadTypes.Location;
 }
 
-export interface NetworkEvent
-  extends Omit<
-    payloadTypes.NetworkEvent,
-    "updatedAt" | "createdAt" | "location"
-  > {
+export interface Event {
+  id: string | number;
+  logo: payloadTypes.Logo | null;
+  image: payloadTypes.Photo;
+  registrationUrl?: string | null;
+  title: string;
+  date: string;
+  content: RichTextProps["data"];
   location: payloadTypes.Location;
 }
 

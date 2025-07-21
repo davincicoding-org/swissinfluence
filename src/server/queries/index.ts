@@ -1,5 +1,6 @@
 export * from "./agencies";
 export * from "./award";
+export * from "./award-shows";
 export * from "./certified-influencers";
 export * from "./convention";
 export * from "./globals";

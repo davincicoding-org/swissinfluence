@@ -157,6 +157,10 @@ export const MESSAGES_SCHEMA = {
       "contact-CTA": "short",
     },
   },
+  events: {
+    awardShow: "short",
+    convention: "short",
+  },
   convention: {
     hero: {
       title: "short",

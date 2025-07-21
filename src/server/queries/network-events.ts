@@ -1,18 +1,18 @@
 "use server";
 
 import type { SupportedLocale } from "@/i18n/config";
-import type { NetworkEvent } from "@/types";
+import type { Event } from "@/types";
 import { ensureResolved } from "@/utils/payload";
 
 import { cachedRequest } from "../cache";
 import { getPayloadClient } from "../payload";
 
-export const getNetworkEvents = cachedRequest(
-  async (locale: SupportedLocale): Promise<Array<NetworkEvent>> => {
+export const getUpcomingNetworkEvents = cachedRequest(
+  async (locale: SupportedLocale): Promise<Array<Event>> => {
     console.log("CACHE MISS: getNetworkEvents", locale);
     const payload = await getPayloadClient();
 
-    const events = await payload.find({
+    const { docs: events } = await payload.find({
       collection: "network-events",
       locale,
       pagination: false,
@@ -24,8 +24,10 @@ export const getNetworkEvents = cachedRequest(
       },
     });
 
-    return events.docs.map((event) => ({
+    return events.map((event) => ({
       ...event,
+      logo: ensureResolved(event.logo) ?? null,
+      image: ensureResolved(event.image)!,
       location: ensureResolved(event.location)!,
     }));
   },
