@@ -3,8 +3,8 @@ import { useTranslations } from "next-intl";
 
 import type { Certification, Photo } from "@/payload-types";
 import type { CategoryWithInfluencers } from "@/types";
+import { HTMLRichText } from "@/ui/components/HTMLRichText";
 import { PageHero } from "@/ui/components/PageHero";
-import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
 import { CertificationRegistration } from "../network/CertificationRegistration";
@@ -70,7 +70,7 @@ export function CertifiedInfluencersPage({
             radius="lg"
             className={cn("bg-neutral-200 p-4")}
           >
-            <RichText
+            <HTMLRichText
               content={String(t.raw("discovery.description"))}
               className="prose prose-p:my-2 prose-li:m-0"
             />

@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 
 import type { CreatorChallenge } from "@/types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
-import { RichText } from "@/ui/components/RichText-dep";
+import { HTMLRichText } from "@/ui/components/HTMLRichText";
 import { cn } from "@/ui/utils";
 
 import { CreatorChallengeTile } from "./CreatorChallengeTile";
@@ -75,7 +75,7 @@ export function CreatorChallenges({
         radius="lg"
         className={cn("mx-auto grid justify-between bg-neutral-200", className)}
       >
-        <RichText
+        <HTMLRichText
           className="prose-lg px-4 py-6 leading-snug lg:px-8"
           content={String(t.raw("description"))}
         />

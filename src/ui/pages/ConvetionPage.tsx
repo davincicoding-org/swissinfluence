@@ -4,8 +4,8 @@ import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
 import type { LatestConvention } from "@/types";
+import { HTMLRichText } from "@/ui/components/HTMLRichText";
 import { PageHero } from "@/ui/components/PageHero";
-import { RichText } from "@/ui/components/RichText-dep";
 import { cn } from "@/ui/utils";
 
 import { BrandsMarquee } from "../components/BrandsMarquee";
@@ -66,7 +66,7 @@ export function ConventionPage({ convention, heroImage }: ConventionPageProps) {
                 ),
               }}
             >
-              <RichText
+              <HTMLRichText
                 className="prose-lg p-4 pb-0 prose-p:my-3 md:p-6"
                 content={String(t.raw("content"))}
               />

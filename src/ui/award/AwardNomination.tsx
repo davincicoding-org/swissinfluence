@@ -1,7 +1,7 @@
 import { Button, Paper, ScrollArea } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
-import { RichText } from "@/ui/components/RichText-dep";
+import { HTMLRichText } from "@/ui/components/HTMLRichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
 import { cn } from "@/ui/utils";
 
@@ -63,7 +63,7 @@ export function AwardNomination({
         }}
       >
         <div className="grid">
-          <RichText
+          <HTMLRichText
             className="prose-lg min-w-0 max-w-full shrink px-4 py-6 leading-snug lg:px-8"
             content={String(t.raw("description"))}
           />

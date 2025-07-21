@@ -68,6 +68,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      dompurify:
+        specifier: ^3.2.6
+        version: 3.2.6
       embla-carousel:
         specifier: ^8.5.2
         version: 8.6.0
