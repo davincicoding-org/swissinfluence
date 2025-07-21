@@ -15,13 +15,6 @@ export const SocialMediaCampaigns: CollectionConfig = {
   },
   fields: [
     {
-      name: "legacyId",
-      type: "number",
-      admin: {
-        hidden: true,
-      },
-    },
-    {
       type: "row",
       fields: [
         {

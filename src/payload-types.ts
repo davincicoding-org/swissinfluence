@@ -409,7 +409,6 @@ export interface Page {
  */
 export interface Category {
   id: number;
-  legacyId?: number | null;
   image: number | Photo;
   name: string;
   updatedAt: string;
@@ -421,7 +420,6 @@ export interface Category {
  */
 export interface Influencer {
   id: number;
-  legacyId?: number | null;
   name: string;
   socials?: Socials;
   image: number | ProfilePicture;
@@ -434,7 +432,6 @@ export interface Influencer {
  */
 export interface Expert {
   id: number;
-  legacyId?: number | null;
   name: string;
   description: string;
   socials?: Socials;
@@ -448,7 +445,6 @@ export interface Expert {
  */
 export interface Brand {
   id: number;
-  legacyId?: number | null;
   logo: number | Logo;
   name: string;
   website: string;
@@ -461,7 +457,6 @@ export interface Brand {
  */
 export interface Location {
   id: number;
-  legacyId?: number | null;
   name: string;
   city: string;
   url: string;
@@ -474,7 +469,6 @@ export interface Location {
  */
 export interface Award {
   id: number;
-  legacyId?: number | null;
   year: number;
   nominationDeadline?: string | null;
   nominationUrl?: string | null;
@@ -534,7 +528,6 @@ export interface Award {
  */
 export interface AwardShow {
   id: number;
-  legacyId?: number | null;
   award: number | Award;
   date?: string | null;
   location: number | Location;
@@ -551,7 +544,6 @@ export interface AwardShow {
  */
 export interface CreatorChallenge {
   id: number;
-  legacyId?: number | null;
   image: number | Photo;
   organizer: number | Brand;
   location?: (number | null) | Location;
@@ -583,7 +575,6 @@ export interface CreatorChallenge {
  */
 export interface SocialMediaCampaign {
   id: number;
-  legacyId?: number | null;
   image: number | Photo;
   organizer: number | Brand;
   location?: (number | null) | Location;
@@ -615,7 +606,6 @@ export interface SocialMediaCampaign {
  */
 export interface NetworkEvent {
   id: number;
-  legacyId?: number | null;
   logo: number | Logo;
   image: number | Photo;
   location: number | Location;
@@ -646,7 +636,6 @@ export interface NetworkEvent {
  */
 export interface CertifiedInfluencer {
   id: number;
-  legacyId?: number | null;
   image: number | Photo;
   categories: (number | Category)[];
   birthdate: string;
@@ -874,7 +863,6 @@ export interface CertifiedInfluencer {
  */
 export interface Agency {
   id: number;
-  legacyId?: number | null;
   logo: number | Logo;
   image: number | Photo;
   name: string;
@@ -890,7 +878,6 @@ export interface Agency {
  */
 export interface Convention {
   id: number;
-  legacyId?: number | null;
   title: string;
   date: string;
   location: number | Location;
@@ -1231,7 +1218,6 @@ export interface PagesSelect<T extends boolean = true> {
  * via the `definition` "categories_select".
  */
 export interface CategoriesSelect<T extends boolean = true> {
-  legacyId?: T;
   image?: T;
   name?: T;
   updatedAt?: T;
@@ -1242,7 +1228,6 @@ export interface CategoriesSelect<T extends boolean = true> {
  * via the `definition` "influencers_select".
  */
 export interface InfluencersSelect<T extends boolean = true> {
-  legacyId?: T;
   name?: T;
   socials?: T | SocialsSelect<T>;
   image?: T;
@@ -1263,7 +1248,6 @@ export interface SocialsSelect<T extends boolean = true> {
  * via the `definition` "experts_select".
  */
 export interface ExpertsSelect<T extends boolean = true> {
-  legacyId?: T;
   name?: T;
   description?: T;
   socials?: T | SocialsSelect<T>;
@@ -1276,7 +1260,6 @@ export interface ExpertsSelect<T extends boolean = true> {
  * via the `definition` "brands_select".
  */
 export interface BrandsSelect<T extends boolean = true> {
-  legacyId?: T;
   logo?: T;
   name?: T;
   website?: T;
@@ -1288,7 +1271,6 @@ export interface BrandsSelect<T extends boolean = true> {
  * via the `definition` "locations_select".
  */
 export interface LocationsSelect<T extends boolean = true> {
-  legacyId?: T;
   name?: T;
   city?: T;
   url?: T;
@@ -1300,7 +1282,6 @@ export interface LocationsSelect<T extends boolean = true> {
  * via the `definition` "awards_select".
  */
 export interface AwardsSelect<T extends boolean = true> {
-  legacyId?: T;
   year?: T;
   nominationDeadline?: T;
   nominationUrl?: T;
@@ -1345,7 +1326,6 @@ export interface AwardsSelect<T extends boolean = true> {
  * via the `definition` "award-shows_select".
  */
 export interface AwardShowsSelect<T extends boolean = true> {
-  legacyId?: T;
   award?: T;
   date?: T;
   location?: T;
@@ -1373,7 +1353,6 @@ export interface ScheduleSlotsSelect<T extends boolean = true> {
  * via the `definition` "creator-challenges_select".
  */
 export interface CreatorChallengesSelect<T extends boolean = true> {
-  legacyId?: T;
   image?: T;
   organizer?: T;
   location?: T;
@@ -1390,7 +1369,6 @@ export interface CreatorChallengesSelect<T extends boolean = true> {
  * via the `definition` "social-media-campaigns_select".
  */
 export interface SocialMediaCampaignsSelect<T extends boolean = true> {
-  legacyId?: T;
   image?: T;
   organizer?: T;
   location?: T;
@@ -1407,7 +1385,6 @@ export interface SocialMediaCampaignsSelect<T extends boolean = true> {
  * via the `definition` "network-events_select".
  */
 export interface NetworkEventsSelect<T extends boolean = true> {
-  legacyId?: T;
   logo?: T;
   image?: T;
   location?: T;
@@ -1423,7 +1400,6 @@ export interface NetworkEventsSelect<T extends boolean = true> {
  * via the `definition` "certified-influencers_select".
  */
 export interface CertifiedInfluencersSelect<T extends boolean = true> {
-  legacyId?: T;
   image?: T;
   categories?: T;
   birthdate?: T;
@@ -1440,7 +1416,6 @@ export interface CertifiedInfluencersSelect<T extends boolean = true> {
  * via the `definition` "agencies_select".
  */
 export interface AgenciesSelect<T extends boolean = true> {
-  legacyId?: T;
   logo?: T;
   image?: T;
   name?: T;
@@ -1455,7 +1430,6 @@ export interface AgenciesSelect<T extends boolean = true> {
  * via the `definition` "conventions_select".
  */
 export interface ConventionsSelect<T extends boolean = true> {
-  legacyId?: T;
   title?: T;
   date?: T;
   location?: T;

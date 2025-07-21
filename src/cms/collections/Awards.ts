@@ -12,13 +12,6 @@ export const Awards: CollectionConfig = {
   defaultSort: "-year",
   fields: [
     {
-      name: "legacyId",
-      type: "number",
-      admin: {
-        hidden: true,
-      },
-    },
-    {
       type: "tabs",
       tabs: [
         {
@@ -47,6 +40,14 @@ export const Awards: CollectionConfig = {
                           name: "nominationDeadline",
                           label: "Deadline",
                           type: "date",
+                          admin: {
+                            date: {
+                              pickerAppearance: "dayAndTime",
+                              displayFormat: "DD.MM.YYYY HH:mm",
+                              timeFormat: "HH:mm",
+                              timeIntervals: 60,
+                            },
+                          },
                         },
                         {
                           name: "nominationUrl",
@@ -63,11 +64,27 @@ export const Awards: CollectionConfig = {
                           name: "votingOpening",
                           label: "Opening",
                           type: "date",
+                          admin: {
+                            date: {
+                              pickerAppearance: "dayAndTime",
+                              displayFormat: "DD.MM.YYYY HH:mm",
+                              timeFormat: "HH:mm",
+                              timeIntervals: 60,
+                            },
+                          },
                         },
                         {
                           name: "votingDeadline",
                           label: "Deadline",
                           type: "date",
+                          admin: {
+                            date: {
+                              pickerAppearance: "dayAndTime",
+                              displayFormat: "DD.MM.YYYY HH:mm",
+                              timeFormat: "HH:mm",
+                              timeIntervals: 60,
+                            },
+                          },
                         },
                       ],
                     },

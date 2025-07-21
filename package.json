@@ -9,7 +9,7 @@
     "build": "next build",
     "check": "next lint && tsc --noEmit",
     "migrate": "payload migrate",
-    "migrate:create": "payload migrate:create && pnpm format:write",
+    "migrate:create": "payload migrate:create && pnpm format",
     "generate:types": "payload generate:types",
     "generate:importmap": "payload generate:importmap",
     "typecheck": "tsc --noEmit",

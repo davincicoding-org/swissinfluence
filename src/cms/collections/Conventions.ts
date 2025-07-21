@@ -12,13 +12,6 @@ export const Conventions: CollectionConfig = {
   },
   fields: [
     {
-      name: "legacyId",
-      type: "number",
-      admin: {
-        hidden: true,
-      },
-    },
-    {
       type: "tabs",
       tabs: [
         {
