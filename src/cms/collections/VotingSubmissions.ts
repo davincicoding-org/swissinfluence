@@ -159,10 +159,15 @@ export const VotingSubmissions: CollectionConfig = {
           });
 
           // Redirect to award page with success confirmation
+          // TODO: remove ENABLE_VOTING after testing
           return Response.redirect(
-            `${env.BASE_URL}/award?voting-confirmed`,
+            `${env.BASE_URL}/award?ENABLE_VOTING&voting-confirmed`,
             302,
           );
+          // return Response.redirect(
+          //   `${env.BASE_URL}/award?voting-confirmed`,
+          //   302,
+          // );
         } catch (error) {
           console.error("Error confirming vote:", error);
           return Response.json(
