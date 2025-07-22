@@ -148,9 +148,9 @@ export function AwardPage({
                 id="challenges"
                 className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
               >
-                <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
+                <h1 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
                   {t("creator-challenges.title")}
-                </h3>
+                </h1>
                 <CampaignDiscovery
                   campaigns={challenges}
                   labels={{
@@ -165,9 +165,9 @@ export function AwardPage({
               id="jury"
               className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
             >
-              <h3 className="mb-12 text-center text-4xl font-extralight tracking-wider max-sm:sticky max-sm:top-24 sm:text-5xl md:text-6xl">
+              <h1 className="mb-12 text-center text-4xl font-extralight tracking-wider max-sm:sticky max-sm:top-24 sm:text-5xl md:text-6xl">
                 Meet our Jury
-              </h3>
+              </h1>
               <AwardJury members={currentAward.jury} />
             </section>
           </>
@@ -175,9 +175,9 @@ export function AwardPage({
 
         {!currentAward?.show?.images.length && pastImpressions ? (
           <section className="container flex min-h-screen snap-start snap-always flex-col py-32">
-            <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
+            <h1 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
               This was {pastImpressions.year}
-            </h3>
+            </h1>
             <AwardImpressions
               video={pastImpressions.videoUrl}
               images={pastImpressions.images}
@@ -190,9 +190,9 @@ export function AwardPage({
           id="hall-of-fame"
           className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-16 sm:pb-64 sm:pt-32"
         >
-          <h3 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
+          <h1 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
             Hall of Fame
-          </h3>
+          </h1>
           <HallOfFame awards={hallOfFame} />
         </section>
       </main>

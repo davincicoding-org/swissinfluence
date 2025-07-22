@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { Carousel } from "@mantine/carousel";
 import { Badge, Center, Paper, ScrollArea, Tabs } from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 import type { AwardRanking } from "@/types";
+import { Image } from "@/ui/components/Image";
 import { Socials } from "@/ui/components/Socials";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
 import { cn } from "@/ui/utils";
@@ -81,9 +81,15 @@ export function HallOfFame({ awards }: HallOfFameProps) {
                       control:
                         "bg-transparent text-white rounded-lg transition-colors hover:bg-white/20 shadow-none border-0 data-[inactive]:opacity-0 data-[inactive]:pointer-events-none",
                     }}
+                    previousControlProps={{
+                      "aria-label": "Previous",
+                    }}
                     previousControlIcon={
                       <IconChevronLeft className="-ml-1" size={48} />
                     }
+                    nextControlProps={{
+                      "aria-label": "Next nominee",
+                    }}
                     nextControlIcon={
                       <IconChevronRight className="-mr-1" size={48} />
                     }
@@ -104,17 +110,10 @@ export function HallOfFame({ awards }: HallOfFameProps) {
                             )}
                           >
                             <Image
-                              src={image.url ?? ""}
-                              width={image.width ?? 0}
-                              height={image.height ?? 0}
+                              resource={image}
                               alt={influencer.name}
-                              // placeholder={
-                              //   image.blurDataURL
-                              //     ? "blur"
-                              //     : undefined
-                              // }
-                              // blurDataURL={image.blurDataURL}
-                              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              className="transition-transform duration-500 group-hover:scale-110"
+                              sizes="860px"
                             />
 
                             <div

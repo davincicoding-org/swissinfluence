@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Paper, Space } from "@mantine/core";
+import { Box, Button, Paper, Space } from "@mantine/core";
 import { IconCalendar, IconMapPin, IconTicket } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
@@ -43,16 +43,19 @@ export function EventSection({
           radius="md"
           className="grid flex-1 overflow-clip bg-neutral-200 md:flex md:items-center"
         >
-          <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
+          <Box
+            bg="mocha"
+            className="flex h-full shrink-0 items-center justify-center max-md:h-16 md:aspect-square md:p-3"
+          >
             <IconCalendar
               className="shrink-0 stroke-white"
               size={48}
               stroke={1}
             />
-          </div>
+          </Box>
 
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
-            <h3
+            <p
               className={cn(
                 "font-light uppercase tracking-wider",
                 date ? "text-nowrap text-2xl" : "text-balance",
@@ -61,7 +64,7 @@ export function EventSection({
               {date
                 ? dayjs(new Date(date)).format("DD.MM.YYYY")
                 : t("date-tbd")}
-            </h3>
+            </p>
           </div>
         </Paper>
         <Paper
@@ -72,17 +75,20 @@ export function EventSection({
           href={location.url}
           target="_blank"
         >
-          <div className="flex h-full shrink-0 items-center justify-center bg-mocha-500 max-md:h-16 md:aspect-square md:p-3">
+          <Box
+            bg="mocha"
+            className="flex h-full shrink-0 items-center justify-center max-md:h-16 md:aspect-square md:p-3"
+          >
             <IconMapPin
               className="shrink-0 stroke-white"
               size={48}
               stroke={1}
             />
-          </div>
+          </Box>
           <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
-            <h3 className="text-xl font-light uppercase tracking-wider">
+            <p className="text-xl font-light uppercase tracking-wider">
               {location.name}
-            </h3>
+            </p>
             <p className="text-sm uppercase text-neutral-600">
               {location.city}
             </p>

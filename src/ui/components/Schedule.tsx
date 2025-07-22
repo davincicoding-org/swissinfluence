@@ -33,7 +33,7 @@ export function Schedule({ slots }: ScheduleProps) {
               className="border-b-2 last:border-none"
             >
               <Accordion.Control className="active:bg-transparent">
-                <h4 className="mb-1 text-lg leading-none text-mocha-500">
+                <p className="mb-1 text-lg leading-none text-mocha-500">
                   {slot.from && slot.to
                     ? `${dayjs(slot.from).format("HH:mm")} - ${dayjs(slot.to).format("HH:mm")}`
                     : null}
@@ -47,10 +47,10 @@ export function Schedule({ slots }: ScheduleProps) {
                         time: dayjs(slot.to).format("HH:mm"),
                       })
                     : null}
-                </h4>
-                <h4 className="text-nowrap text-xl font-medium leading-none">
+                </p>
+                <p className="text-nowrap text-xl font-medium leading-none">
                   {slot.title}
-                </h4>
+                </p>
               </Accordion.Control>
               <Accordion.Panel className="bg-white">
                 <RichText data={slot.description} />
@@ -69,8 +69,9 @@ export function Schedule({ slots }: ScheduleProps) {
       >
         <ScrollArea
           scrollbars="y"
+          bg="gray.0"
           classNames={{
-            root: "bg-neutral-200 shadow",
+            root: "border-r",
             viewport: "max-h-96",
           }}
         >
@@ -85,7 +86,7 @@ export function Schedule({ slots }: ScheduleProps) {
               )}
               onMouseEnter={() => setActiveSection(index)}
             >
-              <h4 className="mb-1 text-lg leading-none text-mocha-500">
+              <p className="mb-1 text-lg leading-none text-neutral-600">
                 {slot.from && slot.to
                   ? `${dayjs(slot.from).format("HH:mm")} - ${dayjs(slot.to).format("HH:mm")}`
                   : null}
@@ -99,10 +100,10 @@ export function Schedule({ slots }: ScheduleProps) {
                       time: dayjs(slot.to).format("HH:mm"),
                     })
                   : null}
-              </h4>
-              <h4 className="text-pretty text-xl font-medium leading-tight">
+              </p>
+              <p className="text-pretty text-xl font-medium leading-tight">
                 {slot.title}
-              </h4>
+              </p>
             </div>
           ))}
         </ScrollArea>

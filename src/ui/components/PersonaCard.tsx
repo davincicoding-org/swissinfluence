@@ -101,6 +101,7 @@ export function PersonaCard({
                 key={social.platform}
                 component="a"
                 href={social.url}
+                aria-label={social.platform}
                 target="_blank"
                 variant="subtle"
                 color="white"

@@ -45,7 +45,7 @@ export function AwardCategories({
   return (
     <section id={id} className={cn("relative pb-[50dvh]", className)}>
       <div className="container sticky top-0 grid h-[25dvh] items-end pb-4">
-        <h3 className="flex items-center justify-between text-3xl font-extralight uppercase tracking-wider sm:text-4xl md:text-6xl">
+        <h2 className="flex items-center justify-between text-3xl font-extralight uppercase tracking-wider sm:text-4xl md:text-6xl">
           {t("title")}
 
           <ActionIcon
@@ -54,10 +54,11 @@ export function AwardCategories({
             variant="subtle"
             radius="lg"
             className="!size-12 md:!size-16"
+            aria-label={t("skip")}
           >
             <IconArrowDown size="80%" stroke={1.5} />
           </ActionIcon>
-        </h3>
+        </h2>
       </div>
       <div className="flex flex-col gap-[25dvh]">
         {categories.map(({ category, nominees, sponsor }, index) => (
@@ -135,9 +136,9 @@ function CategoryCard({
               )}
             >
               <div className="shrink">
-                <h3 className="text-wrap text-3xl font-medium text-white md:text-5xl">
+                <p className="text-wrap text-3xl font-medium text-white md:text-5xl">
                   {category.name}
-                </h3>
+                </p>
                 {sponsor && (
                   <p className="text-pretty text-sm text-gray-200 md:text-lg">
                     {t("sponsoredBy", { brand: sponsor.name })}

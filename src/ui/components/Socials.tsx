@@ -47,6 +47,7 @@ export function Socials({
           size="lg"
           color="white"
           radius="md"
+          aria-label={social.platform}
           className="transition-colors hover:text-mocha-500"
           {...ActionIconProps}
         >
@@ -72,6 +73,7 @@ export function Socials({
               color="white"
               radius="md"
               className="h-[var(--ai-size-lg)] transition-colors hover:text-mocha-500"
+              aria-label="More social links"
               {...ActionIconProps}
             >
               <IconDotsVertical />

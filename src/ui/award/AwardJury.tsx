@@ -1,6 +1,11 @@
 "use client";
 
-import { ActionIcon } from "@mantine/core";
+import { ActionIcon, Menu, Paper } from "@mantine/core";
+import {
+  IconDots,
+  IconDotsCircleHorizontal,
+  IconDotsVertical,
+} from "@tabler/icons-react";
 
 import type { Expert } from "@/payload-types";
 import { Image } from "@/ui/components/Image";
@@ -8,17 +13,13 @@ import { PersonaCard } from "@/ui/components/PersonaCard";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { ensureResolved } from "@/utils/payload";
 
+import { derivative } from "../utils";
+
 export interface AwardJuryProps {
   members: Array<Expert>;
 }
 
 export function AwardJury({ members }: AwardJuryProps) {
-  const handleMemberClick = (member: Expert) => {
-    if (!member.socials) return;
-    if (member.socials.length > 1) return;
-    window.open(member.socials[0]?.url, "_blank");
-  };
-
   return (
     <>
       {/* Mobile View */}
@@ -26,57 +27,107 @@ export function AwardJury({ members }: AwardJuryProps) {
         {members.map((member, index) => {
           const image = ensureResolved(member.image);
           if (!image) return null;
+
+          const { mainSocials, extraSocials } = derivative(() => {
+            const socials = member.socials ?? [];
+            if (socials.length <= 2)
+              return {
+                mainSocials: socials,
+                extraSocials: [],
+              };
+            return {
+              mainSocials: socials.slice(0, 1),
+              extraSocials: socials.slice(1),
+            };
+          });
+
           return (
-            <div
+            <Paper
               key={member.id}
-              role="button"
-              className="group max-sm:sticky"
-              onClick={() => handleMemberClick(member)}
+              radius="md"
+              withBorder
+              bg="gray.0"
+              className="flex items-center p-2 max-sm:sticky"
               style={{ top: `${10 + index * 0.375}rem` }}
-              tabIndex={0}
             >
-              <div className="flex cursor-pointer items-center space-x-4 rounded-xl border bg-mocha-50 p-2 backdrop-blur-sm">
-                <Image
-                  resource={image}
-                  alt={member.name}
-                  className="h-20 w-20 shrink-0 rounded-lg object-cover"
-                  sizes="128px"
-                />
+              <Image
+                resource={image}
+                alt={member.name}
+                className="h-20 w-20 shrink-0 rounded-md object-cover"
+                sizes="128px"
+              />
+              <div className="grow pl-3">
+                <p className="mb-1 font-semibold leading-tight">
+                  {member.name}
+                </p>
                 <div>
-                  <h3 className="text-lg font-semibold">{member.name}</h3>
                   <p className="text-pretty text-sm leading-tight text-neutral-600">
                     {member.description}
                   </p>
                 </div>
               </div>
+              <div
+                className="my-auto flex shrink-0 flex-col gap-0.5"
+                style={{ direction: "rtl" }}
+              >
+                {mainSocials.map((social) => (
+                  <ActionIcon
+                    key={social.platform}
+                    component="a"
+                    href={social.url}
+                    target="_blank"
+                    size="md"
+                    variant="subtle"
+                    color="default"
+                    aria-label={social.platform}
+                  >
+                    <SocialMediaPlatformIcon
+                      platform={social.platform}
+                      size={28}
+                      stroke={1}
+                    />
+                  </ActionIcon>
+                ))}
 
-              {/* Expanding Overlay (only shown for multiple socials) */}
-              {member.socials && member.socials.length > 1 && (
-                <div
-                  className={`bg-mocha/10 pointer-events-none absolute inset-0 flex translate-y-4 flex-col items-center justify-center gap-6 rounded-xl opacity-0 backdrop-blur-md transition-all duration-300 ease-in-out group-focus:pointer-events-auto group-focus:translate-y-0 group-focus:opacity-100`}
-                >
-                  <div className="flex gap-4">
-                    {member.socials.map((social) => (
+                {extraSocials.length > 0 && (
+                  <Menu
+                    position="left"
+                    radius="md"
+                    offset={-31}
+                    transitionProps={{ transition: "fade" }}
+                  >
+                    <Menu.Target>
                       <ActionIcon
-                        key={social.platform}
-                        component="a"
-                        href={social.url}
-                        target="_blank"
-                        size="xl"
+                        size="md"
                         variant="subtle"
                         color="default"
+                        aria-label="More social links"
                       >
-                        <SocialMediaPlatformIcon
-                          platform={social.platform}
-                          size={40}
-                          stroke={1.5}
-                        />
+                        <IconDots size={16} />
                       </ActionIcon>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+                    </Menu.Target>
+                    <Menu.Dropdown p={0} bg="gray.0" className="flex">
+                      {extraSocials.map((social) => (
+                        <Menu.Item
+                          key={social.platform}
+                          p={2}
+                          component="a"
+                          href={social.url}
+                          target="_blank"
+                          aria-label={social.platform}
+                        >
+                          <SocialMediaPlatformIcon
+                            platform={social.platform}
+                            size={28}
+                            stroke={1}
+                          />
+                        </Menu.Item>
+                      ))}
+                    </Menu.Dropdown>
+                  </Menu>
+                )}
+              </div>
+            </Paper>
           );
         })}
       </div>

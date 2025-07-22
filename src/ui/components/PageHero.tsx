@@ -50,9 +50,9 @@ export function PageHero({
           className="p-4 max-sm:flex-col sm:items-end sm:p-8"
         >
           <Stack gap="xs" className="min-w-0 flex-1 max-sm:text-center">
-            <h1 className="hyphens-auto text-balance text-5xl font-light uppercase tracking-wider text-mocha-300 sm:text-5xl md:text-6xl lg:text-7xl">
+            <p className="hyphens-auto text-balance text-5xl font-light uppercase tracking-wider text-mocha-300 sm:text-5xl md:text-6xl lg:text-7xl">
               {title}
-            </h1>
+            </p>
             <p className="text-balance text-xl font-light uppercase tracking-widest text-white empty:hidden sm:text-2xl md:text-3xl">
               {headline}
             </p>
