@@ -7,7 +7,6 @@ import Marquee from "react-fast-marquee";
 
 import type { Photo } from "@/payload-types";
 import { Image } from "@/ui/components/Image";
-import { useFlag } from "@/ui/useFlag";
 import { cn } from "@/ui/utils";
 import { ensureResolvedArray } from "@/utils/payload";
 
@@ -24,9 +23,6 @@ export function AwardImpressions({
 }: AwardImpressionsProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "100px" });
-
-  const disabled = useFlag("DISABLE_IMPRESSIONS");
-  if (disabled) return null;
 
   return (
     <Paper

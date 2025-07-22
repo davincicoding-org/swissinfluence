@@ -8,7 +8,6 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import type { AwardRanking } from "@/types";
 import { Socials } from "@/ui/components/Socials";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
-import { useFlag } from "@/ui/useFlag";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
@@ -17,9 +16,6 @@ export interface HallOfFameProps {
 }
 
 export function HallOfFame({ awards }: HallOfFameProps) {
-  const disabled = useFlag("DISABLE_HALL_OF_FAME");
-  if (disabled) return null;
-
   return (
     <div>
       <Tabs

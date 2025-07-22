@@ -19,7 +19,6 @@ import type { Photo } from "@/payload-types";
 import type { AwardCategory } from "@/types";
 import { Image } from "@/ui/components/Image";
 import { PersonaCard } from "@/ui/components/PersonaCard";
-import { useFlag } from "@/ui/useFlag";
 import { cn } from "@/ui/utils";
 import { VotingButton } from "@/ui/voting";
 import { ensureResolved } from "@/utils/payload";
@@ -42,9 +41,6 @@ export function AwardCategories({
   const t = useTranslations("award.categories");
   const [visibleStack, setVisibleStack] = useState<number[]>([]);
   const voting = useVoting();
-  const disabled = useFlag("DISABLE_CATEGORIES");
-
-  if (disabled) return null;
 
   return (
     <section id={id} className={cn("relative pb-[50dvh]", className)}>

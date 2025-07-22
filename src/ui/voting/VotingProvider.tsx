@@ -3,7 +3,6 @@
 import type { ButtonProps } from "@mantine/core";
 import type { PropsWithChildren } from "react";
 import { createContext, useContext, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import { Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { isEqual } from "lodash-es";
