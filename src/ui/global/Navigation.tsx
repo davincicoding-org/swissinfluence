@@ -13,12 +13,8 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconMenu, IconWorld } from "@tabler/icons-react";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValueEvent,
-  useScroll,
-} from "motion/react";
+import { AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
+import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
 
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
@@ -99,7 +95,7 @@ export function Navigation({
   return (
     <>
       <AnimatePresence mode="wait">
-        <motion.div
+        <m.div
           initial={{
             y: -100,
           }}
@@ -112,10 +108,10 @@ export function Navigation({
           className={cn("fixed inset-x-0 top-0 z-10")}
         >
           <div className="h-16 bg-[var(--mantine-color-body)]" />
-        </motion.div>
+        </m.div>
       </AnimatePresence>
       <AnimatePresence mode="wait">
-        <motion.div
+        <m.div
           initial={{
             opacity: 1,
             y: -100,
@@ -226,7 +222,7 @@ export function Navigation({
               </div>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </AnimatePresence>
     </>
   );

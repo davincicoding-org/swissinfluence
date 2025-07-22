@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Accordion, Paper, ScrollArea } from "@mantine/core";
 import dayjs from "dayjs";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
 
 import type { ScheduleSlots } from "@/payload-types";
@@ -107,7 +108,7 @@ export function Schedule({ slots }: ScheduleProps) {
         </ScrollArea>
 
         <AnimatePresence mode="wait">
-          <motion.div
+          <m.div
             key={activeSection}
             className="my-auto grow"
             initial={{ opacity: 0 }}
@@ -137,7 +138,7 @@ export function Schedule({ slots }: ScheduleProps) {
                 }
               />
             </ScrollArea>
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </Paper>
     </>

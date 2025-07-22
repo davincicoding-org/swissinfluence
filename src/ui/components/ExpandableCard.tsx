@@ -13,7 +13,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconX } from "@tabler/icons-react";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 
 import type { Photo } from "@/payload-types";
 import { Image } from "@/ui/components/Image";
@@ -36,7 +36,7 @@ interface ExpandableCardProps {
   className?: string;
 }
 
-const ModalContent = motion(Modal.Content);
+const ModalContent = m.create(Modal.Content);
 
 export function ExpandableCard({
   id,
@@ -54,7 +54,7 @@ export function ExpandableCard({
   return (
     <>
       <Paper
-        component={motion.div}
+        component={m.div}
         layoutId={`card-${title}-${id}`}
         withBorder
         className={cn(
@@ -66,7 +66,7 @@ export function ExpandableCard({
         onClick={open}
       >
         <div className="flex w-full flex-col gap-4">
-          <motion.div
+          <m.div
             layoutId={`image-${title}-${id}`}
             className="relative aspect-square overflow-clip rounded-lg"
           >
@@ -76,10 +76,10 @@ export function ExpandableCard({
               className="h-full w-full"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
             />
-          </motion.div>
+          </m.div>
           <div className="-ml-2 flex flex-col items-center justify-center">
             <Text
-              component={motion.h3}
+              component={m.h3}
               layoutId={`title-${title}-${id}`}
               className="mb-1 w-full min-w-0 text-nowrap text-center text-base font-medium"
             >
@@ -116,7 +116,7 @@ export function ExpandableCard({
           </Modal.Header>
           <Modal.Body p={0}>
             <FocusTrap.InitialFocus />
-            <motion.div layoutId={`image-${title}-${id}`} className="relative">
+            <m.div layoutId={`image-${title}-${id}`} className="relative">
               <Image
                 resource={image}
                 alt={title}
@@ -132,7 +132,7 @@ export function ExpandableCard({
                 className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/50 from-50% to-transparent p-4 pt-8"
               >
                 <Text
-                  component={motion.h3}
+                  component={m.h3}
                   layoutId={`title-${title}-${id}`}
                   className="text-pretty text-lg font-medium leading-tight text-white"
                 >
@@ -145,7 +145,7 @@ export function ExpandableCard({
                   {badge}
                 </Badge>
               )}
-            </motion.div>
+            </m.div>
 
             <div className="p-4">{content}</div>
 

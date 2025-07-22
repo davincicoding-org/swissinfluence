@@ -18,6 +18,7 @@ import { routing } from "@/i18n/routing";
 import { subscribeToNewsletter } from "@/server/mailchimp";
 import { fetchCompany } from "@/server/queries";
 import { Footer, Navigation, Scroll } from "@/ui/global";
+import { MotionProvider } from "@/ui/motion";
 import { theme } from "@/ui/theme";
 import { cn } from "@/ui/utils";
 
@@ -60,101 +61,103 @@ export default async function LocaleLayout({
         <div className="scroll-top-anchor" />
         <MantineProvider theme={theme}>
           <NextIntlClientProvider messages={messages}>
-            <Navigation
-              locale={locale}
-              locales={routing.locales}
-              homeLink="/"
-              mainLogo={
-                <Image
-                  priority
-                  className="h-9 w-auto translate-y-0.5"
-                  alt="SIA Logo"
-                  src="/logos/main.svg"
-                  width={89}
-                  height={44}
-                />
-              }
-              mainLinks={[
-                {
-                  label: t("main.award"),
-                  href: `/award`,
-                  logo: (
-                    <Image
-                      priority
-                      className="h-9 w-auto"
-                      alt="Award Logo"
-                      src="/logos/award.svg"
-                      width={100}
-                      height={44}
-                    />
-                  ),
-                },
-                {
-                  label: t("main.network.page"),
-                  href: `/network`,
-                  children: [
-                    {
-                      label: t("main.network.influencers"),
-                      href: `/network/influencers`,
-                    },
-                    {
-                      label: t("main.network.campaigns"),
-                      href: `/network/campaigns`,
-                    },
-                    {
-                      label: t("main.network.events"),
-                      href: `/network/events`,
-                    },
-                    {
-                      label: t("main.network.agencies"),
-                      href: `/network/agencies`,
-                    },
-                  ],
-                },
-                {
-                  label: t("main.convention"),
-                  href: `/convention`,
-                },
-                {
-                  label: t("main.academy"),
-                  href: `/academy`,
-                  logo: (
-                    <Image
-                      priority
-                      className="h-9 w-auto"
-                      alt="Academy Logo"
-                      src="/logos/academy.svg"
-                      width={445}
-                      height={196}
-                    />
-                  ),
-                },
-              ]}
-              subLinks={[
-                {
-                  label: t("sub.imprint"),
-                  href: `/imprint`,
-                },
-                {
-                  label: t("sub.privacy"),
-                  href: `/privacy`,
-                },
-                {
-                  label: t("sub.nomination-process"),
-                  href: `/nomination-process`,
-                },
-                {
-                  label: t("sub.sponsoring"),
-                  href: `/sponsoring`,
-                },
-              ]}
-            />
-            {children}
-            <Footer
-              className="snap-end"
-              company={company}
-              newsletterHandler={subscribeToNewsletter}
-            />
+            <MotionProvider>
+              <Navigation
+                locale={locale}
+                locales={routing.locales}
+                homeLink="/"
+                mainLogo={
+                  <Image
+                    priority
+                    className="h-9 w-auto translate-y-0.5"
+                    alt="SIA Logo"
+                    src="/logos/main.svg"
+                    width={89}
+                    height={44}
+                  />
+                }
+                mainLinks={[
+                  {
+                    label: t("main.award"),
+                    href: `/award`,
+                    logo: (
+                      <Image
+                        priority
+                        className="h-9 w-auto"
+                        alt="Award Logo"
+                        src="/logos/award.svg"
+                        width={100}
+                        height={44}
+                      />
+                    ),
+                  },
+                  {
+                    label: t("main.network.page"),
+                    href: `/network`,
+                    children: [
+                      {
+                        label: t("main.network.influencers"),
+                        href: `/network/influencers`,
+                      },
+                      {
+                        label: t("main.network.campaigns"),
+                        href: `/network/campaigns`,
+                      },
+                      {
+                        label: t("main.network.events"),
+                        href: `/network/events`,
+                      },
+                      {
+                        label: t("main.network.agencies"),
+                        href: `/network/agencies`,
+                      },
+                    ],
+                  },
+                  {
+                    label: t("main.convention"),
+                    href: `/convention`,
+                  },
+                  {
+                    label: t("main.academy"),
+                    href: `/academy`,
+                    logo: (
+                      <Image
+                        priority
+                        className="h-9 w-auto"
+                        alt="Academy Logo"
+                        src="/logos/academy.svg"
+                        width={445}
+                        height={196}
+                      />
+                    ),
+                  },
+                ]}
+                subLinks={[
+                  {
+                    label: t("sub.imprint"),
+                    href: `/imprint`,
+                  },
+                  {
+                    label: t("sub.privacy"),
+                    href: `/privacy`,
+                  },
+                  {
+                    label: t("sub.nomination-process"),
+                    href: `/nomination-process`,
+                  },
+                  {
+                    label: t("sub.sponsoring"),
+                    href: `/sponsoring`,
+                  },
+                ]}
+              />
+              {children}
+              <Footer
+                className="snap-end"
+                company={company}
+                newsletterHandler={subscribeToNewsletter}
+              />
+            </MotionProvider>
           </NextIntlClientProvider>
         </MantineProvider>
         <SpeedInsights />

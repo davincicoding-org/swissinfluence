@@ -1,7 +1,7 @@
 "use client";
 
 import { useElementSize } from "@mantine/hooks";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 
 import { cn } from "@/ui/utils";
 
@@ -46,7 +46,7 @@ export function TextOverflowReveal({
           : undefined
       }
     >
-      <motion.p
+      <m.p
         ref={nameRef}
         className={cn("text-nowrap", classNames?.text)}
         whileInView={{
@@ -68,7 +68,7 @@ export function TextOverflowReveal({
         }
       >
         {text}
-      </motion.p>
+      </m.p>
     </div>
   );
 }

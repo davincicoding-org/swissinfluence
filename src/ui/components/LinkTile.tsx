@@ -3,7 +3,7 @@
 import type { MotionProps } from "motion/react";
 import { type Route } from "next";
 import Link from "next/link";
-import { motion } from "motion/react";
+import * as m from "motion/react-m";
 
 import { cn } from "@/ui/utils";
 
@@ -28,7 +28,7 @@ export function LinkTile<R extends string>({
   ...motionProps
 }: LinkTileProps<R> & MotionProps) {
   return (
-    <motion.div className={cn("group", className)} {...motionProps}>
+    <m.div className={cn("group", className)} {...motionProps}>
       <Link
         target={external ? "_blank" : undefined}
         href={href}
@@ -51,6 +51,6 @@ export function LinkTile<R extends string>({
           {label}
         </div>
       </Link>
-    </motion.div>
+    </m.div>
   );
 }

@@ -19,7 +19,8 @@ import {
 } from "@mantine/core";
 import { IconList, IconX } from "@tabler/icons-react";
 import { isEqual } from "lodash-es";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
 
 import type { Category, Influencer, ProfilePicture } from "@/payload-types";
@@ -137,7 +138,7 @@ export function VotingSelectionModal({
                       className={cn("text-current transition-opacity", {
                         "pointer-events-none opacity-0": votes.length === 0,
                       })}
-                      component={motion.button}
+                      component={m.button}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -178,7 +179,7 @@ export function VotingSelectionModal({
                               <NavLink
                                 key={influencer.id}
                                 label={influencer.name}
-                                component={motion.button}
+                                component={m.button}
                                 exit={{ opacity: 0, x: 10 }}
                                 rightSection={<IconX size={16} />}
                                 py={4}
@@ -203,7 +204,7 @@ export function VotingSelectionModal({
                 key="submit"
                 radius="md"
                 size="md"
-                component={motion.button}
+                component={m.button}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -213,7 +214,7 @@ export function VotingSelectionModal({
               </Button>
             </>
           ) : (
-            <motion.span
+            <m.span
               key="info"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -221,7 +222,7 @@ export function VotingSelectionModal({
               className="text-balance text-lg font-medium leading-tight"
             >
               {t("empty")}
-            </motion.span>
+            </m.span>
           )}
         </AnimatePresence>
         <CloseButton size="xl" radius="md" onClick={onClose} />
