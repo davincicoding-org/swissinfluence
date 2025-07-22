@@ -77,7 +77,7 @@ export default buildConfig({
   },
   upload: {
     limits: {
-      fileSize: 10_000_000,
+      fileSize: 12_000_000,
     },
   },
   localization: {
