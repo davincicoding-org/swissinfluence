@@ -7,7 +7,8 @@ import Marquee from "react-fast-marquee";
 
 import type { Photo } from "@/payload-types";
 import { Image } from "@/ui/components/Image";
-import { cn, useFlag } from "@/ui/utils";
+import { useFlag } from "@/ui/useFlag";
+import { cn } from "@/ui/utils";
 import { ensureResolvedArray } from "@/utils/payload";
 
 export interface AwardImpressionsProps {

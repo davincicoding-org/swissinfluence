@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef } from "react";
 import { Flex, Tooltip } from "@mantine/core";
 import { useInView } from "motion/react";

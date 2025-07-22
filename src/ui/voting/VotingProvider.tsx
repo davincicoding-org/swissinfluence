@@ -11,8 +11,8 @@ import { useTranslations } from "next-intl";
 
 import type { Award } from "@/payload-types";
 import type { AwardCategory, InfluencerVote, VotingValues } from "@/types";
+import { useFlag } from "@/ui/useFlag";
 
-import { useFlag } from "../utils";
 import { VotingConfirmationModal } from "./VotingConfirmationModal";
 import { VotingConfirmedModal } from "./VotingConfirmedModal";
 import { VotingSelectionModal } from "./VotingSelectionModal";

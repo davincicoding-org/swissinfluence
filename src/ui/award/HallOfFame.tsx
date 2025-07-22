@@ -8,7 +8,8 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import type { AwardRanking } from "@/types";
 import { Socials } from "@/ui/components/Socials";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
-import { cn, useFlag } from "@/ui/utils";
+import { useFlag } from "@/ui/useFlag";
+import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
 export interface HallOfFameProps {

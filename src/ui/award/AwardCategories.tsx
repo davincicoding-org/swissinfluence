@@ -19,7 +19,8 @@ import type { Photo } from "@/payload-types";
 import type { AwardCategory } from "@/types";
 import { Image } from "@/ui/components/Image";
 import { PersonaCard } from "@/ui/components/PersonaCard";
-import { cn, useFlag } from "@/ui/utils";
+import { useFlag } from "@/ui/useFlag";
+import { cn } from "@/ui/utils";
 import { VotingButton } from "@/ui/voting";
 import { ensureResolved } from "@/utils/payload";
 
