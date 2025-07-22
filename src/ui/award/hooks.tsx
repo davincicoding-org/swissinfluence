@@ -11,59 +11,25 @@ import { VotingButton } from "@/ui/voting";
 export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");
 
-  // Memoize expensive date calculations to reduce blocking time
-  const dateCalculations = useMemo(() => {
-    if (!data) return null;
-
-    const now = dayjs();
-    const nominationDeadline = data.nominationDeadline
-      ? dayjs(data.nominationDeadline)
-      : null;
-    const votingOpening = data.votingOpening ? dayjs(data.votingOpening) : null;
-    const votingDeadline = data.votingDeadline
-      ? dayjs(data.votingDeadline)
-      : null;
-    const showDate = data.show?.date ? dayjs(data.show.date) : null;
-
-    return {
-      canNominate: nominationDeadline ? nominationDeadline.isAfter(now) : false,
-      canVote: votingOpening ? votingOpening.isAfter(now) : false,
-      hasVotingEnded: votingDeadline ? votingDeadline.isBefore(now) : false,
-      hasShowStarted: showDate ? showDate.isBefore(now) : false,
-      hasShowEnded: showDate
-        ? showDate.isSame(now.subtract(1, "day"), "day")
-        : false,
-      hasNominees:
-        data.categories?.every(({ nominees }) => nominees.length > 0) ?? false,
-      hasRankedResults: data.categories?.every(({ ranked }) => ranked) ?? false,
-      hasShowImages: Boolean(data.show?.images.length),
-    };
-  }, [
-    data?.nominationDeadline,
-    data?.votingOpening,
-    data?.votingDeadline,
-    data?.show?.date,
-    data?.categories,
-    data?.show?.images.length,
-  ]);
-
   return useMemo<{
     headline: string | ReactElement | undefined;
     cta?: ReactElement;
   }>(() => {
-    if (data === null || !dateCalculations)
+    if (data === null)
       return {
         headline: undefined,
       };
 
-    // ANNOUNCED
-    if (!data.nominationDeadline)
+    if (!data.nominationUrl)
+      // ANNOUNCED
       return {
         headline: t("announced.headline"),
       };
 
-    // NOMINATION
-    if (dateCalculations.canNominate)
+    const hasNominationEnded = dayjs(data.nominationDeadline).isBefore();
+
+    if (!hasNominationEnded)
+      // NOMINATION
       return {
         headline: t("nomination.headline"),
         cta: (
@@ -80,8 +46,22 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    // NOMINATION_ENDED
-    if (!dateCalculations.hasNominees || !dateCalculations.canVote)
+    const categories = data.categories.map(
+      ({ nominees, votingOpening, votingDeadline, ranked }) => ({
+        hasNominees: nominees.length > 0,
+        isRanked: ranked,
+        hasVotingStarted: dayjs(votingOpening).isBefore(),
+        hasVotingEnded: dayjs(votingDeadline).isBefore(),
+      }),
+    );
+
+    const hasOpenVotings = categories.some(
+      ({ hasVotingStarted, hasVotingEnded }) =>
+        hasVotingStarted && !hasVotingEnded,
+    );
+
+    if (!hasOpenVotings)
+      // NOMINATION_ENDED
       return {
         headline: t("nomination-ended.headline"),
         cta: (
@@ -98,21 +78,27 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    // VOTING
-    if (!dateCalculations.hasVotingEnded)
+    const hasVotingEnded = categories.every(
+      ({ hasVotingEnded }) => hasVotingEnded,
+    );
+
+    if (!hasVotingEnded)
+      // VOTING
       return {
         headline: t("voting.headline"),
         cta: <VotingButton />,
       };
 
-    // VOTING_ENDED
-    if (!data.show?.date)
+    if (!data.show)
+      // VOTING_ENDED
       return {
         headline: t("voting-ended.headline"),
       };
 
-    // PRE_SHOW
-    if (!dateCalculations.hasShowStarted)
+    const hasShowStarted = dayjs(data.show.date).isBefore();
+
+    if (!hasShowStarted)
+      // PRE_SHOW
       return {
         headline: <Countdown date={data.show.date} />,
         cta: (
@@ -129,20 +115,24 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    // DURING_SHOW
-    if (!dateCalculations.hasShowEnded)
+    const hasShowEnded = dayjs(data.show.date).isAfter(undefined, "day");
+
+    if (!hasShowEnded)
+      // DURING_SHOW
       return {
         headline: t("during-show.headline"),
       };
 
-    // POST_SHOW
-    if (!dateCalculations.hasRankedResults)
+    const isRankingCompleted = categories.every(({ isRanked }) => isRanked);
+
+    if (!isRankingCompleted)
+      // POST_SHOW
       return {
         headline: t("post-show.headline"),
       };
 
-    // AWARDED
-    if (!dateCalculations.hasShowImages)
+    if (!data.show.images.length)
+      // AWARDED
       return {
         headline: t("awarded.headline"),
         cta: (
@@ -159,8 +149,8 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    // FINISHED
     return {
+      // FINISHED
       headline: t("finished.headline"),
       cta: (
         <Button
@@ -175,5 +165,5 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         </Button>
       ),
     };
-  }, [data, dateCalculations, t]);
+  }, [data, t]);
 };

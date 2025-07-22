@@ -445,8 +445,8 @@ export interface Location {
 export interface Award {
   id: number;
   year: number;
-  nominationDeadline?: string | null;
   nominationUrl?: string | null;
+  nominationDeadline?: string | null;
   votingOpening?: string | null;
   votingDeadline?: string | null;
   jury?:
@@ -465,6 +465,11 @@ export interface Award {
     | {
         category: number | Category;
         sponsor?: (number | null) | Brand;
+        votingOpening?: string | null;
+        votingDeadline?: string | null;
+        /**
+         * The ranking is derived from the order of the nominees below.
+         */
         ranked?: boolean | null;
         winnerImage?: (number | null) | ProfilePicture;
         nominees?:
@@ -477,8 +482,8 @@ export interface Award {
       }[]
     | null;
   newcomerScoutImage?: (number | null) | Photo;
-  newcomerScoutDeadline?: string | null;
   newcomerScoutUrl?: string | null;
+  newcomerScoutDeadline?: string | null;
   newcomerScoutContent?: {
     root: {
       type: string;
@@ -1287,8 +1292,8 @@ export interface LocationsSelect<T extends boolean = true> {
  */
 export interface AwardsSelect<T extends boolean = true> {
   year?: T;
-  nominationDeadline?: T;
   nominationUrl?: T;
+  nominationDeadline?: T;
   votingOpening?: T;
   votingDeadline?: T;
   jury?:
@@ -1308,6 +1313,8 @@ export interface AwardsSelect<T extends boolean = true> {
     | {
         category?: T;
         sponsor?: T;
+        votingOpening?: T;
+        votingDeadline?: T;
         ranked?: T;
         winnerImage?: T;
         nominees?:
@@ -1319,8 +1326,8 @@ export interface AwardsSelect<T extends boolean = true> {
         id?: T;
       };
   newcomerScoutImage?: T;
-  newcomerScoutDeadline?: T;
   newcomerScoutUrl?: T;
+  newcomerScoutDeadline?: T;
   newcomerScoutContent?: T;
   updatedAt?: T;
   createdAt?: T;

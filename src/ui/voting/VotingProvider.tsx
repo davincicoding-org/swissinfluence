@@ -2,40 +2,46 @@
 
 import type { ButtonProps } from "@mantine/core";
 import type { PropsWithChildren } from "react";
-import { createContext, useContext, useRef, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { isEqual } from "lodash-es";
 import { useTranslations } from "next-intl";
 
-import type { Award } from "@/payload-types";
+import type { Award, Category } from "@/payload-types";
 import type { AwardCategory, InfluencerVote, VotingValues } from "@/types";
 import { useFlag } from "@/ui/useFlag";
 
+import { canVoteInCategory } from "./utils";
 import { VotingConfirmationModal } from "./VotingConfirmationModal";
 import { VotingConfirmedModal } from "./VotingConfirmedModal";
 import { VotingSelectionModal } from "./VotingSelectionModal";
 import { VotingSubmissionModal } from "./VotingSubmissionModal";
 
 interface VotingContext {
-  enabled: boolean;
-  open: () => void;
+  categories: Category["id"][];
+  open: (categoryId?: Category["id"]) => void;
 }
 
 const VotingContext = createContext<VotingContext>({
-  enabled: false,
+  categories: [],
   open: () => void 0,
 });
 
 export interface VotingProviderProps {
-  enabled: boolean;
   awardId: Award["id"] | undefined;
   categories: AwardCategory[];
   submissionHandler: (values: VotingValues) => Promise<void>;
 }
 
 export function VotingProvider({
-  enabled,
   awardId,
   categories,
   submissionHandler,
@@ -48,6 +54,7 @@ export function VotingProvider({
         ? prev.filter((v) => !isEqual(v, vote))
         : [...prev, vote],
     );
+  const [openCategory, setOpenCategory] = useState<Category["id"]>();
   const [isSelectionModalOpen, selectionModal] = useDisclosure(false);
   const [isSubmissionModalOpen, submissionModal] = useDisclosure(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,6 +62,29 @@ export function VotingProvider({
   const resetRef = useRef<() => void>(null);
 
   const enforceVoting = useFlag("ENABLE_VOTING");
+
+  const categoriesWithVoting = useMemo(() => {
+    if (enforceVoting) return categories;
+    return categories.filter(canVoteInCategory);
+  }, [categories, enforceVoting]);
+
+  const categoryIDs = useMemo(
+    () => categoriesWithVoting.map(({ category }) => category.id),
+    [categoriesWithVoting],
+  );
+
+  const handleOpenVotingSelection = useCallback(
+    (categoryId?: Category["id"]) => {
+      setOpenCategory(categoryId);
+      selectionModal.open();
+    },
+    [selectionModal],
+  );
+
+  const handleCloseVotingSelection = useCallback(() => {
+    setOpenCategory(undefined);
+    selectionModal.close();
+  }, [selectionModal]);
 
   const handleSubmitSelection = () => {
     setVotes(votes);
@@ -80,29 +110,28 @@ export function VotingProvider({
     setIsSubmitting(false);
     resetRef.current?.();
     submissionModal.close();
-    selectionModal.close();
+    handleCloseVotingSelection();
     setVotes([]);
     setIsSubmitted(true);
   };
 
-  if (!enabled && !enforceVoting) {
-    return children;
-  }
+  if (categoriesWithVoting.length === 0) return children;
 
   return (
     <VotingContext.Provider
       value={{
-        enabled,
-        open: selectionModal.open,
+        categories: categoryIDs,
+        open: handleOpenVotingSelection,
       }}
     >
       {children}
       <VotingSelectionModal
-        categories={categories}
+        categories={categoriesWithVoting}
+        focusCategory={openCategory}
         votes={votes}
         onToggleVote={onToggleVote}
         opened={isSelectionModalOpen}
-        onClose={selectionModal.close}
+        onClose={handleCloseVotingSelection}
         onSubmit={handleSubmitSelection}
       />
       <VotingSubmissionModal
@@ -130,7 +159,7 @@ export function VotingButton(props: ButtonProps) {
       size="lg"
       radius="md"
       className="uppercase tracking-widest"
-      onClick={open}
+      onClick={() => open()}
       {...props}
     >
       {t("voting.CTA")}
@@ -138,4 +167,15 @@ export function VotingButton(props: ButtonProps) {
   );
 }
 
-export const useVoting = () => useContext(VotingContext);
+export const useCategoryVoting = (categoryId: Category["id"]) => {
+  const { open, categories } = useContext(VotingContext);
+
+  return useMemo(() => {
+    const enabled = categories.includes(categoryId);
+    if (!enabled) return null;
+
+    return {
+      open: () => open(categoryId),
+    };
+  }, [categories, categoryId, open]);
+};

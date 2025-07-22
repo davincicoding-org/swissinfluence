@@ -1,7 +1,7 @@
 "use client";
 
 import type { BoxProps } from "@mantine/core";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   ActionIcon,
   Box,
@@ -33,6 +33,7 @@ import { ensureResolved } from "@/utils/payload";
 
 export interface VotingSelectionModalProps {
   categories: AwardCategory[];
+  focusCategory?: Category["id"];
   votes: VotingValues["votes"];
   onToggleVote: (vote: InfluencerVote) => void;
   opened: boolean;
@@ -42,6 +43,7 @@ export interface VotingSelectionModalProps {
 
 export function VotingSelectionModal({
   categories,
+  focusCategory,
   votes,
   onToggleVote,
   opened,
@@ -81,42 +83,16 @@ export function VotingSelectionModal({
       }}
     >
       <div className="flex flex-col gap-2">
-        {categories.map(({ category, nominees }) => {
-          if (nominees.length === 0) return null;
-          const isSelected = (influencerId: Influencer["id"]) =>
-            votes.some((vote) =>
-              isEqual(vote, {
-                influencer: influencerId,
-                category: category.id,
-              }),
-            );
-          const handleToggle = (influencerId: Influencer["id"]) =>
-            onToggleVote({
-              influencer: influencerId,
-              category: category.id,
-            });
-          return (
-            <div key={category.id}>
-              <h3 className="sticky top-0 z-10 bg-white/50 px-4 py-2 text-2xl backdrop-blur-sm md:py-3 md:text-3xl">
-                {category.name}
-              </h3>
-              <ListView
-                hiddenFrom="sm"
-                className="px-4"
-                nominees={nominees}
-                isSelected={isSelected}
-                onToggle={handleToggle}
-              />
-              <GridView
-                visibleFrom="sm"
-                className="px-4"
-                nominees={nominees}
-                isSelected={isSelected}
-                onToggle={handleToggle}
-              />
-            </div>
-          );
-        })}
+        {categories.map(({ category, nominees }) => (
+          <CategorySection
+            key={category.id}
+            active={category.id === focusCategory}
+            category={category}
+            nominees={nominees}
+            votes={votes}
+            onToggleVote={onToggleVote}
+          />
+        ))}
       </div>
       <div className="sticky bottom-0 z-10 flex h-16 items-center justify-between gap-2 bg-white/50 px-4 py-3 backdrop-blur-sm">
         <AnimatePresence mode="wait">
@@ -228,6 +204,62 @@ export function VotingSelectionModal({
         <CloseButton size="xl" radius="md" onClick={onClose} />
       </div>
     </Modal>
+  );
+}
+
+interface CategorySectionProps {
+  active: boolean;
+  category: Category;
+  nominees: Influencer[];
+  votes: VotingValues["votes"];
+  onToggleVote: (vote: InfluencerVote) => void;
+}
+
+function CategorySection({
+  active,
+  category,
+  nominees,
+  votes,
+  onToggleVote,
+}: CategorySectionProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!active) return;
+    ref.current?.scrollIntoView({ behavior: "instant", block: "start" });
+  }, [active]);
+
+  const isSelected = (influencerId: Influencer["id"]) =>
+    votes.some((vote) =>
+      isEqual(vote, {
+        influencer: influencerId,
+        category: category.id,
+      }),
+    );
+  const handleToggle = (influencerId: Influencer["id"]) =>
+    onToggleVote({
+      influencer: influencerId,
+      category: category.id,
+    });
+  return (
+    <div key={category.id} ref={ref}>
+      <h3 className="sticky top-0 z-10 bg-white/50 px-4 py-2 text-2xl backdrop-blur-sm md:py-3 md:text-3xl">
+        {category.name}
+      </h3>
+      <ListView
+        hiddenFrom="sm"
+        className="px-4"
+        nominees={nominees}
+        isSelected={isSelected}
+        onToggle={handleToggle}
+      />
+      <GridView
+        visibleFrom="sm"
+        className="px-4"
+        nominees={nominees}
+        isSelected={isSelected}
+        onToggle={handleToggle}
+      />
+    </div>
   );
 }
 

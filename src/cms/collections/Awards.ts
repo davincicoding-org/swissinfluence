@@ -33,9 +33,14 @@ export const Awards: CollectionConfig = {
                     },
 
                     {
-                      type: "group",
                       label: "Nomination",
+                      type: "collapsible",
                       fields: [
+                        {
+                          name: "nominationUrl",
+                          label: "URL",
+                          type: "text",
+                        },
                         {
                           name: "nominationDeadline",
                           label: "Deadline",
@@ -43,22 +48,17 @@ export const Awards: CollectionConfig = {
                           admin: {
                             date: {
                               pickerAppearance: "dayAndTime",
-                              displayFormat: "dd/MM/yyyy HH:mm",
+                              displayFormat: "dd.MM.yyyy HH:mm",
                               timeFormat: "HH:mm",
                               timeIntervals: 60,
                             },
                           },
                         },
-                        {
-                          name: "nominationUrl",
-                          label: "URL",
-                          type: "text",
-                        },
                       ],
                     },
                     {
-                      type: "group",
                       label: "Voting",
+                      type: "collapsible",
                       fields: [
                         {
                           name: "votingOpening",
@@ -67,7 +67,7 @@ export const Awards: CollectionConfig = {
                           admin: {
                             date: {
                               pickerAppearance: "dayAndTime",
-                              displayFormat: "dd/MM/yyyy HH:mm",
+                              displayFormat: "dd.MM.yyyy HH:mm",
                               timeFormat: "HH:mm",
                               timeIntervals: 60,
                             },
@@ -80,7 +80,7 @@ export const Awards: CollectionConfig = {
                           admin: {
                             date: {
                               pickerAppearance: "dayAndTime",
-                              displayFormat: "DD.MM.YYYY HH:mm",
+                              displayFormat: "dd.MM.yyyy HH:mm",
                               timeFormat: "HH:mm",
                               timeIntervals: 60,
                             },
@@ -153,13 +153,62 @@ export const Awards: CollectionConfig = {
                   },
                 },
                 {
-                  name: "ranked",
-                  type: "checkbox",
+                  label: "Custom Voting",
+                  type: "collapsible",
+                  admin: {
+                    initCollapsed: true,
+                  },
+                  fields: [
+                    {
+                      name: "votingOpening",
+                      label: "Opening",
+                      type: "date",
+                      admin: {
+                        date: {
+                          pickerAppearance: "dayAndTime",
+                          displayFormat: "dd.MM.yyyy HH:mm",
+                          timeFormat: "HH:mm",
+                          timeIntervals: 60,
+                        },
+                      },
+                    },
+                    {
+                      name: "votingDeadline",
+                      label: "Deadline",
+                      type: "date",
+                      admin: {
+                        date: {
+                          pickerAppearance: "dayAndTime",
+                          displayFormat: "dd.MM.yyyy HH:mm",
+                          timeFormat: "HH:mm",
+                          timeIntervals: 60,
+                        },
+                      },
+                    },
+                  ],
                 },
                 {
-                  name: "winnerImage",
-                  type: "upload",
-                  relationTo: "profile-pictures",
+                  label: "Ranking",
+                  type: "collapsible",
+                  admin: {
+                    initCollapsed: true,
+                  },
+                  fields: [
+                    {
+                      name: "ranked",
+                      type: "checkbox",
+                      label: "Mark as ranked",
+                      admin: {
+                        description:
+                          "The ranking is derived from the order of the nominees below.",
+                      },
+                    },
+                    {
+                      name: "winnerImage",
+                      type: "upload",
+                      relationTo: "profile-pictures",
+                    },
+                  ],
                 },
 
                 {
@@ -190,17 +239,24 @@ export const Awards: CollectionConfig = {
               label: "Image",
               type: "upload",
               relationTo: "photos",
-              // required: true,
-            },
-            {
-              name: "newcomerScoutDeadline",
-              label: "Deadline",
-              type: "date",
             },
             {
               name: "newcomerScoutUrl",
               label: "URL",
               type: "text",
+            },
+            {
+              name: "newcomerScoutDeadline",
+              label: "Deadline",
+              type: "date",
+              admin: {
+                date: {
+                  pickerAppearance: "dayAndTime",
+                  displayFormat: "dd.MM.yyyy HH:mm",
+                  timeFormat: "HH:mm",
+                  timeIntervals: 60,
+                },
+              },
             },
             {
               name: "newcomerScoutContent",

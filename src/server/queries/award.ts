@@ -48,7 +48,15 @@ export const getCurrentAward = cachedRequest(
       jury: ensureResolvedArray((jury ?? []).map(({ expert }) => expert)),
       partners: ensureResolvedArray((partners ?? []).map(({ brand }) => brand)),
       categories: (categories ?? []).map(
-        ({ category, sponsor, winnerImage, nominees, ranked }) => ({
+        ({
+          category,
+          sponsor,
+          winnerImage,
+          nominees,
+          ranked,
+          votingOpening,
+          votingDeadline,
+        }) => ({
           category: ensureResolved(category)!,
           sponsor: ensureResolved(sponsor) ?? null,
           winnerImage: ensureResolved(winnerImage) ?? null,
@@ -56,6 +64,8 @@ export const getCurrentAward = cachedRequest(
           nominees: ensureResolvedArray(
             (nominees ?? []).map(({ influencer }) => influencer),
           ),
+          votingOpening: votingOpening ?? rest.votingOpening ?? null,
+          votingDeadline: votingDeadline ?? rest.votingDeadline ?? null,
         }),
       ),
       show: show && {

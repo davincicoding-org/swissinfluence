@@ -1,11 +1,7 @@
 "use client";
 
 import { ActionIcon, Menu, Paper } from "@mantine/core";
-import {
-  IconDots,
-  IconDotsCircleHorizontal,
-  IconDotsVertical,
-} from "@tabler/icons-react";
+import { IconDots } from "@tabler/icons-react";
 
 import type { Expert } from "@/payload-types";
 import { Image } from "@/ui/components/Image";

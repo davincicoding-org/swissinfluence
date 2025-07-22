@@ -60,7 +60,13 @@ export interface AwardShowImpressions {
 export interface CurrentAward
   extends Omit<
     payloadTypes.Award,
-    "updatedAt" | "createdAt" | "jury" | "partners" | "categories"
+    | "updatedAt"
+    | "createdAt"
+    | "jury"
+    | "partners"
+    | "categories"
+    | "votingOpening"
+    | "votingDeadline"
   > {
   jury: Array<payloadTypes.Expert>;
   partners: Array<payloadTypes.Brand>;
@@ -83,6 +89,8 @@ export interface AwardCategory {
   sponsor: payloadTypes.Brand | null;
   winnerImage: payloadTypes.ProfilePicture | null;
   nominees: Array<payloadTypes.Influencer>;
+  votingOpening: string | null;
+  votingDeadline: string | null;
 }
 
 export interface AwardRanking extends Pick<payloadTypes.Award, "year"> {

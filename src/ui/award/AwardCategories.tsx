@@ -20,10 +20,9 @@ import type { AwardCategory } from "@/types";
 import { Image } from "@/ui/components/Image";
 import { PersonaCard } from "@/ui/components/PersonaCard";
 import { cn } from "@/ui/utils";
-import { VotingButton } from "@/ui/voting";
 import { ensureResolved } from "@/utils/payload";
 
-import { useVoting } from "../voting/VotingProvider";
+import { useCategoryVoting } from "../voting/VotingProvider";
 
 export interface AwardCategoriesProps {
   className?: string;
@@ -40,7 +39,6 @@ export function AwardCategories({
 }: AwardCategoriesProps) {
   const t = useTranslations("award.categories");
   const [visibleStack, setVisibleStack] = useState<number[]>([]);
-  const voting = useVoting();
 
   return (
     <section id={id} className={cn("relative pb-[50dvh]", className)}>
@@ -78,12 +76,6 @@ export function AwardCategories({
           </div>
         ))}
       </div>
-
-      {voting.enabled && (
-        <Center pos="sticky" bottom={0} className="-mb-[10dvh] py-4">
-          <VotingButton />
-        </Center>
-      )}
     </section>
   );
 }
@@ -101,10 +93,11 @@ function CategoryCard({
   isTop,
   onVisibleChange,
 }: CategoryCardProps) {
-  const t = useTranslations("award.categories");
+  const t = useTranslations();
   const cardRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(cardRef, { amount: "all" });
+  const isInView = useInView(cardRef, { amount: 0.8 });
   const [isExpanded, setIsExpanded] = useState(false);
+  const voting = useCategoryVoting(category.id);
 
   useEffect(() => {
     onVisibleChange(isInView);
@@ -141,7 +134,7 @@ function CategoryCard({
                 </p>
                 {sponsor && (
                   <p className="text-pretty text-sm text-gray-200 md:text-lg">
-                    {t("sponsoredBy", { brand: sponsor.name })}
+                    {t("award.categories.sponsoredBy", { brand: sponsor.name })}
                   </p>
                 )}
               </div>
@@ -172,16 +165,27 @@ function CategoryCard({
             </Marquee>
           )}
         </Paper>
-        {nominees.length > 0 && (
-          <Center
-            pos="absolute"
-            className={cn(
-              "inset-x-0 bottom-0 translate-y-1/2 transition-transform",
-              {
-                "translate-y-0": !isTop,
-              },
-            )}
-          >
+        <Center
+          pos="absolute"
+          className={cn(
+            "inset-x-0 bottom-0 z-10 translate-y-1/2 empty:hidden",
+            {
+              "translate-y-0": !isTop,
+            },
+          )}
+        >
+          {voting ? (
+            <Button
+              radius="md"
+              size="compact-xl"
+              classNames={{
+                label: "uppercase font-medium",
+              }}
+              onClick={voting.open}
+            >
+              {t("voting.CTA")}
+            </Button>
+          ) : nominees.length ? (
             <Button
               variant="default"
               radius="xl"
@@ -190,8 +194,8 @@ function CategoryCard({
             >
               VIEW ALL
             </Button>
-          </Center>
-        )}
+          ) : null}
+        </Center>
       </div>
       <Modal
         opened={isExpanded}

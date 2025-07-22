@@ -42,18 +42,9 @@ export function AwardPage({
 }: AwardPageProps) {
   const { headline, cta } = useHeaderContent(currentAward);
   const t = useTranslations("award");
-  const canVote = (() => {
-    if (!currentAward) return false;
-    if (!currentAward.votingOpening) return false;
-    if (!currentAward.votingDeadline) return false;
-    if (dayjs(currentAward.votingOpening).isAfter()) return false;
-    if (dayjs(currentAward.votingDeadline).isBefore()) return false;
-    return true;
-  })();
 
   return (
     <VotingProvider
-      enabled={canVote}
       awardId={currentAward?.id}
       categories={currentAward?.categories ?? []}
       submissionHandler={votingHandler}
