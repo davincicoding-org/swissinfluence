@@ -140,7 +140,6 @@ export function AwardPage({
                 className="snap-start snap-always"
                 skipTarget={challenges.length ? "challenges" : "jury"}
                 categories={currentAward.categories}
-                canVote={canVote}
               />
             )}
 

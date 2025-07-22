@@ -12,16 +12,19 @@ import { useTranslations } from "next-intl";
 import type { Award } from "@/payload-types";
 import type { AwardCategory, InfluencerVote, VotingValues } from "@/types";
 
+import { useFlag } from "../utils";
 import { VotingConfirmationModal } from "./VotingConfirmationModal";
 import { VotingConfirmedModal } from "./VotingConfirmedModal";
 import { VotingSelectionModal } from "./VotingSelectionModal";
 import { VotingSubmissionModal } from "./VotingSubmissionModal";
 
 interface VotingContext {
+  enabled: boolean;
   open: () => void;
 }
 
 const VotingContext = createContext<VotingContext>({
+  enabled: false,
   open: () => void 0,
 });
 
@@ -52,9 +55,7 @@ export function VotingProvider({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const resetRef = useRef<() => void>(null);
 
-  const searchParams = useSearchParams();
-  // TEMP
-  const enforceVoting = searchParams.get("ENABLE_VOTING") !== null;
+  const enforceVoting = useFlag("ENABLE_VOTING");
 
   const handleSubmitSelection = () => {
     setVotes(votes);
@@ -92,6 +93,7 @@ export function VotingProvider({
   return (
     <VotingContext.Provider
       value={{
+        enabled,
         open: selectionModal.open,
       }}
     >
@@ -136,3 +138,5 @@ export function VotingButton(props: ButtonProps) {
     </Button>
   );
 }
+
+export const useVoting = () => useContext(VotingContext);

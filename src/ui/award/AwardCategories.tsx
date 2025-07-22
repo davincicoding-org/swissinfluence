@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams } from "next/navigation";
 import {
   ActionIcon,
   Button,
@@ -20,16 +19,17 @@ import type { Photo } from "@/payload-types";
 import type { AwardCategory } from "@/types";
 import { Image } from "@/ui/components/Image";
 import { PersonaCard } from "@/ui/components/PersonaCard";
-import { cn } from "@/ui/utils";
+import { cn, useFlag } from "@/ui/utils";
 import { VotingButton } from "@/ui/voting";
 import { ensureResolved } from "@/utils/payload";
+
+import { useVoting } from "../voting/VotingProvider";
 
 export interface AwardCategoriesProps {
   className?: string;
   id: string;
   categories: Array<AwardCategory>;
   skipTarget: string;
-  canVote: boolean;
 }
 
 export function AwardCategories({
@@ -37,13 +37,13 @@ export function AwardCategories({
   className,
   categories,
   skipTarget,
-  canVote,
 }: AwardCategoriesProps) {
   const t = useTranslations("award.categories");
   const [visibleStack, setVisibleStack] = useState<number[]>([]);
-  const searchParams = useSearchParams();
-  // TEMP
-  const enforceVoting = searchParams.get("ENABLE_VOTING") !== null;
+  const voting = useVoting();
+  const disabled = useFlag("DISABLE_CATEGORIES");
+
+  if (disabled) return null;
 
   return (
     <section id={id} className={cn("relative pb-[50dvh]", className)}>
@@ -81,7 +81,7 @@ export function AwardCategories({
         ))}
       </div>
 
-      {(canVote || enforceVoting) && (
+      {voting.enabled && (
         <Center pos="sticky" bottom={0} className="-mb-[10dvh] py-4">
           <VotingButton />
         </Center>
