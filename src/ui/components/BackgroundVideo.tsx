@@ -32,7 +32,7 @@ export function BackgroundVideo({ src }: BackgroundVideoProps) {
         preload="auto"
         muted
         loop
-        className="w-full object-cover object-center"
+        className="h-full w-full object-cover object-center"
         src={src}
       />
       <LoadingOverlay

@@ -61,7 +61,7 @@ export function FlipWords({
           scale: 2,
           position: "absolute",
         }}
-        className={cn("relative z-10 inline-block px-2 text-left", className)}
+        className={cn("px-2d relative z-10 inline-block text-left", className)}
         key={currentWord}
       >
         {currentWord.split(" ").map((word, wordIndex) => (
@@ -89,7 +89,6 @@ export function FlipWords({
                 {letter}
               </m.span>
             ))}
-            <span className="inline-block">&nbsp;</span>
           </m.span>
         ))}
       </m.span>

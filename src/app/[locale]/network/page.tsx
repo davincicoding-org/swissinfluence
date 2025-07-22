@@ -32,23 +32,23 @@ export default async function NetworkPage() {
         {
           label: influencers.title,
           image: influencers.heroImage as Photo,
-          href: `/${locale}/network/influencers`,
+          href: `/network/influencers`,
           large: true,
         },
         {
           label: campaigns.title,
           image: campaigns.heroImage as Photo,
-          href: `/${locale}/network/campaigns`,
+          href: `/network/campaigns`,
         },
         {
           label: events.title,
           image: events.heroImage as Photo,
-          href: `/${locale}/network/events`,
+          href: `/network/events`,
         },
         {
           label: agencies.title,
           image: agencies.heroImage as Photo,
-          href: `/${locale}/network/agencies`,
+          href: `/network/agencies`,
         },
         {
           label: "Whatsapp",
