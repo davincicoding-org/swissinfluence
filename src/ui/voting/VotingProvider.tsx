@@ -3,6 +3,7 @@
 import type { ButtonProps } from "@mantine/core";
 import type { PropsWithChildren } from "react";
 import { createContext, useContext, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { isEqual } from "lodash-es";
@@ -25,12 +26,14 @@ const VotingContext = createContext<VotingContext>({
 });
 
 export interface VotingProviderProps {
+  enabled: boolean;
   awardId: Award["id"] | undefined;
   categories: AwardCategory[];
   submissionHandler: (values: VotingValues) => Promise<void>;
 }
 
 export function VotingProvider({
+  enabled,
   awardId,
   categories,
   submissionHandler,
@@ -48,6 +51,10 @@ export function VotingProvider({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const resetRef = useRef<() => void>(null);
+
+  const searchParams = useSearchParams();
+  // TEMP
+  const enforceVoting = searchParams.get("ENABLE_VOTING") !== null;
 
   const handleSubmitSelection = () => {
     setVotes(votes);
@@ -77,6 +84,10 @@ export function VotingProvider({
     setVotes([]);
     setIsSubmitted(true);
   };
+
+  if (!enabled && !enforceVoting) {
+    return children;
+  }
 
   return (
     <VotingContext.Provider
