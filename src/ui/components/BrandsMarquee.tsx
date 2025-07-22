@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import { Flex, Tooltip } from "@mantine/core";
+import { useInView } from "motion/react";
 import Marquee from "react-fast-marquee";
 
 import type { Brand } from "@/payload-types";
@@ -11,35 +13,46 @@ export interface BrandsMarqueeProps {
 }
 
 export function BrandsMarquee({ brands }: BrandsMarqueeProps) {
-  return (
-    <FadeContainer gradientWidth={100}>
-      <Marquee pauseOnHover autoFill>
-        <Flex className="gap-8 py-3 pr-8">
-          {brands.map((partner) => {
-            const logo = ensureResolved(partner.logo);
-            if (!logo) return null;
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "100px" });
 
-            return (
-              <a
-                key={partner.id}
-                href={partner.website}
-                target="_blank"
-                rel="noopener"
-              >
-                <Tooltip label={partner.name} position="bottom">
-                  <Image
-                    resource={logo}
-                    alt={partner.name}
-                    className="aspect-video h-16"
-                    imgClassName="object-contain object-center"
-                    sizes="128px"
-                  />
-                </Tooltip>
-              </a>
-            );
-          })}
-        </Flex>
-      </Marquee>
-    </FadeContainer>
+  return (
+    <div ref={ref}>
+      <FadeContainer gradientWidth={100}>
+        <Marquee
+          pauseOnHover
+          autoFill
+          play={isInView}
+          speed={isInView ? 50 : 0}
+        >
+          <Flex className="gap-8 py-3 pr-8">
+            {brands.map((partner) => {
+              const logo = ensureResolved(partner.logo);
+              if (!logo) return null;
+
+              return (
+                <a
+                  key={partner.id}
+                  href={partner.website}
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <Tooltip label={partner.name} position="bottom">
+                    <Image
+                      resource={logo}
+                      alt={partner.name}
+                      className="aspect-video h-16"
+                      imgClassName="object-contain object-center"
+                      sizes="128px"
+                      loading="lazy"
+                    />
+                  </Tooltip>
+                </a>
+              );
+            })}
+          </Flex>
+        </Marquee>
+      </FadeContainer>
+    </div>
   );
 }

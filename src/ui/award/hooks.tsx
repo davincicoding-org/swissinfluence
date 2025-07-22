@@ -11,11 +11,47 @@ import { VotingButton } from "@/ui/voting";
 export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");
 
+  // Memoize expensive date calculations to reduce blocking time
+  const dateCalculations = useMemo(() => {
+    if (!data) return null;
+
+    const now = dayjs();
+    const nominationDeadline = data.nominationDeadline
+      ? dayjs(data.nominationDeadline)
+      : null;
+    const votingOpening = data.votingOpening ? dayjs(data.votingOpening) : null;
+    const votingDeadline = data.votingDeadline
+      ? dayjs(data.votingDeadline)
+      : null;
+    const showDate = data.show?.date ? dayjs(data.show.date) : null;
+
+    return {
+      canNominate: nominationDeadline ? nominationDeadline.isAfter(now) : false,
+      canVote: votingOpening ? votingOpening.isAfter(now) : false,
+      hasVotingEnded: votingDeadline ? votingDeadline.isBefore(now) : false,
+      hasShowStarted: showDate ? showDate.isBefore(now) : false,
+      hasShowEnded: showDate
+        ? showDate.isSame(now.subtract(1, "day"), "day")
+        : false,
+      hasNominees:
+        data.categories?.every(({ nominees }) => nominees.length > 0) ?? false,
+      hasRankedResults: data.categories?.every(({ ranked }) => ranked) ?? false,
+      hasShowImages: Boolean(data.show?.images.length),
+    };
+  }, [
+    data?.nominationDeadline,
+    data?.votingOpening,
+    data?.votingDeadline,
+    data?.show?.date,
+    data?.categories,
+    data?.show?.images.length,
+  ]);
+
   return useMemo<{
     headline: string | ReactElement | undefined;
     cta?: ReactElement;
   }>(() => {
-    if (data === null)
+    if (data === null || !dateCalculations)
       return {
         headline: undefined,
       };
@@ -26,10 +62,8 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         headline: t("announced.headline"),
       };
 
-    const canNominate = dayjs(data.nominationDeadline).isAfter();
-
     // NOMINATION
-    if (canNominate)
+    if (dateCalculations.canNominate)
       return {
         headline: t("nomination.headline"),
         cta: (
@@ -46,13 +80,8 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    const canVote = dayjs(data.votingOpening).isAfter();
-
     // NOMINATION_ENDED
-    if (
-      !data.categories.every(({ nominees }) => nominees.length > 0) ||
-      !canVote
-    )
+    if (!dateCalculations.hasNominees || !dateCalculations.canVote)
       return {
         headline: t("nomination-ended.headline"),
         cta: (
@@ -69,10 +98,8 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    const hasVotingEnded = dayjs(data.votingDeadline).isBefore();
-
     // VOTING
-    if (!hasVotingEnded)
+    if (!dateCalculations.hasVotingEnded)
       return {
         headline: t("voting.headline"),
         cta: <VotingButton />,
@@ -84,10 +111,8 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         headline: t("voting-ended.headline"),
       };
 
-    const hasShowStarted = dayjs(data.show.date).isBefore();
-
     // PRE_SHOW
-    if (!hasShowStarted)
+    if (!dateCalculations.hasShowStarted)
       return {
         headline: <Countdown date={data.show.date} />,
         cta: (
@@ -104,25 +129,20 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    const hasShowEnded = dayjs(data.show.date).isSame(
-      dayjs().subtract(1, "day"),
-      "day",
-    );
-
     // DURING_SHOW
-    if (!hasShowEnded)
+    if (!dateCalculations.hasShowEnded)
       return {
         headline: t("during-show.headline"),
       };
 
     // POST_SHOW
-    if (!data.categories?.every(({ ranked }) => ranked))
+    if (!dateCalculations.hasRankedResults)
       return {
         headline: t("post-show.headline"),
       };
 
     // AWARDED
-    if (!data.show?.images.length)
+    if (!dateCalculations.hasShowImages)
       return {
         headline: t("awarded.headline"),
         cta: (
@@ -155,5 +175,5 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         </Button>
       ),
     };
-  }, [data, t]);
+  }, [data, dateCalculations, t]);
 };

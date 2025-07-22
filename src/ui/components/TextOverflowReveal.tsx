@@ -25,6 +25,9 @@ export function TextOverflowReveal({
   const hasNameOverflow = nameWidth + 0 > spaceWidth;
   const nameOverflow = Math.max(0, nameWidth - spaceWidth);
 
+  // Use CSS animations when possible for better performance
+  const shouldUseMotion = hasNameOverflow && nameOverflow > 0;
+
   return (
     <div
       className={cn(
@@ -46,29 +49,45 @@ export function TextOverflowReveal({
           : undefined
       }
     >
-      <m.p
-        ref={nameRef}
-        className={cn("text-nowrap", classNames?.text)}
-        whileInView={{
-          x: hasNameOverflow
-            ? [0, -1 * (nameOverflow + 24), -1 * (nameOverflow + 24), 0]
-            : undefined,
-        }}
-        transition={
-          hasNameOverflow
-            ? {
-                duration: 5,
-                times: [0, 0.4, 0.6, 1],
-                delay: 3,
-                ease: "easeInOut",
-                repeat: Infinity,
-                repeatDelay: 5,
-              }
-            : undefined
-        }
-      >
-        {text}
-      </m.p>
+      {shouldUseMotion ? (
+        <m.p
+          ref={nameRef}
+          className={cn("text-nowrap", classNames?.text)}
+          whileInView={{
+            x: [0, -1 * (nameOverflow + 24), -1 * (nameOverflow + 24), 0],
+          }}
+          transition={{
+            duration: 5,
+            times: [0, 0.4, 0.6, 1],
+            delay: 3,
+            ease: "easeInOut",
+            repeat: Infinity,
+            repeatDelay: 5,
+          }}
+          style={{
+            // Use will-change to optimize for animation
+            willChange: "transform",
+          }}
+        >
+          {text}
+        </m.p>
+      ) : (
+        // Static version when no overflow or minimal performance impact
+        <p
+          ref={nameRef}
+          className={cn("text-nowrap", classNames?.text)}
+          style={
+            hasNameOverflow
+              ? {
+                  // CSS-only animation for simple cases
+                  animation: shouldUseMotion ? undefined : "none",
+                }
+              : undefined
+          }
+        >
+          {text}
+        </p>
+      )}
     </div>
   );
 }

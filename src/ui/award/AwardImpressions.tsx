@@ -1,6 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import { Flex, Paper } from "@mantine/core";
+import { useInView } from "motion/react";
 import Marquee from "react-fast-marquee";
 
 import type { Photo } from "@/payload-types";
@@ -19,6 +21,9 @@ export function AwardImpressions({
   images,
   className,
 }: AwardImpressionsProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, margin: "100px" });
+
   return (
     <Paper
       withBorder
@@ -37,19 +42,27 @@ export function AwardImpressions({
       >
         After Movie
       </a>
-      <Marquee pauseOnHover autoFill>
-        <Flex className="h-64" wrap="nowrap">
-          {ensureResolvedArray(images).map((image, index) => (
-            <Image
-              resource={image}
-              alt={`Award impression ${index + 1}`}
-              key={image.id}
-              className="h-full w-auto shrink-0 snap-center md:snap-end"
-              sizes="(max-width: 768px) 256px, 384px"
-            />
-          ))}
-        </Flex>
-      </Marquee>
+      <div ref={ref}>
+        <Marquee
+          pauseOnHover
+          autoFill
+          play={isInView}
+          speed={isInView ? 50 : 0}
+        >
+          <Flex className="h-64" wrap="nowrap">
+            {ensureResolvedArray(images).map((image, index) => (
+              <Image
+                resource={image}
+                alt={`Award impression ${index + 1}`}
+                key={image.id}
+                className="h-full w-auto shrink-0 snap-center md:snap-end"
+                sizes="(max-width: 768px) 256px, 384px"
+                loading="lazy"
+              />
+            ))}
+          </Flex>
+        </Marquee>
+      </div>
     </Paper>
   );
 }
