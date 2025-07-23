@@ -27,7 +27,7 @@ export function EventOverview({
   const t = useTranslations("events.event");
 
   return (
-    <div className={cn("flex flex-col gap-8", className)}>
+    <div className={cn("flex flex-col gap-5", className)}>
       <div className="mt-auto grid grid-cols-2 gap-5 max-lg:flex-col lg:flex">
         <Paper
           shadow="sm"

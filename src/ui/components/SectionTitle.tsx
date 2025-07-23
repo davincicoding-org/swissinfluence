@@ -1,6 +1,7 @@
 "use client";
 
 import { useElementSize } from "@mantine/hooks";
+import { useInView } from "motion/react";
 
 import { cn } from "../utils";
 import { TextGenerateEffect } from "./TextGenerateEffect";
@@ -11,9 +12,14 @@ export interface SectionTitleProps {
 }
 
 export function SectionTitle({ title, className }: SectionTitleProps) {
-  const container = useElementSize();
+  const container = useElementSize<HTMLHeadingElement>();
   const text = useElementSize();
   const scale = container.width / text.width;
+  const inView = useInView(container.ref, {
+    once: true,
+    amount: "all",
+    margin: "-100px 0px",
+  });
 
   return (
     <h1
@@ -32,7 +38,11 @@ export function SectionTitle({ title, className }: SectionTitleProps) {
       >
         {title}
       </span>
-      <TextGenerateEffect words={title} className="text-nowrap" />
+      <TextGenerateEffect
+        enabled={inView}
+        words={title}
+        className="text-nowrap"
+      />
     </h1>
   );
 }

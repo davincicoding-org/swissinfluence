@@ -24,8 +24,6 @@ import { VotingProvider } from "@/ui/voting";
 
 import { PhotosMarquee } from "../components/PhotosMarquee";
 import { SectionTitle } from "../components/SectionTitle";
-import { TextGenerateEffect } from "../components/TextGenerateEffect";
-import { cn } from "../utils";
 
 export interface AwardPageProps {
   heroImage: Photo;
@@ -72,8 +70,11 @@ export function AwardPage({
         {currentAward ? (
           <>
             {currentAward.show ? (
-              <section id="show" className="container py-16 sm:py-32">
-                <SectionTitle title="Join the show" className="mb-8" />
+              <section id="show" className="container py-32 sm:py-64">
+                <SectionTitle
+                  title="Join the show"
+                  className="mx-auto mb-8 max-w-4xl"
+                />
                 <EventOverview
                   className="mx-auto max-w-4xl"
                   date={currentAward.show.date}
@@ -85,7 +86,7 @@ export function AwardPage({
             ) : null}
 
             {currentAward.show?.images.length && currentAward.show?.videoUrl ? (
-              <section id="impressions" className="container py-16 sm:py-32">
+              <section id="impressions" className="container py-32 sm:py-64">
                 <PhotosMarquee photos={currentAward.show.images} />
               </section>
             ) : null}
@@ -95,7 +96,7 @@ export function AwardPage({
             dayjs(currentAward.nominationDeadline).isAfter() ? (
               <section
                 id="nomination"
-                className="container flex flex-col pb-32 pt-24 sm:pt-40"
+                className="container flex flex-col py-32 sm:py-64"
               >
                 <AwardNomination
                   deadline={currentAward.nominationDeadline}
@@ -109,10 +110,7 @@ export function AwardPage({
             currentAward.newcomerScoutContent &&
             currentAward.newcomerScoutDeadline &&
             dayjs(currentAward.newcomerScoutDeadline).isAfter() ? (
-              <section
-                id="newcomer-scout"
-                className="container flex flex-col pb-32 pt-24 sm:pt-40"
-              >
+              <section id="newcomer-scout" className="container py-32 sm:py-64">
                 <NewcomerScout
                   content={currentAward.newcomerScoutContent}
                   image={currentAward.newcomerScoutImage as Photo}
@@ -124,19 +122,17 @@ export function AwardPage({
             ) : null}
 
             {currentAward.categories && currentAward.categories.length > 0 && (
-              <AwardCategories
-                id="categories"
-                title={<SectionTitle title={t("categories.title")} />}
-                skipTarget={challenges.length ? "challenges" : "jury"}
-                categories={currentAward.categories}
-              />
+              <section id="categories" className="container py-32 sm:py-64">
+                <SectionTitle title={t("categories.title")} className="mb-8" />
+                <AwardCategories
+                  categories={currentAward.categories}
+                  skipTarget={challenges.length ? "challenges" : "jury"}
+                />
+              </section>
             )}
 
             {challenges.length > 0 ? (
-              <section
-                id="challenges"
-                className="container flex flex-col pb-64 pt-32"
-              >
+              <section id="challenges" className="container py-32 sm:py-64">
                 <SectionTitle
                   title={t("creator-challenges.title")}
                   className="mb-8"
@@ -151,7 +147,7 @@ export function AwardPage({
               </section>
             ) : null}
 
-            <section id="jury" className="container flex flex-col pb-64 pt-32">
+            <section id="jury" className="container py-32 sm:py-64">
               <SectionTitle
                 title="Meet the Jury"
                 className="top-32 mb-6 max-sm:sticky"
@@ -162,7 +158,7 @@ export function AwardPage({
         ) : null}
 
         {!currentAward?.show?.images.length && pastImpressions ? (
-          <section className="container flex flex-col py-32">
+          <section className="container py-32 sm:py-64">
             <SectionTitle
               title={`This was ${pastImpressions.year}`}
               className="mb-8"
@@ -171,34 +167,11 @@ export function AwardPage({
           </section>
         ) : null}
 
-        <section
-          id="hall-of-fame"
-          className="container flex flex-col pb-32 pt-16 sm:pb-64 sm:pt-32"
-        >
+        <section id="hall-of-fame" className="container py-32 sm:py-64">
           <SectionTitle title="Hall of Fame" className="mb-8" />
           <HallOfFame awards={hallOfFame} />
         </section>
       </main>
     </VotingProvider>
-  );
-}
-
-function SectionTitleEx({
-  title,
-  className,
-}: {
-  title: string;
-  className?: string;
-}) {
-  return (
-    <h1
-      className={cn(
-        "text-5xl font-light uppercase leading-none tracking-wider sm:text-7xl md:text-8xl",
-        className,
-      )}
-    >
-      <span className="sr-only">{title}</span>
-      <TextGenerateEffect words={title} />
-    </h1>
   );
 }

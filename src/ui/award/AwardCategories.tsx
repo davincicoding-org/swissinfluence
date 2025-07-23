@@ -1,9 +1,7 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import {
-  ActionIcon,
   Button,
   Center,
   CloseButton,
@@ -11,7 +9,7 @@ import {
   Modal,
   Paper,
 } from "@mantine/core";
-import { IconArrowDown } from "@tabler/icons-react";
+import { useElementSize } from "@mantine/hooks";
 import { useInView } from "motion/react";
 import { useTranslations } from "next-intl";
 import Marquee from "react-fast-marquee";
@@ -26,60 +24,54 @@ import { ensureResolved } from "@/utils/payload";
 import { useCategoryVoting } from "../voting/VotingProvider";
 
 export interface AwardCategoriesProps {
-  className?: string;
-  id: string;
-  title: ReactNode;
   categories: Array<AwardCategory>;
   skipTarget: string;
+  className?: string;
 }
 
 export function AwardCategories({
-  id,
-  title,
-  className,
   categories,
   skipTarget,
+  className,
 }: AwardCategoriesProps) {
   const t = useTranslations("award.categories");
   const [visibleStack, setVisibleStack] = useState<number[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section id={id} className={cn("relative pb-[50dvh]", className)}>
-      <div className="container sticky top-0 grid h-[25dvh] items-end pb-4">
-        <div className="mb-8 flex items-center justify-between">
-          {title}
-
-          <ActionIcon
-            component="a"
-            href={`#${skipTarget}`}
-            variant="subtle"
-            radius="lg"
-            className="!size-12 md:!size-16"
-            aria-label={t("skip")}
-          >
-            <IconArrowDown size="80%" stroke={1.5} />
-          </ActionIcon>
-        </div>
-      </div>
-      <div className="flex flex-col gap-[25dvh]">
+    <>
+      <div
+        className={cn("flex flex-col gap-[25dvh]", className)}
+        ref={containerRef}
+      >
         {categories.map(({ category, nominees, sponsor }, index) => (
-          <div key={category.id} className="container sticky top-[25dvh]">
-            <CategoryCard
-              category={category}
-              nominees={nominees}
-              sponsor={sponsor}
-              isTop={visibleStack[0] === index}
-              onVisibleChange={(visible) => {
-                setVisibleStack((prev) => {
-                  if (visible) return [index, ...prev];
-                  return prev.filter((i) => i !== index);
-                });
-              }}
-            />
-          </div>
+          <CategoryCard
+            key={category.id}
+            category={category}
+            nominees={nominees}
+            sponsor={sponsor}
+            isTop={visibleStack[0] === index}
+            onVisibleChange={(visible) => {
+              setVisibleStack((prev) => {
+                if (visible) return [index, ...prev];
+                return prev.filter((i) => i !== index);
+              });
+            }}
+          />
         ))}
       </div>
-    </section>
+      <Center className="sticky bottom-4 mt-8">
+        <Button
+          size="compact-xl"
+          variant="outline"
+          radius="md"
+          component="a"
+          href={`#${skipTarget}`}
+        >
+          {t("skip")}
+        </Button>
+      </Center>
+    </>
   );
 }
 
@@ -87,6 +79,7 @@ interface CategoryCardProps
   extends Pick<AwardCategory, "category" | "nominees" | "sponsor"> {
   isTop: boolean;
   onVisibleChange: (visible: boolean) => void;
+  className?: string;
 }
 
 function CategoryCard({
@@ -95,10 +88,11 @@ function CategoryCard({
   sponsor,
   isTop,
   onVisibleChange,
+  className,
 }: CategoryCardProps) {
   const t = useTranslations();
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(cardRef, { amount: 0.8 });
+  const { ref, height } = useElementSize<HTMLDivElement>();
+  const isInView = useInView(ref, { amount: 0.8 });
   const [isExpanded, setIsExpanded] = useState(false);
   const voting = useCategoryVoting(category.id);
 
@@ -109,14 +103,19 @@ function CategoryCard({
 
   return (
     <>
-      <div className="relative">
+      <div
+        className={cn("sticky z-10", className)}
+        style={{
+          top: `calc((100dvh - ${height}px) / 2)`,
+        }}
+        ref={ref}
+      >
         <Paper
           withBorder
           radius="lg"
           className={cn(
             "flex h-96 min-w-0 flex-col overflow-clip md:h-[32rem]",
           )}
-          ref={cardRef}
         >
           <div className="relative flex grow flex-col">
             <Image
@@ -153,16 +152,16 @@ function CategoryCard({
             </div>
           </div>
           {nominees.length > 0 && (
-            <Marquee className="shrink-0 py-6" play={isTop} pauseOnHover>
+            <Marquee className="shrink-0 py-6" play={isTop}>
               {nominees.map((influencer) => (
                 <PersonaCard
                   key={influencer.id}
                   name={influencer.name}
                   shadow="xl"
                   image={ensureResolved(influencer.image)!}
-                  socials={influencer.socials ?? []}
-                  className="ml-6 h-52 w-52"
+                  className="ml-6 h-52 w-52 select-none"
                   imageSizes="400px"
+                  revealed
                 />
               ))}
             </Marquee>
@@ -171,7 +170,7 @@ function CategoryCard({
         <Center
           pos="absolute"
           className={cn(
-            "inset-x-0 bottom-0 z-10 translate-y-1/2 empty:hidden",
+            "inset-x-0 bottom-0 z-10 translate-y-1/2 transition-transform duration-300 empty:hidden",
             {
               "translate-y-0": !isTop,
             },
@@ -191,8 +190,8 @@ function CategoryCard({
           ) : nominees.length ? (
             <Button
               variant="default"
-              radius="xl"
-              size="compact-md"
+              radius="md"
+              size="compact-lg"
               onClick={() => setIsExpanded(true)}
             >
               VIEW ALL
