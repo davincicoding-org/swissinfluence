@@ -181,7 +181,7 @@ export function AwardPage({
           id="hall-of-fame"
           className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-16 sm:pb-64 sm:pt-32"
         >
-          <h1 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
+          <h1 className="mb-8 text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-8xl">
             Hall of Fame
           </h1>
           <HallOfFame awards={hallOfFame} />

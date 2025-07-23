@@ -96,7 +96,7 @@ export function CampaignDiscovery({
           onChange={(value) => setActiveTab(value as "current" | "past")}
         />
       </ScrollArea>
-      <FadeContainer gradientWidth={16}>
+      <FadeContainer gradientWidth={16} withPadding>
         <ScrollArea
           scrollbars="x"
           classNames={{

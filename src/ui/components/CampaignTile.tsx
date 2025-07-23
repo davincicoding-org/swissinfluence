@@ -32,7 +32,6 @@ export function CampaignTile({ data, past, className }: CampaignTileProps) {
 
   return (
     <ExpandableCard
-      id={data.id}
       title={data.title}
       badge={badge}
       description={data.organizer.name}

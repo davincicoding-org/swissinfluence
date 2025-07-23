@@ -1,8 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import { Carousel } from "@mantine/carousel";
-import { Badge, Center, Paper, ScrollArea, Tabs } from "@mantine/core";
+import {
+  Badge,
+  Center,
+  Paper,
+  ScrollArea,
+  SegmentedControl,
+} from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
 
 import type { AwardRanking } from "@/types";
 import { Image } from "@/ui/components/Image";
@@ -16,146 +25,142 @@ export interface HallOfFameProps {
 }
 
 export function HallOfFame({ awards }: HallOfFameProps) {
+  const [activeTab, setActiveTab] = useState(awards[0]?.year?.toString());
   return (
-    <div>
-      <Tabs
-        variant="pills"
-        radius="md"
-        defaultValue={awards[0]?.year.toString()}
-      >
-        <Paper
-          withBorder
-          className="overflow-clip bg-mocha-50"
-          shadow="xs"
-          radius="lg"
-        >
-          <ScrollArea scrollbars="x" type="never">
-            <div className="flex py-2">
-              <div className="h-2 w-2 shrink-0" />
+    <div className="flex flex-col gap-10">
+      <Paper withBorder radius="lg" className="overflow-clip">
+        <ScrollArea scrollbars="x" type="never" classNames={{}}>
+          <SegmentedControl
+            size="xl"
+            color="mocha"
+            radius="md"
+            withItemsBorders={false}
+            data={awards.map(({ year }) => ({
+              value: year.toString(),
+              label: year.toString(),
+            }))}
+            classNames={{
+              root: "min-w-full p-2",
+            }}
+            value={activeTab}
+            onChange={setActiveTab}
+          />
+        </ScrollArea>
+      </Paper>
+      <AnimatePresence>
+        {awards.map(
+          ({ year, categories }) =>
+            activeTab === year.toString() && (
+              <m.div
+                key={year}
+                className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-x-6 gap-y-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                {categories.map(({ category, nominees }) => (
+                  <div key={category.id} className="relative">
+                    <Center className="absolute inset-x-0 top-0 z-[5] -translate-y-1/2 px-3">
+                      <Badge
+                        size="xl"
+                        radius="md"
+                        className="text-medium text-wrap bg-mocha-700 text-xl font-normal tracking-widest"
+                      >
+                        {category.name}
+                      </Badge>
+                    </Center>
 
-              <Tabs.List justify="center" grow className="grow flex-nowrap">
-                {awards.map(({ year }) => (
-                  <Tabs.Tab
-                    key={year}
-                    value={year.toString()}
-                    className="shrink-0 text-lg font-medium"
-                    onClick={({ currentTarget }) =>
-                      currentTarget.scrollIntoView({
-                        inline: "nearest",
-                        block: "nearest",
-                        behavior: "smooth",
-                      })
-                    }
-                  >
-                    {year}
-                  </Tabs.Tab>
-                ))}
-              </Tabs.List>
-              <div className="h-2 w-2 shrink-0" />
-            </div>
-          </ScrollArea>
-        </Paper>
+                    <Paper
+                      radius="lg"
+                      shadow="lg"
+                      withBorder
+                      className="overflow-clip"
+                    >
+                      <Carousel
+                        classNames={{
+                          controls: "-mt-6 px-2",
+                          control:
+                            "bg-transparent text-white transition-colors hover:bg-white/20 shadow-none border-0 data-[inactive]:opacity-0 data-[inactive]:pointer-events-none",
+                        }}
+                        previousControlProps={{
+                          "aria-label": "Previous",
+                        }}
+                        previousControlIcon={
+                          <IconChevronLeft
+                            className="-translate-x-0.5"
+                            size={48}
+                          />
+                        }
+                        nextControlProps={{
+                          "aria-label": "Next nominee",
+                        }}
+                        nextControlIcon={
+                          <IconChevronRight
+                            className="translate-x-0.5"
+                            size={48}
+                          />
+                        }
+                        draggable={nominees.length > 1}
+                      >
+                        {nominees.map((influencer, index) => {
+                          const image = ensureResolved(influencer.image);
+                          if (!image) return null;
 
-        {awards.map(({ year, categories }) => (
-          <Tabs.Panel
-            key={year}
-            value={year.toString()}
-            className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-x-6 gap-y-8 pb-6 pt-10"
-          >
-            {categories.map(({ category, nominees }) => (
-              <div key={category.id} className="relative">
-                <Center className="absolute inset-x-0 top-0 z-[5] -translate-y-1/2 px-3">
-                  <Badge
-                    size="xl"
-                    radius="md"
-                    className="text-medium text-wrap bg-mocha-700 text-xl font-normal tracking-widest"
-                  >
-                    {category.name}
-                  </Badge>
-                </Center>
+                          return (
+                            <Carousel.Slide key={influencer.id}>
+                              <div
+                                className={cn(
+                                  "relative aspect-square overflow-hidden",
+                                )}
+                              >
+                                <Image
+                                  resource={image}
+                                  alt={influencer.name}
+                                  className="transition-transform duration-500 group-hover:scale-110"
+                                  sizes="860px"
+                                />
 
-                <Paper withBorder radius="lg" className="overflow-clip">
-                  <Carousel
-                    classNames={{
-                      controls: "-mt-6 px-2",
-                      control:
-                        "bg-transparent text-white rounded-lg transition-colors hover:bg-white/20 shadow-none border-0 data-[inactive]:opacity-0 data-[inactive]:pointer-events-none",
-                    }}
-                    previousControlProps={{
-                      "aria-label": "Previous",
-                    }}
-                    previousControlIcon={
-                      <IconChevronLeft className="-ml-1" size={48} />
-                    }
-                    nextControlProps={{
-                      "aria-label": "Next nominee",
-                    }}
-                    nextControlIcon={
-                      <IconChevronRight className="-mr-1" size={48} />
-                    }
-                    draggable={nominees.length > 1}
-                  >
-                    {nominees.map((influencer, index) => {
-                      const image = ensureResolved(influencer.image);
-                      if (!image) return null;
-
-                      return (
-                        <Carousel.Slide key={influencer.id}>
-                          <Paper
-                            shadow="xs"
-                            withBorder
-                            radius={0}
-                            className={cn(
-                              "relative aspect-square overflow-hidden",
-                            )}
-                          >
-                            <Image
-                              resource={image}
-                              alt={influencer.name}
-                              className="transition-transform duration-500 group-hover:scale-110"
-                              sizes="860px"
-                            />
-
-                            <div
-                              className={cn(
-                                "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
-                              )}
-                            >
-                              <div className="flex w-full min-w-0 items-end justify-between gap-2">
-                                <div className="min-w-0">
-                                  <p
-                                    className={cn(
-                                      "text-pretty px-4 font-medium uppercase leading-relaxed tracking-wider text-mocha-300",
-                                    )}
-                                  >
-                                    {index === 0
-                                      ? "Winner"
-                                      : `${index + 1}. Place`}
-                                  </p>
-                                  <TextOverflowReveal
-                                    text={influencer.name}
-                                    classNames={{
-                                      root: "mb-1",
-                                      text: cn(
-                                        "pl-4 text-xl font-medium leading-tight tracking-widest text-white",
-                                      ),
-                                    }}
-                                  />
+                                <div
+                                  className={cn(
+                                    "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
+                                  )}
+                                >
+                                  <div className="flex w-full min-w-0 items-end justify-between gap-2">
+                                    <div className="min-w-0">
+                                      <p
+                                        className={cn(
+                                          "text-pretty px-4 font-medium uppercase leading-relaxed tracking-wider text-mocha-300",
+                                        )}
+                                      >
+                                        {index === 0
+                                          ? "Winner"
+                                          : `${index + 1}. Place`}
+                                      </p>
+                                      <TextOverflowReveal
+                                        text={influencer.name}
+                                        classNames={{
+                                          root: "mb-1",
+                                          text: cn(
+                                            "pl-4 text-xl font-medium leading-tight tracking-widest text-white",
+                                          ),
+                                        }}
+                                      />
+                                    </div>
+                                    <Socials items={influencer.socials ?? []} />
+                                  </div>
                                 </div>
-                                <Socials items={influencer.socials ?? []} />
                               </div>
-                            </div>
-                          </Paper>
-                        </Carousel.Slide>
-                      );
-                    })}
-                  </Carousel>
-                </Paper>
-              </div>
-            ))}
-          </Tabs.Panel>
-        ))}
-      </Tabs>
+                            </Carousel.Slide>
+                          );
+                        })}
+                      </Carousel>
+                    </Paper>
+                  </div>
+                ))}
+              </m.div>
+            ),
+        )}
+      </AnimatePresence>
     </div>
   );
 }

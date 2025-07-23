@@ -21,7 +21,6 @@ import { cn } from "@/ui/utils";
 import { TextOverflowReveal } from "./TextOverflowReveal";
 
 interface ExpandableCardProps {
-  id: string | number;
   title: string;
   description: string;
   image: Photo;
@@ -39,7 +38,6 @@ interface ExpandableCardProps {
 }
 
 export function ExpandableCard({
-  id,
   title,
   description,
   badge,
