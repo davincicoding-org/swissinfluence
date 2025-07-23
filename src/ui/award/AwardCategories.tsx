@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import {
   ActionIcon,
@@ -27,12 +28,14 @@ import { useCategoryVoting } from "../voting/VotingProvider";
 export interface AwardCategoriesProps {
   className?: string;
   id: string;
+  title: ReactNode;
   categories: Array<AwardCategory>;
   skipTarget: string;
 }
 
 export function AwardCategories({
   id,
+  title,
   className,
   categories,
   skipTarget,
@@ -43,8 +46,8 @@ export function AwardCategories({
   return (
     <section id={id} className={cn("relative pb-[50dvh]", className)}>
       <div className="container sticky top-0 grid h-[25dvh] items-end pb-4">
-        <h2 className="flex items-center justify-between text-3xl font-extralight uppercase tracking-wider sm:text-4xl md:text-6xl">
-          {t("title")}
+        <div className="mb-8 flex items-center justify-between">
+          {title}
 
           <ActionIcon
             component="a"
@@ -56,7 +59,7 @@ export function AwardCategories({
           >
             <IconArrowDown size="80%" stroke={1.5} />
           </ActionIcon>
-        </h2>
+        </div>
       </div>
       <div className="flex flex-col gap-[25dvh]">
         {categories.map(({ category, nominees, sponsor }, index) => (

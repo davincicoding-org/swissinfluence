@@ -24,8 +24,8 @@ export function CampaignsPage({
 
   return (
     <>
-      <PageHero image={heroImage} title={t("title")} className="snap-start" />
-      <main className="relative z-20 snap-start bg-white/80 pb-32 pt-12 backdrop-blur">
+      <PageHero image={heroImage} title={t("title")} />
+      <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
         <Stack component="section" className="container" gap="xl">
           {content && (
             <Paper

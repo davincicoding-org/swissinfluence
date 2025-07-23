@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Paper, Space } from "@mantine/core";
+import { Box, Button, Paper } from "@mantine/core";
 import { IconCalendar, IconMapPin, IconTicket } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
@@ -9,43 +9,34 @@ import type { Location, ScheduleSlots } from "@/payload-types";
 import { Schedule } from "@/ui/components/Schedule";
 import { cn } from "@/ui/utils";
 
-export interface EventSectionProps {
+export interface EventOverviewProps {
   date: string | undefined | null;
   location: Location;
   registrationUrl: string | undefined | null;
   className?: string;
   schedule: ScheduleSlots | undefined;
-  id?: string;
 }
 
-export function EventSection({
+export function EventOverview({
   date,
   location,
   registrationUrl,
   schedule,
   className,
-  id,
-}: EventSectionProps) {
+}: EventOverviewProps) {
   const t = useTranslations("events.event");
 
   return (
-    <section
-      id={id}
-      className={cn(
-        "container flex max-w-4xl flex-col py-24 sm:py-32",
-        { "min-h-screen": schedule?.length },
-        className,
-      )}
-    >
-      <div className="mt-auto grid grid-cols-2 gap-5 max-md:flex-col md:flex">
+    <div className={cn("flex flex-col gap-8", className)}>
+      <div className="mt-auto grid grid-cols-2 gap-5 max-lg:flex-col lg:flex">
         <Paper
           shadow="sm"
           radius="md"
-          className="grid flex-1 overflow-clip bg-neutral-200 md:flex md:items-center"
+          className="grid flex-1 overflow-clip bg-neutral-200 lg:flex lg:items-center"
         >
           <Box
             bg="mocha"
-            className="flex h-full shrink-0 items-center justify-center max-md:h-16 md:aspect-square md:p-3"
+            className="flex h-full shrink-0 items-center justify-center max-lg:h-16 lg:aspect-square lg:p-3"
           >
             <IconCalendar
               className="shrink-0 stroke-white"
@@ -54,7 +45,7 @@ export function EventSection({
             />
           </Box>
 
-          <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
+          <div className="grow p-2 max-lg:text-center lg:px-5 lg:py-3">
             <p
               className={cn(
                 "font-light uppercase tracking-wider",
@@ -70,14 +61,14 @@ export function EventSection({
         <Paper
           shadow="sm"
           radius="md"
-          className="grid flex-1 overflow-clip bg-neutral-200 transition-transform hover:scale-105 active:scale-95 md:flex md:items-center"
+          className="grid flex-1 overflow-clip bg-neutral-200 transition-transform active:scale-95 lg:flex lg:items-center"
           component="a"
           href={location.url}
           target="_blank"
         >
           <Box
             bg="mocha"
-            className="flex h-full shrink-0 items-center justify-center max-md:h-16 md:aspect-square md:p-3"
+            className="flex h-full shrink-0 items-center justify-center max-lg:h-16 lg:aspect-square lg:p-3"
           >
             <IconMapPin
               className="shrink-0 stroke-white"
@@ -85,7 +76,7 @@ export function EventSection({
               stroke={1}
             />
           </Box>
-          <div className="grow p-2 max-md:text-center md:px-5 md:py-3">
+          <div className="grow p-2 max-lg:text-center lg:px-5 lg:py-3">
             <p className="text-xl font-light uppercase tracking-wider">
               {location.name}
             </p>
@@ -103,8 +94,8 @@ export function EventSection({
             size="xl"
             leftSection={<IconTicket size={40} stroke={1} />}
             classNames={{
-              root: "md:max-h-none md:h-auto max-md:col-span-2",
-              label: "font-medium text-xl md:text-2xl",
+              root: "lg:max-h-none lg:h-auto max-lg:col-span-2",
+              label: "font-medium text-xl lg:text-2xl",
             }}
           >
             {t("register-cta")}
@@ -112,12 +103,7 @@ export function EventSection({
         )}
       </div>
 
-      {schedule && schedule.length > 0 && (
-        <>
-          <Space h="lg" />
-          <Schedule slots={schedule} />
-        </>
-      )}
-    </section>
+      {schedule && schedule.length > 0 && <Schedule slots={schedule} />}
+    </div>
   );
 }

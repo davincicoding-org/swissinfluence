@@ -9,7 +9,7 @@ import { PageHero } from "@/ui/components/PageHero";
 import { cn } from "@/ui/utils";
 
 import { BrandsMarquee } from "../components/BrandsMarquee";
-import { EventSection } from "../components/EventSection";
+import { EventOverview } from "../components/EventOverview";
 
 export interface ConventionPageProps {
   convention: LatestConvention | null;
@@ -25,7 +25,6 @@ export function ConventionPage({ convention, heroImage }: ConventionPageProps) {
         image={heroImage}
         title={t("hero.title")}
         headline={t("hero.headline")}
-        className="mb-0 snap-start"
         footer={
           convention?.partners.length ? (
             <BrandsMarquee brands={convention.partners} />
@@ -34,19 +33,18 @@ export function ConventionPage({ convention, heroImage }: ConventionPageProps) {
       />
       <main className="relative z-20 bg-white/80 pb-32 pt-24 backdrop-blur">
         {convention ? (
-          <EventSection
-            className="snap-start snap-always"
-            date={convention.date}
-            location={convention.location}
-            registrationUrl={convention.registrationUrl}
-            schedule={convention.schedule}
-          />
+          <section>
+            <EventOverview
+              className="mx-auto max-w-4xl"
+              date={convention.date}
+              location={convention.location}
+              registrationUrl={convention.registrationUrl}
+              schedule={convention.schedule}
+            />
+          </section>
         ) : null}
 
-        <section
-          id="nomination"
-          className="container flex min-h-dvh snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
-        >
+        <section className="container flex min-h-dvh flex-col pb-32 pt-24 sm:pt-40">
           <Paper
             radius="lg"
             shadow="sm"

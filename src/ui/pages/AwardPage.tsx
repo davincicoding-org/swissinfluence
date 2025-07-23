@@ -11,7 +11,6 @@ import type {
   VotingValues,
 } from "@/types";
 import { AwardCategories } from "@/ui/award/AwardCategories";
-import { AwardImpressions } from "@/ui/award/AwardImpressions";
 import { AwardJury } from "@/ui/award/AwardJury";
 import { AwardNomination } from "@/ui/award/AwardNomination";
 import { HallOfFame } from "@/ui/award/HallOfFame";
@@ -19,9 +18,13 @@ import { useHeaderContent } from "@/ui/award/hooks";
 import { NewcomerScout } from "@/ui/award/NewcomerScout";
 import { BrandsMarquee } from "@/ui/components/BrandsMarquee";
 import { CampaignDiscovery } from "@/ui/components/CampaignDiscovery";
-import { EventSection } from "@/ui/components/EventSection";
+import { EventOverview } from "@/ui/components/EventOverview";
 import { PageHero } from "@/ui/components/PageHero";
 import { VotingProvider } from "@/ui/voting";
+
+import { PhotosMarquee } from "../components/PhotosMarquee";
+import { TextGenerateEffect } from "../components/TextGenerateEffect";
+import { cn } from "../utils";
 
 export interface AwardPageProps {
   heroImage: Photo;
@@ -53,7 +56,6 @@ export function AwardPage({
         image={heroImage}
         title={t("hero.default.title", { year: currentAward?.year ?? "" })}
         headline={headline}
-        className="snap-start"
         CTA={
           cta ?? (
             <Button size="lg" radius="md" className="uppercase tracking-wider">
@@ -69,26 +71,24 @@ export function AwardPage({
         {currentAward ? (
           <>
             {currentAward.show ? (
-              <EventSection
-                id="show"
-                className="snap-start snap-always"
-                date={currentAward.show.date}
-                location={currentAward.show.location}
-                registrationUrl={currentAward.show.registrationUrl}
-                schedule={currentAward.show.schedule}
-              />
+              <section id="show" className="container py-16 sm:py-32">
+                <SectionTitle
+                  title="Join the show"
+                  className="mb-8 lg:text-center"
+                />
+                <EventOverview
+                  className="mx-auto max-w-4xl"
+                  date={currentAward.show.date}
+                  location={currentAward.show.location}
+                  registrationUrl={currentAward.show.registrationUrl}
+                  schedule={currentAward.show.schedule}
+                />
+              </section>
             ) : null}
 
             {currentAward.show?.images.length && currentAward.show?.videoUrl ? (
-              <section
-                id="impressions"
-                className="container min-h-screen snap-start snap-always py-16 sm:py-32"
-              >
-                <AwardImpressions
-                  video={currentAward.show.videoUrl}
-                  images={currentAward.show.images}
-                  className="my-auto"
-                />
+              <section id="impressions" className="container py-16 sm:py-32">
+                <PhotosMarquee photos={currentAward.show.images} />
               </section>
             ) : null}
 
@@ -97,7 +97,7 @@ export function AwardPage({
             dayjs(currentAward.nominationDeadline).isAfter() ? (
               <section
                 id="nomination"
-                className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
+                className="container flex flex-col pb-32 pt-24 sm:pt-40"
               >
                 <AwardNomination
                   deadline={currentAward.nominationDeadline}
@@ -113,7 +113,7 @@ export function AwardPage({
             dayjs(currentAward.newcomerScoutDeadline).isAfter() ? (
               <section
                 id="newcomer-scout"
-                className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-24 sm:pt-40"
+                className="container flex flex-col pb-32 pt-24 sm:pt-40"
               >
                 <NewcomerScout
                   content={currentAward.newcomerScoutContent}
@@ -128,7 +128,7 @@ export function AwardPage({
             {currentAward.categories && currentAward.categories.length > 0 && (
               <AwardCategories
                 id="categories"
-                className="snap-start snap-always"
+                title={<SectionTitle title={t("categories.title")} />}
                 skipTarget={challenges.length ? "challenges" : "jury"}
                 categories={currentAward.categories}
               />
@@ -137,11 +137,12 @@ export function AwardPage({
             {challenges.length > 0 ? (
               <section
                 id="challenges"
-                className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
+                className="container flex flex-col pb-64 pt-32"
               >
-                <h1 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
-                  {t("creator-challenges.title")}
-                </h1>
+                <SectionTitle
+                  title={t("creator-challenges.title")}
+                  className="mb-8"
+                />
                 <CampaignDiscovery
                   campaigns={challenges}
                   labels={{
@@ -152,41 +153,54 @@ export function AwardPage({
               </section>
             ) : null}
 
-            <section
-              id="jury"
-              className="container flex min-h-screen snap-start snap-always flex-col pb-64 pt-32"
-            >
-              <h1 className="mb-12 text-center text-4xl font-extralight tracking-wider max-sm:sticky max-sm:top-24 sm:text-5xl md:text-6xl">
-                Meet our Jury
-              </h1>
+            <section id="jury" className="container flex flex-col pb-64 pt-32">
+              <SectionTitle
+                title="Meet the Jury"
+                className="top-32 mb-6 max-sm:sticky"
+              />
               <AwardJury members={currentAward.jury} />
             </section>
           </>
         ) : null}
 
         {!currentAward?.show?.images.length && pastImpressions ? (
-          <section className="container flex min-h-screen snap-start snap-always flex-col py-32">
-            <h1 className="mb-8 text-center text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-6xl">
-              This was {pastImpressions.year}
-            </h1>
-            <AwardImpressions
-              video={pastImpressions.videoUrl}
-              images={pastImpressions.images}
-              className="my-auto"
+          <section className="container flex flex-col py-32">
+            <SectionTitle
+              title={`This was ${pastImpressions.year}`}
+              className="mb-8"
             />
+            <PhotosMarquee photos={pastImpressions.images} />
           </section>
         ) : null}
 
         <section
           id="hall-of-fame"
-          className="container flex min-h-screen snap-start snap-always flex-col pb-32 pt-16 sm:pb-64 sm:pt-32"
+          className="container flex flex-col pb-32 pt-16 sm:pb-64 sm:pt-32"
         >
-          <h1 className="mb-8 text-4xl font-extralight uppercase tracking-wider sm:text-5xl md:text-8xl">
-            Hall of Fame
-          </h1>
+          <SectionTitle title="Hall of Fame" className="mb-8" />
           <HallOfFame awards={hallOfFame} />
         </section>
       </main>
     </VotingProvider>
+  );
+}
+
+function SectionTitle({
+  title,
+  className,
+}: {
+  title: string;
+  className?: string;
+}) {
+  return (
+    <h1
+      className={cn(
+        "text-5xl font-light uppercase leading-none tracking-wider sm:text-7xl md:text-8xl",
+        className,
+      )}
+    >
+      <span className="sr-only">{title}</span>
+      <TextGenerateEffect words={title} />
+    </h1>
   );
 }

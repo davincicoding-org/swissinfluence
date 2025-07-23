@@ -8,7 +8,7 @@ export interface CustomPageProps {
 
 export function CustomPage({ title, content }: CustomPageProps) {
   return (
-    <main className="container min-h-screen snap-start pb-20 pt-32">
+    <main className="container min-h-screen pb-20 pt-32">
       <h1 className="mb-8 text-4xl">{title}</h1>
       <RichText className="prose-lg max-w-none" data={content} />
     </main>

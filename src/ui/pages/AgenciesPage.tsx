@@ -22,13 +22,8 @@ export function AgenciesPage({
 
   return (
     <>
-      <PageHero
-        className="snap-start"
-        image={heroImage}
-        title={t("title")}
-        headline={t("headline")}
-      />
-      <main className="relative z-20 snap-start bg-white/80 pb-32 pt-12 backdrop-blur">
+      <PageHero image={heroImage} title={t("title")} headline={t("headline")} />
+      <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
         <section className="container">
           {content && (
             <Paper

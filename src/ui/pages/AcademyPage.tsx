@@ -17,7 +17,6 @@ export function AcademyPage({ heroImage }: AcademyPageProps) {
         image={heroImage}
         title={t("hero.title")}
         headline={t("hero.headline")}
-        className="snap-start"
         CTA={
           <Button
             className="shrink-0 uppercase tracking-wider"

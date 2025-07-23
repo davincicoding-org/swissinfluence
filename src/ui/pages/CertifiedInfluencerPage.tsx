@@ -38,7 +38,6 @@ export function CertifiedInfluencerPage({
       <PageHero
         image={ensureResolved(image)!}
         title={name}
-        className="snap-start"
         CTA={
           <Flex gap="lg" className="my-auto">
             {(socials ?? []).map((social) => (
@@ -58,7 +57,7 @@ export function CertifiedInfluencerPage({
           </Flex>
         }
       />
-      <main className="relative z-20 snap-start snap-always bg-white/80 pb-32 pt-12 backdrop-blur">
+      <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
         <section className="container">
           <Stack className="mx-auto max-w-xl" gap="lg">
             <Paper

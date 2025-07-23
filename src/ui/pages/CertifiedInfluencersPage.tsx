@@ -24,9 +24,9 @@ export function CertifiedInfluencersPage({
   const t = useTranslations("network.influencers");
   return (
     <>
-      <PageHero image={heroImage} title={t("title")} className="snap-start" />
+      <PageHero image={heroImage} title={t("title")} />
       <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
-        <section className="container flex min-h-screen snap-start snap-always flex-col py-32">
+        <section className="container flex min-h-screen flex-col py-32">
           <h3 className="mb-12 text-balance text-center text-2xl font-extralight uppercase tracking-wider sm:text-3xl md:text-4xl">
             {t("certification.title")}
           </h3>
@@ -55,7 +55,7 @@ export function CertifiedInfluencersPage({
           </div>
         </section>
 
-        <section className="container min-h-screen snap-start snap-always pb-64 pt-32">
+        <section className="container min-h-screen pb-64 pt-32">
           <h3 className="mb-12 text-balance text-center text-2xl font-extralight uppercase tracking-wider sm:text-3xl md:text-4xl">
             {t("discovery.title")}
           </h3>

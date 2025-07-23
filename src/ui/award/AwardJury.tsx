@@ -44,7 +44,7 @@ export function AwardJury({ members }: AwardJuryProps) {
               withBorder
               bg="gray.0"
               className="flex items-center p-2 max-sm:sticky"
-              style={{ top: `${10 + index * 0.375}rem` }}
+              style={{ top: `${12 + index * 0.375}rem` }}
             >
               <Image
                 resource={image}

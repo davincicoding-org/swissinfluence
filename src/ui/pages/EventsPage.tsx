@@ -16,13 +16,9 @@ export function EventsPage({ heroImage, events }: EventsPageProps) {
 
   return (
     <>
-      <PageHero
-        className="snap-start"
-        image={heroImage}
-        title={t("title")}
-        headline={t("headline")}
-      />
-      <main className="relative z-20 snap-start bg-[var(--mantine-color-body)] pb-32 pt-12">
+      <PageHero image={heroImage} title={t("title")} headline={t("headline")} />
+      <main className="relative z-20 bg-[var(--mantine-color-body)] pb-32 pt-12">
+        {/* TODO clean up this mess */}
         <div className="container grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-8 px-4 pb-6 pt-8 max-md:gap-6 max-md:px-6 [&>*]:max-w-[400px] [&>*]:snap-center max-md:[&>*]:w-[75vw]">
           {events.map((event) => (
             <EventTile key={event.id} data={event} />

@@ -35,7 +35,7 @@ export function LandingPage({ heroVideo, pages }: LandingPageProps) {
 
   return (
     <>
-      <main className="snap-start snap-always" ref={ref}>
+      <main ref={ref}>
         <header className="sticky top-0 z-10 h-svh flex-col">
           <BackgroundVideo src={heroVideo} />
 
