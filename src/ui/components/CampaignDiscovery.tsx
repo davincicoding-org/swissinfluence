@@ -1,8 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
-import { Flex, ScrollArea, Tabs } from "@mantine/core";
+import { useMemo, useState } from "react";
+import { ScrollArea, SegmentedControl } from "@mantine/core";
 import dayjs from "dayjs";
+import { AnimatePresence } from "motion/react";
+import * as m from "motion/react-m";
 
 import type { Campaign } from "@/types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
@@ -57,102 +59,94 @@ export function CampaignDiscovery({
     };
   }, [campaigns]);
 
+  const [activeTab, setActiveTab] = useState<"current" | "past">(
+    currentCampaigns.length > 0 ? "current" : "past",
+  );
+
   return (
-    <Tabs
-      variant="pills"
-      defaultValue={currentCampaigns.length > 0 ? "current" : "past"}
-      radius="md"
-      classNames={{
-        panel: "-mx-4",
-        tab: "scroll-mx-8 text-lg font-medium uppercase",
-      }}
-    >
+    <div>
+      <ScrollArea
+        scrollbars="x"
+        type="never"
+        classNames={{
+          root: "-mx-4",
+        }}
+      >
+        <SegmentedControl
+          size="lg"
+          color="mocha"
+          radius="md"
+          withItemsBorders={false}
+          data={[
+            {
+              value: "current",
+              label: labels.current,
+              disabled: currentCampaigns.length === 0,
+            },
+            {
+              value: "past",
+              label: labels.past,
+              disabled: pastCampaigns.length === 0,
+            },
+          ]}
+          classNames={{
+            root: "bg-transparent px-4",
+          }}
+          value={activeTab}
+          onChange={(value) => setActiveTab(value as "current" | "past")}
+        />
+      </ScrollArea>
       <FadeContainer gradientWidth={16}>
         <ScrollArea
           scrollbars="x"
-          type="never"
           classNames={{
-            viewport: "overscroll-x-contain",
-            scrollbar: "px-4",
+            content: "flex py-4",
+            scrollbar: "mx-4",
           }}
         >
-          <Tabs.List className="flex-nowrap px-4">
-            <Tabs.Tab
-              value="current"
-              disabled={currentCampaigns.length === 0}
-              onClick={({ currentTarget }) =>
-                currentTarget.scrollIntoView({
-                  inline: "nearest",
-                  block: "nearest",
-                  behavior: "smooth",
-                })
-              }
-            >
-              {labels.current}
-            </Tabs.Tab>
-            <Tabs.Tab
-              value="past"
-              disabled={pastCampaigns.length === 0}
-              onClick={({ currentTarget }) =>
-                currentTarget.scrollIntoView({
-                  inline: "nearest",
-                  block: "nearest",
-                  behavior: "smooth",
-                })
-              }
-            >
-              {labels.past}
-            </Tabs.Tab>
-          </Tabs.List>
+          <div className="h-4 w-4 shrink-0" />
+          <div className="grow">
+            <AnimatePresence mode="wait">
+              {activeTab === "current" && (
+                <m.div
+                  key="current"
+                  className="flex grow flex-nowrap gap-8"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  {currentCampaigns.map((campaign) => (
+                    <CampaignTile
+                      key={campaign.id}
+                      data={campaign}
+                      className="w-80 max-w-[70vw] shrink-0 grow-0"
+                    />
+                  ))}
+                </m.div>
+              )}
+              {activeTab === "past" && (
+                <m.div
+                  key="past"
+                  className="flex grow flex-nowrap gap-8"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  {pastCampaigns.map((campaign) => (
+                    <CampaignTile
+                      key={campaign.id}
+                      data={campaign}
+                      className="w-80 max-w-[70vw] shrink-0 grow-0"
+                      past
+                    />
+                  ))}
+                </m.div>
+              )}
+            </AnimatePresence>
+          </div>
+          <div className="h-4 w-4 shrink-0" />
         </ScrollArea>
       </FadeContainer>
-      <Tabs.Panel value="current">
-        <FadeContainer gradientWidth={16}>
-          <ScrollArea
-            scrollbars="x"
-            classNames={{
-              viewport: "py-6 overscroll-x-contain snap-x snap-mandatory",
-              scrollbar: "px-8",
-            }}
-          >
-            <div className="flex">
-              <div className="h-8 w-8 shrink-0" />
-              <Flex gap="xl" wrap="nowrap" align="start" className="grow">
-                {currentCampaigns.map((campaign) => (
-                  <CampaignTile
-                    key={campaign.id}
-                    data={campaign}
-                    className="w-80 max-w-[70vw] shrink-0 grow-0 snap-center"
-                  />
-                ))}
-              </Flex>
-              <div className="h-4 w-4 shrink-0" />
-            </div>
-          </ScrollArea>
-        </FadeContainer>
-      </Tabs.Panel>
-      <Tabs.Panel value="past">
-        <FadeContainer gradientWidth={16}>
-          <ScrollArea
-            scrollbars="x"
-            classNames={{
-              viewport: "py-6 overscroll-x-contain snap-x snap-mandatory",
-              scrollbar: "px-4",
-            }}
-          >
-            <Flex gap="xl" wrap="nowrap" align="start" className="px-4">
-              {pastCampaigns.map((campaign) => (
-                <CampaignTile
-                  key={campaign.id}
-                  data={campaign}
-                  className="w-80 shrink-0 grow-0 snap-center"
-                  past
-                />
-              ))}
-            </Flex>
-          </ScrollArea>
-        </FadeContainer>
-      </Tabs.Panel>
-    </Tabs>
+    </div>
   );
 }

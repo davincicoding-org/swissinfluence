@@ -25,6 +25,7 @@ export function FadeContainer({
         maskImage: `linear-gradient(to right, transparent, currentColor ${(gradientWidth / width) * 100}%, currentColor ${((width - gradientWidth) / width) * 100}%, transparent)`,
         maskRepeat: "no-repeat",
         maskSize: "100%",
+        marginInline: `-${gradientWidth}px`,
       }}
       className={className}
     >
