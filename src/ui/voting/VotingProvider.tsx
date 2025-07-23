@@ -136,6 +136,7 @@ export function VotingProvider({
         opened={isSelectionModalOpen}
         onClose={handleCloseVotingSelection}
         onSubmit={handleSubmitSelection}
+        onReset={() => setVotes([])}
       />
       <VotingSubmissionModal
         opened={isSubmissionModalOpen}

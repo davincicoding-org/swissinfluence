@@ -74,7 +74,7 @@ export function PersonaCard({
               text={name}
               classNames={{
                 text: cn(
-                  "pl-4 text-lg font-medium tracking-widest text-white",
+                  "select-none pl-4 text-lg font-medium tracking-widest text-white",
                   classNames?.name,
                 ),
               }}
@@ -87,7 +87,7 @@ export function PersonaCard({
             >
               <p
                 className={cn(
-                  "text-pretty px-4 font-light leading-snug text-neutral-300 empty:hidden",
+                  "select-none text-pretty px-4 font-light leading-snug text-neutral-300 empty:hidden",
                   classNames?.description,
                 )}
               >

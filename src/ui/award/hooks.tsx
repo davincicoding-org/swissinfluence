@@ -1,14 +1,11 @@
 import type { ReactElement } from "react";
 import { useMemo } from "react";
 import { Button } from "@mantine/core";
-import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
 import type { CurrentAward } from "@/types";
 import { Countdown } from "@/ui/components/Countdown";
 import { VotingButton } from "@/ui/voting";
-
-import { derivative } from "../utils";
 
 export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");
@@ -17,6 +14,8 @@ export const useHeaderContent = (data: CurrentAward | null) => {
     headline: string | ReactElement | undefined;
     cta?: ReactElement;
   }>(() => {
+    const now = new Date().toISOString();
+
     if (data === null)
       return {
         headline: undefined,
@@ -28,7 +27,9 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         headline: t("announced.headline"),
       };
 
-    const hasNominationEnded = dayjs(data.nominationDeadline).isBefore();
+    const hasNominationEnded = data.nominationDeadline
+      ? data.nominationDeadline < now
+      : false;
 
     if (!hasNominationEnded)
       // NOMINATION
@@ -48,12 +49,11 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    const categories = data.categories.map(({ nominees, voting, ranked }) => ({
-      hasNominees: nominees.length > 0,
+    const categories = data.categories.map(({ voting, ranked }) => ({
       isRanked: ranked,
       votingEnabled: voting !== null,
-      hasVotingStarted: dayjs(voting?.opening).isBefore(),
-      hasVotingEnded: dayjs(voting?.deadline).isBefore(),
+      hasVotingStarted: voting?.opening ? voting.opening < now : false,
+      hasVotingEnded: voting?.deadline ? voting.deadline < now : false,
     }));
 
     const hasOpenVotings = categories.some(
@@ -97,7 +97,7 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         headline: t("voting-ended.headline"),
       };
 
-    const hasShowStarted = dayjs(data.show.date).isBefore();
+    const hasShowStarted = data.show.date < now;
 
     if (!hasShowStarted)
       // PRE_SHOW
@@ -117,7 +117,7 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    const hasShowEnded = dayjs(data.show.date).isAfter(undefined, "day");
+    const hasShowEnded = data.show.date.substring(0, 10) < now.substring(0, 10);
 
     if (!hasShowEnded)
       // DURING_SHOW

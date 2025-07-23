@@ -84,8 +84,9 @@ export const MESSAGES_SCHEMA = {
   voting: {
     CTA: "short",
     selection: {
-      empty: "short",
+      instructions: "long",
       submit: "short",
+      reset: "short",
     },
     submission: {
       title: "short",
