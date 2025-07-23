@@ -89,8 +89,10 @@ export interface AwardCategory {
   sponsor: payloadTypes.Brand | null;
   winnerImage: payloadTypes.ProfilePicture | null;
   nominees: Array<payloadTypes.Influencer>;
-  votingOpening: string | null;
-  votingDeadline: string | null;
+  voting: {
+    opening: string | null;
+    deadline: string | null;
+  } | null;
 }
 
 export interface AwardRanking extends Pick<payloadTypes.Award, "year"> {

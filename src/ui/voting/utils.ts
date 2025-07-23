@@ -2,15 +2,12 @@ import dayjs from "dayjs";
 
 import type { AwardCategory } from "@/types";
 
-export const canVoteInCategory = ({
-  votingOpening,
-  votingDeadline,
-  nominees,
-}: AwardCategory) => {
+export const canVoteInCategory = ({ voting, nominees }: AwardCategory) => {
   if (nominees.length === 0) return false;
-  if (votingOpening === null) return false;
-  if (dayjs(votingOpening).isAfter()) return false;
-  if (votingDeadline === null) return true;
-  if (dayjs(votingDeadline).isBefore()) return false;
+  if (voting === null) return false;
+  if (voting.opening === null) return false;
+  if (dayjs(voting.opening).isAfter()) return false;
+  if (voting.deadline === null) return true;
+  if (dayjs(voting.deadline).isBefore()) return false;
   return true;
 };

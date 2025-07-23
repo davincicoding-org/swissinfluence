@@ -64,7 +64,10 @@ export function VotingProvider({
   const enforceVoting = useFlag("ENABLE_VOTING");
 
   const categoriesWithVoting = useMemo(() => {
-    if (enforceVoting) return categories;
+    if (enforceVoting)
+      return categories.filter(
+        ({ voting, nominees }) => voting !== null && nominees.length > 0,
+      );
     return categories.filter(canVoteInCategory);
   }, [categories, enforceVoting]);
 

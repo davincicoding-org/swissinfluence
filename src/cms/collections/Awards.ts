@@ -153,17 +153,27 @@ export const Awards: CollectionConfig = {
                   },
                 },
                 {
-                  label: "Custom Voting",
-                  type: "collapsible",
-                  admin: {
-                    initCollapsed: true,
-                  },
+                  type: "group",
                   fields: [
                     {
-                      name: "votingOpening",
+                      name: "votingType",
+                      label: false,
+                      type: "select",
+                      options: [
+                        { label: "Default Voting", value: "DEFAULT" },
+                        { label: "Custom Voting", value: "CUSTOM" },
+                        { label: "No Voting", value: "DISABLED" },
+                      ],
+                      defaultValue: "DEFAULT",
+                      required: true,
+                    },
+                    {
+                      name: "votingOpeningOverride",
                       label: "Opening",
                       type: "date",
                       admin: {
+                        condition: (_, siblingData) =>
+                          siblingData.votingType === "CUSTOM",
                         date: {
                           pickerAppearance: "dayAndTime",
                           displayFormat: "dd.MM.yyyy HH:mm",
@@ -173,10 +183,12 @@ export const Awards: CollectionConfig = {
                       },
                     },
                     {
-                      name: "votingDeadline",
+                      name: "votingDeadlineOverride",
                       label: "Deadline",
                       type: "date",
                       admin: {
+                        condition: (_, siblingData) =>
+                          siblingData.votingType === "CUSTOM",
                         date: {
                           pickerAppearance: "dayAndTime",
                           displayFormat: "dd.MM.yyyy HH:mm",
@@ -263,7 +275,6 @@ export const Awards: CollectionConfig = {
               type: "richText",
               label: "Content",
               localized: true,
-              // required: true,
             },
           ],
         },

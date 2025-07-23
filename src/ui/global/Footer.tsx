@@ -9,8 +9,9 @@ import type { Company } from "@/payload-types";
 import type { ContactInfo } from "@/types";
 import { Link } from "@/i18n/navigation";
 import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
-import { NewsletterSignUp } from "@/ui/global/NewsletterSignUp";
 import { cn } from "@/ui/utils";
+
+import { NewsletterSignUp } from "./NewsletterSignUp";
 
 export interface FooterProps {
   company: Company;

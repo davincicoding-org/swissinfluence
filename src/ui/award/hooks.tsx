@@ -8,6 +8,8 @@ import type { CurrentAward } from "@/types";
 import { Countdown } from "@/ui/components/Countdown";
 import { VotingButton } from "@/ui/voting";
 
+import { derivative } from "../utils";
+
 export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");
 
@@ -46,18 +48,17 @@ export const useHeaderContent = (data: CurrentAward | null) => {
         ),
       };
 
-    const categories = data.categories.map(
-      ({ nominees, votingOpening, votingDeadline, ranked }) => ({
-        hasNominees: nominees.length > 0,
-        isRanked: ranked,
-        hasVotingStarted: dayjs(votingOpening).isBefore(),
-        hasVotingEnded: dayjs(votingDeadline).isBefore(),
-      }),
-    );
+    const categories = data.categories.map(({ nominees, voting, ranked }) => ({
+      hasNominees: nominees.length > 0,
+      isRanked: ranked,
+      votingEnabled: voting !== null,
+      hasVotingStarted: dayjs(voting?.opening).isBefore(),
+      hasVotingEnded: dayjs(voting?.deadline).isBefore(),
+    }));
 
     const hasOpenVotings = categories.some(
-      ({ hasVotingStarted, hasVotingEnded }) =>
-        hasVotingStarted && !hasVotingEnded,
+      ({ votingEnabled, hasVotingStarted, hasVotingEnded }) =>
+        votingEnabled && hasVotingStarted && !hasVotingEnded,
     );
 
     if (!hasOpenVotings)
@@ -79,7 +80,8 @@ export const useHeaderContent = (data: CurrentAward | null) => {
       };
 
     const hasVotingEnded = categories.every(
-      ({ hasVotingEnded }) => hasVotingEnded,
+      ({ votingEnabled, hasVotingEnded }) =>
+        votingEnabled ? hasVotingEnded : true,
     );
 
     if (!hasVotingEnded)

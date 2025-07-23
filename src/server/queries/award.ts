@@ -8,6 +8,7 @@ import type {
   Campaign,
   CurrentAward,
 } from "@/types";
+import { derivative } from "@/ui/utils";
 import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
 import { cachedRequest } from "../cache";
@@ -54,8 +55,9 @@ export const getCurrentAward = cachedRequest(
           winnerImage,
           nominees,
           ranked,
-          votingOpening,
-          votingDeadline,
+          votingType,
+          votingOpeningOverride,
+          votingDeadlineOverride,
         }) => ({
           category: ensureResolved(category)!,
           sponsor: ensureResolved(sponsor) ?? null,
@@ -64,8 +66,23 @@ export const getCurrentAward = cachedRequest(
           nominees: ensureResolvedArray(
             (nominees ?? []).map(({ influencer }) => influencer),
           ),
-          votingOpening: votingOpening ?? rest.votingOpening ?? null,
-          votingDeadline: votingDeadline ?? rest.votingDeadline ?? null,
+          voting: derivative(() => {
+            switch (votingType) {
+              case "DEFAULT":
+                return {
+                  opening: rest.votingOpening ?? null,
+                  deadline: rest.votingDeadline ?? null,
+                };
+              case "CUSTOM":
+                return {
+                  opening: votingOpeningOverride ?? rest.votingOpening ?? null,
+                  deadline:
+                    votingDeadlineOverride ?? rest.votingDeadline ?? null,
+                };
+              case "DISABLED":
+                return null;
+            }
+          }),
         }),
       ),
       show: show && {
