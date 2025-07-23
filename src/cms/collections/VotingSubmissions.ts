@@ -165,7 +165,7 @@ export const VotingSubmissions: CollectionConfig = {
           // Redirect to award page with success confirmation
           // TODO: remove ENABLE_VOTING after testing
           return Response.redirect(
-            `${env.BASE_URL}/award?ENABLE_VOTING&voting-confirmed`,
+            `${env.BASE_URL}/award?ENABLE_VOTING=true&voting-confirmed=true`,
             302,
           );
         } catch (error) {

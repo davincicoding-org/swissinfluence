@@ -41,6 +41,24 @@ export function AwardCategories({
   const [visibleStack, setVisibleStack] = useState<number[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const [stickOffset, setStickOffset] = useState(0);
+  const inView = useInView(containerRef, { amount: "some" });
+
+  useEffect(() => {
+    if (!inView) return;
+    if (!containerRef.current) return;
+    updateStickyOffset(containerRef.current);
+  }, [inView]);
+
+  const updateStickyOffset = (el: HTMLElement) => {
+    if (!containerRef.current) return;
+    const parent = el.parentElement;
+    if (!parent) return;
+    const parentTop = parent.getBoundingClientRect().top;
+    const elementTop = el.getBoundingClientRect().top;
+    setStickOffset(elementTop - parentTop);
+  };
+
   return (
     <>
       <div
@@ -54,6 +72,7 @@ export function AwardCategories({
             nominees={nominees}
             sponsor={sponsor}
             isTop={visibleStack[0] === index}
+            stickOffset={stickOffset}
             onVisibleChange={(visible) => {
               setVisibleStack((prev) => {
                 if (visible) return [index, ...prev];
@@ -81,6 +100,7 @@ export function AwardCategories({
 interface CategoryCardProps
   extends Pick<AwardCategory, "category" | "nominees" | "sponsor"> {
   isTop: boolean;
+  stickOffset: number;
   onVisibleChange: (visible: boolean) => void;
   className?: string;
 }
@@ -90,6 +110,7 @@ function CategoryCard({
   nominees,
   sponsor,
   isTop,
+  stickOffset,
   onVisibleChange,
   className,
 }: CategoryCardProps) {
@@ -109,7 +130,8 @@ function CategoryCard({
       <div
         className={cn("sticky z-10", className)}
         style={{
-          top: `calc((100dvh - ${height}px) / 2)`,
+          // top: `calc((100dvh - ${height}px) / 2)`,
+          top: stickOffset,
         }}
         ref={ref}
       >

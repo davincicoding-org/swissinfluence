@@ -70,13 +70,13 @@ export function AwardPage({
         {currentAward ? (
           <>
             {currentAward.show ? (
-              <section id="show" className="container py-32 sm:py-64">
+              <section id="show" className="container py-32">
                 <SectionTitle
                   title="Join the show"
-                  className="mx-auto mb-8 max-w-4xl"
+                  className="sticky top-32 mx-auto mb-8 max-w-4xl"
                 />
                 <EventOverview
-                  className="mx-auto max-w-4xl"
+                  className="relative z-10 mx-auto max-w-4xl"
                   date={currentAward.show.date}
                   location={currentAward.show.location}
                   registrationUrl={currentAward.show.registrationUrl}
@@ -86,7 +86,7 @@ export function AwardPage({
             ) : null}
 
             {currentAward.show?.images.length && currentAward.show?.videoUrl ? (
-              <section id="impressions" className="container py-32 sm:py-64">
+              <section id="impressions" className="container py-32">
                 <PhotosMarquee photos={currentAward.show.images} />
               </section>
             ) : null}
@@ -96,7 +96,7 @@ export function AwardPage({
             dayjs(currentAward.nominationDeadline).isAfter() ? (
               <section
                 id="nomination"
-                className="container flex flex-col py-32 sm:py-64"
+                className="container flex flex-col py-32"
               >
                 <AwardNomination
                   deadline={currentAward.nominationDeadline}
@@ -110,7 +110,7 @@ export function AwardPage({
             currentAward.newcomerScoutContent &&
             currentAward.newcomerScoutDeadline &&
             dayjs(currentAward.newcomerScoutDeadline).isAfter() ? (
-              <section id="newcomer-scout" className="container py-32 sm:py-64">
+              <section id="newcomer-scout" className="container py-32">
                 <NewcomerScout
                   content={currentAward.newcomerScoutContent}
                   image={currentAward.newcomerScoutImage as Photo}
@@ -122,17 +122,21 @@ export function AwardPage({
             ) : null}
 
             {currentAward.categories && currentAward.categories.length > 0 && (
-              <section id="categories" className="container py-32 sm:py-64">
-                <SectionTitle title={t("categories.title")} className="mb-8" />
+              <section id="categories" className="container pb-64 pt-32">
+                <SectionTitle
+                  title={t("categories.title")}
+                  className="sticky top-32 mb-8"
+                />
                 <AwardCategories
                   categories={currentAward.categories}
                   skipTarget={challenges.length ? "challenges" : "jury"}
+                  className="-mb-32"
                 />
               </section>
             )}
 
             {challenges.length > 0 ? (
-              <section id="challenges" className="container py-32 sm:py-64">
+              <section id="challenges" className="container py-32">
                 <SectionTitle
                   title={t("creator-challenges.title")}
                   className="mb-8"
@@ -147,7 +151,7 @@ export function AwardPage({
               </section>
             ) : null}
 
-            <section id="jury" className="container py-32 sm:py-64">
+            <section id="jury" className="container py-32">
               <SectionTitle
                 title="Meet the Jury"
                 className="top-32 mb-6 max-sm:sticky"
@@ -158,7 +162,7 @@ export function AwardPage({
         ) : null}
 
         {!currentAward?.show?.images.length && pastImpressions ? (
-          <section className="container py-32 sm:py-64">
+          <section className="container py-32">
             <SectionTitle
               title={`This was ${pastImpressions.year}`}
               className="mb-8"
@@ -167,7 +171,7 @@ export function AwardPage({
           </section>
         ) : null}
 
-        <section id="hall-of-fame" className="container py-32 sm:py-64">
+        <section id="hall-of-fame" className="container py-32">
           <SectionTitle title="Hall of Fame" className="mb-8" />
           <HallOfFame awards={hallOfFame} />
         </section>
