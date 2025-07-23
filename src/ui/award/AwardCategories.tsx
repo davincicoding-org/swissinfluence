@@ -2,14 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 import {
+  ActionIcon,
   Button,
   Center,
-  CloseButton,
   FocusTrap,
   Modal,
   Paper,
+  ScrollArea,
 } from "@mantine/core";
 import { useElementSize } from "@mantine/hooks";
+import { IconX } from "@tabler/icons-react";
 import { useInView } from "motion/react";
 import { useTranslations } from "next-intl";
 import Marquee from "react-fast-marquee";
@@ -21,6 +23,7 @@ import { PersonaCard } from "@/ui/components/PersonaCard";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
+import { FadeContainer } from "../components/FadeContainer";
 import { useCategoryVoting } from "../voting/VotingProvider";
 
 export interface AwardCategoriesProps {
@@ -201,36 +204,57 @@ function CategoryCard({
       </div>
       <Modal
         opened={isExpanded}
-        centered
         size="xl"
         radius="lg"
         withCloseButton={false}
         classNames={{
+          content:
+            "bg-transparent shadow-none max-h-none h-full overflow-y-hidden",
+          inner: "py-0",
+          overlay: "backdrop-blur-md",
           body: "p-0",
         }}
         transitionProps={{
-          transition: "slide-up",
+          transition: "fade",
           duration: 400,
         }}
         onClose={() => setIsExpanded(false)}
       >
         <FocusTrap.InitialFocus />
-        <div className="sticky top-0 z-10 flex h-12 items-center justify-between bg-white/50 pl-4 pr-2 text-2xl font-medium backdrop-blur-sm">
-          {category.name}
-          <CloseButton size="lg" onClick={() => setIsExpanded(false)} />
-        </div>
-        <div className="grid gap-4 p-4 pt-1 md:grid-cols-3">
-          {nominees.map((influencer) => (
-            <PersonaCard
-              key={influencer.id}
-              name={influencer.name}
-              image={ensureResolved(influencer.image)!}
-              socials={influencer.socials ?? []}
-              revealed
-              imageSizes="600px"
-            />
-          ))}
-        </div>
+
+        <ActionIcon
+          pos="fixed"
+          size="xl"
+          radius="xl"
+          variant="default"
+          className="right-0 top-4 z-20 bg-white/50 backdrop-blur-sm"
+          onClick={() => setIsExpanded(false)}
+        >
+          <IconX />
+        </ActionIcon>
+
+        <FadeContainer gradientWidth={32} orientation="vertical">
+          <ScrollArea
+            scrollbars="y"
+            classNames={{
+              root: "h-dvh",
+              scrollbar: "my-8",
+            }}
+          >
+            <div className="mx-auto grid gap-4 px-4 py-8 md:grid-cols-3">
+              {nominees.map((influencer) => (
+                <PersonaCard
+                  key={influencer.id}
+                  name={influencer.name}
+                  image={ensureResolved(influencer.image)!}
+                  socials={influencer.socials ?? []}
+                  revealed
+                  imageSizes="700px"
+                />
+              ))}
+            </div>
+          </ScrollArea>
+        </FadeContainer>
       </Modal>
     </>
   );

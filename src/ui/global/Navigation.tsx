@@ -199,7 +199,7 @@ export function Navigation({
                   <Menu.Target>
                     <ActionIcon
                       variant="transparent"
-                      color="gray"
+                      color="gray.5"
                       className="-ml-1"
                       aria-label={t("langSwitch")}
                     >
