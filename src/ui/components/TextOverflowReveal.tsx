@@ -3,7 +3,7 @@
 import { useElementSize } from "@mantine/hooks";
 import * as m from "motion/react-m";
 
-import { cn } from "@/ui/utils";
+import { cn, derivative } from "@/ui/utils";
 
 export interface TextOverflowRevealProps {
   text: string;
@@ -54,11 +54,35 @@ export function TextOverflowReveal({
           ref={nameRef}
           className={cn("text-nowrap", classNames?.text)}
           whileInView={{
-            x: [0, -1 * (nameOverflow + 24), -1 * (nameOverflow + 24), 0],
+            x: [0, -1 * (nameOverflow + 8), -1 * (nameOverflow + 8), 0],
           }}
           transition={{
-            duration: 5,
-            times: [0, 0.4, 0.6, 1],
+            ...derivative(
+              (): {
+                duration: number;
+                times: number[];
+              } => {
+                const revealSpeed = 50; // pixels per second
+                const resetSpeed = 200; // pixels per second
+                const stayAtEndTime = 2;
+
+                const totalDistance = nameOverflow + 8;
+                const revealTime = totalDistance / revealSpeed;
+                const resetTime = totalDistance / resetSpeed;
+                const totalTime = revealTime + resetTime + stayAtEndTime;
+
+                return {
+                  duration: totalTime,
+                  times: [
+                    0,
+                    revealTime / totalTime,
+                    (revealTime + stayAtEndTime) / totalTime,
+                    1,
+                  ],
+                };
+              },
+            ),
+            times: [0, 0.6, 0.8, 1],
             delay: 3,
             ease: "easeInOut",
             repeat: Infinity,

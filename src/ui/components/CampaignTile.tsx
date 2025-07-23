@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 
 import type { Campaign } from "@/types";
 import { ExpandableCard } from "@/ui/components/ExpandableCard";
-import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { ensureResolved } from "@/utils/payload";
 
@@ -38,16 +37,10 @@ export function CampaignTile({ data, past, className }: CampaignTileProps) {
       badge={badge}
       description={data.organizer.name}
       image={data.image}
-      logo={
-        <a href={data.organizer.website} target="_blank" rel="noopener">
-          <Image
-            resource={organizerLogo}
-            alt="Logo"
-            className="h-auto w-20"
-            sizes="160px"
-          />
-        </a>
-      }
+      logo={{
+        photo: organizerLogo,
+        url: data.organizer.website,
+      }}
       content={<RichText data={data.content} />}
       cta={
         !past && data.registrationUrl
