@@ -72,7 +72,7 @@ export function AwardPage({
             {currentAward.show ? (
               <section id="show" className="container py-32">
                 <SectionTitle
-                  title="Join the show"
+                  title={t("show.title")}
                   className="sticky top-32 mx-auto mb-8 max-w-4xl"
                 />
                 <EventOverview
@@ -153,7 +153,7 @@ export function AwardPage({
 
             <section id="jury" className="container py-32">
               <SectionTitle
-                title="Meet the Jury"
+                title={t("jury.title")}
                 className="top-32 mb-6 max-sm:sticky"
               />
               <AwardJury members={currentAward.jury} />
@@ -164,7 +164,9 @@ export function AwardPage({
         {!currentAward?.show?.images.length && pastImpressions ? (
           <section className="container py-32">
             <SectionTitle
-              title={`This was ${pastImpressions.year}`}
+              title={t("impressions.past", {
+                year: pastImpressions.year.toString(),
+              })}
               className="mb-8"
             />
             <PhotosMarquee photos={pastImpressions.images} />
@@ -172,7 +174,7 @@ export function AwardPage({
         ) : null}
 
         <section id="hall-of-fame" className="container py-32">
-          <SectionTitle title="Hall of Fame" className="mb-8" />
+          <SectionTitle title={t("hallOfFame.title")} className="mb-8" />
           <HallOfFame awards={hallOfFame} />
         </section>
       </main>

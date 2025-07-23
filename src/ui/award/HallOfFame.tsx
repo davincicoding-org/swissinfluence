@@ -12,6 +12,7 @@ import {
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
+import { useTranslations } from "next-intl";
 
 import type { AwardRanking } from "@/types";
 import { Image } from "@/ui/components/Image";
@@ -25,6 +26,7 @@ export interface HallOfFameProps {
 }
 
 export function HallOfFame({ awards }: HallOfFameProps) {
+  const t = useTranslations("award.hallOfFame");
   const [activeTab, setActiveTab] = useState(awards[0]?.year?.toString());
   return (
     <div className="flex flex-col gap-10">
@@ -83,7 +85,7 @@ export function HallOfFame({ awards }: HallOfFameProps) {
                             "bg-transparent text-white transition-colors hover:bg-white/20 shadow-none border-0 data-[inactive]:opacity-0 data-[inactive]:pointer-events-none",
                         }}
                         previousControlProps={{
-                          "aria-label": "Previous",
+                          "aria-label": t("aria.previous"),
                         }}
                         previousControlIcon={
                           <IconChevronLeft
@@ -92,7 +94,7 @@ export function HallOfFame({ awards }: HallOfFameProps) {
                           />
                         }
                         nextControlProps={{
-                          "aria-label": "Next nominee",
+                          "aria-label": t("aria.next"),
                         }}
                         nextControlIcon={
                           <IconChevronRight
@@ -125,28 +127,47 @@ export function HallOfFame({ awards }: HallOfFameProps) {
                                     "absolute inset-0 flex items-end bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white",
                                   )}
                                 >
-                                  <div className="flex w-full min-w-0 items-end justify-between gap-2">
-                                    <div className="min-w-0">
-                                      <p
-                                        className={cn(
-                                          "text-pretty px-4 font-medium uppercase leading-relaxed tracking-wider text-mocha-300",
-                                        )}
-                                      >
-                                        {index === 0
-                                          ? "Winner"
-                                          : `${index + 1}. Place`}
-                                      </p>
+                                  <div className="flex w-full flex-col">
+                                    <p
+                                      className={cn(
+                                        "pl-4 pr-8 text-lg font-medium uppercase leading-none tracking-widest",
+                                        {
+                                          "bg-shiny-gold animate-shimmer bg-clip-text font-semibold text-transparent":
+                                            index === 0,
+                                          "bg-shiny-silver animate-shimmer bg-clip-text font-medium text-transparent":
+                                            index === 1,
+                                          "bg-shiny-bronze animate-shimmer bg-clip-text font-medium text-transparent":
+                                            index === 2,
+                                          "text-neutral-300": index > 2,
+                                        },
+                                      )}
+                                      style={
+                                        index < 3
+                                          ? { backgroundSize: "200% 100%" }
+                                          : undefined
+                                      }
+                                    >
+                                      {index === 0 && t("ranking.first")}
+                                      {index === 1 && t("ranking.second")}
+                                      {index === 2 && t("ranking.third")}
+                                      {index > 2 &&
+                                        t("ranking.other", {
+                                          rank: (index + 1).toString(),
+                                        })}
+                                    </p>
+                                    <div className="flex w-full min-w-0 items-center justify-between gap-2">
                                       <TextOverflowReveal
                                         text={influencer.name}
                                         classNames={{
-                                          root: "mb-1",
                                           text: cn(
                                             "pl-4 text-xl font-medium leading-tight tracking-widest text-white",
                                           ),
                                         }}
                                       />
+                                      <Socials
+                                        items={influencer.socials ?? []}
+                                      />
                                     </div>
-                                    <Socials items={influencer.socials ?? []} />
                                   </div>
                                 </div>
                               </div>

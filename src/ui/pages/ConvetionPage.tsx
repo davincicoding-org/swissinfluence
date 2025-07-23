@@ -1,12 +1,10 @@
-import { Divider, Paper, Spoiler } from "@mantine/core";
-import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
+import { Divider } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
 import type { LatestConvention } from "@/types";
 import { HTMLRichText } from "@/ui/components/HTMLRichText";
 import { PageHero } from "@/ui/components/PageHero";
-import { cn } from "@/ui/utils";
 
 import { BrandsMarquee } from "../components/BrandsMarquee";
 import { EventOverview } from "../components/EventOverview";

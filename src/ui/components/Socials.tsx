@@ -7,6 +7,7 @@ import { IconDotsVertical } from "@tabler/icons-react";
 
 import type { Socials } from "@/payload-types";
 
+import { cn } from "../utils";
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
 
 export interface SocialsProps {
@@ -15,7 +16,6 @@ export interface SocialsProps {
   HoverCardProps?: Omit<HoverCardProps, "children" | "className">;
 }
 
-// MAYBE move to PersonaTile
 export function Socials({
   items,
   ActionIconProps,
@@ -60,33 +60,30 @@ export function Socials({
       ))}
 
       {stacked ? (
-        <HoverCard
-          withinPortal={false}
-          position="top-start"
-          radius="md"
-          {...HoverCardProps}
-        >
+        <HoverCard position="top" offset={-34} radius="md" {...HoverCardProps}>
           <HoverCard.Target>
             <ActionIcon
-              variant="subtle"
+              variant="transparent"
               size="sm"
               color="white"
               radius="md"
-              className="h-[var(--ai-size-lg)] transition-colors hover:text-mocha-500"
+              className={cn(
+                "h-[var(--ai-size-lg)] transition-opacity aria-[expanded=true]:opacity-0",
+              )}
               aria-label="More social links"
               {...ActionIconProps}
             >
               <IconDotsVertical />
             </ActionIcon>
           </HoverCard.Target>
-          <HoverCard.Dropdown className="flex flex-col gap-1 border-none bg-transparent p-1">
+          <HoverCard.Dropdown className="flex flex-col gap-1 border-none bg-transparent p-0">
             {stacked.map((social) => (
               <ActionIcon
                 key={social.platform}
                 component="a"
                 href={social.url}
                 target="_blank"
-                variant="subtle"
+                variant="transparent"
                 size="lg"
                 color="white"
                 radius="md"

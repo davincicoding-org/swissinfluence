@@ -10,7 +10,6 @@ import {
   Paper,
   ScrollArea,
 } from "@mantine/core";
-import { useElementSize } from "@mantine/hooks";
 import { IconX } from "@tabler/icons-react";
 import { useInView } from "motion/react";
 import { useTranslations } from "next-intl";
@@ -115,7 +114,7 @@ function CategoryCard({
   className,
 }: CategoryCardProps) {
   const t = useTranslations();
-  const { ref, height } = useElementSize<HTMLDivElement>();
+  const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.8 });
   const [isExpanded, setIsExpanded] = useState(false);
   const voting = useCategoryVoting(category.id);

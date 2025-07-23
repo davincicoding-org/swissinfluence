@@ -59,6 +59,9 @@ export const MESSAGES_SCHEMA = {
       awarded: { headline: "short", CTA: "short" },
       finished: { headline: "short", CTA: "short" },
     },
+    show: {
+      title: "short",
+    },
     nomination: {
       title: "short",
       description: "rich",
@@ -79,6 +82,26 @@ export const MESSAGES_SCHEMA = {
       title: "short",
       skip: "short",
       sponsoredBy: ["short", "{brand}"],
+    },
+    jury: {
+      title: "short",
+    },
+    impressions: {
+      past: ["short", "{year}"],
+      afterMovie: "short",
+    },
+    hallOfFame: {
+      title: "short",
+      ranking: {
+        first: "short",
+        second: "short",
+        third: "short",
+        other: ["short", "{rank}"],
+      },
+      aria: {
+        next: "short",
+        previous: "short",
+      },
     },
   },
   voting: {
