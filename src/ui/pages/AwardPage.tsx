@@ -23,6 +23,7 @@ import { PageHero } from "@/ui/components/PageHero";
 import { VotingProvider } from "@/ui/voting";
 
 import { PhotosMarquee } from "../components/PhotosMarquee";
+import { SectionTitle } from "../components/SectionTitle";
 import { TextGenerateEffect } from "../components/TextGenerateEffect";
 import { cn } from "../utils";
 
@@ -72,10 +73,7 @@ export function AwardPage({
           <>
             {currentAward.show ? (
               <section id="show" className="container py-16 sm:py-32">
-                <SectionTitle
-                  title="Join the show"
-                  className="mb-8 lg:text-center"
-                />
+                <SectionTitle title="Join the show" className="mb-8" />
                 <EventOverview
                   className="mx-auto max-w-4xl"
                   date={currentAward.show.date}
@@ -185,7 +183,7 @@ export function AwardPage({
   );
 }
 
-function SectionTitle({
+function SectionTitleEx({
   title,
   className,
 }: {
