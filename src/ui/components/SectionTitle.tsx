@@ -32,6 +32,7 @@ export function SectionTitle({ title, className }: SectionTitleProps) {
         fontSize: `${scale * 100}%`,
       }}
     >
+      <span className="sr-only">{title}</span>
       <span
         ref={text.ref}
         className="invisible absolute inline-block text-base font-light uppercase tracking-wider"

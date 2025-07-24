@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import {
@@ -16,6 +16,7 @@ import { IconMenu, IconWorld } from "@tabler/icons-react";
 import { AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
 import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
+import { Events } from "react-scroll";
 
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/ui/utils";
@@ -55,6 +56,23 @@ export function Navigation({
 
   const [visible, setVisible] = useState(true);
 
+  const isNavigating = useRef(false);
+
+  useEffect(() => {
+    Events.scrollEvent.register("begin", () => {
+      isNavigating.current = true;
+    });
+    Events.scrollEvent.register("end", () => {
+      setTimeout(() => {
+        isNavigating.current = false;
+      }, 0);
+    });
+    return () => {
+      Events.scrollEvent.remove("begin");
+      Events.scrollEvent.remove("end");
+    };
+  }, []);
+
   const activeLink = mainLinks
     .flatMap(({ href, logo, children }) =>
       children?.length
@@ -70,12 +88,12 @@ export function Navigation({
     .find(({ href }) => pathname.startsWith(href));
 
   useMotionValueEvent(scrollY, "change", (current) => {
+    if (isNavigating.current) return setVisible(false);
+
     if (typeof current === "number") {
       const direction = current - (scrollY.getPrevious() ?? 0);
 
-      if (scrollY.get() === 0) {
-        setVisible(true);
-      } else if (direction < 0) {
+      if (scrollY.get() === 0 || direction < 0) {
         setVisible(true);
       } else {
         setVisible(false);
@@ -126,7 +144,7 @@ export function Navigation({
           className={cn("fixed inset-x-0 top-8 z-30")}
         >
           <div className="container">
-            <div className="flex h-16 items-center justify-between space-x-4 rounded-xl bg-neutral-900/90 px-4 py-6 shadow backdrop-blur">
+            <div className="flex h-16 items-center justify-between space-x-4 rounded-xl bg-neutral-900/80 px-4 py-6 shadow backdrop-blur">
               <Link
                 href={homeLink}
                 className={cn({
@@ -201,7 +219,7 @@ export function Navigation({
                       variant="transparent"
                       color="gray.5"
                       className="-ml-1"
-                      aria-label={t("langSwitch")}
+                      aria-label={t("aria.langSwitch")}
                     >
                       <IconWorld stroke={1.5} />
                     </ActionIcon>

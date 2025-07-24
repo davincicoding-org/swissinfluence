@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Accordion, Paper, ScrollArea } from "@mantine/core";
+import { Accordion, Paper, ScrollArea, Spoiler } from "@mantine/core";
+import { IconChevronDown } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
@@ -123,21 +124,34 @@ export function Schedule({ slots }: ScheduleProps) {
                 viewport: "max-h-96",
               }}
             >
-              <RichText
-                className="p-3"
-                data={
-                  slots[activeSection]?.description ?? {
-                    root: {
-                      type: "doc",
-                      children: [],
-                      direction: "ltr",
-                      format: "",
-                      indent: 0,
-                      version: 1,
-                    },
+              <Spoiler
+                hideLabel={null}
+                showLabel={<IconChevronDown />}
+                classNames={{
+                  root: cn(
+                    "mb-0 data-[has-spoiler=true]:after:absolute data-[has-spoiler=true]:after:inset-x-0 data-[has-spoiler=true]:after:bottom-0 data-[has-spoiler=true]:after:h-16 data-[has-spoiler=true]:after:w-full data-[has-spoiler=true]:after:bg-gradient-to-t data-[has-spoiler=true]:after:from-white data-[has-spoiler=true]:after:from-30% data-[has-spoiler=true]:after:to-transparent",
+                  ),
+                  control:
+                    "top-[calc(100%-2.5rem)] !left-1/2 -translate-x-1/2 h-8 w-8 border border-gray-300 border-solid bg-white flex justify-center items-center rounded-full z-10",
+                }}
+                maxHeight={384}
+              >
+                <RichText
+                  className="p-3"
+                  data={
+                    slots[activeSection]?.description ?? {
+                      root: {
+                        type: "doc",
+                        children: [],
+                        direction: "ltr",
+                        format: "",
+                        indent: 0,
+                        version: 1,
+                      },
+                    }
                   }
-                }
-              />
+                />
+              </Spoiler>
             </ScrollArea>
           </m.div>
         </AnimatePresence>

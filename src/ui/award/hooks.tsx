@@ -7,6 +7,10 @@ import type { CurrentAward } from "@/types";
 import { Countdown } from "@/ui/components/Countdown";
 import { VotingButton } from "@/ui/voting";
 
+import type { AwardSectionId } from "./AwardNavigation";
+
+const getSectionHash = (section: AwardSectionId) => `#${section}`;
+
 export const useHeaderContent = (data: CurrentAward | null) => {
   const t = useTranslations("award.hero");
 
@@ -40,7 +44,7 @@ export const useHeaderContent = (data: CurrentAward | null) => {
             size="lg"
             radius="md"
             component="a"
-            href="#nomination"
+            href={getSectionHash("nomination")}
             target="_self"
             className="uppercase tracking-widest"
           >
@@ -70,7 +74,7 @@ export const useHeaderContent = (data: CurrentAward | null) => {
             size="lg"
             radius="md"
             component="a"
-            href="#categories"
+            href={getSectionHash("categories")}
             target="_self"
             className="uppercase tracking-widest"
           >
@@ -108,7 +112,7 @@ export const useHeaderContent = (data: CurrentAward | null) => {
             size="lg"
             radius="md"
             component="a"
-            href="#show"
+            href={getSectionHash("show")}
             target="_self"
             className="uppercase tracking-widest"
           >
@@ -143,7 +147,7 @@ export const useHeaderContent = (data: CurrentAward | null) => {
             radius="md"
             component="a"
             target="_self"
-            href="#hall-of-fame"
+            href={getSectionHash("hall-of-fame")}
             className="uppercase tracking-widest"
           >
             {t("awarded.CTA")}
@@ -159,7 +163,7 @@ export const useHeaderContent = (data: CurrentAward | null) => {
           size="lg"
           radius="md"
           component="a"
-          href="#impressions"
+          href={getSectionHash("impressions")}
           target="_self"
           className="uppercase tracking-widest"
         >

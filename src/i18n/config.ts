@@ -25,7 +25,10 @@ export const MESSAGES_SCHEMA = {
       sponsoring: "short",
       privacy: "short",
     },
-    langSwitch: "short",
+    aria: {
+      langSwitch: "short",
+      navigateTo: ["short", "{target}"],
+    },
   },
   landing: {
     meta: {
@@ -61,13 +64,16 @@ export const MESSAGES_SCHEMA = {
     },
     show: {
       title: "short",
+      linkLabel: "short",
     },
     nomination: {
       title: "short",
+      linkLabel: "short",
       description: "rich",
       CTA: "short",
     },
     "newcomer-scout": {
+      linkLabel: "short",
       CTA: "short",
       info: "short",
       perks: "short",
@@ -75,6 +81,7 @@ export const MESSAGES_SCHEMA = {
     },
     "creator-challenges": {
       title: "short",
+      linkLabel: "short",
       description: "rich",
       labels: {
         current: "short",
@@ -83,18 +90,27 @@ export const MESSAGES_SCHEMA = {
     },
     categories: {
       title: "short",
-      skip: "short",
+      linkLabel: "short",
       sponsoredBy: ["short", "{brand}"],
     },
     jury: {
       title: "short",
+      linkLabel: "short",
     },
     impressions: {
-      past: ["short", "{year}"],
+      current: {
+        title: "short",
+        linkLabel: "short",
+      },
+      past: {
+        title: ["short", "{year}"],
+        linkLabel: "short",
+      },
       afterMovie: "short",
     },
     hallOfFame: {
       title: "short",
+      linkLabel: "short",
       ranking: {
         first: "short",
         second: "short",

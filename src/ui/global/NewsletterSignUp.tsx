@@ -39,7 +39,7 @@ export function NewsletterSignUp({
       onClose={onClose}
       transitionProps={{
         transition: "pop",
-        duration: 200,
+        duration: 300,
       }}
     >
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -195,6 +195,6 @@ export const getPastImpressions =
       images: ensureResolvedArray(
         (pastShow.images ?? []).map((photo) => photo),
       ),
-      videoUrl: pastShow.videoUrl ?? "",
+      videoUrl: pastShow.videoUrl ?? null,
     };
   }, ["awards", "award-shows"]);

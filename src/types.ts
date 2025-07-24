@@ -54,7 +54,7 @@ export interface Campaign {
 export interface AwardShowImpressions {
   year: number;
   images: Array<payloadTypes.Photo>;
-  videoUrl: string;
+  videoUrl: string | null;
 }
 
 export interface CurrentAward

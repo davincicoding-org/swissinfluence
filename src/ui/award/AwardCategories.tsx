@@ -27,16 +27,13 @@ import { useCategoryVoting } from "../voting/VotingProvider";
 
 export interface AwardCategoriesProps {
   categories: Array<AwardCategory>;
-  skipTarget: string;
   className?: string;
 }
 
 export function AwardCategories({
   categories,
-  skipTarget,
   className,
 }: AwardCategoriesProps) {
-  const t = useTranslations("award.categories");
   const [visibleStack, setVisibleStack] = useState<number[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -59,40 +56,27 @@ export function AwardCategories({
   };
 
   return (
-    <>
-      <div
-        className={cn("flex flex-col gap-[25dvh]", className)}
-        ref={containerRef}
-      >
-        {categories.map(({ category, nominees, sponsor }, index) => (
-          <CategoryCard
-            key={category.id}
-            category={category}
-            nominees={nominees}
-            sponsor={sponsor}
-            isTop={visibleStack[0] === index}
-            stickOffset={stickOffset}
-            onVisibleChange={(visible) => {
-              setVisibleStack((prev) => {
-                if (visible) return [index, ...prev];
-                return prev.filter((i) => i !== index);
-              });
-            }}
-          />
-        ))}
-      </div>
-      <Center className="sticky bottom-4 mt-8">
-        <Button
-          size="compact-xl"
-          variant="outline"
-          radius="md"
-          component="a"
-          href={`#${skipTarget}`}
-        >
-          {t("skip")}
-        </Button>
-      </Center>
-    </>
+    <div
+      className={cn("flex flex-col gap-[25dvh]", className)}
+      ref={containerRef}
+    >
+      {categories.map(({ category, nominees, sponsor }, index) => (
+        <CategoryCard
+          key={category.id}
+          category={category}
+          nominees={nominees}
+          sponsor={sponsor}
+          isTop={visibleStack[0] === index}
+          stickOffset={stickOffset}
+          onVisibleChange={(visible) => {
+            setVisibleStack((prev) => {
+              if (visible) return [index, ...prev];
+              return prev.filter((i) => i !== index);
+            });
+          }}
+        />
+      ))}
+    </div>
   );
 }
 

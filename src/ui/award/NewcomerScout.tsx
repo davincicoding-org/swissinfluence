@@ -10,8 +10,11 @@ import {
   Paper,
   ScrollArea,
   SegmentedControl,
+  Spoiler,
   Timeline,
 } from "@mantine/core";
+import { useViewportSize } from "@mantine/hooks";
+import { IconChevronDown } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
@@ -23,8 +26,6 @@ import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
 import { cn, derivative } from "@/ui/utils";
-
-import { FadeContainer } from "../components/FadeContainer";
 
 export interface AwardNominationProps {
   image: Photo;
@@ -166,48 +167,57 @@ function ColumnsView({
   ...props
 }: AwardNominationProps & BoxProps) {
   const t = useTranslations("award.newcomer-scout");
+  const { height } = useViewportSize();
 
   return (
     <Box
       className={cn("grid grid-cols-[1fr_400px] gap-1", className)}
       {...props}
     >
-      <FadeContainer
-        gradientWidth={32}
-        orientation="vertical"
-        className="h-[50vh]"
+      <ScrollArea
+        scrollbars="y"
+        classNames={{
+          viewport: "max-h-[50vh]",
+        }}
       >
-        <ScrollArea
-          scrollbars="y"
+        <Spoiler
+          hideLabel={null}
+          showLabel={<IconChevronDown />}
           classNames={{
-            root: "h-[50vh]",
-            scrollbar: "my-6",
-            content: "py-6",
+            root: cn(
+              "mb-0 data-[has-spoiler=true]:after:absolute data-[has-spoiler=true]:after:inset-x-0 data-[has-spoiler=true]:after:bottom-0 data-[has-spoiler=true]:after:h-24 data-[has-spoiler=true]:after:w-full data-[has-spoiler=true]:after:bg-gradient-to-t data-[has-spoiler=true]:after:from-white data-[has-spoiler=true]:after:from-30% data-[has-spoiler=true]:after:to-transparent",
+            ),
+            control:
+              "top-[calc(100%-3rem)] !left-1/2 -translate-x-1/2 h-8 w-8 border border-gray-300 border-solid bg-white flex justify-center items-center rounded-full z-10",
           }}
+          maxHeight={height * 0.5}
         >
-          <RichText data={info} className="max-w-none px-8" />
-          <Divider
-            label={t("perks")}
-            labelPosition="center"
-            classNames={{
-              root: "mt-5 mb-2",
-              label: "text-3xl",
-            }}
-          />
-          <RichText data={perks} className="max-w-none px-8" />
-          <Divider
-            label={t("timeline")}
-            labelPosition="center"
-            classNames={{
-              root: "my-5",
-              label: "text-3xl",
-            }}
-          />
-          <Center>
-            <TimelineView timeline={timeline} />
-          </Center>
-        </ScrollArea>
-      </FadeContainer>
+          <div className="py-6">
+            <RichText data={info} className="max-w-none px-8" />
+            <Divider
+              label={t("perks")}
+              labelPosition="center"
+              classNames={{
+                root: "mt-5 mb-2",
+                label: "text-3xl",
+              }}
+            />
+            <RichText data={perks} className="max-w-none px-8" />
+            <Divider
+              label={t("timeline")}
+              labelPosition="center"
+              classNames={{
+                root: "my-5",
+                label: "text-3xl",
+              }}
+            />
+            <Center>
+              <TimelineView timeline={timeline} />
+            </Center>
+          </div>
+        </Spoiler>
+      </ScrollArea>
+
       <div className="relative grid">
         <Image
           resource={image}
