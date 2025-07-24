@@ -1,13 +1,15 @@
 "use client";
 
 import type { BoxProps } from "@mantine/core";
-import { Fragment, useEffect, useMemo, useRef } from "react";
+import type { Ref } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import {
   ActionIcon,
   Badge,
   Box,
   Button,
   Center,
+  Divider,
   Indicator,
   Menu,
   Modal,
@@ -15,6 +17,7 @@ import {
   ScrollArea,
   Tooltip,
 } from "@mantine/core";
+import { useClickOutside, useDisclosure } from "@mantine/hooks";
 import { IconList, IconRestore, IconX } from "@tabler/icons-react";
 import { isEqual } from "lodash-es";
 import { AnimatePresence } from "motion/react";
@@ -29,33 +32,49 @@ import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
+import type { VotingSubmissionFormProps } from "./VotingSubmissionForm";
+import { scaleUp } from "../transitions";
+import { VotingSubmissionForm } from "./VotingSubmissionForm";
+
 export interface VotingSelectionModalProps {
   categories: AwardCategory[];
   focusCategory?: Category["id"];
-  votes: VotingValues["votes"];
-  onToggleVote: (vote: InfluencerVote) => void;
   opened: boolean;
+  submitting: boolean;
   onClose: () => void;
-  onSubmit: () => void;
-  onReset: () => void;
+  onSubmit: (values: Omit<VotingValues, "award">, callback: () => void) => void;
 }
 
 interface CategorySelection {
   category: Pick<Category, "id" | "name">;
-  influencers: Array<Pick<Influencer, "id" | "name">>;
+  influencers: Array<Pick<Influencer, "id" | "name" | "image">>;
 }
 
 export function VotingSelectionModal({
   categories,
   focusCategory,
-  votes,
-  onToggleVote,
   opened,
+  submitting,
   onClose,
   onSubmit,
-  onReset,
 }: VotingSelectionModalProps) {
   const t = useTranslations("voting.selection");
+
+  const [votes, setVotes] = useState<VotingValues["votes"]>([]);
+  const onToggleVote = (vote: InfluencerVote) =>
+    setVotes((prev) =>
+      prev.some((v) => isEqual(v, vote))
+        ? prev.filter((v) => !isEqual(v, vote))
+        : [...prev, vote],
+    );
+
+  const [isSubmissionOpen, setIsSubmissionOpen] = useState(false);
+  const [isListOpen, listView] = useDisclosure(false);
+  const [listTriggerRef, setListTriggerRef] =
+    useState<HTMLButtonElement | null>(null);
+  const [listRef, setListRef] = useState<HTMLDivElement | null>(null);
+  useClickOutside(() => listView.close(), null, [listRef, listTriggerRef]);
+
   const selection = useMemo<CategorySelection[]>(
     () =>
       categories
@@ -71,144 +90,203 @@ export function VotingSelectionModal({
     [categories, votes],
   );
 
-  return (
-    <Modal
-      opened={opened}
-      onClose={onClose}
-      size="xl"
-      radius="lg"
-      withCloseButton={false}
-      classNames={{
-        body: "p-0",
-      }}
-    >
-      <div className="sticky top-0 z-20 -mb-12 flex h-12 items-center justify-end pr-3 sm:-mb-16 sm:h-16">
-        <ActionIcon
-          variant="default"
-          size={38}
-          radius="xl"
-          className="bg-transparent backdrop-blur-sm max-sm:border-none sm:bg-white/50"
-          onClick={onClose}
-        >
-          <IconX size={32} stroke={1.5} />
-        </ActionIcon>
-      </div>
+  const handleReset = () => setVotes([]);
+  const handleSubmit: VotingSubmissionFormProps["onSubmit"] = (
+    values,
+    callback,
+  ) =>
+    onSubmit({ ...values, votes }, () => {
+      setVotes([]);
+      callback();
+      setIsSubmissionOpen(false);
+      onClose();
+    });
 
-      {categories.map(({ category, nominees }) => {
-        const isSelected = (influencerId: Influencer["id"]) =>
-          votes.some((vote) =>
-            isEqual(vote, {
+  return (
+    <>
+      <Modal
+        opened={opened}
+        onClose={onClose}
+        size="xl"
+        radius="lg"
+        withCloseButton={false}
+        closeOnEscape={!isSubmissionOpen}
+        classNames={{
+          body: cn("p-0 transition-all duration-500", {
+            "blur-md": isSubmissionOpen,
+          }),
+          overlay: "backdrop-blur-md",
+        }}
+      >
+        <div className="sticky top-0 z-20 -mb-12 flex h-12 items-center justify-end pr-3 sm:-mb-16 sm:h-16">
+          <ActionIcon
+            variant="default"
+            size={38}
+            radius="xl"
+            className="bg-transparent backdrop-blur-sm max-sm:border-none sm:bg-white/50"
+            onClick={onClose}
+          >
+            <IconX size={32} stroke={1.5} />
+          </ActionIcon>
+        </div>
+
+        {categories.map(({ category, nominees }) => {
+          const isSelected = (influencerId: Influencer["id"]) =>
+            votes.some((vote) =>
+              isEqual(vote, {
+                influencer: influencerId,
+                category: category.id,
+              }),
+            );
+          const handleToggle = (influencerId: Influencer["id"]) =>
+            onToggleVote({
               influencer: influencerId,
               category: category.id,
-            }),
-          );
-        const handleToggle = (influencerId: Influencer["id"]) =>
-          onToggleVote({
-            influencer: influencerId,
-            category: category.id,
-          });
+            });
 
-        return (
-          <Fragment key={category.id}>
-            <ListView
-              category={category.name}
-              focused={category.id === focusCategory}
-              hiddenFrom="sm"
-              nominees={nominees}
-              isSelected={isSelected}
-              onToggle={handleToggle}
-            />
-            <GridView
-              category={category.name}
-              focused={category.id === focusCategory}
-              visibleFrom="sm"
-              nominees={nominees}
-              isSelected={isSelected}
-              onToggle={handleToggle}
-            />
-          </Fragment>
-        );
-      })}
-      <Center className="pointer-events-none sticky bottom-0 z-10 p-3 *:pointer-events-auto">
-        <AnimatePresence mode="wait">
-          {votes.length > 0 ? (
-            <m.div
-              className="flex items-center gap-2"
-              key="actions"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <Menu position="top" radius="md" withArrow>
+          return (
+            <Fragment key={category.id}>
+              <ListView
+                category={category.name}
+                focused={category.id === focusCategory}
+                hiddenFrom="sm"
+                nominees={nominees}
+                isSelected={isSelected}
+                onToggle={handleToggle}
+              />
+              <GridView
+                category={category.name}
+                focused={category.id === focusCategory}
+                visibleFrom="sm"
+                nominees={nominees}
+                isSelected={isSelected}
+                onToggle={handleToggle}
+              />
+            </Fragment>
+          );
+        })}
+
+        <Center className="pointer-events-none sticky bottom-0 z-10 p-3 *:pointer-events-auto">
+          <AnimatePresence mode="wait">
+            {votes.length > 0 ? (
+              <Menu
+                position="top"
+                radius="md"
+                width={338}
+                opened={isListOpen}
+                shadow="md"
+                transitionProps={{ transition: scaleUp }}
+              >
                 <Menu.Target>
-                  <Indicator
-                    label={votes.length}
-                    size={16}
-                    classNames={{ indicator: "font-medium" }}
+                  <m.div
+                    className="flex items-center gap-5"
+                    key="actions"
+                    initial={{ y: "150%" }}
+                    animate={{ y: 0 }}
+                    exit={{ y: "150%" }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
-                    <ActionIcon
-                      size="input-md"
-                      variant="default"
+                    <Tooltip label={t("reset")}>
+                      <ActionIcon
+                        variant="default"
+                        size="input-md"
+                        radius="md"
+                        classNames={{
+                          root: "bg-white/50 backdrop-blur-sm",
+                        }}
+                        onClick={handleReset}
+                      >
+                        <IconRestore size={28} stroke={1.5} />
+                      </ActionIcon>
+                    </Tooltip>
+                    <Button
+                      key="submit"
                       radius="md"
-                      classNames={{
-                        root: "bg-white/50 backdrop-blur-sm",
-                      }}
+                      size="lg"
+                      className="uppercase"
+                      onClick={() => setIsSubmissionOpen(true)}
                     >
-                      <IconList size={28} stroke={1.5} />
-                    </ActionIcon>
-                  </Indicator>
+                      {t("submit")}
+                    </Button>
+
+                    <Indicator
+                      label={votes.length}
+                      size={16}
+                      classNames={{ indicator: "font-medium" }}
+                    >
+                      <ActionIcon
+                        size="input-md"
+                        variant="default"
+                        radius="md"
+                        classNames={{
+                          root: "bg-white/50 backdrop-blur-sm",
+                        }}
+                        ref={setListTriggerRef}
+                        onClick={listView.toggle}
+                      >
+                        <IconList size={28} stroke={1.5} />
+                      </ActionIcon>
+                    </Indicator>
+                  </m.div>
                 </Menu.Target>
-                <Menu.Dropdown p={0}>
+                <Menu.Dropdown p={0} className="overflow-clip">
                   <SelectionList
+                    ref={setListRef}
                     selection={selection}
                     onRemove={onToggleVote}
                   />
                 </Menu.Dropdown>
               </Menu>
-              <Button
-                key="submit"
+            ) : (
+              <Paper
+                key="info"
+                withBorder
+                classNames={{
+                  root: "bg-mocha-100/80 backdrop-blur-sm p-3",
+                }}
+                component={m.div}
+                initial={{ y: "150%" }}
+                animate={{ y: 0 }}
+                exit={{ y: "150%" }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
                 radius="md"
-                size="md"
-                className="uppercase"
-                onClick={onSubmit}
               >
-                {t("submit")}
-              </Button>
-              <Tooltip label={t("reset")}>
-                <ActionIcon
-                  size="input-md"
-                  variant="default"
-                  radius="md"
-                  classNames={{
-                    root: "bg-white/50 backdrop-blur-sm",
-                  }}
-                  onClick={onReset}
-                >
-                  <IconRestore size={28} stroke={1.5} />
-                </ActionIcon>
-              </Tooltip>
-            </m.div>
-          ) : (
-            <Paper
-              key="info"
-              withBorder
-              component={m.div}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              radius="lg"
-              classNames={{
-                root: "bg-mocha-100/80 backdrop-blur-sm p-3",
-              }}
-            >
-              <p className="max-w-md select-none text-pretty text-lg font-medium leading-tight text-mocha-800">
-                {t("instructions")}
-              </p>
-            </Paper>
-          )}
-        </AnimatePresence>
-      </Center>
-    </Modal>
+                <p className="select-none text-pretty text-lg font-medium leading-tight text-mocha-800">
+                  {t("instructions")}
+                </p>
+              </Paper>
+            )}
+          </AnimatePresence>
+        </Center>
+      </Modal>
+      <Modal
+        opened={isSubmissionOpen}
+        onClose={() => setIsSubmissionOpen(false)}
+        withCloseButton={false}
+        fullScreen
+        closeOnEscape={false}
+        closeOnClickOutside={false}
+        withOverlay={false}
+        transitionProps={{ transition: "fade" }}
+        classNames={{
+          content: "bg-transparent",
+          body: "h-full flex justify-center items-center",
+        }}
+      >
+        <Paper
+          withBorder
+          shadow="md"
+          radius="md"
+          className="max-w-sm overflow-clip"
+        >
+          <VotingSubmissionForm
+            isSubmitting={submitting}
+            onSubmit={handleSubmit}
+            onCancel={() => setIsSubmissionOpen(false)}
+          />
+        </Paper>
+      </Modal>
+    </>
   );
 }
 
@@ -251,7 +329,7 @@ function GridView({
       </div>
       <Box
         className={cn(
-          "grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-4 px-4 pb-4",
+          "grid grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-5 px-4 pb-4",
         )}
       >
         {nominees.map((nominee) => (
@@ -367,9 +445,11 @@ const MotionMenuLabel = m.create(Menu.Label);
 
 function SelectionList({
   selection,
+  ref,
   onRemove,
 }: {
   selection: CategorySelection[];
+  ref: Ref<HTMLDivElement>;
   onRemove: (params: {
     category: Category["id"];
     influencer: Influencer["id"];
@@ -377,37 +457,66 @@ function SelectionList({
 }) {
   return (
     <ScrollArea
+      viewportRef={ref}
       scrollbars="y"
       classNames={{
-        viewport: "max-h-64",
+        viewport: "max-h-96 px-1",
+        scrollbar: "z-20",
       }}
     >
       <AnimatePresence>
-        {selection.flatMap(({ category, influencers }) => [
-          <MotionMenuLabel
-            key={category.id}
-            component={m.div}
-            exit={{ opacity: 0, x: 10 }}
-          >
-            {category.name}
-          </MotionMenuLabel>,
-          ...influencers.map((influencer) => (
-            <Menu.Item
-              key={influencer.id}
-              leftSection={<IconX size={16} />}
-              component={m.button}
-              exit={{ opacity: 0, x: 10 }}
-              onClick={() =>
-                onRemove({
-                  category: category.id,
-                  influencer: influencer.id,
-                })
-              }
+        {selection.map(({ category, influencers }) => (
+          <m.div key={`category-${category.id}`} exit={{ opacity: 0, x: 10 }}>
+            <MotionMenuLabel
+              key={category.id}
+              component={m.div}
+              className="sticky top-0 z-10 bg-white/50 pt-2 text-base backdrop-blur-sm"
             >
-              {influencer.name}
-            </Menu.Item>
-          )),
-        ])}
+              {category.name}
+            </MotionMenuLabel>
+            <Paper
+              withBorder
+              radius="md"
+              className="mx-2 mb-2 mt-1 overflow-clip"
+            >
+              <AnimatePresence>
+                {influencers.map((influencer) => (
+                  <Fragment key={influencer.id}>
+                    <Divider className="first:hidden" />
+                    <Menu.Item
+                      key={`${category.id}-${influencer.id}`}
+                      leftSection={
+                        <Image
+                          resource={influencer.image as ProfilePicture}
+                          alt={influencer.name}
+                          className="h-10 w-10 shrink-0 rounded-md object-cover"
+                          sizes="40px"
+                        />
+                      }
+                      rightSection={
+                        <IconX size={20} className="text-gray-500" />
+                      }
+                      component={m.button}
+                      exit={{ opacity: 0, x: 10 }}
+                      classNames={{
+                        item: "p-2 pr-3 rounded-none",
+                        itemLabel: "text-base font-medium truncate",
+                      }}
+                      onClick={() =>
+                        onRemove({
+                          category: category.id,
+                          influencer: influencer.id,
+                        })
+                      }
+                    >
+                      {influencer.name}
+                    </Menu.Item>
+                  </Fragment>
+                ))}
+              </AnimatePresence>
+            </Paper>
+          </m.div>
+        ))}
       </AnimatePresence>
     </ScrollArea>
   );

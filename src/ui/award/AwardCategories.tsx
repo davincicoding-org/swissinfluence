@@ -205,7 +205,7 @@ function CategoryCard({
               radius="md"
               size="compact-xl"
               classNames={{
-                label: "uppercase font-medium",
+                label: "uppercase font-medium tracking-widest",
               }}
               onClick={voting.open}
             >

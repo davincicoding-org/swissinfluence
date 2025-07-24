@@ -7,21 +7,20 @@ import {
   useCallback,
   useContext,
   useMemo,
-  useRef,
   useState,
 } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { isEqual } from "lodash-es";
 import { useTranslations } from "next-intl";
 
 import type { Award, Category } from "@/payload-types";
-import type { AwardCategory, InfluencerVote, VotingValues } from "@/types";
+import type { AwardCategory, VotingValues } from "@/types";
 import { useFlag } from "@/ui/useFlag";
 
+import type { VotingSelectionModalProps } from "./VotingSelectionModal";
 import { canVoteInCategory } from "./utils";
 import { VotingConfirmationModal } from "./VotingConfirmationModal";
-import { VotingConfirmedModal } from "./VotingConfirmedModal";
 import { VotingSelectionModal } from "./VotingSelectionModal";
 import { VotingSubmissionModal } from "./VotingSubmissionModal";
 
@@ -47,19 +46,10 @@ export function VotingProvider({
   submissionHandler,
   children,
 }: PropsWithChildren<VotingProviderProps>) {
-  const [votes, setVotes] = useState<VotingValues["votes"]>([]);
-  const onToggleVote = (vote: InfluencerVote) =>
-    setVotes((prev) =>
-      prev.some((v) => isEqual(v, vote))
-        ? prev.filter((v) => !isEqual(v, vote))
-        : [...prev, vote],
-    );
   const [openCategory, setOpenCategory] = useState<Category["id"]>();
   const [isSelectionModalOpen, selectionModal] = useDisclosure(false);
-  const [isSubmissionModalOpen, submissionModal] = useDisclosure(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const resetRef = useRef<() => void>(null);
 
   const enforceVoting = useFlag("ENABLE_VOTING");
 
@@ -89,16 +79,10 @@ export function VotingProvider({
     selectionModal.close();
   }, [selectionModal]);
 
-  const handleSubmitSelection = () => {
-    setVotes(votes);
-    submissionModal.open();
-  };
-
-  const handleSubmit = async (
-    values: Pick<
-      VotingValues,
-      "firstName" | "lastName" | "email" | "newsletter"
-    >,
+  // eslint-disable-next-line @typescript-eslint/no-misused-promises
+  const handleSubmit: VotingSelectionModalProps["onSubmit"] = async (
+    values,
+    callback,
   ) => {
     setIsSubmitting(true);
     if (awardId === undefined) return;
@@ -108,17 +92,21 @@ export function VotingProvider({
       lastName: values.lastName.trim(),
       email: values.email.trim(),
       newsletter: values.newsletter,
-      votes,
+      votes: values.votes,
     });
+    callback();
     setIsSubmitting(false);
-    resetRef.current?.();
-    submissionModal.close();
-    handleCloseVotingSelection();
-    setVotes([]);
     setIsSubmitted(true);
   };
 
-  if (categoriesWithVoting.length === 0) return children;
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const handleCloseConfirmation = () => {
+    router.replace(pathname);
+  };
+
+  const isSubmissionConfirmed = searchParams.get("voting-confirmed") !== null;
 
   return (
     <VotingContext.Provider
@@ -131,25 +119,19 @@ export function VotingProvider({
       <VotingSelectionModal
         categories={categoriesWithVoting}
         focusCategory={openCategory}
-        votes={votes}
-        onToggleVote={onToggleVote}
         opened={isSelectionModalOpen}
+        submitting={isSubmitting}
         onClose={handleCloseVotingSelection}
-        onSubmit={handleSubmitSelection}
-        onReset={() => setVotes([])}
-      />
-      <VotingSubmissionModal
-        opened={isSubmissionModalOpen}
-        isSubmitting={isSubmitting}
-        resetRef={resetRef}
-        onClose={submissionModal.close}
         onSubmit={handleSubmit}
       />
-      <VotingConfirmationModal
+      <VotingSubmissionModal
         opened={isSubmitted}
         onClose={() => setIsSubmitted(false)}
       />
-      <VotingConfirmedModal />
+      <VotingConfirmationModal
+        opened={isSubmissionConfirmed}
+        onClose={handleCloseConfirmation}
+      />
     </VotingContext.Provider>
   );
 }
@@ -177,7 +159,6 @@ export const useCategoryVoting = (categoryId: Category["id"]) => {
   return useMemo(() => {
     const enabled = categories.includes(categoryId);
     if (!enabled) return null;
-
     return {
       open: () => open(categoryId),
     };

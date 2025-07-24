@@ -114,7 +114,7 @@ export const MESSAGES_SCHEMA = {
       submit: "short",
       reset: "short",
     },
-    submission: {
+    form: {
       title: "short",
       placeholders: {
         firstName: "short",
@@ -123,16 +123,19 @@ export const MESSAGES_SCHEMA = {
       },
       subaddressWarning: "long",
       disclaimer: "short",
-      submit: "short",
       newsletter: "short",
+      submit: "short",
+      cancel: "short",
+    },
+    submission: {
+      title: "short",
+      message: "long",
+      close: "short",
     },
     confirmation: {
       title: "short",
-      description: "long",
-    },
-    confirmed: {
-      title: "short",
-      description: "long",
+      message: "long",
+      close: "short",
     },
   },
   network: {

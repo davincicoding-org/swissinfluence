@@ -1,6 +1,6 @@
 "use client";
 
-import { FocusTrap, Modal } from "@mantine/core";
+import { Button, FocusTrap, Modal } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 export interface VotingConfirmationModalProps {
@@ -19,19 +19,30 @@ export function VotingConfirmationModal({
       opened={opened}
       onClose={onClose}
       centered
+      size="sm"
+      withCloseButton={false}
       title={t("title")}
       classNames={{
-        title: "text-xl font-medium",
+        title: "text-xl font-medium mx-auto text-pretty",
         body: "text-pretty",
       }}
       radius="md"
       transitionProps={{
         transition: "pop",
-        duration: 200,
       }}
     >
       <FocusTrap.InitialFocus />
-      {t("description")}
+      {t("message")}
+
+      <Button
+        fullWidth
+        radius="md"
+        size="md"
+        className="mt-5"
+        onClick={onClose}
+      >
+        {t("close")}
+      </Button>
     </Modal>
   );
 }
