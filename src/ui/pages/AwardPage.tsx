@@ -1,5 +1,5 @@
 import { Button } from "@mantine/core";
-import dayjs from "dayjs";
+import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
@@ -44,6 +44,7 @@ export function AwardPage({
 }: AwardPageProps) {
   const { headline, cta } = useHeaderContent(currentAward);
   const t = useTranslations("award");
+  const now = new Date().toISOString();
 
   return (
     <VotingProvider
@@ -93,7 +94,7 @@ export function AwardPage({
 
             {currentAward.nominationUrl &&
             currentAward.nominationDeadline &&
-            dayjs(currentAward.nominationDeadline).isAfter() ? (
+            currentAward.nominationDeadline > now ? (
               <section
                 id="nomination"
                 className="container flex flex-col py-32"
@@ -107,16 +108,38 @@ export function AwardPage({
             ) : null}
             {currentAward.newcomerScoutUrl &&
             currentAward.newcomerScoutImage &&
-            currentAward.newcomerScoutContent &&
+            currentAward.newcomerScoutTitle &&
+            currentAward.newcomerScoutInfo &&
+            currentAward.newcomerScoutPerks &&
             currentAward.newcomerScoutDeadline &&
-            dayjs(currentAward.newcomerScoutDeadline).isAfter() ? (
+            currentAward.newcomerScoutDeadline > now ? (
               <section id="newcomer-scout" className="container py-32">
+                <m.h1
+                  className="mb-8 text-balance text-center text-4xl sm:text-5xl md:text-6xl"
+                  initial={{
+                    y: "150%",
+                  }}
+                  whileInView={{
+                    y: 0,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  transition={{
+                    duration: 1,
+                    ease: "easeOut",
+                  }}
+                >
+                  {currentAward.newcomerScoutTitle}
+                </m.h1>
                 <NewcomerScout
-                  content={currentAward.newcomerScoutContent}
                   image={currentAward.newcomerScoutImage as Photo}
                   deadline={currentAward.newcomerScoutDeadline}
                   formURL={currentAward.newcomerScoutUrl}
-                  className="my-auto"
+                  info={currentAward.newcomerScoutInfo}
+                  perks={currentAward.newcomerScoutPerks}
+                  timeline={currentAward.newcomerScoutTimeline ?? []}
+                  className="relative z-10"
                 />
               </section>
             ) : null}

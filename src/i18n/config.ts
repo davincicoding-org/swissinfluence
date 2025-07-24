@@ -69,6 +69,9 @@ export const MESSAGES_SCHEMA = {
     },
     "newcomer-scout": {
       CTA: "short",
+      info: "short",
+      perks: "short",
+      timeline: "short",
     },
     "creator-challenges": {
       title: "short",

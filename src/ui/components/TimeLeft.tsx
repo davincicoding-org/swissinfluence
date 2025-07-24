@@ -10,6 +10,7 @@ export interface TimeLeftProps {
   deadline: string;
 }
 
+// TODO i18n
 export function TimeLeft({ deadline }: TimeLeftProps) {
   const timeLeft = dayjs(deadline).fromNow(true);
 
@@ -30,5 +31,5 @@ export function TimeLeft({ deadline }: TimeLeftProps) {
     return () => clearTimeout(timer);
   }, [deadline]);
 
-  return <>Ends in {timeLeft}</>;
+  return <>{timeLeft} left</>;
 }

@@ -33,6 +33,19 @@ export type SocialMediaPlatform =
   | 'WHATSAPP';
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NewcomerScoutTimeline".
+ */
+export type NewcomerScoutTimeline =
+  | {
+      dateType: 'DAY' | 'PERIOD' | 'MONTH';
+      date: string;
+      dateEnd?: string | null;
+      title: string;
+      id?: string | null;
+    }[]
+  | null;
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "ScheduleSlots".
  */
 export type ScheduleSlots =
@@ -483,9 +496,8 @@ export interface Award {
       }[]
     | null;
   newcomerScoutImage?: (number | null) | Photo;
-  newcomerScoutUrl?: string | null;
-  newcomerScoutDeadline?: string | null;
-  newcomerScoutContent?: {
+  newcomerScoutTitle?: string | null;
+  newcomerScoutInfo?: {
     root: {
       type: string;
       children: {
@@ -500,6 +512,24 @@ export interface Award {
     };
     [k: string]: unknown;
   } | null;
+  newcomerScoutPerks?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  newcomerScoutUrl?: string | null;
+  newcomerScoutDeadline?: string | null;
+  newcomerScoutTimeline?: NewcomerScoutTimeline;
   updatedAt: string;
   createdAt: string;
 }
@@ -1328,11 +1358,25 @@ export interface AwardsSelect<T extends boolean = true> {
         id?: T;
       };
   newcomerScoutImage?: T;
+  newcomerScoutTitle?: T;
+  newcomerScoutInfo?: T;
+  newcomerScoutPerks?: T;
   newcomerScoutUrl?: T;
   newcomerScoutDeadline?: T;
-  newcomerScoutContent?: T;
+  newcomerScoutTimeline?: T | NewcomerScoutTimelineSelect<T>;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "NewcomerScoutTimeline_select".
+ */
+export interface NewcomerScoutTimelineSelect<T extends boolean = true> {
+  dateType?: T;
+  date?: T;
+  dateEnd?: T;
+  title?: T;
+  id?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

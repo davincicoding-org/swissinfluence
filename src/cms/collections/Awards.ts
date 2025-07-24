@@ -242,7 +242,6 @@ export const Awards: CollectionConfig = {
             },
           ],
         },
-
         {
           label: "Newcomer Scout",
           fields: [
@@ -253,28 +252,111 @@ export const Awards: CollectionConfig = {
               relationTo: "photos",
             },
             {
-              name: "newcomerScoutUrl",
-              label: "URL",
-              type: "text",
-            },
-            {
-              name: "newcomerScoutDeadline",
-              label: "Deadline",
-              type: "date",
+              label: "Text Content",
+              type: "collapsible",
               admin: {
-                date: {
-                  pickerAppearance: "dayAndTime",
-                  displayFormat: "dd.MM.yyyy HH:mm",
-                  timeFormat: "HH:mm",
-                  timeIntervals: 60,
-                },
+                initCollapsed: true,
               },
+              fields: [
+                {
+                  name: "newcomerScoutTitle",
+                  type: "text",
+                  label: "Title",
+                  localized: true,
+                },
+                {
+                  name: "newcomerScoutInfo",
+                  type: "richText",
+                  label: "Info",
+                  localized: true,
+                },
+                {
+                  name: "newcomerScoutPerks",
+                  type: "richText",
+                  label: "Perks",
+                  localized: true,
+                },
+              ],
             },
             {
-              name: "newcomerScoutContent",
-              type: "richText",
-              label: "Content",
-              localized: true,
+              label: "Application",
+              type: "collapsible",
+              admin: {
+                initCollapsed: true,
+              },
+              fields: [
+                {
+                  name: "newcomerScoutUrl",
+                  label: "URL",
+                  type: "text",
+                },
+                {
+                  name: "newcomerScoutDeadline",
+                  label: "Deadline",
+                  type: "date",
+                  admin: {
+                    date: {
+                      pickerAppearance: "dayAndTime",
+                      displayFormat: "dd.MM.yyyy HH:mm",
+                      timeFormat: "HH:mm",
+                      timeIntervals: 60,
+                    },
+                  },
+                },
+              ],
+            },
+            {
+              label: "Timeline",
+              name: "newcomerScoutTimeline",
+              type: "array",
+              interfaceName: "NewcomerScoutTimeline",
+              fields: [
+                {
+                  type: "row",
+                  fields: [
+                    {
+                      name: "dateType",
+                      type: "select",
+                      options: [
+                        { label: "Day", value: "DAY" },
+                        { label: "Period", value: "PERIOD" },
+                        { label: "Month", value: "MONTH" },
+                      ],
+                      defaultValue: "DAY",
+                      required: true,
+                    },
+                    {
+                      name: "date",
+                      type: "date",
+                      required: true,
+                      admin: {
+                        date: {
+                          pickerAppearance: "dayOnly",
+                          displayFormat: "dd.MM.yyyy",
+                        },
+                      },
+                    },
+                    {
+                      name: "dateEnd",
+                      type: "date",
+                      admin: {
+                        condition: (_, siblingData) =>
+                          siblingData.dateType === "PERIOD",
+                        date: {
+                          pickerAppearance: "dayOnly",
+                          displayFormat: "dd.MM.yyyy",
+                        },
+                      },
+                    },
+                  ],
+                },
+                {
+                  name: "title",
+                  type: "text",
+                  required: true,
+                  localized: true,
+                },
+              ],
             },
           ],
         },
