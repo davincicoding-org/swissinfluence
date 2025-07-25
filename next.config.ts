@@ -5,6 +5,7 @@
 import "./src/env.js";
 
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
 import { withPayload } from "@payloadcms/next/withPayload";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -42,6 +43,10 @@ const config: NextConfig = {
   },
 };
 
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: env.ANALYZE === "true",
+});
+
 const withNextIntl = createNextIntlPlugin();
 
-export default withPayload(withNextIntl(config));
+export default withBundleAnalyzer(withPayload(withNextIntl(config)));
