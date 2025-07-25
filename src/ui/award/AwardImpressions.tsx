@@ -38,13 +38,10 @@ export function AwardImpressions({
             {photos.map((image, index) => (
               <Image
                 resource={image}
-                alt={
-                  image.width && image.height
-                    ? `${(image.width / image.height) * 384 * 2}px`
-                    : `Award impression ${index + 1}`
-                }
+                alt={`Award impression ${index + 1}`}
                 key={image.id}
-                className="h-96 w-auto shrink-0"
+                className="shrink-0"
+                imgClassName="h-96 w-auto"
                 sizes={
                   image.width && image.height
                     ? `${(image.width / image.height) * 384 * 2}px`

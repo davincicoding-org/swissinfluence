@@ -49,7 +49,7 @@ export function Schedule({ slots }: ScheduleProps) {
                       })
                     : null}
                 </p>
-                <p className="text-nowrap text-xl font-medium leading-none">
+                <p className="pr-2 text-xl font-medium leading-tight">
                   {slot.title}
                 </p>
               </Accordion.Control>
