@@ -22,10 +22,21 @@ import { MotionProvider } from "@/ui/motion";
 import { theme } from "@/ui/theme";
 import { cn } from "@/ui/utils";
 
-const poppins = Montserrat({
+// // Load critical font for PageHero
+// Takes 500ms less to load (1.5s -> 1s)
+// MAYBE this is not even needed
+const criticalFont = Montserrat({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: "300",
   display: "swap",
+  preload: true,
+});
+
+const font = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
+  preload: false,
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -57,7 +68,7 @@ export default async function LocaleLayout({
       <head>
         <ColorSchemeScript forceColorScheme="light" />
       </head>
-      <body className={cn("overscroll-x-none", poppins.className)}>
+      <body className={cn("overscroll-x-none", font.className)}>
         <div className="scroll-top-anchor" />
         <MantineProvider theme={theme}>
           <NextIntlClientProvider messages={messages}>
