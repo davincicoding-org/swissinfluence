@@ -20,7 +20,6 @@ import { AwardNomination } from "@/ui/award/AwardNomination";
 import { HallOfFame } from "@/ui/award/HallOfFame";
 import { useHeaderContent } from "@/ui/award/hooks";
 import { NewcomerScout } from "@/ui/award/NewcomerScout";
-import { BrandsMarquee } from "@/ui/components/BrandsMarquee";
 import { CampaignDiscovery } from "@/ui/components/CampaignDiscovery";
 import { EventOverview } from "@/ui/components/EventOverview";
 import { NavElement } from "@/ui/components/NavElement";
@@ -72,11 +71,11 @@ export function AwardPage({
               </Button>
             )
           }
-          footer={
-            currentAward ? (
-              <BrandsMarquee brands={currentAward.partners} />
-            ) : null
-          }
+          // footer={
+          //   currentAward ? (
+          //     <BrandsMarquee brands={currentAward.partners} />
+          //   ) : null
+          // }
         />
 
         <main className="relative z-20 bg-white/80 pb-12 backdrop-blur">

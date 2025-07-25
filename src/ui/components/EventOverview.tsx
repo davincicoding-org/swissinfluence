@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Button, Paper } from "@mantine/core";
 import { IconCalendar, IconMapPin, IconTicket } from "@tabler/icons-react";
 import dayjs from "dayjs";

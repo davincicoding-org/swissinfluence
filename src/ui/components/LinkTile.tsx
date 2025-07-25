@@ -44,7 +44,7 @@ export function LinkTile<R extends string>({
         />
         <div
           className={cn(
-            "absolute inset-0 flex items-center justify-center hyphens-auto text-balance bg-neutral-700/50 px-4 text-center font-semibold uppercase !leading-tight tracking-wider text-white duration-500 group-hover:bg-mocha-500/80 group-hover:backdrop-blur-sm",
+            "absolute inset-0 flex items-center justify-center hyphens-auto text-balance bg-neutral-700/50 px-4 text-center font-medium uppercase !leading-tight tracking-wider text-white duration-500 group-hover:bg-mocha-500/80 group-hover:backdrop-blur-sm",
             "@sm:text-4xl @lg:text-5xl text-3xl",
           )}
         >

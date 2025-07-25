@@ -1,29 +1,28 @@
-"use client";
-
 import type { BoxProps, TimelineProps } from "@mantine/core";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
   Box,
   Button,
   Center,
   Divider,
   Paper,
-  ScrollArea,
-  SegmentedControl,
-  Spoiler,
   Timeline,
+  TimelineItem,
 } from "@mantine/core";
-import { useViewportSize } from "@mantine/hooks";
-import { IconChevronDown } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { AnimatePresence } from "motion/react";
-import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
 
 import type { NewcomerScoutTimeline, Photo } from "@/payload-types";
 import type { RichTextProps } from "@/ui/components/RichText";
+import {
+  AnimatedTabs,
+  AnimatedTabsControls,
+  AnimatedTabsPanel,
+} from "@/ui/components/AnimatedTabs";
 import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
+import { ScrollableSpoiler } from "@/ui/components/ScrollableSpoiler";
 import { TimeLeft } from "@/ui/components/TimeLeft";
 import { cn, derivative } from "@/ui/utils";
 
@@ -53,8 +52,6 @@ export function NewcomerScout({ className, ...props }: AwardNominationProps) {
 
 // MARK: Tabs View
 
-type TabValue = "INFO" | "PERKS" | "TIMELINE";
-
 function TabsView({
   image,
   info,
@@ -65,63 +62,59 @@ function TabsView({
   className,
   ...props
 }: AwardNominationProps & BoxProps) {
-  const [activeTab, setActiveTab] = useState<TabValue>("INFO");
   const t = useTranslations("award.newcomer-scout");
 
   return (
-    <Box className={cn("", className)} {...props}>
-      <div className="relative">
-        <Image
-          resource={image}
-          alt="Newcomer Scout"
-          className="aspect-square sm:aspect-video"
-          sizes="(max-width: 430px) 800px, 1500px"
-        />
-        <SegmentedControl
-          value={activeTab}
-          classNames={{
-            root: "p-1.5 rounded-none bg-white/30 backdrop-blur-sm absolute bottom-0 inset-x-0",
-            control: "[&:not([data-active=true])]:text-black",
-            label: "font-medium text-inherit",
-          }}
-          size="md"
-          withItemsBorders={false}
-          variant="light"
-          onChange={(value) => setActiveTab(value as TabValue)}
-          data={[
-            { label: t("info"), value: "INFO" },
-            { label: t("perks"), value: "PERKS" },
-            { label: t("timeline"), value: "TIMELINE" },
-          ]}
-        />
-      </div>
+    <AnimatedTabs defaultValue="INFO">
+      <Box className={cn("", className)} {...props}>
+        <div className="relative">
+          <Image
+            resource={image}
+            alt="Newcomer Scout"
+            className="aspect-square sm:aspect-video"
+            sizes="(max-width: 430px) 800px, 1500px"
+          />
+          <AnimatedTabsControls
+            classNames={{
+              root: "p-1.5 rounded-none bg-white/30 backdrop-blur-sm absolute bottom-0 inset-x-0",
+              control: "[&:not([data-active=true])]:text-black",
+              label: "font-medium text-inherit",
+            }}
+            size="md"
+            withItemsBorders={false}
+            variant="light"
+            data={[
+              { label: t("info"), value: "INFO" },
+              { label: t("perks"), value: "PERKS" },
+              { label: t("timeline"), value: "TIMELINE" },
+            ]}
+          />
+        </div>
 
-      <AnimatePresence mode="wait">
-        {activeTab === "INFO" && (
-          <m.div
+        <AnimatePresence mode="wait">
+          <AnimatedTabsPanel
             key="info"
+            value="INFO"
             className="p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <RichText data={info} />
-          </m.div>
-        )}
-        {activeTab === "PERKS" && (
-          <m.div
+          </AnimatedTabsPanel>
+          <AnimatedTabsPanel
             key="perks"
+            value="PERKS"
             className="p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
             <RichText data={perks} />
-          </m.div>
-        )}
-        {activeTab === "TIMELINE" && (
-          <m.div
+          </AnimatedTabsPanel>
+          <AnimatedTabsPanel
             key="timeline"
+            value="TIMELINE"
             className="px-4 py-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -130,27 +123,27 @@ function TabsView({
             <Center>
               <TimelineView timeline={timeline} />
             </Center>
-          </m.div>
-        )}
-      </AnimatePresence>
+          </AnimatedTabsPanel>
+        </AnimatePresence>
 
-      <div className="px-3 pb-3">
-        <Button
-          radius="md"
-          size="md"
-          fullWidth
-          className="uppercase"
-          component="a"
-          href={formURL}
-          target="_blank"
-        >
-          {t("CTA")}
-        </Button>
-        <p className="mt-2 text-center text-sm font-medium uppercase tracking-wider">
-          <TimeLeft deadline={deadline} />
-        </p>
-      </div>
-    </Box>
+        <div className="px-3 pb-3">
+          <Button
+            radius="md"
+            size="md"
+            fullWidth
+            className="uppercase"
+            component="a"
+            href={formURL}
+            target="_blank"
+          >
+            {t("CTA")}
+          </Button>
+          <p className="mt-2 text-center text-sm font-medium uppercase tracking-wider">
+            <TimeLeft deadline={deadline} />
+          </p>
+        </div>
+      </Box>
+    </AnimatedTabs>
   );
 }
 
@@ -167,56 +160,43 @@ function ColumnsView({
   ...props
 }: AwardNominationProps & BoxProps) {
   const t = useTranslations("award.newcomer-scout");
-  const { height } = useViewportSize();
 
   return (
     <Box
       className={cn("grid grid-cols-[1fr_400px] gap-1", className)}
       {...props}
     >
-      <ScrollArea
-        scrollbars="y"
+      <ScrollableSpoiler
         classNames={{
-          viewport: "max-h-[50vh]",
+          scrollArea: {
+            viewport: "max-h-[50vh]",
+          },
         }}
       >
-        <Spoiler
-          hideLabel={null}
-          showLabel={<IconChevronDown />}
-          classNames={{
-            root: cn(
-              "mb-0 data-[has-spoiler=true]:after:absolute data-[has-spoiler=true]:after:inset-x-0 data-[has-spoiler=true]:after:bottom-0 data-[has-spoiler=true]:after:h-24 data-[has-spoiler=true]:after:w-full data-[has-spoiler=true]:after:bg-gradient-to-t data-[has-spoiler=true]:after:from-white data-[has-spoiler=true]:after:from-30% data-[has-spoiler=true]:after:to-transparent",
-            ),
-            control:
-              "top-[calc(100%-3rem)] !left-1/2 -translate-x-1/2 h-8 w-8 border border-gray-300 border-solid bg-white flex justify-center items-center rounded-full z-10",
-          }}
-          maxHeight={height * 0.5}
-        >
-          <div className="py-6">
-            <RichText data={info} className="max-w-none px-8" />
-            <Divider
-              label={t("perks")}
-              labelPosition="center"
-              classNames={{
-                root: "mt-5 mb-2",
-                label: "text-3xl",
-              }}
-            />
-            <RichText data={perks} className="max-w-none px-8" />
-            <Divider
-              label={t("timeline")}
-              labelPosition="center"
-              classNames={{
-                root: "my-5",
-                label: "text-3xl",
-              }}
-            />
-            <Center>
-              <TimelineView timeline={timeline} />
-            </Center>
-          </div>
-        </Spoiler>
-      </ScrollArea>
+        <div className="py-6">
+          <RichText data={info} className="max-w-none px-8" />
+          <Divider
+            label={t("perks")}
+            labelPosition="center"
+            classNames={{
+              root: "mt-5 mb-2",
+              label: "text-3xl",
+            }}
+          />
+          <RichText data={perks} className="max-w-none px-8" />
+          <Divider
+            label={t("timeline")}
+            labelPosition="center"
+            classNames={{
+              root: "my-5",
+              label: "text-3xl",
+            }}
+          />
+          <Center>
+            <TimelineView timeline={timeline} />
+          </Center>
+        </div>
+      </ScrollableSpoiler>
 
       <div className="relative grid">
         <Image
@@ -293,7 +273,7 @@ function TimelineView({ timeline, ...props }: TimelineViewProps) {
   return (
     <Timeline active={activeIndex} {...props}>
       {items.map((item) => (
-        <Timeline.Item
+        <TimelineItem
           key={item.id}
           title={item.title}
           classNames={{
@@ -302,7 +282,7 @@ function TimelineView({ timeline, ...props }: TimelineViewProps) {
           }}
         >
           {item.date}
-        </Timeline.Item>
+        </TimelineItem>
       ))}
     </Timeline>
   );

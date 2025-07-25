@@ -132,7 +132,7 @@ export function HallOfFame({ awards }: HallOfFameProps) {
                                       className={cn(
                                         "pl-4 pr-8 text-lg font-medium uppercase leading-none tracking-widest",
                                         {
-                                          "animate-shimmer bg-shiny-gold bg-clip-text font-semibold text-transparent":
+                                          "animate-shimmer bg-shiny-gold bg-clip-text font-medium text-transparent":
                                             index === 0,
                                           "animate-shimmer bg-shiny-silver bg-clip-text font-medium text-transparent":
                                             index === 1,

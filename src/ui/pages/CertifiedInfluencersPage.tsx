@@ -5,6 +5,7 @@ import type { Certification, Photo } from "@/payload-types";
 import type { CategoryWithInfluencers } from "@/types";
 import { HTMLRichText } from "@/ui/components/HTMLRichText";
 import { PageHero } from "@/ui/components/PageHero";
+import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 
 import { CertificationRegistration } from "../network/CertificationRegistration";
@@ -36,7 +37,7 @@ export function CertifiedInfluencersPage({
               image={certification.influencerImage as Photo}
               title={certification.influencerTitle}
               headline={certification.influencerHeadline}
-              content={certification.influencerContent}
+              content={<RichText data={certification.influencerContent} />}
               application={{
                 url: certification.influencerApplicationUrl,
                 label: certification.influencerApplicationCta,
@@ -46,7 +47,7 @@ export function CertifiedInfluencersPage({
               image={certification.agencyImage as Photo}
               title={certification.agencyTitle}
               headline={certification.agencyHeadline}
-              content={certification.agencyContent}
+              content={<RichText data={certification.agencyContent} />}
               application={{
                 url: certification.agencyApplicationUrl,
                 label: certification.agencyApplicationCta,

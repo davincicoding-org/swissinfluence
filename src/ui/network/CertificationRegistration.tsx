@@ -1,13 +1,12 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { Button, FocusTrap, Modal, Paper } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
-import type { RichTextProps } from "@/ui/components/RichText";
 import { Image } from "@/ui/components/Image";
-import { RichText } from "@/ui/components/RichText";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
 
@@ -15,7 +14,7 @@ export interface CertificationRegistrationProps {
   title: string;
   headline: string;
   image: Photo;
-  content: RichTextProps["data"];
+  content: ReactNode;
   application: {
     label: string;
     url: string;
@@ -77,10 +76,7 @@ export function CertificationRegistration({
         }}
       >
         <FocusTrap.InitialFocus />
-        <RichText
-          // className="prose prose-p:m-3 prose-li:m-0"
-          data={content}
-        />
+        {content}
         <Button
           component="a"
           mt="lg"

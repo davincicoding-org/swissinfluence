@@ -1,14 +1,16 @@
-"use client";
-
-import { useMemo, useState } from "react";
-import { ScrollArea, SegmentedControl } from "@mantine/core";
+import { useMemo } from "react";
+import { ScrollArea } from "@mantine/core";
 import dayjs from "dayjs";
 import { AnimatePresence } from "motion/react";
-import * as m from "motion/react-m";
 
 import type { Campaign } from "@/types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
 
+import {
+  AnimatedTabs,
+  AnimatedTabsControls,
+  AnimatedTabsPanel,
+} from "./AnimatedTabs";
 import { CampaignTile } from "./CampaignTile";
 
 export interface CampaignDiscoveryProps {
@@ -59,57 +61,55 @@ export function CampaignDiscovery({
     };
   }, [campaigns]);
 
-  const [activeTab, setActiveTab] = useState<"current" | "past">(
-    currentCampaigns.length > 0 ? "current" : "past",
-  );
-
   return (
-    <div>
-      <ScrollArea
-        scrollbars="x"
-        type="never"
-        classNames={{
-          root: "-mx-4",
-        }}
-      >
-        <SegmentedControl
-          size="lg"
-          color="mocha"
-          radius="md"
-          withItemsBorders={false}
-          data={[
-            {
-              value: "current",
-              label: labels.current,
-              disabled: currentCampaigns.length === 0,
-            },
-            {
-              value: "past",
-              label: labels.past,
-              disabled: pastCampaigns.length === 0,
-            },
-          ]}
-          classNames={{
-            root: "bg-transparent px-4",
-          }}
-          value={activeTab}
-          onChange={(value) => setActiveTab(value as "current" | "past")}
-        />
-      </ScrollArea>
-      <FadeContainer gradientWidth={16} withPadding>
+    <AnimatedTabs
+      defaultValue={currentCampaigns.length > 0 ? "CURRENT" : "PAST"}
+    >
+      <div>
         <ScrollArea
           scrollbars="x"
+          type="never"
           classNames={{
-            content: "flex py-4",
-            scrollbar: "mx-4",
+            root: "-mx-4",
           }}
         >
-          <div className="h-4 w-4 shrink-0" />
-          <div className="grow">
-            <AnimatePresence mode="wait">
-              {activeTab === "current" && (
-                <m.div
+          <AnimatedTabsControls
+            size="lg"
+            color="mocha"
+            radius="md"
+            withItemsBorders={false}
+            data={[
+              {
+                value: "CURRENT",
+                label: labels.current,
+                disabled: currentCampaigns.length === 0,
+              },
+              {
+                value: "PAST",
+                label: labels.past,
+                disabled: pastCampaigns.length === 0,
+              },
+            ]}
+            classNames={{
+              root: "bg-transparent px-4",
+            }}
+          />
+        </ScrollArea>
+
+        <FadeContainer gradientWidth={16} withPadding>
+          <ScrollArea
+            scrollbars="x"
+            classNames={{
+              content: "flex py-4",
+              scrollbar: "mx-4",
+            }}
+          >
+            <div className="h-4 w-4 shrink-0" />
+            <div className="grow">
+              <AnimatePresence mode="wait">
+                <AnimatedTabsPanel
                   key="current"
+                  value="CURRENT"
                   className="flex grow flex-nowrap gap-8"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -122,11 +122,10 @@ export function CampaignDiscovery({
                       className="w-80 max-w-[70vw] shrink-0 grow-0"
                     />
                   ))}
-                </m.div>
-              )}
-              {activeTab === "past" && (
-                <m.div
+                </AnimatedTabsPanel>
+                <AnimatedTabsPanel
                   key="past"
+                  value="PAST"
                   className="flex grow flex-nowrap gap-8"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -140,13 +139,13 @@ export function CampaignDiscovery({
                       past
                     />
                   ))}
-                </m.div>
-              )}
-            </AnimatePresence>
-          </div>
-          <div className="h-4 w-4 shrink-0" />
-        </ScrollArea>
-      </FadeContainer>
-    </div>
+                </AnimatedTabsPanel>
+              </AnimatePresence>
+            </div>
+            <div className="h-4 w-4 shrink-0" />
+          </ScrollArea>
+        </FadeContainer>
+      </div>
+    </AnimatedTabs>
   );
 }

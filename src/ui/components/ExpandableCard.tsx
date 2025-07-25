@@ -22,7 +22,7 @@ import { TextOverflowReveal } from "./TextOverflowReveal";
 
 interface ExpandableCardProps {
   title: string;
-  description: string;
+  description?: string;
   image: Photo;
   logo?: {
     photo: Photo;
@@ -37,6 +37,7 @@ interface ExpandableCardProps {
   className?: string;
 }
 
+// TODO make this prettier
 export function ExpandableCard({
   title,
   description,
@@ -63,6 +64,11 @@ export function ExpandableCard({
       >
         <div className="flex w-full flex-col gap-4">
           <div className="relative overflow-clip rounded-lg">
+            {badge && (
+              <Badge size="lg" className="absolute left-3 top-3 z-10">
+                {badge}
+              </Badge>
+            )}
             <Image
               resource={image}
               alt={title}
@@ -77,9 +83,11 @@ export function ExpandableCard({
             >
               <TextOverflowReveal className="text-nowrap pl-2" text={title} />
             </Text>
-            <Text className="min-w-0 truncate px-2 text-center text-base text-neutral-600">
-              {description}
-            </Text>
+            {description && (
+              <Text className="min-w-0 truncate px-2 text-center text-base text-neutral-600">
+                {description}
+              </Text>
+            )}
           </div>
         </div>
       </Paper>

@@ -53,9 +53,7 @@ export function AwardJury({ members }: AwardJuryProps) {
                 sizes="128px"
               />
               <div className="grow pl-3">
-                <p className="mb-1 font-semibold leading-tight">
-                  {member.name}
-                </p>
+                <p className="mb-1 font-medium leading-tight">{member.name}</p>
                 <div>
                   <p className="text-pretty text-sm leading-tight text-neutral-600">
                     {member.description}
