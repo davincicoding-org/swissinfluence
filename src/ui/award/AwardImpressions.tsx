@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { Button, Center, Flex, Paper } from "@mantine/core";
+import { Button, Paper } from "@mantine/core";
 import { useInView } from "motion/react";
 import { useTranslations } from "next-intl";
 import Marquee from "react-fast-marquee";
@@ -34,7 +34,7 @@ export function AwardImpressions({
         className={cn("overflow-clip", className)}
       >
         <Marquee pauseOnHover autoFill play={isInView} speed={50}>
-          <Flex wrap="nowrap">
+          <div className="flex flex-nowrap">
             {photos.map((image, index) => (
               <Image
                 resource={image}
@@ -50,12 +50,12 @@ export function AwardImpressions({
                 loading="lazy"
               />
             ))}
-          </Flex>
+          </div>
         </Marquee>
       </Paper>
 
       {afterMovieUrl && (
-        <Center className="mt-8 sm:mt-12">
+        <div className="mt-8 flex justify-center sm:mt-12">
           <Button
             color="mocha"
             size="xl"
@@ -73,7 +73,7 @@ export function AwardImpressions({
           >
             {t("afterMovie")}
           </Button>
-        </Center>
+        </div>
       )}
     </>
   );

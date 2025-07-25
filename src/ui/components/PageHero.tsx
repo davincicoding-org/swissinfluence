@@ -1,5 +1,4 @@
 import { type ReactNode } from "react";
-import { Flex, Paper, Stack } from "@mantine/core";
 
 import type { Photo } from "@/payload-types";
 import { cn } from "@/ui/utils";
@@ -24,11 +23,8 @@ export function PageHero({
   className,
 }: PageHeroProps) {
   return (
-    <Paper
-      component="header"
-      shadow="sm"
-      radius={0}
-      className={cn("relative z-10 flex h-svh flex-col", className)}
+    <header
+      className={cn("relative z-10 flex h-svh flex-col shadow-md", className)}
     >
       <Image
         resource={image}
@@ -44,23 +40,19 @@ export function PageHero({
           "before:absolute before:inset-x-0 before:-top-32 before:h-32 before:bg-gradient-to-t before:from-black/60 before:to-transparent before:content-['']",
         )}
       >
-        <Flex
-          gap="lg"
-          wrap="wrap"
-          className="p-4 max-sm:flex-col sm:items-end sm:p-8"
-        >
-          <Stack gap="xs" className="min-w-0 flex-1 max-sm:text-center">
+        <div className="flex flex-wrap gap-8 p-4 max-sm:flex-col sm:items-end sm:p-8">
+          <div className="flex min-w-0 flex-1 flex-col gap-3 max-sm:text-center">
             <p className="hyphens-auto text-balance text-5xl font-light uppercase tracking-wider text-mocha-300 sm:text-5xl md:text-6xl lg:text-7xl">
               {title}
             </p>
             <p className="text-balance text-xl font-light uppercase tracking-widest text-white empty:hidden sm:text-2xl md:text-3xl">
               {headline}
             </p>
-          </Stack>
+          </div>
           {CTA}
-        </Flex>
+        </div>
         {footer}
       </div>
-    </Paper>
+    </header>
   );
 }

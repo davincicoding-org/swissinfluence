@@ -7,7 +7,6 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useRef,
   useState,
 } from "react";
@@ -82,9 +81,7 @@ export function HoverContentItem({
 
   const isActive = activeItem === id;
 
-  useEffect(() => {
-    registerContent(id, children);
-  }, [id, children, registerContent]);
+  registerContent(id, children);
 
   return (
     <>

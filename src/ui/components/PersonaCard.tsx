@@ -2,7 +2,7 @@
 
 import type { PaperProps } from "@mantine/core";
 import type { HTMLAttributes, MouseEvent } from "react";
-import { ActionIcon, Flex, Paper } from "@mantine/core";
+import { ActionIcon, Paper } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 import type { ProfilePicture, Socials } from "@/payload-types";
@@ -95,7 +95,7 @@ export function PersonaCard({
               </p>
             </div>
           </div>
-          <Flex gap={4} direction="column" className="empty:hidden">
+          <div className="flex flex-col gap-1 empty:hidden">
             {socials.map((social) => (
               <ActionIcon
                 key={social.platform}
@@ -117,7 +117,7 @@ export function PersonaCard({
                 />
               </ActionIcon>
             ))}
-          </Flex>
+          </div>
         </div>
       </div>
     </Paper>

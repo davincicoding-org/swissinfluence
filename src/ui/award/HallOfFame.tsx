@@ -1,18 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Carousel } from "@mantine/carousel";
-import {
-  Badge,
-  Center,
-  Paper,
-  ScrollArea,
-  SegmentedControl,
-} from "@mantine/core";
+import { Badge, Paper, ScrollArea, SegmentedControl } from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
+
+import "@mantine/carousel/styles.css";
+
+import { Carousel } from "@mantine/carousel";
 
 import type { AwardRanking } from "@/types";
 import { Image } from "@/ui/components/Image";
@@ -62,7 +59,7 @@ export function HallOfFame({ awards }: HallOfFameProps) {
               >
                 {categories.map(({ category, nominees }) => (
                   <div key={category.id} className="relative">
-                    <Center className="absolute inset-x-0 top-0 z-[5] -translate-y-1/2 px-3">
+                    <div className="absolute inset-x-0 top-0 z-[5] flex -translate-y-1/2 justify-center px-3">
                       <Badge
                         size="xl"
                         radius="md"
@@ -70,7 +67,7 @@ export function HallOfFame({ awards }: HallOfFameProps) {
                       >
                         {category.name}
                       </Badge>
-                    </Center>
+                    </div>
 
                     <Paper
                       radius="lg"

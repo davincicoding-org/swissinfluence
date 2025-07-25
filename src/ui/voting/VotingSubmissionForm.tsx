@@ -3,7 +3,6 @@
 import {
   Box,
   Button,
-  Center,
   Checkbox,
   Collapse,
   Paper,
@@ -131,7 +130,7 @@ export function VotingSubmissionForm({
             </Collapse>
           </div>
         </div>
-        <Center className="mb-3 mt-5">
+        <div className="mb-3 mt-5 flex justify-center">
           <Checkbox
             label={t("newsletter")}
             className="mx-auto"
@@ -139,7 +138,7 @@ export function VotingSubmissionForm({
             disabled={isSubmitting}
             {...register("newsletter")}
           />
-        </Center>
+        </div>
 
         <div className="flex flex-col gap-2">
           <Button

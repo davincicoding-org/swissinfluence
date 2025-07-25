@@ -21,7 +21,7 @@ import {
   IconTrophy,
 } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
-import { Link, scroller } from "react-scroll";
+import { Link } from "react-scroll";
 
 import { cn } from "../utils";
 
@@ -71,14 +71,6 @@ export function AwardNavigationProvider({ children }: PropsWithChildren) {
     setSections((prev) =>
       prev.find((s) => s.id === section.id) ? prev : [...prev, section],
     );
-  }, []);
-
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash) return;
-
-    const name = hash.replace("#", "");
-    scroller.scrollTo(name, {});
   }, []);
 
   return (

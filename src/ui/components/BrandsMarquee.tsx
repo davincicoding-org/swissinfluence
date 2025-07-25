@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { Flex, Tooltip } from "@mantine/core";
+import { Tooltip } from "@mantine/core";
 import { useInView } from "motion/react";
 import Marquee from "react-fast-marquee";
 
@@ -27,7 +27,7 @@ export function BrandsMarquee({ brands }: BrandsMarqueeProps) {
           play={isInView}
           speed={isInView ? 50 : 0}
         >
-          <Flex className="gap-8 py-3 pr-8">
+          <div className="flex gap-8 py-3 pr-8">
             {brands.map((partner) => {
               const logo = ensureResolved(partner.logo);
               if (!logo) return null;
@@ -52,7 +52,7 @@ export function BrandsMarquee({ brands }: BrandsMarqueeProps) {
                 </a>
               );
             })}
-          </Flex>
+          </div>
         </Marquee>
       </FadeContainer>
     </div>

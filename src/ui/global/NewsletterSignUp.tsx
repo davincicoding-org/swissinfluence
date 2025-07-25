@@ -1,4 +1,4 @@
-import { Button, Modal, Stack, TextInput } from "@mantine/core";
+import { Button, Modal, TextInput } from "@mantine/core";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
@@ -43,8 +43,8 @@ export function NewsletterSignUp({
       }}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Stack>
-          <Stack gap={8}>
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
             <div className="flex gap-2">
               <TextInput
                 placeholder={t("placeholders.firstName")}
@@ -65,11 +65,11 @@ export function NewsletterSignUp({
               {...register("email", { required: true })}
               error={formState.errors.email !== undefined}
             />
-          </Stack>
+          </div>
           <Button type="submit" fullWidth loading={submitting}>
             {t("submit")}
           </Button>
-        </Stack>
+        </div>
       </form>
     </Modal>
   );

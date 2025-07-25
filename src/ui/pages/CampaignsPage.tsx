@@ -1,4 +1,4 @@
-import { Button, Paper, Stack } from "@mantine/core";
+import { Button, Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Page, Photo } from "@/payload-types";
@@ -26,7 +26,7 @@ export function CampaignsPage({
     <>
       <PageHero image={heroImage} title={t("title")} />
       <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
-        <Stack component="section" className="container" gap="xl">
+        <section className="container flex flex-col gap-8">
           {content && (
             <Paper
               withBorder
@@ -74,7 +74,7 @@ export function CampaignsPage({
               {t("request.CTA")}
             </Button>
           </Paper>
-        </Stack>
+        </section>
       </main>
     </>
   );

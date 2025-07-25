@@ -1,4 +1,5 @@
-import "./globals.css";
+import "@/ui/styles/mantine.css";
+import "@/ui/styles/tailwind.css";
 
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
@@ -63,13 +64,12 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} data-scroll-behavior="smooth" {...mantineHtmlProps}>
-      <Scroll />
+      {/* <Scroll /> */}
 
       <head>
         <ColorSchemeScript forceColorScheme="light" />
       </head>
       <body className={cn("overscroll-x-none", font.className)}>
-        <div className="scroll-top-anchor" />
         <MantineProvider theme={theme}>
           <NextIntlClientProvider messages={messages}>
             <MotionProvider>

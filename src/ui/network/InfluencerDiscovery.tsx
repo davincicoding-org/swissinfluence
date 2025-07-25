@@ -1,8 +1,6 @@
-"use client";
-
 import type { ComboboxItem } from "@mantine/core";
-import { useMemo, useState } from "react";
-import { Button, Flex, Paper, ScrollArea, Tabs } from "@mantine/core";
+import { useMemo } from "react";
+import { Paper, ScrollArea } from "@mantine/core";
 
 import type { CategoryWithInfluencers } from "@/types";
 import { Link } from "@/i18n/navigation";
@@ -10,6 +8,12 @@ import { Image } from "@/ui/components/Image";
 import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
 import { cn } from "@/ui/utils";
 import { ensureResolved } from "@/utils/payload";
+
+import {
+  AnimatedTabs,
+  AnimatedTabsControls,
+  AnimatedTabsPanel,
+} from "../components/AnimatedTabs";
 
 export interface InfluencerDiscoveryProps {
   pool: Array<CategoryWithInfluencers>;
@@ -20,10 +24,6 @@ export function InfluencerDiscovery({
   pool,
   className,
 }: InfluencerDiscoveryProps) {
-  const [selectedCategoryID, setSelectedCategoryID] = useState(
-    pool[0]?.category.id.toString(),
-  );
-
   const categoryOptions = useMemo(
     () =>
       pool.map<ComboboxItem>(({ category: { id, name } }) => ({
@@ -40,61 +40,33 @@ export function InfluencerDiscovery({
       radius="lg"
       className={cn("overflow-clip bg-neutral-200", className)}
     >
-      <Tabs
-        variant="pills"
-        radius="md"
-        value={selectedCategoryID}
-        onChange={(nextCategory) =>
-          nextCategory && setSelectedCategoryID(nextCategory)
-        }
-      >
+      <AnimatedTabs defaultValue={pool[0]?.category.id.toString()}>
         <Paper className="overflow-clip bg-mocha-50" radius={0}>
           <ScrollArea
             scrollbars="x"
             type="never"
             classNames={{ viewport: "overscroll-x-contain" }}
           >
-            <Flex gap="xs" className="flex-nowrap py-2">
-              <div className="h-px w-px shrink-0" />
-
-              {categoryOptions.map(({ value, label }) => (
-                <Button
-                  variant={selectedCategoryID === value ? "filled" : "subtle"}
-                  size="sm"
-                  radius="md"
-                  key={value}
-                  className="shrink-0 text-center capitalize"
-                  onClick={(e) => {
-                    e.currentTarget.scrollIntoView({
-                      inline: "nearest",
-                      block: "nearest",
-                      behavior: "smooth",
-                    });
-                    setSelectedCategoryID(value);
-                    e.currentTarget.scrollIntoView({
-                      inline: "nearest",
-                      block: "nearest",
-                      behavior: "smooth",
-                    });
-                  }}
-                >
-                  {label}
-                </Button>
-              ))}
-              <div className="h-px w-px shrink-0" />
-            </Flex>
+            <AnimatedTabsControls
+              data={categoryOptions}
+              size="lg"
+              radius="md"
+              className="p-2"
+              color="mocha"
+              withItemsBorders={false}
+            />
           </ScrollArea>
         </Paper>
 
         {pool.map(({ category, influencers }) => (
-          <Tabs.Panel key={category.id} value={category.id.toString()}>
+          <AnimatedTabsPanel key={category.id} value={category.id.toString()}>
             <ScrollArea
               scrollbars="x"
               classNames={{
                 viewport: "overscroll-x-contain snap-x snap-mandatory",
               }}
             >
-              <Flex p="lg" gap="md">
+              <div className="flex gap-4 p-8">
                 {influencers.map((influencer) => {
                   const image = ensureResolved(influencer.image);
 
@@ -132,11 +104,11 @@ export function InfluencerDiscovery({
                     </Link>
                   );
                 })}
-              </Flex>
+              </div>
             </ScrollArea>
-          </Tabs.Panel>
+          </AnimatedTabsPanel>
         ))}
-      </Tabs>
+      </AnimatedTabs>
     </Paper>
   );
 }

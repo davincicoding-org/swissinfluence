@@ -8,7 +8,6 @@ import {
   Badge,
   Box,
   Button,
-  Center,
   Divider,
   Indicator,
   Menu,
@@ -166,7 +165,7 @@ export function VotingSelectionModal({
           );
         })}
 
-        <Center className="pointer-events-none sticky bottom-0 z-10 p-3 *:pointer-events-auto">
+        <div className="pointer-events-none sticky bottom-0 z-10 flex justify-center p-3 *:pointer-events-auto">
           <AnimatePresence mode="wait">
             {votes.length > 0 ? (
               <Menu
@@ -257,7 +256,7 @@ export function VotingSelectionModal({
               </Paper>
             )}
           </AnimatePresence>
-        </Center>
+        </div>
       </Modal>
       <Modal
         opened={isSubmissionOpen}

@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import {
   ActionIcon,
   Button,
-  Center,
   FocusTrap,
   Modal,
   Paper,
@@ -175,10 +174,9 @@ function CategoryCard({
             </Marquee>
           )}
         </Paper>
-        <Center
-          pos="absolute"
+        <div
           className={cn(
-            "inset-x-0 bottom-0 z-10 translate-y-1/2 transition-transform duration-300 empty:hidden",
+            "absolute inset-x-0 bottom-0 z-10 flex translate-y-1/2 justify-center transition-transform duration-300 empty:hidden",
             {
               "translate-y-0": !isTop,
             },
@@ -205,7 +203,7 @@ function CategoryCard({
               VIEW ALL
             </Button>
           ) : null}
-        </Center>
+        </div>
       </div>
       <Modal
         opened={isExpanded}

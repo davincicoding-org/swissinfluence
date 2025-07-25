@@ -1,4 +1,4 @@
-import { Paper, Stack } from "@mantine/core";
+import { Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Agency, Page, Photo } from "@/payload-types";
@@ -44,11 +44,11 @@ export function AgenciesPage({
             {t("list-title")}
           </h3>
 
-          <Stack gap="xl">
+          <div className="flex flex-col gap-8">
             {agencies.map((agency) => (
               <AgencyTile key={agency.id} data={agency} />
             ))}
-          </Stack>
+          </div>
         </section>
       </main>
     </>

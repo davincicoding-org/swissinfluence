@@ -14,7 +14,6 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { IconMenu, IconWorld } from "@tabler/icons-react";
 import { AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
-import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
 import { Events } from "react-scroll";
 
@@ -113,38 +112,28 @@ export function Navigation({
   return (
     <>
       <AnimatePresence mode="wait">
-        <m.div
-          initial={{
-            y: -100,
-          }}
-          animate={{
-            y: visible ? 0 : -100,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          className={cn("fixed inset-x-0 top-0 z-10")}
+        <div
+          className={cn(
+            "fixed inset-x-0 top-0 z-10 transition-transform duration-500",
+            {
+              "-translate-y-full": !visible,
+            },
+          )}
         >
           <div className="h-16 bg-[var(--mantine-color-body)]" />
-        </m.div>
+        </div>
       </AnimatePresence>
       <AnimatePresence mode="wait">
-        <m.div
-          initial={{
-            opacity: 1,
-            y: -100,
-          }}
-          animate={{
-            y: visible ? 0 : -100,
-            opacity: visible ? 1 : 0,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          className={cn("fixed inset-x-0 top-8 z-30")}
+        <div
+          className={cn(
+            "fixed inset-x-0 top-4 z-30 transition-all duration-500 sm:top-6 md:top-8",
+            {
+              "-translate-y-full opacity-0": !visible,
+            },
+          )}
         >
           <div className="container">
-            <div className="flex h-16 items-center justify-between space-x-4 rounded-xl bg-neutral-900/80 px-4 py-6 shadow backdrop-blur">
+            <div className="animate-header-entrance flex h-16 items-center justify-between space-x-4 rounded-xl bg-neutral-900/90 px-4 py-6 shadow">
               <Link
                 href={homeLink}
                 className={cn({
@@ -168,6 +157,7 @@ export function Navigation({
                 {mainLinks.map(({ label, href, children }) => (
                   <Menu
                     key={label}
+                    radius="md"
                     disabled={!children}
                     position="bottom-start"
                     trigger="hover"
@@ -211,8 +201,12 @@ export function Navigation({
                   </Menu>
                 ))}
                 <Menu
+                  radius="md"
                   position="bottom"
-                  classNames={{ dropdown: "bg-neutral-800 border-none" }}
+                  classNames={{
+                    itemLabel: "text-center",
+                    dropdown: "bg-neutral-800 border-none",
+                  }}
                 >
                   <Menu.Target>
                     <ActionIcon
@@ -240,7 +234,7 @@ export function Navigation({
               </div>
             </div>
           </div>
-        </m.div>
+        </div>
       </AnimatePresence>
     </>
   );

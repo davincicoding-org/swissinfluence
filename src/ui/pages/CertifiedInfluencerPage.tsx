@@ -1,4 +1,4 @@
-import { ActionIcon, Flex, Paper, Stack } from "@mantine/core";
+import { ActionIcon, Paper } from "@mantine/core";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
@@ -39,7 +39,7 @@ export function CertifiedInfluencerPage({
         image={ensureResolved(image)!}
         title={name}
         CTA={
-          <Flex gap="lg" className="my-auto">
+          <div className="my-auto flex gap-6">
             {(socials ?? []).map((social) => (
               <ActionIcon
                 key={social.platform}
@@ -54,12 +54,12 @@ export function CertifiedInfluencerPage({
                 <SocialMediaPlatformIcon platform={social.platform} size={48} />
               </ActionIcon>
             ))}
-          </Flex>
+          </div>
         }
       />
       <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
         <section className="container">
-          <Stack className="mx-auto max-w-xl" gap="lg">
+          <div className="mx-auto flex max-w-xl flex-col gap-6">
             <Paper
               withBorder
               shadow="xs"
@@ -69,7 +69,7 @@ export function CertifiedInfluencerPage({
             >
               <p className="text-xl">{bio}</p>
             </Paper>
-            <Flex gap="lg" className="min-w-0 flex-wrap">
+            <div className="flex min-w-0 flex-wrap gap-6">
               <Paper
                 withBorder
                 shadow="xs"
@@ -103,9 +103,8 @@ export function CertifiedInfluencerPage({
                 <span className="text-nowrap text-lg uppercase leading-none">
                   Speaks
                 </span>
-                <Flex
-                  gap="xs"
-                  className={cn("text-4xl uppercase leading-none", {
+                <div
+                  className={cn("flex gap-3 text-4xl uppercase leading-none", {
                     "text-3xl": languages.length === 3,
                     "text-2xl": languages.length > 3,
                   })}
@@ -113,10 +112,10 @@ export function CertifiedInfluencerPage({
                   {languages.map((language) => (
                     <span key={language}>{language}</span>
                   ))}
-                </Flex>
+                </div>
               </Paper>
-            </Flex>
-            <Flex gap="lg">
+            </div>
+            <div className="flex gap-6">
               <Paper
                 withBorder
                 shadow="xs"
@@ -154,8 +153,8 @@ export function CertifiedInfluencerPage({
                   ))}
                 </ul>
               </Paper>
-            </Flex>
-          </Stack>
+            </div>
+          </div>
         </section>
       </main>
     </>

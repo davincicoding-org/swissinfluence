@@ -3,7 +3,6 @@ import { useMemo } from "react";
 import {
   Box,
   Button,
-  Center,
   Divider,
   Paper,
   Timeline,
@@ -120,9 +119,9 @@ function TabsView({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <Center>
+            <div className="flex justify-center">
               <TimelineView timeline={timeline} />
-            </Center>
+            </div>
           </AnimatedTabsPanel>
         </AnimatePresence>
 
@@ -192,9 +191,9 @@ function ColumnsView({
               label: "text-3xl",
             }}
           />
-          <Center>
+          <div className="flex justify-center">
             <TimelineView timeline={timeline} />
-          </Center>
+          </div>
         </div>
       </ScrollableSpoiler>
 

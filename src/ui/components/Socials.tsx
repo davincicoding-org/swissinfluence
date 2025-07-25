@@ -1,8 +1,8 @@
 "use client";
 
-import type { ActionIconProps, FlexProps, HoverCardProps } from "@mantine/core";
+import type { ActionIconProps, HoverCardProps } from "@mantine/core";
 import { useMemo } from "react";
-import { ActionIcon, Flex, HoverCard } from "@mantine/core";
+import { ActionIcon, HoverCard } from "@mantine/core";
 import { IconDotsVertical } from "@tabler/icons-react";
 
 import type { Socials } from "@/payload-types";
@@ -11,6 +11,7 @@ import { cn } from "../utils";
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
 
 export interface SocialsProps {
+  className?: string;
   items: NonNullable<Socials>;
   ActionIconProps?: Omit<ActionIconProps, "children" | "className">;
   HoverCardProps?: Omit<HoverCardProps, "children" | "className">;
@@ -20,8 +21,9 @@ export function Socials({
   items,
   ActionIconProps,
   HoverCardProps,
+  className,
   ...flexProps
-}: SocialsProps & FlexProps) {
+}: SocialsProps) {
   const { inline, stacked } = useMemo(() => {
     if (items.length <= 2)
       return {
@@ -36,7 +38,7 @@ export function Socials({
   }, [items]);
 
   return (
-    <Flex gap={4} {...flexProps}>
+    <div className={cn("flex gap-1", className)} {...flexProps}>
       {inline.map((social) => (
         <ActionIcon
           key={social.platform}
@@ -100,6 +102,6 @@ export function Socials({
           </HoverCard.Dropdown>
         </HoverCard>
       ) : null}
-    </Flex>
+    </div>
   );
 }
