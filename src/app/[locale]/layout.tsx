@@ -57,7 +57,7 @@ export default async function LocaleLayout({
       <head>
         <ColorSchemeScript forceColorScheme="light" />
       </head>
-      <body className={cn("overscroll-y-none", poppins.className)}>
+      <body className={cn("overscroll-x-none", poppins.className)}>
         <div className="scroll-top-anchor" />
         <MantineProvider theme={theme}>
           <NextIntlClientProvider messages={messages}>
