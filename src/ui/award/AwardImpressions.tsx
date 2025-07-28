@@ -22,7 +22,7 @@ export function AwardImpressions({
   className,
 }: AwardImpressionsProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: "all" });
+  const isInView = useInView(ref, { once: false, amount: "some" });
   const t = useTranslations("award.impressions");
 
   return (

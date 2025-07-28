@@ -10,6 +10,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   if (!locale || !routing.locales.includes(locale as SupportedLocale))
     locale = routing.defaultLocale;
+
   return {
     locale: locale as SupportedLocale,
     messages: await fetchMessages(locale),

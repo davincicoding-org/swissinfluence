@@ -57,6 +57,20 @@ export interface AwardShowImpressions {
   videoUrl: string | null;
 }
 
+type AwardPhaseName =
+  | "NOMINATION"
+  | "NOMINATION_ENDED"
+  | "VOTING"
+  | "VOTING_BREAK"
+  | "VOTING_ENDED"
+  | "SHOW"
+  | "WAITING_FOR_RANKING"
+  | "FINISHED";
+export interface AwardPhase {
+  name: AwardPhaseName;
+  nextPhaseStart: string | null;
+}
+
 export interface CurrentAward
   extends Omit<
     payloadTypes.Award,
@@ -72,6 +86,7 @@ export interface CurrentAward
   partners: Array<payloadTypes.Brand>;
   categories: Array<AwardCategory>;
   show: CurrentAwardShow | null;
+  phases: Array<AwardPhase>;
 }
 
 export interface CurrentAwardShow

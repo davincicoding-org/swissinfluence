@@ -41,15 +41,14 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
       )}
     >
       <div className="flex items-start justify-between gap-6 max-md:flex-wrap">
-        <Link href="/" className="md:w-36">
-          <Image
-            className="w-24 lg:w-32"
-            alt="SIA Logo"
-            src="/logos/main.svg"
-            width={89}
-            height={44}
-          />
-        </Link>
+        <Image
+          className="w-24 lg:w-32"
+          alt="SIA Logo"
+          src="/logos/main.svg"
+          width={89}
+          height={44}
+        />
+
         <Paper
           bg={undefined}
           shadow="xs"
@@ -108,7 +107,6 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
           >
             {t("navigation.sub.contact")}
           </a>
-
           <Link
             href={`/imprint`}
             target="_blank"
@@ -150,7 +148,7 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
             <a
               href="https://davincicoding.ch"
               target="_blank"
-              className="underline underline-offset-4"
+              className="font-medium tracking-widest text-yellow-600 underline-offset-4 hover:underline"
               rel="noopener"
             >
               DAVINCI CODING

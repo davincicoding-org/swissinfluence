@@ -1,5 +1,7 @@
 import type { CollectionConfig } from "payload";
 
+import type { Award, AwardCategories } from "@/payload-types";
+
 import { trackCollectionChange } from "../track-changes";
 
 export const Awards: CollectionConfig = {
@@ -64,6 +66,16 @@ export const Awards: CollectionConfig = {
                           name: "votingOpening",
                           label: "Opening",
                           type: "date",
+                          validate: (value, opts) => {
+                            const data = opts.data as Award;
+                            if (!value || !data.votingDeadline) return true; // Skip check if either is unset
+                            if (
+                              new Date(value) > new Date(data.votingDeadline)
+                            ) {
+                              return "Start date must not be after end date";
+                            }
+                            return true;
+                          },
                           admin: {
                             date: {
                               pickerAppearance: "dayAndTime",
@@ -77,6 +89,16 @@ export const Awards: CollectionConfig = {
                           name: "votingDeadline",
                           label: "Deadline",
                           type: "date",
+                          validate: (value, opts) => {
+                            const data = opts.data as Award;
+                            if (!value || !data.votingOpening) return true; // Skip check if either is unset
+                            if (
+                              new Date(value) < new Date(data.votingOpening)
+                            ) {
+                              return "End date must not be before start date";
+                            }
+                            return true;
+                          },
                           admin: {
                             date: {
                               pickerAppearance: "dayAndTime",
@@ -131,6 +153,7 @@ export const Awards: CollectionConfig = {
               name: "categories",
               type: "array",
               label: false,
+              interfaceName: "AwardCategories",
               admin: {
                 className: "horizontal-array",
               },
@@ -169,9 +192,31 @@ export const Awards: CollectionConfig = {
                     },
                     {
                       name: "votingOpeningOverride",
-                      label: "Opening",
+                      label: "Opening (Override)",
                       type: "date",
+                      validate: (value, opts) => {
+                        const data = opts.data as Award;
+                        const categoryData =
+                          opts.siblingData as NonNullable<AwardCategories>[number];
+                        if (!value) return true;
+                        if (
+                          data.votingDeadline &&
+                          new Date(value) > new Date(data.votingDeadline)
+                        ) {
+                          return "Start date must not be after award's voting deadline";
+                        }
+                        if (
+                          categoryData.votingDeadlineOverride &&
+                          new Date(value) >
+                            new Date(categoryData.votingDeadlineOverride)
+                        ) {
+                          return "Start date must not be after category's voting deadline override";
+                        }
+                        return true;
+                      },
                       admin: {
+                        description:
+                          "If left empty, the default opening date of the award will be used.",
                         condition: (_, siblingData) =>
                           siblingData.votingType === "CUSTOM",
                         date: {
@@ -184,9 +229,31 @@ export const Awards: CollectionConfig = {
                     },
                     {
                       name: "votingDeadlineOverride",
-                      label: "Deadline",
+                      label: "Deadline (Override)",
                       type: "date",
+                      validate: (value, opts) => {
+                        const data = opts.data as Award;
+                        const categoryData =
+                          opts.siblingData as NonNullable<AwardCategories>[number];
+                        if (!value) return true;
+                        if (
+                          data.votingOpening &&
+                          new Date(value) < new Date(data.votingOpening)
+                        ) {
+                          return "End date must not be before award's voting opening";
+                        }
+                        if (
+                          categoryData.votingOpeningOverride &&
+                          new Date(value) <
+                            new Date(categoryData.votingOpeningOverride)
+                        ) {
+                          return "End date must not be before category's voting opening override";
+                        }
+                        return true;
+                      },
                       admin: {
+                        description:
+                          "If left empty, the default deadline of the award will be used.",
                         condition: (_, siblingData) =>
                           siblingData.votingType === "CUSTOM",
                         date: {

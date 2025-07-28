@@ -16,7 +16,7 @@ export const env = createEnv({
     RESEND_API_KEY: z.string(),
     MAILCHIMP_API_KEY: z.string(),
     MAILCHIMP_TRANSACTIONAL_API_KEY: z.string(),
-    ANALYZE: z.string().optional(),
+    ANALYZE: z.enum(["true", "no-open"]).optional(),
   },
   client: {},
   runtimeEnv: {

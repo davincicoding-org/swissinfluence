@@ -8,6 +8,7 @@ import type {
   Campaign,
   CurrentAward,
 } from "@/types";
+import { getUpcomingPhases } from "@/ui/award/utils";
 import { derivative } from "@/ui/utils";
 import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
 
@@ -90,6 +91,7 @@ export const getCurrentAward = cachedRequest(
         location: ensureResolved(show?.location)!,
         images: ensureResolvedArray((show?.images ?? []).map((photo) => photo)),
       },
+      phases: getUpcomingPhases(award, show),
     };
   },
   ["awards", "award-shows"],

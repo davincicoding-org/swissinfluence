@@ -18,12 +18,12 @@ import { env } from "@/env";
 import { routing } from "@/i18n/routing";
 import { subscribeToNewsletter } from "@/server/mailchimp";
 import { fetchCompany } from "@/server/queries";
-import { Footer, Navigation, Scroll } from "@/ui/global";
+import { Footer, Navigation } from "@/ui/global";
 import { MotionProvider } from "@/ui/motion";
 import { theme } from "@/ui/theme";
 import { cn } from "@/ui/utils";
 
-// // Load critical font for PageHero
+// Load critical font for PageHero
 // Takes 500ms less to load (1.5s -> 1s)
 // MAYBE this is not even needed
 const criticalFont = Montserrat({
@@ -35,7 +35,7 @@ const criticalFont = Montserrat({
 
 const font = Montserrat({
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300", "400", "500"],
   display: "swap",
   preload: false,
 });
@@ -56,16 +56,13 @@ export default async function LocaleLayout({
   children: React.ReactNode;
 }>) {
   const locale = await getLocale();
-  const [messages, company, t] = await Promise.all([
+  const [messages, company] = await Promise.all([
     getMessages(),
     fetchCompany(),
-    getTranslations("navigation"),
   ]);
 
   return (
-    <html lang={locale} data-scroll-behavior="smooth" {...mantineHtmlProps}>
-      {/* <Scroll /> */}
-
+    <html lang={locale} {...mantineHtmlProps}>
       <head>
         <ColorSchemeScript forceColorScheme="light" />
       </head>
@@ -89,7 +86,7 @@ export default async function LocaleLayout({
                 }
                 mainLinks={[
                   {
-                    label: t("main.award"),
+                    label: messages.navigation.main.award,
                     href: `/award`,
                     logo: (
                       <Image
@@ -103,33 +100,33 @@ export default async function LocaleLayout({
                     ),
                   },
                   {
-                    label: t("main.network.page"),
+                    label: messages.navigation.main.network.page,
                     href: `/network`,
                     children: [
                       {
-                        label: t("main.network.influencers"),
+                        label: messages.navigation.main.network.influencers,
                         href: `/network/influencers`,
                       },
                       {
-                        label: t("main.network.campaigns"),
+                        label: messages.navigation.main.network.campaigns,
                         href: `/network/campaigns`,
                       },
                       {
-                        label: t("main.network.events"),
+                        label: messages.navigation.main.network.events,
                         href: `/network/events`,
                       },
                       {
-                        label: t("main.network.agencies"),
+                        label: messages.navigation.main.network.agencies,
                         href: `/network/agencies`,
                       },
                     ],
                   },
                   {
-                    label: t("main.convention"),
+                    label: messages.navigation.main.convention,
                     href: `/convention`,
                   },
                   {
-                    label: t("main.academy"),
+                    label: messages.navigation.main.academy,
                     href: `/academy`,
                     logo: (
                       <Image
@@ -145,34 +142,37 @@ export default async function LocaleLayout({
                 ]}
                 subLinks={[
                   {
-                    label: t("sub.imprint"),
+                    label: messages.navigation.sub.imprint,
                     href: `/imprint`,
                   },
                   {
-                    label: t("sub.privacy"),
+                    label: messages.navigation.sub.privacy,
                     href: `/privacy`,
                   },
                   {
-                    label: t("sub.nomination-process"),
+                    label: messages.navigation.sub["nomination-process"],
                     href: `/nomination-process`,
                   },
                   {
-                    label: t("sub.sponsoring"),
+                    label: messages.navigation.sub.sponsoring,
                     href: `/sponsoring`,
                   },
                 ]}
               />
               {children}
               <Footer
-                className="snap-end"
                 company={company}
                 newsletterHandler={subscribeToNewsletter}
               />
             </MotionProvider>
           </NextIntlClientProvider>
         </MantineProvider>
-        <SpeedInsights />
-        <Analytics />
+        {process.env.VERCEL === "1" && (
+          <>
+            <SpeedInsights />
+            <Analytics />
+          </>
+        )}
       </body>
     </html>
   );

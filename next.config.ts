@@ -28,14 +28,12 @@ const config: NextConfig = {
       },
     ],
   },
-
   experimental: {
-    reactCompiler: true,
     optimizePackageImports: [
       "@mantine/core",
       "@mantine/hooks",
       "@tabler/icons-react",
-      "framer-motion",
+      "motion",
       "dayjs",
       "react-countdown",
     ],
@@ -44,7 +42,8 @@ const config: NextConfig = {
 };
 
 const withBundleAnalyzer = bundleAnalyzer({
-  enabled: env.ANALYZE === "true",
+  enabled: env.ANALYZE !== undefined,
+  openAnalyzer: env.ANALYZE !== "no-open",
 });
 
 const withNextIntl = createNextIntlPlugin();

@@ -16,10 +16,10 @@ export interface BrandsMarqueeProps {
 
 export function BrandsMarquee({ brands }: BrandsMarqueeProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "100px" });
+  const isInView = useInView(ref, { once: false });
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="bg-neutral-500">
       <FadeContainer gradientWidth={100}>
         <Marquee
           pauseOnHover

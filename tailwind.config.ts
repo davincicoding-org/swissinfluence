@@ -33,8 +33,13 @@ export default {
           "0%": { backgroundPosition: "200% 0" },
           "100%": { backgroundPosition: "-200% 0" },
         },
+        headerEntrance: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
+        "header-entrance": "headerEntrance 1s ease-in-out 2s backwards",
         shimmer: "shimmer 4s linear infinite",
       },
       backgroundImage: {

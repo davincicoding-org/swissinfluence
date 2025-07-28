@@ -1,7 +1,7 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { useEffect, useRef, useState } from "react";
+import type { ReactElement } from "react";
+import { cloneElement, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import {
@@ -23,12 +23,12 @@ import { cn } from "@/ui/utils";
 export interface NavigationProps {
   homeLink: string;
   locale: string;
-  mainLogo: ReactNode;
+  mainLogo: ReactElement<{ className?: string; onClick?: () => void }>;
   locales: ReadonlyArray<string>;
   mainLinks: Array<{
     label: string;
     href: string;
-    logo?: ReactNode;
+    logo?: ReactElement<{ className?: string; onClick?: () => void }>;
     children?: Array<{
       label: string;
       href: string;
@@ -100,6 +100,14 @@ export function Navigation({
     }
   });
 
+  const logo = activeLink?.logo ?? mainLogo;
+
+  // Using Link causes "Page prevented back/forward cache restoration" in Lighthouse audit
+  const handleLogoClick = () => {
+    if (activeLink?.href === homeLink) return;
+    router.push(homeLink);
+  };
+
   const handleLocaleChange = (nextLocale: string | null) => {
     if (!nextLocale) return;
     router.replace(
@@ -133,15 +141,14 @@ export function Navigation({
           )}
         >
           <div className="container">
-            <div className="animate-header-entrance flex h-16 items-center justify-between space-x-4 rounded-xl bg-neutral-900/90 px-4 py-6 shadow">
-              <Link
-                href={homeLink}
-                className={cn({
-                  "pointer-events-none": pathname === homeLink,
-                })}
-              >
-                {activeLink?.logo ?? mainLogo}
-              </Link>
+            <div className="flex h-16 animate-header-entrance items-center justify-between space-x-4 rounded-xl bg-neutral-900/90 px-4 py-6 shadow">
+              {cloneElement(logo, {
+                className: cn(logo.props.className, {
+                  "cursor-pointer": pathname !== homeLink,
+                }),
+                onClick: handleLogoClick,
+              })}
+
               <MobileNavigation
                 locale={locale}
                 locales={locales}
