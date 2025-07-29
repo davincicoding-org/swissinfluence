@@ -170,8 +170,10 @@ export const MESSAGES_SCHEMA = {
     },
     campaigns: {
       title: "short",
+      headline: "short",
       request: {
         title: "short",
+        message: "short",
         CTA: "short",
       },
       labels: {

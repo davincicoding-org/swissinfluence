@@ -1,4 +1,3 @@
-import { Button } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
@@ -20,6 +19,7 @@ import { AwardNomination } from "@/ui/award/AwardNomination";
 import { HallOfFame } from "@/ui/award/HallOfFame";
 import { useHeaderContent } from "@/ui/award/hooks";
 import { NewcomerScout } from "@/ui/award/NewcomerScout";
+import { BrandsMarquee } from "@/ui/components/BrandsMarquee";
 import { CampaignDiscovery } from "@/ui/components/CampaignDiscovery";
 import { EventOverview } from "@/ui/components/EventOverview";
 import { NavElement } from "@/ui/components/NavElement";
@@ -27,8 +27,6 @@ import { PageHero } from "@/ui/components/PageHero";
 import { SectionTitle } from "@/ui/components/SectionTitle";
 import { MotionH1 } from "@/ui/motion";
 import { VotingProvider } from "@/ui/voting";
-
-import { BrandsMarquee } from "../components/BrandsMarquee";
 
 export interface AwardPageProps {
   heroImage: Photo;
@@ -65,19 +63,21 @@ export function AwardPage({
             title={t("hero.default.title", { year: currentAward?.year ?? "" })}
             headline={headline}
             CTA={
-              cta ?? (
-                <Button
-                  size="lg"
-                  radius="md"
-                  className="uppercase tracking-wider"
-                >
-                  {t("hero.default.CTA")}
-                </Button>
-              )
+              cta
+              // TODO figure out what this was for
+              // ?? (
+              // <Button
+              //   size="lg"
+              //   radius="md"
+              //   className="tracking-wider uppercase"
+              // >
+              //   {t("hero.default.CTA")}
+              // </Button>
+              // )
             }
           />
 
-          <main className="relative z-20 bg-white/80 pb-12 backdrop-blur">
+          <main className="relative z-20 bg-white/80 pb-12 backdrop-blur-sm">
             {/* MARK: Partners */}
             {currentAward?.partners.length ? (
               <BrandsMarquee brands={currentAward.partners} />
@@ -87,7 +87,7 @@ export function AwardPage({
               <>
                 {/* MARK: Show */}
 
-                {currentAward.show && (
+                {currentAward.show && currentAward.show.date > now && (
                   <NavElement id="show" label={t("show.linkLabel")}>
                     <section className="container py-32">
                       <SectionTitle
@@ -132,6 +132,10 @@ export function AwardPage({
                       label={t("nomination.linkLabel")}
                     >
                       <section className="container py-32">
+                        <SectionTitle
+                          title={t("nomination.title")}
+                          className="mb-8"
+                        />
                         <AwardNomination
                           deadline={currentAward.nominationDeadline}
                           formURL={currentAward.nominationUrl}
@@ -141,6 +145,8 @@ export function AwardPage({
                     </NavElement>
                   )}
 
+                {/* MARK: Newcomer Scout */}
+
                 {currentAward.newcomerScoutUrl &&
                   currentAward.newcomerScoutImage &&
                   currentAward.newcomerScoutTitle &&
@@ -148,14 +154,13 @@ export function AwardPage({
                   currentAward.newcomerScoutPerks &&
                   currentAward.newcomerScoutDeadline &&
                   currentAward.newcomerScoutDeadline > now && (
-                    // MARK: Newcomer Scout
                     <NavElement
                       id="newcomer-scout"
                       label={t("newcomer-scout.linkLabel")}
                     >
                       <section className="container py-32">
                         <MotionH1
-                          className="mb-8 text-balance text-center text-4xl sm:text-5xl md:text-6xl"
+                          className="mb-8 text-center text-4xl text-balance sm:text-5xl md:text-6xl"
                           initial={{
                             y: "150%",
                           }}
@@ -193,7 +198,7 @@ export function AwardPage({
                       id="categories"
                       label={t("categories.linkLabel")}
                     >
-                      <section className="container pb-64 pt-32">
+                      <section className="container pt-32 pb-64">
                         <SectionTitle
                           title={t("categories.title")}
                           className="sticky top-32 mb-8"
@@ -270,7 +275,7 @@ export function AwardPage({
             {/* MARK: Hall of Fame */}
 
             <NavElement id="hall-of-fame" label={t("hallOfFame.linkLabel")}>
-              <section className="container pb-12 pt-32">
+              <section className="container pt-32 pb-12">
                 <SectionTitle title={t("hallOfFame.title")} className="mb-8" />
                 <HallOfFame awards={hallOfFame} />
               </section>

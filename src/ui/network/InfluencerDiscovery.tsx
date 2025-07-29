@@ -1,19 +1,16 @@
-import type { ComboboxItem } from "@mantine/core";
 import { useMemo } from "react";
-import { Paper, ScrollArea } from "@mantine/core";
 
 import type { CategoryWithInfluencers } from "@/types";
 import { Link } from "@/i18n/navigation";
-import { Image } from "@/ui/components/Image";
-import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
-import { cn } from "@/ui/utils";
-import { ensureResolved } from "@/utils/payload";
-
 import {
   AnimatedTabs,
   AnimatedTabsControls,
   AnimatedTabsPanel,
-} from "../components/AnimatedTabs";
+} from "@/ui/components/AnimatedTabs";
+import { Image } from "@/ui/components/Image";
+import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
+import { cn } from "@/ui/utils";
+import { ensureResolved } from "@/utils/payload";
 
 export interface InfluencerDiscoveryProps {
   pool: Array<CategoryWithInfluencers>;
@@ -26,46 +23,32 @@ export function InfluencerDiscovery({
 }: InfluencerDiscoveryProps) {
   const categoryOptions = useMemo(
     () =>
-      pool.map<ComboboxItem>(({ category: { id, name } }) => ({
-        value: id.toString(),
-        label: name,
-      })),
+      pool.map<{ value: number; label: string }>(
+        ({ category: { id, name } }) => ({
+          value: id,
+          label: name,
+        }),
+      ),
     [pool],
   );
 
   return (
-    <Paper
-      withBorder
-      shadow="sm"
-      radius="lg"
-      className={cn("overflow-clip bg-neutral-200", className)}
+    <div
+      className={cn(
+        "overflow-clip rounded-box border border-base-300 bg-base-100 shadow-md",
+        className,
+      )}
     >
       <AnimatedTabs defaultValue={pool[0]?.category.id.toString()}>
-        <Paper className="overflow-clip bg-mocha-50" radius={0}>
-          <ScrollArea
-            scrollbars="x"
-            type="never"
-            classNames={{ viewport: "overscroll-x-contain" }}
-          >
-            <AnimatedTabsControls
-              data={categoryOptions}
-              size="lg"
-              radius="md"
-              className="p-2"
-              color="mocha"
-              withItemsBorders={false}
-            />
-          </ScrollArea>
-        </Paper>
+        <div className="overflow-clip bg-base-200 shadow-md">
+          <div className="overflow-x-auto overscroll-x-contain">
+            <AnimatedTabsControls primary size="lg" tabs={categoryOptions} />
+          </div>
+        </div>
 
         {pool.map(({ category, influencers }) => (
-          <AnimatedTabsPanel key={category.id} value={category.id.toString()}>
-            <ScrollArea
-              scrollbars="x"
-              classNames={{
-                viewport: "overscroll-x-contain snap-x snap-mandatory",
-              }}
-            >
+          <AnimatedTabsPanel key={category.id} value={category.id}>
+            <div className="snap-x snap-mandatory overflow-x-auto overscroll-x-contain">
               <div className="flex gap-4 p-8">
                 {influencers.map((influencer) => {
                   const image = ensureResolved(influencer.image);
@@ -77,11 +60,10 @@ export function InfluencerDiscovery({
                       href={`/network/influencers/${influencer.id}`}
                       className="snap-center first:ml-auto last:mr-auto"
                     >
-                      <Paper
-                        shadow="xs"
-                        withBorder
-                        radius="lg"
-                        className={cn("relative h-64 w-64 overflow-clip")}
+                      <div
+                        className={cn(
+                          "relative h-64 w-64 overflow-clip rounded-box border border-base-300 shadow-sm",
+                        )}
                       >
                         {image && (
                           <Image
@@ -92,7 +74,7 @@ export function InfluencerDiscovery({
                           />
                         )}
 
-                        <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 from-20% to-transparent p-4 text-white">
+                        <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 from-20% to-transparent p-4 text-white">
                           <TextOverflowReveal
                             text={influencer.name}
                             classNames={{
@@ -100,15 +82,15 @@ export function InfluencerDiscovery({
                             }}
                           />
                         </div>
-                      </Paper>
+                      </div>
                     </Link>
                   );
                 })}
               </div>
-            </ScrollArea>
+            </div>
           </AnimatedTabsPanel>
         ))}
       </AnimatedTabs>
-    </Paper>
+    </div>
   );
 }

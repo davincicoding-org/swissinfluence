@@ -1,13 +1,16 @@
-import { ActionIcon, Paper } from "@mantine/core";
+import { Fragment } from "react";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
 import type { CertifiedInfluencer } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
-import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { cn, derivative } from "@/ui/utils";
 import { getCantonLabel } from "@/utils/cantons";
 import { ensureResolved } from "@/utils/payload";
+
+import { SectionTitle } from "../components/SectionTitle";
+import { SocialsLinks } from "../components/SocialLinks";
+import { TextGenerateEffect } from "../components/TextGenerateEffect";
 
 export interface CertifiedInfluencerPageProps {
   influencer: CertifiedInfluencer;
@@ -39,91 +42,77 @@ export function CertifiedInfluencerPage({
         image={ensureResolved(image)!}
         title={name}
         CTA={
-          <div className="my-auto flex gap-6">
-            {(socials ?? []).map((social) => (
-              <ActionIcon
-                key={social.platform}
-                component="a"
-                variant="subtle"
-                size="xl"
-                color="white"
-                radius="md"
-                href={social.url}
-                target="_blank"
-              >
-                <SocialMediaPlatformIcon platform={social.platform} size={48} />
-              </ActionIcon>
-            ))}
-          </div>
+          <SocialsLinks
+            classNames={{
+              root: "m-auto",
+              item: "!size-16 !btn-circle text-white",
+              icon: "size-12",
+            }}
+            items={socials ?? []}
+          />
         }
       />
-      <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
+      <main className="relative z-20 bg-white/80 pt-12 pb-32 backdrop-blur-sm">
         <section className="container">
           <div className="mx-auto flex max-w-xl flex-col gap-6">
-            <Paper
-              withBorder
-              shadow="xs"
-              radius="md"
-              p="md"
-              className="bg-neutral-200"
-            >
-              <p className="text-xl">{bio}</p>
-            </Paper>
-            <div className="flex min-w-0 flex-wrap gap-6">
-              <Paper
-                withBorder
-                shadow="xs"
-                radius="md"
-                className="grid flex-1 border bg-neutral-200 p-3"
-              >
-                <span className="text-4xl leading-none">{age}</span>
-                <span className="text-nowrap text-lg uppercase leading-none">
-                  Years old
-                </span>
-              </Paper>
-              <Paper
-                withBorder
-                shadow="xs"
-                radius="md"
-                className="grid flex-1 border bg-neutral-200 p-3"
-              >
-                <span className="text-nowrap text-lg uppercase leading-none">
+            <div className="rounded-box border border-base-300 bg-base-200 p-5 shadow-sm">
+              <p className="prose-lg">{bio}</p>
+            </div>
+            <div className="grid min-w-0 grid-cols-2 flex-wrap gap-3 sm:gap-6">
+              <div className="grid rounded-box border border-base-300 bg-base-200 p-3 shadow-sm sm:justify-center">
+                <div className="my-auto flex items-baseline gap-x-2 gap-y-1 max-sm:flex-col">
+                  <span className="text-4xl leading-none text-primary">
+                    {age}
+                  </span>
+                  <span className="text-xl leading-none text-nowrap uppercase opacity-60">
+                    {/* TODO i18n */}
+                    Years old
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid rounded-box border border-base-300 bg-base-200 p-3 shadow-sm sm:justify-center">
+                <div
+                  className={cn(
+                    "my-auto flex items-baseline gap-3 gap-y-1 max-sm:flex-col",
+                    {
+                      "flex-col": languages.length > 3,
+                    },
+                  )}
+                >
+                  <span className="text-xl leading-none text-nowrap uppercase opacity-60">
+                    {/* TODO i18n */}
+                    Speaks
+                  </span>
+                  <p
+                    className={cn(
+                      "flex flex-wrap gap-1 text-4xl leading-none text-primary uppercase",
+                      {
+                        "text-3xl": languages.length === 3,
+                        "text-2xl": languages.length > 3,
+                      },
+                    )}
+                  >
+                    {languages.map((language) => (
+                      <span key={language}>{language}</span>
+                    ))}
+                  </p>
+                </div>
+              </div>
+
+              <div className="col-span-2 flex flex-wrap items-baseline justify-center gap-x-2 rounded-box border border-base-300 bg-base-200 p-3 shadow-sm">
+                <span className="text-lg leading-none text-nowrap uppercase opacity-60">
+                  {/* TODO i18n */}
                   Based in
                 </span>
-                <span className="text-4xl leading-none">
+                <span className="text-4xl leading-none text-primary">
                   {getCantonLabel(residence, locale)}
                 </span>
-              </Paper>
-              <Paper
-                withBorder
-                shadow="xs"
-                radius="md"
-                className="flex-1 border bg-neutral-200 p-3"
-              >
-                <span className="text-nowrap text-lg uppercase leading-none">
-                  Speaks
-                </span>
-                <div
-                  className={cn("flex gap-3 text-4xl uppercase leading-none", {
-                    "text-3xl": languages.length === 3,
-                    "text-2xl": languages.length > 3,
-                  })}
-                >
-                  {languages.map((language) => (
-                    <span key={language}>{language}</span>
-                  ))}
-                </div>
-              </Paper>
+              </div>
             </div>
             <div className="flex gap-6">
-              <Paper
-                withBorder
-                shadow="xs"
-                radius="md"
-                p="md"
-                className="flex-1 bg-neutral-200"
-              >
-                <span className="mb-2 text-lg uppercase leading-tight">
+              <div className="flex-1 rounded-box border border-base-300 bg-base-200 p-3 shadow-sm">
+                <span className="mb-2 text-lg leading-tight uppercase">
                   Cooperation Interests
                 </span>
                 <ul>
@@ -133,16 +122,10 @@ export function CertifiedInfluencerPage({
                     </li>
                   ))}
                 </ul>
-              </Paper>
+              </div>
 
-              <Paper
-                withBorder
-                shadow="xs"
-                radius="md"
-                p="md"
-                className="flex-1 bg-neutral-200"
-              >
-                <span className="mb-2 text-lg uppercase leading-tight">
+              <div className="flex-1 rounded-box border border-base-300 bg-base-200 p-3 shadow-sm">
+                <span className="mb-2 text-lg leading-tight uppercase">
                   Other Interests
                 </span>
                 <ul>
@@ -152,7 +135,7 @@ export function CertifiedInfluencerPage({
                     </li>
                   ))}
                 </ul>
-              </Paper>
+              </div>
             </div>
           </div>
         </section>

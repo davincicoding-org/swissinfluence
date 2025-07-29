@@ -17,8 +17,8 @@ export function EventsPage({ heroImage, events }: EventsPageProps) {
   return (
     <>
       <PageHero image={heroImage} title={t("title")} headline={t("headline")} />
-      <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
-        <div className="container grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-6 md:gap-8">
+      <main className="relative z-20 bg-base-100/80 py-32 backdrop-blur-sm">
+        <div className="container grid cols-autofill-250 gap-6 md:gap-8">
           {events.map((event) => (
             <EventTile key={event.id} data={event} />
           ))}

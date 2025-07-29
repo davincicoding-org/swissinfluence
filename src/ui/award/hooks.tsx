@@ -1,6 +1,5 @@
 import type { ReactElement } from "react";
 import { useMemo } from "react";
-import { Button } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { AwardPhase } from "@/types";
@@ -34,16 +33,13 @@ export const useHeaderContent = (phases: AwardPhase[]) => {
         return {
           headline: t("nomination.headline"),
           cta: (
-            <Button
-              size="lg"
-              radius="md"
-              component="a"
+            <a
+              className="btn tracking-widest uppercase btn-lg btn-primary"
               href={getSectionHash("nomination")}
               target="_self"
-              className="uppercase tracking-widest"
             >
               {t("nomination.CTA")}
-            </Button>
+            </a>
           ),
         };
       case "NOMINATION_ENDED":
@@ -52,16 +48,13 @@ export const useHeaderContent = (phases: AwardPhase[]) => {
             ? "countdown for voting"
             : t("nomination-ended.headline"),
           cta: (
-            <Button
-              size="lg"
-              radius="md"
-              component="a"
+            <a
+              className="btn tracking-widest uppercase btn-lg btn-primary"
               href={getSectionHash("categories")}
               target="_self"
-              className="uppercase tracking-widest"
             >
               {t("nomination-ended.CTA")}
-            </Button>
+            </a>
           ),
         };
       case "VOTING":
@@ -82,16 +75,13 @@ export const useHeaderContent = (phases: AwardPhase[]) => {
         return {
           headline: <Countdown date={currentPhase.nextPhaseStart} />,
           cta: (
-            <Button
-              size="lg"
-              radius="md"
-              component="a"
+            <a
+              className="btn tracking-widest uppercase btn-lg btn-primary"
               href={getSectionHash("show")}
               target="_self"
-              className="uppercase tracking-widest"
             >
               {t("pre-show.CTA")}
-            </Button>
+            </a>
           ),
         };
       case "SHOW":
@@ -106,16 +96,13 @@ export const useHeaderContent = (phases: AwardPhase[]) => {
         return {
           headline: t("awarded.headline"),
           cta: (
-            <Button
-              size="lg"
-              radius="md"
-              component="a"
+            <a
+              className="btn tracking-widest uppercase btn-lg btn-primary"
               target="_self"
               href={getSectionHash("hall-of-fame")}
-              className="uppercase tracking-widest"
             >
               {t("awarded.CTA")}
-            </Button>
+            </a>
           ),
         };
     }

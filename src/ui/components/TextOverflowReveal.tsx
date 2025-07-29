@@ -1,12 +1,13 @@
 "use client";
 
+import { ReactNode } from "react";
 import { useElementSize } from "@mantine/hooks";
 import * as m from "motion/react-m";
 
 import { cn, derivative } from "@/ui/utils";
 
 export interface TextOverflowRevealProps {
-  text: string;
+  text: ReactNode;
   className?: string;
   classNames?: {
     root?: string;

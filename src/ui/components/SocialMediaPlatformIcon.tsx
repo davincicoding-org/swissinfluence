@@ -8,6 +8,7 @@ import {
   IconBrandTwitch,
   IconBrandYoutube,
   IconWorld,
+  IconWorldWww,
 } from "@tabler/icons-react";
 
 import type { SocialMediaPlatform } from "@/payload-types";
@@ -36,6 +37,6 @@ export function SocialMediaPlatformIcon({
     case "TWITCH":
       return <IconBrandTwitch {...iconProps} />;
     case "WEBSITE":
-      return <IconWorld {...iconProps} />;
+      return <IconWorldWww {...iconProps} />;
   }
 }

@@ -40,6 +40,6 @@
     "**/*.js",
     ".next/types/**/*.ts",
     "next.config.mjs"
-  ],
+, "tailwind.config.-buts"  ],
   "exclude": ["node_modules"]
 }

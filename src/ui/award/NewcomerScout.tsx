@@ -1,14 +1,6 @@
-import type { BoxProps, TimelineProps } from "@mantine/core";
 import { useMemo } from "react";
-import {
-  Box,
-  Button,
-  Divider,
-  Paper,
-  Timeline,
-  TimelineItem,
-} from "@mantine/core";
 import dayjs from "dayjs";
+import isBetween from "dayjs/plugin/isBetween";
 import { AnimatePresence } from "motion/react";
 import { useTranslations } from "next-intl";
 
@@ -21,9 +13,10 @@ import {
 } from "@/ui/components/AnimatedTabs";
 import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
-import { ScrollableSpoiler } from "@/ui/components/ScrollableSpoiler";
 import { TimeLeft } from "@/ui/components/TimeLeft";
 import { cn, derivative } from "@/ui/utils";
+
+dayjs.extend(isBetween);
 
 export interface AwardNominationProps {
   image: Photo;
@@ -35,254 +28,222 @@ export interface AwardNominationProps {
   className?: string;
 }
 
-export function NewcomerScout({ className, ...props }: AwardNominationProps) {
-  return (
-    <Paper
-      withBorder
-      shadow="sm"
-      radius="lg"
-      className={cn("mx-auto max-w-4xl overflow-clip", className)}
-    >
-      <TabsView {...props} hiddenFrom="md" />
-      <ColumnsView {...props} visibleFrom="md" />
-    </Paper>
-  );
-}
-
-// MARK: Tabs View
-
-function TabsView({
+export function NewcomerScout({
+  className,
   image,
   info,
   perks,
   deadline,
   formURL,
   timeline,
-  className,
-  ...props
-}: AwardNominationProps & BoxProps) {
+}: AwardNominationProps) {
   const t = useTranslations("award.newcomer-scout");
-
   return (
-    <AnimatedTabs defaultValue="INFO">
-      <Box className={cn("", className)} {...props}>
-        <div className="relative">
-          <Image
-            resource={image}
-            alt="Newcomer Scout"
-            className="aspect-square sm:aspect-video"
-            sizes="(max-width: 430px) 800px, 1500px"
-          />
-          <AnimatedTabsControls
-            classNames={{
-              root: "p-1.5 rounded-none bg-white/30 backdrop-blur-sm absolute bottom-0 inset-x-0",
-              control: "[&:not([data-active=true])]:text-black",
-              label: "font-medium text-inherit",
-            }}
-            size="md"
-            withItemsBorders={false}
-            variant="light"
-            data={[
-              { label: t("info"), value: "INFO" },
-              { label: t("perks"), value: "PERKS" },
-              { label: t("timeline"), value: "TIMELINE" },
-            ]}
-          />
-        </div>
-
-        <AnimatePresence mode="wait">
-          <AnimatedTabsPanel
-            key="info"
-            value="INFO"
-            className="p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <RichText data={info} />
-          </AnimatedTabsPanel>
-          <AnimatedTabsPanel
-            key="perks"
-            value="PERKS"
-            className="p-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <RichText data={perks} />
-          </AnimatedTabsPanel>
-          <AnimatedTabsPanel
-            key="timeline"
-            value="TIMELINE"
-            className="px-4 py-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <div className="flex justify-center">
-              <TimelineView timeline={timeline} />
-            </div>
-          </AnimatedTabsPanel>
-        </AnimatePresence>
-
-        <div className="px-3 pb-3">
-          <Button
-            radius="md"
-            size="md"
-            fullWidth
-            className="uppercase"
-            component="a"
-            href={formURL}
-            target="_blank"
-          >
-            {t("CTA")}
-          </Button>
-          <p className="mt-2 text-center text-sm font-medium uppercase tracking-wider">
-            <TimeLeft deadline={deadline} />
-          </p>
-        </div>
-      </Box>
-    </AnimatedTabs>
-  );
-}
-
-// MARK: Columns View
-
-function ColumnsView({
-  info,
-  perks,
-  image,
-  deadline,
-  formURL,
-  timeline,
-  className,
-  ...props
-}: AwardNominationProps & BoxProps) {
-  const t = useTranslations("award.newcomer-scout");
-
-  return (
-    <Box
-      className={cn("grid grid-cols-[1fr_400px] gap-1", className)}
-      {...props}
+    <div
+      className={cn(
+        "mx-auto grid min-h-0 max-w-4xl overflow-clip rounded-box border border-base-300 bg-base-100 shadow-md md:aspect-video md:grid-cols-2",
+        className,
+      )}
     >
-      <ScrollableSpoiler
-        classNames={{
-          scrollArea: {
-            viewport: "max-h-[50vh]",
-          },
-        }}
-      >
-        <div className="py-6">
-          <RichText data={info} className="max-w-none px-8" />
-          <Divider
-            label={t("perks")}
-            labelPosition="center"
-            classNames={{
-              root: "mt-5 mb-2",
-              label: "text-3xl",
-            }}
-          />
-          <RichText data={perks} className="max-w-none px-8" />
-          <Divider
-            label={t("timeline")}
-            labelPosition="center"
-            classNames={{
-              root: "my-5",
-              label: "text-3xl",
-            }}
-          />
-          <div className="flex justify-center">
-            <TimelineView timeline={timeline} />
-          </div>
-        </div>
-      </ScrollableSpoiler>
-
-      <div className="relative grid">
+      <div className="relative grid md:order-2">
         <Image
           resource={image}
           alt="Newcomer Scout"
-          className="h-[50vh] w-full"
-          sizes="800px"
+          className="aspect-square sm:aspect-auto"
+          sizes="(max-width: 430px) 800px, 1500px"
         />
-        <div className="absolute inset-x-0 bottom-0 bg-white/30 p-3 backdrop-blur-sm">
-          <Button
-            radius="md"
-            size="md"
-            fullWidth
-            className="uppercase"
-            component="a"
+        <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-3">
+          <div className="badge-ghostd mx-auto badge border-white/50 bg-white/50 p-3 badge-xl tracking-widest text-neutral uppercase backdrop-blur-xs">
+            <TimeLeft deadline={deadline} />
+          </div>
+          <a
+            className="btn uppercase btn-lg btn-primary"
             href={formURL}
             target="_blank"
           >
             {t("CTA")}
-          </Button>
-          <p className="mt-2 text-center font-medium uppercase tracking-wider">
-            <TimeLeft deadline={deadline} />
-          </p>
+          </a>
         </div>
       </div>
-    </Box>
+
+      <AnimatedTabs defaultValue="INFO">
+        <div className={cn("flex min-h-0 flex-col overflow-y-auto")}>
+          <div className="z-10 bg-base-100 px-3 pt-3 md:sticky md:top-0">
+            <AnimatedTabsControls
+              grow
+              className="border border-base-300 *:text-base *:font-medium"
+              tabs={[
+                { label: t("info"), value: "INFO" },
+                { label: t("perks"), value: "PERKS" },
+                { label: t("timeline"), value: "TIMELINE" },
+              ]}
+            />
+          </div>
+
+          <AnimatePresence mode="wait">
+            <AnimatedTabsPanel
+              key="info"
+              value="INFO"
+              className="p-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <RichText data={info} />
+            </AnimatedTabsPanel>
+            <AnimatedTabsPanel
+              key="perks"
+              value="PERKS"
+              className="p-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <RichText data={perks} />
+            </AnimatedTabsPanel>
+            <AnimatedTabsPanel
+              key="timeline"
+              value="TIMELINE"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <Timeline timeline={timeline} className="px-6" />
+            </AnimatedTabsPanel>
+          </AnimatePresence>
+
+          <div className="px-3 pb-3 md:hidden">
+            <a
+              className="btn btn-block uppercase btn-primary"
+              href={formURL}
+              target="_blank"
+            >
+              {t("CTA")}
+            </a>
+          </div>
+        </div>
+      </AnimatedTabs>
+    </div>
   );
 }
 
-// MARK: Timeline View
+// MARK: Timeline
 
-interface TimelineViewProps extends TimelineProps {
+interface TimelineProps {
   timeline: NonNullable<NewcomerScoutTimeline>;
+  className?: string;
 }
 
-function TimelineView({ timeline, ...props }: TimelineViewProps) {
-  const { items, activeIndex } = useMemo(
-    () => ({
-      items: timeline.map<{
+function Timeline({ timeline, className }: TimelineProps) {
+  const items = useMemo(
+    () =>
+      timeline.map<{
         id: string | null | undefined;
-        title: string;
+        content: string;
         date: string;
+        status: "past" | "present" | "future";
       }>((item) => ({
         id: item.id,
-        title: item.title,
+        content: item.title,
         date: derivative(() => {
           switch (item.dateType) {
             case "DAY":
               return dayjs(item.date).format("DD.MM.YYYY");
+
             case "PERIOD":
               return `${dayjs(item.date).format("DD.MM.YYYY")} - ${dayjs(item.dateEnd).format("DD.MM.YYYY")}`;
+
             case "MONTH":
               return dayjs(item.date).format("MMMM");
           }
         }),
+        status: (() => {
+          switch (item.dateType) {
+            case "DAY":
+              if (dayjs(item.date).isBefore(undefined, "day")) return "past";
+              if (dayjs(item.date).isAfter(undefined, "day")) return "future";
+              return "present";
+
+            case "PERIOD":
+              if (dayjs(item.dateEnd).isBefore(undefined, "day")) return "past";
+              if (dayjs(item.date).isAfter(undefined, "day")) return "future";
+
+              return "present";
+
+            case "MONTH":
+              if (dayjs(item.date).isBefore(undefined, "month")) return "past";
+              if (dayjs(item.date).isAfter(undefined, "month")) return "future";
+
+              return "present";
+          }
+        })(),
       })),
-      activeIndex: timeline.findIndex((item, index, all) => {
-        if (dayjs(item.date).isAfter(undefined, "day")) return false;
-        if (dayjs(item.date).isSame(undefined, "day")) return true;
-        if (
-          (item.dateEnd && dayjs(item.dateEnd).isAfter(undefined, "day")) ||
-          dayjs(item.dateEnd).isSame(undefined, "day")
-        )
-          return true;
-        const nextItem = all[index + 1];
-        if (!nextItem) return true;
-        return dayjs(nextItem.date).isAfter(undefined, "day");
-      }, 0),
-    }),
     [timeline],
   );
 
-  // FIXME line is not colored
   return (
-    <Timeline active={activeIndex} {...props}>
-      {items.map((item) => (
-        <TimelineItem
-          key={item.id}
-          title={item.title}
-          classNames={{
-            itemTitle: "text-pretty",
-            itemContent: "text-pretty text-neutral-500",
-          }}
-        >
-          {item.date}
-        </TimelineItem>
-      ))}
-    </Timeline>
+    <div className={className}>
+      <div
+        className={cn(
+          "ml-2 h-6 w-1",
+          items[0]?.status === "future" ? "bg-base-300" : "bg-primary/30",
+        )}
+      />
+      <ul className="timeline timeline-vertical timeline-compact">
+        {items.map((item, index) => (
+          <li
+            key={item.id}
+            className={cn({
+              "*:last:bg-primary/30": item.status === "past",
+              "*:last:bg-primary": item.status === "present",
+            })}
+          >
+            <hr
+              className={cn({
+                "bg-primary/30":
+                  items[Math.max(index - 1, 0)]?.status === "past",
+                "bg-primary": items[index - 1]?.status === "present",
+              })}
+            />
+            <div
+              className={cn("timeline-start mb-0 pl-2", {
+                "opacity-50": item.status === "past",
+                "font-medium": item.status === "present",
+                "text-primary": item.status !== "future",
+              })}
+            >
+              {item.date}
+            </div>
+            <div className="timeline-middle">
+              <div
+                className={cn("size-5 rounded-full border-4", {
+                  "border-transparent bg-primary/30": item.status === "past",
+                  "border-primary": item.status === "present",
+                  "border-base-300": item.status === "future",
+                })}
+              />
+            </div>
+            <div
+              className={cn(
+                "timeline-end mt-0 mb-3 timeline-box border-none p-0 px-2 text-lg leading-snug shadow-none",
+                {
+                  "opacity-50": item.status === "past",
+                },
+              )}
+            >
+              {item.content}
+            </div>
+            <hr />
+          </li>
+        ))}
+      </ul>
+      <div
+        className={cn("ml-2 h-3 w-1", {
+          "bg-base-300": items[items.length - 1]?.status === "future",
+          "bg-primary": items[items.length - 1]?.status === "present",
+          "bg-primary/30": items[items.length - 1]?.status === "past",
+        })}
+      />
+    </div>
   );
 }

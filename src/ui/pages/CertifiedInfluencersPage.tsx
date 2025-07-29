@@ -1,4 +1,3 @@
-import { Paper, Space } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Certification, Photo } from "@/payload-types";
@@ -6,10 +5,10 @@ import type { CategoryWithInfluencers } from "@/types";
 import { HTMLRichText } from "@/ui/components/HTMLRichText";
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
+import { SectionTitle } from "@/ui/components/SectionTitle";
+import { CertificationRegistration } from "@/ui/network/CertificationRegistration";
+import { InfluencerDiscovery } from "@/ui/network/InfluencerDiscovery";
 import { cn } from "@/ui/utils";
-
-import { CertificationRegistration } from "../network/CertificationRegistration";
-import { InfluencerDiscovery } from "../network/InfluencerDiscovery";
 
 export interface CertifiedInfluencersPageProps {
   heroImage: Photo;
@@ -26,11 +25,12 @@ export function CertifiedInfluencersPage({
   return (
     <>
       <PageHero image={heroImage} title={t("title")} />
-      <main className="relative z-20 bg-white/80 pb-32 pt-12 backdrop-blur">
-        <section className="container flex min-h-screen flex-col py-32">
-          <h3 className="mb-12 text-balance text-center text-2xl font-extralight uppercase tracking-wider sm:text-3xl md:text-4xl">
-            {t("certification.title")}
-          </h3>
+      <main className="relative z-20 bg-white/80 pt-12 pb-32 backdrop-blur-sm">
+        <section className="container flex flex-col py-32">
+          <SectionTitle
+            className="mb-16 font-extralight tracking-wider uppercase"
+            title={t("certification.title")}
+          />
 
           <div className="grid gap-8 lg:grid-cols-2">
             <CertificationRegistration
@@ -56,26 +56,22 @@ export function CertifiedInfluencersPage({
           </div>
         </section>
 
-        <section className="container min-h-screen pb-64 pt-32">
-          <h3 className="mb-12 text-balance text-center text-2xl font-extralight uppercase tracking-wider sm:text-3xl md:text-4xl">
-            {t("discovery.title")}
-          </h3>
+        <section className="container py-32">
+          <SectionTitle
+            className="mb-12 font-extralight tracking-wider uppercase"
+            title={t("discovery.title")}
+          />
 
           <InfluencerDiscovery pool={pool} />
 
-          <Space h={48} />
+          <div className="h-24" />
 
-          <Paper
-            withBorder
-            shadow="sm"
-            radius="lg"
-            className={cn("bg-neutral-200 p-4")}
-          >
+          <div className="mx-auto max-w-2xl rounded-box border border-base-300 bg-base-100 p-4 shadow-sm">
             <HTMLRichText
               content={String(t.raw("discovery.description"))}
-              className="prose prose-p:my-2 prose-li:m-0"
+              className="prose"
             />
-          </Paper>
+          </div>
         </section>
       </main>
     </>

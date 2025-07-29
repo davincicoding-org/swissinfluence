@@ -14,6 +14,8 @@ export interface PageHeroProps {
   className?: string;
 }
 
+// TODO title is should work better with DynamicFontSize and TextGenerateEffect and TextOverflowReveal
+
 export function PageHero({
   image,
   title,
@@ -37,15 +39,15 @@ export function PageHero({
       <div
         className={cn(
           "relative mt-auto bg-black/60",
-          "before:absolute before:inset-x-0 before:-top-32 before:h-32 before:bg-gradient-to-t before:from-black/60 before:to-transparent before:content-['']",
+          "before:absolute before:inset-x-0 before:-top-32 before:h-32 before:bg-linear-to-t before:from-black/60 before:to-transparent before:content-['']",
         )}
       >
         <div className="flex flex-wrap gap-8 p-4 max-sm:flex-col sm:items-end sm:p-8">
           <div className="flex min-w-0 flex-1 flex-col gap-3 max-sm:text-center">
-            <p className="hyphens-auto text-balance text-5xl font-light uppercase tracking-wider text-mocha-300 sm:text-5xl md:text-6xl lg:text-7xl">
+            <p className="text-5xl font-light tracking-wider text-balance hyphens-auto text-primary uppercase sm:text-5xl md:text-6xl lg:text-7xl">
               {title}
             </p>
-            <p className="text-balance text-xl font-light uppercase tracking-widest text-white empty:hidden sm:text-2xl md:text-3xl">
+            <p className="text-xl font-light tracking-widest text-balance text-white uppercase empty:hidden sm:text-2xl md:text-3xl">
               {headline}
             </p>
           </div>

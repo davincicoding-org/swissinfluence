@@ -1,6 +1,7 @@
+import "../src/ui/styles/tailwind.css";
+
 import type { Preview } from "@storybook/react";
 import React from "react";
-import { MantineProvider } from "@mantine/core";
 import { NextIntlClientProvider } from "next-intl";
 
 import messages from "../src/i18n/messages.json";
@@ -18,9 +19,7 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <NextIntlClientProvider locale="en" messages={messages}>
-        <MantineProvider theme={theme}>
-          <Story />
-        </MantineProvider>
+        <Story />
       </NextIntlClientProvider>
     ),
   ],

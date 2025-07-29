@@ -40,7 +40,7 @@ export function LandingPage({ heroVideo, pages }: LandingPageProps) {
           <BackgroundVideo src={heroVideo} />
 
           <m.div
-            className="absolute inset-x-0 bottom-0 flex items-end justify-start bg-gradient-to-b from-transparent via-black/60 to-black/80 p-4 sm:p-8 lg:p-10"
+            className="absolute inset-x-0 bottom-0 flex items-end justify-start bg-linear-to-b from-transparent via-black/60 to-black/80 p-4 sm:p-8 lg:p-10"
             style={{ opacity: headlineOpacity }}
           >
             <p className="text-5xl leading-tight text-white md:text-5xl lg:text-6xl">
@@ -57,7 +57,7 @@ export function LandingPage({ heroVideo, pages }: LandingPageProps) {
         </header>
         <m.section
           className={cn(
-            "container relative z-20 grid min-h-dvh content-center gap-4 py-24 max-sm:!opacity-100 md:sticky md:bottom-0 md:top-0 md:grid-cols-2 md:gap-8",
+            "relative z-20 container grid min-h-dvh content-center gap-4 py-24 max-sm:opacity-100! md:sticky md:top-0 md:bottom-0 md:grid-cols-2 md:gap-8",
             {
               "md:pointer-events-none": !tilesClickable,
             },
@@ -98,7 +98,7 @@ function Flip(chunks: ReactNode) {
 }
 function Static(chunks: ReactNode) {
   return (
-    <span className="block text-balance text-4xl font-light lg:text-5xl">
+    <span className="block text-4xl font-light text-balance lg:text-5xl">
       {chunks}
     </span>
   );

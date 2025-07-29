@@ -20,7 +20,7 @@ export function RichText({
       className={cn(
         "payload-richtext",
         {
-          "md:prose-md prose mx-auto": enableProse,
+          "md:prose-md mx-auto prose": enableProse,
         },
         className,
       )}

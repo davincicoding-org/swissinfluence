@@ -1,20 +1,14 @@
 "use client";
 
 import type { ReactElement } from "react";
-import { cloneElement, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import {
-  ActionIcon,
-  Drawer,
-  FocusTrap,
-  Menu,
-  SegmentedControl,
-} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconMenu, IconWorld } from "@tabler/icons-react";
 import { AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
 import { useTranslations } from "next-intl";
+import { Slot } from "radix-ui";
 import { Events } from "react-scroll";
 
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
@@ -128,7 +122,7 @@ export function Navigation({
             },
           )}
         >
-          <div className="h-16 bg-[var(--mantine-color-body)]" />
+          <div className="h-16 bg-(--mantine-color-body)" />
         </div>
       </AnimatePresence>
       <AnimatePresence mode="wait">
@@ -141,13 +135,15 @@ export function Navigation({
           )}
         >
           <div className="container">
-            <div className="flex h-16 animate-header-entrance items-center justify-between space-x-4 rounded-xl bg-neutral-900/90 px-4 py-6 shadow">
-              {cloneElement(logo, {
-                className: cn(logo.props.className, {
+            <div className="animate-header-entrance flex h-16 items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm">
+              <Slot.Root
+                onClick={handleLogoClick}
+                className={cn(logo.props.className, {
                   "cursor-pointer": pathname !== homeLink,
-                }),
-                onClick: handleLogoClick,
-              })}
+                })}
+              >
+                {logo}
+              </Slot.Root>
 
               <MobileNavigation
                 locale={locale}
@@ -160,84 +156,79 @@ export function Navigation({
                 onLocaleChange={handleLocaleChange}
               />
 
-              <div className="flex gap-4 max-md:hidden">
+              <div className="flex max-md:hidden">
                 {mainLinks.map(({ label, href, children }) => (
-                  <Menu
-                    key={label}
-                    radius="md"
-                    disabled={!children}
-                    position="bottom-start"
-                    trigger="hover"
-                  >
-                    <Menu.Target>
-                      <Link
-                        href={href}
-                        scroll
-                        className={cn(
-                          "relative flex items-center space-x-1 text-base font-medium uppercase tracking-wider text-neutral-400 underline-offset-8 transition-all hover:text-white",
-                          {
-                            underline: href === pathname,
-                            "text-neutral-200": pathname.startsWith(href),
-                          },
-                        )}
-                      >
-                        {label}
-                      </Link>
-                    </Menu.Target>
-                    <Menu.Dropdown
-                      className="overflow-clip bg-neutral-800"
-                      bd="none"
+                  <div key={label} className="dropdown-hover group dropdown">
+                    <Link
+                      href={href}
+                      scroll
+                      className={cn(
+                        "relative flex items-center border-b-2 border-transparent px-2 py-1 text-base font-medium tracking-wider text-neutral-content/70 uppercase transition-all group-hover:text-neutral-content",
+                        {
+                          "group-hover:border-transparent": children,
+                          "border-neutral-content text-neutral-content":
+                            href === pathname,
+                          "text-neutral-content": pathname.startsWith(href),
+                        },
+                      )}
                     >
-                      {children?.map((childLink) => (
-                        <Menu.Item
-                          key={childLink.label}
-                          component={Link}
-                          href={childLink.href}
-                          scroll
-                          className={cn(
-                            "relative flex items-center space-x-1 text-base font-medium uppercase tracking-wider text-neutral-400 transition-all hover:text-mocha-500",
-                            {
-                              "text-white": pathname === childLink.href,
-                            },
-                          )}
-                        >
-                          {childLink.label}
-                        </Menu.Item>
-                      ))}
-                    </Menu.Dropdown>
-                  </Menu>
+                      {label}
+                    </Link>
+                    {children && (
+                      <ul className="dropdown-content menu z-1 rounded-box bg-neutral/90">
+                        {children.map((childLink) => (
+                          <li key={childLink.label}>
+                            <Link
+                              key={childLink.label}
+                              href={childLink.href}
+                              scroll
+                              onClick={(e) => {
+                                e.currentTarget.blur();
+                              }}
+                              className={cn(
+                                "relative flex items-center px-2 text-base font-medium tracking-wider text-neutral-content uppercase transition-all hover:text-primary",
+                                {
+                                  "text-primary": pathname === childLink.href,
+                                },
+                              )}
+                            >
+                              {childLink.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 ))}
-                <Menu
-                  radius="md"
-                  position="bottom"
-                  classNames={{
-                    itemLabel: "text-center",
-                    dropdown: "bg-neutral-800 border-none",
-                  }}
-                >
-                  <Menu.Target>
-                    <ActionIcon
-                      variant="transparent"
-                      color="gray.5"
-                      className="-ml-1"
-                      aria-label={t("aria.langSwitch")}
-                    >
-                      <IconWorld stroke={1.5} />
-                    </ActionIcon>
-                  </Menu.Target>
-                  <Menu.Dropdown>
+                <div className="dropdown-hover dropdown dropdown-center ml-2">
+                  <button
+                    className="btn !btn-circle !border-transparent bg-transparent text-neutral-content/70 btn-ghost btn-sm"
+                    aria-label={t("aria.langSwitch")}
+                  >
+                    <IconWorld stroke={1.5} />
+                  </button>
+                  <div className="dropdown-content menu z-1 rounded-box bg-neutral/90">
                     {locales.map((option) => (
-                      <Menu.Item
+                      <li
                         key={option}
-                        color={locale === option ? "mocha" : "gray"}
-                        fw={locale === option ? 600 : 500}
-                        onClick={() => handleLocaleChange(option)}
+                        // color={locale === option ? "mocha" : "gray"}
+                        // fw={locale === option ? 600 : 500}
                       >
-                        {option.toUpperCase()}
-                      </Menu.Item>
+                        <button
+                          className={cn(
+                            "justify-center",
+                            locale === option
+                              ? "text-primary"
+                              : "text-neutral-content/70 hover:text-neutral-content",
+                          )}
+                          onClick={() => handleLocaleChange(option)}
+                        >
+                          {option.toUpperCase()}
+                        </button>
+                      </li>
                     ))}
-                  </Menu.Dropdown>
-                </Menu>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -268,84 +259,80 @@ function MobileNavigation({
   const [opened, { open, close }] = useDisclosure(false);
   return (
     <>
-      <FocusTrap.InitialFocus />
-      <ActionIcon
-        variant="transparent"
-        className={cn("text-white", triggerClassName)}
+      <button
+        className={cn(
+          "btn btn-circle text-primary-content btn-ghost btn-sm",
+          triggerClassName,
+        )}
         onClick={open}
         aria-label="Open navigation"
       >
         <IconMenu />
-      </ActionIcon>
-      <Drawer
-        opened={opened}
-        position="bottom"
-        onClose={close}
-        padding={0}
-        withCloseButton={false}
-        size="xs"
-        classNames={{
-          content: "bg-neutral-600 rounded-t-xl",
-        }}
-      >
-        <div className="mb-6 flex items-center justify-between bg-neutral-700 p-4">
-          <Link href={homeLink} onClick={close}>
-            <Image
-              priority
-              className="h-12 translate-y-1"
-              alt="SIA Logo"
-              src="/logos/main.svg"
-              width={89}
-              height={44}
-            />
-          </Link>
+      </button>
+      <dialog open={opened} onClose={close} className="modal modal-bottom">
+        <div className="modal-box bg-neutral/70 p-0 backdrop-blur-sm">
+          <div className="mb-6 flex items-center justify-between p-4">
+            <Link href={homeLink} onClick={close}>
+              <Image
+                priority
+                className="h-12 translate-y-1"
+                alt="SIA Logo"
+                src="/logos/main.svg"
+                width={89}
+                height={44}
+              />
+            </Link>
 
-          <SegmentedControl
-            classNames={{
-              root: "bg-white/20",
-              label: "text-white",
-            }}
-            withItemsBorders={false}
-            color="mocha"
-            data={locales.map((locale) => ({
-              label: locale.toUpperCase(),
-              value: locale,
-            }))}
-            value={locale}
-            onChange={onLocaleChange}
-          />
+            <div className="join">
+              {locales.map((option) => (
+                <button
+                  key={option}
+                  className={cn("bg-ghost btn join-item btn-sm", {
+                    "btn-primary": option === locale,
+                  })}
+                  onClick={() => onLocaleChange(option)}
+                >
+                  {option.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="mb-2 grid grid-cols-2 gap-4 px-4">
+            {mainLinks.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                onClick={close}
+                className={cn(
+                  "block rounded-box border border-current py-3 text-center text-xl font-light tracking-wider text-neutral-content transition-transform active:scale-95",
+                  { "text-primary": pathname.startsWith(href) },
+                )}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
+          <div className="flex w-full flex-nowrap justify-between gap-4 overflow-x-auto overscroll-x-contain p-4">
+            {subLinks.map(({ label, href }) => (
+              <Link
+                key={label}
+                href={href}
+                onClick={close}
+                className={cn(
+                  "text-nowrap text-neutral-content/70 underline-offset-4 hover:underline",
+                  { "text-primary": pathname.startsWith(href) },
+                )}
+              >
+                {label}
+              </Link>
+            ))}
+          </div>
         </div>
-        <div className="mb-6 grid grid-cols-2 gap-4 px-4">
-          {mainLinks.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              onClick={close}
-              className={cn(
-                "block rounded-lg border-2 border-current py-3 text-center text-xl font-light tracking-wider text-neutral-300 transition-transform active:scale-95",
-                { "text-mocha-500": pathname.startsWith(href) },
-              )}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-        <div className="flex w-full flex-nowrap justify-between gap-4 overflow-x-auto overscroll-x-contain border-t p-4">
-          {subLinks.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              onClick={close}
-              className={cn(
-                "text-nowrap text-neutral-400 underline-offset-4 hover:underline",
-                { "text-mocha-500": pathname.startsWith(href) },
-              )}
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-      </Drawer>
+        <form method="dialog" className="modal-backdrop backdrop-blur-sm">
+          {/* TODO I18N */}
+          <button>close</button>
+        </form>
+      </dialog>
     </>
   );
 }

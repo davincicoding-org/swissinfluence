@@ -39,7 +39,7 @@ export const TextGenerateEffect = ({
 
   const renderWords = () => {
     return (
-      <m.div ref={scope}>
+      <m.span ref={scope}>
         {wordsArray.map((word, idx) => {
           return (
             <m.span
@@ -53,13 +53,13 @@ export const TextGenerateEffect = ({
             </m.span>
           );
         })}
-      </m.div>
+      </m.span>
     );
   };
 
   return (
-    <div ref={ref} className={cn(className)}>
+    <span ref={ref} className={cn(className)}>
       {renderWords()}
-    </div>
+    </span>
   );
 };

@@ -1,4 +1,3 @@
-import { Box, Button, Paper } from "@mantine/core";
 import { IconCalendar, IconMapPin, IconTicket } from "@tabler/icons-react";
 import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
@@ -26,79 +25,48 @@ export function EventOverview({
 
   return (
     <div className={cn("flex flex-col gap-5", className)}>
-      <div className="mt-auto grid grid-cols-2 gap-5 max-lg:flex-col lg:flex">
-        <Paper
-          shadow="sm"
-          radius="md"
-          className="grid flex-1 overflow-clip bg-neutral-200 lg:flex lg:items-center"
-        >
-          <Box
-            bg="mocha"
-            className="flex h-full shrink-0 items-center justify-center max-lg:h-16 lg:aspect-square lg:p-3"
-          >
-            <IconCalendar
-              className="shrink-0 stroke-white"
-              size={48}
-              stroke={1}
-            />
-          </Box>
-
-          <div className="grow p-2 max-lg:text-center lg:px-5 lg:py-3">
-            <p
-              className={cn(
-                "font-light uppercase tracking-wider",
-                date ? "text-nowrap text-2xl" : "text-balance",
-              )}
-            >
-              {date
-                ? dayjs(new Date(date)).format("DD.MM.YYYY")
-                : t("date-tbd")}
-            </p>
+      <div className="mt-auto grid grid-cols-2 gap-5 lg:grid-cols-3">
+        <div className="flex flex-col overflow-clip rounded-box bg-base-100 shadow-sm lg:flex-row">
+          <div className="flex shrink-0 items-center justify-center bg-primary p-2 lg:aspect-square lg:h-20">
+            <IconCalendar className="stroke-white" size={48} stroke={1} />
           </div>
-        </Paper>
-        <Paper
-          shadow="sm"
-          radius="md"
-          className="grid flex-1 overflow-clip bg-neutral-200 transition-transform active:scale-95 lg:flex lg:items-center"
-          component="a"
+          <p
+            className={cn(
+              "m-auto text-center tracking-wider uppercase",
+              date ? "text-2xl text-nowrap" : "text-balance",
+            )}
+          >
+            {date ? dayjs(new Date(date)).format("DD.MM.YYYY") : t("date-tbd")}
+          </p>
+        </div>
+
+        <a
+          className="flex flex-col overflow-clip rounded-box bg-base-100 shadow-sm lg:flex-row"
           href={location.url}
           target="_blank"
         >
-          <Box
-            bg="mocha"
-            className="flex h-full shrink-0 items-center justify-center max-lg:h-16 lg:aspect-square lg:p-3"
-          >
-            <IconMapPin
-              className="shrink-0 stroke-white"
-              size={48}
-              stroke={1}
-            />
-          </Box>
-          <div className="grow p-2 max-lg:text-center lg:px-5 lg:py-3">
-            <p className="text-xl font-light uppercase tracking-wider">
-              {location.name}
-            </p>
-            <p className="text-sm uppercase text-neutral-600">
+          <div className="flex shrink-0 items-center justify-center bg-primary p-2 lg:aspect-square lg:h-20">
+            <IconMapPin className="stroke-white" size={48} stroke={1} />
+          </div>
+          <div className="m-auto grow p-2 max-lg:text-center lg:px-5 lg:py-3">
+            <p className="text-xl tracking-wider uppercase">{location.name}</p>
+            <p className="text-sm tracking-wider text-neutral-600 uppercase">
               {location.city}
             </p>
           </div>
-        </Paper>
-        {registrationUrl && (
-          <Button
-            radius="md"
-            component="a"
-            href={registrationUrl}
-            target="_blank"
-            size="xl"
-            leftSection={<IconTicket size={40} stroke={1} />}
-            classNames={{
-              root: "lg:max-h-none lg:h-auto max-lg:col-span-2",
-              label: "font-medium text-xl lg:text-2xl",
-            }}
-          >
-            {t("register-cta")}
-          </Button>
-        )}
+        </a>
+
+        <a
+          href={registrationUrl ?? ""}
+          target="_blank"
+          className={cn(
+            "btn col-span-2 !h-auto min-h-12 !rounded-box btn-xl btn-primary lg:col-span-1",
+            { "btn-disabled": !registrationUrl },
+          )}
+        >
+          <IconTicket size={40} stroke={1} />
+          {t("register-cta")}
+        </a>
       </div>
 
       {schedule && schedule.length > 0 && <Schedule slots={schedule} />}

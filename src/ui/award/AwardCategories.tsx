@@ -1,14 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  ActionIcon,
-  Button,
-  FocusTrap,
-  Modal,
-  Paper,
-  ScrollArea,
-} from "@mantine/core";
 import { IconX } from "@tabler/icons-react";
 import { useInView } from "motion/react";
 import { useTranslations } from "next-intl";
@@ -99,8 +91,8 @@ function CategoryCard({
   const t = useTranslations();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.8 });
-  const [isExpanded, setIsExpanded] = useState(false);
   const voting = useCategoryVoting(category.id);
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     onVisibleChange(isInView);
@@ -112,16 +104,13 @@ function CategoryCard({
       <div
         className={cn("sticky z-10", className)}
         style={{
-          // top: `calc((100dvh - ${height}px) / 2)`,
           top: stickOffset,
         }}
         ref={ref}
       >
-        <Paper
-          withBorder
-          radius="lg"
+        <div
           className={cn(
-            "flex h-96 min-w-0 flex-col overflow-clip md:h-[32rem]",
+            "flex h-96 min-w-0 flex-col overflow-clip rounded-box border border-base-300 bg-base-200 md:h-128",
           )}
         >
           <div className="relative flex grow flex-col">
@@ -134,15 +123,15 @@ function CategoryCard({
             />
             <div
               className={cn(
-                "relative z-10 mt-auto flex max-h-52 items-end justify-between gap-6 bg-gradient-to-t from-black/60 from-30% to-black/0 p-4 text-left md:p-6",
+                "relative z-10 mt-auto flex max-h-52 items-end justify-between gap-6 bg-linear-to-t from-black/60 from-30% to-black/0 p-4 text-left md:p-6",
               )}
             >
               <div className="shrink">
-                <p className="text-wrap text-3xl font-medium text-white md:text-5xl">
+                <p className="text-3xl font-medium text-wrap text-white md:text-5xl">
                   {category.name}
                 </p>
                 {sponsor && (
-                  <p className="text-pretty text-sm text-gray-200 md:text-lg">
+                  <p className="text-sm text-pretty text-gray-200 md:text-lg">
                     {t("award.categories.sponsoredBy", { brand: sponsor.name })}
                   </p>
                 )}
@@ -152,7 +141,7 @@ function CategoryCard({
                   resource={sponsor.logo}
                   alt={sponsor.name}
                   className={cn("aspect-square w-20")}
-                  imgClassName="object-contain !object-bottom"
+                  imgClassName="object-contain object-bottom!"
                   sizes="(max-width: 768px) 160px, 256px"
                 />
               )}
@@ -164,16 +153,15 @@ function CategoryCard({
                 <PersonaCard
                   key={influencer.id}
                   name={influencer.name}
-                  shadow="xl"
                   image={ensureResolved(influencer.image)!}
-                  className="ml-6 h-52 w-52 select-none"
+                  className="ml-6 size-52 shadow-md select-none"
                   imageSizes="400px"
                   revealed
                 />
               ))}
             </Marquee>
           )}
-        </Paper>
+        </div>
         <div
           className={cn(
             "absolute inset-x-0 bottom-0 z-10 flex translate-y-1/2 justify-center transition-transform duration-300 empty:hidden",
@@ -183,82 +171,54 @@ function CategoryCard({
           )}
         >
           {voting ? (
-            <Button
-              radius="md"
-              size="compact-xl"
-              classNames={{
-                label: "uppercase font-medium tracking-widest",
-              }}
+            <button
+              className="btn tracking-widest uppercase btn-lg btn-primary"
               onClick={voting.open}
             >
               {t("voting.CTA")}
-            </Button>
+            </button>
           ) : nominees.length ? (
-            <Button
-              variant="default"
-              radius="md"
-              size="compact-lg"
-              onClick={() => setIsExpanded(true)}
+            <button
+              className="btn"
+              onClick={() => modalRef.current?.showModal()}
             >
+              {/* TODO i18n */}
               VIEW ALL
-            </Button>
+            </button>
           ) : null}
         </div>
       </div>
-      <Modal
-        opened={isExpanded}
-        size="xl"
-        radius="lg"
-        withCloseButton={false}
-        classNames={{
-          content:
-            "bg-transparent shadow-none max-h-none h-full overflow-y-hidden",
-          inner: "py-0",
-          overlay: "backdrop-blur-md",
-          body: "p-0",
-        }}
-        transitionProps={{
-          transition: "fade",
-          duration: 400,
-        }}
-        onClose={() => setIsExpanded(false)}
-      >
-        <FocusTrap.InitialFocus />
-
-        <ActionIcon
-          pos="fixed"
-          size="xl"
-          radius="xl"
-          variant="default"
-          className="right-0 top-4 z-20 bg-white/50 backdrop-blur-sm"
-          onClick={() => setIsExpanded(false)}
-        >
-          <IconX />
-        </ActionIcon>
-
-        <FadeContainer gradientWidth={32} orientation="vertical">
-          <ScrollArea
-            scrollbars="y"
-            classNames={{
-              root: "h-dvh",
-              scrollbar: "my-8",
-            }}
+      <dialog ref={modalRef} className="modal">
+        <div className="modal-box max-w-200 bg-transparent p-0 shadow-none">
+          <button
+            className="btn fixed top-4 right-0 z-20 !btn-square bg-white/50 backdrop-blur-xs"
+            onClick={() => modalRef.current?.close()}
           >
-            <div className="mx-auto grid gap-4 px-4 py-8 md:grid-cols-3">
-              {nominees.map((influencer) => (
-                <PersonaCard
-                  key={influencer.id}
-                  name={influencer.name}
-                  image={ensureResolved(influencer.image)!}
-                  socials={influencer.socials ?? []}
-                  revealed
-                  imageSizes="700px"
-                />
-              ))}
+            <IconX />
+          </button>
+
+          <FadeContainer gradientWidth={32} orientation="vertical">
+            <div className="h-dvh overflow-y-auto">
+              <div className="mx-auto grid gap-4 px-4 py-8 md:grid-cols-3">
+                {nominees.map((influencer) => (
+                  <PersonaCard
+                    key={influencer.id}
+                    name={influencer.name}
+                    className="border-2 border-primary"
+                    image={ensureResolved(influencer.image)!}
+                    socials={influencer.socials ?? []}
+                    revealed
+                    imageSizes="700px"
+                  />
+                ))}
+              </div>
             </div>
-          </ScrollArea>
-        </FadeContainer>
-      </Modal>
+          </FadeContainer>
+        </div>
+        <form method="dialog" className="modal-backdrop backdrop-blur-md">
+          <button>Close</button>
+        </form>
+      </dialog>
     </>
   );
 }

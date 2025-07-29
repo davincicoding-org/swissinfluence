@@ -24,7 +24,7 @@ export function SectionTitle({ title, className }: SectionTitleProps) {
   return (
     <h1
       className={cn(
-        "font-light uppercase leading-none tracking-wider",
+        "leading-none font-light tracking-wider uppercase",
         className,
       )}
       ref={container.ref}
@@ -35,7 +35,7 @@ export function SectionTitle({ title, className }: SectionTitleProps) {
       <span className="sr-only">{title}</span>
       <span
         ref={text.ref}
-        className="invisible absolute inline-block text-base font-light uppercase tracking-wider"
+        className="invisible absolute inline-block text-base font-light tracking-wider uppercase"
       >
         {title}
       </span>

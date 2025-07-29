@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Box,
-  Button,
-  Checkbox,
-  Collapse,
-  Paper,
-  TextInput,
-} from "@mantine/core";
+import { Collapse } from "@mantine/core";
 import { useTranslations } from "next-intl";
 import { useForm, useWatch } from "react-hook-form";
 
@@ -50,117 +43,108 @@ export function VotingSubmissionForm({
 
   return (
     <div className={cn(className)}>
-      <Box
-        bg="gray.0"
-        className="p-3 text-center text-xl font-medium shadow-md"
-      >
+      <div className="bg-base-200 p-3 text-center text-xl font-medium shadow-md">
         {t("title")}
-      </Box>
+      </div>
       <form
         onSubmit={handleSubmit((values) => onSubmit(values, reset))}
         className="p-4 pb-1"
       >
-        <p className="mb-4 text-balance text-center leading-snug text-gray-500">
+        <p className="mb-4 text-center leading-snug text-balance text-gray-500">
           {t("disclaimer")}
         </p>
         <div>
           <div className="flex">
-            <TextInput
-              flex={1}
-              size="md"
-              radius="md"
+            <input
+              className={cn(
+                "input relative flex-1 rounded-tr-none rounded-b-none text-center focus:z-10",
+                {
+                  "input-error": formState.errors.firstName !== undefined,
+                },
+              )}
               placeholder={t("placeholders.firstName")}
-              classNames={{
-                input:
-                  "text-center relative focus:z-10 rounded-b-none rounded-tr-none",
-              }}
               disabled={isSubmitting}
               {...register("firstName", {
                 required: true,
                 validate: (value) => value.trim().length >= 2,
               })}
-              error={formState.errors.firstName !== undefined}
             />
             <div className="-mx-px" />
-            <TextInput
-              flex={1}
-              size="md"
-              radius="md"
+            <input
+              className={cn(
+                "input relative flex-1 rounded-tl-none rounded-b-none text-center focus:z-10",
+                {
+                  "input-error": formState.errors.lastName !== undefined,
+                },
+              )}
               placeholder={t("placeholders.lastName")}
-              classNames={{
-                input:
-                  "text-center relative focus:z-10 rounded-b-none rounded-tl-none",
-              }}
               disabled={isSubmitting}
               {...register("lastName", {
                 required: true,
                 validate: (value) => value.trim().length >= 2,
               })}
-              error={formState.errors.lastName !== undefined}
             />
           </div>
           <div className="-my-px" />
           <div>
-            <TextInput
-              size="md"
-              radius="md"
+            <input
+              className={cn(
+                "input relative flex-1 rounded-t-none text-center focus:z-10",
+                {
+                  "input-error": formState.errors.email !== undefined,
+                },
+              )}
               type="email"
               placeholder={t("placeholders.email")}
-              classNames={{
-                input: "text-center relative focus:z-10 rounded-t-none",
-              }}
               disabled={isSubmitting}
               {...register("email", {
                 required: true,
               })}
-              error={formState.errors.email !== undefined}
             />
 
             <Collapse
               in={shouldShowSubaddressWarning && !isSubmitting}
               animateOpacity
             >
-              <Paper
-                radius="md"
-                bg="yellow.0"
-                className="-mt-4 border border-yellow-500 p-2 pt-5 text-xs"
-              >
+              <div className="-mt-4 rounded-box border border-warning bg-warning/30 p-2 pt-5 text-xs">
                 {t("subaddressWarning")}
-              </Paper>
+              </div>
             </Collapse>
           </div>
         </div>
-        <div className="mb-3 mt-5 flex justify-center">
-          <Checkbox
-            label={t("newsletter")}
-            className="mx-auto"
-            size="sm"
-            disabled={isSubmitting}
-            {...register("newsletter")}
-          />
+        <div className="mt-5 mb-3 flex justify-center">
+          <label className="label">
+            <input
+              type="checkbox"
+              defaultChecked
+              className="checkbox mx-auto"
+              disabled={isSubmitting}
+              {...register("newsletter")}
+            />
+            {t("newsletter")}
+          </label>
         </div>
 
         <div className="flex flex-col gap-2">
-          <Button
+          <button
             type="submit"
-            fullWidth
-            size="md"
-            loading={isSubmitting}
+            className="btn btn-block btn-primary"
             // disabled={!formState.isValid}
           >
-            {t("submit")}
-          </Button>
-          <Button
-            variant="subtle"
-            color="gray"
-            className="mx-auto"
-            size="xs"
+            {isSubmitting ? (
+              <span className="loading loading-md loading-spinner"></span>
+            ) : (
+              t("submit")
+            )}
+          </button>
+          <button
+            className="btn mx-auto btn-ghost btn-sm"
             type="button"
             disabled={isSubmitting}
             onClick={onCancel}
           >
             {t("cancel")}
-          </Button>
+          </button>
         </div>
       </form>
     </div>

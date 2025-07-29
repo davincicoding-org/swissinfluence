@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { Tooltip } from "@mantine/core";
 import { useInView } from "motion/react";
 import Marquee from "react-fast-marquee";
 
@@ -39,16 +38,14 @@ export function BrandsMarquee({ brands }: BrandsMarqueeProps) {
                   target="_blank"
                   rel="noopener"
                 >
-                  <Tooltip label={partner.name} position="bottom">
-                    <Image
-                      resource={logo}
-                      alt={partner.name}
-                      className="aspect-video h-16"
-                      imgClassName="object-contain object-center"
-                      sizes="128px"
-                      loading="lazy"
-                    />
-                  </Tooltip>
+                  <Image
+                    resource={logo}
+                    alt={partner.name}
+                    className="aspect-video h-16"
+                    imgClassName="object-contain object-center"
+                    sizes="128px"
+                    loading="lazy"
+                  />
                 </a>
               );
             })}

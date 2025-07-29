@@ -1,6 +1,5 @@
 "use client";
 
-import type { ButtonProps } from "@mantine/core";
 import type { PropsWithChildren } from "react";
 import {
   createContext,
@@ -10,7 +9,6 @@ import {
   useState,
 } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useTranslations } from "next-intl";
 
@@ -19,6 +17,7 @@ import type { AwardCategory, VotingValues } from "@/types";
 import { useFlag } from "@/ui/useFlag";
 
 import type { VotingSelectionModalProps } from "./VotingSelectionModal";
+import { cn } from "../utils";
 import { canVoteInCategory } from "./utils";
 import { VotingConfirmationModal } from "./VotingConfirmationModal";
 import { VotingSelectionModal } from "./VotingSelectionModal";
@@ -136,20 +135,24 @@ export function VotingProvider({
   );
 }
 
-export function VotingButton(props: ButtonProps) {
+interface VotingButtonProps {
+  className?: string;
+}
+
+export function VotingButton({ className }: VotingButtonProps) {
   const t = useTranslations("award.hero");
   const { open } = useContext(VotingContext);
 
   return (
-    <Button
-      size="lg"
-      radius="md"
-      className="uppercase tracking-widest"
+    <button
+      className={cn(
+        "btn tracking-widest uppercase btn-lg btn-primary",
+        className,
+      )}
       onClick={() => open()}
-      {...props}
     >
       {t("voting.CTA")}
-    </Button>
+    </button>
   );
 }
 

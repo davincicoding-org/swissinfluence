@@ -9,7 +9,6 @@ import {
   useEffect,
   useState,
 } from "react";
-import { ActionIcon, Paper, Tooltip } from "@mantine/core";
 import {
   IconCamera,
   IconGavel,
@@ -110,43 +109,35 @@ export function AwardNavigationPanel({ className }: AwardNavigationPanelProps) {
   const t = useTranslations("navigation.aria");
 
   return (
-    <Paper
-      radius="xl"
-      withBorder
-      bg="transparent"
-      className={cn("flex gap-1 p-1 backdrop-blur-md empty:hidden", className)}
+    <div
+      className={cn(
+        "flex gap-1 rounded-full border border-base-300 bg-white/30 p-1 backdrop-blur-md empty:hidden",
+        className,
+      )}
     >
       {sections.map(({ id, label }) => {
         const Icon = ICONS[id];
         return (
-          <Tooltip
+          <div
             key={id}
-            label={label}
-            position="top"
-            radius="md"
-            classNames={{
-              tooltip: "font-medium tracking-wider",
-            }}
-            transitionProps={{ transition: "pop", duration: 300 }}
+            className="tooltip tooltip-top before:tracking-widest"
+            data-tip={label}
           >
-            <ActionIcon
-              className={cn("hover:text-unset text-gray-500 transition-colors")}
-              radius="xl"
-              size="xl"
-              color="mocha"
-              variant="subtle"
+            <Link
+              className={cn(
+                "hover:text-unset btn !btn-circle border-transparent btn-ghost transition-colors btn-lg hover:text-primary",
+              )}
               aria-label={t("navigateTo", { target: label })}
-              component={Link}
               to={id}
               spy
               hashSpy
-              activeClass="!bg-mocha-500 !text-white"
+              activeClass="!bg-primary !text-primary-content"
             >
-              <Icon size={28} />
-            </ActionIcon>
-          </Tooltip>
+              <Icon size={28} stroke={1.5} />
+            </Link>
+          </div>
         );
       })}
-    </Paper>
+    </div>
   );
 }

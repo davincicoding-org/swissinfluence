@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { Button, Paper } from "@mantine/core";
 import { useInView } from "motion/react";
 import { useTranslations } from "next-intl";
 import Marquee from "react-fast-marquee";
@@ -26,12 +25,10 @@ export function AwardImpressions({
   const t = useTranslations("award.impressions");
 
   return (
-    <>
-      <Paper
-        shadow="sm"
-        radius="lg"
+    <div className="flex flex-col gap-8 md:gap-12">
+      <div
         ref={ref}
-        className={cn("overflow-clip", className)}
+        className={cn("overflow-clip rounded-box shadow-sm", className)}
       >
         <Marquee pauseOnHover autoFill play={isInView} speed={50}>
           <div className="flex flex-nowrap">
@@ -52,29 +49,18 @@ export function AwardImpressions({
             ))}
           </div>
         </Marquee>
-      </Paper>
+      </div>
 
       {afterMovieUrl && (
-        <div className="mt-8 flex justify-center sm:mt-12">
-          <Button
-            color="mocha"
-            size="xl"
-            radius="lg"
-            classNames={{
-              root: "h-auto py-3",
-              label: cn(
-                "whitespace-normal text-balance uppercase leading-snug tracking-wider",
-              ),
-            }}
-            component="a"
-            href={afterMovieUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t("afterMovie")}
-          </Button>
-        </div>
+        <a
+          className="btn mx-auto h-auto py-3 leading-snug tracking-widest !text-balance uppercase btn-xl btn-primary"
+          href={afterMovieUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {t("afterMovie")}
+        </a>
       )}
-    </>
+    </div>
   );
 }

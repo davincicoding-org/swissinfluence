@@ -1,28 +1,32 @@
-"use client";
-
-import type { PaperProps } from "@mantine/core";
 import type { HTMLAttributes, MouseEvent } from "react";
-import { ActionIcon, Paper } from "@mantine/core";
-import { useMediaQuery } from "@mantine/hooks";
+import { isMobile } from "react-device-detect";
 
 import type { ProfilePicture, Socials } from "@/payload-types";
 import { Image } from "@/ui/components/Image";
 import { cn } from "@/ui/utils";
 
-import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
+import { SocialsLinks } from "./SocialLinks";
 import { TextOverflowReveal } from "./TextOverflowReveal";
 
 export interface PersonaCardProps {
   name: string;
+  header?: string;
   description?: string;
   revealed?: boolean;
   image: ProfilePicture;
   imageSizes?: string;
   socials?: NonNullable<Socials>;
-  compact?: boolean;
+  className?: string;
   classNames?: {
+    root?: string;
+    content?: string;
+    image?: string;
+    header?: string;
     name?: string;
     description?: string;
+    socials?: string;
+    socialItem?: string;
+    socialIcon?: string;
   };
   onSocialClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
@@ -31,6 +35,7 @@ export interface PersonaCardProps {
 
 export function PersonaCard({
   name,
+  header,
   description,
   image,
   revealed,
@@ -38,88 +43,75 @@ export function PersonaCard({
   socials = [],
   classNames,
   className,
-  compact,
   onSocialClick,
-  ...paperProps
-}: PersonaCardProps &
-  Omit<PaperProps, "classNames"> &
-  HTMLAttributes<HTMLDivElement>) {
-  const isTouchDevice = useMediaQuery("(hover: none)");
-
+  ...attrs
+}: PersonaCardProps & HTMLAttributes<HTMLDivElement>) {
   return (
-    <Paper
-      shadow="xs"
-      withBorder
-      radius="lg"
-      className={cn("group relative overflow-hidden", className)}
-      {...paperProps}
+    <div
+      className={cn(
+        "group @container/persona-card relative overflow-hidden rounded-box bg-base-100 shadow-sm",
+        className,
+        classNames?.root,
+      )}
+      {...attrs}
     >
       <Image
         resource={image}
         alt={name}
-        className="block aspect-square"
+        className={cn("block aspect-square", classNames?.image)}
         imgClassName="transition-transform duration-500 group-hover:scale-110"
         sizes={imageSizes}
       />
 
       <div
         className={cn(
-          "absolute inset-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/80 via-black/20 to-transparent pb-4 pr-3 text-white transition-opacity duration-300 group-hover:opacity-100",
-          isTouchDevice || revealed ? "opacity-100" : "opacity-0",
+          "select-noneto-transparent te xt-white absolute inset-0 flex items-end justify-between gap-2 bg-linear-to-t from-black/80 via-black/20 transition-opacity duration-300 group-hover:opacity-100",
+          isMobile || revealed ? "opacity-100" : "opacity-0",
+          classNames?.content,
         )}
       >
-        <div className="user-select-none absolute inset-x-0 bottom-0 flex w-full min-w-0 items-end justify-between gap-1 pb-3 pr-2">
-          <div className="min-w-0 shrink">
+        <div className="absolute inset-x-0 bottom-0 flex w-full min-w-0 items-end justify-between p-[6cqw]">
+          <div className="min-w-0">
+            <p className="text-[6cqw] leading-tight font-medium tracking-widest text-white">
+              {header}
+            </p>
             <TextOverflowReveal
               text={name}
               classNames={{
+                root: "-mx-[6cqw]",
                 text: cn(
-                  "select-none pl-4 text-lg font-medium tracking-widest text-white",
+                  "pl-[6cqw] text-[7cqw] leading-normal font-medium tracking-widest text-white",
                   classNames?.name,
                 ),
               }}
             />
-            <div
-              className={cn("flex", {
-                "flex-col gap-1": !compact,
-                "-mt-2 items-end justify-between": compact,
-              })}
+            <p
+              className={cn(
+                "text-[5cqw] leading-snug font-light text-pretty text-base-300 empty:hidden",
+                classNames?.description,
+              )}
             >
-              <p
-                className={cn(
-                  "select-none text-pretty px-4 font-light leading-snug text-neutral-300 empty:hidden",
-                  classNames?.description,
-                )}
-              >
-                {description}
-              </p>
-            </div>
+              {description}
+            </p>
           </div>
-          <div className="flex flex-col gap-1 empty:hidden">
-            {socials.map((social) => (
-              <ActionIcon
-                key={social.platform}
-                component="a"
-                href={social.url}
-                aria-label={social.platform}
-                target="_blank"
-                variant="subtle"
-                color="white"
-                radius="md"
-                size="lg"
-                className="transition-colors hover:text-mocha-500"
-                onClick={onSocialClick}
-              >
-                <SocialMediaPlatformIcon
-                  platform={social.platform}
-                  size={32}
-                  stroke={1.25}
-                />
-              </ActionIcon>
-            ))}
-          </div>
+          {socials.length > 0 && (
+            <SocialsLinks
+              items={socials}
+              direction="column"
+              maxItems={1}
+              onItemClick={onSocialClick}
+              classNames={{
+                root: cn(
+                  "-mr-[2cqw] -mb-[2cqw] text-white",
+                  classNames?.socials,
+                ),
+                item: cn("size-[15cqw]", classNames?.socialItem),
+                icon: classNames?.socialIcon,
+              }}
+            />
+          )}
         </div>
       </div>
-    </Paper>
+    </div>
   );
 }

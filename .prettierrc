@@ -4,6 +4,7 @@
     "prettier-plugin-tailwindcss"
   ],
   "tailwindFunctions": ["cn", "cva"],
+  "tailwindStylesheet": "./src/ui/styles/tailwind.css",
   "importOrder": [
     "<TYPES>",
     "^(react/(.*)$)|^(react$)",

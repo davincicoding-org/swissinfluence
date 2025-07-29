@@ -1,14 +1,9 @@
-import "@/ui/styles/mantine.css";
 import "@/ui/styles/tailwind.css";
 
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Image from "next/image";
-import {
-  ColorSchemeScript,
-  mantineHtmlProps,
-  MantineProvider,
-} from "@mantine/core";
+import { HeadlessMantineProvider } from "@mantine/core";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NextIntlClientProvider } from "next-intl";
@@ -20,7 +15,6 @@ import { subscribeToNewsletter } from "@/server/mailchimp";
 import { fetchCompany } from "@/server/queries";
 import { Footer, Navigation } from "@/ui/global";
 import { MotionProvider } from "@/ui/motion";
-import { theme } from "@/ui/theme";
 import { cn } from "@/ui/utils";
 
 // Load critical font for PageHero
@@ -62,12 +56,9 @@ export default async function LocaleLayout({
   ]);
 
   return (
-    <html lang={locale} {...mantineHtmlProps}>
-      <head>
-        <ColorSchemeScript forceColorScheme="light" />
-      </head>
-      <body className={cn("overscroll-x-none", font.className)}>
-        <MantineProvider theme={theme}>
+    <html lang={locale}>
+      <body className={cn("overscroll-y-none", font.className)}>
+        <HeadlessMantineProvider>
           <NextIntlClientProvider messages={messages}>
             <MotionProvider>
               <Navigation
@@ -166,7 +157,7 @@ export default async function LocaleLayout({
               />
             </MotionProvider>
           </NextIntlClientProvider>
-        </MantineProvider>
+        </HeadlessMantineProvider>
         {process.env.VERCEL === "1" && (
           <>
             <SpeedInsights />

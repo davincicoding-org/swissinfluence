@@ -3,6 +3,8 @@ import type { CollectionConfig } from "payload";
 import { ScheduleField } from "../shared/ScheduleField";
 import { trackCollectionChange } from "../track-changes";
 
+// TODO refactor date to start and end
+
 export const AwardShows: CollectionConfig = {
   slug: "award-shows",
   admin: {

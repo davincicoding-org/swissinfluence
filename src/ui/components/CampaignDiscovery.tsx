@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { ScrollArea } from "@mantine/core";
 import dayjs from "dayjs";
 import { AnimatePresence } from "motion/react";
 
@@ -19,11 +18,13 @@ export interface CampaignDiscoveryProps {
     current: string;
     past: string;
   };
+  className?: string;
 }
 
 export function CampaignDiscovery({
   campaigns,
   labels,
+  className,
 }: CampaignDiscoveryProps) {
   const { currentCampaigns, pastCampaigns } = useMemo(() => {
     const { current, past } = campaigns.reduce<
@@ -65,20 +66,13 @@ export function CampaignDiscovery({
     <AnimatedTabs
       defaultValue={currentCampaigns.length > 0 ? "CURRENT" : "PAST"}
     >
-      <div>
-        <ScrollArea
-          scrollbars="x"
-          type="never"
-          classNames={{
-            root: "-mx-4",
-          }}
-        >
+      <div className={className}>
+        <div className="-mx-4 grid overflow-x-auto px-4 pb-2">
           <AnimatedTabsControls
+            className="bg-transparent shadow-none"
+            primary
             size="lg"
-            color="mocha"
-            radius="md"
-            withItemsBorders={false}
-            data={[
+            tabs={[
               {
                 value: "CURRENT",
                 label: labels.current,
@@ -90,60 +84,53 @@ export function CampaignDiscovery({
                 disabled: pastCampaigns.length === 0,
               },
             ]}
-            classNames={{
-              root: "bg-transparent px-4",
-            }}
           />
-        </ScrollArea>
+        </div>
 
         <FadeContainer gradientWidth={16} withPadding>
-          <ScrollArea
-            scrollbars="x"
-            classNames={{
-              content: "flex py-4",
-              scrollbar: "mx-4",
-            }}
-          >
-            <div className="h-4 w-4 shrink-0" />
-            <div className="grow">
-              <AnimatePresence mode="wait">
-                <AnimatedTabsPanel
-                  key="current"
-                  value="CURRENT"
-                  className="flex grow flex-nowrap gap-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  {currentCampaigns.map((campaign) => (
-                    <CampaignTile
-                      key={campaign.id}
-                      data={campaign}
-                      className="w-80 max-w-[70vw] shrink-0 grow-0"
-                    />
-                  ))}
-                </AnimatedTabsPanel>
-                <AnimatedTabsPanel
-                  key="past"
-                  value="PAST"
-                  className="flex grow flex-nowrap gap-8"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  {pastCampaigns.map((campaign) => (
-                    <CampaignTile
-                      key={campaign.id}
-                      data={campaign}
-                      className="w-80 max-w-[70vw] shrink-0 grow-0"
-                      past
-                    />
-                  ))}
-                </AnimatedTabsPanel>
-              </AnimatePresence>
+          <div className="-mx-4 flex overflow-x-auto pb-4">
+            <div className="px-8">
+              <div className="h-4 w-4 shrink-0" />
+              <div className="grow">
+                <AnimatePresence mode="wait">
+                  <AnimatedTabsPanel
+                    key="current"
+                    value="CURRENT"
+                    className="flex grow flex-nowrap gap-8"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    {currentCampaigns.map((campaign) => (
+                      <CampaignTile
+                        key={campaign.id}
+                        data={campaign}
+                        className="w-80 max-w-[70vw] shrink-0 grow-0"
+                      />
+                    ))}
+                  </AnimatedTabsPanel>
+                  <AnimatedTabsPanel
+                    key="past"
+                    value="PAST"
+                    className="flex grow flex-nowrap gap-8"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    {pastCampaigns.map((campaign) => (
+                      <CampaignTile
+                        key={campaign.id}
+                        data={campaign}
+                        className="w-80 max-w-[70vw] shrink-0 grow-0"
+                        past
+                      />
+                    ))}
+                  </AnimatedTabsPanel>
+                </AnimatePresence>
+              </div>
+              <div className="h-4 w-4 shrink-0" />
             </div>
-            <div className="h-4 w-4 shrink-0" />
-          </ScrollArea>
+          </div>
         </FadeContainer>
       </div>
     </AnimatedTabs>

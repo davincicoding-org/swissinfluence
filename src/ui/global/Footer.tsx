@@ -2,15 +2,14 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Button, Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Company } from "@/payload-types";
 import type { ContactInfo } from "@/types";
 import { Link } from "@/i18n/navigation";
-import { SocialMediaPlatformIcon } from "@/ui/components/SocialMediaPlatformIcon";
 import { cn } from "@/ui/utils";
 
+import { SocialsLinks } from "../components/SocialLinks";
 import { NewsletterSignUp } from "./NewsletterSignUp";
 
 export interface FooterProps {
@@ -36,11 +35,11 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
   return (
     <footer
       className={cn(
-        "relative z-10 flex flex-col gap-6 bg-neutral-700 px-4 pb-6 pt-8 text-neutral-300",
+        "relative z-10 flex flex-col bg-neutral-700 px-4 pt-8 pb-6 text-neutral-300",
         className,
       )}
     >
-      <div className="flex items-start justify-between gap-6 max-md:flex-wrap">
+      <div className="flex items-center justify-between gap-6 max-sm:flex-wrap">
         <Image
           className="w-24 lg:w-32"
           alt="SIA Logo"
@@ -48,55 +47,39 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
           width={89}
           height={44}
         />
-
-        <Paper
-          bg={undefined}
-          shadow="xs"
-          radius="md"
-          className="flex items-center justify-between bg-neutral-600 max-md:order-1 max-md:basis-full max-sm:flex-wrap"
-        >
-          <p className="text-pretty p-2 text-sm leading-snug text-neutral-300 md:px-2.5 md:pr-4">
+        <div className="inline-flex items-center justify-between gap-x-4 gap-y-3 rounded-box bg-neutral-600 p-3 shadow-md max-sm:order-1 max-sm:basis-full max-sm:flex-wrap sm:max-w-108">
+          <p className="text-sm leading-snug text-pretty text-neutral-300">
             {t("newsletter.description")}
           </p>
-          <Button
-            size="sm"
-            radius="md"
-            className="shrink-0 max-sm:basis-full"
+          <button
+            className="btn shrink-0 btn-sm btn-primary max-sm:basis-full"
             onClick={() => setNewsletterSignUpOpened(true)}
           >
             {t("newsletter.CTA")}
-          </Button>
+          </button>
           <NewsletterSignUp
             opened={newsletterSignUpOpened}
             onClose={() => setNewsletterSignUpOpened(false)}
             submitting={newsletterSubmitting}
             onSubmit={handleNewsletterSubmit}
           />
-        </Paper>
-        <div className={cn("flex justify-end gap-2 md:w-36")}>
-          {(company.socials ?? []).map((social) => (
-            <a
-              key={social.platform}
-              href={social.url}
-              aria-label={social.platform}
-              target="_blank"
-              rel="noopener"
-              className="transition-colors hover:text-mocha-500"
-            >
-              <SocialMediaPlatformIcon
-                platform={social.platform}
-                size={40}
-                strokeWidth={1}
-              />
-            </a>
-          ))}
         </div>
+        <SocialsLinks
+          // className={cn("flex justify-end gap-2 md:w-36")}
+          items={company.socials ?? []}
+          classNames={{
+            item: "btn-lg md:btn-xl",
+            icon: "size-8 md:size-10",
+          }}
+        />
       </div>
 
-      <div className="flex flex-col gap-4 md:flex-row-reverse md:items-center">
+      <div className="mx-16 my-8 h-px rounded-full bg-current opacity-30" />
+
+      <div className="flex flex-col gap-4 sm:flex-row-reverse sm:items-center">
         <div
           className={cn(
-            "flex max-w-sm flex-1 flex-wrap gap-x-4 gap-y-1 md:justify-end",
+            "flex flex-1 flex-wrap justify-center gap-x-4 gap-y-1 sm:max-w-sm sm:justify-end",
           )}
         >
           <a
@@ -138,7 +121,9 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
         </div>
 
         <div
-          className={cn("flex flex-1 flex-col justify-between gap-1 text-sm")}
+          className={cn(
+            "flex flex-1 flex-col justify-between gap-1 text-sm max-sm:text-center",
+          )}
         >
           <span>
             © {new Date().getFullYear()} - {company.name}
@@ -148,7 +133,7 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
             <a
               href="https://davincicoding.ch"
               target="_blank"
-              className="font-medium tracking-widest text-yellow-600 underline-offset-4 hover:underline"
+              className="font-medium tracking-widest text-yellow-400 underline-offset-4 hover:underline"
               rel="noopener"
             >
               DAVINCI CODING

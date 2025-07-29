@@ -1,4 +1,3 @@
-import { Button } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
@@ -18,15 +17,13 @@ export function AcademyPage({ heroImage }: AcademyPageProps) {
         title={t("hero.title")}
         headline={t("hero.headline")}
         CTA={
-          <Button
-            className="shrink-0 uppercase tracking-wider"
-            size="lg"
-            component="a"
+          <a
+            className="btn shrink-0 tracking-wider uppercase btn-lg btn-primary"
             href="https://www.swisscreatoracademy.com/"
             target="_blank"
           >
             {t("hero.CTA")}
-          </Button>
+          </a>
         }
       />
     </>

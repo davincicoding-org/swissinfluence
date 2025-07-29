@@ -1,4 +1,3 @@
-import { Button, Paper } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 import type { Agency } from "@/payload-types";
@@ -18,9 +17,11 @@ export function AgencyTile({ data, className }: AgencyTileProps) {
   const logo = ensureResolved(data.logo);
 
   return (
-    <Paper
-      radius="lg"
-      className={cn("relative overflow-clip bg-cover bg-center", className)}
+    <div
+      className={cn(
+        "relative overflow-clip rounded-box bg-cover bg-center",
+        className,
+      )}
     >
       {image && (
         <Image
@@ -34,8 +35,8 @@ export function AgencyTile({ data, className }: AgencyTileProps) {
       <div
         className={cn(
           "relative mx-auto flex max-w-lg flex-col items-center bg-black/50 px-6 py-12 text-white",
-          "before:absolute before:inset-y-0 before:-left-36 before:w-36 before:bg-gradient-to-l before:from-black/50 before:to-transparent",
-          "after:absolute after:inset-y-0 after:-right-36 after:w-36 after:bg-gradient-to-r after:from-black/50 after:to-transparent",
+          "before:absolute before:inset-y-0 before:-left-36 before:w-36 before:bg-linear-to-l before:from-black/50 before:to-transparent",
+          "after:absolute after:inset-y-0 after:-right-36 after:w-36 after:bg-linear-to-r after:from-black/50 after:to-transparent",
         )}
       >
         {logo && (
@@ -57,18 +58,14 @@ export function AgencyTile({ data, className }: AgencyTileProps) {
         <h3 className="mb-3 text-3xl">{data.name}</h3>
         <p className="mb-5 text-lg">{data.description}</p>
 
-        <Button
-          component="a"
+        <a
           href={`mailto:${data.email}`}
           target="_blank"
-          variant="outline"
-          color="white"
-          size="lg"
-          className="uppercase"
+          className="btn tracking-widest text-white uppercase backdrop-blur-sm btn-outline btn-lg hover:bg-white/10"
         >
           {t("contact-CTA")}
-        </Button>
+        </a>
       </div>
-    </Paper>
+    </div>
   );
 }
