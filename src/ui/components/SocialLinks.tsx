@@ -65,7 +65,7 @@ export function SocialsLinks({
           >
             <SocialMediaPlatformIcon
               platform={social.platform}
-              className={cn("transition-all duration-250", classNames?.icon)}
+              className={classNames?.icon}
               stroke={1.25}
             />
           </a>
@@ -87,12 +87,7 @@ export function SocialsLinks({
             // TODO i18n
             aria-label="More social links"
           >
-            <IconDotsVertical
-              className={cn(
-                "scale-75 transition-all duration-200",
-                classNames?.icon,
-              )}
-            />
+            <IconDotsVertical className={cn("scale-75", classNames?.icon)} />
           </button>
           <ul
             className={cn(
@@ -117,10 +112,7 @@ export function SocialsLinks({
                 >
                   <SocialMediaPlatformIcon
                     platform={social.platform}
-                    className={cn(
-                      "transition-all duration-200",
-                      classNames?.icon,
-                    )}
+                    className={classNames?.icon}
                     stroke={1.25}
                   />
                 </a>

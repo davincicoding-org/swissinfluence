@@ -20,12 +20,7 @@ export function BrandsMarquee({ brands }: BrandsMarqueeProps) {
   return (
     <div ref={ref} className="bg-neutral-500">
       <FadeContainer gradientWidth={100}>
-        <Marquee
-          pauseOnHover
-          autoFill
-          play={isInView}
-          speed={isInView ? 50 : 0}
-        >
+        <Marquee pauseOnHover play={isInView} speed={isInView ? 50 : 0}>
           <div className="flex gap-8 py-3 pr-8">
             {brands.map((partner) => {
               const logo = ensureResolved(partner.logo);

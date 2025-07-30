@@ -11,10 +11,7 @@ import type {
 import { AwardCategories } from "@/ui/award/AwardCategories";
 import { AwardImpressions } from "@/ui/award/AwardImpressions";
 import { AwardJury } from "@/ui/award/AwardJury";
-import {
-  AwardNavigationPanel,
-  AwardNavigationProvider,
-} from "@/ui/award/AwardNavigation";
+import { AwardNavigationPanel } from "@/ui/award/AwardNavigation";
 import { AwardNomination } from "@/ui/award/AwardNomination";
 import { HallOfFame } from "@/ui/award/HallOfFame";
 import { useHeaderContent } from "@/ui/award/hooks";
@@ -22,11 +19,13 @@ import { NewcomerScout } from "@/ui/award/NewcomerScout";
 import { BrandsMarquee } from "@/ui/components/BrandsMarquee";
 import { CampaignDiscovery } from "@/ui/components/CampaignDiscovery";
 import { EventOverview } from "@/ui/components/EventOverview";
-import { NavElement } from "@/ui/components/NavElement";
+import { NavSection } from "@/ui/components/NavElement";
 import { PageHero } from "@/ui/components/PageHero";
 import { SectionTitle } from "@/ui/components/SectionTitle";
 import { MotionH1 } from "@/ui/motion";
 import { VotingProvider } from "@/ui/voting";
+
+import { getCurrentPhase } from "../award/utils";
 
 export interface AwardPageProps {
   heroImage: Photo;
@@ -37,6 +36,8 @@ export interface AwardPageProps {
   votingHandler: (values: VotingValues) => Promise<void>;
 }
 
+// TODO improve LCP
+
 export function AwardPage({
   heroImage,
   currentAward,
@@ -45,27 +46,21 @@ export function AwardPage({
   challenges,
   votingHandler,
 }: AwardPageProps) {
-  console.log(currentAward?.phases);
-  const { headline, cta } = useHeaderContent(currentAward?.phases ?? []);
+  const currentPhase = getCurrentPhase(currentAward?.phases ?? []);
+  const { headline, cta } = useHeaderContent(currentPhase);
 
   const t = useTranslations("award");
   const now = new Date().toISOString();
 
   return (
     <>
-      {/* <AwardNavigationProvider>
-        <VotingProvider
-          awardId={currentAward?.id}
-          categories={currentAward?.categories ?? []}
-          submissionHandler={votingHandler}
-        >*/}
       <PageHero
         image={heroImage}
         title={t("hero.default.title", { year: currentAward?.year ?? "" })}
         headline={headline}
         CTA={
           cta
-          // TODO figure out what this was for
+          // TODO add newsletter signup
           // ?? (
           // <Button
           //   size="lg"
@@ -78,218 +73,220 @@ export function AwardPage({
         }
       />
 
-      <main className="relative z-20 bg-white/80 pb-12 backdrop-blur-sm">
-        {/* MARK: Partners */}
-        {/* {currentAward?.partners.length ? (
-              <BrandsMarquee brands={currentAward.partners} />
-            ) : null} */}
+      {currentAward && (
+        <main className="relative z-20 bg-white/80 pb-12 backdrop-blur-sm">
+          <VotingProvider
+            awardId={currentAward?.id}
+            categories={currentAward?.categories ?? []}
+            submissionHandler={votingHandler}
+          >
+            {/* MARK: Partners */}
 
-        {currentAward ? (
-          <>
+            {currentAward?.partners.length ? (
+              <BrandsMarquee brands={currentAward.partners} />
+            ) : null}
+
             {/* MARK: Show */}
 
             {currentAward.show && currentAward.show.date > now && (
-              <NavElement id="show" label={t("show.linkLabel")}>
-                <section className="container py-32">
-                  <SectionTitle
-                    title={t("show.title")}
-                    className="sticky top-32 mx-auto mb-8 max-w-4xl"
-                  />
-                  <EventOverview
-                    className="relative z-10 mx-auto max-w-4xl"
-                    date={currentAward.show.date}
-                    location={currentAward.show.location}
-                    registrationUrl={currentAward.show.registrationUrl}
-                    schedule={currentAward.show.schedule}
-                  />
-                </section>
-              </NavElement>
+              <NavSection
+                name="show"
+                label={t("show.linkLabel")}
+                className="container py-32"
+              >
+                <SectionTitle
+                  title={t("show.title")}
+                  className="sticky top-32 mx-auto mb-8 max-w-4xl"
+                />
+                <EventOverview
+                  className="relative z-10 mx-auto max-w-4xl"
+                  date={currentAward.show.date}
+                  location={currentAward.show.location}
+                  registrationUrl={currentAward.show.registrationUrl}
+                  schedule={currentAward.show.schedule}
+                />
+              </NavSection>
             )}
 
             {/* MARK: Impressions */}
 
-            {/* {(currentAward.show?.images ?? []).length > 0 &&
-                  currentAward.show?.videoUrl && (
-                    <NavElement
-                      id="impressions"
-                      label={t("impressions.current.linkLabel")}
-                    >
-                      <section className="container py-32">
-                        <AwardImpressions
-                          photos={currentAward.show.images}
-                          afterMovieUrl={currentAward.show.videoUrl}
-                        />
-                      </section>
-                    </NavElement>
-                  )} */}
+            {(currentAward.show?.images ?? []).length > 0 &&
+              currentAward.show?.videoUrl && (
+                <NavSection
+                  name="impressions"
+                  label={t("impressions.current.linkLabel")}
+                  className="container py-32"
+                >
+                  <AwardImpressions
+                    photos={currentAward.show.images}
+                    afterMovieUrl={currentAward.show.videoUrl}
+                  />
+                </NavSection>
+              )}
 
             {/* MARK: Nomination */}
 
-            {/* {currentAward.nominationUrl &&
-                  currentAward.nominationDeadline &&
-                  currentAward.nominationDeadline > now && (
-                    <NavElement
-                      id="nomination"
-                      label={t("nomination.linkLabel")}
-                    >
-                      <section className="container py-32">
-                        <SectionTitle
-                          title={t("nomination.title")}
-                          className="mb-8"
-                        />
-                        <AwardNomination
-                          deadline={currentAward.nominationDeadline}
-                          formURL={currentAward.nominationUrl}
-                          className="my-auto"
-                        />
-                      </section>
-                    </NavElement>
-                  )} */}
+            {currentAward.nominationUrl &&
+              currentAward.nominationDeadline &&
+              currentAward.nominationDeadline > now && (
+                <NavSection
+                  name="nomination"
+                  label={t("nomination.linkLabel")}
+                  className="container py-32"
+                >
+                  <SectionTitle
+                    title={t("nomination.title")}
+                    className="mb-8"
+                  />
+                  <AwardNomination
+                    deadline={currentAward.nominationDeadline}
+                    formURL={currentAward.nominationUrl}
+                    className="my-auto"
+                  />
+                </NavSection>
+              )}
 
             {/* MARK: Newcomer Scout */}
 
-            {/* {currentAward.newcomerScoutUrl &&
-                  currentAward.newcomerScoutImage &&
-                  currentAward.newcomerScoutTitle &&
-                  currentAward.newcomerScoutInfo &&
-                  currentAward.newcomerScoutPerks &&
-                  currentAward.newcomerScoutDeadline &&
-                  currentAward.newcomerScoutDeadline > now && (
-                    <NavElement
-                      id="newcomer-scout"
-                      label={t("newcomer-scout.linkLabel")}
-                    >
-                      <section className="container py-32">
-                        <MotionH1
-                          className="mb-8 text-center text-4xl text-balance sm:text-5xl md:text-6xl"
-                          initial={{
-                            y: "150%",
-                          }}
-                          whileInView={{
-                            y: 0,
-                          }}
-                          viewport={{
-                            once: true,
-                          }}
-                          transition={{
-                            duration: 1,
-                            ease: "easeOut",
-                          }}
-                        >
-                          {currentAward.newcomerScoutTitle}
-                        </MotionH1>
-                        <NewcomerScout
-                          image={currentAward.newcomerScoutImage as Photo}
-                          deadline={currentAward.newcomerScoutDeadline}
-                          formURL={currentAward.newcomerScoutUrl}
-                          info={currentAward.newcomerScoutInfo}
-                          perks={currentAward.newcomerScoutPerks}
-                          timeline={currentAward.newcomerScoutTimeline ?? []}
-                          className="relative z-10"
-                        />
-                      </section>
-                    </NavElement>
-                  )} */}
+            {currentAward.newcomerScoutUrl &&
+              currentAward.newcomerScoutImage &&
+              currentAward.newcomerScoutTitle &&
+              currentAward.newcomerScoutInfo &&
+              currentAward.newcomerScoutPerks &&
+              currentAward.newcomerScoutDeadline &&
+              currentAward.newcomerScoutDeadline > now && (
+                <NavSection
+                  name="newcomer-scout"
+                  label={t("newcomer-scout.linkLabel")}
+                  className="container py-32"
+                >
+                  <MotionH1
+                    className="mb-8 text-center text-4xl text-balance sm:text-5xl md:text-6xl"
+                    initial={{
+                      y: "150%",
+                    }}
+                    whileInView={{
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                    }}
+                    transition={{
+                      duration: 1,
+                      ease: "easeOut",
+                    }}
+                  >
+                    {currentAward.newcomerScoutTitle}
+                  </MotionH1>
+                  <NewcomerScout
+                    image={currentAward.newcomerScoutImage as Photo}
+                    deadline={currentAward.newcomerScoutDeadline}
+                    formURL={currentAward.newcomerScoutUrl}
+                    info={currentAward.newcomerScoutInfo}
+                    perks={currentAward.newcomerScoutPerks}
+                    timeline={currentAward.newcomerScoutTimeline ?? []}
+                    className="relative z-10"
+                  />
+                </NavSection>
+              )}
 
             {/* MARK: Categories */}
 
-            {/* {currentAward.categories &&
-                  currentAward.categories.length > 0 && (
-                    <NavElement
-                      id="categories"
-                      label={t("categories.linkLabel")}
-                    >
-                      <section className="container pt-32 pb-64">
-                        <SectionTitle
-                          title={t("categories.title")}
-                          className="sticky top-32 mb-8"
-                        />
-                        <AwardCategories
-                          categories={currentAward.categories}
-                          className="-mb-32"
-                        />
-                      </section>
-                    </NavElement>
-                  )} */}
+            {currentAward.categories && currentAward.categories.length > 0 && (
+              <NavSection
+                name="categories"
+                label={t("categories.linkLabel")}
+                className="container min-h-screen pt-32 pb-64"
+              >
+                <SectionTitle
+                  title={t("categories.title")}
+                  className="sticky top-32 mb-8"
+                />
+                <AwardCategories
+                  categories={currentAward.categories}
+                  className="-mb-32"
+                />
+              </NavSection>
+            )}
 
             {/* MARK: Creator Challenges */}
 
-            {/* {challenges.length > 0 && (
-                  <NavElement
-                    id="creator-challenges"
-                    label={t("creator-challenges.linkLabel")}
-                  >
-                    <section className="container py-32">
-                      <SectionTitle
-                        title={t("creator-challenges.title")}
-                        className="mb-8"
-                      />
-                      <CampaignDiscovery
-                        campaigns={challenges}
-                        labels={{
-                          current: t("creator-challenges.labels.current"),
-                          past: t("creator-challenges.labels.past"),
-                        }}
-                      />
-                    </section>
-                  </NavElement>
-                )} */}
+            {challenges.length > 0 && (
+              <NavSection
+                name="creator-challenges"
+                label={t("creator-challenges.linkLabel")}
+                className="container py-32"
+              >
+                <SectionTitle
+                  title={t("creator-challenges.title")}
+                  className="mb-8"
+                />
+                <CampaignDiscovery
+                  campaigns={challenges}
+                  labels={{
+                    current: t("creator-challenges.labels.current"),
+                    past: t("creator-challenges.labels.past"),
+                  }}
+                />
+              </NavSection>
+            )}
 
             {/* MARK: Jury */}
 
-            {/* <NavElement id="jury" label={t("jury.linkLabel")}>
-                  <section className="container py-32">
-                    <SectionTitle
-                      title={t("jury.title")}
-                      className="top-32 mb-6 max-sm:sticky"
-                    />
-                    <AwardJury members={currentAward.jury} />
-                  </section>
-                </NavElement> */}
-          </>
-        ) : null}
+            <NavSection
+              name="jury"
+              label={t("jury.linkLabel")}
+              className="container min-h-screen py-32"
+            >
+              <SectionTitle
+                title={t("jury.title")}
+                className="top-32 mb-6 max-sm:sticky"
+              />
+              <AwardJury members={currentAward.jury} />
+            </NavSection>
 
-        {/* MARK: Past Impressions */}
+            {/* MARK: Past Impressions */}
 
-        {/* {!currentAward?.show?.images.length && pastImpressions ? (
-              <NavElement
-                id="past-impressions"
+            {!currentAward?.show?.images.length && pastImpressions ? (
+              <NavSection
+                name="past-impressions"
+                className="container py-32"
                 label={t("impressions.past.linkLabel", {
                   year: pastImpressions.year.toString(),
                 })}
               >
-                <section className="container py-32">
-                  <SectionTitle
-                    title={t("impressions.past.title", {
-                      year: pastImpressions.year.toString(),
-                    })}
-                    className="mb-8"
-                  />
-                  <AwardImpressions
-                    photos={pastImpressions.images}
-                    afterMovieUrl={pastImpressions.videoUrl}
-                  />
-                </section>
-              </NavElement>
-            ) : null} */}
+                <SectionTitle
+                  title={t("impressions.past.title", {
+                    year: pastImpressions.year.toString(),
+                  })}
+                  className="mb-8"
+                />
+                <AwardImpressions
+                  photos={pastImpressions.images}
+                  afterMovieUrl={pastImpressions.videoUrl}
+                />
+              </NavSection>
+            ) : null}
 
-        {/* MARK: Hall of Fame */}
+            {/* MARK: Hall of Fame */}
 
-        {/* <NavElement id="hall-of-fame" label={t("hallOfFame.linkLabel")}>
-              <section className="container pt-32 pb-12">
-                <SectionTitle title={t("hallOfFame.title")} className="mb-8" />
-                <HallOfFame awards={hallOfFame} />
-              </section>
-            </NavElement> */}
+            <NavSection
+              name="hall-of-fame"
+              label={t("hallOfFame.linkLabel")}
+              className="min-screen container pt-32 pb-12"
+            >
+              <SectionTitle title={t("hallOfFame.title")} className="mb-8" />
+              <HallOfFame awards={hallOfFame} />
+            </NavSection>
 
-        {/*  MARK: Navigation */}
+            {/*  MARK: Navigation */}
 
-        {/* <aside className="pointer-events-none sticky bottom-0 z-50 flex p-4">
+            <aside className="pointer-events-none sticky bottom-0 z-50 flex p-4">
               <AwardNavigationPanel className="pointer-events-auto mx-auto" />
-            </aside> */}
-      </main>
-      {/* </VotingProvider>
-      </AwardNavigationProvider> */}
+            </aside>
+          </VotingProvider>
+        </main>
+      )}
     </>
   );
 }

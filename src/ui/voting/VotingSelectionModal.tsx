@@ -89,7 +89,7 @@ export function VotingSelectionModal({
       <dialog open={opened} onClose={onClose} className="modal">
         <div
           className={cn(
-            "modal-box w-screen max-w-none rounded-none bg-base-100/20 p-0 backdrop-blur-sm transition-all duration-500",
+            "modal-box w-screen max-w-none rounded-none bg-base-100/20 p-0 backdrop-blur-sm",
           )}
         >
           <div className="sticky top-0 z-20 -mb-12 flex h-12 items-center justify-end pr-3 sm:-mb-16 sm:h-16">
@@ -158,7 +158,7 @@ export function VotingSelectionModal({
                   </div>
                   <button
                     key="submit"
-                    className="btn tracking-widest uppercase btn-lg btn-primary"
+                    className="btn uppercase btn-lg btn-primary"
                     onClick={() => setIsSubmissionOpen(true)}
                   >
                     {t("submit")}

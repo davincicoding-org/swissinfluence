@@ -17,7 +17,7 @@ export interface ScheduleProps {
   slots: NonNullable<ScheduleSlots>;
   className?: string;
 }
-// TODO refactor this to use modals
+// TODO animate collapse content
 
 export function Schedule({ slots, className }: ScheduleProps) {
   const t = useTranslations("events.event");
@@ -42,10 +42,14 @@ export function Schedule({ slots, className }: ScheduleProps) {
               key={slot.id}
               className="transition-colors md:data-[active=true]:bg-primary/20"
             >
-              <div className="collapse join-item shrink-0 !rounded-none border border-base-300 max-md:collapse-arrow md:cursor-auto">
-                <input type="radio" name={id} className="md:hidden" />
+              <div className="collapse join-item shrink-0 !rounded-none border border-base-300 md:cursor-auto">
+                <label htmlFor={`schedule-${id}-${index}`} className="sr-only">
+                  Toggle
+                </label>
+                <input type="checkbox" id={`schedule-${id}-${index}`} />
+
                 <div className="collapse-title md:!pr-4">
-                  <p className="mb-1 text-lg leading-none text-primary">
+                  <p className="mb-1 leading-none opacity-60">
                     {slot.from && slot.to
                       ? `${dayjs(slot.from).format("HH:mm")} - ${dayjs(slot.to).format("HH:mm")}`
                       : null}

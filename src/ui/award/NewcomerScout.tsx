@@ -50,7 +50,8 @@ export function NewcomerScout({
           resource={image}
           alt="Newcomer Scout"
           className="aspect-square sm:aspect-auto"
-          sizes="(max-width: 430px) 800px, 1500px"
+          // TODO this should be 90vw on mobile, but Lighthouse is complaining
+          sizes="(max-width: 48rem) 80vw, 368px"
         />
         <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-3">
           <div className="badge-ghostd mx-auto badge border-white/50 bg-white/50 p-3 badge-xl tracking-widest text-neutral uppercase backdrop-blur-xs">

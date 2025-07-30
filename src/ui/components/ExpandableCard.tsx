@@ -44,7 +44,7 @@ export function ExpandableCard({
     <>
       <div
         className={cn(
-          "group flex cursor-pointer flex-col rounded-box border border-base-300 bg-base-100 p-4 pb-2 shadow-sm transition-all hover:bg-base-200",
+          "group flex cursor-pointer flex-col rounded-box border border-base-300 bg-base-100 p-4 pb-2 shadow-sm transition-colors hover:bg-base-200",
           className,
         )}
         onClick={() => ref.current?.showModal()}
@@ -61,6 +61,7 @@ export function ExpandableCard({
               alt={title}
               className="aspect-square"
               imgClassName="transition-transform duration-500 group-hover:scale-105"
+              // TODO set size properly
               sizes="880px"
             />
           </div>
@@ -92,8 +93,8 @@ export function ExpandableCard({
               resource={image}
               alt={title}
               className="h-80 w-full object-cover object-center"
+              // TODO set size properly
               sizes="880px"
-              priority
             />
             <div className="absolute right-0 bottom-0 left-0 flex flex-nowrap items-end justify-between gap-5 bg-linear-to-t from-black/50 from-50% to-transparent p-4 pt-8">
               <p className="text-lg leading-tight font-medium text-pretty text-white">

@@ -51,7 +51,7 @@ export function PersonaCard({
   return (
     <div
       className={cn(
-        "group @container/persona-card relative overflow-hidden rounded-box bg-base-100 shadow-sm",
+        "group @container relative overflow-hidden rounded-box bg-base-100 shadow-sm",
         className,
         classNames?.root,
       )}
@@ -67,7 +67,7 @@ export function PersonaCard({
 
       <div
         className={cn(
-          "select-noneto-transparent te xt-white absolute inset-0 flex items-end justify-between gap-2 bg-linear-to-t from-black/80 via-black/20 text-white transition-opacity duration-300 group-hover:opacity-100",
+          "absolute inset-0 flex items-end justify-between gap-2 bg-linear-to-t from-black/80 via-black/20 to-transparent text-white transition-opacity duration-300 select-none group-hover:opacity-100",
           revealed ? "opacity-100" : "opacity-0",
           classNames?.content,
         )}

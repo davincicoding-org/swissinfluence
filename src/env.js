@@ -17,6 +17,7 @@ export const env = createEnv({
     MAILCHIMP_API_KEY: z.string(),
     MAILCHIMP_TRANSACTIONAL_API_KEY: z.string(),
     ANALYZE: z.enum(["true", "no-open"]).optional(),
+    IGNORE_BUILD_ERRORS: z.stringbool().optional(),
   },
   client: {},
   runtimeEnv: {
@@ -47,6 +48,7 @@ export const env = createEnv({
     MAILCHIMP_TRANSACTIONAL_API_KEY:
       process.env.MAILCHIMP_TRANSACTIONAL_API_KEY,
     ANALYZE: process.env.ANALYZE,
+    IGNORE_BUILD_ERRORS: process.env.IGNORE_BUILD_ERRORS,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

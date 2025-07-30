@@ -153,10 +153,7 @@ export function VotingButton({ className }: VotingButtonProps) {
 
   return (
     <button
-      className={cn(
-        "btn tracking-widest uppercase btn-lg btn-primary",
-        className,
-      )}
+      className={cn("btn uppercase btn-lg btn-primary", className)}
       onClick={() => open()}
     >
       {t("voting.CTA")}

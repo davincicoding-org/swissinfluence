@@ -12,6 +12,8 @@ export interface FlipWordsProps {
   className?: string;
 }
 
+// TODO improve performance
+
 export function FlipWords({
   words,
   duration = 3000,

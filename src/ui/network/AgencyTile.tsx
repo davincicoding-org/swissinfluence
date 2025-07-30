@@ -61,7 +61,7 @@ export function AgencyTile({ data, className }: AgencyTileProps) {
         <a
           href={`mailto:${data.email}`}
           target="_blank"
-          className="btn tracking-widest text-white uppercase backdrop-blur-sm btn-outline btn-lg hover:bg-white/10"
+          className="btn text-white uppercase backdrop-blur-sm btn-outline btn-lg hover:bg-white/10"
         >
           {t("contact-CTA")}
         </a>

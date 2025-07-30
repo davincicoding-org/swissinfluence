@@ -27,6 +27,7 @@ export const MESSAGES_SCHEMA = {
     },
     aria: {
       langSwitch: "short",
+      // TODO not used anymore
       navigateTo: ["short", "{target}"],
     },
   },

@@ -131,3 +131,12 @@ function mergePeriods(periods: Period[]): Period[] {
   result.push(current);
   return result;
 }
+
+export const getCurrentPhase = (
+  phases: AwardPhase[],
+): AwardPhase | undefined => {
+  const now = new Date().toISOString();
+  return phases.find(
+    ({ nextPhaseStart }) => nextPhaseStart === null || nextPhaseStart > now,
+  );
+};

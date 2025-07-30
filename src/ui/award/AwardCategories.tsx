@@ -30,6 +30,11 @@ export function AwardCategories({
 
   const [stickOffset, setStickOffset] = useState(0);
   const inView = useInView(containerRef, { amount: "some" });
+  const shouldRender = useInView(containerRef, {
+    amount: "some",
+    once: true,
+    margin: "200px",
+  });
 
   useEffect(() => {
     if (!inView) return;
@@ -51,22 +56,23 @@ export function AwardCategories({
       className={cn("flex flex-col gap-[25dvh]", className)}
       ref={containerRef}
     >
-      {categories.map(({ category, nominees, sponsor }, index) => (
-        <CategoryCard
-          key={category.id}
-          category={category}
-          nominees={nominees}
-          sponsor={sponsor}
-          isTop={visibleStack[0] === index}
-          stickOffset={stickOffset}
-          onVisibleChange={(visible) => {
-            setVisibleStack((prev) => {
-              if (visible) return [index, ...prev];
-              return prev.filter((i) => i !== index);
-            });
-          }}
-        />
-      ))}
+      {shouldRender &&
+        categories.map(({ category, nominees, sponsor }, index) => (
+          <CategoryCard
+            key={category.id}
+            category={category}
+            nominees={nominees}
+            sponsor={sponsor}
+            isTop={visibleStack[0] === index}
+            stickOffset={stickOffset}
+            onVisibleChange={(visible) => {
+              setVisibleStack((prev) => {
+                if (visible) return [index, ...prev];
+                return prev.filter((i) => i !== index);
+              });
+            }}
+          />
+        ))}
     </div>
   );
 }
@@ -172,7 +178,7 @@ function CategoryCard({
         >
           {voting ? (
             <button
-              className="btn tracking-widest uppercase btn-lg btn-primary"
+              className="btn uppercase btn-lg btn-primary"
               onClick={voting.open}
             >
               {t("voting.CTA")}

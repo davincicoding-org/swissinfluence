@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { useDisclosure } from "@mantine/hooks";
 import { IconMenu, IconWorld } from "@tabler/icons-react";
 import { AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
+import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
 import { Events } from "react-scroll";
 
@@ -97,29 +98,37 @@ export function FloatingHeader({
 
   return (
     <>
+      {/* <m.div
+        className="pointer-events-none fixed inset-x-0 top-0 z-10"
+        initial={{
+          opacity: 1,
+        }}
+        animate={{
+          opacity: visible ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.5,
+        }}
+      >
+        <div className="h-16 bg-(--mantine-color-body)" />
+      </m.div> */}
       <AnimatePresence mode="wait">
-        <div
-          className={cn(
-            "fixed inset-x-0 top-0 z-10 transition-transform duration-500",
-            {
-              "-translate-y-full": !visible,
-            },
-          )}
-        >
-          <div className="h-16 bg-(--mantine-color-body)" />
-        </div>
-      </AnimatePresence>
-      <AnimatePresence mode="wait">
-        <div
-          className={cn(
-            "fixed inset-x-0 top-4 z-30 transition-all duration-500 sm:top-6 md:top-8",
-            {
-              "-translate-y-full opacity-0": !visible,
-            },
-          )}
+        <m.div
+          className={cn("fixed inset-x-0 top-4 z-30 sm:top-6 md:top-8")}
+          initial={{
+            opacity: 1,
+            y: -100,
+          }}
+          animate={{
+            y: visible ? 0 : -100,
+            opacity: visible ? 1 : 0,
+          }}
+          transition={{
+            duration: 0.5,
+          }}
         >
           <div className="container">
-            <div className="flex h-16 animate-header-entrance items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm">
+            <div className="flex h-16 items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm">
               <Image
                 priority
                 unoptimized
@@ -147,7 +156,7 @@ export function FloatingHeader({
                       href={href}
                       scroll
                       className={cn(
-                        "relative flex items-center border-y-2 border-transparent px-2 py-1 text-base font-medium tracking-wider text-neutral-content/70 uppercase transition-all group-hover:text-neutral-content",
+                        "relative flex items-center border-y-2 border-transparent px-2 py-1 text-base font-medium tracking-wider text-neutral-content/70 uppercase transition-colors group-hover:text-neutral-content",
                         {
                           "group-hover:border-transparent": children,
                           "border-b-neutral-content text-neutral-content":
@@ -170,7 +179,7 @@ export function FloatingHeader({
                                 e.currentTarget.blur();
                               }}
                               className={cn(
-                                "relative flex items-center px-2 text-base font-medium tracking-wider text-neutral-content uppercase transition-all hover:text-primary",
+                                "relative flex items-center px-2 text-base font-medium tracking-wider text-neutral-content uppercase transition-colors hover:text-primary",
                                 {
                                   "text-primary": pathname === childLink.href,
                                 },
@@ -212,7 +221,7 @@ export function FloatingHeader({
               </div>
             </div>
           </div>
-        </div>
+        </m.div>
       </AnimatePresence>
 
       <MobileNavigation

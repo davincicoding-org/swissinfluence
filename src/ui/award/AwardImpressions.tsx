@@ -30,7 +30,7 @@ export function AwardImpressions({
         ref={ref}
         className={cn("overflow-clip rounded-box shadow-sm", className)}
       >
-        <Marquee pauseOnHover autoFill play={isInView} speed={50}>
+        <Marquee pauseOnHover play={isInView} speed={50}>
           <div className="flex flex-nowrap">
             {photos.map((image, index) => (
               <Image
@@ -53,7 +53,7 @@ export function AwardImpressions({
 
       {afterMovieUrl && (
         <a
-          className="btn mx-auto h-auto py-3 leading-snug tracking-widest !text-balance uppercase btn-xl btn-primary"
+          className="btn mx-auto h-auto py-3 leading-snug !text-balance uppercase btn-xl btn-primary"
           href={afterMovieUrl}
           target="_blank"
           rel="noopener noreferrer"

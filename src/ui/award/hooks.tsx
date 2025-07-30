@@ -10,31 +10,26 @@ import type { AwardSectionId } from "./AwardNavigation";
 
 const getSectionHash = (section: AwardSectionId) => `#${section}`;
 
-export const useHeaderContent = (phases: AwardPhase[]) => {
+export const useHeaderContent = (currentPhase: AwardPhase | undefined) => {
   const t = useTranslations("award.hero");
 
   return useMemo<{
     headline: string | ReactElement | undefined;
     cta?: ReactElement;
   }>(() => {
-    const now = new Date().toISOString();
-
-    const currentPhase = phases.find(
-      ({ nextPhaseStart }) => nextPhaseStart === null || nextPhaseStart > now,
-    );
-
     if (!currentPhase)
-      // ANNOUNCED
       return {
         headline: t("announced.headline"),
+        currentPhase,
       };
+
     switch (currentPhase.name) {
       case "NOMINATION":
         return {
           headline: t("nomination.headline"),
           cta: (
             <a
-              className="btn tracking-widest uppercase btn-lg btn-primary"
+              className="btn uppercase btn-xl btn-primary"
               href={getSectionHash("nomination")}
               target="_self"
             >
@@ -49,7 +44,7 @@ export const useHeaderContent = (phases: AwardPhase[]) => {
             : t("nomination-ended.headline"),
           cta: (
             <a
-              className="btn tracking-widest uppercase btn-lg btn-primary"
+              className="btn uppercase btn-xl btn-primary"
               href={getSectionHash("categories")}
               target="_self"
             >
@@ -76,7 +71,7 @@ export const useHeaderContent = (phases: AwardPhase[]) => {
           headline: <Countdown date={currentPhase.nextPhaseStart} />,
           cta: (
             <a
-              className="btn tracking-widest uppercase btn-lg btn-primary"
+              className="btn uppercase btn-xl btn-primary"
               href={getSectionHash("show")}
               target="_self"
             >
@@ -97,7 +92,7 @@ export const useHeaderContent = (phases: AwardPhase[]) => {
           headline: t("awarded.headline"),
           cta: (
             <a
-              className="btn tracking-widest uppercase btn-lg btn-primary"
+              className="btn uppercase btn-xl btn-primary"
               target="_self"
               href={getSectionHash("hall-of-fame")}
             >
@@ -106,5 +101,5 @@ export const useHeaderContent = (phases: AwardPhase[]) => {
           ),
         };
     }
-  }, [phases, t]);
+  }, [currentPhase, t]);
 };

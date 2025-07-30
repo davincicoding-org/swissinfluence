@@ -1,26 +1,36 @@
 "use client";
 
 import type { PropsWithChildren } from "react";
-import { Element } from "react-scroll";
+import { ScrollElement } from "react-scroll";
 
-import type { AwardSectionId } from "../award/AwardNavigation";
+import type { AwardSection } from "../award/AwardNavigation";
 import { useRegisterSection } from "../award/AwardNavigation";
 
-export interface NavElementProps {
-  id: AwardSectionId;
-  label: string;
+export interface NavSectionProps extends AwardSection {
+  className?: string;
 }
 
-export function NavElement({
-  id,
+function Element({
+  name,
   label,
+  className,
   children,
-}: PropsWithChildren<NavElementProps>) {
-  useRegisterSection({ id, label });
+  ...props
+}: PropsWithChildren<NavSectionProps>) {
+  useRegisterSection({ name, label });
 
   return (
-    <Element name={id} id={id}>
+    <section
+      className={className}
+      ref={(el) => {
+        // @ts-expect-error poorly typed
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        props.parentBindings.domNode = el;
+      }}
+    >
       {children}
-    </Element>
+    </section>
   );
 }
+
+export const NavSection = ScrollElement(Element);

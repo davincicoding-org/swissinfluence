@@ -28,7 +28,7 @@ export function AwardNomination({
 
       <div className="flex flex-col justify-between gap-3 md:flex-row-reverse md:items-center">
         <a
-          className="btn tracking-widest uppercase btn-xl btn-primary"
+          className="btn uppercase btn-xl btn-primary"
           href={formURL}
           target="_blank"
         >

@@ -1,14 +1,8 @@
 "use client";
 
 import type { IconProps } from "@tabler/icons-react";
-import type { FunctionComponent, PropsWithChildren } from "react";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import type { FunctionComponent } from "react";
+import { useEffect } from "react";
 import {
   IconCamera,
   IconGavel,
@@ -19,8 +13,8 @@ import {
   IconTheater,
   IconTrophy,
 } from "@tabler/icons-react";
-import { useTranslations } from "next-intl";
 import { Link } from "react-scroll";
+import { createStore, useStore } from "zustand";
 
 import { cn } from "../utils";
 
@@ -35,8 +29,8 @@ export type AwardSectionId =
   | "past-impressions"
   | "hall-of-fame";
 
-interface AwardSection {
-  id: AwardSectionId;
+export interface AwardSection {
+  name: AwardSectionId;
   label: string;
 }
 
@@ -52,50 +46,33 @@ const ICONS: Record<AwardSectionId, FunctionComponent<IconProps>> = {
   "hall-of-fame": IconTrophy,
 };
 
-// MARK: Context
-interface AwardNavigationContext {
+// MARK: Store
+interface AwardNavigationStore {
   registerSection: (section: AwardSection) => void;
   sections: AwardSection[];
 }
 
-const AwardNavigationContext = createContext<AwardNavigationContext>({
-  registerSection: () => void 0,
+const awardNavigationStore = createStore<AwardNavigationStore>((set) => ({
   sections: [],
-});
+  registerSection: (section) => {
+    set((state) => ({
+      sections: [...state.sections, section],
+    }));
+  },
+}));
 
-export function AwardNavigationProvider({ children }: PropsWithChildren) {
-  const [sections, setSections] = useState<AwardSection[]>([]);
-
-  const registerSection = useCallback((section: AwardSection) => {
-    setSections((prev) =>
-      prev.find((s) => s.id === section.id) ? prev : [...prev, section],
-    );
-  }, []);
-
-  return (
-    <AwardNavigationContext.Provider
-      value={{
-        sections,
-        registerSection,
-      }}
-    >
-      {children}
-    </AwardNavigationContext.Provider>
+export const useRegisterSection = ({ name, label }: AwardSection) => {
+  const registerSection = useStore(
+    awardNavigationStore,
+    (state) => state.registerSection,
   );
-}
-
-export const useRegisterSection = ({
-  id,
-  label: title,
-}: Omit<AwardSection, "element">) => {
-  const { registerSection } = useContext(AwardNavigationContext);
 
   useEffect(() => {
     registerSection({
-      id,
-      label: title,
+      name,
+      label,
     });
-  }, [id, registerSection, title]);
+  }, [name, registerSection, label]);
 };
 
 // MARK: Panel
@@ -105,8 +82,7 @@ export interface AwardNavigationPanelProps {
 }
 
 export function AwardNavigationPanel({ className }: AwardNavigationPanelProps) {
-  const { sections } = useContext(AwardNavigationContext);
-  const t = useTranslations("navigation.aria");
+  const sections = useStore(awardNavigationStore, (state) => state.sections);
 
   return (
     <div
@@ -115,11 +91,11 @@ export function AwardNavigationPanel({ className }: AwardNavigationPanelProps) {
         className,
       )}
     >
-      {sections.map(({ id, label }) => {
-        const Icon = ICONS[id];
+      {sections.map(({ name, label }) => {
+        const Icon = ICONS[name];
         return (
           <div
-            key={id}
+            key={name}
             className="tooltip tooltip-top before:tracking-widest"
             data-tip={label}
           >
@@ -127,8 +103,8 @@ export function AwardNavigationPanel({ className }: AwardNavigationPanelProps) {
               className={cn(
                 "hover:text-unset btn !btn-circle border-transparent btn-ghost transition-colors btn-lg hover:text-primary",
               )}
-              aria-label={t("navigateTo", { target: label })}
-              to={id}
+              // aria-label={t("navigateTo", { target: label })}
+              to={name}
               spy
               hashSpy
               activeClass="!bg-primary !text-primary-content"

@@ -1,12 +1,19 @@
 "use client";
 
+import type { CSSProperties, FunctionComponent } from "react";
 import { useEffect, useRef, useState } from "react";
 
+import { cn } from "../utils";
+
 export interface BackgroundVideoProps {
+  Placeholder: FunctionComponent<{
+    className?: string;
+    style?: CSSProperties;
+  }>;
   src: string;
 }
 
-export function BackgroundVideo({ src }: BackgroundVideoProps) {
+export function BackgroundVideo({ src, Placeholder }: BackgroundVideoProps) {
   const [isVideoReady, setIsVideoReady] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -31,20 +38,24 @@ export function BackgroundVideo({ src }: BackgroundVideoProps) {
         preload="auto"
         muted
         loop
-        className="h-full w-full object-cover object-center"
+        className={cn(
+          "relative z-1 h-full w-full object-cover object-center transition-opacity duration-1000",
+          {
+            "opacity-0": !isVideoReady,
+          },
+        )}
         src={src}
       />
-      {/* TODO find better solution */}
-      {/* <LoadingOverlay
-        visible={!isVideoReady}
-        transitionProps={{ duration: 200 }}
-        className="fixed"
-        classNames={{ overlay: "bg-neutral-200" }}
-        loaderProps={{
-          color: "mocha",
-          size: "xl",
-        }}
-      /> */}
+      <div className={cn("absolute inset-0 flex items-center justify-center")}>
+        <Placeholder
+          className={cn("h-auto w-4/5 max-w-sm transition-opacity", {
+            "animate-pulse": !isVideoReady,
+          })}
+          style={{
+            animationDelay: "1000ms",
+          }}
+        />
+      </div>
     </>
   );
 }
