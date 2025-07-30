@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReactElement } from "react";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -8,39 +7,25 @@ import { useDisclosure } from "@mantine/hooks";
 import { IconMenu, IconWorld } from "@tabler/icons-react";
 import { AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
 import { useTranslations } from "next-intl";
-import { Slot } from "radix-ui";
 import { Events } from "react-scroll";
 
+import type { SupportedLocale } from "@/i18n/config";
+import type { NavigationConfig } from "@/types";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { cn } from "@/ui/utils";
 
-export interface NavigationProps {
-  homeLink: string;
-  locale: string;
-  mainLogo: ReactElement<{ className?: string; onClick?: () => void }>;
-  locales: ReadonlyArray<string>;
-  mainLinks: Array<{
-    label: string;
-    href: string;
-    logo?: ReactElement<{ className?: string; onClick?: () => void }>;
-    children?: Array<{
-      label: string;
-      href: string;
-    }>;
-  }>;
-  subLinks: Array<{
-    label: string;
-    href: string;
-  }>;
+import { MobileNavigation } from "./MobileDrawer";
+
+export interface FloatingHeaderProps {
+  config: NavigationConfig;
+  locale: SupportedLocale;
+  locales: SupportedLocale[];
 }
-export function Navigation({
-  homeLink,
+export function FloatingHeader({
+  config,
   locale,
   locales,
-  mainLogo,
-  mainLinks,
-  subLinks,
-}: NavigationProps) {
+}: FloatingHeaderProps) {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
@@ -48,6 +33,7 @@ export function Navigation({
   const t = useTranslations("navigation");
 
   const [visible, setVisible] = useState(true);
+  const [isMobileDrawerOpen, mobileDrawer] = useDisclosure(false);
 
   const isNavigating = useRef(false);
 
@@ -66,7 +52,7 @@ export function Navigation({
     };
   }, []);
 
-  const activeLink = mainLinks
+  const activeLink = config.mainLinks
     .flatMap(({ href, logo, children }) =>
       children?.length
         ? [
@@ -94,12 +80,10 @@ export function Navigation({
     }
   });
 
-  const logo = activeLink?.logo ?? mainLogo;
-
   // Using Link causes "Page prevented back/forward cache restoration" in Lighthouse audit
   const handleLogoClick = () => {
-    if (activeLink?.href === homeLink) return;
-    router.push(homeLink);
+    if (activeLink?.href === config.homeLink) return;
+    router.push(config.homeLink);
   };
 
   const handleLocaleChange = (nextLocale: string | null) => {
@@ -135,38 +119,38 @@ export function Navigation({
           )}
         >
           <div className="container">
-            <div className="animate-header-entrance flex h-16 items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm">
-              <Slot.Root
-                onClick={handleLogoClick}
-                className={cn(logo.props.className, {
-                  "cursor-pointer": pathname !== homeLink,
+            <div className="flex h-16 animate-header-entrance items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm">
+              <Image
+                priority
+                unoptimized
+                alt="Logo"
+                src={activeLink?.logo ?? config.mainLogo}
+                className={cn("h-9 w-auto shrink-0", {
+                  "cursor-pointer": pathname !== config.homeLink,
+                  "translate-y-0.5": !activeLink?.logo,
                 })}
-              >
-                {logo}
-              </Slot.Root>
-
-              <MobileNavigation
-                locale={locale}
-                locales={locales}
-                homeLink={homeLink}
-                mainLinks={mainLinks}
-                subLinks={subLinks}
-                triggerClassName="md:hidden"
-                pathname={pathname}
-                onLocaleChange={handleLocaleChange}
+                onClick={handleLogoClick}
               />
 
+              <button
+                className="btn btn-circle text-primary-content btn-ghost btn-sm md:hidden"
+                onClick={mobileDrawer.open}
+                aria-label="Open navigation"
+              >
+                <IconMenu />
+              </button>
+
               <div className="flex max-md:hidden">
-                {mainLinks.map(({ label, href, children }) => (
+                {config.mainLinks.map(({ label, href, children }) => (
                   <div key={label} className="dropdown-hover group dropdown">
                     <Link
                       href={href}
                       scroll
                       className={cn(
-                        "relative flex items-center border-b-2 border-transparent px-2 py-1 text-base font-medium tracking-wider text-neutral-content/70 uppercase transition-all group-hover:text-neutral-content",
+                        "relative flex items-center border-y-2 border-transparent px-2 py-1 text-base font-medium tracking-wider text-neutral-content/70 uppercase transition-all group-hover:text-neutral-content",
                         {
                           "group-hover:border-transparent": children,
-                          "border-neutral-content text-neutral-content":
+                          "border-b-neutral-content text-neutral-content":
                             href === pathname,
                           "text-neutral-content": pathname.startsWith(href),
                         },
@@ -177,7 +161,7 @@ export function Navigation({
                     {children && (
                       <ul className="dropdown-content menu z-1 rounded-box bg-neutral/90">
                         {children.map((childLink) => (
-                          <li key={childLink.label}>
+                          <li key={childLink.href}>
                             <Link
                               key={childLink.label}
                               href={childLink.href}
@@ -202,18 +186,14 @@ export function Navigation({
                 ))}
                 <div className="dropdown-hover dropdown dropdown-center ml-2">
                   <button
-                    className="btn !btn-circle !border-transparent bg-transparent text-neutral-content/70 btn-ghost btn-sm"
+                    className="btn !btn-circle !border-transparent bg-transparent text-neutral-content/70 btn-ghost"
                     aria-label={t("aria.langSwitch")}
                   >
                     <IconWorld stroke={1.5} />
                   </button>
                   <div className="dropdown-content menu z-1 rounded-box bg-neutral/90">
                     {locales.map((option) => (
-                      <li
-                        key={option}
-                        // color={locale === option ? "mocha" : "gray"}
-                        // fw={locale === option ? 600 : 500}
-                      >
+                      <li key={option}>
                         <button
                           className={cn(
                             "justify-center",
@@ -234,105 +214,16 @@ export function Navigation({
           </div>
         </div>
       </AnimatePresence>
-    </>
-  );
-}
 
-// MARK: Mobile Navigation
-
-interface MobileNavigationProps extends Omit<NavigationProps, "mainLogo"> {
-  pathname: string;
-  triggerClassName: string;
-  onLocaleChange: (nextLocale: string | null) => void;
-}
-
-function MobileNavigation({
-  mainLinks,
-  homeLink,
-  subLinks,
-  locale,
-  locales,
-  triggerClassName,
-  pathname,
-  onLocaleChange,
-}: MobileNavigationProps) {
-  const [opened, { open, close }] = useDisclosure(false);
-  return (
-    <>
-      <button
-        className={cn(
-          "btn btn-circle text-primary-content btn-ghost btn-sm",
-          triggerClassName,
-        )}
-        onClick={open}
-        aria-label="Open navigation"
-      >
-        <IconMenu />
-      </button>
-      <dialog open={opened} onClose={close} className="modal modal-bottom">
-        <div className="modal-box bg-neutral/70 p-0 backdrop-blur-sm">
-          <div className="mb-6 flex items-center justify-between p-4">
-            <Link href={homeLink} onClick={close}>
-              <Image
-                priority
-                className="h-12 translate-y-1"
-                alt="SIA Logo"
-                src="/logos/main.svg"
-                width={89}
-                height={44}
-              />
-            </Link>
-
-            <div className="join">
-              {locales.map((option) => (
-                <button
-                  key={option}
-                  className={cn("bg-ghost btn join-item btn-sm", {
-                    "btn-primary": option === locale,
-                  })}
-                  onClick={() => onLocaleChange(option)}
-                >
-                  {option.toUpperCase()}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="mb-2 grid grid-cols-2 gap-4 px-4">
-            {mainLinks.map(({ label, href }) => (
-              <Link
-                key={label}
-                href={href}
-                onClick={close}
-                className={cn(
-                  "block rounded-box border border-current py-3 text-center text-xl font-light tracking-wider text-neutral-content transition-transform active:scale-95",
-                  { "text-primary": pathname.startsWith(href) },
-                )}
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
-          <div className="flex w-full flex-nowrap justify-between gap-4 overflow-x-auto overscroll-x-contain p-4">
-            {subLinks.map(({ label, href }) => (
-              <Link
-                key={label}
-                href={href}
-                onClick={close}
-                className={cn(
-                  "text-nowrap text-neutral-content/70 underline-offset-4 hover:underline",
-                  { "text-primary": pathname.startsWith(href) },
-                )}
-              >
-                {label}
-              </Link>
-            ))}
-          </div>
-        </div>
-        <form method="dialog" className="modal-backdrop backdrop-blur-sm">
-          {/* TODO I18N */}
-          <button>close</button>
-        </form>
-      </dialog>
+      <MobileNavigation
+        opened={isMobileDrawerOpen}
+        onClose={mobileDrawer.close}
+        config={config}
+        locale={locale}
+        locales={locales}
+        pathname={pathname}
+        onLocaleChange={handleLocaleChange}
+      />
     </>
   );
 }

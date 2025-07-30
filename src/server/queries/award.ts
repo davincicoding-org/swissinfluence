@@ -7,6 +7,8 @@ import type {
   AwardShowImpressions,
   Campaign,
   CurrentAward,
+  Expert,
+  Influencer,
 } from "@/types";
 import { getUpcomingPhases } from "@/ui/award/utils";
 import { derivative } from "@/ui/utils";
@@ -47,7 +49,9 @@ export const getCurrentAward = cachedRequest(
 
     return {
       ...rest,
-      jury: ensureResolvedArray((jury ?? []).map(({ expert }) => expert)),
+      jury: ensureResolvedArray(
+        (jury ?? []).map(({ expert }) => expert as Expert),
+      ),
       partners: ensureResolvedArray((partners ?? []).map(({ brand }) => brand)),
       categories: (categories ?? []).map(
         ({
@@ -65,7 +69,7 @@ export const getCurrentAward = cachedRequest(
           winnerImage: ensureResolved(winnerImage) ?? null,
           ranked: ranked ?? false,
           nominees: ensureResolvedArray(
-            (nominees ?? []).map(({ influencer }) => influencer),
+            (nominees ?? []).map(({ influencer }) => influencer as Influencer),
           ),
           voting: derivative(() => {
             switch (votingType) {
@@ -149,7 +153,9 @@ export const getHallOfFame = cachedRequest(
             category: ensureResolved(category)!,
             winnerImage: ensureResolved(winnerImage) ?? null,
             nominees: ensureResolvedArray(
-              (nominees ?? []).map(({ influencer }) => influencer),
+              (nominees ?? []).map(
+                ({ influencer }) => influencer as Influencer,
+              ),
             ),
           }),
         ),

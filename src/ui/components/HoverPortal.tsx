@@ -39,20 +39,20 @@ export function HoverPortal({
   const [activeItem, setActiveItem] = useState<string | number | undefined>(
     defaultValue,
   );
-  const contentMapRef = useMap<string | number, ReactNode>();
+  const contentMap = useMap<string | number, ReactNode>();
 
   const registerContent = useCallback(
     (id: string | number, content: ReactNode) => {
-      contentMapRef.set(id, content);
+      contentMap.set(id, content);
     },
-    [],
+    [contentMap],
   );
 
   const getContent = useCallback(
     (id: string | number) => {
-      return contentMapRef.get(id) ?? null;
+      return contentMap.get(id) ?? null;
     },
-    [contentMapRef],
+    [contentMap],
   );
 
   return (

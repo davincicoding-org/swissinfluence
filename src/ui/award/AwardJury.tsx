@@ -1,10 +1,7 @@
-import type { Expert } from "@/payload-types";
+import type { Expert } from "@/types";
 import { Image } from "@/ui/components/Image";
 import { PersonaCard } from "@/ui/components/PersonaCard";
-import { ensureResolved } from "@/utils/payload";
-
-import { SocialsLinks } from "../components/SocialLinks";
-import { derivative } from "../utils";
+import { SocialsLinks } from "@/ui/components/SocialLinks";
 
 export interface AwardJuryProps {
   members: Array<Expert>;
@@ -18,22 +15,6 @@ export function AwardJury({ members }: AwardJuryProps) {
       {/* Mobile View */}
       <div className="flex flex-col gap-4 md:hidden">
         {members.map((member, index) => {
-          const image = ensureResolved(member.image);
-          if (!image) return null;
-
-          const { mainSocials, extraSocials } = derivative(() => {
-            const socials = member.socials ?? [];
-            if (socials.length <= 2)
-              return {
-                mainSocials: socials,
-                extraSocials: [],
-              };
-            return {
-              mainSocials: socials.slice(0, 1),
-              extraSocials: socials.slice(1),
-            };
-          });
-
           return (
             <div
               key={member.id}
@@ -41,7 +22,7 @@ export function AwardJury({ members }: AwardJuryProps) {
               style={{ top: `${12 + index * 0.375}rem` }}
             >
               <Image
-                resource={image}
+                resource={member.image}
                 alt={member.name}
                 className="h-20 w-20 shrink-0 rounded-md object-cover"
                 sizes="128px"
@@ -74,8 +55,9 @@ export function AwardJury({ members }: AwardJuryProps) {
           <PersonaCard
             key={member.id}
             name={member.name}
-            image={ensureResolved(member.image)!}
+            image={member.image}
             socials={member.socials ?? []}
+            maxSocials={2}
             description={member.description}
             className="aspect-square"
             imageSizes="500px"

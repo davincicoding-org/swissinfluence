@@ -45,6 +45,7 @@ export function AwardPage({
   challenges,
   votingHandler,
 }: AwardPageProps) {
+  console.log(currentAward?.phases);
   const { headline, cta } = useHeaderContent(currentAward?.phases ?? []);
 
   const t = useTranslations("award");
@@ -52,62 +53,62 @@ export function AwardPage({
 
   return (
     <>
-      <AwardNavigationProvider>
+      {/* <AwardNavigationProvider>
         <VotingProvider
           awardId={currentAward?.id}
           categories={currentAward?.categories ?? []}
           submissionHandler={votingHandler}
-        >
-          <PageHero
-            image={heroImage}
-            title={t("hero.default.title", { year: currentAward?.year ?? "" })}
-            headline={headline}
-            CTA={
-              cta
-              // TODO figure out what this was for
-              // ?? (
-              // <Button
-              //   size="lg"
-              //   radius="md"
-              //   className="tracking-wider uppercase"
-              // >
-              //   {t("hero.default.CTA")}
-              // </Button>
-              // )
-            }
-          />
+        >*/}
+      <PageHero
+        image={heroImage}
+        title={t("hero.default.title", { year: currentAward?.year ?? "" })}
+        headline={headline}
+        CTA={
+          cta
+          // TODO figure out what this was for
+          // ?? (
+          // <Button
+          //   size="lg"
+          //   radius="md"
+          //   className="tracking-wider uppercase"
+          // >
+          //   {t("hero.default.CTA")}
+          // </Button>
+          // )
+        }
+      />
 
-          <main className="relative z-20 bg-white/80 pb-12 backdrop-blur-sm">
-            {/* MARK: Partners */}
-            {currentAward?.partners.length ? (
+      <main className="relative z-20 bg-white/80 pb-12 backdrop-blur-sm">
+        {/* MARK: Partners */}
+        {/* {currentAward?.partners.length ? (
               <BrandsMarquee brands={currentAward.partners} />
-            ) : null}
+            ) : null} */}
 
-            {currentAward ? (
-              <>
-                {/* MARK: Show */}
+        {currentAward ? (
+          <>
+            {/* MARK: Show */}
 
-                {currentAward.show && currentAward.show.date > now && (
-                  <NavElement id="show" label={t("show.linkLabel")}>
-                    <section className="container py-32">
-                      <SectionTitle
-                        title={t("show.title")}
-                        className="sticky top-32 mx-auto mb-8 max-w-4xl"
-                      />
-                      <EventOverview
-                        className="relative z-10 mx-auto max-w-4xl"
-                        date={currentAward.show.date}
-                        location={currentAward.show.location}
-                        registrationUrl={currentAward.show.registrationUrl}
-                        schedule={currentAward.show.schedule}
-                      />
-                    </section>
-                  </NavElement>
-                )}
+            {currentAward.show && currentAward.show.date > now && (
+              <NavElement id="show" label={t("show.linkLabel")}>
+                <section className="container py-32">
+                  <SectionTitle
+                    title={t("show.title")}
+                    className="sticky top-32 mx-auto mb-8 max-w-4xl"
+                  />
+                  <EventOverview
+                    className="relative z-10 mx-auto max-w-4xl"
+                    date={currentAward.show.date}
+                    location={currentAward.show.location}
+                    registrationUrl={currentAward.show.registrationUrl}
+                    schedule={currentAward.show.schedule}
+                  />
+                </section>
+              </NavElement>
+            )}
 
-                {/* MARK: Impressions */}
+            {/* MARK: Impressions */}
 
-                {(currentAward.show?.images ?? []).length > 0 &&
+            {/* {(currentAward.show?.images ?? []).length > 0 &&
                   currentAward.show?.videoUrl && (
                     <NavElement
                       id="impressions"
@@ -120,11 +121,11 @@ export function AwardPage({
                         />
                       </section>
                     </NavElement>
-                  )}
+                  )} */}
 
-                {/* MARK: Nomination */}
+            {/* MARK: Nomination */}
 
-                {currentAward.nominationUrl &&
+            {/* {currentAward.nominationUrl &&
                   currentAward.nominationDeadline &&
                   currentAward.nominationDeadline > now && (
                     <NavElement
@@ -143,11 +144,11 @@ export function AwardPage({
                         />
                       </section>
                     </NavElement>
-                  )}
+                  )} */}
 
-                {/* MARK: Newcomer Scout */}
+            {/* MARK: Newcomer Scout */}
 
-                {currentAward.newcomerScoutUrl &&
+            {/* {currentAward.newcomerScoutUrl &&
                   currentAward.newcomerScoutImage &&
                   currentAward.newcomerScoutTitle &&
                   currentAward.newcomerScoutInfo &&
@@ -188,11 +189,11 @@ export function AwardPage({
                         />
                       </section>
                     </NavElement>
-                  )}
+                  )} */}
 
-                {/* MARK: Categories */}
+            {/* MARK: Categories */}
 
-                {currentAward.categories &&
+            {/* {currentAward.categories &&
                   currentAward.categories.length > 0 && (
                     <NavElement
                       id="categories"
@@ -209,11 +210,11 @@ export function AwardPage({
                         />
                       </section>
                     </NavElement>
-                  )}
+                  )} */}
 
-                {/* MARK: Creator Challenges */}
+            {/* MARK: Creator Challenges */}
 
-                {challenges.length > 0 && (
+            {/* {challenges.length > 0 && (
                   <NavElement
                     id="creator-challenges"
                     label={t("creator-challenges.linkLabel")}
@@ -232,11 +233,11 @@ export function AwardPage({
                       />
                     </section>
                   </NavElement>
-                )}
+                )} */}
 
-                {/* MARK: Jury */}
+            {/* MARK: Jury */}
 
-                <NavElement id="jury" label={t("jury.linkLabel")}>
+            {/* <NavElement id="jury" label={t("jury.linkLabel")}>
                   <section className="container py-32">
                     <SectionTitle
                       title={t("jury.title")}
@@ -244,13 +245,13 @@ export function AwardPage({
                     />
                     <AwardJury members={currentAward.jury} />
                   </section>
-                </NavElement>
-              </>
-            ) : null}
+                </NavElement> */}
+          </>
+        ) : null}
 
-            {/* MARK: Past Impressions */}
+        {/* MARK: Past Impressions */}
 
-            {!currentAward?.show?.images.length && pastImpressions ? (
+        {/* {!currentAward?.show?.images.length && pastImpressions ? (
               <NavElement
                 id="past-impressions"
                 label={t("impressions.past.linkLabel", {
@@ -270,25 +271,25 @@ export function AwardPage({
                   />
                 </section>
               </NavElement>
-            ) : null}
+            ) : null} */}
 
-            {/* MARK: Hall of Fame */}
+        {/* MARK: Hall of Fame */}
 
-            <NavElement id="hall-of-fame" label={t("hallOfFame.linkLabel")}>
+        {/* <NavElement id="hall-of-fame" label={t("hallOfFame.linkLabel")}>
               <section className="container pt-32 pb-12">
                 <SectionTitle title={t("hallOfFame.title")} className="mb-8" />
                 <HallOfFame awards={hallOfFame} />
               </section>
-            </NavElement>
+            </NavElement> */}
 
-            {/*  MARK: Navigation */}
+        {/*  MARK: Navigation */}
 
-            <aside className="pointer-events-none sticky bottom-0 z-50 flex p-4">
+        {/* <aside className="pointer-events-none sticky bottom-0 z-50 flex p-4">
               <AwardNavigationPanel className="pointer-events-auto mx-auto" />
-            </aside>
-          </main>
-        </VotingProvider>
-      </AwardNavigationProvider>
+            </aside> */}
+      </main>
+      {/* </VotingProvider>
+      </AwardNavigationProvider> */}
     </>
   );
 }

@@ -44,7 +44,7 @@ export function SocialsLinks({
       className={cn(
         "flex",
         {
-          "flex-col": direction === "column",
+          "flex-col-reverse": direction === "column",
         },
         className,
         classNames?.root,
@@ -81,7 +81,7 @@ export function SocialsLinks({
         >
           <button
             className={cn(
-              "btn btn-square border-none shadow-none btn-ghost btn-lg hover:bg-primary/10 hover:text-primary",
+              "btn btn-square border-none shadow-none btn-ghost btn-lg hover:bg-primary/10 hover:text-primary focus:opacity-0",
               classNames?.item,
             )}
             // TODO i18n
@@ -110,7 +110,7 @@ export function SocialsLinks({
                   href={social.url}
                   target="_blank"
                   className={cn(
-                    "btn join-item btn-square border-none p-0 shadow-none btn-ghost btn-lg hover:bg-base-200 hover:text-primary",
+                    "btn join-item btn-square border-none p-0 shadow-none btn-ghost btn-lg hover:bg-primary/10 hover:text-primary",
                     classNames?.item,
                   )}
                   onClick={onItemClick}

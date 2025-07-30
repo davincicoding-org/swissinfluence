@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import dayjs from "dayjs";
 import { useLocale } from "next-intl";
 
@@ -8,9 +7,7 @@ import { cn, derivative } from "@/ui/utils";
 import { getCantonLabel } from "@/utils/cantons";
 import { ensureResolved } from "@/utils/payload";
 
-import { SectionTitle } from "../components/SectionTitle";
 import { SocialsLinks } from "../components/SocialLinks";
-import { TextGenerateEffect } from "../components/TextGenerateEffect";
 
 export interface CertifiedInfluencerPageProps {
   influencer: CertifiedInfluencer;

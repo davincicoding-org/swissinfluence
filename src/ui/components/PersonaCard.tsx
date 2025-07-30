@@ -16,6 +16,7 @@ export interface PersonaCardProps {
   image: ProfilePicture;
   imageSizes?: string;
   socials?: NonNullable<Socials>;
+  maxSocials?: number;
   className?: string;
   classNames?: {
     root?: string;
@@ -38,9 +39,10 @@ export function PersonaCard({
   header,
   description,
   image,
-  revealed,
+  revealed = isMobile,
   imageSizes,
   socials = [],
+  maxSocials,
   classNames,
   className,
   onSocialClick,
@@ -59,35 +61,43 @@ export function PersonaCard({
         resource={image}
         alt={name}
         className={cn("block aspect-square", classNames?.image)}
-        imgClassName="transition-transform duration-500 group-hover:scale-110"
+        imgClassName="transition-transform duration-700 group-hover:scale-110"
         sizes={imageSizes}
       />
 
       <div
         className={cn(
-          "select-noneto-transparent te xt-white absolute inset-0 flex items-end justify-between gap-2 bg-linear-to-t from-black/80 via-black/20 transition-opacity duration-300 group-hover:opacity-100",
-          isMobile || revealed ? "opacity-100" : "opacity-0",
+          "select-noneto-transparent te xt-white absolute inset-0 flex items-end justify-between gap-2 bg-linear-to-t from-black/80 via-black/20 text-white transition-opacity duration-300 group-hover:opacity-100",
+          revealed ? "opacity-100" : "opacity-0",
           classNames?.content,
         )}
       >
         <div className="absolute inset-x-0 bottom-0 flex w-full min-w-0 items-end justify-between p-[6cqw]">
           <div className="min-w-0">
-            <p className="text-[6cqw] leading-tight font-medium tracking-widest text-white">
-              {header}
-            </p>
-            <TextOverflowReveal
-              text={name}
-              classNames={{
-                root: "-mx-[6cqw]",
-                text: cn(
-                  "pl-[6cqw] text-[7cqw] leading-normal font-medium tracking-widest text-white",
-                  classNames?.name,
-                ),
-              }}
-            />
             <p
               className={cn(
-                "text-[5cqw] leading-snug font-light text-pretty text-base-300 empty:hidden",
+                "mb-[1.5cqw] text-[6cqw] leading-tight font-medium tracking-widest",
+                classNames?.header,
+              )}
+            >
+              {header}
+            </p>
+            <div className="-mx-[6cqw] pr-[6cqw]">
+              <TextOverflowReveal
+                text={name}
+                disabled={!revealed}
+                classNames={{
+                  text: cn(
+                    "pl-[6cqw]",
+                    "text-[7cqw] leading-[1.15] font-medium tracking-widest text-pretty text-white",
+                    classNames?.name,
+                  ),
+                }}
+              />
+            </div>
+            <p
+              className={cn(
+                "mt-[1.5cqw] text-[5cqw] leading-snug font-light text-pretty opacity-80 empty:hidden",
                 classNames?.description,
               )}
             >
@@ -98,13 +108,11 @@ export function PersonaCard({
             <SocialsLinks
               items={socials}
               direction="column"
-              maxItems={1}
+              maxItems={maxSocials}
               onItemClick={onSocialClick}
               classNames={{
-                root: cn(
-                  "-mr-[2cqw] -mb-[2cqw] text-white",
-                  classNames?.socials,
-                ),
+                root: cn("-mr-[2cqw] -mb-[2cqw]", classNames?.socials),
+                dropdown: "backdrop-blur-sm",
                 item: cn("size-[15cqw]", classNames?.socialItem),
                 icon: classNames?.socialIcon,
               }}

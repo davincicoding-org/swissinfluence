@@ -1,6 +1,35 @@
-import type { RichTextProps } from "@/ui/components/RichText";
+import type { DefaultTypedEditorState as RichTextData } from "@payloadcms/richtext-lexical";
+import type { StaticImageData } from "next/image";
 
 import type * as payloadTypes from "./payload-types";
+
+export interface NavigationConfig {
+  homeLink: string;
+  mainLogo: StaticImageData;
+  mainLinks: Array<{
+    label: string;
+    href: string;
+    logo?: StaticImageData;
+    children?: Array<{
+      label: string;
+      href: string;
+    }>;
+  }>;
+  subLinks: Array<{
+    label: string;
+    href: string;
+  }>;
+}
+
+export interface Influencer
+  extends Pick<payloadTypes.Influencer, "id" | "name" | "socials"> {
+  image: payloadTypes.ProfilePicture;
+}
+
+export interface Expert
+  extends Pick<payloadTypes.Expert, "id" | "name" | "description" | "socials"> {
+  image: payloadTypes.ProfilePicture;
+}
 
 export interface LatestConvention
   extends Pick<
@@ -18,7 +47,7 @@ export interface Event {
   registrationUrl?: string | null;
   title: string;
   date: string;
-  content: RichTextProps["data"];
+  content: RichTextData;
   location: payloadTypes.Location;
 }
 
@@ -46,7 +75,7 @@ export interface Campaign {
   dateTo: string | null;
   registrationUrl?: string | null;
   title: string;
-  content: RichTextProps["data"];
+  content: RichTextData;
 }
 
 // MARK: Award
@@ -82,7 +111,7 @@ export interface CurrentAward
     | "votingOpening"
     | "votingDeadline"
   > {
-  jury: Array<payloadTypes.Expert>;
+  jury: Array<Expert>;
   partners: Array<payloadTypes.Brand>;
   categories: Array<AwardCategory>;
   show: CurrentAwardShow | null;
@@ -103,7 +132,7 @@ export interface AwardCategory {
   category: payloadTypes.Category;
   sponsor: payloadTypes.Brand | null;
   winnerImage: payloadTypes.ProfilePicture | null;
-  nominees: Array<payloadTypes.Influencer>;
+  nominees: Array<Influencer>;
   voting: {
     opening: string | null;
     deadline: string | null;
@@ -117,7 +146,7 @@ export interface AwardRanking extends Pick<payloadTypes.Award, "year"> {
 export interface AwardCategoryRanking {
   category: Pick<payloadTypes.Category, "id" | "name">;
   winnerImage: payloadTypes.ProfilePicture | null;
-  nominees: Array<payloadTypes.Influencer>;
+  nominees: Array<Influencer>;
 }
 
 export interface InfluencerVote {

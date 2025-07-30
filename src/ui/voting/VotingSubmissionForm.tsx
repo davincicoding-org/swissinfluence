@@ -1,6 +1,5 @@
 "use client";
 
-import { Collapse } from "@mantine/core";
 import { useTranslations } from "next-intl";
 import { useForm, useWatch } from "react-hook-form";
 
@@ -48,7 +47,7 @@ export function VotingSubmissionForm({
       </div>
       <form
         onSubmit={handleSubmit((values) => onSubmit(values, reset))}
-        className="p-4 pb-1"
+        className="p-4 pb-2"
       >
         <p className="mb-4 text-center leading-snug text-balance text-gray-500">
           {t("disclaimer")}
@@ -57,7 +56,7 @@ export function VotingSubmissionForm({
           <div className="flex">
             <input
               className={cn(
-                "input relative flex-1 rounded-tr-none rounded-b-none text-center focus:z-10",
+                "input relative flex-1 !rounded-tr-none !rounded-b-none text-center focus:z-10",
                 {
                   "input-error": formState.errors.firstName !== undefined,
                 },
@@ -69,10 +68,10 @@ export function VotingSubmissionForm({
                 validate: (value) => value.trim().length >= 2,
               })}
             />
-            <div className="-mx-px" />
+            <div className="-mx-0.5" />
             <input
               className={cn(
-                "input relative flex-1 rounded-tl-none rounded-b-none text-center focus:z-10",
+                "input relative flex-1 !rounded-tl-none !rounded-b-none text-center focus:z-10",
                 {
                   "input-error": formState.errors.lastName !== undefined,
                 },
@@ -85,11 +84,11 @@ export function VotingSubmissionForm({
               })}
             />
           </div>
-          <div className="-my-px" />
+          <div className="-my-0.5" />
           <div>
             <input
               className={cn(
-                "input relative flex-1 rounded-t-none text-center focus:z-10",
+                "input relative z-10 w-full flex-1 !rounded-t-none text-center focus:z-10",
                 {
                   "input-error": formState.errors.email !== undefined,
                 },
@@ -102,18 +101,19 @@ export function VotingSubmissionForm({
               })}
             />
 
-            <Collapse
-              in={shouldShowSubaddressWarning && !isSubmitting}
-              animateOpacity
+            <div
+              className={cn("collapse -mt-4", {
+                "collapse-open": shouldShowSubaddressWarning && !isSubmitting,
+              })}
             >
-              <div className="-mt-4 rounded-box border border-warning bg-warning/30 p-2 pt-5 text-xs">
+              <div className="collapse-content rounded-box border border-warning bg-warning/30 !p-2 !pt-5 text-xs">
                 {t("subaddressWarning")}
               </div>
-            </Collapse>
+            </div>
           </div>
         </div>
         <div className="mt-5 mb-3 flex justify-center">
-          <label className="label">
+          <label className="label text-sm">
             <input
               type="checkbox"
               defaultChecked

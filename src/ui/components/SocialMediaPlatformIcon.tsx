@@ -7,7 +7,6 @@ import {
   IconBrandTiktok,
   IconBrandTwitch,
   IconBrandYoutube,
-  IconWorld,
   IconWorldWww,
 } from "@tabler/icons-react";
 

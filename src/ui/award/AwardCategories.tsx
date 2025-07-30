@@ -148,7 +148,7 @@ function CategoryCard({
             </div>
           </div>
           {nominees.length > 0 && (
-            <Marquee className="shrink-0 py-6" play={isTop}>
+            <Marquee className="shrink-0 py-6" play={isTop && !voting?.isOpen}>
               {nominees.map((influencer) => (
                 <PersonaCard
                   key={influencer.id}
@@ -207,7 +207,7 @@ function CategoryCard({
                     className="border-2 border-primary"
                     image={ensureResolved(influencer.image)!}
                     socials={influencer.socials ?? []}
-                    revealed
+                    revealed={isTop}
                     imageSizes="700px"
                   />
                 ))}

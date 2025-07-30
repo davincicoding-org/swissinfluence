@@ -1,6 +1,5 @@
 "use client";
 
-import { Modal } from "@mantine/core";
 import { useTranslations } from "next-intl";
 
 export interface VotingConfirmationModalProps {
@@ -15,27 +14,25 @@ export function VotingConfirmationModal({
   const t = useTranslations("voting.confirmation");
 
   return (
-    <Modal
-      opened={opened}
-      onClose={onClose}
-      centered
-      size="sm"
-      withCloseButton={false}
-      title={t("title")}
-      classNames={{
-        title: "text-xl font-medium mx-auto text-pretty",
-        body: "text-pretty",
-      }}
-      radius="md"
-      transitionProps={{
-        transition: "pop",
-      }}
-    >
-      {t("message")}
-
-      <button className="btn mt-5 btn-block btn-primary" onClick={onClose}>
-        {t("close")}
-      </button>
-    </Modal>
+    <dialog className="modal" open={opened} onClose={onClose}>
+      <div className="modal-box p-0">
+        <h2 className="flex h-12 items-center justify-center border-b border-base-300 bg-base-200 px-6 text-xl font-medium text-pretty shadow-md">
+          {t("title")}
+        </h2>
+        <div className="p-6">
+          <p className="text-pretty"> {t("message")} </p>
+          <button
+            className="btn mt-5 btn-block btn-lg btn-primary"
+            onClick={onClose}
+          >
+            {t("close")}
+          </button>
+        </div>
+      </div>
+      <form method="dialog" className="modal-backdrop backdrop-blur-md">
+        {/* TODO: i18n */}
+        <button>Close</button>
+      </form>
+    </dialog>
   );
 }

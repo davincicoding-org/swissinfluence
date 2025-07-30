@@ -64,7 +64,7 @@ export function EventOverview({
             { "btn-disabled": !registrationUrl },
           )}
         >
-          <IconTicket size={40} stroke={1} />
+          <IconTicket className="no-resize" size={40} stroke={1} />
           {t("register-cta")}
         </a>
       </div>

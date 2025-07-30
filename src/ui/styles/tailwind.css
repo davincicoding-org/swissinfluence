@@ -40,6 +40,13 @@
   --noise: 1;
 }
 
+@utility input {
+  @variant focus {
+    @apply border-primary;
+    @apply outline-none;
+  }
+}
+
 /* TODO create glass button variant */
 
 @utility container {
@@ -112,8 +119,7 @@
   );
 }
 
-.btn.btn-square > .tabler-icon,
-.btn.btn-circle > .tabler-icon {
+.btn > .tabler-icon:not(.no-resize) {
   width: 80%;
   height: 80%;
 }

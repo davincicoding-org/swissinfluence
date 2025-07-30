@@ -43,18 +43,19 @@ export function LandingPage({ heroVideo, pages }: LandingPageProps) {
             className="absolute inset-x-0 bottom-0 flex items-end justify-start bg-linear-to-b from-transparent via-black/60 to-black/80 p-4 sm:p-8 lg:p-10"
             style={{ opacity: headlineOpacity }}
           >
-            <p className="text-5xl leading-tight text-white md:text-5xl lg:text-6xl">
+            {/* <p className="text-5xl leading-tight text-white md:text-5xl lg:text-6xl">
               {t.rich("headline", {
                 Flip,
                 Static,
               })}
-            </p>
+            </p> */}
           </m.div>
           <m.div
             className="absolute inset-0 bg-black/50 backdrop-blur-lg"
             style={{ opacity: overlayOpacity }}
           />
         </header>
+
         <m.section
           className={cn(
             "relative z-20 container grid min-h-dvh content-center gap-4 py-24 max-sm:opacity-100! md:sticky md:top-0 md:bottom-0 md:grid-cols-2 md:gap-8",

@@ -29,8 +29,8 @@ const config: NextConfig = {
     ],
   },
   experimental: {
+    reactCompiler: true,
     optimizePackageImports: [
-      "@mantine/core",
       "@mantine/hooks",
       "@tabler/icons-react",
       "motion",

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import type { StaticImageData } from "next/image";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
@@ -13,22 +14,28 @@ import { SocialsLinks } from "../components/SocialLinks";
 import { NewsletterSignUp } from "./NewsletterSignUp";
 
 export interface FooterProps {
+  logo: StaticImageData;
   company: Company;
-  className?: string;
   newsletterHandler: (values: ContactInfo) => Promise<void>;
+  className?: string;
 }
 
-export function Footer({ company, className, newsletterHandler }: FooterProps) {
+export function Footer({
+  logo,
+  company,
+  newsletterHandler,
+  className,
+}: FooterProps) {
   const t = useTranslations();
 
-  const [newsletterSignUpOpened, setNewsletterSignUpOpened] = useState(false);
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
 
   const handleNewsletterSubmit = async (values: ContactInfo) => {
     setNewsletterSubmitting(true);
     await newsletterHandler(values);
-    setNewsletterSignUpOpened(false);
+    modalRef.current?.close();
     setNewsletterSubmitting(false);
   };
 
@@ -41,11 +48,10 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
     >
       <div className="flex items-center justify-between gap-6 max-sm:flex-wrap">
         <Image
-          className="w-24 lg:w-32"
+          unoptimized
+          className="w-24 shrink-0 lg:w-32"
           alt="SIA Logo"
-          src="/logos/main.svg"
-          width={89}
-          height={44}
+          src={logo}
         />
         <div className="inline-flex items-center justify-between gap-x-4 gap-y-3 rounded-box bg-neutral-600 p-3 shadow-md max-sm:order-1 max-sm:basis-full max-sm:flex-wrap sm:max-w-108">
           <p className="text-sm leading-snug text-pretty text-neutral-300">
@@ -53,13 +59,13 @@ export function Footer({ company, className, newsletterHandler }: FooterProps) {
           </p>
           <button
             className="btn shrink-0 btn-sm btn-primary max-sm:basis-full"
-            onClick={() => setNewsletterSignUpOpened(true)}
+            onClick={() => modalRef.current?.showModal()}
           >
             {t("newsletter.CTA")}
           </button>
+
           <NewsletterSignUp
-            opened={newsletterSignUpOpened}
-            onClose={() => setNewsletterSignUpOpened(false)}
+            ref={modalRef}
             submitting={newsletterSubmitting}
             onSubmit={handleNewsletterSubmit}
           />

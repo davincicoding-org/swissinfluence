@@ -25,11 +25,13 @@ import { VotingSubmissionModal } from "./VotingSubmissionModal";
 
 interface VotingContext {
   categories: Category["id"][];
+  isOpen: boolean;
   open: (categoryId?: Category["id"]) => void;
 }
 
 const VotingContext = createContext<VotingContext>({
   categories: [],
+  isOpen: false,
   open: () => void 0,
 });
 
@@ -47,8 +49,8 @@ export function VotingProvider({
 }: PropsWithChildren<VotingProviderProps>) {
   const [openCategory, setOpenCategory] = useState<Category["id"]>();
   const [isSelectionModalOpen, selectionModal] = useDisclosure(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const enforceVoting = useFlag("ENABLE_VOTING");
 
@@ -101,16 +103,22 @@ export function VotingProvider({
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+
   const handleCloseConfirmation = () => {
     router.replace(pathname);
   };
 
   const isSubmissionConfirmed = searchParams.get("voting-confirmed") !== null;
 
+  if (categoriesWithVoting.length === 0) {
+    return <>{children}</>;
+  }
+
   return (
     <VotingContext.Provider
       value={{
         categories: categoryIDs,
+        isOpen: isSelectionModalOpen,
         open: handleOpenVotingSelection,
       }}
     >
@@ -157,13 +165,14 @@ export function VotingButton({ className }: VotingButtonProps) {
 }
 
 export const useCategoryVoting = (categoryId: Category["id"]) => {
-  const { open, categories } = useContext(VotingContext);
+  const { open, categories, isOpen } = useContext(VotingContext);
 
   return useMemo(() => {
     const enabled = categories.includes(categoryId);
     if (!enabled) return null;
     return {
       open: () => open(categoryId),
+      isOpen,
     };
-  }, [categories, categoryId, open]);
+  }, [categories, categoryId, open, isOpen]);
 };

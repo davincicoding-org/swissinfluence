@@ -8,7 +8,6 @@ import { RichText } from "@/ui/components/RichText";
 import { SectionTitle } from "@/ui/components/SectionTitle";
 import { CertificationRegistration } from "@/ui/network/CertificationRegistration";
 import { InfluencerDiscovery } from "@/ui/network/InfluencerDiscovery";
-import { cn } from "@/ui/utils";
 
 export interface CertifiedInfluencersPageProps {
   heroImage: Photo;

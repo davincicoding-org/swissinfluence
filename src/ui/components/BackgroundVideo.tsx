@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { LoadingOverlay } from "@mantine/core";
 
 export interface BackgroundVideoProps {
   src: string;
@@ -35,7 +34,8 @@ export function BackgroundVideo({ src }: BackgroundVideoProps) {
         className="h-full w-full object-cover object-center"
         src={src}
       />
-      <LoadingOverlay
+      {/* TODO find better solution */}
+      {/* <LoadingOverlay
         visible={!isVideoReady}
         transitionProps={{ duration: 200 }}
         className="fixed"
@@ -44,7 +44,7 @@ export function BackgroundVideo({ src }: BackgroundVideoProps) {
           color: "mocha",
           size: "xl",
         }}
-      />
+      /> */}
     </>
   );
 }

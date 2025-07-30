@@ -18,7 +18,7 @@ export function AwardNomination({
   const t = useTranslations("award.nomination");
 
   return (
-    <div className="grid gap-4">
+    <div className={cn("grid gap-4", className)}>
       <div className="rounded-box border border-base-300 bg-base-100 shadow-md md:order-2">
         <HTMLRichText
           className="prose-lg max-w-none p-4"
