@@ -12,7 +12,7 @@ import {
 } from "@/ui/components/AnimatedTabs";
 import { cn } from "@/ui/utils";
 
-import { PersonaCard } from "../components/PersonaCard";
+import { PersonaCard, PersonaCardContainer } from "../components/PersonaCard";
 
 export interface HallOfFameProps {
   awards: Array<AwardRanking>;
@@ -55,18 +55,18 @@ export function HallOfFame({ awards, className }: HallOfFameProps) {
             }))}
           />
         </div>
-        {shouldRender && (
-          <AnimatePresence>
-            {awards.map(({ year, categories }) => (
-              <AnimatedTabsPanel
-                key={year}
-                value={year}
-                className="grid cols-autofill-250 gap-x-6 gap-y-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                {categories.map(({ category, nominees }) => (
+        <AnimatePresence>
+          {awards.map(({ year, categories }) => (
+            <AnimatedTabsPanel
+              key={year}
+              value={year}
+              className="grid cols-autofill-250 gap-x-6 gap-y-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {categories.map(({ category, nominees }) =>
+                shouldRender ? (
                   <div
                     key={category.id}
                     className="relative grid aspect-square"
@@ -103,11 +103,13 @@ export function HallOfFame({ awards, className }: HallOfFameProps) {
                       ))}
                     </div>
                   </div>
-                ))}
-              </AnimatedTabsPanel>
-            ))}
-          </AnimatePresence>
-        )}
+                ) : (
+                  <PersonaCardContainer key={category.id} />
+                ),
+              )}
+            </AnimatedTabsPanel>
+          ))}
+        </AnimatePresence>
       </div>
     </AnimatedTabs>
   );

@@ -198,10 +198,7 @@ export function AwardPage({
                 label={t("categories.linkLabel")}
                 className="container min-h-screen pt-32 pb-64"
               >
-                <SectionTitle
-                  title={t("categories.title")}
-                  className="sticky top-32 mb-8"
-                />
+                <SectionTitle title={t("categories.title")} className="mb-8" />
                 <AwardCategories
                   categories={currentAward.categories}
                   className="-mb-32"

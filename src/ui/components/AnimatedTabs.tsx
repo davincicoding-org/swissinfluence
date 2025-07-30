@@ -2,7 +2,8 @@
 
 import type { MotionProps } from "motion/react";
 import type { PropsWithChildren } from "react";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { usePrevious } from "@mantine/hooks";
 import * as m from "motion/react-m";
 
 import { cn } from "../utils";
@@ -41,6 +42,7 @@ export interface AnimatedTabsControlsProps {
     label: string;
     disabled?: boolean;
   }[];
+  initialScroll?: boolean;
   className?: string;
 }
 
@@ -50,14 +52,32 @@ export function AnimatedTabsControls({
   primary,
   size,
   className,
+  initialScroll,
 }: AnimatedTabsControlsProps) {
   const { activeTab, setActiveTab } = useContext(AnimatedTabsContext);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const prevActiveTab = usePrevious(activeTab);
+
+  useEffect(() => {
+    if (!initialScroll) return;
+    if (prevActiveTab !== undefined) return;
+    setTimeout(() => {
+      if (!containerRef.current) return;
+      const tab = containerRef.current.querySelector(`[data-active="true"]`);
+      if (!tab) return;
+      tab.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+      });
+    }, 100);
+  }, [activeTab, prevActiveTab, initialScroll]);
 
   return (
     <div
       role="tablist"
+      ref={containerRef}
       className={cn(
-        "tabs flex-nowrap tabs-box",
+        "tabs flex-nowrap overflow-y-auto tabs-box",
         {
           "tabs-xs": size === "xs",
           "tabs-sm": size === "sm",
@@ -80,7 +100,14 @@ export function AnimatedTabsControls({
             "tab-disabled": item.disabled,
             "flex-1": grow,
           })}
-          onClick={() => setActiveTab(item.value)}
+          onClick={(e) => {
+            setActiveTab(item.value);
+            e.currentTarget.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "center",
+            });
+          }}
         >
           {item.label}
         </a>

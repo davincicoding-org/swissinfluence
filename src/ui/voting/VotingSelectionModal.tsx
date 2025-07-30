@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { IconList, IconRestore, IconX } from "@tabler/icons-react";
 import { isEqual } from "lodash-es";
 import { AnimatePresence } from "motion/react";
@@ -19,6 +19,17 @@ import { PersonaCard } from "@/ui/components/PersonaCard";
 import { cn } from "@/ui/utils";
 
 import type { VotingSubmissionFormProps } from "./VotingSubmissionForm";
+import {
+  AnimatedTabs,
+  AnimatedTabsControls,
+  AnimatedTabsPanel,
+} from "../components/AnimatedTabs";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+} from "../components/Dialog";
 import { VotingSubmissionForm } from "./VotingSubmissionForm";
 
 export interface VotingSelectionModalProps {
@@ -34,8 +45,6 @@ interface CategorySelection {
   category: Pick<Category, "id" | "name">;
   influencers: Array<Influencer>;
 }
-
-// TODO Merge mobile and desktop views to reduce HTML size
 
 export function VotingSelectionModal({
   categories,
@@ -86,238 +95,166 @@ export function VotingSelectionModal({
 
   return (
     <>
-      <dialog open={opened} onClose={onClose} className="modal">
-        <div
-          className={cn(
-            "modal-box w-screen max-w-none rounded-none bg-base-100/20 p-0 backdrop-blur-sm",
-          )}
-        >
-          <div className="sticky top-0 z-20 -mb-12 flex h-12 items-center justify-end pr-3 sm:-mb-16 sm:h-16">
-            <button
-              className="btn !btn-circle size-10 bg-transparent backdrop-blur-xs btn-xl max-sm:border-none sm:bg-white/50"
-              onClick={onClose}
-            >
-              <IconX stroke={1.5} />
-            </button>
-          </div>
+      <Dialog modal open={opened} onOpenChange={onClose}>
+        <form>
+          <DialogContent
+            className="flex h-screen w-screen flex-col gap-8 overflow-y-auto bg-transparent backdrop-blur-md"
+            withOverlay={false}
+            showCloseButton={false}
+            fullScreen
+          >
+            <AnimatedTabs defaultValue={focusCategory}>
+              <DialogTitle className="sr-only">Voting Selection</DialogTitle>
 
-          {categories.map(({ category, nominees }) => {
-            const isSelected = (influencerId: Influencer["id"]) =>
-              votes.some((vote) =>
-                isEqual(vote, {
-                  influencer: influencerId,
-                  category: category.id,
-                }),
-              );
-            const handleToggle = (influencerId: Influencer["id"]) =>
-              onToggleVote({
-                influencer: influencerId,
-                category: category.id,
-              });
-
-            return (
-              <Fragment key={category.id}>
-                <ListView
-                  category={category.name}
-                  focused={category.id === focusCategory}
-                  className="sm:hidden"
-                  nominees={nominees}
-                  isSelected={isSelected}
-                  onToggle={handleToggle}
+              <header className="sticky top-0 z-10 flex min-w-0 gap-3">
+                <AnimatedTabsControls
+                  size="lg"
+                  primary
+                  initialScroll
+                  className="min-w-0 overflow-x-auto shadow-md"
+                  tabs={categories.map(({ category }) => ({
+                    label: category.name,
+                    value: category.id,
+                  }))}
                 />
-                <GridView
-                  category={category.name}
-                  focused={category.id === focusCategory}
-                  className="max-sm:hidden"
-                  nominees={nominees}
-                  isSelected={isSelected}
-                  onToggle={handleToggle}
-                />
-              </Fragment>
-            );
-          })}
-
-          <div className="pointer-events-none sticky bottom-0 z-10 flex justify-center p-3 *:pointer-events-auto">
-            <AnimatePresence mode="wait">
-              {votes.length > 0 ? (
-                <m.div
-                  className="flex w-84 items-center justify-between"
-                  key="actions"
-                  initial={{ y: "150%" }}
-                  animate={{ y: 0 }}
-                  exit={{ y: "150%" }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                <DialogClose
+                  data-slot="dialog-close"
+                  className="btn btn-square shadow-none backdrop-blur-xs btn-xl not-hover:border-transparent not-hover:bg-white/20"
                 >
-                  <div className="tooltip" data-tip={t("reset")}>
-                    <button
-                      className="btn btn-square bg-white/50 backdrop-blur-xs btn-lg"
-                      onClick={handleReset}
-                    >
-                      <IconRestore stroke={1.5} />
-                    </button>
-                  </div>
-                  <button
-                    key="submit"
-                    className="btn uppercase btn-lg btn-primary"
-                    onClick={() => setIsSubmissionOpen(true)}
-                  >
-                    {t("submit")}
-                  </button>
+                  <IconX />
+                  <span className="sr-only">Close</span>
+                </DialogClose>
+              </header>
 
-                  <div className="indicator">
-                    <span className="indicator-item badge badge-primary">
-                      {votes.length}
-                    </span>
-                    <div className="dropdown-hover dropdown dropdown-end dropdown-top">
-                      <button className="btn btn-square bg-white/50 backdrop-blur-xs btn-lg">
-                        <IconList stroke={1.5} />
+              {categories.map(({ category, nominees }) => (
+                <AnimatedTabsPanel
+                  key={category.id}
+                  value={category.id}
+                  className="my-auto min-w-0"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                  <div
+                    className={cn(
+                      "mx-auto grid max-w-280 cols-autofill-250 gap-6",
+                    )}
+                  >
+                    {nominees.map((nominee) => (
+                      <PersonaCard
+                        key={nominee.id}
+                        role="button"
+                        tabIndex={0}
+                        className={cn(
+                          "cursor-pointer transition-all active:scale-95",
+                          {
+                            "border-8 border-primary": votes.some((vote) =>
+                              isEqual(vote, {
+                                influencer: nominee.id,
+                                category: category.id,
+                              }),
+                            ),
+                          },
+                        )}
+                        socials={nominee.socials ?? []}
+                        name={nominee.name}
+                        image={nominee.image}
+                        imageSizes="500px"
+                        onClick={() =>
+                          onToggleVote({
+                            influencer: nominee.id,
+                            category: category.id,
+                          })
+                        }
+                        onSocialClick={(e) => e.stopPropagation()}
+                      />
+                    ))}
+                  </div>
+                </AnimatedTabsPanel>
+              ))}
+            </AnimatedTabs>
+
+            <div className="pointer-events-none sticky bottom-0 z-10 flex justify-center p-3 pt-0 *:pointer-events-auto">
+              <AnimatePresence mode="wait">
+                {votes.length > 0 ? (
+                  <m.div
+                    className="flex w-84 items-center justify-between"
+                    key="actions"
+                    initial={{ y: "150%" }}
+                    animate={{ y: 0 }}
+                    exit={{ y: "150%" }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    <div className="tooltip" data-tip={t("reset")}>
+                      <button
+                        className="btn btn-square bg-white/50 backdrop-blur-xs btn-lg"
+                        onClick={handleReset}
+                      >
+                        <IconRestore stroke={1.5} />
                       </button>
-                      <div className="dropdown-content w-84 pb-6">
-                        <SelectionList
-                          selection={selection}
-                          onRemove={onToggleVote}
-                        />
+                    </div>
+                    <button
+                      key="submit"
+                      className="btn shrink uppercase btn-lg btn-primary"
+                      onClick={() => setIsSubmissionOpen(true)}
+                    >
+                      {t("submit")}
+                    </button>
+
+                    <div className="indicator">
+                      <span className="indicator-item pointer-events-none badge badge-primary">
+                        {votes.length}
+                      </span>
+                      <div className="dropdown-hover dropdown dropdown-end dropdown-top">
+                        <button className="btn btn-square bg-white/50 backdrop-blur-xs btn-lg">
+                          <IconList stroke={1.5} />
+                        </button>
+                        <div className="dropdown-content w-84 pb-6">
+                          <SelectionList
+                            selection={selection}
+                            onRemove={onToggleVote}
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </m.div>
-              ) : (
-                <m.div
-                  key="info"
-                  className="border-base rounded-box border bg-base-200 p-3"
-                  initial={{ y: "150%" }}
-                  animate={{ y: 0 }}
-                  exit={{ y: "150%" }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  <p className="text-mocha-800 text-lg leading-tight font-medium text-pretty select-none">
-                    {t("instructions")}
-                  </p>
-                </m.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-        <form method="dialog" className="modal-backdrop backdrop-blur-md">
-          <button>Close</button>
+                  </m.div>
+                ) : (
+                  <m.div
+                    key="info"
+                    className="border-base rounded-box border bg-base-100/70 px-4 py-3 shadow-sm backdrop-blur-xs"
+                    initial={{ y: "150%" }}
+                    animate={{ y: 0 }}
+                    exit={{ y: "150%" }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    <p className="text-mocha-800 text-lg leading-tight font-medium text-pretty select-none">
+                      {t("instructions")}
+                    </p>
+                  </m.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </DialogContent>
         </form>
-      </dialog>
+      </Dialog>
 
-      <dialog
-        className="modal"
+      <Dialog
         open={isSubmissionOpen}
-        onClose={() => setIsSubmissionOpen(false)}
+        onOpenChange={() => setIsSubmissionOpen(false)}
       >
-        <div className="border-base modal-box max-w-sm overflow-clip border p-0 backdrop-blur-xs">
-          <VotingSubmissionForm
-            isSubmitting={submitting}
-            onSubmit={handleSubmit}
-            onCancel={() => setIsSubmissionOpen(false)}
-          />
-        </div>
-        <div className="modal-backdrop backdrop-blur-md" />
-      </dialog>
+        <form>
+          <DialogContent className="max-w-sm p-0" showCloseButton={false}>
+            <DialogTitle className="sr-only">Voting Submission</DialogTitle>
+            <VotingSubmissionForm
+              isSubmitting={submitting}
+              onSubmit={handleSubmit}
+              onCancel={() => setIsSubmissionOpen(false)}
+            />
+          </DialogContent>
+        </form>
+      </Dialog>
     </>
-  );
-}
-
-interface ViewProps {
-  category: string;
-  focused: boolean;
-  nominees: Influencer[];
-  isSelected: (influencerId: Influencer["id"]) => boolean;
-  onToggle: (influencerId: Influencer["id"]) => void;
-  className?: string;
-}
-
-// MARK: Grid View
-
-function GridView({
-  category,
-  focused,
-  nominees,
-  onToggle,
-  isSelected,
-  className,
-}: ViewProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!focused) return;
-    ref.current?.scrollIntoView({ behavior: "instant", block: "start" });
-  }, [focused]);
-  return (
-    <div className={cn(className)} ref={ref}>
-      <div className="sticky top-0 z-10 flex h-16 items-center px-6 md:py-4">
-        <div className="badge h-auto bg-white/50 badge-xl py-1 text-xl font-medium backdrop-blur-xs">
-          {category}
-        </div>
-      </div>
-      <div className={cn("grid cols-autofill-250 gap-5 px-6 pb-6")}>
-        {nominees.map((nominee) => (
-          <PersonaCard
-            key={nominee.id}
-            role="button"
-            tabIndex={0}
-            className={cn(
-              "cursor-pointer opacity-70 transition-all hover:opacity-100",
-              {
-                "border-8 border-primary opacity-100": isSelected(nominee.id),
-              },
-            )}
-            socials={nominee.socials ?? []}
-            name={nominee.name}
-            image={nominee.image}
-            imageSizes="500px"
-            revealed
-            onClick={() => onToggle(nominee.id)}
-            onSocialClick={(e) => e.stopPropagation()}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
-// MARK: List View
-
-function ListView({
-  category,
-  focused,
-  nominees,
-  onToggle,
-  isSelected,
-  className,
-}: ViewProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    if (!focused) return;
-    ref.current?.scrollIntoView({ behavior: "instant", block: "start" });
-  }, [focused]);
-
-  return (
-    <div ref={ref} className={cn(className)}>
-      <div className="sticky top-0 z-10 flex h-12 items-center bg-white/50 pr-12 pl-4 backdrop-blur-xs">
-        <span className="min-w-0 truncate text-2xl leading-none font-medium select-none">
-          {category}
-        </span>
-      </div>
-      <div className={cn("flex flex-col gap-3 px-4 pb-3")}>
-        {nominees.map((nominee) => (
-          <PersonaCard
-            key={nominee.id}
-            name={nominee.name}
-            image={nominee.image}
-            socials={nominee.socials ?? []}
-            maxSocials={5}
-            className={cn({
-              "border-primar": isSelected(nominee.id),
-            })}
-            revealed
-            onClick={() => onToggle(nominee.id)}
-          />
-        ))}
-      </div>
-    </div>
   );
 }
 
@@ -334,7 +271,7 @@ function SelectionList({
   }) => void;
 }) {
   return (
-    <div className="max-h-96 overflow-y-auto rounded-box bg-base-100 px-1">
+    <div className="max-h-96 overflow-y-auto rounded-box bg-base-100">
       <AnimatePresence>
         {selection.map(({ category, influencers }) => (
           <m.ul
@@ -344,7 +281,7 @@ function SelectionList({
           >
             <m.li
               key={category.id}
-              className="sticky top-0 z-10 bg-base-300/30 p-4 pt-2 pb-2 text-xl font-medium tracking-wide backdrop-blur-xs"
+              className="sticky top-0 z-10 mb-1 border-y border-base-300 bg-base-300/30 p-4 pt-2 pb-2 text-xl font-medium tracking-wide shadow-sm backdrop-blur-xs"
             >
               {category.name}
             </m.li>
@@ -352,20 +289,20 @@ function SelectionList({
               {influencers.map((influencer) => (
                 <m.li
                   key={influencer.id}
-                  className="list-row"
+                  className="mx-2 mt-2 flex gap-3 overflow-clip rounded-lg border border-base-300 pr-1 shadow-sm last:mb-4"
                   exit={{ opacity: 0, x: 10 }}
                 >
                   <Image
                     resource={influencer.image}
                     alt={influencer.name}
-                    className="size-10 shrink-0 rounded-md"
+                    className="size-12 shrink-0"
                     sizes="80px"
                   />
-                  <p className="my-auto text-lg leading-tight text-pretty">
+                  <p className="my-auto grow text-lg leading-tight text-pretty">
                     {influencer.name}
                   </p>
                   <button
-                    className="btn my-auto btn-square btn-ghost"
+                    className="btn my-auto btn-square shrink-0 btn-ghost"
                     onClick={() =>
                       onRemove({
                         category: category.id,

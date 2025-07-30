@@ -2,13 +2,7 @@
 
 import type { MotionNodeAnimationOptions } from "motion/react";
 import type { PropsWithChildren, ReactNode } from "react";
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useMap } from "@mantine/hooks";
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
@@ -19,13 +13,11 @@ import { cn } from "../utils";
 const HoverPortalContext = createContext<{
   activeItem: string | number | undefined;
   activateItem: (id: string | number) => void;
-  registerContent: (id: string | number, content: ReactNode) => void;
-  getContent: (id: string | number) => ReactNode;
+  contentMap: Map<string | number, ReactNode>;
 }>({
   activeItem: undefined,
   activateItem: () => void 0,
-  registerContent: () => void 0,
-  getContent: () => null,
+  contentMap: new Map<string | number, ReactNode>(),
 });
 
 export interface HoverPortalProps {
@@ -36,32 +28,21 @@ export function HoverPortal({
   children,
   defaultValue,
 }: PropsWithChildren<HoverPortalProps>) {
-  const [activeItem, setActiveItem] = useState<string | number | undefined>(
-    defaultValue,
-  );
+  const [activeItem, setActiveItem] = useState<string | number | undefined>();
+  useEffect(() => {
+    setTimeout(() => {
+      setActiveItem(defaultValue);
+    }, 100);
+  }, [defaultValue]);
+
   const contentMap = useMap<string | number, ReactNode>();
-
-  const registerContent = useCallback(
-    (id: string | number, content: ReactNode) => {
-      contentMap.set(id, content);
-    },
-    [contentMap],
-  );
-
-  const getContent = useCallback(
-    (id: string | number) => {
-      return contentMap.get(id) ?? null;
-    },
-    [contentMap],
-  );
 
   return (
     <HoverPortalContext.Provider
       value={{
         activeItem,
         activateItem: setActiveItem,
-        registerContent,
-        getContent,
+        contentMap,
       }}
     >
       {children}
@@ -104,14 +85,14 @@ export function HoverPortalContent({
   passthrough,
   children,
 }: PropsWithChildren<HoverPortalContentProps>) {
-  const { registerContent } = useContext(HoverPortalContext);
+  const { contentMap } = useContext(HoverPortalContext);
 
   const hasChildren = Boolean(children);
   useEffect(() => {
     if (!hasChildren) return;
-    registerContent(id, children);
+    contentMap.set(id, children);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, registerContent, hasChildren]);
+  }, [id, contentMap, hasChildren]);
 
   if (!passthrough) return null;
   return children;
@@ -122,13 +103,13 @@ export interface HoverPortalTargetProps extends MotionNodeAnimationOptions {
 }
 
 export function HoverPortalTarget({ ...props }: HoverPortalTargetProps) {
-  const { activeItem, getContent } = useContext(HoverPortalContext);
+  const { activeItem, contentMap } = useContext(HoverPortalContext);
 
   return (
     <AnimatePresence mode="wait">
       {activeItem !== undefined && (
         <m.div key={activeItem} {...props}>
-          {getContent(activeItem)}
+          {contentMap.get(activeItem)}
         </m.div>
       )}
     </AnimatePresence>

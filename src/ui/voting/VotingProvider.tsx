@@ -97,6 +97,7 @@ export function VotingProvider({
     });
     callback();
     setIsSubmitting(false);
+    selectionModal.close();
     setIsSubmitted(true);
   };
 
@@ -109,10 +110,6 @@ export function VotingProvider({
   };
 
   const isSubmissionConfirmed = searchParams.get("voting-confirmed") !== null;
-
-  if (categoriesWithVoting.length === 0) {
-    return <>{children}</>;
-  }
 
   return (
     <VotingContext.Provider
@@ -136,6 +133,7 @@ export function VotingProvider({
         onClose={() => setIsSubmitted(false)}
       />
       <VotingConfirmationModal
+        key="confirmation"
         opened={isSubmissionConfirmed}
         onClose={handleCloseConfirmation}
       />

@@ -1,4 +1,4 @@
-import type { HTMLAttributes, MouseEvent } from "react";
+import type { HTMLAttributes, MouseEvent, PropsWithChildren } from "react";
 import { isMobile } from "react-device-detect";
 
 import type { ProfilePicture, Socials } from "@/payload-types";
@@ -49,18 +49,14 @@ export function PersonaCard({
   ...attrs
 }: PersonaCardProps & HTMLAttributes<HTMLDivElement>) {
   return (
-    <div
-      className={cn(
-        "group @container relative overflow-hidden rounded-box bg-base-100 shadow-sm",
-        className,
-        classNames?.root,
-      )}
+    <PersonaCardContainer
+      className={cn(className, classNames?.root)}
       {...attrs}
     >
       <Image
         resource={image}
         alt={name}
-        className={cn("block aspect-square", classNames?.image)}
+        className={cn("block size-full", classNames?.image)}
         imgClassName="transition-transform duration-700 group-hover:scale-110"
         sizes={imageSizes}
       />
@@ -120,6 +116,24 @@ export function PersonaCard({
           )}
         </div>
       </div>
+    </PersonaCardContainer>
+  );
+}
+
+export function PersonaCardContainer({
+  children,
+  className,
+  ...attrs
+}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+  return (
+    <div
+      className={cn(
+        "group @container relative aspect-square overflow-hidden rounded-box bg-base-100 shadow-sm",
+        className,
+      )}
+      {...attrs}
+    >
+      {children}
     </div>
   );
 }

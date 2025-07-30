@@ -49,14 +49,14 @@ export function VotingSubmissionForm({
         onSubmit={handleSubmit((values) => onSubmit(values, reset))}
         className="p-4 pb-2"
       >
-        <p className="mb-4 text-center leading-snug text-balance text-gray-500">
+        <p className="mb-5 text-center text-sm leading-snug text-balance text-gray-500">
           {t("disclaimer")}
         </p>
         <div>
           <div className="flex">
             <input
               className={cn(
-                "input relative flex-1 !rounded-tr-none !rounded-b-none text-center focus:z-10",
+                "input relative input-lg flex-1 !rounded-tr-none !rounded-b-none text-center focus:z-10",
                 {
                   "input-error": formState.errors.firstName !== undefined,
                 },
@@ -71,7 +71,7 @@ export function VotingSubmissionForm({
             <div className="-mx-0.5" />
             <input
               className={cn(
-                "input relative flex-1 !rounded-tl-none !rounded-b-none text-center focus:z-10",
+                "input relative input-lg flex-1 !rounded-tl-none !rounded-b-none text-center focus:z-10",
                 {
                   "input-error": formState.errors.lastName !== undefined,
                 },
@@ -88,7 +88,7 @@ export function VotingSubmissionForm({
           <div>
             <input
               className={cn(
-                "input relative z-10 w-full flex-1 !rounded-t-none text-center focus:z-10",
+                "input relative input-lg w-full flex-1 !rounded-t-none text-center focus:z-10",
                 {
                   "input-error": formState.errors.email !== undefined,
                 },
@@ -112,7 +112,7 @@ export function VotingSubmissionForm({
             </div>
           </div>
         </div>
-        <div className="mt-5 mb-3 flex justify-center">
+        <div className="mt-2 mb-3 flex justify-center">
           <label className="label text-sm">
             <input
               type="checkbox"
@@ -128,8 +128,8 @@ export function VotingSubmissionForm({
         <div className="flex flex-col gap-2">
           <button
             type="submit"
-            className="btn btn-block btn-primary"
-            // disabled={!formState.isValid}
+            className="btn btn-block btn-lg btn-primary"
+            disabled={isSubmitting}
           >
             {isSubmitting ? (
               <span className="loading loading-md loading-spinner"></span>

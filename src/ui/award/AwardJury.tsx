@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useInView } from "motion/react";
 
 import type { Expert } from "@/types";
-import { PersonaCard } from "@/ui/components/PersonaCard";
+import { PersonaCard, PersonaCardContainer } from "@/ui/components/PersonaCard";
 
 export interface AwardJuryProps {
   members: Array<Expert>;
@@ -20,20 +20,22 @@ export function AwardJury({ members }: AwardJuryProps) {
 
   return (
     <div ref={ref} className="grid gap-4 sm:cols-autofill-250 md:gap-8">
-      {shouldRender &&
-        members.map((member, index) => (
+      {members.map((member, index) =>
+        shouldRender ? (
           <PersonaCard
             key={member.id}
             name={member.name}
             image={member.image}
             socials={member.socials ?? []}
-            // maxSocials={2}
             description={member.description}
             className="max-sm:sticky sm:!top-auto"
             imageSizes="500px"
             style={{ top: ` ${12 + index * 0.5}rem` }}
           />
-        ))}
+        ) : (
+          <PersonaCardContainer key={member.id} />
+        ),
+      )}
     </div>
   );
 }
