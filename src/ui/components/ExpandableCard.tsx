@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import { useRef } from "react";
 import { DialogTitle } from "@radix-ui/react-dialog";
-import { IconX } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
 import { tv } from "tailwind-variants";
 
@@ -67,7 +66,6 @@ export function ExpandableCard({
   className,
 }: ExpandableCardProps) {
   const ref = useRef<HTMLDialogElement>(null);
-  const t = useTranslations("misc");
 
   return (
     <Dialog>

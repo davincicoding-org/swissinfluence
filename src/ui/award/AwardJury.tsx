@@ -1,42 +1,40 @@
-"use client";
-
-import { useRef } from "react";
-import { useInView } from "motion/react";
-
 import type { Expert } from "@/types";
-import { PersonaCard, PersonaCardContainer } from "@/ui/components/PersonaCard";
+import {
+  MotionPersonaCard,
+  PersonaCardContainer,
+} from "@/ui/components/PersonaCard";
+
+import { OnScreenList } from "../components/OnScreenList";
 
 export interface AwardJuryProps {
   members: Array<Expert>;
 }
 
 export function AwardJury({ members }: AwardJuryProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const shouldRender = useInView(ref, {
-    amount: "some",
-    once: true,
-    margin: "200px",
-  });
-
   return (
-    <div ref={ref} className="grid gap-4 sm:cols-autofill-250 md:gap-8">
-      {members.map((member, index) =>
-        shouldRender ? (
-          <PersonaCard
-            key={member.id}
-            name={member.name}
-            image={member.image}
-            socials={member.socials ?? []}
-            description={member.description}
-            className="max-sm:sticky sm:!top-auto"
-            imageSizes="500px"
-            style={{ top: ` ${12 + index * 0.5}rem` }}
-          />
-        ) : (
-          <PersonaCardContainer key={member.id} />
-        ),
-      )}
-    </div>
+    <OnScreenList
+      className="grid gap-4 sm:cols-autofill-250 md:gap-8"
+      Placeholder={PersonaCardContainer}
+    >
+      {members.map((member, index) => (
+        <MotionPersonaCard
+          key={member.id}
+          name={member.name}
+          image={member.image}
+          socials={member.socials ?? []}
+          description={member.description}
+          className="max-sm:sticky sm:!top-auto"
+          imageSizes="500px"
+          style={{ top: ` ${12 + index * 0.5}rem` }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            duration: 0.2,
+          }}
+        />
+      ))}
+    </OnScreenList>
   );
 }
 

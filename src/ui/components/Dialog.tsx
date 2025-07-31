@@ -3,6 +3,7 @@
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { IconX } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import { cn } from "@/ui/utils";
 
@@ -58,6 +59,7 @@ function DialogContent({
   fullScreen?: boolean;
   withOverlay?: boolean;
 }) {
+  const t = useTranslations("misc");
   return (
     <DialogPortal data-slot="dialog-portal">
       <DialogOverlay className={cn({ "bg-transparent": !withOverlay })}>
@@ -80,7 +82,7 @@ function DialogContent({
               className="btn absolute top-4 right-4 z-50 btn-square btn-lg"
             >
               <IconX />
-              <span className="sr-only">Close</span>
+              <span className="sr-only">{t("close-modal")}</span>
             </DialogClose>
           )}
         </DialogPrimitive.Content>

@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 import { AnimatePresence } from "motion/react";
 
 import type { Campaign } from "@/types";
-import { FadeContainer } from "@/ui/components/FadeContainer";
 
 import { cn } from "../utils";
 import {

@@ -1,4 +1,7 @@
+"use client";
+
 import type { HTMLAttributes, MouseEvent, PropsWithChildren } from "react";
+import { create as createMotion } from "motion/react-m";
 import { isMobile } from "react-device-detect";
 
 import type { ProfilePicture, Socials } from "@/payload-types";
@@ -16,7 +19,7 @@ export interface PersonaCardProps {
   revealed?: boolean;
   image: ProfilePicture;
   imageSizes?: string;
-  socials?: NonNullable<Socials>;
+  socials?: Socials;
   maxSocials?: number;
   className?: string;
   classNames?: SlotClassNames<
@@ -98,7 +101,7 @@ export function PersonaCard({
               {description}
             </p>
           </div>
-          {socials.length > 0 && (
+          {socials && socials.length > 0 && (
             <SocialsLinks
               items={socials}
               direction="column"
@@ -135,3 +138,5 @@ export function PersonaCardContainer({
     </div>
   );
 }
+
+export const MotionPersonaCard = createMotion(PersonaCard);

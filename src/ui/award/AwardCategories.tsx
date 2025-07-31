@@ -3,6 +3,7 @@
 import type { HTMLAttributes, PropsWithChildren } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "motion/react";
+import { create as createMotion } from "motion/react-m";
 import { useTranslations } from "next-intl";
 import Marquee from "react-fast-marquee";
 
@@ -20,6 +21,7 @@ import {
   DialogTrigger,
 } from "../components/Dialog";
 import { FadeContainer } from "../components/FadeContainer";
+import { OnScreenList } from "../components/OnScreenList";
 import { useCategoryVoting } from "../voting/VotingProvider";
 
 export interface AwardCategoriesProps {
@@ -32,41 +34,38 @@ export function AwardCategories({
   className,
 }: AwardCategoriesProps) {
   const [visibleStack, setVisibleStack] = useState<number[]>([]);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  const shouldRender = useInView(containerRef, {
-    amount: "some",
-    once: true,
-    margin: "200px",
-  });
 
   return (
-    <div
+    <OnScreenList
       className={cn("flex flex-col gap-[25dvh]", className)}
-      ref={containerRef}
+      Placeholder={CategoryCardContainer}
     >
-      {categories.map(({ category, nominees, sponsor }, index) =>
-        shouldRender ? (
-          <CategoryCard
-            key={category.id}
-            category={category}
-            nominees={nominees}
-            sponsor={sponsor}
-            isTop={visibleStack[0] === index}
-            onVisibleChange={(visible) => {
-              setVisibleStack((prev) => {
-                if (visible) return [index, ...prev];
-                return prev.filter((i) => i !== index);
-              });
-            }}
-          />
-        ) : (
-          <CategoryCardContainer key={category.id} />
-        ),
-      )}
-    </div>
+      {categories.map(({ category, nominees, sponsor }, index) => (
+        <MotionCategoryCard
+          key={category.id}
+          category={category}
+          nominees={nominees}
+          sponsor={sponsor}
+          isTop={visibleStack[0] === index}
+          onVisibleChange={(visible) => {
+            setVisibleStack((prev) => {
+              if (visible) return [index, ...prev];
+              return prev.filter((i) => i !== index);
+            });
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            duration: 0.2,
+          }}
+        />
+      ))}
+    </OnScreenList>
   );
 }
+
+const MotionCategoryCard = createMotion(CategoryCard);
 
 interface CategoryCardProps
   extends Pick<AwardCategory, "category" | "nominees" | "sponsor"> {

@@ -73,7 +73,7 @@ export function TextOverflowReveal({
         repeatDelay: 5,
       },
     };
-  }, [nameOverflow, disabled]);
+  }, [nameOverflow, disabled, gradientWidth]);
 
   return (
     <p

@@ -1,11 +1,7 @@
 "use client";
 
 import type { IconProps } from "@tabler/icons-react";
-import type {
-  FunctionComponent,
-  HTMLAttributes,
-  PropsWithChildren,
-} from "react";
+import type { FunctionComponent, HTMLAttributes } from "react";
 import { useEffect } from "react";
 import {
   IconCamera,
