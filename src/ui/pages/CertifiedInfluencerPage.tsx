@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import type { CertifiedInfluencer } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
@@ -27,6 +27,7 @@ export function CertifiedInfluencerPage({
   },
 }: CertifiedInfluencerPageProps) {
   const locale = useLocale();
+  const t = useTranslations("influencers.profile");
   const age = derivative(() => {
     const today = dayjs();
     const birthDate = dayjs(birthdate);
@@ -62,8 +63,7 @@ export function CertifiedInfluencerPage({
                     {age}
                   </span>
                   <span className="text-xl leading-none text-nowrap uppercase opacity-60">
-                    {/* TODO i18n */}
-                    Years old
+                    {t("age")}
                   </span>
                 </div>
               </div>
@@ -78,8 +78,7 @@ export function CertifiedInfluencerPage({
                   )}
                 >
                   <span className="text-xl leading-none text-nowrap uppercase opacity-60">
-                    {/* TODO i18n */}
-                    Speaks
+                    {t("speaks")}
                   </span>
                   <p
                     className={cn(
@@ -99,8 +98,7 @@ export function CertifiedInfluencerPage({
 
               <div className="col-span-2 flex flex-wrap items-baseline justify-center gap-x-2 rounded-box border border-base-300 bg-base-200 p-3 shadow-sm">
                 <span className="text-lg leading-none text-nowrap uppercase opacity-60">
-                  {/* TODO i18n */}
-                  Based in
+                  {t("based-in")}
                 </span>
                 <span className="text-4xl leading-none text-primary">
                   {getCantonLabel(residence, locale)}
@@ -110,7 +108,7 @@ export function CertifiedInfluencerPage({
             <div className="flex gap-6">
               <div className="flex-1 rounded-box border border-base-300 bg-base-200 p-3 shadow-sm">
                 <span className="mb-2 text-lg leading-tight uppercase">
-                  Cooperation Interests
+                  {t("cooperation-interests")}
                 </span>
                 <ul>
                   {categories.map((category) => (
@@ -123,7 +121,7 @@ export function CertifiedInfluencerPage({
 
               <div className="flex-1 rounded-box border border-base-300 bg-base-200 p-3 shadow-sm">
                 <span className="mb-2 text-lg leading-tight uppercase">
-                  Other Interests
+                  {t("other-interests")}
                 </span>
                 <ul>
                   {interests?.split(/[\n,]+/).map((interest) => (

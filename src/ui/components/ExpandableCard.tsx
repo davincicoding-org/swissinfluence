@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { useRef } from "react";
 import { IconX } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
 import { Image } from "@/ui/components/Image";
@@ -39,6 +40,7 @@ export function ExpandableCard({
   className,
 }: ExpandableCardProps) {
   const ref = useRef<HTMLDialogElement>(null);
+  const t = useTranslations("misc");
 
   return (
     <>
@@ -133,8 +135,7 @@ export function ExpandableCard({
           ) : null}
         </div>
         <form method="dialog" className="modal-backdrop">
-          {/* TODO i18n */}
-          <button>close</button>
+          <button>{t("close-modal")}</button>
         </form>
       </dialog>
     </>

@@ -19,7 +19,7 @@ export function NewsletterSignUp({
   submitting,
   onSubmit,
 }: NewsletterSignUpProps) {
-  const t = useTranslations("newsletter");
+  const t = useTranslations();
 
   const { register, handleSubmit, formState } = useForm<ContactInfo>({
     defaultValues: {
@@ -34,7 +34,7 @@ export function NewsletterSignUp({
       <dialog className="modal" ref={ref}>
         <div className="modal-box max-w-sm p-0 text-base-content">
           <h2 className="flex h-12 items-center justify-center border-b border-base-300 bg-base-200 px-6 text-xl font-medium text-pretty shadow-sm">
-            {t("title")}
+            {t("newsletter.title")}
           </h2>
           <form className="p-6" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-4">
@@ -44,7 +44,7 @@ export function NewsletterSignUp({
                     className={cn("input text-center", {
                       "input-error": formState.errors.firstName !== undefined,
                     })}
-                    placeholder={t("placeholders.firstName")}
+                    placeholder={t("newsletter.placeholders.firstName")}
                     disabled={submitting}
                     {...register("firstName", { required: true })}
                   />
@@ -52,7 +52,7 @@ export function NewsletterSignUp({
                     className={cn("input text-center", {
                       "input-error": formState.errors.lastName !== undefined,
                     })}
-                    placeholder={t("placeholders.lastName")}
+                    placeholder={t("newsletter.placeholders.lastName")}
                     disabled={submitting}
                     {...register("lastName", { required: true })}
                   />
@@ -61,7 +61,7 @@ export function NewsletterSignUp({
                   className={cn("input w-full text-center", {
                     "input-error": formState.errors.email !== undefined,
                   })}
-                  placeholder={t("placeholders.email")}
+                  placeholder={t("newsletter.placeholders.email")}
                   disabled={submitting}
                   {...register("email", { required: true })}
                 />
@@ -74,15 +74,14 @@ export function NewsletterSignUp({
                 {submitting ? (
                   <span className="loading loading-md loading-spinner"></span>
                 ) : (
-                  t("submit")
+                  t("newsletter.submit")
                 )}
               </button>
             </div>
           </form>
         </div>
         <form method="dialog" className="modal-backdrop">
-          {/* TODO i18n */}
-          <button>close</button>
+          <button>{t("misc.close-modal")}</button>
         </form>
       </dialog>
     </>

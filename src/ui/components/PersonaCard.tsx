@@ -32,8 +32,6 @@ export interface PersonaCardProps {
   onSocialClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 
-// TODO start text scroll when revealed
-
 export function PersonaCard({
   name,
   header,

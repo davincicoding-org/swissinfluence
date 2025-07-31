@@ -32,8 +32,7 @@ export function ConventionPage({ convention, heroImage }: ConventionPageProps) {
           <>
             <section className="container py-24">
               <SectionTitle
-                // TODO i18n
-                title="Come and join us"
+                title={t("title")}
                 className="mx-auto mb-8 max-w-4xl"
               />
               <EventOverview

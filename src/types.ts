@@ -90,7 +90,7 @@ type AwardPhaseName =
   | "NOMINATION"
   | "NOMINATION_ENDED"
   | "VOTING"
-  | "VOTING_BREAK"
+  | "BETWEEN_VOTINGS"
   | "VOTING_ENDED"
   | "SHOW"
   | "WAITING_FOR_RANKING"

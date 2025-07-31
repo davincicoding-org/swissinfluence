@@ -94,7 +94,7 @@ function CategoryCard({
   }, [isInView]);
 
   return (
-    <div className={cn("sticky top-32 z-10", className)} ref={ref}>
+    <div className={cn("sticky top-48 z-10", className)} ref={ref}>
       <CategoryCardContainer>
         <div className="relative flex grow flex-col">
           <Image
@@ -187,14 +187,12 @@ function CategoryCardContainer({
 }
 
 function NomineesOverview({ nominees }: { nominees: Influencer[] }) {
+  const t = useTranslations("award.categories");
   return (
     <Dialog modal>
       <form>
-        <DialogTrigger asChild>
-          <button className="btn">
-            {/* TODO i18n */}
-            VIEW ALL
-          </button>
+        <DialogTrigger className="btn uppercase btn-lg">
+          {t("view-nominees")}
         </DialogTrigger>
 
         <DialogContent

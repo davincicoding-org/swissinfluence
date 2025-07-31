@@ -30,7 +30,7 @@ export function CertificationRegistration({
   className,
   application,
 }: CertificationRegistrationProps) {
-  const t = useTranslations("network.influencers.certification");
+  const t = useTranslations("influencers.certification");
   const modalRef = useRef<HTMLDialogElement>(null);
 
   const photo = ensureResolved(image);

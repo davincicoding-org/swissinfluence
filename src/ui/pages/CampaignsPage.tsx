@@ -21,7 +21,7 @@ export function CampaignsPage({
   campaigns,
   campaignForm,
 }: CampaignsPageProps) {
-  const t = useTranslations("network.campaigns");
+  const t = useTranslations("campaigns");
 
   return (
     <>

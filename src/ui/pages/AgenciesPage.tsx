@@ -18,7 +18,7 @@ export function AgenciesPage({
   agencies,
   content,
 }: AgenciesPageProps) {
-  const t = useTranslations("network.agencies");
+  const t = useTranslations("agencies");
 
   return (
     <>

@@ -110,9 +110,6 @@
   );
 }
 
-/* TODO create glass button variant */
-
-/* TODO use transform instead */
 @keyframes shimmer {
   0% {
     background-position: 200% 0;

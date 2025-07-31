@@ -52,9 +52,11 @@ export const MESSAGES_SCHEMA = {
         CTA: "short",
       },
       announced: { headline: "short" },
-      nomination: { CTA: "short", headline: "short" },
+      nomination: { headline: "short", CTA: "short" },
       "nomination-ended": { headline: "short", CTA: "short" },
+      "voting-countdown": { headline: "short" },
       voting: { headline: "short", CTA: "short" },
+      "between-votings": { headline: "short" },
       "voting-ended": { headline: "short" },
       "pre-show": { CTA: "short" },
       "during-show": { headline: "short" },
@@ -93,6 +95,7 @@ export const MESSAGES_SCHEMA = {
       title: "short",
       linkLabel: "short",
       sponsoredBy: ["short", "{brand}"],
+      "view-nominees": "short",
     },
     jury: {
       title: "short",
@@ -156,48 +159,53 @@ export const MESSAGES_SCHEMA = {
     },
   },
   network: {
-    page: {
-      hero: {
-        title: "short",
-        headline: "long",
-      },
-      links: {
-        influencers: "short",
-        campaigns: "short",
-        events: "short",
-        agencies: "short",
-        whatsapp: "short",
-      },
-    },
-    campaigns: {
-      title: "short",
-      headline: "short",
-      request: {
-        title: "short",
-        message: "short",
-        CTA: "short",
-      },
-      labels: {
-        current: "short",
-        past: "short",
-      },
-    },
-    agencies: {
+    hero: {
       title: "short",
       headline: "long",
-      "list-title": "short",
-      "contact-CTA": "short",
     },
-    influencers: {
+    links: {
+      influencers: "short",
+      campaigns: "short",
+      events: "short",
+      agencies: "short",
+      whatsapp: "short",
+    },
+  },
+  influencers: {
+    title: "short",
+    certification: {
       title: "short",
-      certification: {
-        title: "short",
-      },
-      discovery: {
-        title: "short",
-        description: "rich",
-      },
     },
+    discovery: {
+      title: "short",
+      description: "rich",
+    },
+    profile: {
+      age: "short",
+      "based-in": "short",
+      speaks: "short",
+      "cooperation-interests": "short",
+      "other-interests": "short",
+    },
+  },
+  campaigns: {
+    title: "short",
+    headline: "short",
+    request: {
+      title: "short",
+      message: "short",
+      CTA: "short",
+    },
+    labels: {
+      current: "short",
+      past: "short",
+    },
+  },
+  agencies: {
+    title: "short",
+    headline: "long",
+    "list-title": "short",
+    "contact-CTA": "short",
   },
   events: {
     titles: {
@@ -220,6 +228,7 @@ export const MESSAGES_SCHEMA = {
       headline: "long",
       CTA: "short",
     },
+    title: "short",
     content: "rich",
   },
   academy: {
@@ -239,5 +248,11 @@ export const MESSAGES_SCHEMA = {
       email: "short",
     },
     submit: "short",
+  },
+  misc: {
+    "close-modal": "short",
+    "social-link": ["short", "{platform}"],
+    "more-social-links": "short",
+    "time-left": ["short", "{timeLeft}"],
   },
 } satisfies MessagesSchema;

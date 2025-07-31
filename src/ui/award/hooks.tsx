@@ -1,4 +1,4 @@
-import type { ReactElement } from "react";
+import type { ReactElement, ReactNode } from "react";
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 
@@ -14,7 +14,7 @@ export const useHeaderContent = (currentPhase: AwardPhase | undefined) => {
   const t = useTranslations("award.hero");
 
   return useMemo<{
-    headline: string | ReactElement | undefined;
+    headline: ReactNode;
     cta?: ReactElement;
   }>(() => {
     if (!currentPhase)
@@ -38,18 +38,32 @@ export const useHeaderContent = (currentPhase: AwardPhase | undefined) => {
           ),
         };
       case "NOMINATION_ENDED":
+        const cta = (
+          <a
+            className="btn uppercase btn-xl btn-primary"
+            href={getSectionHash("categories")}
+            target="_self"
+          >
+            {t("nomination-ended.CTA")}
+          </a>
+        );
+
+        if (!currentPhase.nextPhaseStart)
+          return {
+            headline: t("nomination-ended.headline"),
+            cta,
+          };
+
         return {
-          headline: currentPhase.nextPhaseStart
-            ? "countdown for voting"
-            : t("nomination-ended.headline"),
+          headline: t("voting-countdown.headline"),
           cta: (
-            <a
-              className="btn uppercase btn-xl btn-primary"
-              href={getSectionHash("categories")}
-              target="_self"
-            >
-              {t("nomination-ended.CTA")}
-            </a>
+            <div className="grid gap-4">
+              <Countdown
+                className="text-center text-4xl font-light text-white"
+                date={currentPhase.nextPhaseStart}
+              />
+              {cta}
+            </div>
           ),
         };
       case "VOTING":
@@ -57,10 +71,15 @@ export const useHeaderContent = (currentPhase: AwardPhase | undefined) => {
           headline: t("voting.headline"),
           cta: <VotingButton />,
         };
-      case "VOTING_BREAK":
+      case "BETWEEN_VOTINGS":
         return {
-          headline: "VOTING CONTINUES SOON",
-          // TODO add timer
+          headline: t("between-votings.headline"),
+          cta: currentPhase.nextPhaseStart ? (
+            <Countdown
+              className="text-center text-4xl font-light text-white"
+              date={currentPhase.nextPhaseStart}
+            />
+          ) : undefined,
         };
       case "VOTING_ENDED":
         if (!currentPhase.nextPhaseStart)

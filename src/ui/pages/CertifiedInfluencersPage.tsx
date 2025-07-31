@@ -20,7 +20,7 @@ export function CertifiedInfluencersPage({
   pool,
   certification,
 }: CertifiedInfluencersPageProps) {
-  const t = useTranslations("network.influencers");
+  const t = useTranslations("influencers");
   return (
     <>
       <PageHero image={heroImage} title={t("title")} />

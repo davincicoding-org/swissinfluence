@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 import type { NavigationConfig } from "@/types";
 import { Link } from "@/i18n/navigation";
@@ -23,6 +24,8 @@ export function MobileNavigation({
   opened,
   onClose,
 }: MobileNavigationProps) {
+  const t = useTranslations("misc");
+
   return (
     <dialog open={opened} onClose={onClose} className="modal modal-bottom">
       <div className="modal-box bg-neutral/70 p-0 backdrop-blur-sm">
@@ -82,8 +85,7 @@ export function MobileNavigation({
         </div>
       </div>
       <form method="dialog" className="modal-backdrop backdrop-blur-sm">
-        {/* TODO I18N */}
-        <button>close</button>
+        <button>{t("close-modal")}</button>
       </form>
     </dialog>
   );

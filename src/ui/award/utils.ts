@@ -53,7 +53,7 @@ export const getUpcomingPhases = (
       if (!nextPhase) return;
 
       result.push({
-        name: "VOTING_BREAK",
+        name: "BETWEEN_VOTINGS",
         nextPhaseStart: nextPhase.start,
       });
     });

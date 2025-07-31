@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+import { useTranslations } from "next-intl";
 
 dayjs.extend(relativeTime);
 
@@ -10,8 +11,8 @@ export interface TimeLeftProps {
   deadline: string;
 }
 
-// TODO i18n
 export function TimeLeft({ deadline }: TimeLeftProps) {
+  const t = useTranslations("misc");
   const timeLeft = dayjs(deadline).fromNow(true);
 
   useEffect(() => {
@@ -31,5 +32,5 @@ export function TimeLeft({ deadline }: TimeLeftProps) {
     return () => clearTimeout(timer);
   }, [deadline]);
 
-  return <>{timeLeft} left</>;
+  return <>{t("time-left", {  timeLeft })}</>;
 }

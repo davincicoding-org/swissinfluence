@@ -17,7 +17,6 @@ export interface ScheduleProps {
   slots: NonNullable<ScheduleSlots>;
   className?: string;
 }
-// TODO animate collapse content
 
 export function Schedule({ slots, className }: ScheduleProps) {
   const t = useTranslations("events.event");

@@ -1,6 +1,9 @@
 "use client";
 
-import type { CountdownProps } from "react-countdown";
-import Countdown from "react-countdown";
+import dynamic from "next/dynamic";
 
-export { Countdown, type CountdownProps };
+export type { CountdownProps } from "react-countdown";
+
+export const Countdown = dynamic(() => import("react-countdown"), {
+  ssr: false,
+});

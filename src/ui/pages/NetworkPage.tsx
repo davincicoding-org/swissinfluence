@@ -21,7 +21,7 @@ export function NetworkPage<R extends string>({
   heroImage,
   links,
 }: NetworkPageProps<R>) {
-  const t = useTranslations("network.page");
+  const t = useTranslations("network");
 
   return (
     <>

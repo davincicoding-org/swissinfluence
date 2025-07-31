@@ -42,7 +42,7 @@ export function PageHero({
           "before:absolute before:inset-x-0 before:-top-32 before:h-32 before:bg-linear-to-t before:from-black/60 before:to-transparent before:content-['']",
         )}
       >
-        <div className="flex flex-wrap gap-8 p-4 max-sm:flex-col sm:items-end sm:p-8">
+        <div className="flex flex-wrap gap-x-8 gap-y-4 p-4 max-sm:flex-col sm:items-end sm:p-8">
           <div className="flex min-w-0 flex-1 flex-col gap-3 max-sm:text-center">
             <p className="text-5xl font-light tracking-wider text-balance hyphens-auto text-primary uppercase sm:text-5xl md:text-6xl lg:text-7xl">
               {title}

@@ -11,7 +11,7 @@ export interface AgencyTileProps {
 }
 
 export function AgencyTile({ data, className }: AgencyTileProps) {
-  const t = useTranslations("network.agencies");
+  const t = useTranslations("agencies");
 
   const image = ensureResolved(data.image);
   const logo = ensureResolved(data.logo);

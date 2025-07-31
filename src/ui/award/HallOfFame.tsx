@@ -24,7 +24,6 @@ export function HallOfFame({ awards, className }: HallOfFameProps) {
 
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { amount: "some" });
-  // TODO find better solution for this
   const shouldRender = useInView(ref, {
     amount: "some",
     once: true,

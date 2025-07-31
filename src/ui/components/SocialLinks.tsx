@@ -1,6 +1,7 @@
 import type { MouseEvent } from "react";
 import { useMemo } from "react";
 import { IconDotsVertical } from "@tabler/icons-react";
+import { useTranslations } from "next-intl";
 
 import type { Socials } from "@/payload-types";
 
@@ -24,6 +25,7 @@ export function SocialsLinks({
   classNames,
   onItemClick,
 }: SocialsLinksProps) {
+  const t = useTranslations("misc");
   const { displayedItems, hiddenItems } = useMemo<
     Record<"displayedItems" | "hiddenItems", NonNullable<Socials>>
   >(() => {
@@ -59,8 +61,7 @@ export function SocialsLinks({
             )}
             href={social.url}
             target="_blank"
-            // TODO i18n
-            aria-label={`Link to ${social.platform}`}
+            aria-label={t("social-link", { platform: social.platform })}
             onClick={onItemClick}
           >
             <SocialMediaPlatformIcon
@@ -84,8 +85,7 @@ export function SocialsLinks({
               "btn btn-square border-none shadow-none btn-ghost btn-lg hover:bg-primary/10 hover:text-primary focus:opacity-0",
               classNames?.item,
             )}
-            // TODO i18n
-            aria-label="More social links"
+            aria-label={t("more-social-links")}
           >
             <IconDotsVertical className={cn("scale-75", classNames?.icon)} />
           </button>
@@ -108,6 +108,7 @@ export function SocialsLinks({
                     "btn join-item btn-square border-none p-0 shadow-none btn-ghost btn-lg hover:bg-primary/10 hover:text-primary",
                     classNames?.item,
                   )}
+                  aria-label={t("social-link", { platform: social.platform })}
                   onClick={onItemClick}
                 >
                   <SocialMediaPlatformIcon
