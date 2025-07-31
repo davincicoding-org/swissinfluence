@@ -5,6 +5,7 @@ import { AnimatePresence } from "motion/react";
 import type { Campaign } from "@/types";
 import { FadeContainer } from "@/ui/components/FadeContainer";
 
+import { cn } from "../utils";
 import {
   AnimatedTabs,
   AnimatedTabsControls,
@@ -66,72 +67,49 @@ export function CampaignDiscovery({
     <AnimatedTabs
       defaultValue={currentCampaigns.length > 0 ? "CURRENT" : "PAST"}
     >
-      <div className={className}>
-        <div className="-mx-4 grid overflow-x-auto px-4 pb-2">
-          <AnimatedTabsControls
-            className="bg-transparent shadow-none"
-            primary
-            size="lg"
-            tabs={[
-              {
-                value: "CURRENT",
-                label: labels.current,
-                disabled: currentCampaigns.length === 0,
-              },
-              {
-                value: "PAST",
-                label: labels.past,
-                disabled: pastCampaigns.length === 0,
-              },
-            ]}
-          />
-        </div>
-
-        <FadeContainer gradientWidth={16} withPadding>
-          <div className="-mx-4 flex overflow-x-auto pb-4">
-            <div className="px-8">
-              <div className="h-4 w-4 shrink-0" />
-              <div className="grow">
-                <AnimatePresence mode="wait">
-                  <AnimatedTabsPanel
-                    key="current"
-                    value="CURRENT"
-                    className="flex grow flex-nowrap gap-8"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    {currentCampaigns.map((campaign) => (
-                      <CampaignTile
-                        key={campaign.id}
-                        data={campaign}
-                        className="w-80 max-w-[70vw] shrink-0 grow-0"
-                      />
-                    ))}
-                  </AnimatedTabsPanel>
-                  <AnimatedTabsPanel
-                    key="past"
-                    value="PAST"
-                    className="flex grow flex-nowrap gap-8"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    {pastCampaigns.map((campaign) => (
-                      <CampaignTile
-                        key={campaign.id}
-                        data={campaign}
-                        className="w-80 max-w-[70vw] shrink-0 grow-0"
-                        past
-                      />
-                    ))}
-                  </AnimatedTabsPanel>
-                </AnimatePresence>
-              </div>
-              <div className="h-4 w-4 shrink-0" />
-            </div>
-          </div>
-        </FadeContainer>
+      <div className={cn("grid gap-4", className)}>
+        <AnimatedTabsControls
+          className="min-w-0 rounded-none bg-transparent p-0 shadow-none sm:tabs-lg"
+          primary
+          tabs={[
+            {
+              value: "CURRENT",
+              label: labels.current,
+              disabled: currentCampaigns.length === 0,
+            },
+            {
+              value: "PAST",
+              label: labels.past,
+              disabled: pastCampaigns.length === 0,
+            },
+          ]}
+        />
+        <AnimatePresence mode="wait">
+          <AnimatedTabsPanel
+            key="current"
+            value="CURRENT"
+            className="flex flex-wrap gap-3 max-sm:flex-col sm:gap-4 md:gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {currentCampaigns.map((campaign) => (
+              <CampaignTile key={campaign.id} data={campaign} />
+            ))}
+          </AnimatedTabsPanel>
+          <AnimatedTabsPanel
+            key="past"
+            value="PAST"
+            className="flex flex-wrap gap-3 max-sm:flex-col sm:gap-4 md:gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {pastCampaigns.map((campaign) => (
+              <CampaignTile key={campaign.id} data={campaign} past />
+            ))}
+          </AnimatedTabsPanel>
+        </AnimatePresence>
       </div>
     </AnimatedTabs>
   );

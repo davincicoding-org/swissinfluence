@@ -1,3 +1,4 @@
+import { h1 as MotionH1 } from "motion/react-m";
 import { useTranslations } from "next-intl";
 
 import type { Page, Photo } from "@/payload-types";
@@ -5,8 +6,7 @@ import type { Campaign } from "@/types";
 import { CampaignDiscovery } from "@/ui/components/CampaignDiscovery";
 import { PageHero } from "@/ui/components/PageHero";
 import { RichText } from "@/ui/components/RichText";
-
-import { SectionTitle } from "../components/SectionTitle";
+import { SectionTitle } from "@/ui/components/SectionTitle";
 
 export interface CampaignsPageProps {
   heroImage: Photo;
@@ -27,10 +27,27 @@ export function CampaignsPage({
     <>
       <PageHero image={heroImage} title={t("title")} />
       <main className="relative z-20 bg-base-100/80 py-32 backdrop-blur-sm">
-        <section className="container mx-auto flex max-w-4xl flex-col">
-          <SectionTitle title={t("headline")} className="mb-8" />
+        <section className="container">
+          <MotionH1
+            className="mb-8 text-center text-4xl text-balance sm:text-5xl md:text-6xl"
+            initial={{
+              y: "150%",
+            }}
+            whileInView={{
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 1,
+              ease: "easeOut",
+            }}
+          >
+            {t("headline")}
+          </MotionH1>
           {content && (
-            <div className="rounded-box border border-base-300 bg-base-100 p-6 shadow-md">
+            <div className="relative z-10 rounded-box border border-base-300 bg-base-100 p-6 shadow-md">
               <RichText
                 data={content}
                 className="prose-lg"

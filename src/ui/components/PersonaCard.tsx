@@ -2,6 +2,7 @@ import type { HTMLAttributes, MouseEvent, PropsWithChildren } from "react";
 import { isMobile } from "react-device-detect";
 
 import type { ProfilePicture, Socials } from "@/payload-types";
+import type { SlotClassNames } from "@/ui/utils";
 import { Image } from "@/ui/components/Image";
 import { cn } from "@/ui/utils";
 
@@ -18,17 +19,16 @@ export interface PersonaCardProps {
   socials?: NonNullable<Socials>;
   maxSocials?: number;
   className?: string;
-  classNames?: {
-    root?: string;
-    content?: string;
-    image?: string;
-    header?: string;
-    name?: string;
-    description?: string;
-    socials?: string;
-    socialItem?: string;
-    socialIcon?: string;
-  };
+  classNames?: SlotClassNames<
+    | "content"
+    | "image"
+    | "header"
+    | "name"
+    | "description"
+    | "socials"
+    | "socialItem"
+    | "socialIcon"
+  >;
   onSocialClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
 }
 

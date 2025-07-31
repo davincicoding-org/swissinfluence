@@ -6,4 +6,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+export type SlotClassNames<Slots extends string> = Partial<
+  Record<Slots | "root", string>
+>;
+
 export const derivative = <T>(fn: () => T) => fn();

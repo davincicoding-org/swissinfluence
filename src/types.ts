@@ -26,6 +26,11 @@ export interface Influencer
   image: payloadTypes.ProfilePicture;
 }
 
+export interface Brand
+  extends Pick<payloadTypes.Brand, "id" | "name" | "website"> {
+  logo: payloadTypes.Logo;
+}
+
 export interface Expert
   extends Pick<payloadTypes.Expert, "id" | "name" | "description" | "socials"> {
   image: payloadTypes.ProfilePicture;
@@ -69,7 +74,7 @@ export interface CertifiedInfluencer
 export interface Campaign {
   id: number;
   image: payloadTypes.Photo;
-  organizer: payloadTypes.Brand;
+  organizer: Brand;
   location: payloadTypes.Location | null;
   dateFrom: string;
   dateTo: string | null;

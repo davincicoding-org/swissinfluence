@@ -1,7 +1,11 @@
 "use client";
 
 import type { IconProps } from "@tabler/icons-react";
-import type { FunctionComponent } from "react";
+import type {
+  FunctionComponent,
+  HTMLAttributes,
+  PropsWithChildren,
+} from "react";
 import { useEffect } from "react";
 import {
   IconCamera,
@@ -13,8 +17,15 @@ import {
   IconTheater,
   IconTrophy,
 } from "@tabler/icons-react";
-import { Link } from "react-scroll";
+import { useTranslations } from "next-intl";
+import { ScrollLink } from "react-scroll";
 import { createStore, useStore } from "zustand";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/ui/components/Tooltip";
 
 import { cn } from "../utils";
 
@@ -79,6 +90,34 @@ export const useRegisterSection = ({ name, label }: AwardSection) => {
 
 // MARK: Panel
 
+const Link = ({
+  label,
+  name,
+  ...rest
+}: HTMLAttributes<HTMLButtonElement> & AwardSection) => {
+  const t = useTranslations("navigation.aria");
+  const Icon = ICONS[name];
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild {...rest}>
+        <button
+          className={cn(
+            "hover:text-unset btn !btn-circle border-transparent btn-ghost transition-colors btn-lg hover:text-primary",
+          )}
+          aria-label={t("navigateTo", { target: label })}
+        >
+          <Icon size={28} stroke={1.5} />
+        </button>
+      </TooltipTrigger>
+      <TooltipContent className="text-base tracking-widest uppercase">
+        {label}
+      </TooltipContent>
+    </Tooltip>
+  );
+};
+
+export const ScrollableLink = ScrollLink(Link);
+
 export interface AwardNavigationPanelProps {
   className?: string;
 }
@@ -89,33 +128,21 @@ export function AwardNavigationPanel({ className }: AwardNavigationPanelProps) {
   return (
     <div
       className={cn(
-        "flex gap-1 rounded-full border border-base-300 bg-white/30 p-1 backdrop-blur-md empty:hidden",
+        "flex gap-1 rounded-full border-2 border-base-300 bg-base-100/30 p-1 backdrop-blur-sm empty:hidden",
         className,
       )}
     >
-      {sections.map(({ name, label }) => {
-        const Icon = ICONS[name];
-        return (
-          <div
-            key={name}
-            className="tooltip tooltip-top before:tracking-widest"
-            data-tip={label}
-          >
-            <Link
-              className={cn(
-                "hover:text-unset btn !btn-circle border-transparent btn-ghost transition-colors btn-lg hover:text-primary",
-              )}
-              // aria-label={t("navigateTo", { target: label })}
-              to={name}
-              spy
-              hashSpy
-              activeClass="!bg-primary !text-primary-content"
-            >
-              <Icon size={28} stroke={1.5} />
-            </Link>
-          </div>
-        );
-      })}
+      {sections.map(({ name, label }) => (
+        <ScrollableLink
+          key={name}
+          label={label}
+          name={name}
+          to={name}
+          spy
+          hashSpy
+          activeClass="!bg-primary !text-primary-content"
+        />
+      ))}
     </div>
   );
 }

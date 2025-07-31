@@ -1,8 +1,8 @@
 "use server";
 
 import type { SupportedLocale } from "@/i18n/config";
-import type { Brand, Location, Photo } from "@/payload-types";
-import type { Campaign } from "@/types";
+import type { Location, Photo } from "@/payload-types";
+import type { Brand, Campaign } from "@/types";
 
 import { cachedRequest } from "../cache";
 import { getPayloadClient } from "../payload";

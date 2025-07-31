@@ -6,33 +6,41 @@ import { useElementSize } from "@mantine/hooks";
 import { type MotionProps } from "motion/react";
 import * as m from "motion/react-m";
 
+import type { SlotClassNames } from "@/ui/utils";
 import { cn } from "@/ui/utils";
 
 // TODO find css solution for this
 export interface TextOverflowRevealProps {
   text: ReactNode;
   className?: string;
+  gradientWidth?: number;
   disabled?: boolean;
-  classNames?: {
-    root?: string;
-    text?: string;
-  };
+  classNames?: SlotClassNames<"text">;
 }
 
 export function TextOverflowReveal({
   text,
+  gradientWidth = 16,
   className,
   classNames,
   disabled,
 }: TextOverflowRevealProps) {
-  const { ref: spaceRef, width: spaceWidth } = useElementSize();
-  const { ref: nameRef, width: nameWidth } = useElementSize();
+  const { ref: spaceRef, width: spaceWidth } = useElementSize({
+    box: "border-box",
+  });
+  const { ref: nameRef, width: nameWidth } = useElementSize({
+    box: "content-box",
+  });
 
   const hasNameOverflow = nameWidth + 0 > spaceWidth;
   const nameOverflow = Math.max(0, nameWidth - spaceWidth);
 
   const motionProps = useMemo<MotionProps>(() => {
-    if (nameOverflow === 0 || disabled) return {};
+    const baseStyle = {
+      paddingInline: gradientWidth,
+    };
+
+    if (nameOverflow === 0 || disabled) return { style: baseStyle };
 
     const revealSpeed = 50; // pixels per second
     const resetSpeed = 100; // pixels per second
@@ -45,9 +53,10 @@ export function TextOverflowReveal({
 
     return {
       whileInView: {
-        x: [0, -1 * (nameOverflow + 8), -1 * (nameOverflow + 8), 0],
+        x: [0, -1 * nameOverflow, -1 * nameOverflow, 0],
       },
       style: {
+        ...baseStyle,
         willChange: "transform",
       },
       transition: {
@@ -58,7 +67,6 @@ export function TextOverflowReveal({
           (revealTime + stayAtEndTime) / totalTime,
           1,
         ],
-        // times: [0, 0.6, 0.8, 1],
         delay: 3,
         ease: "easeInOut",
         repeat: Infinity,
@@ -70,7 +78,7 @@ export function TextOverflowReveal({
   return (
     <p
       className={cn(
-        "relative grid w-full overflow-hidden",
+        "relative grid w-full overflow-hidden text-nowrap",
         className,
         classNames?.root,
       )}
@@ -78,10 +86,10 @@ export function TextOverflowReveal({
       style={
         hasNameOverflow
           ? {
-              WebkitMaskImage: `linear-gradient(to right, transparent, currentColor ${(16 / spaceWidth) * 100}%, currentColor ${((spaceWidth - 16) / spaceWidth) * 100}%, transparent)`,
+              WebkitMaskImage: `linear-gradient(to right, transparent, currentColor ${(gradientWidth / spaceWidth) * 100}%, currentColor ${((spaceWidth - gradientWidth) / spaceWidth) * 100}%, transparent)`,
               WebkitMaskRepeat: "no-repeat",
               WebkitMaskSize: "100%",
-              maskImage: `linear-gradient(to right, transparent, currentColor ${(16 / spaceWidth) * 100}%, currentColor ${((spaceWidth - 16) / spaceWidth) * 100}%, transparent)`,
+              maskImage: `linear-gradient(to right, transparent, currentColor ${(gradientWidth / spaceWidth) * 100}%, currentColor ${((spaceWidth - gradientWidth) / spaceWidth) * 100}%, transparent)`,
               maskRepeat: "no-repeat",
               maskSize: "100%",
             }
@@ -90,7 +98,7 @@ export function TextOverflowReveal({
     >
       <m.span
         ref={nameRef}
-        className={cn("text-nowrapd", classNames?.text)}
+        className={cn("", classNames?.text)}
         {...motionProps}
       >
         {text}

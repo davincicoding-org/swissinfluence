@@ -278,7 +278,7 @@ export function AwardPage({
 
             {/*  MARK: Navigation */}
 
-            <aside className="pointer-events-none sticky bottom-0 z-50 flex p-4">
+            <aside className="pointer-events-none sticky bottom-4 z-50 flex px-4">
               <AwardNavigationPanel className="pointer-events-auto mx-auto" />
             </aside>
           </VotingProvider>

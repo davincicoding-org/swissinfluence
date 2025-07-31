@@ -1,10 +1,11 @@
 "use server";
 
 import type { SupportedLocale } from "@/i18n/config";
-import type { Brand, Location, Photo } from "@/payload-types";
+import type { Location, Photo } from "@/payload-types";
 import type {
   AwardRanking,
   AwardShowImpressions,
+  Brand,
   Campaign,
   CurrentAward,
   Expert,

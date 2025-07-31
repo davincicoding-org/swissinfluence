@@ -2,23 +2,21 @@
 
 import type { ReactNode } from "react";
 import { useRef } from "react";
+import { DialogTitle } from "@radix-ui/react-dialog";
 import { IconX } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
+import { tv } from "tailwind-variants";
 
 import type { Photo } from "@/payload-types";
+import type { Brand } from "@/types";
 import { Image } from "@/ui/components/Image";
-import { cn } from "@/ui/utils";
 
-import { TextOverflowReveal } from "./TextOverflowReveal";
+import { Dialog, DialogContent, DialogTrigger } from "./Dialog";
 
-interface ExpandableCardProps {
+export interface ExpandableCardProps {
   title: string;
-  description?: string;
   image: Photo;
-  logo?: {
-    photo: Photo;
-    url: string;
-  };
+  organizer?: Brand;
   content: ReactNode;
   badge?: ReactNode;
   cta?: {
@@ -28,13 +26,42 @@ interface ExpandableCardProps {
   className?: string;
 }
 
+const $ = {
+  root: tv({
+    base: "group relative flex cursor-pointer overflow-clip rounded-box border border-base-300 bg-base-100 shadow-md transition-transform duration-300 active:scale-95",
+  }),
+  image: tv({
+    base: "relative aspect-square size-32 shrink-0 overflow-clip sm:size-60 md:size-72",
+  }),
+  logoContainer: tv({
+    base: "absolute inset-x-0 bottom-0 sm:top-3",
+  }),
+  logo: tv({
+    base: "mx-auto aspect-video w-24 object-right",
+  }),
+  content: tv({
+    base: "inset-0 flex flex-col justify-center p-3 sm:absolute sm:justify-end",
+  }),
+  badge: tv({
+    base: "mb-2 badge shrink-0 badge-sm shadow-sm sm:mx-auto sm:badge-lg",
+  }),
+  contentBottom: tv({
+    base: "sm:rounded-lg sm:bg-base-100/60 sm:p-2 sm:backdrop-blur-sm",
+  }),
+  title: tv({
+    base: "text-lg leading-tight tracking-wider text-pretty sm:text-center",
+  }),
+  description: tv({
+    base: "",
+  }),
+};
+
 // TODO make this prettier
 export function ExpandableCard({
   title,
-  description,
   badge,
   image,
-  logo,
+  organizer,
   content,
   cta,
   className,
@@ -43,101 +70,83 @@ export function ExpandableCard({
   const t = useTranslations("misc");
 
   return (
-    <>
-      <div
-        className={cn(
-          "group flex cursor-pointer flex-col rounded-box border border-base-300 bg-base-100 p-4 pb-2 shadow-sm transition-colors hover:bg-base-200",
-          className,
-        )}
-        onClick={() => ref.current?.showModal()}
-      >
-        <div className="flex w-full flex-col gap-3">
-          <div className="relative overflow-clip rounded-lg">
-            {badge && (
-              <div className="absolute top-3 left-3 z-10 badge badge-lg badge-primary">
-                {badge}
-              </div>
-            )}
+    <Dialog>
+      <DialogTrigger asChild>
+        <div
+          role="button"
+          tabIndex={0}
+          className={$.root({ className })}
+          onClick={() => ref.current?.showModal()}
+        >
+          <div className={$.image()}>
             <Image
               resource={image}
               alt={title}
-              className="aspect-square"
+              className="size-full"
               imgClassName="transition-transform duration-500 group-hover:scale-105"
-              // TODO set size properly
-              sizes="880px"
+              sizes="(max-width: 640px) 128px, (max-width: 768px) 240px, 288px"
             />
-          </div>
-          <div className="-ml-2 grid items-center justify-center">
-            <div className="mb-1 w-full min-w-0 text-center text-base font-medium text-nowrap">
-              <TextOverflowReveal className="pl-2 text-nowrap" text={title} />
-            </div>
-            {description && (
-              <p className="mb-1 min-w-0 truncate px-2 text-center text-base text-neutral-600">
-                {description}
-              </p>
+            {organizer && (
+              <div className={$.logoContainer()}>
+                <Image
+                  resource={organizer.logo}
+                  alt="Logo"
+                  className={$.logo()}
+                  imgClassName="object-contain"
+                />
+              </div>
             )}
+          </div>
+          <div className={$.content()}>
+            {badge && <div className={$.badge()}>{badge}</div>}
+            <div className={$.contentBottom()}>
+              <p className={$.title()}>{title}</p>
+            </div>
           </div>
         </div>
-      </div>
-
-      <dialog ref={ref} className="modal">
-        <div className="modal-box max-h-192 p-0">
-          <div className="sticky top-0 z-20 -mb-14 flex h-14 items-center justify-end pr-3">
-            <button
-              className="btn !btn-circle bg-white/50 btn-ghost backdrop-blur-xs"
-              onClick={() => ref.current?.close()}
-            >
-              <IconX />
-            </button>
-          </div>
-          <div className="relative">
-            <Image
-              resource={image}
-              alt={title}
-              className="h-80 w-full object-cover object-center"
-              // TODO set size properly
-              sizes="880px"
-            />
-            <div className="absolute right-0 bottom-0 left-0 flex flex-nowrap items-end justify-between gap-5 bg-linear-to-t from-black/50 from-50% to-transparent p-4 pt-8">
-              <p className="text-lg leading-tight font-medium text-pretty text-white">
-                {title}
-              </p>
-              {logo && (
-                <a href={logo.url} target="_blank" rel="noopener">
-                  <Image
-                    resource={logo.photo}
-                    alt="Logo"
-                    className="h-auto w-20"
-                    sizes="160px"
-                  />
-                </a>
-              )}
-            </div>
-            {badge && (
-              <div className="absolute top-4 left-4 badge badge-lg badge-primary">
-                {badge}
-              </div>
+      </DialogTrigger>
+      <DialogContent className="max-w-xl p-0">
+        <div className="relative aspect-video">
+          <Image
+            resource={image}
+            alt={title}
+            fill
+            className="size-full"
+            // TODO optimize sizes
+            // sizes="(max-width: 640px) 128px, (max-width: 768px) 240px, 288px"
+          />
+          <header className="absolute inset-x-0 bottom-0 flex flex-nowrap items-end justify-between gap-5 bg-linear-to-t from-black/50 from-50% to-transparent p-4 pt-8">
+            <DialogTitle className="text-2xl leading-tight tracking-wider text-pretty text-white">
+              {title}
+            </DialogTitle>
+            {organizer && (
+              <a href={organizer.website} target="_blank" rel="noopener">
+                <Image
+                  resource={organizer.logo}
+                  alt="Logo"
+                  className="aspect-video"
+                  imgClassName="object-contain !object-right !object-bottom"
+                  sizes="160px"
+                />
+              </a>
             )}
-          </div>
-
-          <div className="p-4">{content}</div>
-
+          </header>
+        </div>
+        <div className="aspect-square overflow-y-auto p-6 md:aspect-video">
+          {content}
           {cta ? (
-            <div className="sticky bottom-0 bg-white/80 p-4 before:absolute before:inset-x-0 before:-top-8 before:h-8 before:bg-linear-to-t before:from-white/80 before:to-transparent">
+            <div className="sticky bottom-0 flex">
               <a
                 href={cta.url}
                 target="_blank"
-                className="btn btn-block btn-primary"
+                className="btn mx-auto btn-lg btn-primary"
               >
                 {cta.label}
               </a>
             </div>
           ) : null}
         </div>
-        <form method="dialog" className="modal-backdrop">
-          <button>{t("close-modal")}</button>
-        </form>
-      </dialog>
-    </>
+      </DialogContent>
+    </Dialog>
   );
 }

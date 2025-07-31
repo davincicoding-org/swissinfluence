@@ -18,7 +18,7 @@ export function EventsPage({ heroImage, events }: EventsPageProps) {
     <>
       <PageHero image={heroImage} title={t("title")} headline={t("headline")} />
       <main className="relative z-20 bg-base-100/80 py-32 backdrop-blur-sm">
-        <div className="container grid cols-autofill-250 gap-6 md:gap-8">
+        <div className="container flex flex-wrap gap-3 max-sm:flex-col sm:gap-4 md:gap-8">
           {events.map((event) => (
             <EventTile key={event.id} data={event} />
           ))}

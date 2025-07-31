@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import type { Campaign } from "@/types";
 import { ExpandableCard } from "@/ui/components/ExpandableCard";
 import { RichText } from "@/ui/components/RichText";
-import { ensureResolved } from "@/utils/payload";
 
 export interface CampaignTileProps {
   data: Campaign;
@@ -15,7 +14,6 @@ export interface CampaignTileProps {
 
 export function CampaignTile({ data, past, className }: CampaignTileProps) {
   const t = useTranslations("events.event");
-  const organizerLogo = ensureResolved(data.organizer.logo)!;
 
   const badge = useMemo(() => {
     if (!data.dateTo) return null;
@@ -32,12 +30,8 @@ export function CampaignTile({ data, past, className }: CampaignTileProps) {
     <ExpandableCard
       title={data.title}
       badge={badge}
-      description={data.organizer.name}
+      organizer={data.organizer}
       image={data.image}
-      logo={{
-        photo: organizerLogo,
-        url: data.organizer.website,
-      }}
       content={<RichText data={data.content} />}
       cta={
         !past && data.registrationUrl

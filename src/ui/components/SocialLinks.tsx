@@ -5,12 +5,13 @@ import { useTranslations } from "next-intl";
 
 import type { Socials } from "@/payload-types";
 
+import type { SlotClassNames } from "../utils";
 import { cn } from "../utils";
 import { SocialMediaPlatformIcon } from "./SocialMediaPlatformIcon";
 
 export interface SocialsLinksProps {
   className?: string;
-  classNames?: Partial<Record<"root" | "item" | "dropdown" | "icon", string>>;
+  classNames?: SlotClassNames<"item" | "dropdown" | "icon">;
   items: NonNullable<Socials>;
   direction?: "row" | "column";
   maxItems?: number;

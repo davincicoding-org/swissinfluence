@@ -77,7 +77,7 @@ export function AnimatedTabsControls({
       role="tablist"
       ref={containerRef}
       className={cn(
-        "tabs flex-nowrap overflow-y-auto tabs-box",
+        "tabs flex-nowrap overflow-y-auto tabs-box uppercase",
         {
           "tabs-xs": size === "xs",
           "tabs-sm": size === "sm",

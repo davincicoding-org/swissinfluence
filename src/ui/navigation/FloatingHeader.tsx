@@ -98,23 +98,11 @@ export function FloatingHeader({
 
   return (
     <>
-      {/* <m.div
-        className="pointer-events-none fixed inset-x-0 top-0 z-10"
-        initial={{
-          opacity: 1,
-        }}
-        animate={{
-          opacity: visible ? 1 : 0,
-        }}
-        transition={{
-          duration: 0.5,
-        }}
-      >
-        <div className="h-16 bg-(--mantine-color-body)" />
-      </m.div> */}
       <AnimatePresence mode="wait">
-        <m.div
-          className={cn("fixed inset-x-0 top-4 z-30 sm:top-6 md:top-8")}
+        <m.nav
+          className={cn(
+            "fixed inset-x-4 top-4 z-30 flex h-16 items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm sm:top-6 md:top-8",
+          )}
           initial={{
             opacity: 1,
             y: -100,
@@ -127,101 +115,97 @@ export function FloatingHeader({
             duration: 0.5,
           }}
         >
-          <div className="container">
-            <div className="flex h-16 items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm">
-              <Image
-                priority
-                unoptimized
-                alt="Logo"
-                src={activeLink?.logo ?? config.mainLogo}
-                className={cn("h-9 w-auto shrink-0", {
-                  "cursor-pointer": pathname !== config.homeLink,
-                  "translate-y-0.5": !activeLink?.logo,
-                })}
-                onClick={handleLogoClick}
-              />
+          <Image
+            priority
+            unoptimized
+            alt="Logo"
+            src={activeLink?.logo ?? config.mainLogo}
+            className={cn("h-9 w-auto shrink-0", {
+              "cursor-pointer": pathname !== config.homeLink,
+              "translate-y-0.5": !activeLink?.logo,
+            })}
+            onClick={handleLogoClick}
+          />
 
-              <button
-                className="btn btn-circle text-primary-content btn-ghost btn-sm md:hidden"
-                onClick={mobileDrawer.open}
-                aria-label="Open navigation"
-              >
-                <IconMenu />
-              </button>
+          <button
+            className="btn btn-circle text-primary-content btn-ghost btn-sm md:hidden"
+            onClick={mobileDrawer.open}
+            aria-label="Open navigation"
+          >
+            <IconMenu />
+          </button>
 
-              <div className="flex max-md:hidden">
-                {config.mainLinks.map(({ label, href, children }) => (
-                  <div key={label} className="dropdown-hover group dropdown">
-                    <Link
-                      href={href}
-                      scroll
-                      className={cn(
-                        "relative flex items-center border-y-2 border-transparent px-2 py-1 text-base font-medium tracking-wider text-neutral-content/70 uppercase transition-colors group-hover:text-neutral-content",
-                        {
-                          "group-hover:border-transparent": children,
-                          "border-b-neutral-content text-neutral-content":
-                            href === pathname,
-                          "text-neutral-content": pathname.startsWith(href),
-                        },
-                      )}
-                    >
-                      {label}
-                    </Link>
-                    {children && (
-                      <ul className="dropdown-content menu z-1 rounded-box bg-neutral/90">
-                        {children.map((childLink) => (
-                          <li key={childLink.href}>
-                            <Link
-                              key={childLink.label}
-                              href={childLink.href}
-                              scroll
-                              onClick={(e) => {
-                                e.currentTarget.blur();
-                              }}
-                              className={cn(
-                                "relative flex items-center px-2 text-base font-medium tracking-wider text-neutral-content uppercase transition-colors hover:text-primary",
-                                {
-                                  "text-primary": pathname === childLink.href,
-                                },
-                              )}
-                            >
-                              {childLink.label}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ))}
-                <div className="dropdown-hover dropdown dropdown-center ml-2">
-                  <button
-                    className="btn !btn-circle !border-transparent bg-transparent text-neutral-content/70 btn-ghost"
-                    aria-label={t("aria.langSwitch")}
-                  >
-                    <IconWorld stroke={1.5} />
-                  </button>
-                  <div className="dropdown-content menu z-1 rounded-box bg-neutral/90">
-                    {locales.map((option) => (
-                      <li key={option}>
-                        <button
+          <div className="flex max-md:hidden">
+            {config.mainLinks.map(({ label, href, children }) => (
+              <div key={label} className="dropdown-hover group dropdown">
+                <Link
+                  href={href}
+                  scroll
+                  className={cn(
+                    "relative flex items-center border-y-2 border-transparent px-2 py-1 text-base font-medium tracking-wider text-neutral-content/70 uppercase transition-colors group-hover:text-neutral-content",
+                    {
+                      "group-hover:border-transparent": children,
+                      "border-b-neutral-content text-neutral-content":
+                        href === pathname,
+                      "text-neutral-content": pathname.startsWith(href),
+                    },
+                  )}
+                >
+                  {label}
+                </Link>
+                {children && (
+                  <ul className="dropdown-content menu z-1 rounded-box bg-neutral/90">
+                    {children.map((childLink) => (
+                      <li key={childLink.href}>
+                        <Link
+                          key={childLink.label}
+                          href={childLink.href}
+                          scroll
+                          onClick={(e) => {
+                            e.currentTarget.blur();
+                          }}
                           className={cn(
-                            "justify-center",
-                            locale === option
-                              ? "text-primary"
-                              : "text-neutral-content/70 hover:text-neutral-content",
+                            "relative flex items-center px-2 text-base font-medium tracking-wider text-neutral-content uppercase transition-colors hover:text-primary",
+                            {
+                              "text-primary": pathname === childLink.href,
+                            },
                           )}
-                          onClick={() => handleLocaleChange(option)}
                         >
-                          {option.toUpperCase()}
-                        </button>
+                          {childLink.label}
+                        </Link>
                       </li>
                     ))}
-                  </div>
-                </div>
+                  </ul>
+                )}
+              </div>
+            ))}
+            <div className="dropdown-hover dropdown dropdown-center ml-2">
+              <button
+                className="btn !btn-circle !border-transparent bg-transparent text-neutral-content/70 btn-ghost"
+                aria-label={t("aria.langSwitch")}
+              >
+                <IconWorld stroke={1.5} />
+              </button>
+              <div className="dropdown-content menu z-1 rounded-box bg-neutral/90">
+                {locales.map((option) => (
+                  <li key={option}>
+                    <button
+                      className={cn(
+                        "justify-center",
+                        locale === option
+                          ? "text-primary"
+                          : "text-neutral-content/70 hover:text-neutral-content",
+                      )}
+                      onClick={() => handleLocaleChange(option)}
+                    >
+                      {option.toUpperCase()}
+                    </button>
+                  </li>
+                ))}
               </div>
             </div>
           </div>
-        </m.div>
+        </m.nav>
       </AnimatePresence>
 
       <MobileNavigation
