@@ -56,7 +56,9 @@ const awardNavigationStore = createStore<AwardNavigationStore>((set) => ({
   sections: [],
   registerSection: (section) => {
     set((state) => ({
-      sections: [...state.sections, section],
+      sections: state.sections.some((s) => s.name === section.name)
+        ? state.sections.map((s) => (s.name === section.name ? section : s))
+        : [...state.sections, section],
     }));
   },
 }));
@@ -72,7 +74,7 @@ export const useRegisterSection = ({ name, label }: AwardSection) => {
       name,
       label,
     });
-  }, [name, registerSection, label]);
+  }, [name, label]);
 };
 
 // MARK: Panel
