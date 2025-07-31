@@ -6,6 +6,8 @@ import type { Campaign } from "@/types";
 import { ExpandableCard } from "@/ui/components/ExpandableCard";
 import { RichText } from "@/ui/components/RichText";
 
+import { formatDate } from "../utils";
+
 export interface CampaignTileProps {
   data: Campaign;
   past?: boolean;
@@ -19,10 +21,10 @@ export function CampaignTile({ data, past, className }: CampaignTileProps) {
     if (!data.dateTo) return null;
     const hasEnded = dayjs(data.dateTo).isBefore(dayjs());
     if (hasEnded) {
-      return `${dayjs(data.dateFrom).format("DD.MM.YYYY")} - ${dayjs(data.dateTo).format("DD.MM.YYYY")}`;
+      return `${formatDate(data.dateFrom)} - ${formatDate(data.dateTo)}`;
     }
     return t("slot-until", {
-      time: dayjs(data.dateTo).format("DD.MM.YYYY"),
+      time: formatDate(data.dateTo),
     });
   }, [data.dateFrom, data.dateTo, t]);
 

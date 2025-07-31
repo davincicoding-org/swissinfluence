@@ -2,7 +2,7 @@
 
 import type { UseInViewOptions } from "motion/react";
 import type { FunctionComponent, PropsWithChildren } from "react";
-import { Children, useEffect, useRef } from "react";
+import { Children, useRef } from "react";
 import { useViewportSize } from "@mantine/hooks";
 import { AnimatePresence, useInView } from "motion/react";
 
@@ -24,11 +24,6 @@ export function OnScreenList({
     amount: "some",
     margin: margin ?? `${viewport.height}px`,
   });
-
-  const count = Children.count(children);
-  useEffect(() => {
-    console.log(count);
-  }, [count]);
 
   return (
     <div ref={ref} className={className}>

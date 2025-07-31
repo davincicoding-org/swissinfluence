@@ -1,10 +1,9 @@
 import { useId } from "react";
-import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
 import type { ScheduleSlots } from "@/payload-types";
 
-import { cn } from "../utils";
+import { cn, formatTime } from "../utils";
 import {
   HoverPortal,
   HoverPortalContent,
@@ -50,16 +49,16 @@ export function Schedule({ slots, className }: ScheduleProps) {
                 <div className="collapse-title md:!pr-4">
                   <p className="mb-1 leading-none opacity-60">
                     {slot.from && slot.to
-                      ? `${dayjs(slot.from).format("HH:mm")} - ${dayjs(slot.to).format("HH:mm")}`
+                      ? `${formatTime(slot.from)} - ${formatTime(slot.to)}`
                       : null}
                     {slot.from && !slot.to
                       ? t("slot-from", {
-                          time: dayjs(slot.from).format("HH:mm"),
+                          time: formatTime(slot.from),
                         })
                       : null}
                     {!slot.from && slot.to
                       ? t("slot-until", {
-                          time: dayjs(slot.to).format("HH:mm"),
+                          time: formatTime(slot.to),
                         })
                       : null}
                   </p>

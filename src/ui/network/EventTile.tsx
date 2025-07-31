@@ -1,9 +1,8 @@
-import dayjs from "dayjs";
-
 import type { Event } from "@/types";
 import { RichText } from "@/ui/components/RichText";
 
 import { ExpandableCard } from "../components/ExpandableCard";
+import { formatDate } from "../utils";
 
 export interface EventTileProps {
   data: Event;
@@ -11,7 +10,7 @@ export interface EventTileProps {
 }
 
 export function EventTile({ data }: EventTileProps) {
-  const formattedDate = dayjs(data.date).format("DD.MM.YYYY");
+  const formattedDate = formatDate(data.date);
 
   return (
     <ExpandableCard

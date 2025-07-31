@@ -61,6 +61,7 @@ export const useHeaderContent = (currentPhase: AwardPhase | undefined) => {
               <Countdown
                 className="text-center text-4xl font-light text-white"
                 date={currentPhase.nextPhaseStart}
+                reloadOnComplete
               />
               {cta}
             </div>
@@ -78,6 +79,7 @@ export const useHeaderContent = (currentPhase: AwardPhase | undefined) => {
             <Countdown
               className="text-center text-4xl font-light text-white"
               date={currentPhase.nextPhaseStart}
+              reloadOnComplete
             />
           ) : undefined,
         };

@@ -39,8 +39,6 @@ export async function subscribeToNewsletter(user: ContactInfo) {
       },
     });
     if (isMailchimpResponseError(response)) throw new Error(response.detail);
-
-    console.log(response);
   } catch (_error) {}
 }
 

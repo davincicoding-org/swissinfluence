@@ -103,7 +103,9 @@ export function VotingSelectionModal({
             showCloseButton={false}
             fullScreen
           >
-            <AnimatedTabs defaultValue={focusCategory}>
+            <AnimatedTabs
+              defaultValue={focusCategory ?? categories[0]?.category.id}
+            >
               <DialogTitle className="sr-only">Voting Selection</DialogTitle>
 
               <header className="sticky top-0 z-10 flex min-w-0 gap-3">
@@ -111,7 +113,7 @@ export function VotingSelectionModal({
                   size="lg"
                   primary
                   initialScroll
-                  className="min-w-0 overflow-x-auto shadow-md"
+                  className="min-w-0 flex-1 overflow-x-auto shadow-md"
                   tabs={categories.map(({ category }) => ({
                     label: category.name,
                     value: category.id,

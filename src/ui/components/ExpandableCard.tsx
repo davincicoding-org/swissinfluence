@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import { useRef } from "react";
 import { DialogTitle } from "@radix-ui/react-dialog";
-import { useTranslations } from "next-intl";
 import { tv } from "tailwind-variants";
 
 import type { Photo } from "@/payload-types";

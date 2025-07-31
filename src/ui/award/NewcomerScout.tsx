@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import dayjs from "dayjs";
-import isBetween from "dayjs/plugin/isBetween";
 import { AnimatePresence } from "motion/react";
 import { useTranslations } from "next-intl";
 
@@ -14,9 +13,7 @@ import {
 import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
-import { cn, derivative } from "@/ui/utils";
-
-dayjs.extend(isBetween);
+import { cn, derivative, formatDate } from "@/ui/utils";
 
 export interface AwardNominationProps {
   image: Photo;
@@ -149,10 +146,10 @@ function Timeline({ timeline, className }: TimelineProps) {
         date: derivative(() => {
           switch (item.dateType) {
             case "DAY":
-              return dayjs(item.date).format("DD.MM.YYYY");
+              return formatDate(item.date);
 
             case "PERIOD":
-              return `${dayjs(item.date).format("DD.MM.YYYY")} - ${dayjs(item.dateEnd).format("DD.MM.YYYY")}`;
+              return `${formatDate(item.date)} - ${formatDate(item.dateEnd ?? "")}`;
 
             case "MONTH":
               return dayjs(item.date).format("MMMM");

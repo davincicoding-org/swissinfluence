@@ -1,10 +1,9 @@
 import { IconCalendar, IconMapPin, IconTicket } from "@tabler/icons-react";
-import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
 import type { Location, ScheduleSlots } from "@/payload-types";
 import { Schedule } from "@/ui/components/Schedule";
-import { cn } from "@/ui/utils";
+import { cn, formatDate } from "@/ui/utils";
 
 export interface EventOverviewProps {
   date: string | undefined | null;
@@ -36,7 +35,7 @@ export function EventOverview({
               date ? "text-2xl text-nowrap" : "text-balance",
             )}
           >
-            {date ? dayjs(new Date(date)).format("DD.MM.YYYY") : t("date-tbd")}
+            {date ? formatDate(date) : t("date-tbd")}
           </p>
         </div>
 
