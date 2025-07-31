@@ -6,7 +6,6 @@ import { useParams } from "next/navigation";
 import { useDisclosure } from "@mantine/hooks";
 import { IconMenu, IconWorld } from "@tabler/icons-react";
 import { AnimatePresence, useMotionValueEvent, useScroll } from "motion/react";
-import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
 import { Events } from "react-scroll";
 
@@ -99,21 +98,14 @@ export function FloatingHeader({
   return (
     <>
       <AnimatePresence mode="wait">
-        <m.nav
+        <nav
           className={cn(
             "fixed inset-x-4 top-4 z-30 flex h-16 items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm sm:top-6 md:top-8",
+            "transform-gpu transition-all duration-500",
+            visible
+              ? "translate-y-0 opacity-100"
+              : "translate-y-[-100%] opacity-0",
           )}
-          initial={{
-            opacity: 1,
-            y: -100,
-          }}
-          animate={{
-            y: visible ? 0 : -100,
-            opacity: visible ? 1 : 0,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
         >
           <Image
             priority
@@ -205,7 +197,7 @@ export function FloatingHeader({
               </div>
             </div>
           </div>
-        </m.nav>
+        </nav>
       </AnimatePresence>
 
       <MobileNavigation
