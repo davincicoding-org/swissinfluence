@@ -112,12 +112,12 @@ export function VotingSubmissionForm({
             </div>
           </div>
         </div>
-        <div className="mt-2 mb-3 flex justify-center">
-          <label className="label text-sm">
+        <div className="mt-2 mb-3 flex">
+          <label className="mx-auto label text-sm text-pretty">
             <input
               type="checkbox"
               defaultChecked
-              className="checkbox mx-auto"
+              className="checkbox"
               disabled={isSubmitting}
               {...register("newsletter")}
             />

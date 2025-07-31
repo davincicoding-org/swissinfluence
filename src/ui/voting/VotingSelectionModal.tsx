@@ -98,22 +98,19 @@ export function VotingSelectionModal({
       <Dialog modal open={opened} onOpenChange={onClose}>
         <form>
           <DialogContent
-            className="flex h-screen w-screen flex-col gap-8 overflow-y-auto bg-transparent backdrop-blur-md"
-            withOverlay={false}
+            className="h-full max-w-200 overflow-y-auto !rounded-none bg-transparent shadow-none"
             showCloseButton={false}
-            fullScreen
           >
+            <DialogTitle className="sr-only">Voting Selection</DialogTitle>
             <AnimatedTabs
               defaultValue={focusCategory ?? categories[0]?.category.id}
             >
-              <DialogTitle className="sr-only">Voting Selection</DialogTitle>
-
-              <header className="sticky top-0 z-10 flex min-w-0 gap-3">
+              <header className="sticky top-0 z-10 mx-auto mb-6 flex items-center justify-between gap-4 rounded-box">
                 <AnimatedTabsControls
                   size="lg"
                   primary
                   initialScroll
-                  className="min-w-0 flex-1 overflow-x-auto shadow-md"
+                  className="min-w-0 flex-1 overflow-x-auto bg-base-100/50 shadow-md backdrop-blur-sm"
                   tabs={categories.map(({ category }) => ({
                     label: category.name,
                     value: category.id,
@@ -121,9 +118,9 @@ export function VotingSelectionModal({
                 />
                 <DialogClose
                   data-slot="dialog-close"
-                  className="btn btn-square shadow-none backdrop-blur-xs btn-xl not-hover:border-transparent not-hover:bg-white/20"
+                  className="btn btn-square shadow-none backdrop-blur-sm btn-xl not-hover:border-transparent not-hover:bg-base-100/50"
                 >
-                  <IconX />
+                  <IconX stroke={1.5} />
                   <span className="sr-only">Close</span>
                 </DialogClose>
               </header>
@@ -140,7 +137,7 @@ export function VotingSelectionModal({
                 >
                   <div
                     className={cn(
-                      "mx-auto grid max-w-280 cols-autofill-250 gap-6",
+                      "mx-auto grid gap-6 sm:grid-cols-2 md:grid-cols-3",
                     )}
                   >
                     {nominees.map((nominee) => (
@@ -149,7 +146,7 @@ export function VotingSelectionModal({
                         role="button"
                         tabIndex={0}
                         className={cn(
-                          "cursor-pointer transition-all active:scale-95",
+                          "cursor-pointer border-2 border-base-300 transition-all",
                           {
                             "border-8 border-primary": votes.some((vote) =>
                               isEqual(vote, {
@@ -162,7 +159,7 @@ export function VotingSelectionModal({
                         socials={nominee.socials ?? []}
                         name={nominee.name}
                         image={nominee.image}
-                        imageSizes="500px"
+                        imageSizes="600px"
                         onClick={() =>
                           onToggleVote({
                             influencer: nominee.id,
@@ -176,8 +173,7 @@ export function VotingSelectionModal({
                 </AnimatedTabsPanel>
               ))}
             </AnimatedTabs>
-
-            <div className="pointer-events-none sticky bottom-0 z-10 flex justify-center p-3 pt-0 *:pointer-events-auto">
+            <div className="pointer-events-none sticky bottom-0 z-10 mt-8 flex justify-center *:pointer-events-auto">
               <AnimatePresence mode="wait">
                 {votes.length > 0 ? (
                   <m.div
@@ -224,7 +220,7 @@ export function VotingSelectionModal({
                 ) : (
                   <m.div
                     key="info"
-                    className="border-base rounded-box border bg-base-100/70 px-4 py-3 shadow-sm backdrop-blur-xs"
+                    className="border-base rounded-box border bg-base-100/50 px-4 py-3 shadow-md backdrop-blur-sm"
                     initial={{ y: "150%" }}
                     animate={{ y: 0 }}
                     exit={{ y: "150%" }}
@@ -240,7 +236,6 @@ export function VotingSelectionModal({
           </DialogContent>
         </form>
       </Dialog>
-
       <Dialog
         open={isSubmissionOpen}
         onOpenChange={() => setIsSubmissionOpen(false)}

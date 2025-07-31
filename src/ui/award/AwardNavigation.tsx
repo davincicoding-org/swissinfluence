@@ -124,7 +124,7 @@ export function AwardNavigationPanel({ className }: AwardNavigationPanelProps) {
   return (
     <div
       className={cn(
-        "flex gap-1 rounded-full border-2 border-base-300 bg-base-100/30 p-1 backdrop-blur-sm empty:hidden",
+        "flex gap-1 rounded-full border border-base-300 bg-base-100/30 p-1 backdrop-blur-sm empty:hidden",
         className,
       )}
     >

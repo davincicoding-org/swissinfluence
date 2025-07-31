@@ -1,6 +1,6 @@
 "use client";
 
-import type { HTMLAttributes, MouseEvent, PropsWithChildren } from "react";
+import type { HTMLAttributes, MouseEvent, PropsWithChildren, Ref } from "react";
 import { create as createMotion } from "motion/react-m";
 import { isMobile } from "react-device-detect";
 
@@ -19,7 +19,9 @@ export interface PersonaCardProps {
   revealed?: boolean;
   image: ProfilePicture;
   imageSizes?: string;
+  disableImageZoom?: boolean;
   socials?: Socials;
+  ref?: Ref<HTMLDivElement | null>;
   maxSocials?: number;
   className?: string;
   classNames?: SlotClassNames<
@@ -42,23 +44,28 @@ export function PersonaCard({
   image,
   revealed = isMobile,
   imageSizes,
+  disableImageZoom,
   socials = [],
   maxSocials,
   classNames,
   className,
+  ref,
   onSocialClick,
   ...attrs
 }: PersonaCardProps & HTMLAttributes<HTMLDivElement>) {
   return (
     <PersonaCardContainer
       className={cn(className, classNames?.root)}
+      ref={ref}
       {...attrs}
     >
       <Image
         resource={image}
         alt={name}
         className={cn("block size-full", classNames?.image)}
-        imgClassName="transition-transform duration-700 group-hover:scale-110"
+        imgClassName={cn("transition-transform duration-700", {
+          "group-hover:scale-110": !disableImageZoom,
+        })}
         sizes={imageSizes}
       />
 
@@ -86,7 +93,7 @@ export function PersonaCard({
                 classNames={{
                   text: cn(
                     "pl-[6cqw]",
-                    "text-[7cqw] leading-[1.15] font-medium tracking-widest text-pretty text-white",
+                    "text-[8cqw] leading-[1.15] tracking-widest text-pretty text-white",
                     classNames?.name,
                   ),
                 }}
@@ -124,14 +131,18 @@ export function PersonaCard({
 export function PersonaCardContainer({
   children,
   className,
+  ref,
   ...attrs
-}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+}: PropsWithChildren<
+  HTMLAttributes<HTMLDivElement> & { ref?: Ref<HTMLDivElement | null> }
+>) {
   return (
     <div
       className={cn(
         "group @container relative aspect-square overflow-hidden rounded-box bg-base-100 shadow-sm",
         className,
       )}
+      ref={ref}
       {...attrs}
     >
       {children}

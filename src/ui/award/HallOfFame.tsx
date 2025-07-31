@@ -82,6 +82,7 @@ export function HallOfFame({ awards, className }: HallOfFameProps) {
                         <PersonaCard
                           key={influencer.id}
                           className="group relative carousel-item w-full rounded-none border-none"
+                          disableImageZoom
                           image={influencer.image}
                           name={influencer.name}
                           header={getRankingLabel(index)}

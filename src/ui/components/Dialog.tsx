@@ -62,7 +62,11 @@ function DialogContent({
   const t = useTranslations("misc");
   return (
     <DialogPortal data-slot="dialog-portal">
-      <DialogOverlay className={cn({ "bg-transparent": !withOverlay })}>
+      <DialogOverlay
+        className={cn({
+          "bg-transparent": !withOverlay,
+        })}
+      >
         <DialogPrimitive.Content
           data-slot="dialog-content"
           className={cn(

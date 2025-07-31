@@ -16,16 +16,15 @@ export function AwardJury({ members }: AwardJuryProps) {
       className="grid gap-4 sm:cols-autofill-250 md:gap-8"
       Placeholder={PersonaCardContainer}
     >
-      {members.map((member, index) => (
+      {members.map((member) => (
         <MotionPersonaCard
           key={member.id}
           name={member.name}
           image={member.image}
           socials={member.socials ?? []}
           description={member.description}
-          className="max-sm:sticky sm:!top-auto"
+          className="max-sm:sticky max-sm:top-32"
           imageSizes="500px"
-          style={{ top: ` ${12 + index * 0.5}rem` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
