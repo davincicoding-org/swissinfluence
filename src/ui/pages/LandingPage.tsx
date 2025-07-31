@@ -2,19 +2,16 @@
 
 import type { ReactNode } from "react";
 import { useRef, useState } from "react";
-import Image from "next/image";
 import { useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
 
 import type { Page, Photo } from "@/payload-types";
-import type { BackgroundVideoProps } from "@/ui/components/BackgroundVideo";
 import { BackgroundVideo } from "@/ui/components/BackgroundVideo";
 import { FlipWords } from "@/ui/components/FlipWords";
 import { LinkTile } from "@/ui/components/LinkTile";
 
 import { Logo } from "../logos/Logo";
-import MainLogo from "../logos/main.svg";
 import { cn } from "../utils";
 
 export interface LandingPageProps {
@@ -89,16 +86,6 @@ export function LandingPage({ heroVideo, pages }: LandingPageProps) {
     </main>
   );
 }
-
-const Placeholder: BackgroundVideoProps["Placeholder"] = (props) => (
-  <Image
-    unoptimized
-    priority
-    src={MainLogo}
-    alt="Swiss Influence Logo"
-    {...props}
-  />
-);
 
 function Flip(chunks: ReactNode) {
   const [words] = chunks as unknown as [string];

@@ -19,8 +19,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,mdx}\" --cache",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "script": "tsx --watch src/script.ts "
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.80",
@@ -110,7 +109,6 @@
     "storybook": "^8.6.12",
     "tailwindcss": "^4.1.11",
     "tailwindcss-animate": "^1.0.7",
-    "tsx": "^4.20.3",
     "type-fest": "^4.41.0",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"
