@@ -1,15 +1,9 @@
 "use client";
 
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { useEffect, useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useDisclosure } from "@mantine/hooks";
 import { useTranslations } from "next-intl";
+import { create } from "zustand";
 
 import type { Award, Category } from "@/payload-types";
 import type { AwardCategory, VotingValues } from "@/types";
@@ -22,34 +16,45 @@ import { VotingConfirmationModal } from "./VotingConfirmationModal";
 import { VotingSelectionModal } from "./VotingSelectionModal";
 import { VotingSubmissionModal } from "./VotingSubmissionModal";
 
-interface VotingContext {
+type VotingStatus =
+  | "idle"
+  | "selection"
+  | "submission"
+  | "submitting"
+  | "submitted";
+
+interface VotingStore {
   categories: Category["id"][];
-  isOpen: boolean;
+  registerCategories: (categories: Category["id"][]) => void;
+  status: VotingStatus;
+  setStatus: (state: VotingStatus) => void;
+  openCategory: Category["id"] | undefined;
   open: (categoryId?: Category["id"]) => void;
+  close: () => void;
 }
 
-const VotingContext = createContext<VotingContext>({
+const useVotingStore = create<VotingStore>((set) => ({
   categories: [],
-  isOpen: false,
-  open: () => void 0,
-});
+  status: "idle",
+  setStatus: (state) => set({ status: state }),
+  openCategory: undefined,
+  registerCategories: (categories) => set({ categories }),
+  open: (categoryId) => set({ status: "selection", openCategory: categoryId }),
+  close: () => set({ status: "idle", openCategory: undefined }),
+}));
 
-export interface VotingProviderProps {
+export interface VotingProps {
   awardId: Award["id"] | undefined;
   categories: AwardCategory[];
   submissionHandler: (values: VotingValues) => Promise<void>;
 }
 
-export function VotingProvider({
+export function Voting({
   awardId,
   categories,
   submissionHandler,
-  children,
-}: React.PropsWithChildren<VotingProviderProps>) {
-  const [openCategory, setOpenCategory] = useState<Category["id"]>();
-  const [isSelectionModalOpen, selectionModal] = useDisclosure(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+}: VotingProps) {
+  const store = useVotingStore();
 
   const enforceVoting = useFlag("ENABLE_VOTING");
 
@@ -66,25 +71,16 @@ export function VotingProvider({
     [categoriesWithVoting],
   );
 
-  const handleOpenVotingSelection = useCallback(
-    (categoryId?: Category["id"]) => {
-      setOpenCategory(categoryId);
-      selectionModal.open();
-    },
-    [selectionModal],
-  );
-
-  const handleCloseVotingSelection = useCallback(() => {
-    setOpenCategory(undefined);
-    selectionModal.close();
-  }, [selectionModal]);
+  useEffect(() => {
+    store.registerCategories(categoryIDs);
+  }, [categoryIDs]);
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   const handleSubmit: VotingSelectionModalProps["onSubmit"] = async (
     values,
     callback,
   ) => {
-    setIsSubmitting(true);
+    store.setStatus("submitting");
     if (awardId === undefined) return;
     await submissionHandler({
       award: awardId,
@@ -95,10 +91,9 @@ export function VotingProvider({
       votes: values.votes,
     });
     callback();
-    setIsSubmitting(false);
-    selectionModal.close();
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setIsSubmitted(true);
+    store.setStatus("idle");
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    store.setStatus("submitted");
   };
 
   const searchParams = useSearchParams();
@@ -112,32 +107,27 @@ export function VotingProvider({
   const isSubmissionConfirmed = searchParams.get("voting-confirmed") !== null;
 
   return (
-    <VotingContext.Provider
-      value={{
-        categories: categoryIDs,
-        isOpen: isSelectionModalOpen,
-        open: handleOpenVotingSelection,
-      }}
-    >
-      {children}
+    <>
       <VotingSelectionModal
         categories={categoriesWithVoting}
-        focusCategory={openCategory}
-        opened={isSelectionModalOpen}
-        submitting={isSubmitting}
-        onClose={handleCloseVotingSelection}
+        focusCategory={store.openCategory}
+        opened={["selection", "submission", "submitting"].includes(
+          store.status,
+        )}
+        submitting={store.status === "submitting"}
+        onClose={store.close}
         onSubmit={handleSubmit}
       />
       <VotingSubmissionModal
-        opened={isSubmitted}
-        onClose={() => setIsSubmitted(false)}
+        opened={store.status === "submitted"}
+        onClose={() => store.setStatus("idle")}
       />
       <VotingConfirmationModal
         key="confirmation"
         opened={isSubmissionConfirmed}
         onClose={handleCloseConfirmation}
       />
-    </VotingContext.Provider>
+    </>
   );
 }
 
@@ -147,12 +137,12 @@ interface VotingButtonProps {
 
 export function VotingButton({ className }: VotingButtonProps) {
   const t = useTranslations("award.hero");
-  const { open } = useContext(VotingContext);
+  const store = useVotingStore();
 
   return (
     <button
       className={cn("btn uppercase btn-lg btn-primary", className)}
-      onClick={() => open()}
+      onClick={() => store.open()}
     >
       {t("voting.CTA")}
     </button>
@@ -160,14 +150,14 @@ export function VotingButton({ className }: VotingButtonProps) {
 }
 
 export const useCategoryVoting = (categoryId: Category["id"]) => {
-  const { open, categories, isOpen } = useContext(VotingContext);
+  const store = useVotingStore();
 
   return useMemo(() => {
-    const enabled = categories.includes(categoryId);
+    const enabled = store.categories.includes(categoryId);
     if (!enabled) return null;
     return {
-      open: () => open(categoryId),
-      isOpen,
+      open: () => store.open(categoryId),
+      isOpen: store.status !== "idle",
     };
-  }, [categories, categoryId, open, isOpen]);
+  }, [categoryId, store]);
 };

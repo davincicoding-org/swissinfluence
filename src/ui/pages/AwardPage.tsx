@@ -23,7 +23,7 @@ import { EventOverview } from "@/ui/components/EventOverview";
 import { NavSection } from "@/ui/components/NavElement";
 import { PageHero } from "@/ui/components/PageHero";
 import { SectionTitle } from "@/ui/components/SectionTitle";
-import { VotingProvider } from "@/ui/voting";
+import { Voting } from "@/ui/voting";
 
 import { getCurrentPhase } from "../award/utils";
 
@@ -53,11 +53,7 @@ export function AwardPage({
   const now = new Date().toISOString();
 
   return (
-    <VotingProvider
-      awardId={currentAward?.id}
-      categories={currentAward?.categories ?? []}
-      submissionHandler={votingHandler}
-    >
+    <>
       <PageHero
         image={heroImage}
         title={t("hero.default.title", { year: currentAward?.year ?? "" })}
@@ -79,6 +75,14 @@ export function AwardPage({
 
       {currentAward && (
         <main className="relative z-20 bg-white/80 pb-12 backdrop-blur-sm">
+          {/* MARK: Voting */}
+
+          <Voting
+            awardId={currentAward.id}
+            categories={currentAward.categories}
+            submissionHandler={votingHandler}
+          />
+
           {/* MARK: Partners */}
 
           {currentAward?.partners.length ? (
@@ -279,6 +283,6 @@ export function AwardPage({
           </aside>
         </main>
       )}
-    </VotingProvider>
+    </>
   );
 }

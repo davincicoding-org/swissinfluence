@@ -20,7 +20,7 @@ export const generateMetadata = async ({
 
   return resolveMetadata({
     title: data.name,
-    image: data.image,
+    image: data.heroImage,
   });
 };
 

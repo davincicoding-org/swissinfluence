@@ -3,11 +3,9 @@ import { useLocale, useTranslations } from "next-intl";
 
 import type { CertifiedInfluencer } from "@/types";
 import { PageHero } from "@/ui/components/PageHero";
+import { SocialsLinks } from "@/ui/components/SocialLinks";
 import { cn, derivative } from "@/ui/utils";
 import { getCantonLabel } from "@/utils/cantons";
-import { ensureResolved } from "@/utils/payload";
-
-import { SocialsLinks } from "../components/SocialLinks";
 
 export interface CertifiedInfluencerPageProps {
   influencer: CertifiedInfluencer;
@@ -15,7 +13,7 @@ export interface CertifiedInfluencerPageProps {
 
 export function CertifiedInfluencerPage({
   influencer: {
-    image,
+    heroImage,
     name,
     socials,
     birthdate,
@@ -37,7 +35,7 @@ export function CertifiedInfluencerPage({
   return (
     <>
       <PageHero
-        image={ensureResolved(image)!}
+        image={heroImage}
         title={name}
         CTA={
           <SocialsLinks

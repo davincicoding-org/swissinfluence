@@ -19,7 +19,7 @@ import { Image } from "@/ui/components/Image";
 import { OnScreenList } from "@/ui/components/OnScreenList";
 import { PersonaCard } from "@/ui/components/PersonaCard";
 import { cn } from "@/ui/utils";
-import { useCategoryVoting } from "@/ui/voting/VotingProvider";
+import { useCategoryVoting } from "@/ui/voting/Voting";
 
 export interface AwardCategoriesProps {
   categories: Array<AwardCategory>;

@@ -1,7 +1,3 @@
-export {
-  VotingProvider,
-  type VotingProviderProps,
-  VotingButton,
-} from "./VotingProvider";
+export { Voting, type VotingProps, VotingButton } from "./Voting";
 
 export { canVoteInCategory } from "./utils";

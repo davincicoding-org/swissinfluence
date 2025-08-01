@@ -7,8 +7,6 @@ import {
   AnimatedTabsControls,
   AnimatedTabsPanel,
 } from "@/ui/components/AnimatedTabs";
-import { Image } from "@/ui/components/Image";
-import { TextOverflowReveal } from "@/ui/components/TextOverflowReveal";
 import { cn } from "@/ui/utils";
 
 import { PersonaCard } from "../components/PersonaCard";
