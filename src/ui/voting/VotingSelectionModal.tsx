@@ -30,6 +30,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "../components/Dialog";
+import { HTMLRichText } from "../components/HTMLRichText";
 import { VotingSubmissionForm } from "./VotingSubmissionForm";
 
 export interface VotingSelectionModalProps {
@@ -173,16 +174,19 @@ export function VotingSelectionModal({
                 </AnimatedTabsPanel>
               ))}
             </AnimatedTabs>
-            <div className="pointer-events-none sticky bottom-0 z-10 mt-8 flex justify-center *:pointer-events-auto">
-              <AnimatePresence mode="wait">
-                {votes.length > 0 ? (
-                  <m.div
+
+            <AnimatePresence mode="wait">
+              {votes.length > 0 && (
+                <m.div
+                  className="pointer-events-none sticky bottom-0 z-10 mt-8 flex justify-center *:pointer-events-auto"
+                  initial={{ y: "150%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "150%" }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                >
+                  <div
                     className="flex w-84 items-center justify-between"
                     key="actions"
-                    initial={{ y: "150%" }}
-                    animate={{ y: 0 }}
-                    exit={{ y: "150%" }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
                   >
                     <div className="tooltip" data-tip={t("reset")}>
                       <button
@@ -216,23 +220,11 @@ export function VotingSelectionModal({
                         </div>
                       </div>
                     </div>
-                  </m.div>
-                ) : (
-                  <m.div
-                    key="info"
-                    className="border-base rounded-box border bg-base-100/50 px-4 py-3 shadow-md backdrop-blur-sm"
-                    initial={{ y: "150%" }}
-                    animate={{ y: 0 }}
-                    exit={{ y: "150%" }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <p className="text-mocha-800 text-lg leading-tight font-medium text-pretty select-none">
-                      {t("instructions")}
-                    </p>
-                  </m.div>
-                )}
-              </AnimatePresence>
-            </div>
+                  </div>
+                </m.div>
+              )}
+            </AnimatePresence>
+            <Disclaimer />
           </DialogContent>
         </form>
       </Dialog>
@@ -252,6 +244,34 @@ export function VotingSelectionModal({
         </form>
       </Dialog>
     </>
+  );
+}
+
+// MARK: Disclaimer
+
+function Disclaimer() {
+  const t = useTranslations("voting.selection");
+  const [isAccepted, setIsAccepted] = useState(false);
+
+  if (isAccepted) return null;
+
+  return (
+    <m.div className="sticky bottom-0 flex h-screen w-full items-center justify-center">
+      <div className="max-w-sm rounded-box border border-base-300 bg-base-100/90 px-4 py-3 shadow-md backdrop-blur-sm">
+        <h2 className="mb-4 text-center text-3xl leading-tight font-medium text-pretty text-primary select-none">
+          {t("intro.title")}
+        </h2>
+        <HTMLRichText content={t.raw("intro.message")} />
+        <div className="mt-4 flex justify-center">
+          <button
+            className="btn mx-auto btn-primary"
+            onClick={() => setIsAccepted(true)}
+          >
+            {t.raw("intro.CTA")}
+          </button>
+        </div>
+      </div>
+    </m.div>
   );
 }
 

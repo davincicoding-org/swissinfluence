@@ -13,13 +13,7 @@ import {
 import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
-import {
-  cn,
-  dateFormat,
-  derivative,
-  formatDate,
-  formatMonth,
-} from "@/ui/utils";
+import { cn, dateFormat, derivative } from "@/ui/utils";
 
 export interface AwardNominationProps {
   image: Photo;

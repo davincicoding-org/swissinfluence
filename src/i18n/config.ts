@@ -133,6 +133,11 @@ export const MESSAGES_SCHEMA = {
       instructions: "long",
       submit: "short",
       reset: "short",
+      intro: {
+        title: "short",
+        message: "rich",
+        CTA: "short",
+      },
     },
     form: {
       title: "short",
@@ -146,6 +151,11 @@ export const MESSAGES_SCHEMA = {
       newsletter: "short",
       submit: "short",
       cancel: "short",
+      validation: {
+        tooShort: ["short", "{min}"],
+        tooLong: ["short", "{max}"],
+        emailInvalid: "short",
+      },
     },
     submission: {
       title: "short",
