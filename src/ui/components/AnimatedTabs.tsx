@@ -2,7 +2,6 @@
 
 import type { MotionProps } from "motion/react";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { usePrevious } from "@mantine/hooks";
 import * as m from "motion/react-m";
 
 import { cn } from "../utils";
@@ -41,8 +40,8 @@ export interface AnimatedTabsControlsProps {
     label: string;
     disabled?: boolean;
   }[];
-  initialScroll?: boolean;
   className?: string;
+  onTabChange?: (tab: string | number) => void;
 }
 
 export function AnimatedTabsControls({
@@ -51,25 +50,28 @@ export function AnimatedTabsControls({
   primary,
   size,
   className,
-  initialScroll,
+  onTabChange,
 }: AnimatedTabsControlsProps) {
   const { activeTab, setActiveTab } = useContext(AnimatedTabsContext);
   const containerRef = useRef<HTMLDivElement>(null);
-  const prevActiveTab = usePrevious(activeTab);
 
   useEffect(() => {
-    if (!initialScroll) return;
-    if (prevActiveTab !== undefined) return;
-    setTimeout(() => {
-      if (!containerRef.current) return;
-      const tab = containerRef.current.querySelector(`[data-active="true"]`);
-      if (!tab) return;
-      tab.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-      });
-    }, 100);
-  }, [activeTab, prevActiveTab, initialScroll]);
+    if (activeTab !== undefined) onTabChange?.(activeTab);
+
+    if (!containerRef.current) return;
+    const tab =
+      containerRef.current.querySelector<HTMLAnchorElement>(
+        `[data-active="true"]`,
+      );
+    if (!tab) return;
+    const visibleWidth = containerRef.current.clientWidth;
+    const tabWidth = tab.clientWidth;
+
+    containerRef.current.scrollTo({
+      left: tab.offsetLeft - (visibleWidth - tabWidth) / 2,
+      behavior: "smooth",
+    });
+  }, [activeTab]);
 
   return (
     <div
@@ -101,11 +103,11 @@ export function AnimatedTabsControls({
           })}
           onClick={(e) => {
             setActiveTab(item.value);
-            e.currentTarget.scrollIntoView({
-              behavior: "smooth",
-              block: "nearest",
-              inline: "center",
-            });
+            // e.currentTarget.scrollIntoView({
+            //   behavior: "smooth",
+            //   block: "nearest",
+            //   inline: "center",
+            // });
           }}
         >
           {item.label}
