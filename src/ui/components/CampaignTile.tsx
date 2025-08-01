@@ -1,12 +1,11 @@
 import { useMemo } from "react";
-import dayjs from "dayjs";
 import { useTranslations } from "next-intl";
 
 import type { Campaign } from "@/types";
 import { ExpandableCard } from "@/ui/components/ExpandableCard";
 import { RichText } from "@/ui/components/RichText";
 
-import { formatDate } from "../utils";
+import { dateFormat, isInPast as hasDatePassed } from "../utils";
 
 export interface CampaignTileProps {
   data: Campaign;
@@ -15,16 +14,21 @@ export interface CampaignTileProps {
 }
 
 export function CampaignTile({ data, past, className }: CampaignTileProps) {
+  // TODO use correct key here
   const t = useTranslations("events.event");
 
   const badge = useMemo(() => {
     if (!data.dateTo) return null;
-    const hasEnded = dayjs(data.dateTo).isBefore(dayjs());
+    const hasEnded = hasDatePassed(data.dateTo);
     if (hasEnded) {
-      return `${formatDate(data.dateFrom)} - ${formatDate(data.dateTo)}`;
+      return dateFormat("day").formatRange(
+        new Date(data.dateFrom),
+        new Date(data.dateTo),
+      );
     }
+
     return t("slot-until", {
-      time: formatDate(data.dateTo),
+      time: dateFormat("day").format(new Date(data.dateTo)),
     });
   }, [data.dateFrom, data.dateTo, t]);
 

@@ -1,10 +1,9 @@
 import { useMemo } from "react";
-import dayjs from "dayjs";
 import { AnimatePresence } from "motion/react";
 
 import type { Campaign } from "@/types";
 
-import { cn } from "../utils";
+import { cn, isInPast } from "../utils";
 import {
   AnimatedTabs,
   AnimatedTabsControls,
@@ -31,7 +30,7 @@ export function CampaignDiscovery({
       Record<"current" | "past", Array<Campaign>>
     >(
       (acc, campaign) => {
-        if (campaign.dateTo && dayjs(campaign.dateTo).isBefore())
+        if (campaign.dateTo && isInPast(campaign.dateTo))
           return {
             ...acc,
             past: [...acc.past, campaign],

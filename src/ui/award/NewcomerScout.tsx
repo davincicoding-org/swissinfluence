@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import dayjs from "dayjs";
 import { AnimatePresence } from "motion/react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import type { NewcomerScoutTimeline, Photo } from "@/payload-types";
 import type { RichTextProps } from "@/ui/components/RichText";
@@ -13,7 +13,13 @@ import {
 import { Image } from "@/ui/components/Image";
 import { RichText } from "@/ui/components/RichText";
 import { TimeLeft } from "@/ui/components/TimeLeft";
-import { cn, derivative, formatDate } from "@/ui/utils";
+import {
+  cn,
+  dateFormat,
+  derivative,
+  formatDate,
+  formatMonth,
+} from "@/ui/utils";
 
 export interface AwardNominationProps {
   image: Photo;
@@ -133,6 +139,7 @@ interface TimelineProps {
 }
 
 function Timeline({ timeline, className }: TimelineProps) {
+  const locale = useLocale();
   const items = useMemo(
     () =>
       timeline.map<{
@@ -146,13 +153,21 @@ function Timeline({ timeline, className }: TimelineProps) {
         date: derivative(() => {
           switch (item.dateType) {
             case "DAY":
-              return formatDate(item.date);
+              return dateFormat("day").format(new Date(item.date));
 
             case "PERIOD":
-              return `${formatDate(item.date)} - ${formatDate(item.dateEnd ?? "")}`;
+              return dateFormat("day").formatRange(
+                new Date(item.date),
+                new Date(item.dateEnd!),
+              );
 
             case "MONTH":
-              return dayjs(item.date).format("MMMM");
+              return dateFormat(
+                {
+                  month: "long",
+                },
+                locale,
+              ).format(new Date(item.date));
           }
         }),
         status: (() => {

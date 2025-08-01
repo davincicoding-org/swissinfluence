@@ -159,7 +159,7 @@ export function VotingSelectionModal({
                         socials={nominee.socials ?? []}
                         name={nominee.name}
                         image={nominee.image}
-                        imageSizes="600px"
+                        imageSizes="700px"
                         onClick={() =>
                           onToggleVote({
                             influencer: nominee.id,

@@ -67,6 +67,7 @@ export const getUpcomingPhases = (
 
     result.push({
       name: "SHOW",
+      // TODO get this from schedule or add a field
       nextPhaseStart: dayjs(showStart)
         .add(1, "day")
         .set("hour", 0)

@@ -17,6 +17,7 @@ export interface TimeLeftProps {
   deadline: string;
 }
 
+// TODO Maybre replace with Countdown
 export function TimeLeft({ deadline }: TimeLeftProps) {
   const locale = useLocale();
   const t = useTranslations("misc");
