@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import type { ComponentProps } from "react";
 
 import { AwardPage } from "./AwardPage";
 
@@ -75,7 +74,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Showcase: StoryObj<
-  ComponentProps<typeof AwardPage> & {
+  React.ComponentProps<typeof AwardPage> & {
     nomination: "none" | "open" | "closed";
     nominees: boolean;
     voting: "none" | "open" | "closed";

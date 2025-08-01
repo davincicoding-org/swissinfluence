@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { useRef } from "react";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { tv } from "tailwind-variants";
@@ -15,8 +14,8 @@ export interface ExpandableCardProps {
   title: string;
   image: Photo;
   organizer?: Brand;
-  content: ReactNode;
-  badge?: ReactNode;
+  content: React.ReactNode;
+  badge?: React.ReactNode;
   cta?: {
     label: string;
     url: string;
@@ -129,7 +128,7 @@ export function ExpandableCard({
             )}
           </header>
         </div>
-        <div className="aspect-square overflow-y-auto p-6 md:aspect-video">
+        <div className="scroll-vertical aspect-square p-6 md:aspect-video">
           {content}
           {cta ? (
             <div className="sticky bottom-0 flex">

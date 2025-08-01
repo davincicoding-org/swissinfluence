@@ -1,14 +1,13 @@
 "use client";
 
-import type { CSSProperties, FunctionComponent } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import { cn } from "../utils";
 
 export interface BackgroundVideoProps {
-  Placeholder: FunctionComponent<{
+  Placeholder: React.FunctionComponent<{
     className?: string;
-    style?: CSSProperties;
+    style?: React.CSSProperties;
   }>;
   src: string;
 }

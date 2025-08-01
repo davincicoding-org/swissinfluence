@@ -65,7 +65,7 @@ export function NewcomerScout({
       </div>
 
       <AnimatedTabs defaultValue="INFO">
-        <div className={cn("flex min-h-0 flex-col overflow-y-auto")}>
+        <div className={cn("scroll-vertical flex min-h-0 flex-col")}>
           <div className="z-10 bg-base-100 px-3 pt-3 md:sticky md:top-0">
             <AnimatedTabsControls
               grow

@@ -1,7 +1,6 @@
 "use client";
 
 import type { MotionNodeAnimationOptions } from "motion/react";
-import type { PropsWithChildren, ReactNode } from "react";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useMap } from "@mantine/hooks";
 import { AnimatePresence } from "motion/react";
@@ -13,11 +12,11 @@ import { cn } from "../utils";
 const HoverPortalContext = createContext<{
   activeItem: string | number | undefined;
   activateItem: (id: string | number) => void;
-  contentMap: Map<string | number, ReactNode>;
+  contentMap: Map<string | number, React.ReactNode>;
 }>({
   activeItem: undefined,
   activateItem: () => void 0,
-  contentMap: new Map<string | number, ReactNode>(),
+  contentMap: new Map<string | number, React.ReactNode>(),
 });
 
 export interface HoverPortalProps {
@@ -27,7 +26,7 @@ export interface HoverPortalProps {
 export function HoverPortal({
   children,
   defaultValue,
-}: PropsWithChildren<HoverPortalProps>) {
+}: React.PropsWithChildren<HoverPortalProps>) {
   const [activeItem, setActiveItem] = useState<string | number | undefined>();
   useEffect(() => {
     setTimeout(() => {
@@ -35,7 +34,7 @@ export function HoverPortal({
     }, 100);
   }, [defaultValue]);
 
-  const contentMap = useMap<string | number, ReactNode>();
+  const contentMap = useMap<string | number, React.ReactNode>();
 
   return (
     <HoverPortalContext.Provider
@@ -59,7 +58,7 @@ export function HoverPortalTrigger({
   id,
   className,
   children,
-}: PropsWithChildren<HoverPortalTriggerProps>) {
+}: React.PropsWithChildren<HoverPortalTriggerProps>) {
   const { activeItem, activateItem } = useContext(HoverPortalContext);
 
   const isActive = activeItem === id;
@@ -84,7 +83,7 @@ export function HoverPortalContent({
   id,
   passthrough,
   children,
-}: PropsWithChildren<HoverPortalContentProps>) {
+}: React.PropsWithChildren<HoverPortalContentProps>) {
   const { contentMap } = useContext(HoverPortalContext);
 
   const hasChildren = Boolean(children);

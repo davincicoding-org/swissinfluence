@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { useRef, useState } from "react";
 import { useMotionValueEvent, useScroll, useTransform } from "motion/react";
 import * as m from "motion/react-m";
@@ -87,7 +86,7 @@ export function LandingPage({ heroVideo, pages }: LandingPageProps) {
   );
 }
 
-function Flip(chunks: ReactNode) {
+function Flip(chunks: React.ReactNode) {
   const [words] = chunks as unknown as [string];
   const [firstWord, ...otherWords] = words.split(",");
   if (firstWord === undefined) return null;
@@ -95,7 +94,7 @@ function Flip(chunks: ReactNode) {
     <FlipWords words={[firstWord, ...otherWords]} className="text-primary" />
   );
 }
-function Static(chunks: ReactNode) {
+function Static(chunks: React.ReactNode) {
   return (
     <span className="block text-4xl font-light text-balance lg:text-5xl">
       {chunks}

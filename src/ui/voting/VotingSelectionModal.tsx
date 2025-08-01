@@ -98,7 +98,7 @@ export function VotingSelectionModal({
       <Dialog modal open={opened} onOpenChange={onClose}>
         <form>
           <DialogContent
-            className="h-full max-w-200 overflow-y-auto !rounded-none bg-transparent shadow-none"
+            className="!scroll-vertical h-full max-w-200 !rounded-none bg-transparent shadow-none"
             showCloseButton={false}
           >
             <DialogTitle className="sr-only">Voting Selection</DialogTitle>
@@ -110,7 +110,7 @@ export function VotingSelectionModal({
                   size="lg"
                   primary
                   initialScroll
-                  className="min-w-0 flex-1 overflow-x-auto bg-base-100/50 shadow-md backdrop-blur-sm"
+                  className="min-w-0 flex-1 bg-base-100/50 shadow-md backdrop-blur-sm"
                   tabs={categories.map(({ category }) => ({
                     label: category.name,
                     value: category.id,
@@ -268,7 +268,7 @@ function SelectionList({
   }) => void;
 }) {
   return (
-    <div className="max-h-96 overflow-y-auto rounded-box bg-base-100">
+    <div className="scroll-vertical max-h-96 rounded-box bg-base-100">
       <AnimatePresence>
         {selection.map(({ category, influencers }) => (
           <m.ul

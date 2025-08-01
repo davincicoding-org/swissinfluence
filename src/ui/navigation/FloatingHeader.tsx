@@ -100,8 +100,7 @@ export function FloatingHeader({
       <AnimatePresence mode="wait">
         <nav
           className={cn(
-            "fixed inset-x-4 top-4 z-30 flex h-16 items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm sm:top-6 md:top-8",
-            "transform-gpu transition-all duration-500",
+            "fixed inset-x-4 top-4 z-30 flex h-16 transform-gpu animate-in items-center justify-between gap-4 rounded-box bg-neutral/90 px-4 py-6 shadow-sm transition-all duration-500 fade-in-0 sm:top-6 md:top-8",
             visible
               ? "translate-y-0 opacity-100"
               : "translate-y-[-100%] opacity-0",

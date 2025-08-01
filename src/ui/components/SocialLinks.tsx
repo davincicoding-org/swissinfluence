@@ -1,4 +1,3 @@
-import type { MouseEvent } from "react";
 import { useMemo } from "react";
 import { IconDotsVertical } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
@@ -15,7 +14,7 @@ export interface SocialsLinksProps {
   items: NonNullable<Socials>;
   direction?: "row" | "column";
   maxItems?: number;
-  onItemClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+  onItemClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export function SocialsLinks({

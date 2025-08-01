@@ -1,7 +1,6 @@
 "use client";
 
 import type { IconProps } from "@tabler/icons-react";
-import type { FunctionComponent, HTMLAttributes } from "react";
 import { useEffect } from "react";
 import {
   IconCamera,
@@ -41,7 +40,7 @@ export interface AwardSection {
   label: string;
 }
 
-const ICONS: Record<AwardSectionId, FunctionComponent<IconProps>> = {
+const ICONS: Record<AwardSectionId, React.FunctionComponent<IconProps>> = {
   show: IconTheater,
   impressions: IconCamera,
   nomination: IconRocket,
@@ -90,7 +89,7 @@ const Link = ({
   label,
   name,
   ...rest
-}: HTMLAttributes<HTMLButtonElement> & AwardSection) => {
+}: React.HTMLAttributes<HTMLButtonElement> & AwardSection) => {
   const t = useTranslations("navigation.aria");
   const Icon = ICONS[name];
   return (

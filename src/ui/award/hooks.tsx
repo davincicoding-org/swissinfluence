@@ -1,4 +1,3 @@
-import type { ReactElement, ReactNode } from "react";
 import { useMemo } from "react";
 import { useTranslations } from "next-intl";
 
@@ -14,8 +13,8 @@ export const useHeaderContent = (currentPhase: AwardPhase | undefined) => {
   const t = useTranslations("award.hero");
 
   return useMemo<{
-    headline: ReactNode;
-    cta?: ReactElement;
+    headline: React.ReactNode;
+    cta?: React.ReactElement;
   }>(() => {
     if (!currentPhase)
       return {

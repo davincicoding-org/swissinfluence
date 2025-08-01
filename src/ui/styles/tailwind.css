@@ -1,6 +1,9 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+@import "tw-animate-css";
+
+@plugin 'tailwind-scrollbar';
 @plugin "daisyui" {
   themes: mocha --default;
 }
@@ -40,6 +43,14 @@
   --noise: 1;
 }
 
+@utility scroll-vertical {
+  @apply scrollbar-thin overflow-y-auto;
+}
+
+@utility scroll-horizontal {
+  @apply scrollbar-thin overflow-x-auto;
+}
+
 @utility input {
   @variant focus {
     @apply border-primary;
@@ -68,19 +79,6 @@
     auto-fill,
     minmax(calc(--value(integer) * 1px), 1fr)
   );
-}
-
-@utility animate-header-entrance {
-  animation: headerEntrance 1s ease-in-out 2s backwards;
-}
-
-@keyframes headerEntrance {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 @theme {
@@ -127,6 +125,6 @@
   background-image: --value(--gradient-*);
 }
 
-.animation-paused {
-  animation-play-state: paused;
+@utility font-countdown {
+  font-feature-settings: "tnum" 1;
 }

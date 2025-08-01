@@ -1,5 +1,3 @@
-import { type ReactNode } from "react";
-
 import type { Photo } from "@/payload-types";
 import { cn } from "@/ui/utils";
 
@@ -7,10 +5,10 @@ import { Image } from "./Image";
 
 export interface PageHeroProps {
   image: Photo;
-  title: ReactNode;
-  headline?: ReactNode;
-  footer?: ReactNode;
-  CTA?: ReactNode;
+  title: React.ReactNode;
+  headline?: React.ReactNode;
+  footer?: React.ReactNode;
+  CTA?: React.ReactNode;
   className?: string;
 }
 

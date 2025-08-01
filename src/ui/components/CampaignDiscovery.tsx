@@ -68,8 +68,9 @@ export function CampaignDiscovery({
     >
       <div className={cn("grid gap-4", className)}>
         <AnimatedTabsControls
-          className="min-w-0 rounded-none bg-transparent p-0 shadow-none sm:tabs-lg"
+          className="-mx-4 min-w-0 rounded-none bg-transparent p-0 px-4 shadow-none"
           primary
+          size="lg"
           tabs={[
             {
               value: "CURRENT",

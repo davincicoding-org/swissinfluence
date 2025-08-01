@@ -3,8 +3,13 @@
 import { groupBy } from "lodash-es";
 
 import type { SupportedLocale } from "@/i18n/config";
-import type { CategoryWithInfluencers, CertifiedInfluencer } from "@/types";
-import { ensureResolved, ensureResolvedArray } from "@/utils/payload";
+import type { Photo } from "@/payload-types";
+import type {
+  CategoryWithInfluencers,
+  CertifiedInfluencer,
+  Influencer,
+} from "@/types";
+import { ensureResolvedArray } from "@/utils/payload";
 
 import { cachedRequest } from "../cache";
 import { getPayloadClient } from "../payload";
@@ -21,7 +26,7 @@ export const getCategoriesWithCertifiedInfluencers = cachedRequest(
     });
 
     const influencerCategoryPairs = influencers.flatMap(
-      ({ id, image, influencer, categories }) =>
+      ({ id, influencer, categories }) =>
         ensureResolvedArray(categories).map<{
           category: CategoryWithInfluencers["category"];
           influencer: CategoryWithInfluencers["influencers"][number];
@@ -29,8 +34,8 @@ export const getCategoriesWithCertifiedInfluencers = cachedRequest(
           category,
           influencer: {
             id,
-            image,
-            name: ensureResolved(influencer)!.name,
+            avatar: (influencer as Influencer).image,
+            name: (influencer as Influencer).name,
           },
         })),
     );
@@ -68,10 +73,12 @@ export const getCertifiedInfluencer = cachedRequest(
 
     if (!data) return null;
 
-    const influencer = ensureResolved(data.influencer)!;
+    const influencer = data.influencer as Influencer;
     const categories = ensureResolvedArray(data.categories);
     return {
       ...data,
+      heroImage: data.image as Photo,
+      avatar: influencer.image,
       name: influencer.name,
       socials: influencer.socials ?? [],
       categories,

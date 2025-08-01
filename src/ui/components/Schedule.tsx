@@ -31,7 +31,7 @@ export function Schedule({ slots, className }: ScheduleProps) {
       >
         <div
           className={cn(
-            "join-vertical join overflow-y-auto md:max-h-96 md:bg-base-200 md:shadow-md",
+            "join-vertical scroll-vertical join md:max-h-96 md:bg-base-200 md:shadow-md",
           )}
         >
           {slots.map((slot, index) => (
@@ -77,7 +77,7 @@ export function Schedule({ slots, className }: ScheduleProps) {
         </div>
         <div className="max-md:hidden">
           <HoverPortalTarget
-            className="max-h-96 overflow-y-auto p-6"
+            className="scroll-vertical max-h-96 p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

@@ -68,7 +68,7 @@ export function MobileNavigation({
             </Link>
           ))}
         </div>
-        <div className="flex w-full flex-nowrap justify-between gap-4 overflow-x-auto overscroll-x-contain p-4">
+        <div className="scroll-horizontal flex w-full flex-nowrap justify-between gap-4 overscroll-x-contain p-4">
           {config.subLinks.map(({ label, href }) => (
             <Link
               key={label}

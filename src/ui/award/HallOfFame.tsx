@@ -37,7 +37,6 @@ export function HallOfFame({ awards, className }: HallOfFameProps) {
       <div className={cn("flex flex-col gap-10", className)}>
         <div className="overflow-clip rounded-box border border-base-300">
           <AnimatedTabsControls
-            className="overflow-x-auto"
             primary
             grow
             size="xl"

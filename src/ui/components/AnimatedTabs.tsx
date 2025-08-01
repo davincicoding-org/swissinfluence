@@ -1,7 +1,6 @@
 "use client";
 
 import type { MotionProps } from "motion/react";
-import type { PropsWithChildren } from "react";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { usePrevious } from "@mantine/hooks";
 import * as m from "motion/react-m";
@@ -23,7 +22,7 @@ export interface AnimatedTabsProps {
 export function AnimatedTabs({
   defaultValue,
   children,
-}: PropsWithChildren<AnimatedTabsProps>) {
+}: React.PropsWithChildren<AnimatedTabsProps>) {
   const [activeTab, setActiveTab] = useState(defaultValue);
 
   return (
@@ -77,7 +76,7 @@ export function AnimatedTabsControls({
       role="tablist"
       ref={containerRef}
       className={cn(
-        "tabs flex-nowrap overflow-y-auto tabs-box uppercase",
+        "scroll-horizontal tabs flex-nowrap tabs-box uppercase",
         {
           "tabs-xs": size === "xs",
           "tabs-sm": size === "sm",
@@ -125,7 +124,7 @@ export function AnimatedTabsPanel({
   value,
   children,
   ...props
-}: PropsWithChildren<AnimatedTabsPanelProps>) {
+}: React.PropsWithChildren<AnimatedTabsPanelProps>) {
   const { activeTab } = useContext(AnimatedTabsContext);
   if (activeTab !== value) return null;
   return <m.div {...props}>{children}</m.div>;

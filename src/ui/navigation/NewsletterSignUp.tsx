@@ -1,6 +1,5 @@
 "use client";
 
-import type { Ref } from "react";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
@@ -9,7 +8,7 @@ import type { ContactInfo } from "@/types";
 import { cn } from "../utils";
 
 export interface NewsletterSignUpProps {
-  ref: Ref<HTMLDialogElement>;
+  ref: React.Ref<HTMLDialogElement>;
   submitting: boolean;
   onSubmit: (values: ContactInfo) => void;
 }

@@ -14,7 +14,11 @@
     "noUncheckedIndexedAccess": true,
     "checkJs": true,
     /* Bundled projects */
-    "lib": ["dom", "dom.iterable", "ES2022"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "ES2022"
+    ],
     "noEmit": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
@@ -28,8 +32,12 @@
     /* Path Aliases */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@payload-config": ["./src/payload.config.ts"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@payload-config": [
+        "./src/payload.config.ts"
+      ]
     }
   },
   "include": [
@@ -40,6 +48,8 @@
     "**/*.js",
     ".next/types/**/*.ts",
     "next.config.mjs"
-, "tailwind.config.-buts"  ],
-  "exclude": ["node_modules"]
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

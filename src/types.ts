@@ -58,16 +58,18 @@ export interface Event {
 
 export interface CategoryWithInfluencers {
   category: Pick<payloadTypes.Category, "id" | "name">;
-  influencers: Array<Pick<CertifiedInfluencer, "id" | "name" | "image">>;
+  influencers: Array<Pick<CertifiedInfluencer, "id" | "name" | "avatar">>;
 }
 
 export interface CertifiedInfluencer
-  extends Omit<
+  extends Pick<
       payloadTypes.CertifiedInfluencer,
-      "createdAt" | "updatedAt" | "influencer" | "categories"
+      "id" | "bio" | "birthdate" | "languages" | "residence" | "interests"
     >,
-    Pick<payloadTypes.Influencer, "name"> {
+    Pick<Influencer, "name"> {
   socials: payloadTypes.Socials;
+  avatar: payloadTypes.ProfilePicture;
+  heroImage: payloadTypes.Photo;
   categories: Array<Pick<payloadTypes.Category, "id" | "name">>;
 }
 

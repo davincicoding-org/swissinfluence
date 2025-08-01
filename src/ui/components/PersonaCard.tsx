@@ -1,6 +1,5 @@
 "use client";
 
-import type { HTMLAttributes, MouseEvent, PropsWithChildren, Ref } from "react";
 import { create as createMotion } from "motion/react-m";
 import { isMobile } from "react-device-detect";
 
@@ -21,7 +20,7 @@ export interface PersonaCardProps {
   imageSizes?: string;
   disableImageZoom?: boolean;
   socials?: Socials;
-  ref?: Ref<HTMLDivElement | null>;
+  ref?: React.Ref<HTMLDivElement | null>;
   maxSocials?: number;
   className?: string;
   classNames?: SlotClassNames<
@@ -34,7 +33,7 @@ export interface PersonaCardProps {
     | "socialItem"
     | "socialIcon"
   >;
-  onSocialClick?: (event: MouseEvent<HTMLAnchorElement>) => void;
+  onSocialClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export function PersonaCard({
@@ -52,7 +51,7 @@ export function PersonaCard({
   ref,
   onSocialClick,
   ...attrs
-}: PersonaCardProps & HTMLAttributes<HTMLDivElement>) {
+}: PersonaCardProps & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <PersonaCardContainer
       className={cn(className, classNames?.root)}
@@ -133,8 +132,10 @@ export function PersonaCardContainer({
   className,
   ref,
   ...attrs
-}: PropsWithChildren<
-  HTMLAttributes<HTMLDivElement> & { ref?: Ref<HTMLDivElement | null> }
+}: React.PropsWithChildren<
+  React.HTMLAttributes<HTMLDivElement> & {
+    ref?: React.Ref<HTMLDivElement | null>;
+  }
 >) {
   return (
     <div

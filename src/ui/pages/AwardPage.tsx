@@ -1,3 +1,4 @@
+import { h1 as MotionH1 } from "motion/react-m";
 import { useTranslations } from "next-intl";
 
 import type { Photo } from "@/payload-types";
@@ -22,7 +23,6 @@ import { EventOverview } from "@/ui/components/EventOverview";
 import { NavSection } from "@/ui/components/NavElement";
 import { PageHero } from "@/ui/components/PageHero";
 import { SectionTitle } from "@/ui/components/SectionTitle";
-import { MotionH1 } from "@/ui/motion";
 import { VotingProvider } from "@/ui/voting";
 
 import { getCurrentPhase } from "../award/utils";

@@ -1,7 +1,6 @@
 "use client";
 
-import type { HTMLAttributes, PropsWithChildren } from "react";
-import { useInViewport } from "@mantine/hooks";
+import { useIntersection } from "@mantine/hooks";
 import { IconX } from "@tabler/icons-react";
 import { create as createMotion } from "motion/react-m";
 import { useTranslations } from "next-intl";
@@ -34,7 +33,7 @@ export function AwardCategories({
   return (
     <>
       <OnScreenList
-        className={cn("flex flex-col gap-16 sm:gap-[25dvh]", className)}
+        className={cn("flex flex-col gap-4 sm:gap-[25dvh]", className)}
         Placeholder={CategoryCardContainer}
       >
         {categories.map(({ category, nominees, sponsor }) => (
@@ -70,7 +69,9 @@ function CategoryCard({
   className,
 }: CategoryCardProps) {
   const t = useTranslations();
-  const { ref, inViewport } = useInViewport();
+  const { ref, entry } = useIntersection({
+    threshold: 1,
+  });
   const voting = useCategoryVoting(category.id);
 
   return (
@@ -112,7 +113,10 @@ function CategoryCard({
         </div>
         {nominees.length > 0 && (
           <div className="relative">
-            <Marquee className="shrink-0" play={inViewport && !voting?.isOpen}>
+            <Marquee
+              className="shrink-0"
+              play={entry?.isIntersecting && !voting?.isOpen}
+            >
               {nominees.map((influencer) => (
                 <Image
                   key={influencer.id}
@@ -123,7 +127,14 @@ function CategoryCard({
                 />
               ))}
             </Marquee>
-            <div className="absolute inset-0 z-10 flex items-center justify-center">
+            <div
+              className={cn(
+                "absolute inset-0 z-10 flex items-center justify-center transition-all duration-1000",
+                {
+                  "scale-90 opacity-0": !entry?.isIntersecting,
+                },
+              )}
+            >
               {voting ? (
                 <button
                   className="btn uppercase btn-lg btn-primary sm:btn-xl"
@@ -146,7 +157,7 @@ function CategoryCardContainer({
   children,
   className,
   ...attrs
-}: PropsWithChildren<HTMLAttributes<HTMLDivElement>>) {
+}: React.PropsWithChildren<React.HTMLAttributes<HTMLDivElement>>) {
   return (
     <div
       className={cn(
@@ -176,7 +187,7 @@ function NomineesModal({
         </DialogTrigger>
 
         <DialogContent
-          className="h-full max-w-200 overflow-y-auto !rounded-none bg-transparent shadow-none"
+          className="!scroll-vertical h-full max-w-200 !rounded-none bg-transparent shadow-none"
           showCloseButton={false}
         >
           <header className="sticky top-0 z-10 mx-auto mb-6 flex items-center justify-between gap-4 rounded-box border border-base-300 bg-base-100/50 py-1 pr-1 pl-4 backdrop-blur-sm">

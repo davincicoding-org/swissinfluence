@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { useMemo } from "react";
 import { useElementSize } from "@mantine/hooks";
 import { type MotionProps } from "motion/react";
@@ -11,7 +10,7 @@ import { cn } from "@/ui/utils";
 
 // TODO find css solution for this
 export interface TextOverflowRevealProps {
-  text: ReactNode;
+  text: React.ReactNode;
   className?: string;
   gradientWidth?: number;
   disabled?: boolean;

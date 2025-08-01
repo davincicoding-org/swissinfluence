@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { useRef } from "react";
 import { IconX } from "@tabler/icons-react";
 import { useTranslations } from "next-intl";
@@ -14,7 +13,7 @@ export interface CertificationRegistrationProps {
   title: string;
   headline: string;
   image: Photo;
-  content: ReactNode;
+  content: React.ReactNode;
   application: {
     label: string;
     url: string;

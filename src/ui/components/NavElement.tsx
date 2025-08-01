@@ -1,6 +1,5 @@
 "use client";
 
-import type { PropsWithChildren } from "react";
 import { ScrollElement } from "react-scroll";
 
 import type { AwardSection } from "../award/AwardNavigation";
@@ -16,7 +15,7 @@ function Element({
   className,
   children,
   ...props
-}: PropsWithChildren<NavSectionProps>) {
+}: React.PropsWithChildren<NavSectionProps>) {
   useRegisterSection({ name, label });
 
   return (

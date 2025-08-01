@@ -1,6 +1,5 @@
 "use client";
 
-import { type PropsWithChildren } from "react";
 import { useElementSize } from "@mantine/hooks";
 
 export interface FadeContainerProps {
@@ -16,7 +15,7 @@ export function FadeContainer({
   children,
   withPadding,
   orientation = "horizontal",
-}: PropsWithChildren<FadeContainerProps>) {
+}: React.PropsWithChildren<FadeContainerProps>) {
   const { ref, width } = useElementSize();
 
   const to = orientation === "horizontal" ? "to right" : "to bottom";

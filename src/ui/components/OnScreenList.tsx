@@ -1,7 +1,6 @@
 "use client";
 
 import type { UseInViewOptions } from "motion/react";
-import type { FunctionComponent, PropsWithChildren } from "react";
 import { Children, useRef } from "react";
 import { useViewportSize } from "@mantine/hooks";
 import { AnimatePresence, useInView } from "motion/react";
@@ -9,7 +8,7 @@ import { AnimatePresence, useInView } from "motion/react";
 export interface OnScreenListProps {
   className?: string;
   margin?: UseInViewOptions["margin"];
-  Placeholder: FunctionComponent;
+  Placeholder: React.FunctionComponent;
 }
 
 export function OnScreenList({
@@ -17,7 +16,7 @@ export function OnScreenList({
   margin,
   Placeholder,
   children,
-}: PropsWithChildren<OnScreenListProps>) {
+}: React.PropsWithChildren<OnScreenListProps>) {
   const viewport = useViewportSize();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, {

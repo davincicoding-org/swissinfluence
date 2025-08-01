@@ -1,6 +1,5 @@
 "use client";
 
-import type { PropsWithChildren } from "react";
 import {
   createContext,
   useCallback,
@@ -46,7 +45,7 @@ export function VotingProvider({
   categories,
   submissionHandler,
   children,
-}: PropsWithChildren<VotingProviderProps>) {
+}: React.PropsWithChildren<VotingProviderProps>) {
   const [openCategory, setOpenCategory] = useState<Category["id"]>();
   const [isSelectionModalOpen, selectionModal] = useDisclosure(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -98,6 +97,7 @@ export function VotingProvider({
     callback();
     setIsSubmitting(false);
     selectionModal.close();
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setIsSubmitted(true);
   };
 
