@@ -184,6 +184,7 @@ export interface Config {
     agencies: Agency;
     conventions: Convention;
     'voting-submissions': VotingSubmission;
+    'i18n-messages': I18NMessage;
     polyglot_messages: PolyglotMessage;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -211,6 +212,7 @@ export interface Config {
     agencies: AgenciesSelect<false> | AgenciesSelect<true>;
     conventions: ConventionsSelect<false> | ConventionsSelect<true>;
     'voting-submissions': VotingSubmissionsSelect<false> | VotingSubmissionsSelect<true>;
+    'i18n-messages': I18NMessagesSelect<false> | I18NMessagesSelect<true>;
     polyglot_messages: PolyglotMessagesSelect<false> | PolyglotMessagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -960,6 +962,26 @@ export interface VotingSubmission {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "i18n-messages".
+ */
+export interface I18NMessage {
+  id: number;
+  locale: string;
+  prefix?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "polyglot_messages".
  */
 export interface PolyglotMessage {
@@ -1063,6 +1085,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'voting-submissions';
         value: number | VotingSubmission;
+      } | null)
+    | ({
+        relationTo: 'i18n-messages';
+        value: number | I18NMessage;
       } | null)
     | ({
         relationTo: 'polyglot_messages';
@@ -1531,6 +1557,25 @@ export interface VotingSubmissionsSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "i18n-messages_select".
+ */
+export interface I18NMessagesSelect<T extends boolean = true> {
+  locale?: T;
+  prefix?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  url?: T;
+  thumbnailURL?: T;
+  filename?: T;
+  mimeType?: T;
+  filesize?: T;
+  width?: T;
+  height?: T;
+  focalX?: T;
+  focalY?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

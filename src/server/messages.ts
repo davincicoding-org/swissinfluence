@@ -1,38 +1,18 @@
 "use server";
 
 import type { MessagesTree } from "payload-polyglot";
-import { stringify } from "qs-esm";
 
 import { env } from "@/env";
 
 import { cachedRequest } from "./cache";
 
 export const fetchMessages = cachedRequest(
-  async (locale) => {
-    const stringifiedQuery = stringify(
-      {
-        where: {
-          locale: {
-            equals: locale,
-          },
-        },
-      },
-      { addQueryPrefix: true },
-    );
+  async (locale: string) => {
+    const response = await fetch(`${env.BASE_URL}/api/i18n-messages/${locale}`);
 
-    const response = await fetch(
-      `${env.BASE_URL}/api/polyglot_messages${stringifiedQuery}`,
-      {
-        method: "GET",
-        credentials: "include",
-      },
-    );
+    const messages = await response.json();
 
-    const { docs } = (await response.json()) as {
-      docs: { content: MessagesTree }[];
-    };
-
-    return docs[0]?.content ?? {};
+    return messages as MessagesTree;
   },
-  ["polyglot_messages"],
+  ["i18n-messages"],
 );

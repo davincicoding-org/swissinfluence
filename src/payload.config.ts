@@ -151,13 +151,8 @@ export default buildConfig({
         update: ({ req }) => req.user !== null,
         delete: ({ req }) => req.user !== null,
       },
-      collection: {
-        admin: {
-          group: "Global",
-        },
-        hooks: {
-          afterChange: [trackCollectionChange()],
-        },
+      hooks: {
+        afterChange: [trackCollectionChange()],
       },
     }),
     s3Storage({
@@ -174,6 +169,12 @@ export default buildConfig({
         },
         logos: {
           prefix: "logos",
+          generateFileURL: async ({ filename, prefix }) =>
+            `${env.SUPABASE_URL}/storage/v1/object/public/${env.S3_BUCKET}/${prefix}/${filename}`,
+        },
+
+        "i18n-messages": {
+          prefix: "translations",
           generateFileURL: async ({ filename, prefix }) =>
             `${env.SUPABASE_URL}/storage/v1/object/public/${env.S3_BUCKET}/${prefix}/${filename}`,
         },

@@ -27,7 +27,10 @@ import {
   RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
 } from "@payloadcms/richtext-lexical/rsc";
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from "@payloadcms/storage-s3/client";
-import { MessagesEditor as MessagesEditor_c6c0778e90db7bb0cd65291aef6aa70f } from "payload-polyglot/rsc";
+import {
+  MessagesLink as MessagesLink_c6c0778e90db7bb0cd65291aef6aa70f,
+  MessagesView as MessagesView_c6c0778e90db7bb0cd65291aef6aa70f,
+} from "payload-polyglot/rsc";
 
 import { default as default_1336106370b487cf0f30382e572ff5cf } from "@/cms/components/PublishButton";
 import { default as default_fe12e1b97f779755da28f64d5ae3bc57 } from "@/cms/components/VotingExport";
@@ -79,10 +82,12 @@ export const importMap = {
     PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@/cms/components/VotingExport#default":
     default_fe12e1b97f779755da28f64d5ae3bc57,
-  "payload-polyglot/rsc#MessagesEditor":
-    MessagesEditor_c6c0778e90db7bb0cd65291aef6aa70f,
   "@/cms/components/PublishButton#default":
     default_1336106370b487cf0f30382e572ff5cf,
+  "payload-polyglot/rsc#MessagesLink":
+    MessagesLink_c6c0778e90db7bb0cd65291aef6aa70f,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler":
     S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
+  "payload-polyglot/rsc#MessagesView":
+    MessagesView_c6c0778e90db7bb0cd65291aef6aa70f,
 };
