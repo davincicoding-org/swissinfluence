@@ -3,7 +3,6 @@
 import { useEffect, useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { ca } from "zod/v4/locales";
 import { create } from "zustand";
 
 import type { Award, Category, Influencer } from "@/payload-types";
@@ -77,7 +76,15 @@ export function Voting({
   categories,
   submissionHandler,
 }: VotingProps) {
-  const store = useVotingStore();
+  const {
+    registerCategories,
+    setStatus: setVotingStatus,
+    openCategory,
+    focusedInfluencer,
+    openVoteForMe,
+    status: votingStatus,
+    close: closeVoting,
+  } = useVotingStore();
 
   const enforceVoting = useFlag("ENABLE_VOTING");
 
@@ -90,20 +97,20 @@ export function Voting({
   }, [categories, enforceVoting]);
 
   useEffect(() => {
-    store.registerCategories(
+    registerCategories(
       categoriesWithVoting.map(({ category, nominees }) => ({
         id: category.id,
         nominees: nominees.map((nominee) => nominee.id),
       })),
     );
-  }, [categoriesWithVoting]);
+  }, [categoriesWithVoting, registerCategories]);
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   const handleSubmit: VotingSelectionModalProps["onSubmit"] = async (
     values,
     callback,
   ) => {
-    store.setStatus("submitting");
+    setVotingStatus("submitting");
     if (awardId === undefined) return;
     await submissionHandler({
       award: awardId,
@@ -114,9 +121,9 @@ export function Voting({
       votes: values.votes,
     });
     callback();
-    store.setStatus("idle");
+    setVotingStatus("idle");
     await new Promise((resolve) => setTimeout(resolve, 300));
-    store.setStatus("submitted");
+    setVotingStatus("submitted");
   };
 
   const searchParams = useSearchParams();
@@ -128,8 +135,8 @@ export function Voting({
     if (voteForMe === null) return;
     const influencerId = Number(voteForMe);
     if (isNaN(influencerId)) return;
-    store.openVoteForMe(influencerId);
-  }, [voteForMe]);
+    openVoteForMe(influencerId);
+  }, [voteForMe, openVoteForMe]);
 
   const handleCloseConfirmation = () => {
     router.replace(pathname);
@@ -141,18 +148,18 @@ export function Voting({
     <>
       <VotingSelectionModal
         categories={categoriesWithVoting}
-        focusCategory={store.openCategory}
-        focusInfluencer={store.focusedInfluencer}
+        focusCategory={openCategory}
+        focusInfluencer={focusedInfluencer}
         opened={["selection", "submission", "submitting"].includes(
-          store.status,
+          votingStatus,
         )}
-        submitting={store.status === "submitting"}
-        onClose={store.close}
+        submitting={votingStatus === "submitting"}
+        onClose={closeVoting}
         onSubmit={handleSubmit}
       />
       <VotingSubmissionModal
-        opened={store.status === "submitted"}
-        onClose={() => store.setStatus("idle")}
+        opened={votingStatus === "submitted"}
+        onClose={() => setVotingStatus("idle")}
       />
       <VotingConfirmationModal
         key="confirmation"

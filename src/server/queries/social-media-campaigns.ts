@@ -9,7 +9,6 @@ import { getPayloadClient } from "../payload";
 
 export const getSocialMediaCampaigns = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<Campaign>> => {
-    console.log("CACHE MISS: getSocialMediaCampaigns", locale);
     const payload = await getPayloadClient();
 
     const { docs: campaigns } = await payload.find({

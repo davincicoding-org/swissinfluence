@@ -185,7 +185,7 @@ function Timeline({ timeline, className }: TimelineProps) {
           }
         })(),
       })),
-    [timeline],
+    [timeline, locale],
   );
 
   return (

@@ -20,7 +20,6 @@ import { getPayloadClient } from "../payload";
 
 export const getCurrentAward = cachedRequest(
   async (locale: SupportedLocale): Promise<CurrentAward | null> => {
-    console.log("CACHE MISS: getCurrentAward", locale);
     const payload = await getPayloadClient();
     const {
       docs: [award],
@@ -104,7 +103,6 @@ export const getCurrentAward = cachedRequest(
 
 export const getCreatorChallenges = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<Campaign>> => {
-    console.log("CACHE MISS: getCreatorChallenges", locale);
     const payload = await getPayloadClient();
 
     const { docs: campaigns } = await payload.find({
@@ -126,7 +124,6 @@ export const getCreatorChallenges = cachedRequest(
 
 export const getHallOfFame = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<AwardRanking>> => {
-    console.log("CACHE MISS: getHallOfFame", locale);
     const payload = await getPayloadClient();
     const { docs: awards } = await payload.find({
       collection: "awards",
@@ -168,7 +165,6 @@ export const getHallOfFame = cachedRequest(
 
 export const getPastImpressions =
   cachedRequest(async (): Promise<AwardShowImpressions | null> => {
-    console.log("CACHE MISS: getPastImpressions");
     const payload = await getPayloadClient();
     const {
       docs: [, pastAward],

@@ -9,7 +9,6 @@ import { getPayloadClient } from "../payload";
 
 export const getUpcomingAwardShows = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<AwardShow>> => {
-    console.log("CACHE MISS: getAwardShows", locale);
     const payload = await getPayloadClient();
 
     const shows = await payload.find({

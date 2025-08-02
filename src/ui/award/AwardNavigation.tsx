@@ -80,7 +80,7 @@ export const useRegisterSection = ({ name, label }: AwardSection) => {
       name,
       label,
     });
-  }, [name, label]);
+  }, [name, label, registerSection]);
 };
 
 // MARK: Panel

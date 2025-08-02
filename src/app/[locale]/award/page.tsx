@@ -30,8 +30,6 @@ export default async function AwardPage() {
       getHallOfFame(locale),
     ]);
 
-  //
-
   return (
     <View
       heroImage={page.heroImage as Photo}

@@ -9,7 +9,6 @@ import { getPayloadClient } from "../payload";
 
 export const getUpcomingNetworkEvents = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<Event>> => {
-    console.log("CACHE MISS: getNetworkEvents", locale);
     const payload = await getPayloadClient();
 
     const { docs: events } = await payload.find({

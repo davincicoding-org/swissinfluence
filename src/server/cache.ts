@@ -3,12 +3,11 @@ import { revalidateTag, unstable_cache } from "next/cache";
 
 export type CacheTag = CollectionSlug | GlobalSlug;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const cachedRequest = <T extends (...args: any[]) => Promise<any>>(
-  fn: T,
+export const cachedRequest = <Data, Inputs extends unknown[]>(
+  handler: (...inputs: Inputs) => Promise<Data>,
   tags?: CacheTag[],
-): T =>
-  unstable_cache(fn, undefined, {
+): ((...inputs: Inputs) => Promise<Data>) =>
+  unstable_cache(handler, undefined, {
     tags,
     revalidate: false,
   });

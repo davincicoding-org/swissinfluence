@@ -71,6 +71,7 @@ export function AnimatedTabsControls({
       left: tab.offsetLeft - (visibleWidth - tabWidth) / 2,
       behavior: "smooth",
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab]);
 
   return (
@@ -101,14 +102,7 @@ export function AnimatedTabsControls({
             "tab-disabled": item.disabled,
             "flex-1": grow,
           })}
-          onClick={(e) => {
-            setActiveTab(item.value);
-            // e.currentTarget.scrollIntoView({
-            //   behavior: "smooth",
-            //   block: "nearest",
-            //   inline: "center",
-            // });
-          }}
+          onClick={() => setActiveTab(item.value)}
         >
           {item.label}
         </a>

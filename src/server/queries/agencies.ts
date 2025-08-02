@@ -8,7 +8,6 @@ import { getPayloadClient } from "../payload";
 
 export const getAgencies = cachedRequest(
   async (locale: SupportedLocale): Promise<Array<Agency>> => {
-    console.log("CACHE MISS: getAgencies", locale);
     const payload = await getPayloadClient();
 
     const { docs: agencies } = await payload.find({

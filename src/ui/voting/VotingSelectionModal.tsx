@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { IconList, IconX } from "@tabler/icons-react";
 import { isEqual } from "lodash-es";
 import { AnimatePresence } from "motion/react";
@@ -264,7 +264,7 @@ function Disclaimer({ onClose }: { onClose: () => void }) {
   const t = useTranslations("voting.selection");
   const [isAccepted, setIsAccepted] = useState(false);
 
-  const handleClose = () => {
+  const handleAccept = () => {
     setIsAccepted(true);
     onClose();
   };
@@ -273,7 +273,7 @@ function Disclaimer({ onClose }: { onClose: () => void }) {
     <Dialog modal open={!isAccepted}>
       <DialogContent
         overlayClassName="bg-white/80"
-        className="w-[calc(100vw-32px)] max-w-sm rounded-box border border-base-300 bg-base-100/90 p-4 backdrop-blur-sm"
+        className="w-[calc(100vw-32px)] max-w-sm rounded-box border border-base-300 bg-base-100/90 p-4 backdrop-blur-sm focus:outline-none"
         showCloseButton={false}
       >
         <DialogTitle className="sr-only">Disclaimer</DialogTitle>
@@ -284,10 +284,10 @@ function Disclaimer({ onClose }: { onClose: () => void }) {
           className="prose-p:leading-snug"
           content={t.raw("intro.message")}
         />
-        <div className="mt-4 flex justify-center">
+        <div className="mt-4 flex flex-col justify-center">
           <button
             className="btn mx-auto btn-lg btn-primary"
-            onClick={handleClose}
+            onClick={handleAccept}
           >
             {t.raw("intro.CTA")}
           </button>

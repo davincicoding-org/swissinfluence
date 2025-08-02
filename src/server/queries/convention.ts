@@ -10,7 +10,6 @@ import { getPayloadClient } from "../payload";
 
 export const getLatestConvention = cachedRequest(
   async (locale: SupportedLocale): Promise<LatestConvention | null> => {
-    console.log("CACHE MISS: getLatestConvention", locale);
     const payload = await getPayloadClient();
 
     const {
@@ -34,7 +33,6 @@ export const getLatestConvention = cachedRequest(
 
 export const getUpcomingConvention = cachedRequest(
   async (locale: SupportedLocale): Promise<Convention[]> => {
-    console.log("CACHE MISS: getUpcomingConvention", locale);
     const payload = await getPayloadClient();
 
     const { docs: conventions } = await payload.find({

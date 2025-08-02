@@ -85,9 +85,5 @@ export async function sendVotingVerificationEmail(
   if (message.status === "invalid")
     throw new Error(`Email invalid: ${message.email}`);
 
-  console.log(
-    `Voting verification email sent successfully to ${user.email} (${message.status})`,
-  );
-
   return message;
 }
