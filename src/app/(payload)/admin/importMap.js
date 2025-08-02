@@ -21,9 +21,10 @@ import { MetaDescriptionComponent as MetaDescriptionComponent_a8a977ebc872c5d5ea
 import { MetaImageComponent as MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { PreviewComponent as PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860 } from '@payloadcms/plugin-seo/client'
 import { default as default_fe12e1b97f779755da28f64d5ae3bc57 } from '@/cms/components/VotingExport'
-import { default as default_1336106370b487cf0f30382e572ff5cf } from '@/cms/components/PublishButton'
 import { MessagesLink as MessagesLink_c6c0778e90db7bb0cd65291aef6aa70f } from 'payload-polyglot/rsc'
+import { default as default_1336106370b487cf0f30382e572ff5cf } from '@/cms/components/PublishButton'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
+import { AdminErrorBoundary as AdminErrorBoundary_e5a9e14bdbe97e70ba60697217fe7688 } from '@payloadcms/plugin-sentry/client'
 import { MessagesView as MessagesView_c6c0778e90db7bb0cd65291aef6aa70f } from 'payload-polyglot/rsc'
 
 export const importMap = {
@@ -50,8 +51,9 @@ export const importMap = {
   "@payloadcms/plugin-seo/client#MetaImageComponent": MetaImageComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@payloadcms/plugin-seo/client#PreviewComponent": PreviewComponent_a8a977ebc872c5d5ea7ee689724c0860,
   "@/cms/components/VotingExport#default": default_fe12e1b97f779755da28f64d5ae3bc57,
-  "@/cms/components/PublishButton#default": default_1336106370b487cf0f30382e572ff5cf,
   "payload-polyglot/rsc#MessagesLink": MessagesLink_c6c0778e90db7bb0cd65291aef6aa70f,
+  "@/cms/components/PublishButton#default": default_1336106370b487cf0f30382e572ff5cf,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24,
+  "@payloadcms/plugin-sentry/client#AdminErrorBoundary": AdminErrorBoundary_e5a9e14bdbe97e70ba60697217fe7688,
   "payload-polyglot/rsc#MessagesView": MessagesView_c6c0778e90db7bb0cd65291aef6aa70f
 }

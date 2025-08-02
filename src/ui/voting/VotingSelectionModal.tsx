@@ -1,8 +1,7 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { IconList, IconX } from "@tabler/icons-react";
-import { isEqual } from "lodash-es";
 import { AnimatePresence } from "motion/react";
 import * as m from "motion/react-m";
 import { useTranslations } from "next-intl";
@@ -43,6 +42,14 @@ export interface VotingSelectionModalProps {
   onSubmit: (values: Omit<VotingValues, "award">, callback: () => void) => void;
 }
 
+type MinimalVote = `${Category["id"]}-${Influencer["id"]}`;
+const toMinimalVote = (vote: InfluencerVote): MinimalVote =>
+  `${vote.category}-${vote.influencer}`;
+const fromMinimalVote = (vote: MinimalVote): InfluencerVote => ({
+  category: Number(vote.split("-")[0]),
+  influencer: Number(vote.split("-")[1]),
+});
+
 interface CategorySelection {
   category: Pick<Category, "id" | "name">;
   influencers: Array<Influencer>;
@@ -58,17 +65,22 @@ export function VotingSelectionModal({
   onSubmit,
 }: VotingSelectionModalProps) {
   const t = useTranslations("voting.selection");
+
+  const [hasAcceptedDisclaimer, setHasAcceptedDisclaimer] = useState(false);
+
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [votes, setVotes] = useState<VotingValues["votes"]>([]);
+  const [votes, setVotes] = useState<MinimalVote[]>([]);
 
   const onToggleVote = (vote: InfluencerVote) =>
-    setVotes((prev) =>
-      prev.some((v) => isEqual(v, vote))
-        ? prev.filter((v) => !isEqual(v, vote))
-        : [...prev, vote],
-    );
+    setVotes((prev) => {
+      const minimalVote = toMinimalVote(vote);
+      return prev.includes(minimalVote)
+        ? prev.filter((v) => v !== minimalVote)
+        : [...prev, minimalVote];
+    });
 
-  const handleCloseDisclaimer = () => {
+  const handleAcceptDisclaimer = () => {
+    setHasAcceptedDisclaimer(true);
     if (focusInfluencer === undefined) return;
     if (!scrollRef.current) return;
     const nominee = scrollRef.current.querySelector(
@@ -83,26 +95,17 @@ export function VotingSelectionModal({
 
   const [isSubmissionOpen, setIsSubmissionOpen] = useState(false);
 
-  const selection = useMemo<CategorySelection[]>(
-    () =>
-      categories
-        .map(({ nominees, category }) => ({
-          category,
-          influencers: nominees.filter((nominee) =>
-            votes.some((vote) =>
-              isEqual(vote, { influencer: nominee.id, category: category.id }),
-            ),
-          ),
-        }))
-        .filter(({ influencers }) => influencers.length > 0),
-    [categories, votes],
+  const isSelected = useCallback(
+    (influencer: Influencer["id"], category: Category["id"]) =>
+      votes.includes(toMinimalVote({ influencer, category })),
+    [votes],
   );
 
   const handleSubmit: VotingSubmissionFormProps["onSubmit"] = (
     values,
     callback,
   ) =>
-    onSubmit({ ...values, votes }, () => {
+    onSubmit({ ...values, votes: votes.map(fromMinimalVote) }, () => {
       setVotes([]);
       callback();
       setIsSubmissionOpen(false);
@@ -119,7 +122,15 @@ export function VotingSelectionModal({
 
   return (
     <>
-      <Dialog modal open={opened} onOpenChange={onClose}>
+      <Disclaimer
+        opened={opened && !hasAcceptedDisclaimer}
+        onAccept={handleAcceptDisclaimer}
+      />
+      <Dialog
+        modal
+        open={opened && hasAcceptedDisclaimer}
+        onOpenChange={onClose}
+      >
         <form>
           <DialogContent
             className="!scroll-vertical h-full max-w-192 !rounded-none bg-transparent p-0 shadow-none"
@@ -150,11 +161,9 @@ export function VotingSelectionModal({
                       className={cn(
                         "transform-gpu cursor-pointer border-0 border-base-300 transition-all",
                         {
-                          "border-8 border-primary": votes.some((vote) =>
-                            isEqual(vote, {
-                              influencer: nominee.id,
-                              category: category.id,
-                            }),
+                          "border-8 border-primary": isSelected(
+                            nominee.id,
+                            category.id,
                           ),
                         },
                       )}
@@ -190,7 +199,7 @@ export function VotingSelectionModal({
                   >
                     {votes.length}
                   </span>
-                  <div className="dropdown-hover dropdown dropdown-end dropdown-top">
+                  <div className="dropdown-hover dropdown dropdown-start dropdown-top">
                     <button
                       className="btn btn-square bg-white/50 backdrop-blur-xs btn-lg"
                       disabled={votes.length === 0}
@@ -199,7 +208,8 @@ export function VotingSelectionModal({
                     </button>
                     <div className="dropdown-content w-84 pb-6">
                       <SelectionList
-                        selection={selection}
+                        categories={categories}
+                        votes={votes}
                         onRemove={onToggleVote}
                       />
                     </div>
@@ -235,7 +245,6 @@ export function VotingSelectionModal({
                 onTabChange={handleTabChange}
               />
             </AnimatedTabs>
-            <Disclaimer onClose={handleCloseDisclaimer} />
           </DialogContent>
         </form>
       </Dialog>
@@ -260,17 +269,16 @@ export function VotingSelectionModal({
 
 // MARK: Disclaimer
 
-function Disclaimer({ onClose }: { onClose: () => void }) {
-  const t = useTranslations("voting.selection");
-  const [isAccepted, setIsAccepted] = useState(false);
+interface DisclaimerProps {
+  opened: boolean;
+  onAccept: () => void;
+}
 
-  const handleAccept = () => {
-    setIsAccepted(true);
-    onClose();
-  };
+function Disclaimer({ opened, onAccept }: DisclaimerProps) {
+  const t = useTranslations("voting.selection");
 
   return (
-    <Dialog modal open={!isAccepted}>
+    <Dialog modal open={opened}>
       <DialogContent
         overlayClassName="bg-white/80"
         className="w-[calc(100vw-32px)] max-w-sm rounded-box border border-base-300 bg-base-100/90 p-4 backdrop-blur-sm focus:outline-none"
@@ -285,10 +293,7 @@ function Disclaimer({ onClose }: { onClose: () => void }) {
           content={t.raw("intro.message")}
         />
         <div className="mt-4 flex flex-col justify-center">
-          <button
-            className="btn mx-auto btn-lg btn-primary"
-            onClick={handleAccept}
-          >
+          <button className="btn mx-auto btn-lg btn-primary" onClick={onAccept}>
             {t.raw("intro.CTA")}
           </button>
         </div>
@@ -300,15 +305,35 @@ function Disclaimer({ onClose }: { onClose: () => void }) {
 // MARK: Selection List
 
 function SelectionList({
-  selection,
+  categories,
+  votes,
   onRemove,
 }: {
-  selection: CategorySelection[];
+  categories: AwardCategory[];
+  votes: MinimalVote[];
   onRemove: (params: {
     category: Category["id"];
     influencer: Influencer["id"];
   }) => void;
 }) {
+  const selection = useMemo<CategorySelection[]>(
+    () =>
+      categories
+        .map(({ nominees, category }) => ({
+          category,
+          influencers: nominees.filter((nominee) =>
+            votes.includes(
+              toMinimalVote({
+                category: category.id,
+                influencer: nominee.id,
+              }),
+            ),
+          ),
+        }))
+        .filter(({ influencers }) => influencers.length > 0),
+    [categories, votes],
+  );
+
   return (
     <div className="scroll-vertical max-h-96 rounded-box bg-base-100">
       <AnimatePresence>
