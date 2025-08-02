@@ -2,6 +2,7 @@
 
 import mailchimp from "@mailchimp/mailchimp_marketing";
 import initMailchimpTx from "@mailchimp/mailchimp_transactional";
+import * as Sentry from "@sentry/nextjs";
 import z from "zod/v4";
 
 import type { ContactInfo } from "@/types";
@@ -29,23 +30,31 @@ const isMailchimpResponseError = (
     .safeParse(response).success;
 
 export async function subscribeToNewsletter(user: ContactInfo) {
-  try {
-    const response = await mailchimp.lists.addListMember(LIST_ID, {
-      email_address: user.email,
-      status: "subscribed",
-      merge_fields: {
-        FNAME: user.firstName,
-        LNAME: user.lastName,
-      },
-    });
-    if (isMailchimpResponseError(response)) throw new Error(response.detail);
-  } catch (_error) {}
+  Sentry.setUser({
+    email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
+  });
+  const response = await mailchimp.lists.addListMember(LIST_ID, {
+    email_address: user.email,
+    status: "subscribed",
+    merge_fields: {
+      FNAME: user.firstName,
+      LNAME: user.lastName,
+    },
+  });
+  if (isMailchimpResponseError(response)) throw new Error(response.detail);
 }
 
 export async function sendVotingVerificationEmail(
   user: ContactInfo,
   verificationUrl: string,
 ) {
+  Sentry.setUser({
+    email: user.email,
+    firstName: user.firstName,
+    lastName: user.lastName,
+  });
   const response = await mailchimpTx.messages.sendTemplate({
     template_name: "voting-verification",
     template_content: [],

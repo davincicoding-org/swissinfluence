@@ -18,6 +18,11 @@ export async function submitVoting({
   newsletter,
 }: VotingValues) {
   const payload = await getPayloadClient();
+  Sentry.setUser({
+    email,
+    firstName,
+    lastName,
+  });
 
   await payload.create({
     collection: "voting-submissions",
@@ -36,13 +41,7 @@ export async function submitVoting({
     try {
       await subscribeToNewsletter({ email, firstName, lastName });
     } catch (error) {
-      Sentry.captureException(error, {
-        user: {
-          email,
-          firstName,
-          lastName,
-        },
-      });
+      Sentry.captureException(error);
     }
   }
 }
