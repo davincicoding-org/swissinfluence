@@ -1,5 +1,4 @@
 import type { CollectionAfterChangeHook, CollectionConfig } from "payload";
-import * as Sentry from "@sentry/nextjs";
 
 import type { VotingSubmission } from "@/payload-types";
 import { env } from "@/env";

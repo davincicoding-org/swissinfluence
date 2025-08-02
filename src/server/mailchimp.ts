@@ -29,7 +29,7 @@ export async function subscribeToNewsletter(user: ContactInfo) {
   try {
     const email = user.email.trim().toLowerCase();
     const subscriberHash = createHash("md5").update(email).digest("hex");
-    await mailchimp.lists.setListMember(LIST_ID, subscriberHash, {
+    const res = await mailchimp.lists.setListMember(LIST_ID, subscriberHash, {
       email_address: user.email,
       status: "subscribed",
       merge_fields: {
@@ -38,6 +38,10 @@ export async function subscribeToNewsletter(user: ContactInfo) {
       },
       status_if_new: "subscribed",
     });
+    if ("type" in res) {
+      // eslint-disable-next-line @typescript-eslint/only-throw-error
+      throw res;
+    }
   } catch (error) {
     const context = isErrorWithText(error) ? error.text : error;
     Sentry.captureException(context);
@@ -81,19 +85,9 @@ export async function sendVotingVerificationEmail(
       },
     });
 
-    if (response instanceof Error) throw new Error(response.message);
+    if (Array.isArray(response)) return;
 
-    const [message] = response;
-
-    if (!message) throw new Error("No message returned from Mailchimp API");
-
-    if (message.reject_reason)
-      throw new Error(`Email rejected: ${message.reject_reason}`);
-
-    if (message.status === "invalid")
-      throw new Error(`Email invalid: ${message.email}`);
-
-    return message;
+    throw response.response?.data;
   } catch (error) {
     Sentry.captureException(error);
   }
