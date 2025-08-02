@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { IconList, IconX } from "@tabler/icons-react";
 import { isEqual } from "lodash-es";
 import { AnimatePresence } from "motion/react";
@@ -36,6 +36,7 @@ import { VotingSubmissionForm } from "./VotingSubmissionForm";
 export interface VotingSelectionModalProps {
   categories: AwardCategory[];
   focusCategory?: Category["id"];
+  focusInfluencer?: Influencer["id"];
   submitting: boolean;
   opened: boolean;
   onClose: () => void;
@@ -50,6 +51,7 @@ interface CategorySelection {
 export function VotingSelectionModal({
   categories,
   focusCategory,
+  focusInfluencer,
   submitting,
   opened,
   onClose,
@@ -58,12 +60,27 @@ export function VotingSelectionModal({
   const t = useTranslations("voting.selection");
   const scrollRef = useRef<HTMLDivElement>(null);
   const [votes, setVotes] = useState<VotingValues["votes"]>([]);
+
   const onToggleVote = (vote: InfluencerVote) =>
     setVotes((prev) =>
       prev.some((v) => isEqual(v, vote))
         ? prev.filter((v) => !isEqual(v, vote))
         : [...prev, vote],
     );
+
+  const handleCloseDisclaimer = () => {
+    if (focusInfluencer === undefined) return;
+    if (!scrollRef.current) return;
+    const nominee = scrollRef.current.querySelector(
+      `#nominee-${focusInfluencer}`,
+    );
+    if (nominee === null) return;
+    if (focusCategory !== undefined) {
+      onToggleVote({ influencer: focusInfluencer, category: focusCategory });
+    }
+    nominee.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   const [isSubmissionOpen, setIsSubmissionOpen] = useState(false);
 
   const selection = useMemo<CategorySelection[]>(
@@ -99,6 +116,7 @@ export function VotingSelectionModal({
       behavior: "smooth",
     });
   };
+
   return (
     <>
       <Dialog modal open={opened} onOpenChange={onClose}>
@@ -126,6 +144,7 @@ export function VotingSelectionModal({
                   {nominees.map((nominee) => (
                     <PersonaCard
                       key={nominee.id}
+                      id={`nominee-${nominee.id}`}
                       role="button"
                       tabIndex={0}
                       className={cn(
@@ -160,15 +179,14 @@ export function VotingSelectionModal({
                 key="actions"
               >
                 <div
-                  className={cn(
-                    "indicator transition-opacity duration-300 badge-primary",
-                    {
-                      "opacity-0": votes.length === 0,
-                    },
-                  )}
+                  className={cn("indicator transition-opacity duration-300", {
+                    "opacity-0": votes.length === 0,
+                  })}
                 >
                   <span
-                    className={cn("indicator-item pointer-events-none badge")}
+                    className={cn(
+                      "indicator-item pointer-events-none badge badge-primary",
+                    )}
                   >
                     {votes.length}
                   </span>
@@ -217,7 +235,7 @@ export function VotingSelectionModal({
                 onTabChange={handleTabChange}
               />
             </AnimatedTabs>
-            <Disclaimer />
+            <Disclaimer onClose={handleCloseDisclaimer} />
           </DialogContent>
         </form>
       </Dialog>
@@ -242,9 +260,14 @@ export function VotingSelectionModal({
 
 // MARK: Disclaimer
 
-function Disclaimer() {
+function Disclaimer({ onClose }: { onClose: () => void }) {
   const t = useTranslations("voting.selection");
   const [isAccepted, setIsAccepted] = useState(false);
+
+  const handleClose = () => {
+    setIsAccepted(true);
+    onClose();
+  };
 
   return (
     <Dialog modal open={!isAccepted}>
@@ -264,7 +287,7 @@ function Disclaimer() {
         <div className="mt-4 flex justify-center">
           <button
             className="btn mx-auto btn-lg btn-primary"
-            onClick={() => setIsAccepted(true)}
+            onClick={handleClose}
           >
             {t.raw("intro.CTA")}
           </button>

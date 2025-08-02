@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { create } from "zustand";
 
-import type { Award, Category } from "@/payload-types";
+import type { Award, Category, Influencer } from "@/payload-types";
 import type { AwardCategory, VotingValues } from "@/types";
 import { useFlag } from "@/ui/useFlag";
 
@@ -24,23 +24,45 @@ type VotingStatus =
   | "submitted";
 
 interface VotingStore {
-  categories: Category["id"][];
-  registerCategories: (categories: Category["id"][]) => void;
+  categories: { id: Category["id"]; nominees: Influencer["id"][] }[];
+  registerCategories: (
+    categories: { id: Category["id"]; nominees: Influencer["id"][] }[],
+  ) => void;
   status: VotingStatus;
   setStatus: (state: VotingStatus) => void;
   openCategory: Category["id"] | undefined;
+  focusedInfluencer: Influencer["id"] | undefined;
   open: (categoryId?: Category["id"]) => void;
+  openVoteForMe: (influencerId: Influencer["id"]) => void;
   close: () => void;
 }
 
-const useVotingStore = create<VotingStore>((set) => ({
+const useVotingStore = create<VotingStore>((set, get) => ({
   categories: [],
   status: "idle",
   setStatus: (state) => set({ status: state }),
   openCategory: undefined,
+  focusedInfluencer: undefined,
   registerCategories: (categories) => set({ categories }),
-  open: (categoryId) => set({ status: "selection", openCategory: categoryId }),
-  close: () => set({ status: "idle", openCategory: undefined }),
+  open: (categoryId) =>
+    set({
+      status: "selection",
+      openCategory: categoryId,
+    }),
+  openVoteForMe: (influencerId) =>
+    set({
+      status: "selection",
+      focusedInfluencer: influencerId,
+      openCategory: get().categories.find((category) =>
+        category.nominees.some((nominee) => nominee === influencerId),
+      )?.id,
+    }),
+  close: () =>
+    set({
+      status: "idle",
+      openCategory: undefined,
+      focusedInfluencer: undefined,
+    }),
 }));
 
 export interface VotingProps {
@@ -66,14 +88,14 @@ export function Voting({
     return categories.filter(canVoteInCategory);
   }, [categories, enforceVoting]);
 
-  const categoryIDs = useMemo(
-    () => categoriesWithVoting.map(({ category }) => category.id),
-    [categoriesWithVoting],
-  );
-
   useEffect(() => {
-    store.registerCategories(categoryIDs);
-  }, [categoryIDs]);
+    store.registerCategories(
+      categoriesWithVoting.map(({ category, nominees }) => ({
+        id: category.id,
+        nominees: nominees.map((nominee) => nominee.id),
+      })),
+    );
+  }, [categoriesWithVoting]);
 
   // eslint-disable-next-line @typescript-eslint/no-misused-promises
   const handleSubmit: VotingSelectionModalProps["onSubmit"] = async (
@@ -100,6 +122,14 @@ export function Voting({
   const pathname = usePathname();
   const router = useRouter();
 
+  const voteForMe = searchParams.get("voteforme");
+  useEffect(() => {
+    if (voteForMe === null) return;
+    const influencerId = Number(voteForMe);
+    if (isNaN(influencerId)) return;
+    store.openVoteForMe(influencerId);
+  }, [voteForMe]);
+
   const handleCloseConfirmation = () => {
     router.replace(pathname);
   };
@@ -111,6 +141,7 @@ export function Voting({
       <VotingSelectionModal
         categories={categoriesWithVoting}
         focusCategory={store.openCategory}
+        focusInfluencer={store.focusedInfluencer}
         opened={["selection", "submission", "submitting"].includes(
           store.status,
         )}
@@ -153,7 +184,9 @@ export const useCategoryVoting = (categoryId: Category["id"]) => {
   const store = useVotingStore();
 
   return useMemo(() => {
-    const enabled = store.categories.includes(categoryId);
+    const enabled = store.categories.some(
+      (category) => category.id === categoryId,
+    );
     if (!enabled) return null;
     return {
       open: () => store.open(categoryId),
