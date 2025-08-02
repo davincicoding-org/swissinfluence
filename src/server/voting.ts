@@ -1,5 +1,7 @@
 "use server";
 
+import * as Sentry from "@sentry/nextjs";
+
 import type { Award } from "@/payload-types";
 import type { VotingValues } from "@/types";
 import { consolidateVotes, summarizeVotes } from "@/utils/voting";
@@ -29,12 +31,18 @@ export async function submitVoting({
       hash: crypto.randomUUID(),
     },
   });
+
   if (newsletter) {
     try {
       await subscribeToNewsletter({ email, firstName, lastName });
     } catch (error) {
-      console.error("Failed to subscribe to newsletter:", error);
-      // Don't throw - we don't want newsletter subscription to block voting
+      Sentry.captureException(error, {
+        user: {
+          email,
+          firstName,
+          lastName,
+        },
+      });
     }
   }
 }

@@ -3,6 +3,7 @@
 import { useEffect, useMemo } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { ca } from "zod/v4/locales";
 import { create } from "zustand";
 
 import type { Award, Category, Influencer } from "@/payload-types";

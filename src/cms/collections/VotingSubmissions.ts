@@ -1,4 +1,5 @@
 import type { CollectionAfterChangeHook, CollectionConfig } from "payload";
+import * as Sentry from "@sentry/nextjs";
 
 import type { VotingSubmission } from "@/payload-types";
 import { env } from "@/env";
@@ -23,9 +24,13 @@ const createHook: CollectionAfterChangeHook<VotingSubmission> = async ({
       `${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/verify?hash=${doc.hash}`,
     );
   } catch (error) {
-    console.error("Failed to send voting verification email:", error);
-    // Don't throw here to avoid blocking the voting submission creation
-    // The user will still be able to vote, but won't get the verification email
+    Sentry.captureException(error, {
+      user: {
+        email: doc.email,
+        firstName: doc.firstName,
+        lastName: doc.lastName,
+      },
+    });
   }
 };
 
@@ -125,55 +130,47 @@ export const VotingSubmissions: CollectionConfig = {
       path: "/:id/verify",
       method: "get",
       handler: async (req) => {
-        try {
-          const id = Number(req.routeParams?.id);
-          const url = new URL(req.url ?? "");
-          const hash = url.searchParams.get("hash");
+        const id = Number(req.routeParams?.id);
+        const url = new URL(req.url ?? "");
+        const hash = url.searchParams.get("hash");
 
-          // Validate required parameters
-          if (Number.isNaN(id) || !hash)
-            return Response.json(
-              { error: "Missing required parameters: id and hash" },
-              { status: 400 },
-            );
-
-          // Get the voting submission by ID
-          const votingSubmission = await req.payload.findByID({
-            collection: "voting-submissions",
-            id,
-          });
-
-          if (!votingSubmission)
-            return Response.json(
-              { error: "Voting submission not found" },
-              { status: 404 },
-            );
-
-          // Check if the hash matches
-          if (votingSubmission.hash !== hash)
-            return Response.json({ error: "Invalid hash" }, { status: 400 });
-
-          // Update the voting submission to set confirmed to true
-          await req.payload.update({
-            collection: "voting-submissions",
-            id,
-            data: {
-              confirmed: true,
-            },
-          });
-
-          // Redirect to award page with success confirmation
-          return Response.redirect(
-            `${env.BASE_URL}/award?voting-confirmed=true`,
-            302,
-          );
-        } catch (error) {
-          console.error("Error confirming vote:", error);
+        // Validate required parameters
+        if (Number.isNaN(id) || !hash)
           return Response.json(
-            { error: "Internal server error" },
-            { status: 500 },
+            { error: "Missing required parameters: id and hash" },
+            { status: 400 },
           );
-        }
+
+        // Get the voting submission by ID
+        const votingSubmission = await req.payload.findByID({
+          collection: "voting-submissions",
+          id,
+        });
+
+        if (!votingSubmission)
+          return Response.json(
+            { error: "Voting submission not found" },
+            { status: 404 },
+          );
+
+        // Check if the hash matches
+        if (votingSubmission.hash !== hash)
+          return Response.json({ error: "Invalid hash" }, { status: 400 });
+
+        // Update the voting submission to set confirmed to true
+        await req.payload.update({
+          collection: "voting-submissions",
+          id,
+          data: {
+            confirmed: true,
+          },
+        });
+
+        // Redirect to award page with success confirmation
+        return Response.redirect(
+          `${env.BASE_URL}/award?voting-confirmed=true`,
+          302,
+        );
       },
     },
   ],

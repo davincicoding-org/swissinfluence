@@ -2,6 +2,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { resendAdapter } from "@payloadcms/email-resend";
+import { sentryPlugin } from "@payloadcms/plugin-sentry";
 import { seoPlugin } from "@payloadcms/plugin-seo";
 import {
   AlignFeature,
@@ -21,6 +22,7 @@ import {
   UnorderedListFeature,
 } from "@payloadcms/richtext-lexical";
 import { s3Storage } from "@payloadcms/storage-s3";
+import * as Sentry from "@sentry/nextjs";
 import { buildConfig } from "payload";
 import blurhashPlugin from "payload-blurhash-plugin";
 import { polyglotPlugin } from "payload-polyglot";
@@ -199,5 +201,6 @@ export default buildConfig({
     blurhashPlugin({
       collections: ["photos", "profile-pictures", "logos"],
     }),
+    sentryPlugin({ Sentry }),
   ],
 });
