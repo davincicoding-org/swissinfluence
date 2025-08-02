@@ -38,11 +38,7 @@ export async function submitVoting({
   });
 
   if (newsletter) {
-    try {
-      await subscribeToNewsletter({ email, firstName, lastName });
-    } catch (error) {
-      Sentry.captureException(error);
-    }
+    await subscribeToNewsletter({ email, firstName, lastName });
   }
 }
 

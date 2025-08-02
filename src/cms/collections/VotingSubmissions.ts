@@ -14,24 +14,14 @@ const createHook: CollectionAfterChangeHook<VotingSubmission> = async ({
 }) => {
   if (operation !== "create") return;
 
-  Sentry.setUser({
-    email: doc.email,
-    firstName: doc.firstName,
-    lastName: doc.lastName,
-  });
-
-  try {
-    await sendVotingVerificationEmail(
-      {
-        email: doc.email,
-        firstName: doc.firstName,
-        lastName: doc.lastName,
-      },
-      `${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/verify?hash=${doc.hash}`,
-    );
-  } catch (error) {
-    Sentry.captureException(error);
-  }
+  await sendVotingVerificationEmail(
+    {
+      email: doc.email,
+      firstName: doc.firstName,
+      lastName: doc.lastName,
+    },
+    `${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/verify?hash=${doc.hash}`,
+  );
 };
 
 export const VotingSubmissions: CollectionConfig = {
