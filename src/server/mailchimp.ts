@@ -39,8 +39,9 @@ export async function subscribeToNewsletter(user: ContactInfo) {
       status_if_new: "subscribed",
     });
     if ("type" in res) {
-      // eslint-disable-next-line @typescript-eslint/only-throw-error
-      throw res;
+      throw new Error("Failed to subscribe to newsletter", {
+        cause: res,
+      });
     }
   } catch (error) {
     const context = isErrorWithText(error) ? error.text : error;
@@ -87,7 +88,9 @@ export async function sendVotingVerificationEmail(
 
     if (Array.isArray(response)) return;
 
-    throw response.response?.data;
+    throw new Error("Failed to send voting verification email", {
+      cause: response.response?.data,
+    });
   } catch (error) {
     Sentry.captureException(error);
   }
