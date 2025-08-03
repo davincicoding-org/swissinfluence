@@ -4,13 +4,9 @@ import { createHash } from "node:crypto";
 import mailchimp from "@mailchimp/mailchimp_marketing";
 import initMailchimpTx from "@mailchimp/mailchimp_transactional";
 import * as Sentry from "@sentry/nextjs";
-import { z } from "zod";
 
 import type { ContactInfo } from "@/types";
 import { env } from "@/env";
-
-const isErrorWithText = (error: unknown): error is { text: string } =>
-  z.object({ text: z.string() }).safeParse(error).success;
 
 mailchimp.setConfig({
   apiKey: env.MAILCHIMP_API_KEY,
@@ -44,8 +40,11 @@ export async function subscribeToNewsletter(user: ContactInfo) {
       });
     }
   } catch (error) {
-    const context = isErrorWithText(error) ? error.text : error;
-    Sentry.captureException(context);
+    console.error();
+    Sentry.captureException(
+      new Error("Failed to subscribe to newsletter", { cause: error }),
+      { user },
+    );
   }
 }
 

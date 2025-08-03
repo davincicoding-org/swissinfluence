@@ -22,6 +22,23 @@ Sentry.init({
 
   replaysSessionSampleRate: 0,
   replaysOnErrorSampleRate: 1.0,
+  // Filter out frequent errors that are caused by a browser extension
+
+  beforeSend(event, hint) {
+    if (event.exception?.values?.[0]?.value === "Java object is gone") {
+      return null; // Discard event
+    }
+    if (event.exception?.values?.[0]?.type === "UnhandledRejection") {
+      const originalException = hint.originalException;
+      if (
+        typeof originalException === "string" &&
+        originalException.includes("Object Not Found Matching Id")
+      ) {
+        return null; // Discard event
+      }
+    }
+    return event; // Send other events
+  },
 });
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
