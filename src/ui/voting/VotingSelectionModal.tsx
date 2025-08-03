@@ -82,15 +82,21 @@ export function VotingSelectionModal({
   const handleAcceptDisclaimer = () => {
     setHasAcceptedDisclaimer(true);
     if (focusInfluencer === undefined) return;
-    if (!scrollRef.current) return;
-    const nominee = scrollRef.current.querySelector(
-      `#nominee-${focusInfluencer}`,
-    );
-    if (nominee === null) return;
-    if (focusCategory !== undefined) {
-      onToggleVote({ influencer: focusInfluencer, category: focusCategory });
-    }
-    nominee.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    setTimeout(() => {
+      if (!scrollRef.current) return;
+      const nominee = scrollRef.current.querySelector(
+        `#nominee-${focusInfluencer}`,
+      );
+      if (nominee === null) return;
+      if (focusCategory !== undefined) {
+        onToggleVote({
+          influencer: focusInfluencer,
+          category: focusCategory,
+        });
+      }
+      nominee.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
   };
 
   const [isSubmissionOpen, setIsSubmissionOpen] = useState(false);
@@ -283,6 +289,7 @@ function Disclaimer({ opened, onAccept }: DisclaimerProps) {
         overlayClassName="bg-white/80"
         className="w-[calc(100vw-32px)] max-w-sm rounded-box border border-base-300 bg-base-100/90 p-4 backdrop-blur-sm focus:outline-none"
         showCloseButton={false}
+        onOpenAutoFocus={(e) => e.preventDefault()}
       >
         <DialogTitle className="sr-only">Disclaimer</DialogTitle>
         <h2 className="mb-4 text-center text-2xl leading-tight font-medium text-pretty text-primary select-none">
