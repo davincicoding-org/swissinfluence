@@ -184,8 +184,7 @@ export interface Config {
     agencies: Agency;
     conventions: Convention;
     'voting-submissions': VotingSubmission;
-    'i18n-messages': I18NMessage;
-    polyglot_messages: PolyglotMessage;
+    messages: Message;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -212,8 +211,7 @@ export interface Config {
     agencies: AgenciesSelect<false> | AgenciesSelect<true>;
     conventions: ConventionsSelect<false> | ConventionsSelect<true>;
     'voting-submissions': VotingSubmissionsSelect<false> | VotingSubmissionsSelect<true>;
-    'i18n-messages': I18NMessagesSelect<false> | I18NMessagesSelect<true>;
-    polyglot_messages: PolyglotMessagesSelect<false> | PolyglotMessagesSelect<true>;
+    messages: MessagesSelect<false> | MessagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -962,9 +960,9 @@ export interface VotingSubmission {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "i18n-messages".
+ * via the `definition` "messages".
  */
-export interface I18NMessage {
+export interface Message {
   id: number;
   locale: string;
   prefix?: string | null;
@@ -979,25 +977,6 @@ export interface I18NMessage {
   height?: number | null;
   focalX?: number | null;
   focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "polyglot_messages".
- */
-export interface PolyglotMessage {
-  id: number;
-  locale: string;
-  content:
-    | {
-        [k: string]: unknown;
-      }
-    | unknown[]
-    | string
-    | number
-    | boolean
-    | null;
-  updatedAt: string;
-  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1087,12 +1066,8 @@ export interface PayloadLockedDocument {
         value: number | VotingSubmission;
       } | null)
     | ({
-        relationTo: 'i18n-messages';
-        value: number | I18NMessage;
-      } | null)
-    | ({
-        relationTo: 'polyglot_messages';
-        value: number | PolyglotMessage;
+        relationTo: 'messages';
+        value: number | Message;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1560,9 +1535,9 @@ export interface VotingSubmissionsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "i18n-messages_select".
+ * via the `definition` "messages_select".
  */
-export interface I18NMessagesSelect<T extends boolean = true> {
+export interface MessagesSelect<T extends boolean = true> {
   locale?: T;
   prefix?: T;
   updatedAt?: T;
@@ -1576,16 +1551,6 @@ export interface I18NMessagesSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "polyglot_messages_select".
- */
-export interface PolyglotMessagesSelect<T extends boolean = true> {
-  locale?: T;
-  content?: T;
-  updatedAt?: T;
-  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

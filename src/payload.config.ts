@@ -25,7 +25,7 @@ import { s3Storage } from "@payloadcms/storage-s3";
 import * as Sentry from "@sentry/nextjs";
 import { buildConfig } from "payload";
 import blurhashPlugin from "payload-blurhash-plugin";
-import { polyglotPlugin } from "payload-polyglot";
+import { intlPlugin } from "payload-intl";
 import sharp from "sharp";
 
 import {
@@ -144,15 +144,9 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    polyglotPlugin({
+    intlPlugin({
       schema: MESSAGES_SCHEMA,
       tabs: true,
-      access: {
-        read: () => true,
-        create: ({ req }) => req.user !== null,
-        update: ({ req }) => req.user !== null,
-        delete: ({ req }) => req.user !== null,
-      },
       hooks: {
         afterChange: [trackCollectionChange()],
       },
@@ -174,8 +168,7 @@ export default buildConfig({
           generateFileURL: async ({ filename, prefix }) =>
             `${env.SUPABASE_URL}/storage/v1/object/public/${env.S3_BUCKET}/${prefix}/${filename}`,
         },
-
-        "i18n-messages": {
+        messages: {
           prefix: "translations",
           generateFileURL: async ({ filename, prefix }) =>
             `${env.SUPABASE_URL}/storage/v1/object/public/${env.S3_BUCKET}/${prefix}/${filename}`,

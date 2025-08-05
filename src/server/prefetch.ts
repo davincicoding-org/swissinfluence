@@ -5,7 +5,7 @@ import type { CollectionSlug } from "payload";
 import { routing } from "@/i18n/routing";
 
 import type { PageId } from "./queries/pages";
-import { fetchMessages } from "./messages";
+import { fetchCachedMessages } from "./messages";
 import * as QUERIES from "./queries";
 
 export async function prefetchData(
@@ -33,7 +33,7 @@ export async function prefetchData(
   } = QUERIES;
 
   for (const locale of routing.locales) {
-    await fetchMessages(locale);
+    await fetchCachedMessages(locale);
 
     await getAgencies(locale);
     await getUpcomingAwardShows(locale);

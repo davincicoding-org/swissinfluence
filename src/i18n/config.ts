@@ -1,4 +1,3 @@
-import type { MessagesSchema } from "payload-polyglot";
 import { z } from "zod/v4";
 
 export const Locale = z.enum(["en", "de", "fr", "it"]);
@@ -27,7 +26,7 @@ export const MESSAGES_SCHEMA = {
     },
     aria: {
       langSwitch: "short",
-      navigateTo: ["short", "{target}"],
+      navigateTo: "Navigate to {target}",
     },
   },
   landing: {
@@ -35,7 +34,7 @@ export const MESSAGES_SCHEMA = {
       title: "short",
       description: "long",
     },
-    headline: ["long", "<Flip>...</Flip>", "<Static>...</Static>"],
+    headline: "long <Flip></Flip> <Static></Static>",
     links: {
       network: "short",
       award: "short",
@@ -43,11 +42,10 @@ export const MESSAGES_SCHEMA = {
       forum: "short",
     },
   },
-
   award: {
     hero: {
       default: {
-        title: "short",
+        title: "short {year, number}",
         CTA: "short",
       },
       announced: { headline: "short" },
@@ -71,7 +69,7 @@ export const MESSAGES_SCHEMA = {
     nomination: {
       title: "short",
       linkLabel: "short",
-      description: "rich",
+      description: "$RICH$",
       CTA: "short",
     },
     "newcomer-scout": {
@@ -84,7 +82,7 @@ export const MESSAGES_SCHEMA = {
     "creator-challenges": {
       title: "short",
       linkLabel: "short",
-      description: "rich",
+      description: "$RICH$",
       labels: {
         current: "short",
         past: "short",
@@ -93,7 +91,7 @@ export const MESSAGES_SCHEMA = {
     categories: {
       title: "short",
       linkLabel: "short",
-      sponsoredBy: ["short", "{brand}"],
+      sponsoredBy: "short {brand}",
       "view-nominees": "short",
     },
     jury: {
@@ -106,7 +104,7 @@ export const MESSAGES_SCHEMA = {
         linkLabel: "short",
       },
       past: {
-        title: ["short", "{year}"],
+        title: "short {year, number}",
         linkLabel: "short",
       },
       afterMovie: "short",
@@ -118,7 +116,7 @@ export const MESSAGES_SCHEMA = {
         first: "short",
         second: "short",
         third: "short",
-        other: ["short", "{rank}"],
+        other: "short {rank}",
       },
       aria: {
         next: "short",
@@ -134,7 +132,7 @@ export const MESSAGES_SCHEMA = {
       reset: "short",
       intro: {
         title: "short",
-        message: "rich",
+        message: "$RICH$",
         CTA: "short",
       },
     },
@@ -151,8 +149,8 @@ export const MESSAGES_SCHEMA = {
       submit: "short",
       cancel: "short",
       validation: {
-        tooShort: ["short", "{min}"],
-        tooLong: ["short", "{max}"],
+        tooShort: "short {min}",
+        tooLong: "short {max}",
         emailInvalid: "short",
       },
     },
@@ -187,7 +185,7 @@ export const MESSAGES_SCHEMA = {
     },
     discovery: {
       title: "short",
-      description: "rich",
+      description: "$RICH$",
     },
     profile: {
       age: "short",
@@ -224,8 +222,8 @@ export const MESSAGES_SCHEMA = {
     page: { title: "short", headline: "long" },
     event: {
       "register-cta": "short",
-      "slot-from": ["short", "{time}"],
-      "slot-until": ["short", "{time}"],
+      "slot-from": "short {time}",
+      "slot-until": "short {time}",
       "sold-out": "short",
       "date-tbd": "short",
       "sale-not-open": "short",
@@ -238,7 +236,7 @@ export const MESSAGES_SCHEMA = {
       CTA: "short",
     },
     title: "short",
-    content: "rich",
+    content: "$RICH$",
   },
   academy: {
     hero: {
@@ -260,8 +258,8 @@ export const MESSAGES_SCHEMA = {
   },
   misc: {
     "close-modal": "short",
-    "social-link": ["short", "{platform}"],
+    "social-link": "short {platform}",
     "more-social-links": "short",
-    "time-left": ["short", "{timeLeft}"],
+    "time-left": "short {timeLeft}",
   },
-} satisfies MessagesSchema;
+} as const;

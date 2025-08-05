@@ -56,7 +56,7 @@ export function AwardPage({
     <>
       <PageHero
         image={heroImage}
-        title={t("hero.default.title", { year: currentAward?.year ?? "" })}
+        title={t("hero.default.title", { year: currentAward!.year })}
         headline={headline}
         CTA={
           cta
@@ -248,13 +248,11 @@ export function AwardPage({
             <NavSection
               name="past-impressions"
               className="container py-32"
-              label={t("impressions.past.linkLabel", {
-                year: pastImpressions.year.toString(),
-              })}
+              label={t("impressions.past.linkLabel")}
             >
               <SectionTitle
                 title={t("impressions.past.title", {
-                  year: pastImpressions.year.toString(),
+                  year: pastImpressions.year,
                 })}
                 className="mb-8"
               />

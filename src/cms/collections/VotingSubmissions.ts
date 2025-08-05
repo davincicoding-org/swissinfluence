@@ -186,6 +186,14 @@ export const VotingSubmissions: CollectionConfig = {
             { status: 400 },
           );
 
+        function obscureEmail(email: string) {
+          const encoded = Buffer.from(email).toString("base64");
+          return encoded
+            .replace(/\+/g, "-")
+            .replace(/\//g, "_")
+            .replace(/=+$/, "");
+        }
+
         function revealEmail(segment: string) {
           const base64 = segment.replace(/-/g, "+").replace(/_/g, "/");
           return Buffer.from(base64, "base64").toString("utf8");
