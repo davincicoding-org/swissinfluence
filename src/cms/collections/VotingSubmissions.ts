@@ -1,4 +1,5 @@
 import type { CollectionAfterChangeHook, CollectionConfig } from "payload";
+import * as Sentry from "@sentry/nextjs";
 
 import type { VotingSubmission } from "@/payload-types";
 import { env } from "@/env";
@@ -13,14 +14,24 @@ const createHook: CollectionAfterChangeHook<VotingSubmission> = async ({
 }) => {
   if (operation !== "create") return;
 
-  await sendVotingVerificationEmail(
-    {
-      email: doc.email,
-      firstName: doc.firstName,
-      lastName: doc.lastName,
-    },
-    `${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/verify?hash=${doc.hash}`,
-  );
+  Sentry.setUser({
+    email: doc.email,
+    firstName: doc.firstName,
+    lastName: doc.lastName,
+  });
+
+  try {
+    await sendVotingVerificationEmail(
+      {
+        email: doc.email,
+        firstName: doc.firstName,
+        lastName: doc.lastName,
+      },
+      `${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/verify?hash=${doc.hash}`,
+    );
+  } catch (error) {
+    Sentry.captureException(error);
+  }
 };
 
 export const VotingSubmissions: CollectionConfig = {
@@ -152,6 +163,45 @@ export const VotingSubmissions: CollectionConfig = {
           id,
           data: {
             confirmed: true,
+          },
+        });
+
+        // Redirect to award page with success confirmation
+        return Response.redirect(
+          `${env.BASE_URL}/award?voting-confirmed=true`,
+          302,
+        );
+      },
+    },
+    {
+      path: "/unsafe-verify/:hash",
+      method: "get",
+      handler: async (req) => {
+        const hash = String(req.routeParams?.hash);
+
+        // Validate required parameters
+        if (!hash)
+          return Response.json(
+            { error: "Missing required parameters: hash" },
+            { status: 400 },
+          );
+
+        function revealEmail(segment: string) {
+          const base64 = segment.replace(/-/g, "+").replace(/_/g, "/");
+          return Buffer.from(base64, "base64").toString("utf8");
+        }
+
+        const email = revealEmail(hash);
+
+        await req.payload.update({
+          collection: "voting-submissions",
+          data: {
+            confirmed: true,
+          },
+          where: {
+            email: {
+              equals: email,
+            },
           },
         });
 

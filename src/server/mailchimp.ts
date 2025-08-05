@@ -52,45 +52,36 @@ export async function sendVotingVerificationEmail(
   user: ContactInfo,
   verificationUrl: string,
 ) {
-  Sentry.setUser({
-    email: user.email,
-    firstName: user.firstName,
-    lastName: user.lastName,
+  const response = await mailchimpTx.messages.sendTemplate({
+    template_name: "voting-verification",
+    template_content: [],
+    message: {
+      to: [
+        {
+          email: user.email,
+          name: user.firstName,
+          type: "to",
+        },
+      ],
+      global_merge_vars: [
+        {
+          name: "FIRSTNAME",
+          content: user.firstName,
+        },
+        {
+          name: "VERIFICATION_URL",
+          content: verificationUrl,
+        },
+      ],
+      from_email: "noreply@swissinfluence.ch",
+      from_name: "Swiss Influence Awards",
+      subject: "Verify Your Vote - Swiss Influence Awards",
+    },
   });
-  try {
-    const response = await mailchimpTx.messages.sendTemplate({
-      template_name: "voting-verification",
-      template_content: [],
-      message: {
-        to: [
-          {
-            email: user.email,
-            name: user.firstName,
-            type: "to",
-          },
-        ],
-        global_merge_vars: [
-          {
-            name: "FIRSTNAME",
-            content: user.firstName,
-          },
-          {
-            name: "VERIFICATION_URL",
-            content: verificationUrl,
-          },
-        ],
-        from_email: "noreply@swissinfluence.ch",
-        from_name: "Swiss Influence Awards",
-        subject: "Verify Your Vote - Swiss Influence Awards",
-      },
-    });
 
-    if (Array.isArray(response)) return;
+  if (Array.isArray(response)) return;
 
-    throw new Error("Failed to send voting verification email", {
-      cause: response.response?.data,
-    });
-  } catch (error) {
-    Sentry.captureException(error);
-  }
+  throw new Error("Failed to send voting verification email", {
+    cause: response.response?.data,
+  });
 }
