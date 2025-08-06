@@ -136,6 +136,13 @@ export default buildConfig({
     pool: {
       connectionString: env.POSTGRES_URL,
     },
+    afterSchemaInit: [
+      ({ schema }) => {
+        // Enable RLS for all tables
+        Object.values(schema.tables).forEach((table) => table.enableRLS());
+        return schema;
+      },
+    ],
   }),
   email: resendAdapter({
     defaultFromAddress: "no-reply@davincicoding.ch",
