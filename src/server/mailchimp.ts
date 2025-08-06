@@ -5,6 +5,7 @@ import mailchimp from "@mailchimp/mailchimp_marketing";
 import initMailchimpTx from "@mailchimp/mailchimp_transactional";
 import * as Sentry from "@sentry/nextjs";
 
+import type { SupportedLocale } from "@/i18n/config";
 import type { ContactInfo } from "@/types";
 import { env } from "@/env";
 
@@ -13,8 +14,6 @@ mailchimp.setConfig({
   server: "us22",
 });
 const LIST_ID = "ddd6c0e149";
-
-const mailchimpTx = initMailchimpTx(env.MAILCHIMP_TRANSACTIONAL_API_KEY);
 
 export async function subscribeToNewsletter(user: ContactInfo) {
   Sentry.setUser({
@@ -47,12 +46,15 @@ export async function subscribeToNewsletter(user: ContactInfo) {
   }
 }
 
+const mailchimpTx = initMailchimpTx(env.MAILCHIMP_TRANSACTIONAL_API_KEY);
+
 export async function sendVotingVerificationEmail(
   user: ContactInfo,
   verificationUrl: string,
+  locale: SupportedLocale,
 ) {
   const response = await mailchimpTx.messages.sendTemplate({
-    template_name: "voting-verification",
+    template_name: `voting-verification-${locale}`,
     template_content: [],
     message: {
       to: [
@@ -64,6 +66,10 @@ export async function sendVotingVerificationEmail(
       ],
       global_merge_vars: [
         {
+          name: "LANG",
+          content: locale,
+        },
+        {
           name: "FIRSTNAME",
           content: user.firstName,
         },
@@ -74,7 +80,12 @@ export async function sendVotingVerificationEmail(
       ],
       from_email: "noreply@swissinfluence.ch",
       from_name: "Swiss Influence Awards",
-      subject: "Verify Your Vote - Swiss Influence Awards",
+      subject: {
+        en: "Confirm your vote",
+        de: "Voting bestätigen",
+        fr: "Confirme ton vote",
+        it: "Conferma il tuo voto",
+      }[locale],
     },
   });
 

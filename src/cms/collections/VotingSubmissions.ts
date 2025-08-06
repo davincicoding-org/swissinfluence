@@ -1,5 +1,6 @@
 import type { CollectionAfterChangeHook, CollectionConfig } from "payload";
 import * as Sentry from "@sentry/nextjs";
+import { getLocale } from "next-intl/server";
 
 import type { VotingSubmission } from "@/payload-types";
 import { env } from "@/env";
@@ -13,6 +14,7 @@ const createHook: CollectionAfterChangeHook<VotingSubmission> = async ({
   req: { payload },
 }) => {
   if (operation !== "create") return;
+  const locale = await getLocale();
 
   Sentry.setUser({
     email: doc.email,
@@ -28,6 +30,7 @@ const createHook: CollectionAfterChangeHook<VotingSubmission> = async ({
         lastName: doc.lastName,
       },
       `${env.BASE_URL}${payload.getAPIURL()}/voting-submissions/${doc.id}/verify?hash=${doc.hash}`,
+      locale,
     );
   } catch (error) {
     Sentry.captureException(error);
