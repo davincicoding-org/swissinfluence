@@ -40,7 +40,6 @@ export async function subscribeToNewsletter(user: ContactInfo) {
       });
     }
   } catch (error) {
-    console.error();
     Sentry.captureException(
       new Error("Failed to subscribe to newsletter", { cause: error }),
       { user },

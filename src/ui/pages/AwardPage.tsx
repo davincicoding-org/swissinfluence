@@ -56,7 +56,9 @@ export function AwardPage({
     <>
       <PageHero
         image={heroImage}
-        title={t("hero.default.title", { year: currentAward!.year })}
+        title={t("hero.default.title", {
+          year: currentAward?.year.toString() ?? "",
+        })}
         headline={headline}
         CTA={
           cta
@@ -198,7 +200,12 @@ export function AwardPage({
               label={t("categories.linkLabel")}
               className="container min-h-screen pt-32 pb-64"
             >
-              <SectionTitle title={t("categories.title")} className="mb-8" />
+              <SectionTitle
+                title={t("categories.title", {
+                  year: currentAward.year.toString(),
+                })}
+                className="mb-8"
+              />
               <AwardCategories
                 categories={currentAward.categories}
                 className="-mb-32"
@@ -252,7 +259,7 @@ export function AwardPage({
             >
               <SectionTitle
                 title={t("impressions.past.title", {
-                  year: pastImpressions.year,
+                  year: pastImpressions.year.toString(),
                 })}
                 className="mb-8"
               />

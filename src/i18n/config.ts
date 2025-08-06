@@ -45,7 +45,7 @@ export const MESSAGES_SCHEMA = {
   award: {
     hero: {
       default: {
-        title: "short {year, number}",
+        title: "short {year}",
         CTA: "short",
       },
       announced: { headline: "short" },
@@ -89,7 +89,7 @@ export const MESSAGES_SCHEMA = {
       },
     },
     categories: {
-      title: "short",
+      title: "short {year}",
       linkLabel: "short",
       sponsoredBy: "short {brand}",
       "view-nominees": "short",
@@ -104,7 +104,7 @@ export const MESSAGES_SCHEMA = {
         linkLabel: "short",
       },
       past: {
-        title: "short {year, number}",
+        title: "short {year}",
         linkLabel: "short",
       },
       afterMovie: "short",
