@@ -79,7 +79,7 @@ export function PersonaCard({
           <div className="min-w-0">
             <p
               className={cn(
-                "mb-[1.5cqw] text-[6cqw] leading-tight font-medium tracking-widest",
+                "mb-[1.5cqw] text-[6cqw] leading-tight font-medium tracking-widest empty:hidden",
                 classNames?.header,
               )}
             >

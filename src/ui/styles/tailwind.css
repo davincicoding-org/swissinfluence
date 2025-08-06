@@ -128,3 +128,23 @@
 @utility font-countdown {
   font-feature-settings: "tnum" 1;
 }
+
+.animate-name-overflow {
+  will-change: transform;
+  animation-name: name-overflow;
+  animation-duration: var(--name-overflow-duration);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes name-overflow {
+  0%,
+  50%,
+  100% {
+    transform: translateZ(0) translateX(0);
+  }
+  80%,
+  90% {
+    transform: translateZ(0) translateX(calc(var(--name-overflow-offset) * -1));
+  }
+}
