@@ -150,13 +150,10 @@ export function AwardPage({
 
           {/* MARK: Newcomer Scout */}
 
-          {currentAward.newcomerScoutUrl &&
-            currentAward.newcomerScoutImage &&
+          {currentAward.newcomerScoutImage &&
             currentAward.newcomerScoutTitle &&
             currentAward.newcomerScoutInfo &&
-            currentAward.newcomerScoutPerks &&
-            currentAward.newcomerScoutDeadline &&
-            currentAward.newcomerScoutDeadline > now && (
+            currentAward.newcomerScoutPerks && (
               <NavSection
                 name="newcomer-scout"
                 label={t("newcomer-scout.linkLabel")}

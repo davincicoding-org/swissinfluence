@@ -19,8 +19,8 @@ export interface AwardNominationProps {
   image: Photo;
   info: RichTextProps["data"];
   perks: RichTextProps["data"];
-  deadline: string;
-  formURL: string;
+  deadline: string | null | undefined;
+  formURL: string | null | undefined;
   timeline: NonNullable<NewcomerScoutTimeline>;
   className?: string;
 }
@@ -35,6 +35,8 @@ export function NewcomerScout({
   timeline,
 }: AwardNominationProps) {
   const t = useTranslations("award.newcomer-scout");
+  const canRegister = deadline ? dayjs(deadline).isAfter(dayjs()) : true;
+
   return (
     <div
       className={cn(
@@ -50,18 +52,22 @@ export function NewcomerScout({
           // TODO this should be 90vw on mobile, but Lighthouse is complaining
           sizes="(max-width: 48rem) 80vw, 368px"
         />
-        <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-3">
-          <div className="badge-ghostd mx-auto badge border-white/50 bg-white/50 p-3 badge-xl tracking-widest text-neutral uppercase backdrop-blur-xs">
-            <TimeLeft deadline={deadline} />
+        {formURL && canRegister && (
+          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-3">
+            {deadline && (
+              <div className="badge-ghostd mx-auto badge border-white/50 bg-white/50 p-3 badge-xl tracking-widest text-neutral uppercase backdrop-blur-xs">
+                <TimeLeft deadline={deadline} />
+              </div>
+            )}
+            <a
+              className="btn uppercase btn-lg btn-primary"
+              href={formURL}
+              target="_blank"
+            >
+              {t("CTA")}
+            </a>
           </div>
-          <a
-            className="btn uppercase btn-lg btn-primary"
-            href={formURL}
-            target="_blank"
-          >
-            {t("CTA")}
-          </a>
-        </div>
+        )}
       </div>
 
       <AnimatedTabs defaultValue="INFO">
@@ -110,15 +116,17 @@ export function NewcomerScout({
             </AnimatedTabsPanel>
           </AnimatePresence>
 
-          <div className="px-3 pb-3 md:hidden">
-            <a
-              className="btn btn-block uppercase btn-primary"
-              href={formURL}
-              target="_blank"
-            >
-              {t("CTA")}
-            </a>
-          </div>
+          {formURL && canRegister && (
+            <div className="px-3 pb-3 md:hidden">
+              <a
+                className="btn btn-block uppercase btn-primary"
+                href={formURL}
+                target="_blank"
+              >
+                {t("CTA")}
+              </a>
+            </div>
+          )}
         </div>
       </AnimatedTabs>
     </div>
