@@ -75,7 +75,14 @@ export function Schedule({ slots, className }: ScheduleProps) {
                 <input type="checkbox" id={`schedule-${id}-${index}`} />
 
                 <div className="collapse-title md:!pr-4">
-                  <p className="mb-1 leading-none opacity-60">{slot.time}</p>
+                  <div className="mb-1 flex items-center justify-between">
+                    <span className="leading-none opacity-60">{slot.time}</span>
+                    {slot.room && (
+                      <span className="leading-none font-medium opacity-80">
+                        {slot.room}
+                      </span>
+                    )}
+                  </div>
                   <p className="pr-2 text-xl leading-tight font-medium">
                     {slot.title}
                   </p>
