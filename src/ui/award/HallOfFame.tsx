@@ -27,9 +27,7 @@ export function HallOfFame({ awards, className }: HallOfFameProps) {
     if (index === 0) return t("ranking.first");
     if (index === 1) return t("ranking.second");
     if (index === 2) return t("ranking.third");
-    return t("ranking.other", {
-      rank: (index + 1).toString(),
-    });
+    return undefined;
   };
 
   return (
