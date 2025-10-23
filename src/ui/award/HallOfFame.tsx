@@ -57,7 +57,7 @@ export function HallOfFame({ awards, className }: HallOfFameProps) {
                 className="grid cols-autofill-250 gap-x-6 gap-y-8"
                 Placeholder={PersonaCardContainer}
               >
-                {categories.map(({ category, nominees }) => (
+                {categories.map(({ category, nominees, winnerImage }) => (
                   <MotionDiv
                     key={category.id}
                     className="relative grid aspect-square"
@@ -80,7 +80,10 @@ export function HallOfFame({ awards, className }: HallOfFameProps) {
                           key={influencer.id}
                           className="group relative carousel-item w-full rounded-none border-none"
                           disableImageZoom
-                          image={influencer.image}
+                          image={
+                            // eslint-disable-next-line @typescript-eslint/prefer-nullish-coalescing
+                            (index === 0 && winnerImage) || influencer.image
+                          }
                           name={influencer.name}
                           header={getRankingLabel(index)}
                           revealed
