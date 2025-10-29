@@ -1,8 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import { useIntersection } from "@mantine/hooks";
 import { IconX } from "@tabler/icons-react";
-import { create as createMotion } from "motion/react-m";
+import { useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import { create as createMotion, div as MotionDiv } from "motion/react-m";
 import { useTranslations } from "next-intl";
 import Marquee from "react-fast-marquee";
 
@@ -30,28 +32,46 @@ export function AwardCategories({
   categories,
   className,
 }: AwardCategoriesProps) {
+  const targetRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: targetRef });
+
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
+
+  useMotionValueEvent(scrollYProgress, "change", (value) => {
+    console.log(value);
+  });
+
   return (
-    <>
-      <OnScreenList
-        className={cn("flex flex-col gap-4 sm:gap-[25dvh]", className)}
-        Placeholder={CategoryCardContainer}
-      >
-        {categories.map(({ category, nominees, sponsor }) => (
-          <MotionCategoryCard
-            key={category.id}
-            category={category}
-            nominees={nominees}
-            sponsor={sponsor}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 0.2,
-            }}
-          />
-        ))}
-      </OnScreenList>
-    </>
+    <div
+      ref={targetRef}
+      className="relative"
+      style={{ height: `${categories.length * 100}dvh` }}
+    >
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        <MotionDiv style={{ x }} className="flex gap-8">
+          <OnScreenList
+            className={cn("flex pb-[20dvh]", className)}
+            Placeholder={CategoryCardContainer}
+          >
+            {categories.map(({ category, nominees, sponsor }) => (
+              <MotionCategoryCard
+                key={category.id}
+                category={category}
+                nominees={nominees}
+                className="flex h-[80dvh] w-screen shrink-0 items-center justify-center"
+                sponsor={sponsor}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{
+                  duration: 0.2,
+                }}
+              />
+            ))}
+          </OnScreenList>
+        </MotionDiv>
+      </div>
+    </div>
   );
 }
 
@@ -75,8 +95,8 @@ function CategoryCard({
   const voting = useCategoryVoting(category.id);
 
   return (
-    <div className={cn("top-48 z-10 sm:sticky", className)} ref={ref}>
-      <CategoryCardContainer>
+    <div className={cn("container", className)} ref={ref}>
+      <CategoryCardContainer className="">
         <div className="relative flex grow flex-col">
           <Image
             resource={category.image as Photo}

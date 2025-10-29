@@ -195,13 +195,13 @@ export function AwardPage({
             <NavSection
               name="categories"
               label={t("categories.linkLabel")}
-              className="container min-h-screen pt-32 pb-64"
+              className="min-h-screen pt-32 pb-64"
             >
               <SectionTitle
                 title={t("categories.title", {
                   year: currentAward.year.toString(),
                 })}
-                className="mb-8"
+                className="container mb-8"
               />
               <AwardCategories
                 categories={currentAward.categories}
